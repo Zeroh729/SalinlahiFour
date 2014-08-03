@@ -1086,7 +1086,8 @@ containing a value of this type.
         public static final int abc_search_dropdown_item_icons_2line=0x7f030015;
         public static final int abc_search_view=0x7f030016;
         public static final int activity_main=0x7f030017;
-        public static final int support_simple_spinner_dropdown_item=0x7f030018;
+        public static final int activity_select_user=0x7f030018;
+        public static final int support_simple_spinner_dropdown_item=0x7f030019;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1131,6 +1132,7 @@ containing a value of this type.
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000b;
         public static final int app_name=0x7f0a000d;
         public static final int hello_world=0x7f0a000e;
+        public static final int title_activity_select_user=0x7f0a000f;
     }
     public static final class style {
         /** 
@@ -1159,6 +1161,7 @@ containing a value of this type.
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f0b0084;
+        public static final int NoActionBar=0x7f0b0085;
         /**  Mimic text appearance in select_dialog_item.xml 
          */
         public static final int TextAppearance_AppCompat_Base_CompactMenu_Dialog=0x7f0b0063;

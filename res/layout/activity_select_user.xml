@@ -5,11 +5,8 @@
     tools:context="${packageName}.${activityClass}" >
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:gravity="center"
-        android:textSize="33sp"
-        android:text="@string/hello_world" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select A User Page" />
 
 </RelativeLayout>

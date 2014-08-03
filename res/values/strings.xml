@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">SalinlahiFour</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">Salinlahi 4</string>
+    <string name="title_activity_select_user">SelectUserActivity</string>
 
 </resources>
