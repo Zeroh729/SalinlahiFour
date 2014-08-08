@@ -4,5 +4,8 @@
     <string name="app_name">SalinlahiFour</string>
     <string name="hello_world">Salinlahi 4</string>
     <string name="title_activity_select_user">SelectUserActivity</string>
+    <string name="title_activity_map">MapActivity</string>
+    <string name="title_activity_lesson">LessonActivity</string>
+    <string name="title_activity_abstract_tutorial">AbstractTutorialActivity</string>
 
 </resources>

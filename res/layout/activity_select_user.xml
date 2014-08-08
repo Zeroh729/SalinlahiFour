@@ -2,11 +2,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="${packageName}.${activityClass}" >
+    tools:context="${packageName}.${activityClass}" 
+    android:gravity="center">
 
-    <TextView
+    <RadioButton
+        android:id="@+id/rdo_male"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select A User Page" />
+        android:layout_alignParentTop="true"
+        android:textSize="22sp" 
+        android:text="Male"/>
+    
+    <RadioButton
+        android:id="@+id/rdo_female"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Female"
+        android:textSize="22sp" 
+        android:layout_alignBaseline="@+id/rdo_male"
+        android:layout_toRightOf="@+id/rdo_male"
+        android:layout_marginLeft="50dp"/>
+    
+    <EditText
+        android:id="@+id/tf_name"
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:height="60dp"></EditText>
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rdo_female"
+        android:text="OK" 
+        android:layout_toRightOf="@+id/tf_name"
+        android:onClick="registerUser"/>
 
 </RelativeLayout>
