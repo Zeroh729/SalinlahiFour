@@ -38,6 +38,14 @@
             android:name="com.ube.salinlahifour.AbstractTutorialActivity"
             android:label="@string/title_activity_abstract_tutorial" >
         </activity>
+        <activity
+            android:name="com.ube.salinlahifour.lessonActivites.CookingActivity"
+            android:label="@string/title_activity_lesson" >
+        </activity>
+        <activity
+            android:name="com.ube.salinlahifour.tutorials.CookingTut"
+            android:label="@string/title_activity_abstract_tutorial" >
+        </activity>
     </application>
 
 </manifest>

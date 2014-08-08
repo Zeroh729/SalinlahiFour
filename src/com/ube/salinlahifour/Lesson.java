@@ -12,7 +12,7 @@ public class Lesson {
 	public Lesson(String name, String activity, String tutorial, int image){
 		this.name = name;
 		this.image = image;
-		this.activity = "com.ube.salinlahifour.lessonActivities" + activity;
-		this.tutorial = "com.ube.salinlahifour.tutorials" + tutorial;
+		this.activity = "com.ube.salinlahifour.lessonActivities." + activity;
+		this.tutorial = "com.ube.salinlahifour.tutorials." + tutorial;
 	}
 }
