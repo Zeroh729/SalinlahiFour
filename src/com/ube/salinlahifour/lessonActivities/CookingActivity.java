@@ -1,4 +1,4 @@
-package com.ube.salinlahifour.lessonActivites;
+package com.ube.salinlahifour.lessonActivities;
 
 
 

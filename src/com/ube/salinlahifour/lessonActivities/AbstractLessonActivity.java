@@ -1,4 +1,4 @@
-package com.ube.salinlahifour.lessonActivites;
+package com.ube.salinlahifour.lessonActivities;
 
 import com.ube.salinlahifour.R;
 import com.ube.salinlahifour.R.layout;

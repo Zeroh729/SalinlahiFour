@@ -31,7 +31,7 @@
             android:label="@string/title_activity_map" >
         </activity>
         <activity
-            android:name="com.ube.salinlahifour.lessonActivites.AbstractLessonActivity"
+            android:name="com.ube.salinlahifour.lessonActivities.AbstractLessonActivity"
             android:label="@string/title_activity_lesson" >
         </activity>
         <activity
@@ -39,12 +39,20 @@
             android:label="@string/title_activity_abstract_tutorial" >
         </activity>
         <activity
-            android:name="com.ube.salinlahifour.lessonActivites.CookingActivity"
+            android:name="com.ube.salinlahifour.lessonActivities.CookingActivity"
             android:label="@string/title_activity_lesson" >
+            <intent-filter>
+                <action android:name="com.ube.salinlahifour.lessonActivities.CookingActivity"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.ube.salinlahifour.tutorials.CookingTut"
             android:label="@string/title_activity_abstract_tutorial" >
+            <intent-filter>
+                <action android:name="com.ube.salinlahifour.tutorials.CookingTut"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 

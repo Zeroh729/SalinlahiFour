@@ -60,25 +60,29 @@ public class MapActivity extends Activity implements OnClickListener{
 	@Override
 	public void onClick(View view) {
 		Intent intent = null;
+		int index = -1;
 		switch(view.getId()){
 		case R.id.img_lesson1:
-			intent = new Intent(this,MainActivity.class);
+			index = 0;
 			break;
 		case R.id.img_lesson2:
-			intent = new Intent(scene.getLessons().get(1).tutorial);
+			index = 1;
 			break;
 		case R.id.img_lesson3:
-			intent = new Intent(scene.getLessons().get(2).tutorial);
+			index = 2;
 			break;
 		case R.id.img_lesson4:
-			intent = new Intent(scene.getLessons().get(3).tutorial);
+			index = 3;
 			break;
 		case R.id.img_lesson5:
-			intent = new Intent(scene.getLessons().get(4).tutorial);
+			index = 4;
 			break;
 		}
-		if(intent != null)
+		if(index != -1){
+			intent = new Intent(scene.getLessons().get(index).tutorial);
+			intent.putExtra("activityClass", scene.getLessons().get(index).activity);
 			startActivity(intent);
+		}
 	}
 	
 }
