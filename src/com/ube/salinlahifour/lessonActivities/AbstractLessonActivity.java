@@ -6,12 +6,13 @@ import android.app.Activity;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 
 import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.R;
 
-public abstract class AbstractLessonActivity extends Activity {
+public abstract class AbstractLessonActivity extends Activity implements OnClickListener{
 	protected ArrayList<ImageView> backgrounds;
 	protected ArrayList<Item> items;
 	protected ArrayList<Item> questions;
@@ -24,10 +25,10 @@ public abstract class AbstractLessonActivity extends Activity {
 //		setContentView(R.layout.activity_lesson);
 		setContentView(layoutID);
 
+		initiateViews();
 		initiateItems();
 		getQuestions();
 		run();
-		checkAnswer();
 	}
 	
 	protected void getQuestions(){
@@ -41,7 +42,8 @@ public abstract class AbstractLessonActivity extends Activity {
 	protected void showReportCard(){
 	}
 
+	abstract protected void initiateViews();
 	abstract protected void initiateItems();
 	abstract protected void run();
-	abstract protected void checkAnswer();
+	abstract protected void checkAnswer(String answer);
 }
