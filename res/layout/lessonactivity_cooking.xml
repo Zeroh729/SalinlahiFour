@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <Button
+        android:id="@+id/btn_choicea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="401dp"
+        android:layout_marginTop="212dp"
+        android:text="Tatsulok" />
+
+    <Button
+        android:id="@+id/btn_choiceb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btn_choicea"
+        android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@+id/btn_choicea"
+        android:text="Bilog" />
+
+    <Button
+        android:id="@+id/btn_choicec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btn_choiceb"
+        android:layout_alignBottom="@+id/btn_choiceb"
+        android:layout_marginLeft="49dp"
+        android:layout_toRightOf="@+id/btn_choiceb"
+        android:text="Parisukat" />
+
+    <TextView
+        android:id="@+id/tv_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="83dp"
+        android:layout_toRightOf="@+id/btn_choicea"
+        android:text="Which one is bilog?"
+        android:textSize="22sp" />
+
+</RelativeLayout>
