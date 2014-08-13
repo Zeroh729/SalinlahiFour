@@ -47,4 +47,49 @@
         android:layout_marginRight="50dp" 
          />
 
+    <TextView
+        android:id="@+id/tv_lesson1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/img_lesson1"
+        android:layout_below="@+id/img_lesson1"
+        android:layout_marginTop="21dp"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/tv_lesson2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_lesson1"
+        android:layout_alignBottom="@+id/tv_lesson1"
+        android:layout_alignLeft="@+id/img_lesson2"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/tv_lesson3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_lesson1"
+        android:layout_alignBottom="@+id/TextView01"
+        android:layout_alignLeft="@+id/img_lesson3"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/tv_lesson4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_lesson2"
+        android:layout_alignBottom="@+id/tv_lesson2"
+        android:layout_alignLeft="@+id/img_lesson4"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/tv_lesson5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_lesson3"
+        android:layout_alignBottom="@+id/tv_lesson3"
+        android:layout_alignLeft="@+id/img_lesson5"
+        android:text="" />
+
 </RelativeLayout>

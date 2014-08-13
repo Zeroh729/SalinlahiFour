@@ -39,18 +39,34 @@
             android:label="@string/title_activity_abstract_tutorial" >
         </activity>
         <activity
-            android:name="com.ube.salinlahifour.lessonActivities.CookingActivity"
+            android:name="com.ube.salinlahifour.lessonActivities.Cooking"
             android:label="@string/title_activity_lesson" >
             <intent-filter>
-                <action android:name="com.ube.salinlahifour.lessonActivities.CookingActivity"/>
+                <action android:name="com.ube.salinlahifour.lessonActivities.Cooking"/>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.ube.salinlahifour.tutorials.CookingTut"
+            android:name="com.ube.salinlahifour.tutorials.Cooking"
             android:label="@string/title_activity_abstract_tutorial" >
             <intent-filter>
-                <action android:name="com.ube.salinlahifour.tutorials.CookingTut"/>
+                <action android:name="com.ube.salinlahifour.tutorials.Cooking"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ube.salinlahifour.lessonActivities.Society"
+            android:label="@string/title_activity_lesson" >
+            <intent-filter>
+                <action android:name="com.ube.salinlahifour.lessonActivities.Society"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ube.salinlahifour.tutorials.Society"
+            android:label="@string/title_activity_abstract_tutorial" >
+            <intent-filter>
+                <action android:name="com.ube.salinlahifour.tutorials.Society"/>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

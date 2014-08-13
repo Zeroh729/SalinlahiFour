@@ -9,10 +9,10 @@ public class Lesson {
 	public String tutorial;
 	public int image;
 	
-	public Lesson(String name, String activity, String tutorial, int image){
+	public Lesson(String name, String className, int image){
 		this.name = name;
 		this.image = image;
-		this.activity = "com.ube.salinlahifour.lessonActivities." + activity;
-		this.tutorial = "com.ube.salinlahifour.tutorials." + tutorial;
+		this.activity = "com.ube.salinlahifour.lessonActivities." + className;
+		this.tutorial = "com.ube.salinlahifour.tutorials." + className;
 	}
 }
