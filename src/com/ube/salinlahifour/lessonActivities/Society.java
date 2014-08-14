@@ -13,12 +13,6 @@ public class Society  extends AbstractLessonActivity{
 	public Society(){
 		layoutID = R.layout.lessonactivity_society;
 	}
-	
-	@Override
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	protected void initiateViews() {

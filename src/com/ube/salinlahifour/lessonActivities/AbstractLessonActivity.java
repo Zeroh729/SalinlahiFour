@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.R;
 
-public abstract class AbstractLessonActivity extends Activity implements OnClickListener{
+public abstract class AbstractLessonActivity extends Activity {
 	protected ArrayList<ImageView> backgrounds;
 	protected ArrayList<Item> items;
 	protected ArrayList<Item> questions;

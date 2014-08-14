@@ -11,7 +11,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="401dp"
         android:layout_marginTop="212dp"
-        android:text="Tatsulok" />
+        android:text="Tatsulok" 
+        android:onClick="onClick"/>
 
     <Button
         android:id="@+id/btn_choiceb"
@@ -20,7 +21,8 @@
         android:layout_alignBottom="@+id/btn_choicea"
         android:layout_marginLeft="30dp"
         android:layout_toRightOf="@+id/btn_choicea"
-        android:text="Bilog" />
+        android:text="Bilog" 
+        android:onClick="onClick"/>
 
     <Button
         android:id="@+id/btn_choicec"
@@ -30,7 +32,8 @@
         android:layout_alignBottom="@+id/btn_choiceb"
         android:layout_marginLeft="49dp"
         android:layout_toRightOf="@+id/btn_choiceb"
-        android:text="Parisukat" />
+        android:text="Parisukat" 
+        android:onClick="onClick"/>
 
     <TextView
         android:id="@+id/tv_dialog"

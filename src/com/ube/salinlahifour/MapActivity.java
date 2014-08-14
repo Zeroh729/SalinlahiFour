@@ -33,8 +33,7 @@ public class MapActivity extends Activity implements OnClickListener{
 		//parseXML
 		scenes = new ArrayList();
 		scene = makeNewScene();
-		scene.addLesson(new Lesson("Cooking","Coo6"
-				+ "king",R.drawable.placeholder_lesson));
+		scene.addLesson(new Lesson("Cooking","Cooking",R.drawable.placeholder_lesson));
 		scene.addLesson(new Lesson("Society","Society",R.drawable.placeholder_lesson));
 	}
 	
