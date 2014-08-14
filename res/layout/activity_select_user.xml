@@ -2,40 +2,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="${packageName}.${activityClass}" 
-    android:gravity="center">
+    android:gravity="center"
+    android:background="@drawable/bg"
+    tools:context="${packageName}.${activityClass}" >
+
+    <ImageView
+        android:id="@+id/myImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="175dp"
+        android:src="@drawable/name" />
+
+    <EditText
+        android:id="@+id/myImageViewText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/myImageView"
+        android:layout_alignLeft="@+id/myImageView"
+        android:layout_alignRight="@+id/myImageView"
+        android:layout_alignTop="@+id/myImageView"
+        android:layout_margin="1dp"
+        android:layout_marginTop="2dp"
+        android:gravity="center"
+        android:hint="Enter your name here" >
+        
+         <requestFocus />
+         </EditText>
+
+    <RadioButton
+        android:id="@+id/rdo_female"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_alignRight="@+id/myImageView"
+        android:layout_below="@+id/myImageView"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="75dp"
+        android:background="@drawable/girl" 
+        android:onClick="registerUser"
+        />
 
     <RadioButton
         android:id="@+id/rdo_male"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:textSize="22sp" 
-        android:text="Male"/>
-    
-    <RadioButton
-        android:id="@+id/rdo_female"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Female"
-        android:textSize="22sp" 
-        android:layout_alignBaseline="@+id/rdo_male"
-        android:layout_toRightOf="@+id/rdo_male"
-        android:layout_marginLeft="50dp"/>
-    
-    <EditText
-        android:id="@+id/tf_name"
-        android:layout_width="500dp"
-        android:layout_height="wrap_content"
-        android:height="60dp"></EditText>
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_alignLeft="@+id/myImageView"
+        android:layout_alignTop="@+id/rdo_female"
+        android:layout_marginLeft="75dp"
+        android:background="@drawable/boy"
+        android:onClick="registerUser"
+         />
 
-    <Button
-        android:id="@+id/btn_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rdo_female"
-        android:text="OK" 
-        android:layout_toRightOf="@+id/tf_name"
-        android:onClick="registerUser"/>
+   
+
+    
 
 </RelativeLayout>
