@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@drawable/cooking_bg" >
 
     <TextView
         android:id="@+id/tv_feedback"
@@ -9,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_choiceb"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="81dp"
+        android:layout_marginTop="76dp"
         android:text="text"
         android:textSize="22sp" />
 
@@ -19,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="66dp"
+        android:layout_marginTop="85dp"
         android:text="Which one is bilog?"
         android:textSize="22sp" />
 

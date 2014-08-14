@@ -28,13 +28,14 @@ public class Cooking extends AbstractLessonActivity implements OnClickListener{
 	
 	@Override
 	protected void initiateItems() {
+		tv_feedback.setText("");	//delete
 		Log.d("TESTINGinitiateItems","intiating items");
 		items = new ArrayList();
-		items.add(new Item("Tatsulok" , "Triangle", "Which one is Tatsulok", R.drawable.traingle, null, LevelType.EASY));
-		items.add(new Item("Bilog" , "Circle", "Which one is Bilog", R.drawable.bola, null, LevelType.EASY));
-		items.add(new Item("Parisukat" , "Square", "Which one is Parisukat", R.drawable.square, null, LevelType.EASY));
-		items.add(new Item("Parihaba" , "Rectangle", "Which one is Parihaba", R.drawable.rect, null, LevelType.EASY));
-		items.add(new Item("Bituin" , "Star", "Which one is Bituin", R.drawable.star, null, LevelType.EASY));
+		items.add(new Item("Tatsulok" , "Triangle", "Which one is Tatsulok", R.drawable.cooking_triangle, null, LevelType.EASY));
+		items.add(new Item("Bilog" , "Circle", "Which one is Bilog", R.drawable.cooking_circle, null, LevelType.EASY));
+		items.add(new Item("Parisukat" , "Square", "Which one is Parisukat", R.drawable.cooking_square, null, LevelType.EASY));
+		items.add(new Item("Parihaba" , "Rectangle", "Which one is Parihaba", R.drawable.cooking_rectangle, null, LevelType.EASY));
+		items.add(new Item("Bituin" , "Star", "Which one is Bituin", R.drawable.cooking_star, null, LevelType.EASY));
 	}
 
 	@Override
@@ -55,17 +56,18 @@ public class Cooking extends AbstractLessonActivity implements OnClickListener{
 				run();
 			}
 			else{
-				tv_feedback.setText("Game end");
+				tv_feedback.setText("Nakakatuwa! You finished the game! You learned \"Bilog\"! Play again to practice more on \"Parisukat\"");
 			}
 		}else{
 			//NLG Part - Wrong
-			tv_feedback.setText("Bobski! Try again D:<");
+			tv_feedback.setText("Oops. That's " + answer + ", Try Again!");
 		}
 	}
 	
 	private void setChoices(){
 		int answerIndex = new Random().nextInt(choices.length);
 		ArrayList<Integer> taken = new ArrayList();
+		taken.add(index);
 		for(int i = 0; i < choices.length; i++){
 			if(i == answerIndex){
 				choices[i].setImageResource(questions.get(index).getImageID());
@@ -76,11 +78,12 @@ public class Cooking extends AbstractLessonActivity implements OnClickListener{
 				do{
 					rand = new Random().nextInt(items.size());
 				}while(taken.contains(rand));
+					taken.add(rand);
 					choices[i].setImageResource(items.get(rand).getImageID());
 					choices[i].setTag(items.get(rand).getWord());
 			}
 		}
-		tv_feedback.setText("");
+
 	}
 
 	@Override

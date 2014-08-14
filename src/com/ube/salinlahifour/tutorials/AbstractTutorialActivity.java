@@ -18,12 +18,12 @@ public abstract class AbstractTutorialActivity extends Activity {
 	protected ArrayList<SoundPool> voiceovers;
 	protected ArrayList<String> description;
 	protected String activityName;
-	
+	protected int layoutID;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_abstract_tutorial);
+		setContentView(layoutID);
 		Bundle bundle = getIntent().getExtras();
 		activityName = bundle.getString("activityClass");
 		

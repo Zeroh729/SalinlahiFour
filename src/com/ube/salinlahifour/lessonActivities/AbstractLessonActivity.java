@@ -37,6 +37,9 @@ public abstract class AbstractLessonActivity extends Activity {
 		questions = new ArrayList<Item>();
 		questions.add(items.get(0));
 		questions.add(items.get(1));
+		questions.add(items.get(2));
+		questions.add(items.get(3));
+		questions.add(items.get(4));
 	}
 	
 	protected void showReportCard(){
