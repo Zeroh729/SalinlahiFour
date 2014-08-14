@@ -996,9 +996,9 @@ containing a value of this type.
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
-        public static final int btn_choicea=0x7f050048;
+        public static final int btn_choicea=0x7f05004b;
         public static final int btn_choiceb=0x7f050049;
-        public static final int btn_choicec=0x7f05004a;
+        public static final int btn_choicec=0x7f05004c;
         public static final int btn_play=0x7f05003d;
         public static final int btn_register=0x7f050047;
         public static final int button1=0x7f05003f;
@@ -1060,8 +1060,8 @@ containing a value of this type.
         public static final int title=0x7f05002b;
         public static final int top_action_bar=0x7f050020;
         public static final int tv_description=0x7f05003e;
-        public static final int tv_dialog=0x7f05004b;
-        public static final int tv_feedback=0x7f05004c;
+        public static final int tv_dialog=0x7f05004a;
+        public static final int tv_feedback=0x7f050048;
         public static final int tv_lesson1=0x7f050053;
         public static final int tv_lesson2=0x7f050054;
         public static final int tv_lesson3=0x7f050055;

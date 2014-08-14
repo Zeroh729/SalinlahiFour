@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.ube.salinlahifour.Item;
@@ -18,7 +19,7 @@ import com.ube.salinlahifour.R;
 public class Cooking extends AbstractLessonActivity implements OnClickListener{
 	private TextView tv_dialog;
 	private TextView tv_feedback;
-	private Button[] choices;
+	private ImageButton[] choices;
 	private int index;
 	
 	public Cooking(){
@@ -29,11 +30,11 @@ public class Cooking extends AbstractLessonActivity implements OnClickListener{
 	protected void initiateItems() {
 		Log.d("TESTINGinitiateItems","intiating items");
 		items = new ArrayList();
-		items.add(new Item("Tatsulok" , "Triangle", "Which one is Tatsulok", null, LevelType.EASY));
-		items.add(new Item("Bilog" , "Circle", "Which one is Bilog", null, LevelType.EASY));
-		items.add(new Item("Parisukat" , "Square", "Which one is Parisukat", null, LevelType.EASY));
-		items.add(new Item("Parihaba" , "Rectangle", "Which one is Parihaba", null, LevelType.EASY));
-		items.add(new Item("Bituin" , "Star", "Which one is Bituin", null, LevelType.EASY));
+		items.add(new Item("Tatsulok" , "Triangle", "Which one is Tatsulok", R.drawable.traingle, null, LevelType.EASY));
+		items.add(new Item("Bilog" , "Circle", "Which one is Bilog", R.drawable.bola, null, LevelType.EASY));
+		items.add(new Item("Parisukat" , "Square", "Which one is Parisukat", R.drawable.square, null, LevelType.EASY));
+		items.add(new Item("Parihaba" , "Rectangle", "Which one is Parihaba", R.drawable.rect, null, LevelType.EASY));
+		items.add(new Item("Bituin" , "Star", "Which one is Bituin", R.drawable.star, null, LevelType.EASY));
 	}
 
 	@Override
@@ -66,16 +67,20 @@ public class Cooking extends AbstractLessonActivity implements OnClickListener{
 		int answerIndex = new Random().nextInt(choices.length);
 		ArrayList<Integer> taken = new ArrayList();
 		for(int i = 0; i < choices.length; i++){
-			if(i == answerIndex)
-				choices[i].setText(questions.get(index).getWord());
+			if(i == answerIndex){
+				choices[i].setImageResource(questions.get(index).getImageID());
+				choices[i].setTag(questions.get(index).getWord());
+			}
 			else{
 				int rand;
 				do{
 					rand = new Random().nextInt(items.size());
 				}while(taken.contains(rand));
-					choices[i].setText(items.get(rand).getWord());
+					choices[i].setImageResource(items.get(rand).getImageID());
+					choices[i].setTag(items.get(rand).getWord());
 			}
 		}
+		tv_feedback.setText("");
 	}
 
 	@Override
@@ -83,10 +88,10 @@ public class Cooking extends AbstractLessonActivity implements OnClickListener{
 		index = 0;
 		tv_dialog = (TextView)findViewById(R.id.tv_dialog);
 		tv_feedback = (TextView) findViewById(R.id.tv_feedback);
-		choices = new Button[3];
-		choices[0] = (Button) findViewById(R.id.btn_choicea);
-		choices[1] = (Button) findViewById(R.id.btn_choiceb);
-		choices[2] = (Button) findViewById(R.id.btn_choicec);
+		choices = new ImageButton[3];
+		choices[0] = (ImageButton) findViewById(R.id.btn_choicea);
+		choices[1] = (ImageButton) findViewById(R.id.btn_choiceb);
+		choices[2] = (ImageButton) findViewById(R.id.btn_choicec);
 	}
 
 	@Override
@@ -97,7 +102,7 @@ public class Cooking extends AbstractLessonActivity implements OnClickListener{
 		case R.id.btn_choicea:
 		case R.id.btn_choiceb:
 		case R.id.btn_choicec:
-			checkAnswer(((TextView)findViewById(view.getId())).getText().toString());
+			checkAnswer(((ImageButton)findViewById(view.getId())).getTag() + "");
 			break;
 			default: 
 				tv_feedback.setText("error in onclick");

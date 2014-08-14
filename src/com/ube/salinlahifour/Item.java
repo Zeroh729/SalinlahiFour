@@ -8,14 +8,26 @@ public class Item {
 	private SoundPool voiceover;
 	private String label;
 	private LevelType level;
+	private int imageID;
 	
-	public Item(String word, String english, String description, SoundPool voiceover, LevelType level){
+	public Item(String word, String english, String description, int imageID, SoundPool voiceover, LevelType level){
 		this.word = word;
 		this.english = english;
 		this.label = description;
 		this.voiceover = voiceover;
 		this.level = level;
+		this.imageID = imageID;
 	}
+
+
+	public int getImageID() {
+		return imageID;
+	}
+
+	public void setImageID(int imageID) {
+		this.imageID = imageID;
+	}
+	
 
 	public String getWord() {
 		return word;
