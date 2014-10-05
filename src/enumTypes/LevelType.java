@@ -1,4 +1,4 @@
-package com.ube.salinlahifour;
+package enumTypes;
 
 public enum LevelType {
 	EASY, MEDIUM, HARD

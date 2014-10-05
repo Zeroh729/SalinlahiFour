@@ -35,6 +35,7 @@ public class MapActivity extends Activity implements OnClickListener{
 		scene = makeNewScene();
 		scene.addLesson(new Lesson("Cooking","Cooking",R.drawable.placeholder_lesson));
 		scene.addLesson(new Lesson("Society","Society",R.drawable.placeholder_lesson));
+		scene.addLesson(new Lesson("Music","Music",R.drawable.placeholder_lesson));
 	}
 	
 	private Scene makeNewScene(){

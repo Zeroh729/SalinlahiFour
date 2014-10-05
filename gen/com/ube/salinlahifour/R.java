@@ -1051,7 +1051,6 @@ containing a value of this type.
         public static final int list_item=0x7f050029;
         public static final int middle=0x7f050012;
         public static final int myImageView=0x7f050045;
-        public static final int myImageViewText=0x7f050046;
         public static final int never=0x7f050009;
         public static final int none=0x7f050010;
         public static final int normal=0x7f050000;
@@ -1080,6 +1079,7 @@ containing a value of this type.
         public static final int textView1=0x7f05004e;
         public static final int textView2=0x7f050060;
         public static final int textView3=0x7f050061;
+        public static final int tf_name=0x7f050046;
         public static final int title=0x7f05002b;
         public static final int top_action_bar=0x7f050020;
         public static final int tv_description=0x7f05003e;
@@ -1147,12 +1147,13 @@ containing a value of this type.
         public static final int activity_lesson=0x7f030018;
         public static final int activity_main=0x7f030019;
         public static final int activity_map=0x7f03001a;
-        public static final int activity_select_user=0x7f03001b;
+        public static final int activity_registration=0x7f03001b;
         public static final int lessonactivity_cooking=0x7f03001c;
         public static final int lessonactivity_society=0x7f03001d;
         public static final int scene_layout_1=0x7f03001e;
         public static final int support_simple_spinner_dropdown_item=0x7f03001f;
         public static final int tutorial_cooking=0x7f030020;
+        public static final int tutorial_music=0x7f030021;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1200,6 +1201,7 @@ containing a value of this type.
         public static final int title_activity_abstract_tutorial=0x7f0a0012;
         public static final int title_activity_lesson=0x7f0a0011;
         public static final int title_activity_map=0x7f0a0010;
+        public static final int title_activity_music=0x7f0a0013;
         public static final int title_activity_select_user=0x7f0a000f;
     }
     public static final class style {

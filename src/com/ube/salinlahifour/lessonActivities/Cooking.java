@@ -11,8 +11,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.ube.salinlahifour.Item;
-import com.ube.salinlahifour.LevelType;
 import com.ube.salinlahifour.R;
+
+import enumTypes.LevelType;
 
 
 

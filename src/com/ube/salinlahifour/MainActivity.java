@@ -15,7 +15,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		int SPLASH_TIME = 2 * 1000;// 3 seconds
-		final Intent intent = new Intent(this, SelectUserActivity.class);
+		final Intent intent = new Intent(this, RegistrationActivity.class);
 		
 		   new Handler().postDelayed(new Runnable() {
 
