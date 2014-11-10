@@ -8,5 +8,7 @@
     <string name="title_activity_lesson">LessonActivity</string>
     <string name="title_activity_abstract_tutorial">AbstractTutorialActivity</string>
     <string name="title_activity_music">Music</string>
+    <string name="title_activity_debug_user_module">DebugUserModuleActivity</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

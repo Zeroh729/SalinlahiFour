@@ -12,8 +12,7 @@ import android.widget.TextView;
 
 import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.R;
-
-import enumTypes.LevelType;
+import com.ube.salinlahifour.enumTypes.LevelType;
 
 
 

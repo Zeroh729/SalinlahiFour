@@ -1,8 +1,15 @@
-package model;
+package com.ube.salinlahifour.model;
 
 import java.sql.Date;
 
 public class UserRecord {
+	private int id;
+	private int userID;
+	private String lessonName;
+	private String correctAnswer;
+	private String status;
+	private String dateCreated;
+	
 	public int getId() {
 		return id;
 	}
@@ -27,23 +34,18 @@ public class UserRecord {
 	public void setCorrectAnswer(String correctAnswer) {
 		this.correctAnswer = correctAnswer;
 	}
-	public Boolean getStatus() {
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(Boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
-	public Date getDateCreated() {
+	public String getDateCreated() {
 		return dateCreated;
 	}
-	public void setDateCreated(Date dateCreated) {
+	public void setDateCreated(String dateCreated) {
 		this.dateCreated = dateCreated;
 	}
-	private int id;
-	private int userID;
-	private String lessonName;
-	private String correctAnswer;
-	private Boolean status;
-	private Date dateCreated;
+
 	
 }

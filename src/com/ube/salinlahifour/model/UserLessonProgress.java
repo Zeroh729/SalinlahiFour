@@ -1,8 +1,15 @@
-package model;
+package com.ube.salinlahifour.model;
 
-import enumTypes.StarType;
+import com.ube.salinlahifour.enumTypes.StarType;
 
 public class UserLessonProgress {
+	private int id;
+	private int userID;
+	private String lessonName;
+	private String easyStar; 
+	private String mediumStar; 
+	private String hardStar; 
+	
 	public int getId() {
 		return id;
 	}
@@ -21,28 +28,23 @@ public class UserLessonProgress {
 	public void setLessonName(String lessonName) {
 		this.lessonName = lessonName;
 	}
-	public StarType getEasyStar() {
+	public String getEasyStar() {
 		return easyStar;
 	}
-	public void setEasyStar(StarType easyStar) {
+	public void setEasyStar(String easyStar) {
 		this.easyStar = easyStar;
 	}
-	public StarType getMediumStar() {
+	public String getMediumStar() {
 		return mediumStar;
 	}
-	public void setMediumStar(StarType mediumStar) {
+	public void setMediumStar(String mediumStar) {
 		this.mediumStar = mediumStar;
 	}
-	public StarType getHardStar() {
+	public String getHardStar() {
 		return hardStar;
 	}
-	public void setHardStar(StarType hardStar) {
+	public void setHardStar(String hardStar) {
 		this.hardStar = hardStar;
 	}
-	private int id;
-	private int userID;
-	private String lessonName;
-	private StarType easyStar; 
-	private StarType mediumStar; 
-	private StarType hardStar; 
+
 }

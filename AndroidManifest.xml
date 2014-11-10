@@ -9,6 +9,7 @@
         android:targetSdkVersion="19" />
 
     <application
+        android:name="com.ube.salinlahifour.SalinlahiFour"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -25,8 +26,8 @@
         </activity>
         <activity
             android:name="com.ube.salinlahifour.RegistrationActivity"
-            android:label="@string/title_activity_select_user" 
-            android:screenOrientation="landscape">
+            android:label="@string/title_activity_select_user"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="com.ube.salinlahifour.MapActivity"
@@ -40,8 +41,8 @@
         </activity>
         <activity
             android:name="com.ube.salinlahifour.AbstractTutorialActivity"
-            android:label="@string/title_activity_abstract_tutorial" 
-            android:screenOrientation="landscape">
+            android:label="@string/title_activity_abstract_tutorial"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="com.ube.salinlahifour.lessonActivities.Cooking"
@@ -65,8 +66,8 @@
         </activity>
         <activity
             android:name="com.ube.salinlahifour.lessonActivities.Society"
-            android:label="@string/title_activity_lesson" 
-            android:screenOrientation="landscape">
+            android:label="@string/title_activity_lesson"
+            android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="com.ube.salinlahifour.lessonActivities.Society" />
 
@@ -75,8 +76,8 @@
         </activity>
         <activity
             android:name="com.ube.salinlahifour.tutorials.Society"
-            android:label="@string/title_activity_abstract_tutorial" 
-            android:screenOrientation="landscape">
+            android:label="@string/title_activity_abstract_tutorial"
+            android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="com.ube.salinlahifour.tutorials.Society" />
 
@@ -85,8 +86,13 @@
         </activity>
         <activity
             android:name="com.ube.salinlahifour.tutorials.Music"
-            android:label="@string/title_activity_music" 
-            android:screenOrientation="landscape">
+            android:label="@string/title_activity_music"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="com.ube.salinlahifour.debugclasses.DebugUserModuleActivity"
+            android:label="@string/title_activity_debug_user_module"
+            android:theme="@style/AppBaseTheme" >
         </activity>
     </application>
 

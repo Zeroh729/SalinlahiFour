@@ -1,8 +1,13 @@
-package model;
+package com.ube.salinlahifour.model;
 
 import java.sql.Date;
 
 public class UserDetail {
+	private int id;
+	private String name;
+	private String gender;
+	private String dateCreated;
+	
 	public int getId() {
 		return id;
 	}
@@ -27,8 +32,4 @@ public class UserDetail {
 	public void setDateCreated(String dateCreated) {
 		this.dateCreated = dateCreated;
 	}
-	private int id;
-	private String name;
-	private String gender;
-	private String dateCreated;
 }

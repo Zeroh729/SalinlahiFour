@@ -1,6 +1,7 @@
 package com.ube.salinlahifour;
 
-import enumTypes.LevelType;
+import com.ube.salinlahifour.enumTypes.LevelType;
+
 import android.media.SoundPool;
 
 public class Item {
