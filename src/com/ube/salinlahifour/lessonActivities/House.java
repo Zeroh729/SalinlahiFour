@@ -18,7 +18,7 @@ import android.widget.TextView;
 import android.widget.RelativeLayout.LayoutParams;
 
 import com.ube.salinlahifour.Item;
-import com.ube.salinlahifour.LevelType;
+import com.ube.salinlahifour.enumTypes.LevelType;
 import com.ube.salinlahifour.R;
 
 public class House  extends AbstractLessonActivity {

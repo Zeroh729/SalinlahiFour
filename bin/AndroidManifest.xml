@@ -87,7 +87,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-  
+
+        
          <activity
             android:name="com.ube.salinlahifour.lessonActivities.Family"
             android:label="@string/title_activity_lesson" >
