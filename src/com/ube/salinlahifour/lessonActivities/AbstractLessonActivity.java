@@ -32,8 +32,8 @@ public abstract class AbstractLessonActivity extends Activity {
 	}
 	
 	protected void getQuestions(){
-
-		Log.d("TESTINGLessonActivity", "getting Questions");
+		
+		Log.d("TESTINGLessonActivity", "Aldrin: getting Questions");
 		questions = new ArrayList<Item>();
 		questions.add(items.get(0));
 		questions.add(items.get(1));

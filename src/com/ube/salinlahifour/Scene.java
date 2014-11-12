@@ -13,7 +13,7 @@ public class Scene {
 	public Scene(ImageView img_background, int layoutID){
 		this.img_background = img_background;
 		this.layoutID = layoutID;
-		lessons = new ArrayList();
+		lessons = new ArrayList<Lesson>();
 		imagesSpots = new ArrayList();
 	}
 	

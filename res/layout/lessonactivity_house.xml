@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <RelativeLayout 
+        android:id="@+id/game_screen"
+        android:layout_width="wrap_content"
+    	android:layout_height="match_parent"
+        android:background="@drawable/cooking_bg" >
+		<TextView
+        android:id="@+id/tv_feedback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="76dp"
+        android:text="text"
+        android:textSize="22sp" />
+    <TextView
+        android:id="@+id/tv_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="85dp"
+        android:text="Which one is bilog?"
+        android:textSize="22sp" />
+      <ImageView
+          android:id="@+id/option1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:src="@drawable/star"      
+          />
+      <ImageView
+          android:id="@+id/option2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+          />              
+          <ImageView
+          android:id="@+id/option3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+          />              
+          <ImageView
+          android:id="@+id/option4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+          />              
+          <ImageView
+          android:id="@+id/option5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+          />    
+          <ImageView
+          android:id="@+id/option6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+          />          
+          <ImageView
+          android:id="@+id/option7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+          />          
+          <ImageView
+          android:id="@+id/option8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+          />          
+          <ImageView
+          android:id="@+id/option9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+          />          
+          <ImageView
+          android:id="@+id/option10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+          />          
+          <ImageView
+          android:id="@+id/option11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+          />          <ImageView
+          android:id="@+id/option12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+          />                                  
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/choices_screen"
+        android:layout_width="wrap_content"
+    	android:layout_height="fill_parent"
+    	android:layout_toRightOf="@+id/game_screen" >
+        		 <ImageButton
+            			    android:id="@+id/img_choicea"
+            			    android:layout_width="100dp"
+        					android:layout_height="100dp"
+            			    android:layout_alignParentBottom="true"
+            			    android:background="@null"
+            			    android:contentDescription="..."
+            			    android:onClick="onClick"
+            			    android:src="@drawable/boy" />
+        		 <ImageButton
+            			    android:id="@+id/img_choiceb"
+            			    android:layout_width="100dp"
+        					android:layout_height="100dp"
+            			    android:layout_alignParentBottom="true"
+            			    android:background="@null"
+            			    android:contentDescription="..."
+            			    android:onClick="onClick"
+            			    android:src="@drawable/boy" />
+        		 <ImageButton
+            			    android:id="@+id/img_choicec"
+            			    android:layout_width="100dp"
+        					android:layout_height="100dp"
+            			    android:layout_alignParentBottom="true"
+            			    android:background="@null"
+            			    android:contentDescription="..."
+            			    android:onClick="onClick"
+            			    android:src="@drawable/boy" />
+        		 <ImageButton
+            			    android:id="@+id/img_choiced"
+            			    android:layout_width="100dp"
+        					android:layout_height="100dp"
+            			    android:layout_alignParentBottom="true"
+            			    android:background="@null"
+            			    android:contentDescription="..."
+            			    android:onClick="onClick"
+            			    android:src="@drawable/boy" />
+        		 <ImageButton
+            			    android:id="@+id/img_choicee"
+            			    android:layout_width="100dp"
+        					android:layout_height="100dp"
+            			    android:layout_alignParentBottom="true"
+            			    android:background="@null"
+            			    android:contentDescription="..."
+            			    android:onClick="onClick"
+            			    android:src="@drawable/boy" />
+   
+    		        			
+            			
+    </RelativeLayout>
+</RelativeLayout>

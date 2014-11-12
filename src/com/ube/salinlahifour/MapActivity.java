@@ -31,10 +31,11 @@ public class MapActivity extends Activity implements OnClickListener{
 	
 	public void parseXML(){
 		//parseXML
-		scenes = new ArrayList();
+		scenes = new ArrayList<Scene>();
 		scene = makeNewScene();
 		scene.addLesson(new Lesson("Cooking","Cooking",R.drawable.placeholder_lesson));
-		scene.addLesson(new Lesson("Society","Society",R.drawable.placeholder_lesson));
+		scene.addLesson(new Lesson("Family","Family",R.drawable.placeholder_lesson));
+		scene.addLesson(new Lesson("House","House",R.drawable.placeholder_lesson));
 	}
 	
 	private Scene makeNewScene(){

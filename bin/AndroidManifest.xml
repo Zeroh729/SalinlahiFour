@@ -54,6 +54,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        
+        
+        
         <activity
             android:name="com.ube.salinlahifour.lessonActivities.Society"
             android:label="@string/title_activity_lesson" >
@@ -70,6 +73,42 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        
+         <activity
+            android:name="com.ube.salinlahifour.lessonActivities.Family"
+            android:label="@string/title_activity_lesson" >
+            <intent-filter>
+                <action android:name="com.ube.salinlahifour.lessonActivities.Family"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ube.salinlahifour.tutorials.Family"
+            android:label="@string/title_activity_abstract_tutorial" >
+            <intent-filter>
+                <action android:name="com.ube.salinlahifour.tutorials.Family"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+         <activity
+            android:name="com.ube.salinlahifour.lessonActivities.House"
+            android:label="@string/title_activity_lesson" >
+            <intent-filter>
+                <action android:name="com.ube.salinlahifour.lessonActivities.House"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ube.salinlahifour.tutorials.House"
+            android:label="@string/title_activity_abstract_tutorial" >
+            <intent-filter>
+                <action android:name="com.ube.salinlahifour.tutorials.House"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        
+        
     </application>
 
 </manifest>
