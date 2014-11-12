@@ -32,6 +32,10 @@ public abstract class AbstractTutorialActivity extends Activity {
 	
 	public void btn_play(View view){
 		Log.d("BTN_PLAYCLICKED", "YES");
+		goToActivity();
+	}
+	
+	protected void goToActivity(){
 		Intent intent = new Intent(activityName);
 		startActivity(intent);
 	}

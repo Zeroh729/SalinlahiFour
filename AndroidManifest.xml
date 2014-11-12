@@ -9,13 +9,15 @@
         android:targetSdkVersion="19" />
 
     <application
+        android:name="com.ube.salinlahifour.SalinlahiFour"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/NoActionBar" >
         <activity
             android:name="com.ube.salinlahifour.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,34 +25,42 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.ube.salinlahifour.SelectUserActivity"
-            android:label="@string/title_activity_select_user" >
+            android:name="com.ube.salinlahifour.RegistrationActivity"
+            android:label="@string/title_activity_select_user"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="com.ube.salinlahifour.MapActivity"
-            android:label="@string/title_activity_map" >
+            android:label="@string/title_activity_map"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="com.ube.salinlahifour.lessonActivities.AbstractLessonActivity"
-            android:label="@string/title_activity_lesson" >
+            android:label="@string/title_activity_lesson"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="com.ube.salinlahifour.AbstractTutorialActivity"
-            android:label="@string/title_activity_abstract_tutorial" >
+            android:label="@string/title_activity_abstract_tutorial"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="com.ube.salinlahifour.lessonActivities.Cooking"
-            android:label="@string/title_activity_lesson" >
+            android:label="@string/title_activity_lesson"
+            android:screenOrientation="landscape" >
             <intent-filter>
-                <action android:name="com.ube.salinlahifour.lessonActivities.Cooking"/>
+                <action android:name="com.ube.salinlahifour.lessonActivities.Cooking" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
             android:name="com.ube.salinlahifour.tutorials.Cooking"
-            android:label="@string/title_activity_abstract_tutorial" >
+            android:label="@string/title_activity_abstract_tutorial"
+            android:screenOrientation="landscape" >
             <intent-filter>
-                <action android:name="com.ube.salinlahifour.tutorials.Cooking"/>
+                <action android:name="com.ube.salinlahifour.tutorials.Cooking" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -59,20 +69,25 @@
         
         <activity
             android:name="com.ube.salinlahifour.lessonActivities.Society"
-            android:label="@string/title_activity_lesson" >
+            android:label="@string/title_activity_lesson"
+            android:screenOrientation="landscape" >
             <intent-filter>
-                <action android:name="com.ube.salinlahifour.lessonActivities.Society"/>
+                <action android:name="com.ube.salinlahifour.lessonActivities.Society" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
             android:name="com.ube.salinlahifour.tutorials.Society"
-            android:label="@string/title_activity_abstract_tutorial" >
+            android:label="@string/title_activity_abstract_tutorial"
+            android:screenOrientation="landscape" >
             <intent-filter>
-                <action android:name="com.ube.salinlahifour.tutorials.Society"/>
+                <action android:name="com.ube.salinlahifour.tutorials.Society" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
         
          <activity
             android:name="com.ube.salinlahifour.lessonActivities.Family"
@@ -109,6 +124,18 @@
         
         
         
+
+        <activity
+            android:name="com.ube.salinlahifour.tutorials.Music"
+            android:label="@string/title_activity_music"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="com.ube.salinlahifour.debugclasses.DebugUserModuleActivity"
+            android:label="@string/title_activity_debug_user_module"
+            android:theme="@style/AppBaseTheme" >
+        </activity>
+
     </application>
 
 </manifest>

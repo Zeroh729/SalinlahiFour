@@ -11,6 +11,8 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.ube.salinlahifour.debugclasses.DebugUserModuleActivity;
+
 public class MapActivity extends Activity implements OnClickListener{
 	private ArrayList<Scene> scenes;
 	private ImageButton[] imgBtns;
@@ -36,6 +38,8 @@ public class MapActivity extends Activity implements OnClickListener{
 		scene.addLesson(new Lesson("Cooking","Cooking",R.drawable.placeholder_lesson));
 		scene.addLesson(new Lesson("Family","Family",R.drawable.placeholder_lesson));
 		scene.addLesson(new Lesson("House","House",R.drawable.placeholder_lesson));
+		scene.addLesson(new Lesson("Society","Society",R.drawable.placeholder_lesson));
+		scene.addLesson(new Lesson("Music","Music",R.drawable.placeholder_lesson));
 	}
 	
 	private Scene makeNewScene(){
@@ -87,6 +91,14 @@ public class MapActivity extends Activity implements OnClickListener{
 			break;
 		case R.id.img_lesson5:
 			index = 4;
+			break;
+		case R.id.btn_usermodule:
+			intent = new Intent(this, DebugUserModuleActivity.class);
+			startActivity(intent);
+			break;
+		case R.id.btn_register:
+			intent = new Intent(this, RegistrationActivity.class);
+			startActivity(intent);
 			break;
 		}
 		if(index != -1){

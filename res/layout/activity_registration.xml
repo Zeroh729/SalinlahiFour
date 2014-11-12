@@ -14,7 +14,7 @@
         android:src="@drawable/name" />
 
     <EditText
-        android:id="@+id/myImageViewText"
+        android:id="@+id/tf_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/myImageView"
@@ -26,7 +26,6 @@
         android:gravity="center"
         android:hint="Enter your name here" >
         
-         <requestFocus />
          </EditText>
 
     <RadioButton
