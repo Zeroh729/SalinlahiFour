@@ -1,9 +1,14 @@
 package com.ube.salinlahifour;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.XmlResourceParser;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,19 +32,60 @@ public class MapActivity extends Activity implements OnClickListener{
 		//setContentView(R.layout.activity_map);
 
 		Log.d("PasringXML","TestTestTest");
-		parseXML();
+		try {
+			parseXML();
+		} catch (XmlPullParserException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		setLayout();
 	}
 	
-	public void parseXML(){
-		//parseXML
-		scenes = new ArrayList<Scene>();
+	public void parseXML() throws XmlPullParserException, IOException{
+		scenes = new ArrayList();
 		scene = makeNewScene();
-		scene.addLesson(new Lesson("Cooking","Cooking",R.drawable.placeholder_lesson));
-		scene.addLesson(new Lesson("Family","Family",R.drawable.placeholder_lesson));
-		scene.addLesson(new Lesson("House","House",R.drawable.placeholder_lesson));
-		scene.addLesson(new Lesson("Society","Society",R.drawable.placeholder_lesson));
-		scene.addLesson(new Lesson("Music","Music",R.drawable.placeholder_lesson));
+		String lessonName = "";
+		String activityName = "";
+		String value = "";
+		int lessonImgID = 0;
+		
+		XmlResourceParser parser = getResources().getXml(R.xml.lessonlist);
+		
+        int eventType = parser.getEventType();
+        while (eventType != XmlPullParser.END_DOCUMENT) {
+         if(eventType == XmlPullParser.START_DOCUMENT) {
+        	 
+             Log.d("Start document", "TEST");
+         } else if(eventType == XmlPullParser.END_DOCUMENT) {
+        	 
+        	 Log.d("End document", "TEST");
+         } else if(eventType == XmlPullParser.START_TAG) {
+        	 
+        	 Log.d("Start tag "+parser.getName(), "TEST");
+         } else if(eventType == XmlPullParser.END_TAG) {
+        	 if(parser.getName().equals("Lesson")){
+        		 scene.addLesson(new Lesson(lessonName, activityName, lessonImgID));
+        		 lessonName = "";
+        		 activityName = "";
+        		 value = "";
+        		 lessonImgID = 0;
+        	 }else if(parser.getName().equals("Name")){
+        		 lessonName = value;
+        	 }else if(parser.getName().equals("Image")){
+        		 lessonImgID = getResources().getIdentifier(value, "drawable", getPackageName());
+        	 }else if(parser.getName().equals("ActivityName")){
+        		 activityName = value;
+        	 }
+         } else if(eventType == XmlPullParser.TEXT) {
+        	 value = parser.getText();
+        	 Log.d("Text "+parser.getText(), "TEST");
+         }
+         eventType = parser.next();
+        }
+		 
 	}
 	
 	private Scene makeNewScene(){

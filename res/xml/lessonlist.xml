@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+	<Lesson>
+		<Name>Cooking</Name>
+		<Image>placeholder_lesson</Image>
+		<ActivityName>Cooking</ActivityName>
+	</Lesson>
+	<Lesson>
+		<Name>Music</Name>
+		<Image>placeholder_lesson</Image>
+		<ActivityName>Music</ActivityName>
+	</Lesson>
+	<Lesson>
+		<Name>Society</Name>
+		<Image>placeholder_lesson</Image>
+		<ActivityName>Society</ActivityName>
+	</Lesson>
+	<Lesson>
+		<Name>House</Name>
+		<Image>placeholder_lesson</Image>
+		<ActivityName>House</ActivityName>
+	</Lesson>
+	<Lesson>
+		<Name>F a m i l y!</Name>
+		<Image>placeholder_lesson</Image>
+		<ActivityName>Family</ActivityName>
+	</Lesson>
+</resources>
