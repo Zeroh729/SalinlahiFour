@@ -16,4 +16,10 @@ public class House extends AbstractTutorialActivity  {
 		Intent intent = new Intent(activityName);
 		startActivity(intent);
 	}
+
+	@Override
+	protected void initiateViews() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -3,124 +3,75 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
      android:id="@+id/mainLayout">
-<Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:width="170dp"
-        android:height="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:text="Play" 
-        android:onClick="btn_play"/>
-
-    <ImageView
-        android:id="@+id/imageView1"
-       	android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="126dp"
-        android:layout_marginTop="68dp"
-        android:src="@drawable/family_lolo" /> <!--LOLO  --> 
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignLeft="@+id/imageView1"
-        android:layout_centerVertical="true"
-        android:src="@drawable/family_lola" /> <!--Lola  --> 
-
-    <ImageView
-        android:id="@+id/imageView3"
-         android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignLeft="@+id/imageView2"
-        android:layout_below="@+id/imageView2"
-        android:src="@drawable/family_nanay" /> <!--Nanay  --> 
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView1"
-        android:layout_marginBottom="43dp"
-        android:layout_marginLeft="41dp"
-        android:layout_toRightOf="@+id/imageView1"
-        android:text="Lolo"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/TextView01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_centerVertical="true"
-        android:text="Lola"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/TextView02"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/TextView01"
-        android:layout_alignTop="@+id/imageView3"
-        android:layout_marginTop="43dp"
-        android:text="Nanay"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-         android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignTop="@+id/imageView1"
-        android:layout_marginLeft="146dp"
-        android:layout_toRightOf="@+id/TextView02"
-        android:src="@drawable/family_tatay" /> <!--Tatay  --> 
-
-    <ImageView
-        android:id="@+id/imageView5"
-         android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignLeft="@+id/imageView4"
-        android:layout_alignTop="@+id/imageView2"
-        android:src="@drawable/family_kuya" /> <!--Kuya  -->
-         
-		<ImageView
-        android:id="@+id/imageView6"
-         android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignLeft="@+id/imageView5"
-        android:layout_alignTop="@+id/imageView3"
-        android:src="@drawable/family_ate" /> <!--Ate  --> 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView1"
-        android:layout_marginLeft="31dp"
-        android:layout_toRightOf="@+id/imageView4"
-        android:text="Tatay"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/TextView01"
-        android:layout_alignBottom="@+id/TextView01"
-        android:layout_alignLeft="@+id/textView2"
-        android:text="Kuya"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/TextView02"
-        android:layout_alignBottom="@+id/TextView02"
-        android:layout_alignLeft="@+id/textView3"
-        android:text="Ate"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
+    
+	<ImageView
+	     android:layout_width="wrap_content"
+    	 android:layout_height="match_parent" 
+     	 android:id="@+id/coverpage"
+     	 android:src="@drawable/tut1_bg1"
+     	 android:visibility="visible"
+	 />
+	<ImageView
+	     android:layout_width="wrap_content"
+    	 android:layout_height="match_parent" 
+     	 android:id="@+id/firstpage"
+     	 android:src="@drawable/tut1_bg2"
+     	 android:visibility="gone"
+	 />
+	<ImageView
+	     android:layout_width="wrap_content"
+    	 android:layout_height="match_parent" 
+     	 android:id="@+id/secondpage"
+     	 android:src="@drawable/tut1_bg3"
+     	 android:visibility="gone"
+     
+	 />
+	<RelativeLayout
+	android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:gravity="bottom"  
+	android:layout_alignParentBottom="true">
+	<ImageButton
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:scaleX="0.7"
+   		android:scaleY="0.7"
+   		android:background="@null"
+   		android:layout_alignParentBottom="true"
+   		android:layout_alignParentLeft="true"
+	    android:id="@+id/left_arrow"
+	    android:src="@drawable/tut_arrow_left"
+	    android:visibility="invisible"
+	    android:onClick="btn_prev"
+	    
+	    android:layout_toLeftOf="@+id/start_btn"
+	 />
+	<ImageButton
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:id="@+id/right_arrow"
+	    android:scaleX="0.7"
+   		android:scaleY="0.7"
+   		android:background="@null"
+   		android:layout_alignParentBottom="true"
+   		android:layout_alignParentRight="true"
+	    android:src="@drawable/tut_arrow_right"
+	    android:visibility="visible"
+	    android:layout_toRightOf="@+id/start_btn"
+	    android:onClick="btn_next"
+	 />
+	<ImageButton
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:id="@+id/start_btn"
+	    android:scaleX="0.5"
+   		android:scaleY="0.5"
+   		android:background="@null"
+   		android:layout_alignParentBottom="true"
+	    android:layout_centerHorizontal="true"
+	    android:src="@drawable/tut_start"
+	    android:visibility="invisible"
+	    android:onClick="btn_play"
+	 />
+	</RelativeLayout>
 </RelativeLayout>

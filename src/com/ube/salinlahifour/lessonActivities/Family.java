@@ -30,8 +30,8 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	private ImageButton[] choices;
 	private int index;
 	private ImageView iv_swipe;
-	String question;
-	String feedback;
+	private String question;
+	private String feedback;
 	//private ImageView[] speech_bubble;
 	//private TextView[] feedback;
 	//Timer Vars

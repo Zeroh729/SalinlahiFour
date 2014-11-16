@@ -26,7 +26,7 @@ public abstract class AbstractTutorialActivity extends Activity {
 		setContentView(layoutID);
 		Bundle bundle = getIntent().getExtras();
 		activityName = bundle.getString("activityClass");
-		
+		initiateViews();
 		Log.d("activityNameFounded:", activityName);
 	}
 	
@@ -39,5 +39,5 @@ public abstract class AbstractTutorialActivity extends Activity {
 		Intent intent = new Intent(activityName);
 		startActivity(intent);
 	}
-	
+	abstract protected void initiateViews();
 }
