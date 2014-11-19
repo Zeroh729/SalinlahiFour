@@ -12,19 +12,21 @@ import android.widget.ImageView;
 import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.R;
 
+import iFeedback.iFeedback;
+
 public abstract class AbstractLessonActivity extends Activity {
 	protected ArrayList<ImageView> backgrounds;
 	protected ArrayList<Item> items;
 	protected ArrayList<Item> questions;
 	protected ArrayList<SoundPool> timeoutvoices;
 	protected int layoutID;
-	
+	protected iFeedback NLG;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 //		setContentView(R.layout.activity_lesson);
 		setContentView(layoutID);
-
+		initiateNarrationModule();
 		initiateViews();
 		initiateItems();
 		getQuestions();
@@ -40,6 +42,16 @@ public abstract class AbstractLessonActivity extends Activity {
 		questions.add(items.get(2));
 		questions.add(items.get(3));
 		questions.add(items.get(4));
+	}
+	
+	protected void initiateNarrationModule(){
+		Log.d("TESTINGLessonActivity", "Aldrin: Initiating iFeedback..");
+		NLG = new iFeedback();
+		Log.d("TESTINGLessonActivity", "Aldrin: Reading iFeedback properties");
+		NLG.readProperties();
+		Log.d("TESTINGLessonActivity", "Aldrin: iFeedback Initiated");
+		Log.d("TESTINGLessonActivity", "Aldrin: iFeedback LOL");
+
 	}
 	
 	protected void showReportCard(){
