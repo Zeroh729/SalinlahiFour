@@ -102,6 +102,7 @@
         android:layout_alignParentLeft="true"
         android:text="Debug User Module" 
         android:onClick="onClick"/>
+   
 
     <Button
         android:id="@+id/btn_register"
@@ -111,6 +112,16 @@
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@id/btn_usermodule"
         android:text="Register User" 
+        android:onClick="onClick"/>
+    
+    <Button
+        android:id="@+id/btn_logout"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/btn_register"
+        android:text="Logout" 
         android:onClick="onClick"/>
     
 </RelativeLayout>

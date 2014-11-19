@@ -9,12 +9,6 @@ public class Music extends AbstractLessonActivity{
 	}
 
 	@Override
-	protected void initiateItems() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	protected void run() {
 		// TODO Auto-generated method stub
 		

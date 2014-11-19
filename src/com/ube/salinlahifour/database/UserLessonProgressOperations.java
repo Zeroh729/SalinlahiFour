@@ -53,6 +53,21 @@ public class UserLessonProgressOperations {
 		return getUserLessonProgress(userLessonProgressID);
 	}
 	
+	public ArrayList<UserLessonProgress> getAllUserLessonProgress(){
+		ArrayList<UserLessonProgress> progressList = new ArrayList<UserLessonProgress>();
+		Cursor cursor = database.query(dbHandler.TABLE_USERLESSONPROGRESS, 
+				USERLESSONPROGRESS_TABLE_COLUMNS,
+				null, null, null, null, null);
+		cursor.moveToFirst();
+		while(!cursor.isAfterLast()){
+			UserLessonProgress student = parseUserLessonProgress(cursor);
+			progressList.add(student);
+			cursor.moveToNext();
+		}
+		cursor.close();
+		return progressList;
+	}
+	
 	public ArrayList<UserLessonProgress> getAllUserLessonProgressOfUser(int userID){
 		ArrayList<UserLessonProgress> progressList = new ArrayList<UserLessonProgress>();
 		Cursor cursor = database.query(dbHandler.TABLE_USERLESSONPROGRESS, 

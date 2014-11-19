@@ -21,7 +21,7 @@ import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.enumTypes.LevelType;
 import com.ube.salinlahifour.R;
 
-public class House  extends AbstractLessonActivity {
+public class House extends AbstractLessonActivity {
 	private TextView tv_dialog;
 	private TextView tv_feedback;
 	private int index;
@@ -83,19 +83,7 @@ public class House  extends AbstractLessonActivity {
 		}
 		
 	}
-	@Override
-	protected void initiateItems() {
-		// TODO Auto-generated method stub
-		Log.d("Debug House","Aldrin: Initiate Items");
-		items = new ArrayList<Item>();
-		items.add(new Item("Upuan" , "Chair", "Get the Upuan?", R.drawable.family_lolo, null, LevelType.EASY));
-		items.add(new Item("Bola" , "Ball", "Get the Bola", R.drawable.family_lola, null, LevelType.EASY));
-		items.add(new Item("Kama" , "Bed", "Get the Kama", R.drawable.family_nanay, null, LevelType.EASY));
-		items.add(new Item("Unan" , "Pillow", "Get the Unan", R.drawable.family_tatay, null, LevelType.EASY));
-		items.add(new Item("Inidoro" , "Toilet", "Get the Inidoro", R.drawable.family_kuya, null, LevelType.EASY));
-		items.add(new Item("Sapatos" , "Shoes", "Get the Sapatos", R.drawable.family_ate, null, LevelType.EASY));
-		Log.d("Debug House","Aldrin: Initiate Items...Done");
-	}
+
 	@Override
 	protected void run() {
 		// TODO Auto-generated method stub

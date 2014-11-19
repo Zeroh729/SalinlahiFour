@@ -4,13 +4,30 @@
     android:layout_height="match_parent"
     tools:context="${packageName}.${activityClass}" >
 
+    <Button
+        android:id="@+id/btn_userrecord"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="User Records"
+        android:onClick="onClick"
+        />
+
+    <Button
+        android:id="@+id/btn_lessonprogress"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="User LProgress"
+        android:layout_toRightOf="@id/btn_userrecord"
+        android:onClick="onClick"
+        />
+
     <ListView
         android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
+        android:layout_below="@+id/btn_lessonprogress" >
 
     </ListView>
-
+    
 </RelativeLayout>

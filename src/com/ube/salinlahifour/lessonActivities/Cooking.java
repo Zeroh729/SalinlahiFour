@@ -25,18 +25,6 @@ public class Cooking extends AbstractLessonActivity implements OnClickListener{
 	public Cooking(){
 		layoutID = R.layout.lessonactivity_cooking;
 	}
-	
-	@Override
-	protected void initiateItems() {
-		tv_feedback.setText("");	//delete
-		Log.d("TESTINGinitiateItems","intiating items");
-		items = new ArrayList();
-		items.add(new Item("Tatsulok" , "Triangle", "Which one is Tatsulok", R.drawable.cooking_triangle, null, LevelType.EASY));
-		items.add(new Item("Bilog" , "Circle", "Which one is Bilog", R.drawable.cooking_circle, null, LevelType.EASY));
-		items.add(new Item("Parisukat" , "Square", "Which one is Parisukat", R.drawable.cooking_square, null, LevelType.EASY));
-		items.add(new Item("Parihaba" , "Rectangle", "Which one is Parihaba", R.drawable.cooking_rectangle, null, LevelType.EASY));
-		items.add(new Item("Bituin" , "Star", "Which one is Bituin", R.drawable.cooking_star, null, LevelType.EASY));
-	}
 
 	@Override
 	protected void run() {

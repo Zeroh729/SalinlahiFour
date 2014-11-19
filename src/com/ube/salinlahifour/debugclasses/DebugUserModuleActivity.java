@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -15,7 +17,7 @@ import com.ube.salinlahifour.R;
 import com.ube.salinlahifour.database.UserDetailOperations;
 import com.ube.salinlahifour.model.UserDetail;
 
-public class DebugUserModuleActivity extends Activity {
+public class DebugUserModuleActivity extends Activity implements OnClickListener{
 	private ArrayList<UserDetail> userDetails;
 	private ListView listview;
 	
@@ -84,5 +86,20 @@ public class DebugUserModuleActivity extends Activity {
 			}
 			
 		});
+	}
+
+	@Override
+	public void onClick(View view) {
+		Intent intent;
+		switch(view.getId()){
+		case R.id.btn_userrecord:
+			intent = new Intent(this, DebugUserRecordActivity.class);
+			startActivity(intent);
+			break;
+		case R.id.btn_lessonprogress:
+			intent = new Intent(this, DebugUserLessonProgressActivity.class);
+			startActivity(intent);
+			break;
+		}
 	}
 }

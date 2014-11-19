@@ -30,15 +30,15 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	private ImageButton[] choices;
 	private int index;
 	private ImageView iv_swipe;
-	String question;
-	String feedback;
+	private String question;
+	private String feedback;
 	//private ImageView[] speech_bubble;
 	//private TextView[] feedback;
 	//Timer Vars
-	 TextView timerTextView;
-	 CountDownTimer timer;
+	private TextView timerTextView;
+	private CountDownTimer timer;
 	//End Timer
-	 private Object mPauseLock;
+	private Object mPauseLock;
 	public Family(){
 		Log.d("Debug Family","Aldrin: Entered Family Class");
 		layoutID = R.layout.lessonactivity_family;
@@ -71,17 +71,35 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		//feedback_params.bottomMargin = 60; //Y
 		//tv_feedback.setLayoutParams(feedback_params);
 		//TV FEEDBACK END
-		choices = new ImageButton[9];
-		Log.d("Debug Family","Aldrin: Initiate Choices");
-		choices[0] = (ImageButton) findViewById(R.id.img_choicea);
-		choices[1] = (ImageButton) findViewById(R.id.img_choiceb);
-		choices[2] = (ImageButton) findViewById(R.id.img_choicec);
-		choices[3] = (ImageButton) findViewById(R.id.img_choiced);
-		choices[4] = (ImageButton) findViewById(R.id.img_choicee);
-		choices[5] = (ImageButton) findViewById(R.id.img_choicef);
-		choices[6] = (ImageButton) findViewById(R.id.img_choiceg);
-		choices[7] = (ImageButton) findViewById(R.id.img_choiceh);
-		choices[8] = (ImageButton) findViewById(R.id.img_choicei);
+		if(activityLevel.equals(LevelType.EASY.toString())){
+			choices = new ImageButton[4];
+			choices[0] = (ImageButton) findViewById(R.id.img_choicea);
+			choices[1] = (ImageButton) findViewById(R.id.img_choicec);
+			choices[2] = (ImageButton) findViewById(R.id.img_choiced);
+			choices[3] = (ImageButton) findViewById(R.id.img_choicef);
+		}
+		else if(activityLevel.equals(LevelType.MEDIUM.toString())){
+			choices = new ImageButton[6];
+			Log.d("Debug Family","Aldrin: Initiate Choices");
+			choices[0] = (ImageButton) findViewById(R.id.img_choicea);
+			choices[1] = (ImageButton) findViewById(R.id.img_choicec);
+			choices[2] = (ImageButton) findViewById(R.id.img_choicee);
+			choices[3] = (ImageButton) findViewById(R.id.img_choicef);
+			choices[4] = (ImageButton) findViewById(R.id.img_choiceg);
+			choices[5] = (ImageButton) findViewById(R.id.img_choicei);
+		}else{
+			choices = new ImageButton[9];
+			Log.d("Debug Family","Aldrin: Initiate Choices");
+			choices[0] = (ImageButton) findViewById(R.id.img_choicea);
+			choices[1] = (ImageButton) findViewById(R.id.img_choiceb);
+			choices[2] = (ImageButton) findViewById(R.id.img_choicec);
+			choices[3] = (ImageButton) findViewById(R.id.img_choiced);
+			choices[4] = (ImageButton) findViewById(R.id.img_choicee);
+			choices[5] = (ImageButton) findViewById(R.id.img_choicef);
+			choices[6] = (ImageButton) findViewById(R.id.img_choiceg);
+			choices[7] = (ImageButton) findViewById(R.id.img_choiceh);
+			choices[8] = (ImageButton) findViewById(R.id.img_choicei);
+		}
 		//Log.d("Debug Family","Aldrin: Initiate Speechbubbles");
 		//speech_bubble = new ImageView[choices.length];
 		//speech_bubble[0] = (ImageView) findViewById(R.id.img_bubblea);
@@ -96,7 +114,8 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		//feedback[2] = (TextView) findViewById(R.id.tv_feedbackc);
 		//feedback[3] = (TextView) findViewById(R.id.tv_feedbackd);
 		//feedback[4] = (TextView) findViewById(R.id.tv_feedbacke);
-		RelativeLayout.LayoutParams params[] = new RelativeLayout.LayoutParams[choices.length];
+		int MAX_CHOICES = 9;
+		RelativeLayout.LayoutParams params[] = new RelativeLayout.LayoutParams[MAX_CHOICES];
 		//Place Objects Randomly within max and min
 		/*int max = 5000;
 		int min = 1500;
@@ -112,7 +131,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		}*/
 		//End Random
 		//Place Objects in Specified Location
-		for(int i = 0; i< choices.length; i++){
+		for(int i = 0; i< MAX_CHOICES; i++){
 			params[i] = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT); 
 			params[i].topMargin = 100; //Y
 		}
@@ -126,7 +145,10 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		params[7].leftMargin=3300; //X
 		params[8].leftMargin=3600; //X
 		for(int i = 0; i< choices.length; i++){
-			choices[i].setLayoutParams(params[i]);
+			if(activityLevel.equals(LevelType.EASY.toString()))
+				choices[i].setLayoutParams(params[i*2]);
+			else 
+				choices[i].setLayoutParams(params[i]);
 		}
 		//End Placing
 		//Initialize Swipe Indicator
@@ -139,15 +161,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		//tv_feedback.setText("");	//delete
 		Log.d("Debug Family","Aldrin: Initiate Items");
 		items = new ArrayList<Item>();
-		items.add(new Item("Lolo" , "Grandfather", "Can you find lolo?", R.drawable.family_lolo, null, LevelType.EASY));
-		items.add(new Item("Lola" , "Grandmother", "Can you find Lola?", R.drawable.family_lola, null, LevelType.EASY));
-		items.add(new Item("Nanay" , "Mother", "Can you find nanay?", R.drawable.family_nanay, null, LevelType.EASY));
-		items.add(new Item("Tatay" , "Father", "Can you find tatay?", R.drawable.family_tatay, null, LevelType.EASY));
-		items.add(new Item("Kuya" , "Brother", "Can you find kuya?", R.drawable.family_kuya, null, LevelType.EASY));
-		items.add(new Item("ate" , "Sister", "Can you find ate?", R.drawable.family_ate, null, LevelType.EASY));
-		items.add(new Item("Bunso" , "Youngest", "Can you find bunso?", R.drawable.family_bunso, null, LevelType.EASY));
-		items.add(new Item("Tito" , "Uncle", "Can you find tito?", R.drawable.family_tito, null, LevelType.EASY));
-		items.add(new Item("Tita" , "Auntie", "Can you find tita?", R.drawable.family_tita, null, LevelType.EASY));
+
 		Log.d("Debug Family","Aldrin: Initiate Items...Done");
 	}
 
