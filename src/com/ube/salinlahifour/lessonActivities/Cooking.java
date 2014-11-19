@@ -12,18 +12,17 @@ import android.widget.TextView;
 
 import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.R;
-
 import com.ube.salinlahifour.enumTypes.LevelType;
 
 
-import evaluationModule.Evaluation;
+import com.ube.salinlahifour.evaluationModule.Evaluation;
 
 
 
 public class Cooking extends AbstractLessonActivity implements OnClickListener{
 	private TextView tv_dialog;
 	private TextView tv_feedback;
-	private Evaluation evaluator = new Evaluation();
+	private Evaluation evaluator = new Evaluation("Cooking", this, 5, activityLevel, UserID);
 	private ImageButton[] choices;
 	private int index;
 	
@@ -61,7 +60,7 @@ public class Cooking extends AbstractLessonActivity implements OnClickListener{
 				run();
 			}
 			else{
-				tv_feedback.setText(evaluator.getEndofActivityFeedback());
+				tv_feedback.setText(evaluator.getEndofActivityFeedback(evaluator.getScore(), "Cooking"));
 			}
 		}else{
 			//NLG Part - Wrong

@@ -19,14 +19,15 @@ public abstract class AbstractTutorialActivity extends Activity {
 	protected ArrayList<String> description;
 	protected String activityName;
 	protected int layoutID;
-
+	protected int UserID;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(layoutID);
 		Bundle bundle = getIntent().getExtras();
 		activityName = bundle.getString("activityClass");
-		
+		UserID = bundle.getInt("UserID");
 		Log.d("activityNameFounded:", activityName);
 	}
 	
@@ -37,6 +38,7 @@ public abstract class AbstractTutorialActivity extends Activity {
 	
 	protected void goToActivity(){
 		Intent intent = new Intent(activityName);
+		intent.putExtra("UserID", UserID);
 		startActivity(intent);
 	}
 	

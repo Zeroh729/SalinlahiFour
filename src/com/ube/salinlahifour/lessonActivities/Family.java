@@ -22,16 +22,21 @@ import android.widget.TextView;
 
 import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.enumTypes.LevelType;
+import com.ube.salinlahifour.evaluationModule.Evaluation;
 import com.ube.salinlahifour.R;
 
 public class Family extends AbstractLessonActivity implements OnClickListener, OnTouchListener {
 	private TextView tv_dialog;
 	private TextView tv_feedback;
 	private ImageButton[] choices;
+	String lessonName = "Family";
+	int lessonNumber = 1;
 	private int index;
 	private ImageView iv_swipe;
 	String question;
 	String feedback;
+	
+	private Evaluation evaluation = new Evaluation(lessonName, getBaseContext(), lessonNumber, activityLevel, UserID); 
 	//private ImageView[] speech_bubble;
 	//private TextView[] feedback;
 	//Timer Vars
@@ -199,23 +204,26 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	
 	protected void checkAnswer(String answer) {
 		Log.d("Debug Family","Aldrin: Checking Answer");
-		if(questions.get(index).getWord().equals(answer)){
+		if(evaluation.evaluateAnswer(questions.get(index).getWord(), answer)){
 			//NLG Part - Correct
-			feedback = "Magaling!" + answer + " is " + questions.get(index).getEnglish();
+			feedback = evaluation.getImmediateFeedback(questions.get(index), index, answer);
 			tv_feedback.setText(feedback + " " + question);
 			if(index < questions.size()-1){
 				index++;
 				rerun();
 			}
 			else{
-				tv_feedback.setText("Nakakatuwa! You finished the game! You learned \"Bilog\"! Play again to practice more on \"Parisukat\"");
+				feedback = evaluation.getEndofActivityFeedback(evaluation.getScore(), lessonName);
+				tv_feedback.setText(feedback);
 				timer.cancel();
 			}
 		}else{
 			//NLG Part - Wrong
 			//tv_feedback.setText("Oops. That's " + answer + ", Try Again!");
-			feedback = "Oops. That's " + answer + ", Try Again!";
+			//feedback = "Oops. That's " + answer + ", Try Again!";
 			tv_feedback.setText(feedback + " " + question);
+			index++;
+			rerun();
 		}
 		Log.d("Debug Family","Aldrin: Answer Check");	
 	}

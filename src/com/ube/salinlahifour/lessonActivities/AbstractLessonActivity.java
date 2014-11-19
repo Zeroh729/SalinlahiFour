@@ -18,13 +18,19 @@ public abstract class AbstractLessonActivity extends Activity {
 	protected ArrayList<Item> questions;
 	protected ArrayList<SoundPool> timeoutvoices;
 	protected int layoutID;
+	protected String activityName;
+	protected String activityLevel = "Easy";
+	public int UserID;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 //		setContentView(R.layout.activity_lesson);
 		setContentView(layoutID);
-
+		Bundle extras = getIntent().getExtras();
+		if (extras != null) {
+		    UserID = extras.getInt("UserID");
+		}
 		initiateViews();
 		initiateItems();
 		getQuestions();
@@ -45,6 +51,7 @@ public abstract class AbstractLessonActivity extends Activity {
 	protected void showReportCard(){
 	}
 
+	
 	abstract protected void initiateViews();
 	abstract protected void initiateItems();
 	abstract protected void run();

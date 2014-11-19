@@ -23,10 +23,14 @@ public class MapActivity extends Activity implements OnClickListener{
 	private ImageButton[] imgBtns;
 	private TextView[] txtViews;
 	private Scene scene;
-	
+	private int UserID;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Bundle extras = getIntent().getExtras();
+		if (extras != null) {
+		    UserID = extras.getInt("UserID");
+		}
 		imgBtns = new ImageButton[5];
 		txtViews = new TextView[5];
 		//setContentView(R.layout.activity_map);
@@ -150,6 +154,7 @@ public class MapActivity extends Activity implements OnClickListener{
 		if(index != -1){
 			intent = new Intent(scene.getLessons().get(index).tutorial);
 			intent.putExtra("activityClass", scene.getLessons().get(index).activity);
+			intent.putExtra("UserID", UserID);
 			startActivity(intent);
 		}
 	}

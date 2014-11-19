@@ -48,6 +48,7 @@ public class MainActivity extends Activity {
 		        		((SalinlahiFour)getApplication()).setUserName(user.getName());
 		        		
 		        		Intent intent = new Intent();
+		        		intent.putExtra("UserID", user.getId());
 		        		intent.setClass(getApplicationContext(), MapActivity.class);
 		        		startActivity(intent);
 		        		
