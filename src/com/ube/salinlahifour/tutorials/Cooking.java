@@ -74,9 +74,5 @@ public class Cooking extends AbstractTutorialActivity{
 		imgviews[4] = (ImageView)findViewById(R.id.imageView5);
 	}
 
-	@Override
-	protected void initiateViews() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }

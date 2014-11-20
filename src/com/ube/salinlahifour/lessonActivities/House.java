@@ -24,7 +24,7 @@ import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.enumTypes.LevelType;
 import com.ube.salinlahifour.R;
 
-public class House extends AbstractLessonActivity {
+public class House extends AbstractLessonActivity implements OnDragListener, OnTouchListener {
 
 	private TextView tv_dialog;
 	private TextView tv_feedback;
@@ -49,7 +49,7 @@ public class House extends AbstractLessonActivity {
 		index = 0;
 		
 
-		initiateTimer();
+//		initiateTimer();
 		RelativeLayout.LayoutParams dialog_params =  new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
 		dialog_params.leftMargin=100; //X
 		dialog_params.topMargin = 30; //Y
