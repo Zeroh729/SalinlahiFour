@@ -12,13 +12,18 @@ import android.widget.TextView;
 
 import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.R;
+
 import com.ube.salinlahifour.enumTypes.LevelType;
+
+
+import evaluationModule.Evaluation;
 
 
 
 public class Cooking extends AbstractLessonActivity implements OnClickListener{
 	private TextView tv_dialog;
 	private TextView tv_feedback;
+	private Evaluation evaluator = new Evaluation();
 	private ImageButton[] choices;
 	private int index;
 	
@@ -35,20 +40,20 @@ public class Cooking extends AbstractLessonActivity implements OnClickListener{
 	@Override
 	protected void checkAnswer(String answer) {
 		Log.d("TESTINGLessonActivity", "checking answers");
-		if(questions.get(index).getWord().equals(answer)){
+		if(evaluator.evaluateAnswer(questions.get(index).getWord(), answer)){
 			//NLG Part - Correct
-			tv_feedback.setText("Magaling!" + answer + " is " + questions.get(index).getEnglish());
+			tv_feedback.setText(evaluator.getImmediateFeedback(questions.get(index), index, answer));
 			
 			if(index < questions.size()-1){
 				index++;
 				run();
 			}
 			else{
-				tv_feedback.setText("Nakakatuwa! You finished the game! You learned \"Bilog\"! Play again to practice more on \"Parisukat\"");
+				tv_feedback.setText(evaluator.getEndofActivityFeedback());
 			}
 		}else{
 			//NLG Part - Wrong
-			tv_feedback.setText("Oops. That's " + answer + ", Try Again!");
+			tv_feedback.setText(evaluator.getImmediateFeedback(questions.get(index), index, answer));
 		}
 	}
 	
