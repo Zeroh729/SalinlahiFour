@@ -1,7 +1,10 @@
 package com.ube.salinlahifour.lessonActivities;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
+
+import org.jdom.JDOMException;
 
 import android.content.ClipData;
 import android.os.CountDownTimer;
@@ -31,7 +34,9 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	private int index;
 	private ImageView iv_swipe;
 	private String question;
-	private String feedback;
+
+	private String feedback = " ";
+
 	//private ImageView[] speech_bubble;
 	//private TextView[] feedback;
 	//Timer Vars
@@ -51,7 +56,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	@Override
 	protected void initiateViews() {
 		Log.d("Debug Family","Aldrin: Initiate Views");
-		index = 0;
+		index = 1;
 		
 		//Starts Timer
 		initiateTimer();
@@ -153,7 +158,6 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		//End Placing
 		//Initialize Swipe Indicator
 		iv_swipe = (ImageView) findViewById(R.id.swipe_ind);
-		
 		Log.d("Debug Family","Aldrin: Initiate Views...Done");
 	}
 
@@ -213,24 +217,46 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	
 	protected void checkAnswer(String answer) {
 		Log.d("Debug Family","Aldrin: Checking Answer");
-		if(questions.get(index).getWord().equals(answer)){
-			//NLG Part - Correct
-			feedback = "Magaling!" + answer + " is " + questions.get(index).getEnglish();
-			tv_feedback.setText(feedback + " " + question);
-			if(index < questions.size()-1){
-				index++;
-				rerun();
+		try {
+			if(questions.get(index).getWord().equals(answer)){
+				//NLG Part - Correct
+				Log.d("Debug Family", "Aldrin: Answer: " + answer);
+				Log.d("Debug Family", "Aldrin: Index: " + index);
+				feedback = NLG.GenerateImmediateFeedback(answer, index, 1);
+				Log.d("Debug Family", "Aldrin: Feedback: "+ feedback);
+				tv_feedback.setText(feedback + " " + question);
+				Log.d("Debug Family", "Aldrin: Immediate Feedback Completed");
+				if(index < questions.size()-1){
+					Log.d("Debug Family", "Aldrin: Next Question(Reruns)");
+					index++;
+					rerun();
+				}
+				else{
+					Log.d("Debug Family", "Aldrin: iFeedback says its finished (Delayed Feedback)");
+					tv_feedback.setText("Nakakatuwa! You finished the game! You learned \"Bilog\"! Play again to practice more on \"Parisukat\"");
+					//feedback = NLG.GenerateDelayedFeedback(score, LessonNum);
+					timer.cancel();
+				}
+			}else{
+				Log.d("Debug Family", "Aldrin: Answer: " + answer);
+				Log.d("Debug Family", "Aldrin: Index: " + index);
+				//NLG Part - Wrong
+				//tv_feedback.setText("Oops. That's " + answer + ", Try Again!");
+				feedback = NLG.GenerateImmediateFeedback(answer, index, 1);
+				Log.d("Debug Family", "Aldrin: Feedback: "+ feedback);
+				tv_feedback.setText(feedback + " " + question);
 			}
-			else{
-				tv_feedback.setText("Nakakatuwa! You finished the game! You learned \"Bilog\"! Play again to practice more on \"Parisukat\"");
-				timer.cancel();
-			}
-		}else{
-			//NLG Part - Wrong
-			//tv_feedback.setText("Oops. That's " + answer + ", Try Again!");
-			feedback = "Oops. That's " + answer + ", Try Again!";
-			tv_feedback.setText(feedback + " " + question);
+		
+		} catch (JDOMException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			Log.d("Debug Family", "Aldrin: Something went wrong with JDOM(CATCH)");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			Log.d("Debug Family", "Aldrin: Something went wrong in IO (CATCH)");
+			e.printStackTrace();
 		}
+		
 		Log.d("Debug Family","Aldrin: Answer Check");	
 	}
     

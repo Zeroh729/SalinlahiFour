@@ -43,4 +43,10 @@ public class Music extends AbstractTutorialActivity {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	protected void initiateViews() {
+		// TODO Auto-generated method stub
+		
+	}
 }

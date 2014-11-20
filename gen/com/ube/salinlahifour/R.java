@@ -57,6 +57,12 @@ public final class R {
         public static final int swipe_left=0x7f020020;
         public static final int title=0x7f020021;
         public static final int traingle=0x7f020022;
+        public static final int tut1_bg1=0x7f020023;
+        public static final int tut1_bg2=0x7f020024;
+        public static final int tut1_bg3=0x7f020025;
+        public static final int tut_arrow_left=0x7f020026;
+        public static final int tut_arrow_right=0x7f020027;
+        public static final int tut_start=0x7f020028;
     }
     public static final class id {
         public static final int Splash=0x7f090006;
@@ -169,6 +175,14 @@ public final class R {
     }
     public static final class menu {
         public static final int debug_user_module=0x7f080000;
+    }
+    public static final class raw {
+        public static final int config=0x7f040000;
+        public static final int dhistory=0x7f040001;
+        public static final int lessonlibrary=0x7f040002;
+        public static final int lexicon=0x7f040003;
+        public static final int properties=0x7f040004;
+        public static final int templatecatalogue=0x7f040005;
     }
     public static final class string {
         public static final int action_settings=0x7f060008;

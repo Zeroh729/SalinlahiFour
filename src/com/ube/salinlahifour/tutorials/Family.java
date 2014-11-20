@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.ube.salinlahifour.R;
 
@@ -19,6 +21,7 @@ public class Family extends AbstractTutorialActivity {
 	
 	public Family(){
 		layoutID = R.layout.tutorial_family;
+		
 	}
 	
 	public void btn_play(View view){

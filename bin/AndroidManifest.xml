@@ -7,7 +7,8 @@
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="19" />
-
+		<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+		<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <application
         android:name="com.ube.salinlahifour.SalinlahiFour"
         android:allowBackup="true"
@@ -17,7 +18,8 @@
         <activity
             android:name="com.ube.salinlahifour.MainActivity"
             android:label="@string/app_name"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="landscape" 
+               android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,27 +29,32 @@
         <activity
             android:name="com.ube.salinlahifour.RegistrationActivity"
             android:label="@string/title_activity_select_user"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="landscape" 
+               android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         </activity>
         <activity
             android:name="com.ube.salinlahifour.MapActivity"
             android:label="@string/title_activity_map"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="landscape"
+               android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="com.ube.salinlahifour.lessonActivities.AbstractLessonActivity"
             android:label="@string/title_activity_lesson"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="landscape"
+               android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="com.ube.salinlahifour.AbstractTutorialActivity"
             android:label="@string/title_activity_abstract_tutorial"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="landscape" 
+               android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         </activity>
         <activity
             android:name="com.ube.salinlahifour.lessonActivities.Cooking"
             android:label="@string/title_activity_lesson"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="landscape" 
+               android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="com.ube.salinlahifour.lessonActivities.Cooking" />
 
@@ -57,7 +64,8 @@
         <activity
             android:name="com.ube.salinlahifour.tutorials.Cooking"
             android:label="@string/title_activity_abstract_tutorial"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="landscape" 
+               android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="com.ube.salinlahifour.tutorials.Cooking" />
 
@@ -67,7 +75,8 @@
         <activity
             android:name="com.ube.salinlahifour.lessonActivities.Society"
             android:label="@string/title_activity_lesson"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="landscape"
+               android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
             <intent-filter>
                 <action android:name="com.ube.salinlahifour.lessonActivities.Society" />
 
@@ -77,7 +86,8 @@
         <activity
             android:name="com.ube.salinlahifour.tutorials.Society"
             android:label="@string/title_activity_abstract_tutorial"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="landscape" 
+               android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="com.ube.salinlahifour.tutorials.Society" />
 
@@ -86,8 +96,13 @@
         </activity>
         <activity
             android:name="com.ube.salinlahifour.lessonActivities.Family"
+<<<<<<< HEAD
             android:label="@string/title_activity_lesson"
             android:screenOrientation="landscape"  >
+=======
+            android:label="@string/title_activity_lesson" 
+               android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+>>>>>>> aldrin
             <intent-filter>
                 <action android:name="com.ube.salinlahifour.lessonActivities.Family" />
 
@@ -96,8 +111,13 @@
         </activity>
         <activity
             android:name="com.ube.salinlahifour.tutorials.Family"
+<<<<<<< HEAD
             android:label="@string/title_activity_abstract_tutorial" 
             android:screenOrientation="landscape" >
+=======
+            android:label="@string/title_activity_abstract_tutorial"
+               android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+>>>>>>> aldrin
             <intent-filter>
                 <action android:name="com.ube.salinlahifour.tutorials.Family" />
 
@@ -106,8 +126,13 @@
         </activity>
         <activity
             android:name="com.ube.salinlahifour.lessonActivities.House"
+<<<<<<< HEAD
             android:label="@string/title_activity_lesson" 
             android:screenOrientation="landscape" >
+=======
+            android:label="@string/title_activity_lesson"
+               android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+>>>>>>> aldrin
             <intent-filter>
                 <action android:name="com.ube.salinlahifour.lessonActivities.House" />
 
@@ -117,7 +142,11 @@
         <activity
             android:name="com.ube.salinlahifour.tutorials.House"
             android:label="@string/title_activity_abstract_tutorial" 
+<<<<<<< HEAD
             android:screenOrientation="landscape" >
+=======
+               android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+>>>>>>> aldrin
             <intent-filter>
                 <action android:name="com.ube.salinlahifour.tutorials.House" />
 
@@ -127,7 +156,8 @@
         <activity
             android:name="com.ube.salinlahifour.tutorials.Music"
             android:label="@string/title_activity_music"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="landscape" 
+               android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         </activity>
         <activity
             android:name="com.ube.salinlahifour.debugclasses.DebugUserModuleActivity"

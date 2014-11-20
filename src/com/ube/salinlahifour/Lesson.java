@@ -13,6 +13,7 @@ public class Lesson {	private String name;
 		this.image = image;
 		this.activity = "com.ube.salinlahifour.lessonActivities." + className;
 		this.tutorial = "com.ube.salinlahifour.tutorials." + className;
+		
 	}
 		
 	public String getName() {
