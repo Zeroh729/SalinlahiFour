@@ -31,5 +31,4 @@ public class Music extends AbstractTutorialActivity {
 		// TODO Auto-generated method stub
 
 	}
-
 }

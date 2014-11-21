@@ -99,5 +99,4 @@ public abstract class AbstractTutorialActivity extends Activity {
 	abstract protected void setMediumTutorial();
 	abstract protected void setHardTutorial();
 	abstract protected void initiateViews();
-	
 }

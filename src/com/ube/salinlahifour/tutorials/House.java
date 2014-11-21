@@ -34,4 +34,5 @@ public class House extends AbstractTutorialActivity  {
 		// TODO Auto-generated method stub
 		
 	}
+
 }

@@ -1,0 +1,4 @@
+Config=Config.txt
+TemplateCatalogue=TemplateCatalogue.xml
+LexiconList=Lexicon.xml
+LessonList=LessonLibrary.xml

@@ -1,6 +1,13 @@
 package com.ube.salinlahifour;
 
 //import android.R;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import org.jdom.*;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,6 +30,111 @@ public class MainActivity extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		//Load File from res or assets
+		//InputStream ins = getResources().openRawResource( getResources().getIdentifier("raw/properties", "raw", getPackageName()));
+		File properties = new File("/sdcard/properties.txt");
+		if(!properties.exists()){
+			File config = new File ("/sdcard/config.txt");
+			File dhistory = new File ("/sdcard/dhistory.txt");
+			File lessonlibrary = new File ("/sdcard/lessonlibrary.xml");
+			File lexicon = new File ("/sdcard/lexicon.xml");
+			File templatecatalogue = new File ("/sdcard/templatecatalogue.xml");
+		try {
+			properties.createNewFile();
+			config.createNewFile();
+			dhistory.createNewFile();
+			lessonlibrary.createNewFile();
+			lexicon.createNewFile();
+			templatecatalogue.createNewFile();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		}
+		//Copy file from res/assets to file from SDCARD
+		 InputStream in = getResources().openRawResource(R.raw.properties);
+		 try{
+		    FileOutputStream out = new FileOutputStream("/sdcard/properties.txt");
+		    byte[] buff = new byte[1024];
+		    int read = 0;
+
+		    
+		       while ((read = in.read(buff)) > 0) {
+		          out.write(buff, 0, read);
+		    
+		 
+		         in.close();
+
+		         out.close();
+		    }
+		 }catch(Exception e){
+			e.printStackTrace();
+		 }
+		 in = getResources().openRawResource(R.raw.config);
+		 try{
+		    FileOutputStream out = new FileOutputStream("/sdcard/config.txt");
+		    byte[] buff = new byte[4096];
+		    int read = 0;
+		       while ((read = in.read(buff)) > 0) {
+		          out.write(buff, 0, read);
+		         in.close();
+		         out.close();
+		    }
+		 }catch(Exception e){
+		 }
+		 in = getResources().openRawResource(R.raw.dhistory);
+		 try{
+		    FileOutputStream out = new FileOutputStream("/sdcard/dhistory.txt");
+		    byte[] buff = new byte[4096];
+		    int read = 0;
+		       while ((read = in.read(buff)) > 0) {
+		          out.write(buff, 0, read);
+		         in.close();
+		         out.close();
+		    }
+		 }catch(Exception e){
+		 }
+		 in = getResources().openRawResource(R.raw.lessonlibrary);
+		 try{
+		    FileOutputStream out = new FileOutputStream("/sdcard/lessonlibrary.xml");
+		    byte[] buff = new byte[4096];
+		    int read = 0;
+		    while ((read = in.read(buff)) > 0) {
+		          out.write(buff, 0, read);
+		         in.close();
+		         out.close();
+		         
+		    }
+		 }catch(Exception e){
+		 }
+		 in = getResources().openRawResource(R.raw.lexicon);
+		 try{
+		    FileOutputStream out = new FileOutputStream("/sdcard/lexicon.xml");
+		    byte[] buff = new byte[4096];
+		    int read = 0;
+		       while ((read = in.read(buff)) > 0) {
+		          out.write(buff, 0, read);
+		         in.close();
+		         out.close();
+		    }
+		 }catch(Exception e){
+		 }
+		 in = getResources().openRawResource(R.raw.templatecatalogue);
+		 try{
+		    FileOutputStream out = new FileOutputStream("/sdcard/templatecatalogue.xml");
+		    byte[] buff = new byte[4096];
+		    int read = 0;
+		       while ((read = in.read(buff)) > 0) {
+		          out.write(buff, 0, read);
+		          
+		         in.close();
+		      
+		         out.flush();
+		         out.close();
+		    }
+		 }catch(Exception e){
+		 }
+		 
 		SharedPreferences prefs = getSharedPreferences("appData", MODE_PRIVATE);
 		final int lastUserID = prefs.getInt("lastUserID", -1);
 		final int firstTime = prefs.getInt("firstTime", -1);

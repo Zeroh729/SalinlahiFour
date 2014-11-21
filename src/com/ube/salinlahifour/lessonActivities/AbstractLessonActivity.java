@@ -29,6 +29,8 @@ import com.ube.salinlahifour.enumTypes.StatusType;
 import com.ube.salinlahifour.model.UserRecord;
 import com.ube.salinlahifour.tools.DateTimeConverter;
 
+import iFeedback.iFeedback;
+
 public abstract class AbstractLessonActivity extends Activity {
 	protected ArrayList<ImageView> backgrounds;
 	protected ArrayList<Item> items;
@@ -37,7 +39,7 @@ public abstract class AbstractLessonActivity extends Activity {
 	protected String activityName;
 	protected String activityLevel;
 	protected int layoutID;
-	
+	protected iFeedback NLG;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -56,6 +58,8 @@ public abstract class AbstractLessonActivity extends Activity {
 		Log.d(activityName, "TEST ActivityName in lesson act");
 
 		items = ((SalinlahiFour)getApplication()).getLessonItems();
+		initiateNarrationModule();
+
 		initiateViews();
 		getQuestions();
 		run();
@@ -135,6 +139,16 @@ public abstract class AbstractLessonActivity extends Activity {
 			sortedMap.put(entry.getKey(), entry.getValue());
 		}
 		return sortedMap;
+	}
+	
+	protected void initiateNarrationModule(){
+		Log.d("TESTINGLessonActivity", "Aldrin: Initiating iFeedback..");
+		NLG = new iFeedback();
+		Log.d("TESTINGLessonActivity", "Aldrin: Reading iFeedback properties");
+		NLG.readProperties();
+		Log.d("TESTINGLessonActivity", "Aldrin: iFeedback Initiated");
+		Log.d("TESTINGLessonActivity", "Aldrin: iFeedback LOL");
+
 	}
 	
 	protected void showReportCard(){
