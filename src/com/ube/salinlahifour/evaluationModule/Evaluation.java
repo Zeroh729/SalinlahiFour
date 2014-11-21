@@ -34,14 +34,13 @@ public class Evaluation {
 		this.lessonNumber = lessonNumber;
 		this.activityLevel = activityLevel;
 		this.lessonName = lessonName;
-		String that = "Hi" + this.UserID;
-		Log.d("ARCS",that);
 		userRecordOperator = new UserRecordOperations(context);
 		userLessonProgressOperator = new UserLessonProgressOperations(context);
 	}
 	public void recordUserAnswer(String LessonName, String correctAnswer, String Status){
-		Log.d("ARCS","Hai");
+		
 		userRecordOperator.open();
+		Log.d("ARCS","Hai");
 		userRecordOperator.addUserRecord(UserID, LessonName, correctAnswer, Status);
 	}
 	
