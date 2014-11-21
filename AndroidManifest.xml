@@ -110,7 +110,6 @@
             android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="com.ube.salinlahifour.lessonActivities.House" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -120,7 +119,6 @@
             android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="com.ube.salinlahifour.tutorials.House" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -128,6 +126,10 @@
             android:name="com.ube.salinlahifour.tutorials.Music"
             android:label="@string/title_activity_music"
             android:screenOrientation="landscape" >
+			<intent-filter>
+                <action android:name="com.ube.salinlahifour.tutorials.Music" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.ube.salinlahifour.debugclasses.DebugUserModuleActivity"

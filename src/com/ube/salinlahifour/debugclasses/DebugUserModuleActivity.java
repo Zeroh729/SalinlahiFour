@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,6 +31,7 @@ public class DebugUserModuleActivity extends Activity implements OnClickListener
 		userdb.open();
 		
 		userDetails = userdb.getAllUserDetails();
+		userdb.close();
 		listview = (ListView) this.findViewById(R.id.listview);
 		
 		DebugUserModuleAdapter adapter = new DebugUserModuleAdapter(this, R.layout.debug_listlayout_usermodule, userDetails);
@@ -39,49 +41,35 @@ public class DebugUserModuleActivity extends Activity implements OnClickListener
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
 				AlertDialog.Builder alertDialog = new AlertDialog.Builder(DebugUserModuleActivity.this);
-				 
-                // Setting Dialog Title
                 alertDialog.setTitle("Action");
- 
-                // Setting Dialog Message
                 alertDialog.setMessage("What do you want to do?");
- 
-                // Setting Icon to Dialog
-//                alertDialog.setIcon(R.drawable.save);
- 
-                // Setting Positive "Yes" Button
                 alertDialog.setPositiveButton("Update", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                    // User pressed YES button. Write Logic Here
                     Toast.makeText(getApplicationContext(), "You clicked on Update",
                                         Toast.LENGTH_SHORT).show();
                     }
                 });
- 
-                // Setting Negative "NO" Button
+                
                 alertDialog.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {
-                    // User pressed No button. Write Logic Here
+                		SharedPreferences prefs = getSharedPreferences("appData", MODE_PRIVATE);
+                		final int lastUserID = prefs.getInt("lastUserID", -1);
+                		
                     	UserDetailOperations userDetailOperator = new UserDetailOperations(DebugUserModuleActivity.this);
                     	userDetailOperator.open();
-                    	userDetailOperator.deleteUserDetail(userDetails.get(position));
+                    	userDetailOperator.deleteUserDetail(userDetails.get(position), lastUserID);
+                    	userDetailOperator.close();
                     	userDetails.remove(position);
                     	finish();
                     	startActivity(getIntent());
                     }
                 });
  
-                // Setting Netural "Cancel" Button
                 alertDialog.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                    // User pressed Cancel button. Write Logic Here
-//                    Toast.makeText(getApplicationContext(), "You clicked on Cancel",
-//                                        Toast.LENGTH_SHORT).show();
                     }
                 });
- 
-                // Showing Alert Message
                 alertDialog.show();
 			}
 			

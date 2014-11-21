@@ -16,12 +16,7 @@ public class Society  extends AbstractLessonActivity{
 
 	@Override
 	protected void initiateViews() {
-		items = new ArrayList();
-		items.add(new Item("Pulis" , "Police", "Which one is police", 0, null, LevelType.EASY));
-		items.add(new Item("Bombero" , "Fireman", "Which one is Fireman", 0, null, LevelType.EASY));
-		items.add(new Item("Pulis" , "Police", "Which one is police", 0, null, LevelType.EASY));
-		items.add(new Item("Bombero" , "Fireman", "Which one is Fireman", 0, null, LevelType.EASY));
-		items.add(new Item("Pulis" , "Police", "Which one is police", 0, null, LevelType.EASY));
+		
 	}
 
 	@Override

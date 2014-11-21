@@ -16,10 +16,6 @@ public class Cooking extends AbstractTutorialActivity{
 		layoutID = R.layout.tutorial_cooking;
 	}
 	
-	public void btn_play(View view){
-		goToActivity();
-	}
-
 	@Override
 	protected void setEasyTutorial() {
 		Log.d(items.size()+"","TEST");

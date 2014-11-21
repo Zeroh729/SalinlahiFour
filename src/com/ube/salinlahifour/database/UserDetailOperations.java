@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,11 +17,13 @@ import com.ube.salinlahifour.tools.DateTimeConverter;
 public class UserDetailOperations {
 	private DatabaseHandler dbHandler;
 	private String[] USERDETAIL_TABLE_COLUMNS = {dbHandler.USERDETAIL_ID, dbHandler.USERDETAIL_NAME, dbHandler.USERDETAIL_GENDER, dbHandler.USERDETAIL_DATECREATED};
-
+	private Context context;
+	
 	private SQLiteDatabase database;
 	
 	public UserDetailOperations(Context context){
 		dbHandler = new DatabaseHandler(context);
+		this.context = context;
 	}
 	
 	public void open() throws SQLException{
@@ -74,23 +78,27 @@ public class UserDetailOperations {
 		UserDetail userDetail;
 		
 		Cursor cursor = database.query(dbHandler.TABLE_USERDETAIL, USERDETAIL_TABLE_COLUMNS, dbHandler.USERDETAIL_ID + " = " + id, null, null, null, null);
-		cursor.moveToFirst();
 		
-		if(cursor != null){
-		userDetail = parseUserDetail(cursor);
-		cursor.close();
-
-		//debugging
-			String name = userDetail.getName();
-			Toast toast = Toast.makeText(dbHandler.getContext(), "User got: " + name, Toast.LENGTH_SHORT);
-			toast.show();
+		try{
+			if(cursor != null){
+				cursor.moveToFirst();
+				userDetail = parseUserDetail(cursor);
+				cursor.close();
 		
-		return userDetail;
+				//debugging
+					String name = userDetail.getName();
+					Toast toast = Toast.makeText(dbHandler.getContext(), "User got: " + name, Toast.LENGTH_SHORT);
+					toast.show();
+				
+				return userDetail;
+			}
+		}catch(Exception e){
+			return null;
 		}
 		return null;
 	}
 	
-	public void deleteUserDetail(UserDetail userDetail){
+	public void deleteUserDetail(UserDetail userDetail, int loggedInID){
 		long id = userDetail.getId();
 
 		//debugging
@@ -99,6 +107,13 @@ public class UserDetailOperations {
 		toast.show();
 		
 		database.delete(dbHandler.TABLE_USERDETAIL, dbHandler.USERDETAIL_ID + " = " + id, null);
+		
+		if(id == loggedInID){
+			SharedPreferences prefs = context.getSharedPreferences("appData", context.MODE_PRIVATE);
+			Editor editor = prefs.edit();
+			editor.putInt("lastUserID", -1);
+			editor.commit();
+		}
 	}
 	
 	private UserDetail parseUserDetail(Cursor cursor){
