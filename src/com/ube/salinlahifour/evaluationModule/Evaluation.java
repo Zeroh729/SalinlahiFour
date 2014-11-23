@@ -35,12 +35,15 @@ public class Evaluation {
 		this.activityLevel = activityLevel;
 		this.lessonName = lessonName;
 		userRecordOperator = new UserRecordOperations(context);
+		Log.d("ARCS","Opening User Record Operations");
+		userRecordOperator.open();
+		Log.d("ARCS","User Record Operations Opened");
 		userLessonProgressOperator = new UserLessonProgressOperations(context);
 	}
 	public void recordUserAnswer(String LessonName, String correctAnswer, String Status){
 		
-		userRecordOperator.open();
-		Log.d("ARCS","Hai");
+		
+		
 		userRecordOperator.addUserRecord(UserID, LessonName, correctAnswer, Status);
 	}
 	

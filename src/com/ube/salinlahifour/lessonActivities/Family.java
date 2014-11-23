@@ -36,7 +36,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	String question;
 	String feedback;
 	
-	private Evaluation evaluation = new Evaluation(lessonName, getBaseContext(), lessonNumber, activityLevel, UserID); 
+	private Evaluation evaluation = new Evaluation(lessonName, this.getApplication(), lessonNumber, activityLevel, UserID); 
 	//private ImageView[] speech_bubble;
 	//private TextView[] feedback;
 	//Timer Vars
