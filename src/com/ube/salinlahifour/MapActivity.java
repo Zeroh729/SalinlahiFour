@@ -11,11 +11,15 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.XmlResourceParser;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +52,55 @@ public class MapActivity extends Activity implements OnClickListener{
 			e.printStackTrace();
 		}
 		setLayout();
+		
+		
+		 final ImageButton btnOpenPopup = (ImageButton)findViewById(R.id.account_btn);
+	        btnOpenPopup.setOnClickListener(new ImageButton.OnClickListener(){
+
+	   @Override
+	   public void onClick(View view) {
+	    LayoutInflater layoutInflater = (LayoutInflater)getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);  
+	    View popupView = layoutInflater.inflate(R.layout.map_widgets, null);  
+	             final PopupWindow popupWindow = new PopupWindow(popupView, LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);  
+	             //popupWindow.dismiss();
+	             popupWindow.setOutsideTouchable(true);
+	             popupWindow.setBackgroundDrawable(new BitmapDrawable());
+	             ImageButton reg_btn = (ImageButton)popupView.findViewById(R.id.btn_register_widget);
+	             reg_btn.setOnClickListener(new ImageButton.OnClickListener(){
+	        	     @Override
+	        	     public void onClick(View v) {
+	        	      // TODO Auto-generated method stub
+	        	    	 navigateWidget(1);
+	        	      popupWindow.dismiss();
+	        	     }});
+	             ImageButton out_btn = (ImageButton)popupView.findViewById(R.id.btn_logout_widget);
+	             out_btn.setOnClickListener(new ImageButton.OnClickListener(){
+
+	        	     @Override
+	        	     public void onClick(View v) {
+	        	      // TODO Auto-generated method stub
+	        	    	 navigateWidget(2);
+	        	      popupWindow.dismiss();
+	        	     }});
+	        
+	             popupWindow.showAsDropDown(btnOpenPopup, 50, -30);
+	         
+	   }});
+		
+		
+	}
+	
+
+	public void navigateWidget(int choice){
+		switch(choice){
+		case 1: Log.d("debug", "register intent go!");
+				intent = new Intent(this, RegistrationActivity.class);
+				startActivity(intent); 
+				break;
+		case 2: intent = new Intent(this, LoginActivity.class);
+				startActivity(intent);
+				break;
+		}
 	}
 	
 	public void parseXML() throws XmlPullParserException, IOException{
