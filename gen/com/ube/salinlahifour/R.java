@@ -146,8 +146,8 @@ public final class R {
         public static final int option6=0x7f0a003b;
         public static final int option7=0x7f0a003c;
         public static final int pickafrend=0x7f0a0017;
-        public static final int rdo_female=0x7f0a0019;
-        public static final int rdo_male=0x7f0a0018;
+        public static final int rdo_females=0x7f0a0019;
+        public static final int rdo_males=0x7f0a0018;
         public static final int relative_view=0x7f0a0027;
         public static final int swipe_ind=0x7f0a0033;
         public static final int textView1=0x7f0a003e;

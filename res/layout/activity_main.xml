@@ -26,12 +26,16 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:src="@drawable/splash_clouds2"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:scaleX="2"
+            android:scaleY="2"/>
 			         <ImageView
             android:id="@+id/Splash_Cloud1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/splash_clouds1" />
+            android:src="@drawable/splash_clouds1" 
+            android:scaleX="2"
+            android:scaleY="2"/>
 		<ImageView
             android:id="@+id/Splash_Logo"
             android:layout_width="wrap_content"
