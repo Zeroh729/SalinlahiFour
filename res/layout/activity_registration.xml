@@ -5,54 +5,37 @@
     android:gravity="center"
     android:background="@drawable/bg"
     tools:context="${packageName}.${activityClass}" >
-
+	
     <ImageView
-        android:id="@+id/myImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="175dp"
-        android:src="@drawable/name" />
-
+            android:id="@+id/name_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:src="@drawable/name"
+            android:layout_marginTop="75dp"
+            />
     <EditText
         android:id="@+id/tf_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/myImageView"
-        android:layout_alignLeft="@+id/myImageView"
-        android:layout_alignRight="@+id/myImageView"
-        android:layout_alignTop="@+id/myImageView"
-        android:layout_margin="1dp"
-        android:layout_marginTop="2dp"
         android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:background="@null"
+            android:layout_centerInParent="true"
         android:hint="Enter your name here" >
         
          </EditText>
-
-    <RadioButton
-        android:id="@+id/rdo_female"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_alignRight="@+id/myImageView"
-        android:layout_below="@+id/myImageView"
-        android:layout_marginTop="70dp"
-        android:layout_marginRight="75dp"
-        android:background="@drawable/girl" 
-        android:onClick="registerUser"
-        />
-
-    <RadioButton
-        android:id="@+id/rdo_male"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_alignLeft="@+id/myImageView"
-        android:layout_alignTop="@+id/rdo_female"
-        android:layout_marginLeft="75dp"
-        android:background="@drawable/boy"
-        android:onClick="registerUser"
-         />
-
-   
-
-    
+    <ImageButton
+            android:id="@+id/Next_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name_img"
+            android:layout_marginTop="25dp"
+            android:layout_alignRight="@+id/name_img"
+            android:src="@drawable/next"
+            
+            android:onClick="registerUser"
+            />    
 
 </RelativeLayout>

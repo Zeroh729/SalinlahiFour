@@ -32,6 +32,24 @@
             android:screenOrientation="landscape" 
                android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         </activity>
+         <activity
+            android:name="com.ube.salinlahifour.RegistrationActivityName"
+            android:label="@string/title_activity_select_user"
+            android:screenOrientation="landscape" 
+               android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+        </activity>
+         <activity
+            android:name="com.ube.salinlahifour.RegistrationActivityGender"
+            android:label="@string/title_activity_select_user"
+            android:screenOrientation="landscape" 
+               android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+        </activity>
+         <activity
+            android:name="com.ube.salinlahifour.RegistrationActivityConfirm"
+            android:label="@string/title_activity_select_user"
+            android:screenOrientation="landscape" 
+               android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+        </activity>
         <activity
             android:name="com.ube.salinlahifour.MapActivity"
             android:label="@string/title_activity_map"

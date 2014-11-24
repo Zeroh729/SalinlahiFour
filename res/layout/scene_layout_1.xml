@@ -3,7 +3,7 @@
     android:id="@+id/layout_this"
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
-    android:background="@drawable/map">
+    android:background="@drawable/map_bg">
     
     <ImageButton
         android:id="@+id/img_lesson1"
@@ -12,6 +12,11 @@
         android:layout_alignParentTop="true"
         android:visibility="invisible"
         android:layout_marginLeft="50dp"
+        android:background="@null"
+        android:translationX="125dp"
+        android:translationY="80dp"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
         />
     
     <ImageButton
@@ -20,7 +25,12 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/img_lesson1" 
         android:visibility="invisible"
-        android:layout_marginLeft="50dp"/>
+        android:layout_marginLeft="50dp"
+        android:background="@null"
+        android:translationX="-100dp"
+        android:translationY="320dp"
+        android:scaleX="0.8"
+        android:scaleY="0.8"/>
 
     <ImageButton
         android:id="@+id/img_lesson3"
@@ -28,7 +38,8 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/img_lesson2"
         android:visibility="invisible"
-        android:layout_marginLeft="50dp"/>
+        android:layout_marginLeft="50dp"
+        android:background="@null"/>
     
     <ImageButton
         android:id="@+id/img_lesson4"
@@ -36,7 +47,8 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/img_lesson3" 
         android:visibility="invisible"
-        android:layout_marginLeft="50dp"/>
+        android:layout_marginLeft="50dp"
+        android:background="@null"/>
     
     <ImageButton
         android:id="@+id/img_lesson5"
@@ -46,6 +58,7 @@
         android:visibility="invisible"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp" 
+        android:background="@null"
          />
 
     <TextView

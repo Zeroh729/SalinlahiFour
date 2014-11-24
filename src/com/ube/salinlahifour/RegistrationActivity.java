@@ -25,9 +25,9 @@ public class RegistrationActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_registration);
-		rdo_male = (RadioButton)findViewById(R.id.rdo_male);
-		rdo_female = (RadioButton)findViewById(R.id.rdo_female);
-		tf_name = (EditText) findViewById(R.id.tf_name);
+		//rdo_male = (RadioButton)findViewById(R.id.rdo_male);
+		//rdo_female = (RadioButton)findViewById(R.id.rdo_female);
+		//tf_name = (EditText) findViewById(R.id.tf_name);
 		
 		userDetailOperator = new UserDetailOperations(this);
 		userDetailOperator.open();	//DON'T FORGET
@@ -37,7 +37,7 @@ public class RegistrationActivity extends Activity {
 		String name = tf_name.getText().toString();
 		String gender;
 		
-		switch(view.getId()){
+	/*	switch(view.getId()){
 			case R.id.rdo_male:
 				gender = "male";
 				break;
@@ -46,20 +46,20 @@ public class RegistrationActivity extends Activity {
 				break;
 			default:
 				gender = "bisexual";
-		}
+		}*/
 
-		UserDetail user = userDetailOperator.addUserDetail(name, gender);
+		//UserDetail user = userDetailOperator.addUserDetail(name, gender);
 		
 		Intent intent = new Intent(this, MapActivity.class);
 		startActivity(intent);
 		
 		SharedPreferences prefs = getSharedPreferences("lastUserID", MODE_PRIVATE);
 		Editor editor = prefs.edit();
-		editor.putInt("lastUserID", user.getId());
+		//editor.putInt("lastUserID", user.getId());
 		editor.commit();
 
-		((SalinlahiFour)getApplication()).setUserID(user.getId());
-		((SalinlahiFour)getApplication()).setUserName(user.getName());
+		//((SalinlahiFour)getApplication()).setUserID(user.getId());
+		//((SalinlahiFour)getApplication()).setUserName(user.getName());
 	}
 
 	@Override

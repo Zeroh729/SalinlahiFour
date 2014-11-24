@@ -7,12 +7,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
+
 import org.jdom.*;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.ube.salinlahifour.database.DatabaseHandler;
@@ -21,7 +25,7 @@ import com.ube.salinlahifour.model.UserDetail;
 
 public class MainActivity extends Activity {
 	private UserDetailOperations userDetailOperator;		
-	private int SPLASH_TIME = 2 * 1000;// 3 seconds
+	private int SPLASH_TIME = 7 * 1000;// 3 seconds //Now 4 secs
 //	private final Intent registationActivity = new Intent(this, RegistrationActivity.class);
 //	private final Intent mapActivity = new Intent(this, MapActivity.class);
 
@@ -144,12 +148,34 @@ public class MainActivity extends Activity {
 		userDetailOperator = new UserDetailOperations(this);
 		userDetailOperator.open();
 		
+		 ImageView cloud1 = (ImageView) findViewById(R.id.Splash_Cloud1);
+		 ImageView cloud2 = (ImageView) findViewById(R.id.Splash_Cloud2);
+		 //ImageView logo = (ImageView) findViewById(R.id.Splash_Logo);
+		 TranslateAnimation animation = new TranslateAnimation(0.0f, 100.0f,0.0f, 0.0f);
+		 TranslateAnimation animation2 = new TranslateAnimation(0.0f, 100.0f,0.0f, 0.0f);
+		// TranslateAnimation animation3 = new TranslateAnimation(0.0f, 0.0f,0.0f, -400.0f);
+		 animation.setDuration(SPLASH_TIME);
+		 
+		 animation.setRepeatCount(1);
+		 //animation.setRepeatMode(2);
+		 //animation.setFillAfter(true);
+		 animation2.setDuration(SPLASH_TIME+3000);
+		 animation2.setRepeatCount(1);
+		 //animation2.setRepeatMode(2);
+		// animation2.setFillAfter(true);
+		 //animation3.setDuration(SPLASH_TIME);
+		// animation3.setRepeatCount(1);
+		 //animation3.setRepeatMode(2);
+		 //animation3.setFillAfter(true);
+		 cloud1.startAnimation(animation);
+		 cloud2.startAnimation(animation2);
+		 //logo.startAnimation(animation3);
 		   new Handler().postDelayed(new Runnable() {
 
 		        public void run() {
 		        	if(lastUserID == -1){
 		        		Intent intent = new Intent();
-		        		intent.setClass(getApplicationContext(), RegistrationActivity.class);
+		        		intent.setClass(getApplicationContext(), RegistrationActivityName.class);
 		        		startActivity(intent);
 		        	}
 		        		//startActivity(registationActivity);

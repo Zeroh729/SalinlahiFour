@@ -1,5 +1,16 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
+    <Lesson>
+		<Name>F a m i l y!</Name>
+		<Image>lesson1_icon</Image>
+		<ActivityName>Family</ActivityName>
+	</Lesson>
+	<Lesson>
+		<Name>House</Name>
+		<Image>lesson2_icon</Image>
+		<ActivityName>House</ActivityName>
+	</Lesson>
+	
 	<Lesson>
 		<Name>Cooking</Name>
 		<Image>placeholder_lesson</Image>
@@ -15,14 +26,5 @@
 		<Image>placeholder_lesson</Image>
 		<ActivityName>Society</ActivityName>
 	</Lesson>
-	<Lesson>
-		<Name>House</Name>
-		<Image>placeholder_lesson</Image>
-		<ActivityName>House</ActivityName>
-	</Lesson>
-	<Lesson>
-		<Name>F a m i l y!</Name>
-		<Image>placeholder_lesson</Image>
-		<ActivityName>Family</ActivityName>
-	</Lesson>
+	
 </resources>
