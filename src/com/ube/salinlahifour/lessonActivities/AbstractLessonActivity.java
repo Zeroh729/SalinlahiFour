@@ -44,9 +44,35 @@ public abstract class AbstractLessonActivity extends Activity {
 	protected void getQuestions(){
 		Log.d("TESTINGLessonActivity", "Aldrin: getting Questions");
 		questions = new ArrayList<Item>();
+		switch(activityLevel){
+		
+		case "HARD":
 		questions.add(items.get(0));
 		questions.add(items.get(1));
 		questions.add(items.get(2));
+		questions.add(items.get(3));
+		questions.add(items.get(4));
+		questions.add(items.get(5));
+		questions.add(items.get(6));
+		questions.add(items.get(7));
+		questions.add(items.get(8));
+		break;
+		case "MEDIUM":
+			questions.add(items.get(0));
+			questions.add(items.get(1));
+			questions.add(items.get(2));
+			questions.add(items.get(3));
+			questions.add(items.get(4));
+			questions.add(items.get(5));
+			questions.add(items.get(6));
+		break;
+		case "EASY":
+			questions.add(items.get(0));
+			questions.add(items.get(1));
+			questions.add(items.get(2));
+			questions.add(items.get(3));
+		break;
+		}
 	}
 	
 	protected void initiateNarrationModule(){

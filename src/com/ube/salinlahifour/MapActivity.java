@@ -14,12 +14,14 @@ import android.content.res.XmlResourceParser;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +35,7 @@ public class MapActivity extends Activity implements OnClickListener{
 	private TextView[] txtViews;
 	private Scene scene;
 	private Intent intent = null;
+	private ImageButton anchor;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +43,9 @@ public class MapActivity extends Activity implements OnClickListener{
 		imgBtns = new ImageButton[5];
 		txtViews = new TextView[5];
 		//setContentView(R.layout.activity_map);
-
+		
+		anchor = (ImageButton) findViewById(R.id.anchor);
+		
 		Log.d("PasringXML","TestTestTest");
 		try {
 			parseXML();
@@ -211,42 +216,58 @@ public class MapActivity extends Activity implements OnClickListener{
 		}
 		
 		
+		final int fIndex = index;
+		
 		if(index != -1){
-			selectLevelPopup(index);
+		//	selectLevelPopup(index);
+			imgBtns[index].setOnClickListener(new ImageButton.OnClickListener(){
+
+				   @Override
+				   public void onClick(View view) {
+				    LayoutInflater layoutInflater = (LayoutInflater)getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);  
+				    View popupView = layoutInflater.inflate(R.layout.activity_difficulty, null);  
+				             final PopupWindow popupWindow = new PopupWindow(popupView, LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);  
+				             //popupWindow.dismiss();
+				             popupWindow.setOutsideTouchable(true);
+				             popupWindow.setBackgroundDrawable(new BitmapDrawable());
+				             ImageButton easy = (ImageButton)popupView.findViewById(R.id.btn_easy_level);
+				             easy.setOnClickListener(new ImageButton.OnClickListener(){
+				        	     @Override
+				        	     public void onClick(View v) {
+				        	      // TODO Auto-generated method stub
+				        	    	 intent = new Intent(scene.getLessons().get(fIndex).getTutorial());
+				         			intent.putExtra("activityClass", scene.getLessons().get(fIndex).getActivity());
+				         			intent.putExtra("activityLevel", LevelType.EASY.toString());
+				         			startActivity(intent);
+				        	     }});
+				             ImageButton medium = (ImageButton)popupView.findViewById(R.id.btn_medium_level);
+				             medium.setOnClickListener(new ImageButton.OnClickListener(){
+
+				        	     @Override
+				        	     public void onClick(View v) {
+				        	      // TODO Auto-generated method stub
+				        	    	 intent = new Intent(scene.getLessons().get(fIndex).getTutorial());
+				         			intent.putExtra("activityClass", scene.getLessons().get(fIndex).getActivity());
+				         			intent.putExtra("activityLevel", LevelType.MEDIUM.toString());
+				         			startActivity(intent);
+				        	     }});
+				             ImageButton hard = (ImageButton)popupView.findViewById(R.id.btn_hard_level);
+				             hard.setOnClickListener(new ImageButton.OnClickListener(){
+
+				        	     @Override
+				        	     public void onClick(View v) {
+				        	      // TODO Auto-generated method stub
+				        	    	 intent = new Intent(scene.getLessons().get(fIndex).getTutorial());
+				         			intent.putExtra("activityClass", scene.getLessons().get(fIndex).getActivity());
+				         			intent.putExtra("activityLevel", LevelType.HARD.toString());
+				         			startActivity(intent);
+				        	     }});
+				        
+				            popupWindow.showAsDropDown(imgBtns[fIndex],50,-100);
+				            
+				   }});
 		}
 	}
 	
-	public void selectLevelPopup(final int index){
-		AlertDialog.Builder alertDialog = new AlertDialog.Builder(MapActivity.this);
-        alertDialog.setTitle(scene.getLessons().get(index).getName());
-        alertDialog.setMessage("Choose difficulty:");
-        alertDialog.setNegativeButton("EASY", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {		
-            	intent = new Intent(scene.getLessons().get(index).getTutorial());
-    			intent.putExtra("activityClass", scene.getLessons().get(index).getActivity());
-    			intent.putExtra("activityLevel", LevelType.EASY.toString());
-    			startActivity(intent);
-            }
-        });
-        
-        alertDialog.setNeutralButton("MEDIUM", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {		
-            	intent = new Intent(scene.getLessons().get(index).getTutorial());
-    			intent.putExtra("activityClass", scene.getLessons().get(index).getActivity());
-    			intent.putExtra("activityLevel", LevelType.MEDIUM.toString());
-    			startActivity(intent);
-            }
-        });
-
-        alertDialog.setPositiveButton("HARD", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {	
-            	intent = new Intent(scene.getLessons().get(index).getTutorial());
-    			intent.putExtra("activityClass", scene.getLessons().get(index).getActivity());
-    			intent.putExtra("activityLevel", LevelType.HARD.toString());
-    			startActivity(intent);
-            }
-        });
-
-        alertDialog.show();
-	}
+	
 }

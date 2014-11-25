@@ -27,53 +27,7 @@
     				android:layout_width="wrap_content"
     				android:layout_height="match_parent"
     				android:layout_alignTop="@id/inside_imageview">
-						
-                  	    
-                  	    
-            			<TextView
-               				android:id="@+id/tv_dialog"
-                			android:layout_width="wrap_content"
-               				android:layout_height="wrap_content"
-                			android:layout_centerHorizontal="true"
-                			android:text="Call Lolo"
-                			android:textSize="22sp" />
-
-            		
-
-            			<ImageButton
-            			    android:id="@+id/img_choiceb"
-            			    android:layout_width="100dp"
-        					android:layout_height="100dp"
-        					android:scaleX="0.85"
-        					android:scaleY="0.85"
-            			    android:layout_alignParentBottom="true"
-            			    android:layout_toRightOf="@+id/tv_dialog"
-            			    android:background="@null"
-            			    android:contentDescription="..."
-            			    android:onClick="onClick"
-            			    android:src="@drawable/boy" />
-					<!-- <RelativeLayout
-    				android:layout_width="match_parent"
-    				android:layout_height="match_parent"
-    				android:layout_toRightOf="@+id/img_choiceb">
-            				<ImageView
-            				    android:id="@+id/img_bubbleb"
-            				    android:layout_width="wrap_content"
-            			    	android:layout_height="wrap_content"
-            			    	android:layout_marginBottom="200dp"
-            			    	android:layout_marginLeft="13dp"
-            				    android:src="@drawable/bubble"
-            				    android:contentDescription="..."/>
-							<TextView
-               					android:id="@+id/tv_feedbackb"
-                				android:layout_width="wrap_content"
-                				android:layout_height="wrap_content"
-                				android:layout_centerHorizontal="true"
-                				android:layout_marginBottom="200dp"
-            			    	android:layout_marginLeft="13dp"
-                				android:text="text"
-                				android:textSize="22sp"/>
-							</RelativeLayout> -->
+		
 						<ImageButton
                 			android:id="@+id/img_choicec"
                 			android:layout_width="100dp"
@@ -87,29 +41,8 @@
                 			android:contentDescription="..."
                 			android:src="@drawable/boy" 
                 			android:onClick="onClick"
+                			android:visibility="invisible"
                 			android:background="@null"/>
-						<!-- <RelativeLayout
-    						android:layout_width="match_parent"
-    						android:layout_height="match_parent"
-    						android:layout_toRightOf="@+id/img_choicec">
-							<ImageView
-            				    android:id="@+id/img_bubblec"
-            				    android:layout_width="wrap_content"
-            			    	android:layout_height="wrap_content"
-            			    	android:layout_marginBottom="200dp"
-            			    	android:layout_marginLeft="13dp"
-            				    android:src="@drawable/bubble"
-            				    />
-							<TextView
-               					android:id="@+id/tv_feedbackc"
-                				android:layout_width="wrap_content"
-                				android:layout_height="wrap_content"
-                				android:layout_centerHorizontal="true"
-                				android:layout_marginBottom="200dp"
-            			    	android:layout_marginLeft="13dp"
-                				android:text="text"
-                				android:textSize="22sp"/>
-							</RelativeLayout> -->
 						<ImageButton
                 			android:id="@+id/img_choiced"
                 			android:layout_width="100dp"
@@ -121,31 +54,10 @@
             			    android:layout_marginLeft="13dp"
             			    android:layout_toRightOf="@+id/img_choicec"
                 			android:contentDescription="..."
+                			android:visibility="invisible"
                 			android:src="@drawable/boy" 
                 			android:onClick="onClick"
                 			android:background="@null"/>
-						<!-- <RelativeLayout
-    						android:layout_width="match_parent"
-    						android:layout_height="match_parent"
-    						android:layout_toRightOf="@+id/img_choiced">
-							<ImageView
-            				    android:id="@+id/img_bubbled"
-            				    android:layout_width="wrap_content"
-            			    	android:layout_height="wrap_content"
-            			    	android:layout_marginBottom="200dp"
-            			    	android:layout_marginLeft="13dp"
-            				    android:src="@drawable/bubble"/>
-							<TextView
-               					android:id="@+id/tv_feedbackd"
-                				android:layout_width="wrap_content"
-                				android:layout_height="wrap_content"
-                				android:layout_centerHorizontal="true"
-                				android:layout_marginBottom="200dp"
-            			    	android:layout_marginLeft="13dp"
-                				android:text="text"
-                				android:textSize="22sp"/>
-						</RelativeLayout> -->
-						
 						<ImageButton
                 			android:id="@+id/img_choicee"
                 			android:layout_width="100dp"
@@ -157,30 +69,10 @@
             			    android:layout_marginLeft="13dp"
             			    android:layout_toRightOf="@+id/img_choiced"
                 			android:contentDescription="..."
+                			android:visibility="invisible"
                 			android:src="@drawable/boy" 
                 			android:onClick="onClick"
                 			android:background="@null"/>
-						<!-- <RelativeLayout
-    						android:layout_width="match_parent"
-    						android:layout_height="match_parent"
-    						android:layout_toRightOf="@+id/img_choicee">
-							<ImageView
-            				    android:id="@+id/img_bubblee"
-            				    android:layout_width="wrap_content"
-            			    	android:layout_height="wrap_content"
-            			    	android:layout_marginBottom="200dp"
-            			    	android:layout_marginLeft="13dp"
-            				    android:src="@drawable/bubble"/>
-							<TextView
-               					android:id="@+id/tv_feedbacke"
-                				android:layout_width="wrap_content"
-                				android:layout_height="wrap_content"
-                				android:layout_centerHorizontal="true"
-                				android:layout_marginBottom="200dp"
-            			    	android:layout_marginLeft="13dp"
-                				android:text="text"
-                				android:textSize="22sp"/>
-							</RelativeLayout>  -->
 							
             			<ImageButton
             			    android:id="@+id/img_choicea"
@@ -194,28 +86,9 @@
             			    android:layout_toRightOf="@+id/img_choicee"
             			    android:background="@null"
             			    android:contentDescription="..."
+            			    android:visibility="invisible"
             			    android:onClick="onClick"
             			    android:src="@drawable/bola" />
-            			<!-- <RelativeLayout
-    						android:layout_width="match_parent"
-    						android:layout_height="match_parent"
-    						android:layout_toRightOf="@+id/img_choicea">
-            				<ImageView
-            				    android:id="@+id/img_bubblea"
-            				    android:layout_width="wrap_content"
-            			    	android:layout_height="wrap_content"
-            			    	android:layout_marginBottom="200dp"
-            			    	android:layout_marginLeft="13dp"
-            				    android:src="@drawable/bubble" />
-            				<TextView
-               					android:id="@+id/tv_feedbacka"
-                				android:layout_width="wrap_content"
-                				android:layout_height="wrap_content"
-                				android:layout_centerHorizontal="true"
-                				android:text="text"
-                				android:textSize="22sp"/>
-                				
-            			</RelativeLayout> -->
             			<ImageButton
             			    android:id="@+id/img_choicef"
             			   android:layout_width="100dp"
@@ -228,6 +101,7 @@
             			    android:layout_toRightOf="@+id/img_choicee"
             			    android:background="@null"
             			    android:contentDescription="..."
+            			    android:visibility="invisible"
             			    android:onClick="onClick"
             			    android:src="@drawable/bola" />
             			<ImageButton
@@ -242,6 +116,7 @@
             			    android:layout_toRightOf="@+id/img_choicee"
             			    android:background="@null"
             			    android:contentDescription="..."
+            			    android:visibility="invisible"
             			    android:onClick="onClick"
             			    android:src="@drawable/bola" />
             			<ImageButton
@@ -256,6 +131,7 @@
             			    android:layout_toRightOf="@+id/img_choicee"
             			    android:background="@null"
             			    android:contentDescription="..."
+            			    android:visibility="invisible"
             			    android:onClick="onClick"
             			    android:src="@drawable/bola" />
             			<ImageButton
@@ -270,6 +146,7 @@
             			    android:layout_toRightOf="@+id/img_choicee"
             			    android:background="@null"
             			    android:contentDescription="..."
+            			    android:visibility="invisible"
             			    android:onClick="onClick"
             			    android:src="@drawable/bola" />
              			</RelativeLayout>

@@ -9,60 +9,63 @@
 -->
 
 <type>
-<Word_Entry>
-	<q_num>1</q_num>
-    <word>Lolo</word>
-    <w_type>definition</w_type>
-    <notes>It means Grandfather in enlish</notes>
-    <hint>Its stars with letter L</hint>
-	<lesson>1</lesson>
-</Word_Entry>
-<Word_Entry>
-    <q_num>2</q_num>
-	<word>Lola</word>
-    <w_type>definition</w_type>
-    <notes>is used to say thank you in Filipino</notes>
-    <hint>When I want to thank a Filipino, I'd tell them Maraming Salamat po</hint>
-	<lesson>1</lesson>
-</Word_Entry>
-<Word_Entry>
-    <q_num>3</q_num>
+    <Word_Entry>
+    <q_num>1</q_num>
 	<word>Nanay</word>
     <w_type>definition</w_type>
-    <notes>is a greeting used every noon</notes>
-    <hint>It's nice to greet everyone "Magandang tanghali po" every noon.</hint>
+    <notes>is your mother</notes>
+    <hint>She usually cooks for the family.</hint>
+	<lesson>1</lesson>
+</Word_Entry>
+
+<Word_Entry>
+    <q_num>2</q_num>
+	<word>Tatay</word>
+    <w_type>definition</w_type>
+    <notes>is your father</notes>
+    <hint>He goes to work.</hint>
+	<lesson>1</lesson>
+</Word_Entry>
+
+<Word_Entry>
+    <q_num>3</q_num>
+	<word>Kuya</word>
+    <w_type>definition</w_type>
+    <notes>is your older brother</notes>
+    <hint>He is older than you.</hint>
 	<lesson>1</lesson>
 </Word_Entry>
 <Word_Entry>
     <q_num>4</q_num>
-	<word>Tatay</word>
+    <word>Ate</word>
     <w_type>definition</w_type>
-    <notes>is a greeting used every afternoon</notes>
-    <hint>It's nice to greet everyone "Magandang hapon po" every afternoon.</hint>
-	<lesson>1</lesson>
+    <notes>is your older sister</notes>
+    <hint>She is also older than you.</hint>
+    <lesson>1</lesson>
 </Word_Entry>
 <Word_Entry>
-    <q_num>5</q_num>
-	<word>Kuya</word>
+	<q_num>5</q_num>
+    <word>Lolo</word>
     <w_type>definition</w_type>
-    <notes>is a greeting used every evening</notes>
-    <hint>It's nice to greet everyone "Magandang Gabi po" every evening.</hint>
+    <notes>It means Grandfather in enlish</notes>
+    <hint>He is your parent's parent</hint>
 	<lesson>1</lesson>
 </Word_Entry>
 <Word_Entry>
     <q_num>6</q_num>
-    <word>Ate</word>
+	<word>Lola</word>
     <w_type>definition</w_type>
-    <notes>is a greeting used every evening</notes>
-    <hint>It's nice to greet everyone "Magandang Gabi po" every evening.</hint>
-    <lesson>1</lesson>
+    <notes>is your grandmother</notes>
+    <hint>She is your parent's parent</hint>
+	<lesson>1</lesson>
 </Word_Entry>
+
 <Word_Entry>
     <q_num>7</q_num>
     <word>Bunso</word>
     <w_type>definition</w_type>
     <notes>is a greeting used every evening</notes>
-    <hint>It's nice to greet everyone "Magandang Gabi po" every evening.</hint>
+    <hint>He's is younger than you</hint>
     <lesson>1</lesson>
 </Word_Entry>
 <Word_Entry>
@@ -70,7 +73,7 @@
     <word>Tito</word>
     <w_type>definition</w_type>
     <notes>is a greeting used every evening</notes>
-    <hint>It's nice to greet everyone "Magandang Gabi po" every evening.</hint>
+    <hint>He's your father's sibling.</hint>
     <lesson>1</lesson>
 </Word_Entry>
 <Word_Entry>
@@ -78,7 +81,7 @@
     <word>Tita</word>
     <w_type>definition</w_type>
     <notes>is a greeting used every evening</notes>
-    <hint>It's nice to greet everyone "Magandang Gabi po" every evening.</hint>
+    <hint>She is related to your tito.</hint>
     <lesson>1</lesson>
 </Word_Entry>
 <Word_Entry>

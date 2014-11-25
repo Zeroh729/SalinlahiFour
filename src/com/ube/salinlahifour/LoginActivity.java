@@ -38,17 +38,14 @@ public class LoginActivity extends Activity {
 		LoginAdapter adapter = new LoginAdapter(this, R.layout.item_user, userDetails);
 		listview.setAdapter(adapter);
 		listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
 				Intent intent = new Intent(getApplicationContext(), MapActivity.class);
 				startActivity(intent);
-				
 				SharedPreferences prefs = getSharedPreferences("lastUserID", MODE_PRIVATE);
 				Editor editor = prefs.edit();
 				editor.putInt("lastUserID", userDetails.get(position).getId());
 				editor.commit();
-
 				((SalinlahiFour)getApplication()).setUserID(userDetails.get(position).getId());
 				((SalinlahiFour)getApplication()).setUserName(userDetails.get(position).getName());
 			}
