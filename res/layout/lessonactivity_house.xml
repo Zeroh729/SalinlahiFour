@@ -2,167 +2,63 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center" >
+    android:orientation="horizontal"
+    android:background="@drawable/house_bg" >
     
-    <GridLayout
-        android:id="@+id/game_screen"
+    <RelativeLayout
+        android:id="@+id/relative_view" 
+     android:layout_width="wrap_content"
+    android:layout_height="wrap_content" 
+    android:gravity="center"
+    android:layout_centerInParent="true">
+    
+    <ImageButton
+        android:id="@+id/ib_pink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/cooking_bg"
-        android:columnCount="8"
-        android:rowCount="8" >
+        android:src="@drawable/house_pink"
+        android:background="@null"
+        android:onClick="onClick" />
 
-		<LinearLayout
-        android:id="@+id/option1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_column="0"
-        android:layout_row="0"
-        android:orientation="horizontal"
-        android:background="@drawable/star"
-        ></LinearLayout>
-        <LinearLayout
-            android:background="@drawable/star"
-        android:id="@+id/option2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_column="1"
-        android:layout_row="0"
-        android:orientation="horizontal"
-        ></LinearLayout>
-        <LinearLayout
-            android:background="@drawable/star"
-        android:id="@+id/option3"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_column="2"
-        android:layout_row="0"
-        android:orientation="horizontal"
-        ></LinearLayout>
-        <LinearLayout
-            android:background="@drawable/star"
-        android:id="@+id/option4"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_column="3"
-        android:layout_row="0"
-        android:orientation="horizontal"
-        ></LinearLayout>
-        <LinearLayout
-            android:background="@drawable/star"
-        android:id="@+id/option5"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_column="4"
-        android:layout_row="0"
-        android:orientation="horizontal"
-        ></LinearLayout>
-        <LinearLayout
-            android:background="@drawable/star"
-        android:id="@+id/option6"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_column="5"
-        android:layout_row="0"
-        android:orientation="horizontal"
-        ></LinearLayout>
-        <LinearLayout
-            android:background="@drawable/star"
-        android:id="@+id/option7"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_column="6"
-        android:layout_row="0"
-        android:orientation="horizontal"
-        ></LinearLayout>
-       
-                          
-    </GridLayout>
-    <GridLayout
-        android:id="@+id/choices_screen"
-    	android:layout_width="wrap_content"
-    	android:layout_height="wrap_content"
-    	android:columnCount="2"
-    	android:orientation="horizontal"
-    	android:layout_toRightOf="@+id/game_screen"
-     >
-          
-        		 <ImageButton
-        		     		android:layout_gravity="right|top"
-            			    android:id="@+id/img_choicea"
-            			    android:layout_width="50dp"
-        					android:layout_height="50dp"
-            			    android:background="@null"
-            			    android:contentDescription="..."
-            			    android:onClick="onClick"
-            			    android:src="@drawable/boy"
-            			    android:layout_column="0"
-     						android:layout_row="0" />
-        		 <ImageButton
-        		     		android:layout_gravity="right|top"
-            			    android:id="@+id/img_choiceb"
-            			    android:layout_width="50dp"
-        					android:layout_height="50dp"
-            			    android:background="@null"
-            			    android:contentDescription="..."
-            			    android:onClick="onClick"
-            			    android:src="@drawable/boy"
-            			    android:layout_column="1"
-     						android:layout_row="0" />
-        		 <ImageButton
-        		     		android:layout_gravity="right|top"
-            			    android:id="@+id/img_choicec"
-            			    android:layout_width="50dp"
-        					android:layout_height="50dp"
-            			    android:background="@null"
-            			    android:contentDescription="..."
-            			    android:onClick="onClick"
-            			    android:src="@drawable/boy"
-            			    android:layout_column="0"
-     						android:layout_row="1" />
-        		 <ImageButton
-        		     		android:layout_gravity="right|top"
-            			    android:id="@+id/img_choiced"
-            			    android:layout_width="50dp"
-        					android:layout_height="50dp"
-            			    android:background="@null"
-            			    android:contentDescription="..."
-            			    android:onClick="onClick"
-            			    android:src="@drawable/boy"
-            			    android:layout_column="1"
-     						android:layout_row="1" />
-        		 <ImageButton
-        		     		android:layout_gravity="right|top"
-            			    android:id="@+id/img_choicee"
-            			    android:layout_width="50dp"
-        					android:layout_height="50dp"
-            			    android:background="@null"
-            			    android:contentDescription="..."
-            			    android:onClick="onClick"
-            			    android:src="@drawable/boy"
-            			    android:layout_column="0"
-     						android:layout_row="2" />
-    </GridLayout>
-    
-         					<TextView
-         					    android:id="@+id/tv_feedback"
-         					    android:layout_width="wrap_content"
-         					    android:layout_height="wrap_content"
-         					    android:layout_alignParentBottom="true"
-         					    android:layout_centerVertical="true"
-         					    android:layout_marginBottom="40dp"
-         					    android:background="@drawable/subtitle_bg"
-         					    android:text="text"
-         					    android:textSize="22sp" />
-
-         					<TextView
-    					    android:id="@+id/timer_dialog" 
-        					android:layout_width="wrap_content"
-        					android:layout_height="wrap_content"
-        					android:layout_gravity="center_horizontal"
-        					android:autoLink="web"
-        					android:text="Timer" 
-        					android:textStyle="bold" />
-       
-  
+    <ImageButton
+        android:id="@+id/ib_blue" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/house_blue"
+        android:layout_toRightOf="@+id/ib_pink"
+        android:background="@null"
+        android:onClick="onClick"
+        />
+    <ImageButton
+        android:id="@+id/ib_skobe" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/house_skobe"
+        android:layout_below="@+id/ib_pink"
+        android:background="@null"
+        android:onClick="onClick"
+        />
+    <ImageButton
+        android:id="@+id/ib_yellow" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/house_yellow"
+        android:layout_toRightOf="@+id/ib_skobe"
+        android:layout_below="@+id/ib_blue"
+        android:background="@null"
+        android:onClick="onClick"
+        />
+   
+    </RelativeLayout>
+     <TextView
+	          android:id="@+id/tv_feedback"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="text"
+               android:layout_alignParentBottom="true"
+            	android:layout_centerHorizontal="true"
+            	android:gravity="center"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/subtitle_bg"
+              android:textSize="22sp" />
 </RelativeLayout>

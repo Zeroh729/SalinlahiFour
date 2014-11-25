@@ -281,20 +281,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		
 		Log.d("Debug Family","Aldrin: Answer Check");	
 	}
-    private void end_report(int choice){//THIS IS FOR TRANSFERRING TO OTHER ACTIVITIES
-    	
-    	switch(choice){
-    	case 1:
-    		Intent intent = new Intent(this, MapActivity.class);
-		startActivity(intent); break;
-    	case 2:
-    		Intent intent1 = new Intent(activityClass);
-    		intent1.putExtra("activityClass", activityClass);
-    		intent1.putExtra("activityLevel", activityLevel);
-			startActivity(intent1);break;
-    	}
-    	
-    }
+   
 	private void setChoices(){
 		Log.d("Debug Family","Aldrin: Setting Choices");
 		int answerIndex = new Random().nextInt(choices.length);

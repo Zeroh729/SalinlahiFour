@@ -3,12 +3,14 @@ package com.ube.salinlahifour.lessonActivities;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 
 import com.ube.salinlahifour.Item;
+import com.ube.salinlahifour.MapActivity;
 import com.ube.salinlahifour.SalinlahiFour;
 
 import iFeedback.iFeedback;
@@ -84,7 +86,20 @@ public abstract class AbstractLessonActivity extends Activity {
 		Log.d("TESTINGLessonActivity", "Aldrin: iFeedback LOL");
 
 	}
-	
+	protected void end_report(int choice){//THIS IS FOR TRANSFERRING TO OTHER ACTIVITIES
+	    	
+	    	switch(choice){
+	    	case 1:
+	    		Intent intent = new Intent(this, MapActivity.class);
+			startActivity(intent); break;
+	    	case 2:
+	    		Intent intent1 = new Intent(activityClass);
+	    		intent1.putExtra("activityClass", activityClass);
+	    		intent1.putExtra("activityLevel", activityLevel);
+				startActivity(intent1);break;
+	    	}
+	    	
+	    }
 	protected void showReportCard(){
 	}
 

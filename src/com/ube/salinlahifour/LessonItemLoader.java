@@ -64,13 +64,11 @@ public abstract class LessonItemLoader {
 					case "HARD":
 					case "MEDIUM":
 					case "EASY":
-						items.add(new Item("Upuan" , "Chair", "Get the Upuan?", R.drawable.family_lolo, null, LevelType.EASY));
-						items.add(new Item("Bola" , "Ball", "Get the Bola", R.drawable.family_lola, null, LevelType.EASY));
-						items.add(new Item("Kama" , "Bed", "Get the Kama", R.drawable.family_nanay, null, LevelType.EASY));
-						items.add(new Item("Unan" , "Pillow", "Get the Unan", R.drawable.family_tatay, null, LevelType.EASY));
-						items.add(new Item("Inidoro" , "Toilet", "Get the Inidoro", R.drawable.family_kuya, null, LevelType.EASY));
-						items.add(new Item("Sapatos" , "Shoes", "Get the Sapatos", R.drawable.family_ate, null, LevelType.EASY));
-				}
+						items.add(new Item("Tulugan" , "Bedroom", "Where is Tulugan?", R.drawable.house_pink, null, LevelType.EASY));
+						items.add(new Item("Paliguan" , "Bathroom", "Where is Paliguan?", R.drawable.house_blue, null, LevelType.EASY));
+						items.add(new Item("Salas" , "Livingroom", "Where is salas?", R.drawable.house_skobe, null, LevelType.EASY));
+						items.add(new Item("Lutuan" , "Kitchen", "Where is lutuan?", R.drawable.house_yellow, null, LevelType.EASY));
+							}
 				break;
 			case "com.ube.salinlahifour.lessonActivities.Music":
 				switch(activityLevel){
