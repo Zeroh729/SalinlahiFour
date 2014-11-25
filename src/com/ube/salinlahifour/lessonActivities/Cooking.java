@@ -6,26 +6,18 @@ import java.util.Random;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.R;
-
-import com.ube.salinlahifour.enumTypes.LevelType;
-
-
-import evaluationModule.Evaluation;
-
-
+import com.ube.salinlahifour.evaluationModule.Evaluation;
 
 public class Cooking extends AbstractLessonActivity implements OnClickListener{
 	private TextView tv_dialog;
 	private TextView tv_feedback;
 	private Evaluation evaluator = new Evaluation();
 	private ImageButton[] choices;
-	private int index;
+	private int itemno;
 	
 	public Cooking(){
 		layoutID = R.layout.lessonactivity_cooking;
@@ -34,18 +26,18 @@ public class Cooking extends AbstractLessonActivity implements OnClickListener{
 	@Override
 	protected void run() {
 		setChoices();
-		tv_dialog.setText(questions.get(index).getLabel());
+		tv_dialog.setText(questions.get(itemno).getLabel());
 	}
 
 	@Override
 	protected void checkAnswer(String answer) {
 		Log.d("TESTINGLessonActivity", "checking answers");
-		if(evaluator.evaluateAnswer(questions.get(index).getWord(), answer)){
+		if(evaluator.evaluateAnswer(questions.get(itemno).getWord(), answer)){
 			//NLG Part - Correct
-			tv_feedback.setText(evaluator.getImmediateFeedback(questions.get(index), index, answer));
+			tv_feedback.setText(evaluator.getImmediateFeedback(questions.get(itemno), itemno, answer));
 			
-			if(index < questions.size()-1){
-				index++;
+			if(itemno < questions.size()-1){
+				itemno++;
 				run();
 			}
 			else{
@@ -53,18 +45,18 @@ public class Cooking extends AbstractLessonActivity implements OnClickListener{
 			}
 		}else{
 			//NLG Part - Wrong
-			tv_feedback.setText(evaluator.getImmediateFeedback(questions.get(index), index, answer));
+			tv_feedback.setText(evaluator.getImmediateFeedback(questions.get(itemno), itemno, answer));
 		}
 	}
 	
 	private void setChoices(){
 		int answerIndex = new Random().nextInt(choices.length);
 		ArrayList<Integer> taken = new ArrayList();
-		taken.add(index);
+		taken.add(items.indexOf(questions.get(itemno)));
 		for(int i = 0; i < choices.length; i++){
 			if(i == answerIndex){
-				choices[i].setImageResource(questions.get(index).getImageID());
-				choices[i].setTag(questions.get(index).getWord());
+				choices[i].setImageResource(questions.get(itemno).getImageID());
+				choices[i].setTag(questions.get(itemno).getWord());
 			}
 			else{
 				int rand;
@@ -81,7 +73,7 @@ public class Cooking extends AbstractLessonActivity implements OnClickListener{
 
 	@Override
 	protected void initiateViews() {
-		index = 0;
+		itemno = 0;
 		tv_dialog = (TextView)findViewById(R.id.tv_dialog);
 		tv_feedback = (TextView) findViewById(R.id.tv_feedback);
 		choices = new ImageButton[3];

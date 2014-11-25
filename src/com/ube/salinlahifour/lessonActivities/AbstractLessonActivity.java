@@ -10,6 +10,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -108,12 +109,9 @@ public abstract class AbstractLessonActivity extends Activity {
 						questions.add(lessonItems.get(i));
 						break;
 					}
+				Collections.shuffle(questions,  new Random(System.nanoTime()));
 			}
-	//		questions.add(items.get(0));
-	//		questions.add(items.get(1));
-	//		questions.add(items.get(2))		
-			} catch (ParseException e) {
-			// TODO Auto-generated catch block
+		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 	}
@@ -152,6 +150,7 @@ public abstract class AbstractLessonActivity extends Activity {
 	}
 	
 	protected void showReportCard(){
+		
 	}
 
 	abstract protected void initiateViews();
