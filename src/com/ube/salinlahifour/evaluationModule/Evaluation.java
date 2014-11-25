@@ -45,22 +45,32 @@ public class Evaluation {
 	public void updateUserLessonProgress(String LessonName, String activityLevel, UserLessonProgressOperations userLessonProgressOperator, int UserID){
 		String star;
 		if(score <= totscore/2)
-			star = "Bronze";
+			star = StarType.BRONZE.toString();
 		else if(score >= totscore/2 && score != totscore)
-			star = "Silver";
+			star = StarType.SILVER.toString();
 		else 
-			star = "Gold";
+			star = StarType.GOLD.toString();
 		
+		userLessonProgressor = userLessonProgressOperator.getUserLessonProgress(UserID, LessonName);
+		if(userLessonProgressor == null){
+			if(activityLevel == LevelType.EASY.toString())
+				userLessonProgressOperator.addUserLessonProgress(UserID, LessonName, star, null, null);
+			else if(activityLevel == LevelType.MEDIUM.toString())
+				userLessonProgressOperator.addUserLessonProgress(UserID, LessonName, null, star, null);
+			else
+				userLessonProgressOperator.addUserLessonProgress(UserID, LessonName, null, null, star);
+		} else {
+			if(activityLevel == LevelType.EASY.toString())
+				userLessonProgressor.setEasyStar(star);
+			else if(activityLevel == LevelType.MEDIUM.toString())
+				userLessonProgressor.setMediumStar(star);
+			else
+				userLessonProgressor.setHardStar(star);
+			
+			userLessonProgressOperator.updateUserLessonProgress(UserID, LessonName, userLessonProgressor.getEasyStar(), userLessonProgressor.getMediumStar(), userLessonProgressor.getHardStar());
+		}
+			
 		
-		userLessonProgressor = userLessonProgressOperator.getUserLessonProgress(UserID, LessonName); 
-		if(activityLevel == LevelType.EASY.toString())
-			userLessonProgressor.setEasyStar(star);
-		else if(activityLevel == LevelType.MEDIUM.toString())
-			userLessonProgressor.setMediumStar(star);
-		else
-			userLessonProgressor.setHardStar(star);
-		
-		userLessonProgressOperator.updateUserLessonProgress(UserID, LessonName, userLessonProgressor.getEasyStar(), userLessonProgressor.getMediumStar(), userLessonProgressor.getHardStar());
 	}
 	
 	private Item getMostImprovedItem(){
