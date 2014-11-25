@@ -24,13 +24,13 @@ public class LoginAdapter extends ArrayAdapter<UserDetail>{
 		this.context = context;
 		userDetails = objects;
 		
-		inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 	
 	private class UserDetailHolder{
-		ImageView img_gender;
-		TextView tv_name;
-		TextView tv_loggedin;
+		public ImageView img_gender;
+		public TextView tv_name;
+		public TextView tv_loggedin;
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class LoginAdapter extends ArrayAdapter<UserDetail>{
 		UserDetailHolder holder;
 		
 		if(convertView == null){
-			convertView = inflater.inflate(R.layout.item_user, parent);
+			convertView = inflater.inflate(R.layout.item_user, parent, false);
 			holder = new UserDetailHolder();
 			holder.img_gender = (ImageView)convertView.findViewById(R.id.img_gender);
 			holder.tv_loggedin = (TextView)convertView.findViewById(R.id.tv_loggedin);
@@ -48,10 +48,12 @@ public class LoginAdapter extends ArrayAdapter<UserDetail>{
 		}else{
 			holder = (UserDetailHolder) convertView.getTag();
 		}
-		if(item.getGender() == "male")
-		holder.img_gender.setImageResource(R.drawable.boy);
+		if(item.getGender().equals("male"))
+			holder.img_gender.setImageResource(R.drawable.boy);
+		else
+			holder.img_gender.setImageResource(R.drawable.girl);
 		holder.tv_name.setText(item.getName());
-		SharedPreferences prefs = context.getSharedPreferences("lastUserID", context.MODE_PRIVATE);
+		SharedPreferences prefs = context.getSharedPreferences("appData", context.MODE_PRIVATE);
 		final int lastUserID = prefs.getInt("lastUserID", -1);
 		if(lastUserID == item.getId())
 			holder.tv_loggedin.setText("logged in");

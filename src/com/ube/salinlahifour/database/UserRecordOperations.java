@@ -1,15 +1,17 @@
 package com.ube.salinlahifour.database;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.widget.Toast;
 
-import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.model.UserRecord;
 import com.ube.salinlahifour.tools.DateTimeConverter;
 
@@ -30,6 +32,7 @@ public class UserRecordOperations {
 	public void close(){
 		dbHandler.close();
 	}
+	
 	public UserRecord addUserRecord(int userID, String lessonName, String correctAnswer, String status){
 		ContentValues values = new ContentValues();
 		values.put(dbHandler.USERRECORD_USERID, userID);
@@ -37,6 +40,26 @@ public class UserRecordOperations {
 		values.put(dbHandler.USERRECORD_CORRECTANSWER, correctAnswer);
 		values.put(dbHandler.USERRECORD_STATUS, status);
 		values.put(dbHandler.USERRECORD_DATECREATED, DateTimeConverter.getCurrentDateTime());
+		
+		
+		long id = database.insert(dbHandler.TABLE_USERRECORD, null, values);
+
+		UserRecord latestUserRecord = getUserRecord(id);
+		
+		//debugging
+				Toast toast = Toast.makeText(dbHandler.getContext(), "Latest Record: userid-" + latestUserRecord.getUserID() + " status-" + latestUserRecord.getStatus() + " datetime-" + latestUserRecord.getDateCreated(), Toast.LENGTH_LONG);
+				toast.show();
+				
+		return latestUserRecord;
+	}
+	
+	public UserRecord addUserRecord(long userID, String lessonName, String correctAnswer, String status, String date){
+		ContentValues values = new ContentValues();
+		values.put(dbHandler.USERRECORD_USERID, userID);
+		values.put(dbHandler.USERRECORD_LESSONNAME, lessonName);
+		values.put(dbHandler.USERRECORD_CORRECTANSWER, correctAnswer);
+		values.put(dbHandler.USERRECORD_STATUS, status);
+		values.put(dbHandler.USERRECORD_DATECREATED, date);
 		
 		
 		long id = database.insert(dbHandler.TABLE_USERRECORD, null, values);
@@ -105,17 +128,68 @@ public class UserRecordOperations {
 		return userRecord;
 	}	
 	
-	//FIX THIS: should return records made within 30 days
-	public UserRecord getRecentUserRecordsFromUserId(long userId){
+	public void deleteUserRecord(UserRecord userRecord){
+		long id = userRecord.getId();
+		database.delete(dbHandler.TABLE_USERRECORD, dbHandler.USERRECORD_ID + " = " + id, null);
+	}
+	
+	public ArrayList<UserRecord> getRecentUserRecordsFromUserId(long userId) throws ParseException{
+		Date date = DateTimeConverter.convertStringToDateTime(DateTimeConverter.getDateLastMonth());
+		ArrayList<UserRecord> list = new ArrayList<UserRecord>();
+		ArrayList<UserRecord> userRecordList = new ArrayList<UserRecord>();
+		
+		Log.d(date.toGMTString(), "TESTDATE");
+		
 		Cursor cursor = database.query(dbHandler.TABLE_USERRECORD, 
 				USERRECORD_TABLE_COLUMNS,
-				dbHandler.USERRECORD_USERID + " = " + userId, null, null, null, null);
+				dbHandler.USERRECORD_USERID + " = " + userId 
+				, null, null, null, null);
+		
 		cursor.moveToFirst();
 
-		UserRecord userRecord = parseUserRecord(cursor);
+		while(!cursor.isAfterLast()){
+			UserRecord student = parseUserRecord(cursor);
+			list.add(student);
+			cursor.moveToNext();
+		}
 		cursor.close();
+		
+    	for(UserRecord r: list){
+        	Date dateCreated = DateTimeConverter.convertStringToDateTime(r.getDateCreated());
+        	if(date.compareTo(dateCreated) < 0)
+        		userRecordList.add(r);
+        }
 
-		return userRecord;
+		return userRecordList;
+	}
+	
+	public ArrayList<UserRecord> getRecentUserRecordsFromUserId(long userId, String lessonName) throws ParseException{
+		Date date = DateTimeConverter.convertStringToDateTime(DateTimeConverter.getDateLastMonth());
+		ArrayList<UserRecord> list = new ArrayList<UserRecord>();
+		ArrayList<UserRecord> userRecordList = new ArrayList<UserRecord>();
+		
+		Cursor cursor = database.query(dbHandler.TABLE_USERRECORD, 
+				USERRECORD_TABLE_COLUMNS,
+				dbHandler.USERRECORD_USERID + " = " + userId 
+				+ " AND " + dbHandler.USERRECORD_LESSONNAME + " = '" + lessonName + "'"
+				, null, null, null, null);
+		
+		cursor.moveToFirst();
+
+		while(!cursor.isAfterLast()){
+			UserRecord student = parseUserRecord(cursor);
+			list.add(student);
+			cursor.moveToNext();
+		}
+		cursor.close();
+		
+    	for(UserRecord r: list){
+        	Date dateCreated = DateTimeConverter.convertStringToDateTime(r.getDateCreated());
+        	if(date.compareTo(dateCreated) < 0)
+        		userRecordList.add(r);
+        }
+
+		return userRecordList;
 	}
 	
 }

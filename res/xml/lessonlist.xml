@@ -6,16 +6,6 @@
 		<ActivityName>Cooking</ActivityName>
 	</Lesson>
 	<Lesson>
-		<Name>Music</Name>
-		<Image>placeholder_lesson</Image>
-		<ActivityName>Music</ActivityName>
-	</Lesson>
-	<Lesson>
-		<Name>Society</Name>
-		<Image>placeholder_lesson</Image>
-		<ActivityName>Society</ActivityName>
-	</Lesson>
-	<Lesson>
 		<Name>House</Name>
 		<Image>placeholder_lesson</Image>
 		<ActivityName>House</ActivityName>
@@ -24,5 +14,15 @@
 		<Name>F a m i l y!</Name>
 		<Image>placeholder_lesson</Image>
 		<ActivityName>Family</ActivityName>
+	</Lesson>
+	<Lesson>
+		<Name>Music</Name>
+		<Image>placeholder_lesson</Image>
+		<ActivityName>Music</ActivityName>
+	</Lesson>
+	<Lesson>
+		<Name>Society</Name>
+		<Image>placeholder_lesson</Image>
+		<ActivityName>Society</ActivityName>
 	</Lesson>
 </resources>

@@ -4,9 +4,17 @@
     android:layout_height="match_parent"
     tools:context="${packageName}.${activityClass}" >
 
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:onClick="onClick"
+        />
     <ListView
         android:id="@+id/listview"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"/>
+        android:layout_height="fill_parent"
+        android:layout_below="@id/btn_register"/>
 
 </RelativeLayout>

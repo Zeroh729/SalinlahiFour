@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 import android.app.Application;
 
+import com.ube.salinlahifour.model.UserDetail;
+
 public class SalinlahiFour extends Application{
-	private int userID;
-	private String userName;
+	private UserDetail loggedInUser;
 	private ArrayList<Item> lessonItems;
 	
 	public ArrayList<Item> getLessonItems() {
@@ -16,19 +17,11 @@ public class SalinlahiFour extends Application{
 	public void setLessonItems(ArrayList<Item> items) {
 		this.lessonItems = items;
 	}
+	public UserDetail getLoggedInUser() {
+		return loggedInUser;
+	}
 
-	public int getUserID(){
-		return userID;
-	}
-	
-	public void setUserID(int id){
-		userID = id;
-	}
-	
-	public String getUserName(){
-		return userName;
-	}
-	public void setUserName(String name){
-		userName = name;
+	public void setLoggedInUser(UserDetail loggedInUser) {
+		this.loggedInUser = loggedInUser;
 	}
 }

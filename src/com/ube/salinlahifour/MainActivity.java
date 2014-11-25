@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.ube.salinlahifour.database.DatabaseHandler;
 import com.ube.salinlahifour.database.UserDetailOperations;
 import com.ube.salinlahifour.model.UserDetail;
+import com.ube.salinlahifour.tools.DateTimeConverter;
 
 public class MainActivity extends Activity {
 	private UserDetailOperations userDetailOperator;		
@@ -135,9 +136,10 @@ public class MainActivity extends Activity {
 		    }
 		 }catch(Exception e){
 		 }
-		SharedPreferences prefs = getSharedPreferences("lastUserID", MODE_PRIVATE);
+		 
+		SharedPreferences prefs = getSharedPreferences("appData", MODE_PRIVATE);
 		final int lastUserID = prefs.getInt("lastUserID", -1);
-//		final int lastUserID = 0; 
+		final int firstTime = prefs.getInt("firstTime", -1);
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
@@ -145,30 +147,33 @@ public class MainActivity extends Activity {
 		DatabaseHandler dbhandler = new DatabaseHandler(this);
 
 		userDetailOperator = new UserDetailOperations(this);
-		userDetailOperator.open();
 		
 		   new Handler().postDelayed(new Runnable() {
 
 		        public void run() {
-		        	if(lastUserID == -1){
+		        	if(firstTime == -1){	//If app is launched for the first time ever, go to Register Screen
 		        		Intent intent = new Intent();
 		        		intent.setClass(getApplicationContext(), RegistrationActivity.class);
-		        		startActivity(intent);
+		        		startActivity(intent);	
 		        	}
-		        		//startActivity(registationActivity);
-		        	else{
+		        	else if(lastUserID == -1){ //If there is no last logged in user, go to Login Screen
+			        	Intent intent = new Intent();
+			        	intent.setClass(getApplicationContext(), LoginActivity.class);
+			        	startActivity(intent);			
+		        	}
+		        	else{						//If there is a last logged in user, go to Map Screen
+		        		userDetailOperator.open();
 		        		UserDetail user = userDetailOperator.getUserDetail(lastUserID);
-		        		((SalinlahiFour)getApplication()).setUserID(user.getId());
-		        		((SalinlahiFour)getApplication()).setUserName(user.getName());
-		        		
+		        		userDetailOperator.close();
 		        		Intent intent = new Intent();
 		        		
-		        		intent.putExtra("UserID", user.getId());
-		        		intent.setClass(getApplicationContext(), MapActivity.class);
+		        		intent.putExtra("UserID", user.getId());		        		
+		        		if(user != null){
+			        		((SalinlahiFour)getApplication()).setLoggedInUser(user);
+			        		intent.setClass(getApplicationContext(), MapActivity.class);
+		        		}else
+			        		intent.setClass(getApplicationContext(), RegistrationActivity.class);
 		        		startActivity(intent);
-		        		
-	                    Toast toast = Toast.makeText(getApplicationContext(), "Welcome " + user.getName() + "!!!", Toast.LENGTH_SHORT);
-	                    toast.show();
 		        		}
 //		            MainActivity.this.finish();
 		        }    

@@ -23,10 +23,6 @@ public class Family extends AbstractTutorialActivity {
 		layoutID = R.layout.tutorial_family;
 		
 	}
-	
-	public void btn_play(View view){
-		goToActivity();
-	}
 
 	@Override
 	protected void setEasyTutorial() {

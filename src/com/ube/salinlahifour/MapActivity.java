@@ -8,6 +8,7 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.XmlResourceParser;
@@ -19,7 +20,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ube.salinlahifour.database.UserDetailOperations;
 import com.ube.salinlahifour.debugclasses.DebugUserModuleActivity;
 import com.ube.salinlahifour.enumTypes.LevelType;
 
@@ -41,19 +41,25 @@ public class MapActivity extends Activity implements OnClickListener{
 		}
 		imgBtns = new ImageButton[5];
 		txtViews = new TextView[5];
-		//setContentView(R.layout.activity_map);
-
-		Log.d("PasringXML","TestTestTest");
-		try {
-			parseXML();
-		} catch (XmlPullParserException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
+		if(((SalinlahiFour)getApplication()).getLoggedInUser() == null){
+    		Intent intent = new Intent();
+    		intent.setClass(getApplicationContext(), RegistrationActivity.class);
+    		startActivity(intent);
+		}else{
+	        Toast toast = Toast.makeText(getApplicationContext(), "Welcome " + ((SalinlahiFour)getApplication()).getLoggedInUser().getName() + "!!!", Toast.LENGTH_SHORT);
+	        toast.show();
+			
+			Log.d("PasringXML","TestTestTest");
+			try {
+				parseXML();
+			} catch (XmlPullParserException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			setLayout();
 		}
-		setLayout();
 	}
 	
 	public void parseXML() throws XmlPullParserException, IOException{
@@ -134,35 +140,34 @@ public class MapActivity extends Activity implements OnClickListener{
 	public void onClick(View view) {
 		int index = -1;
 		switch(view.getId()){
-		case R.id.img_lesson1:
-			index = 0;
-			break;
-		case R.id.img_lesson2:
-			index = 1;
-			break;
-		case R.id.img_lesson3:
-			index = 2;
-			break;
-		case R.id.img_lesson4:
-			index = 3;
-			break;
-		case R.id.img_lesson5:
-			index = 4;
-			break;
-		case R.id.btn_usermodule:
-			intent = new Intent(this, DebugUserModuleActivity.class);
-			startActivity(intent);
-			break;
-		case R.id.btn_register:
-			intent = new Intent(this, RegistrationActivity.class);
-			startActivity(intent);
-			break;
-		case R.id.btn_logout:
-			intent = new Intent(this, LoginActivity.class);
-			startActivity(intent);
-			break;
+			case R.id.img_lesson1:
+				index = 0;
+				break;
+			case R.id.img_lesson2:
+				index = 1;
+				break;
+			case R.id.img_lesson3:
+				index = 2;
+				break;
+			case R.id.img_lesson4:
+				index = 3;
+				break;
+			case R.id.img_lesson5:
+				index = 4;
+				break;
+			case R.id.btn_usermodule:
+				intent = new Intent(this, DebugUserModuleActivity.class);
+				startActivity(intent);
+				break;
+			case R.id.btn_register:
+				intent = new Intent(this, RegistrationActivity.class);
+				startActivity(intent);
+				break;
+			case R.id.btn_logout:
+				intent = new Intent(this, LoginActivity.class);
+				startActivity(intent);
+				break;
 		}
-		
 		
 		if(index != -1){
 
@@ -175,39 +180,65 @@ public class MapActivity extends Activity implements OnClickListener{
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(MapActivity.this);
         alertDialog.setTitle(scene.getLessons().get(index).getName());
         alertDialog.setMessage("Choose difficulty:");
-        alertDialog.setNegativeButton("EASY", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {		
-            	intent = new Intent(scene.getLessons().get(index).getTutorial());
-    			intent.putExtra("activityClass", scene.getLessons().get(index).getActivity());
-    			intent.putExtra("activityLevel", LevelType.EASY.toString());
-				intent.putExtra("UserID", UserID);
 
-    			startActivity(intent);
-            }
-        });
-        
-        alertDialog.setNeutralButton("MEDIUM", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {		
-            	intent = new Intent(scene.getLessons().get(index).getTutorial());
-    			intent.putExtra("activityClass", scene.getLessons().get(index).getActivity());
-    			intent.putExtra("activityLevel", LevelType.MEDIUM.toString());
-    			intent.putExtra("UserID", UserID);
-
-    			startActivity(intent);
-            }
-        });
-
-        alertDialog.setPositiveButton("HARD", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {	
-            	intent = new Intent(scene.getLessons().get(index).getTutorial());
-    			intent.putExtra("activityClass", scene.getLessons().get(index).getActivity());
-    			intent.putExtra("activityLevel", LevelType.HARD.toString());
-    			intent.putExtra("UserID", UserID);
-
-    			startActivity(intent);
-            }
-        });
+	        alertDialog.setNegativeButton("EASY", new DialogInterface.OnClickListener() {
+	            public void onClick(DialogInterface dialog, int which) {	
+	            	try{
+		            	intent = new Intent(scene.getLessons().get(index).getTutorial());
+		    			intent.putExtra("activityClass", scene.getLessons().get(index).getActivity());
+		    			intent.putExtra("activityLevel", LevelType.EASY.toString());
+		    			intent.putExtra("UserID", UserID);
+		    			startActivity(intent);
+		            }catch(Exception e){
+		            	errorPopup(e, index);
+		            }
+	            }
+	        });
+	        
+	        alertDialog.setNeutralButton("MEDIUM", new DialogInterface.OnClickListener() {
+	            public void onClick(DialogInterface dialog, int which) {		
+	            	try{
+		            	intent = new Intent(scene.getLessons().get(index).getTutorial());
+		    			intent.putExtra("activityClass", scene.getLessons().get(index).getActivity());
+		    			intent.putExtra("activityLevel", LevelType.MEDIUM.toString());
+		    			intent.putExtra("UserID", UserID);
+		    			startActivity(intent);
+		            }catch(Exception e){
+		            	errorPopup(e, index);
+		            }
+	            }
+	        });
+	
+	        alertDialog.setPositiveButton("HARD", new DialogInterface.OnClickListener() {
+	            public void onClick(DialogInterface dialog, int which) {	
+	            	try{
+		            	intent = new Intent(scene.getLessons().get(index).getTutorial());
+		    			intent.putExtra("activityClass", scene.getLessons().get(index).getActivity());
+		    			intent.putExtra("activityLevel", LevelType.HARD.toString());
+		    			intent.putExtra("UserID", UserID);
+		    			startActivity(intent);		            
+	    			}catch(Exception e){
+		            	errorPopup(e, index);
+		            }
+	            }
+	        });
 
         alertDialog.show();
+	}
+	
+	private void errorPopup(Exception e, int index){
+		final AlertDialog.Builder builder=new AlertDialog.Builder(this);
+		builder.setTitle("Exception");
+		builder.setMessage(e.toString() + "\nCheck if:\n"
+				+"1. " + scene.getLessons().get(index).getTutorial() + " exists\n"
+				+"2. This <activity> has <intent-filter> tags in AndroidManifest.xml");
+		builder.setIcon(android.R.drawable.ic_dialog_alert);
+		builder.setNeutralButton("I'll debug it right away!", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				System.exit(0);
+			}
+		});
+		builder.show();
 	}
 }

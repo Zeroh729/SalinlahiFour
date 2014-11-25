@@ -49,17 +49,18 @@ public class RegistrationActivity extends Activity {
 		}
 
 		UserDetail user = userDetailOperator.addUserDetail(name, gender);
+		userDetailOperator.close();
 		
 		Intent intent = new Intent(this, MapActivity.class);
 		startActivity(intent);
 		
-		SharedPreferences prefs = getSharedPreferences("lastUserID", MODE_PRIVATE);
+		SharedPreferences prefs = getSharedPreferences("appData", MODE_PRIVATE);
 		Editor editor = prefs.edit();
 		editor.putInt("lastUserID", user.getId());
+		editor.putInt("firstTime", 1);
 		editor.commit();
 
-		((SalinlahiFour)getApplication()).setUserID(user.getId());
-		((SalinlahiFour)getApplication()).setUserName(user.getName());
+		((SalinlahiFour)getApplication()).setLoggedInUser(user);
 	}
 
 	@Override
