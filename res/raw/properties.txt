@@ -1,0 +1,4 @@
+Config=/sdcard/config.txt
+TemplateCatalogue=/sdcard/templatecatalogue.xml
+LexiconList=/sdcard/lexicon.xml
+LessonList=/sdcard/lessonlibrary.xml

@@ -39,7 +39,7 @@ public class UserRecordOperations {
 		values.put(dbHandler.USERRECORD_DATECREATED, DateTimeConverter.getCurrentDateTime());
 		
 		
-		long id = database.insert(dbHandler.TABLE_USERDETAIL, null, values);
+		long id = database.insert(dbHandler.TABLE_USERRECORD, null, values);
 
 		UserRecord latestUserRecord = getUserRecord(id);
 		
@@ -52,7 +52,7 @@ public class UserRecordOperations {
 	
 	
 	public UserRecord getUserRecord(long id){
-		Cursor cursor = database.query(dbHandler.TABLE_USERRECORD, USERRECORD_TABLE_COLUMNS, dbHandler.USERDETAIL_ID + " = " + id, null, null, null, null);
+		Cursor cursor = database.query(dbHandler.TABLE_USERRECORD, USERRECORD_TABLE_COLUMNS, dbHandler.USERRECORD_ID + " = " + id, null, null, null, null);
 		cursor.moveToFirst();
 		
 		UserRecord latestUserRecord = parseUserRecord(cursor);

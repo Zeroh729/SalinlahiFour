@@ -44,13 +44,28 @@ public class UserLessonProgressOperations {
 
 		long userLessonProgressID = database.insert(dbHandler.TABLE_USERLESSONPROGRESS, null, value);
 		
-		UserLessonProgress latestProgress = getUserLessonProgress(userLessonProgressID);
+		UserLessonProgress latestProgress = getUserLessonProgress(userLessonProgressID, lessonName);
 		
 		//debugging
 				Toast toast = Toast.makeText(dbHandler.getContext(), "Added Progress: lessonName-" + latestProgress.getLessonName() + " E-" + latestProgress.getEasyStar() + " M-" + latestProgress.getMediumStar()+ " H-" + latestProgress.getHardStar(), Toast.LENGTH_LONG);
 				toast.show();
 				
-		return getUserLessonProgress(userLessonProgressID);
+		return getUserLessonProgress(userLessonProgressID, lessonName);
+	}
+	
+	public ArrayList<UserLessonProgress> getAllUserLessonProgress(){
+		ArrayList<UserLessonProgress> progressList = new ArrayList<UserLessonProgress>();
+		Cursor cursor = database.query(dbHandler.TABLE_USERLESSONPROGRESS, 
+				USERLESSONPROGRESS_TABLE_COLUMNS,
+				null, null, null, null, null);
+		cursor.moveToFirst();
+		while(!cursor.isAfterLast()){
+			UserLessonProgress student = parseUserLessonProgress(cursor);
+			progressList.add(student);
+			cursor.moveToNext();
+		}
+		cursor.close();
+		return progressList;
 	}
 	
 	public ArrayList<UserLessonProgress> getAllUserLessonProgressOfUser(int userID){
@@ -104,10 +119,10 @@ public class UserLessonProgressOperations {
 		return userLessonProgress;
 	}	
 	
-	public UserLessonProgress getUserLessonProgress(long id){
+	public UserLessonProgress getUserLessonProgress(long id, String lessonName){
 		Cursor cursor = database.query(dbHandler.TABLE_USERLESSONPROGRESS, 
 			USERLESSONPROGRESS_TABLE_COLUMNS,
-			dbHandler.USERLESSONPROGRESS_ID + " = " + id, null, null, null, null);
+			dbHandler.USERLESSONPROGRESS_USERID + " = " + id + " AND " + dbHandler.USERLESSONPROGRESS_LESSONNAME + " = " + lessonName, null, null, null, null);
 
 		cursor.moveToFirst();
 		UserLessonProgress latestProgress = parseUserLessonProgress(cursor);

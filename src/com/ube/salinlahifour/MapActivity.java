@@ -7,6 +7,8 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.XmlResourceParser;
 import android.os.Bundle;
@@ -15,15 +17,21 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.ube.salinlahifour.database.UserDetailOperations;
 import com.ube.salinlahifour.debugclasses.DebugUserModuleActivity;
+import com.ube.salinlahifour.enumTypes.LevelType;
 
 public class MapActivity extends Activity implements OnClickListener{
 	private ArrayList<Scene> scenes;
 	private ImageButton[] imgBtns;
 	private TextView[] txtViews;
 	private Scene scene;
+
 	private int UserID;
+	private Intent intent = null;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -115,8 +123,8 @@ public class MapActivity extends Activity implements OnClickListener{
 		txtViews[4] = (TextView)findViewById(R.id.tv_lesson5);
 		
 		for(int i = 0; i < scene.getLessons().size(); i++){
-			imgBtns[i].setImageResource(scene.getLessons().get(i).image);
-			txtViews[i].setText(scene.getLessons().get(i).name);
+			imgBtns[i].setImageResource(scene.getLessons().get(i).getImage());
+			txtViews[i].setText(scene.getLessons().get(i).getName());
 			imgBtns[i].setVisibility(View.VISIBLE);
 			imgBtns[i].setOnClickListener(this);
 		}
@@ -124,7 +132,6 @@ public class MapActivity extends Activity implements OnClickListener{
 
 	@Override
 	public void onClick(View view) {
-		Intent intent = null;
 		int index = -1;
 		switch(view.getId()){
 		case R.id.img_lesson1:
@@ -150,13 +157,57 @@ public class MapActivity extends Activity implements OnClickListener{
 			intent = new Intent(this, RegistrationActivity.class);
 			startActivity(intent);
 			break;
-		}
-		if(index != -1){
-			intent = new Intent(scene.getLessons().get(index).tutorial);
-			intent.putExtra("activityClass", scene.getLessons().get(index).activity);
-			intent.putExtra("UserID", UserID);
+		case R.id.btn_logout:
+			intent = new Intent(this, LoginActivity.class);
 			startActivity(intent);
+			break;
+		}
+		
+		
+		if(index != -1){
+
+			selectLevelPopup(index);
+
 		}
 	}
 	
+	public void selectLevelPopup(final int index){
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(MapActivity.this);
+        alertDialog.setTitle(scene.getLessons().get(index).getName());
+        alertDialog.setMessage("Choose difficulty:");
+        alertDialog.setNegativeButton("EASY", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {		
+            	intent = new Intent(scene.getLessons().get(index).getTutorial());
+    			intent.putExtra("activityClass", scene.getLessons().get(index).getActivity());
+    			intent.putExtra("activityLevel", LevelType.EASY.toString());
+				intent.putExtra("UserID", UserID);
+
+    			startActivity(intent);
+            }
+        });
+        
+        alertDialog.setNeutralButton("MEDIUM", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {		
+            	intent = new Intent(scene.getLessons().get(index).getTutorial());
+    			intent.putExtra("activityClass", scene.getLessons().get(index).getActivity());
+    			intent.putExtra("activityLevel", LevelType.MEDIUM.toString());
+    			intent.putExtra("UserID", UserID);
+
+    			startActivity(intent);
+            }
+        });
+
+        alertDialog.setPositiveButton("HARD", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {	
+            	intent = new Intent(scene.getLessons().get(index).getTutorial());
+    			intent.putExtra("activityClass", scene.getLessons().get(index).getActivity());
+    			intent.putExtra("activityLevel", LevelType.HARD.toString());
+    			intent.putExtra("UserID", UserID);
+
+    			startActivity(intent);
+            }
+        });
+
+        alertDialog.show();
+	}
 }

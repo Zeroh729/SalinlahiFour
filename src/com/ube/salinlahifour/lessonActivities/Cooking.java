@@ -22,24 +22,12 @@ import com.ube.salinlahifour.evaluationModule.Evaluation;
 public class Cooking extends AbstractLessonActivity implements OnClickListener{
 	private TextView tv_dialog;
 	private TextView tv_feedback;
-	private Evaluation evaluator = new Evaluation("Cooking", this, 5, activityLevel, UserID);
+	//private Evaluation evaluator = new Evaluation("Cooking", this, 5, activityLevel, UserID);
 	private ImageButton[] choices;
 	private int index;
 	
 	public Cooking(){
 		layoutID = R.layout.lessonactivity_cooking;
-	}
-	
-	@Override
-	protected void initiateItems() {
-		tv_feedback.setText("");	//delete
-		Log.d("TESTINGinitiateItems","intiating items");
-		items = new ArrayList();
-		items.add(new Item("Tatsulok" , "Triangle", "Which one is Tatsulok", R.drawable.cooking_triangle, null, LevelType.EASY));
-		items.add(new Item("Bilog" , "Circle", "Which one is Bilog", R.drawable.cooking_circle, null, LevelType.EASY));
-		items.add(new Item("Parisukat" , "Square", "Which one is Parisukat", R.drawable.cooking_square, null, LevelType.EASY));
-		items.add(new Item("Parihaba" , "Rectangle", "Which one is Parihaba", R.drawable.cooking_rectangle, null, LevelType.EASY));
-		items.add(new Item("Bituin" , "Star", "Which one is Bituin", R.drawable.cooking_star, null, LevelType.EASY));
 	}
 
 	@Override
@@ -51,21 +39,7 @@ public class Cooking extends AbstractLessonActivity implements OnClickListener{
 	@Override
 	protected void checkAnswer(String answer) {
 		Log.d("TESTINGLessonActivity", "checking answers");
-		if(evaluator.evaluateAnswer(questions.get(index).getWord(), answer)){
-			//NLG Part - Correct
-			tv_feedback.setText(evaluator.getImmediateFeedback(questions.get(index), index, answer));
-			
-			if(index < questions.size()-1){
-				index++;
-				run();
-			}
-			else{
-				tv_feedback.setText(evaluator.getEndofActivityFeedback(evaluator.getScore(), "Cooking"));
-			}
-		}else{
-			//NLG Part - Wrong
-			tv_feedback.setText(evaluator.getImmediateFeedback(questions.get(index), index, answer));
-		}
+		
 	}
 	
 	private void setChoices(){

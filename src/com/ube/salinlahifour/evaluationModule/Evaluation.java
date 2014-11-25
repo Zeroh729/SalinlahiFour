@@ -1,5 +1,9 @@
 package com.ube.salinlahifour.evaluationModule;
 
+import java.io.IOException;
+
+import org.jdom.JDOMException;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
@@ -8,47 +12,55 @@ import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.database.*;
 import com.ube.salinlahifour.model.UserDetail;
+import com.ube.salinlahifour.model.UserLessonProgress;
 import com.ube.salinlahifour.enumTypes.*;
+
+import iFeedback.iFeedback;
+
 
 
 public class Evaluation {
-	private UserRecordOperations userRecordOperator;
-	private UserLessonProgressOperations userLessonProgressOperator;
-	private UserDetailOperations userDetailOperator;
-	private UserDetail user;
+	
+	protected iFeedback NLG;
+	
 	
 	SharedPreferences prefs;
 	//private Narration narration = new Narration();
 	private int score = 0;
-	private String lessonName;
-	private String activityLevel;
+	private int totscore = 0;
 	private Item item;
-	private int lessonNumber;
-	private int UserID;
-	private Context context;
+	private String LessonName;
 	private String status = "Incorrect";
-	
-	public Evaluation(String lessonName, Context context, int lessonNumber, String activityLevel, int UserID){
-		this.context = context;		
-		this.UserID = UserID;
-		this.lessonNumber = lessonNumber;
-		this.activityLevel = activityLevel;
-		this.lessonName = lessonName;
-		userRecordOperator = new UserRecordOperations(context);
-		Log.d("ARCS","Opening User Record Operations");
-		userRecordOperator.open();
-		Log.d("ARCS","User Record Operations Opened");
-		userLessonProgressOperator = new UserLessonProgressOperations(context);
+	private UserLessonProgress userLessonProgressor = new UserLessonProgress();
+	public Evaluation(iFeedback NLG, String LessonName, String activityLevel){	
+		this.NLG = NLG;
+		this.LessonName = LessonName;
+		
 	}
-	public void recordUserAnswer(String LessonName, String correctAnswer, String Status){
-		
-		
+	public void recordUserAnswer(String LessonName, String correctAnswer, String Status, UserRecordOperations userRecordOperator, int UserID){	
 		
 		userRecordOperator.addUserRecord(UserID, LessonName, correctAnswer, Status);
 	}
 	
-	public void updateUserLessonProgress(String LessonName, StarType EasyStar, StarType MediumStar, StarType HardStar){
+	public void updateUserLessonProgress(String LessonName, String activityLevel, UserLessonProgressOperations userLessonProgressOperator, int UserID){
+		String star;
+		if(score <= totscore/2)
+			star = "Bronze";
+		else if(score >= totscore/2 && score != totscore)
+			star = "Silver";
+		else 
+			star = "Gold";
 		
+		
+		userLessonProgressor = userLessonProgressOperator.getUserLessonProgress(UserID, LessonName); 
+		if(activityLevel == LevelType.EASY.toString())
+			userLessonProgressor.setEasyStar(star);
+		else if(activityLevel == LevelType.MEDIUM.toString())
+			userLessonProgressor.setMediumStar(star);
+		else
+			userLessonProgressor.setHardStar(star);
+		
+		userLessonProgressOperator.updateUserLessonProgress(UserID, LessonName, userLessonProgressor.getEasyStar(), userLessonProgressor.getMediumStar(), userLessonProgressor.getHardStar());
 	}
 	
 	private Item getMostImprovedItem(){
@@ -56,40 +68,46 @@ public class Evaluation {
 		return item;
 	}
 	
-	public String getImmediateFeedback(Item item, int index, String answer){
-		//
-		//narration.generateImmediateFeedback(answer,index, lessonNumber);
-		//
-		
+	public String getImmediateFeedback(int index, String answer, int lessonNumber){
 		String Feedback = null;
-		if(item.getWord().equals(answer))
-			Feedback = "Magaling!" + answer + " is " + item.getEnglish();
-		else
-			Feedback = "Oops. That's " + answer + ", Try Again!";
+		try {
+			Feedback = NLG.GenerateImmediateFeedback(answer,index, lessonNumber);
+		} catch (JDOMException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return Feedback; 
 	}
 
 
-	public String getEndofActivityFeedback(int score, String lessonNumber){
-		//
-		//narration.generateEndofactivityFeedback(score, lessonName);
-		//
-		
-		String Feedback = "Nakakatuwa! You finished the game! You learned \"Bilog\"! Play again to practice more on \"Parisukat\" Your total score is:"+score;
+	public String getEndofActivityFeedback(int score, int lessonNumber){
+		String Feedback = null;
+		try {
+			Feedback = NLG.GenerateDelayedFeedback(score, lessonNumber);
+		} catch (JDOMException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return Feedback;
 		
 	}
 	
-	public boolean evaluateAnswer(String CorrectAnswer, String UserAnswer){
+	public boolean evaluateAnswer(String CorrectAnswer, String UserAnswer, UserRecordOperations userRecordOperator, int UserID){
 		if(CorrectAnswer.equals(UserAnswer)){
 			score++;
+			totscore++;
 			status = "Correct";
-			recordUserAnswer(lessonName, CorrectAnswer, status);
+			Log.d("Evaluation","Updating User Record");
+			recordUserAnswer(LessonName, CorrectAnswer, status, userRecordOperator, UserID);
+			Log.d("Evaluation","Updated User Record");
 			return true;
 		}
 		else{
 			status = "Incorrect";
-			recordUserAnswer(lessonName, CorrectAnswer, status);
+			totscore++;
+			Log.d("Evaluation","Updating User Record");
+			recordUserAnswer(LessonName, CorrectAnswer, status, userRecordOperator, UserID);
+			Log.d("Evaluation","Updating User Record");
 			return false;
 		}
 	}
