@@ -51,7 +51,7 @@
             android:layout_marginTop="25dp"
             android:layout_alignRight="@+id/pickafrend"
             android:src="@drawable/next"
-            
+            android:background="@null"
             android:onClick="registerUser"
             />
     <ImageButton
@@ -62,6 +62,7 @@
             android:layout_marginTop="25dp"
             android:layout_alignLeft="@+id/pickafrend"
             android:src="@drawable/back"
+            android:background="@null"
             />        
 
 </RelativeLayout>

@@ -46,13 +46,13 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	private ImageButton[] choices;
 	String lessonName = "Family";
 	int lessonNumber = 1;
-	private int index;
+	private int itemno;
 	private ImageView iv_swipe;
 	
 	private UserRecordOperations userRecordOperator = new UserRecordOperations(this);
 	private UserLessonProgressOperations userLessonProgressOperator = new UserLessonProgressOperations(this);
 	
-	private Evaluation evaluation = new Evaluation(NLG, lessonName, activityLevel); 
+	private Evaluation evaluation;  
 
 	private String question;
 
@@ -73,8 +73,8 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	@Override
 	protected void initiateViews() {
 		Log.d("Debug Family","Aldrin: Initiate Views");
-		
-		index = 0;
+		evaluation =  new Evaluation(NLG, lessonName, activityLevel);
+		itemno = 0;
 		//Starts Timer
 		initiateTimer();
 		//TextView DIALOG BOX (Questions)
@@ -172,7 +172,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	protected void run() {
 		Log.d("Debug Family","Aldrin: Running");
 		setChoices();
-		question = questions.get(index).getLabel();
+		question = questions.get(itemno).getLabel();
 		tv_feedback.setText(question);
 		timer.start();
 		Log.d("Debug Family","Aldrin: Running Done");
@@ -180,7 +180,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	}
 	protected void rerun() {
 		Log.d("Debug Family","Aldrin: Running");
-		question = questions.get(index).getLabel();
+		question = questions.get(itemno).getLabel();
 		 
 		//tv_feedback.setText(question);
 		tv_feedback.setText(feedback + " " + question);
@@ -209,108 +209,97 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		Log.d("Debug Family","Aldrin: Checking Answer");
 		userRecordOperator.open();
 		userLessonProgressOperator.open();
-		try {
-			if(evaluation.evaluateAnswer(questions.get(index).getWord(), answer, userRecordOperator, UserID)){
-				//NLG Part - Correct
-				Log.d("Debug Family", "Aldrin: Answer: " + answer);
-				Log.d("Debug Family", "Aldrin: Index: " + index);
-				feedback = evaluation.getImmediateFeedback(index, answer, lessonNumber);
-				Log.d("Debug Family", "Aldrin: Feedback: "+ feedback);
-				tv_feedback.setText(feedback + " " + question);
-				Log.d("Debug Family", "Aldrin: Immediate Feedback Completed");
-				if(index < questions.size()-1){
-					Log.d("Debug Family", "Aldrin: Next Question(Reruns)");
-					index++;
-					rerun();
-				}
-				else{
-					Log.d("Debug Family", "Aldrin: iFeedback says its finished (Delayed Feedback)");
-					feedback = evaluation.getEndofActivityFeedback(evaluation.getScore(), lessonNumber);
-					tv_feedback.setText(feedback);
-					evaluation.updateUserLessonProgress(lessonName, activityLevel, userLessonProgressOperator, UserID);
-					//feedback = NLG.GenerateDelayedFeedback(score, LessonNum);
-					feedback = "feedback placeholder";
-					timer.cancel();
-					TextView tv_feedback_end;
-					TextView tv_score_end;
-					Log.d("Debug Family", "Aldrin: Start Popup");
-
-					 LayoutInflater layoutInflater = (LayoutInflater)getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);  
-					 Log.d("Debug Family", "Aldrin: Initializing");
-					 	View popupView = layoutInflater.inflate(R.layout.activity_end_popup, null);  
-					 	 Log.d("Debug Family", "Aldrin: Popupview Done...");
-					    
-					             final PopupWindow popupWindow = new PopupWindow(popupView, LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);  
-					             Log.d("Debug Family", "Aldrin: Popupwindow Done...");
-					             //popupWindow.dismiss();
-					             popupWindow.setOutsideTouchable(true);
-					             popupWindow.setBackgroundDrawable(new BitmapDrawable());
-					             Log.d("Debug Family", "Aldrin: Popupwindow settings Done...");
-					             tv_feedback_end = (TextView) findViewById(R.id.tv_feedback_end);
-					             Log.d("Debug Family", "Aldrin: feedback Done...");
-								    tv_score_end = (TextView) findViewById(R.id.tv_score);
-								    Log.d("Debug Family", "Aldrin: score Done...");
-								    //tv_feedback_end.setText(feedback);
-								    Log.d("Debug Family", "Aldrin: feedback loaded...");
-								    //tv_score_end.setText(89);
-								    Log.d("Debug Family", "Aldrin: feedback score...");
-								    Log.d("Debug Family", "Aldrin: Initialized");
-					             ImageButton close_btn = (ImageButton)popupView.findViewById(R.id.ib_no);
-					             close_btn.setOnClickListener(new ImageButton.OnClickListener(){
-					        	     @Override
-					        	     public void onClick(View v) {
-					        	      // TODO Auto-generated method stub
-					        	    	 end_report(1);
-					        	     }});
-					             ImageButton retry_btn = (ImageButton)popupView.findViewById(R.id.ib_retry);
-					             retry_btn.setOnClickListener(new ImageButton.OnClickListener(){
-
-					        	     @Override
-					        	     public void onClick(View v) {
-					        	      // TODO Auto-generated method stub
-					        	    	 end_report(2);
-					        	     }});
-					             //popupWindow.showAsDropDown(popupView, 50, -30);
-					             Log.d("Debug Family", "Aldrin: Start ShowAtLocation");
-					             
-					             popupWindow.showAtLocation(this.findViewById(R.id.relative_view), Gravity.CENTER, 0, 0);
-					             Log.d("Debug Family", "Aldrin: End ShowAtLocation");
-				}		
-			}else{
-				Log.d("Debug Family", "Aldrin: Answer: " + answer);
-				Log.d("Debug Family", "Aldrin: Index: " + index);
-				//NLG Part - Wrong
-				//tv_feedback.setText("Oops. That's " + answer + ", Try Again!");
-				feedback = NLG.GenerateImmediateFeedback(answer, index+1, 1);
-				Log.d("Debug Family", "Aldrin: Feedback: "+ feedback);
-				tv_feedback.setText(feedback + " " + question);
-				index++;
+		if(evaluation.evaluateAnswer(questions.get(itemno).getWord(), answer, userRecordOperator, UserID)){
+			//NLG Part - Correct
+			Log.d("Debug Family", "Aldrin: Answer: " + answer);
+			Log.d("Debug Family", "Aldrin: Index: " + itemno);
+			feedback = evaluation.getImmediateFeedback(questions.get(itemno).getQ_num(), answer, lessonNumber);
+			Log.d("Debug Family", "Aldrin: Feedback: "+ feedback);
+			tv_feedback.setText(feedback + " " + question);
+			Log.d("Debug Family", "Aldrin: Immediate Feedback Completed");
+			if(itemno < questions.size()-1){
+				Log.d("Debug Family", "Aldrin: Next Question(Reruns)");
+				itemno++;
 				rerun();
 			}
-		
-		} catch (JDOMException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			Log.d("Debug Family", "Aldrin: Something went wrong with JDOM(CATCH)");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			Log.d("Debug Family", "Aldrin: Something went wrong in IO (CATCH)");
-			e.printStackTrace();
+			else{
+				Log.d("Debug Family", "Aldrin: iFeedback says its finished (Delayed Feedback)");
+				feedback = evaluation.getEndofActivityFeedback(evaluation.getScore(), lessonNumber);
+				tv_feedback.setText(feedback);
+				evaluation.updateUserLessonProgress(lessonName, activityLevel, userLessonProgressOperator, UserID);
+				//feedback = NLG.GenerateDelayedFeedback(score, LessonNum);
+				feedback = "feedback placeholder";
+				timer.cancel();
+				TextView tv_feedback_end;
+				TextView tv_score_end;
+				Log.d("Debug Family", "Aldrin: Start Popup");
 
+				 LayoutInflater layoutInflater = (LayoutInflater)getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);  
+				 Log.d("Debug Family", "Aldrin: Initializing");
+				 	View popupView = layoutInflater.inflate(R.layout.activity_end_popup, null);  
+				 	 Log.d("Debug Family", "Aldrin: Popupview Done...");
+				    
+				             final PopupWindow popupWindow = new PopupWindow(popupView, LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);  
+				             Log.d("Debug Family", "Aldrin: Popupwindow Done...");
+				             //popupWindow.dismiss();
+				             popupWindow.setOutsideTouchable(true);
+				             popupWindow.setBackgroundDrawable(new BitmapDrawable());
+				             Log.d("Debug Family", "Aldrin: Popupwindow settings Done...");
+				             tv_feedback_end = (TextView) findViewById(R.id.tv_feedback_end);
+				             Log.d("Debug Family", "Aldrin: feedback Done...");
+				             
+							    tv_score_end = (TextView) popupWindow.getContentView().findViewById(R.id.tv_score);
+							    Log.d("Debug Family", "Aldrin: score Done...");
+							    //tv_feedback_end.setText(feedback);
+							    Log.d("Debug Family", "Aldrin: feedback loaded...");
+							    tv_score_end.setText(evaluation.getScore());
+							    
+							    Log.d("Debug Family", "Aldrin: feedback score...");
+							    Log.d("Debug Family", "Aldrin: Initialized");
+				             ImageButton close_btn = (ImageButton)popupView.findViewById(R.id.ib_no);
+				             close_btn.setOnClickListener(new ImageButton.OnClickListener(){
+				        	     @Override
+				        	     public void onClick(View v) {
+				        	      // TODO Auto-generated method stub
+				        	    	 end_report(1);
+				        	     }});
+				             ImageButton retry_btn = (ImageButton)popupView.findViewById(R.id.ib_retry);
+				             retry_btn.setOnClickListener(new ImageButton.OnClickListener(){
+
+				        	     @Override
+				        	     public void onClick(View v) {
+				        	      // TODO Auto-generated method stub
+				        	    	 end_report(2);
+				        	     }});
+				             //popupWindow.showAsDropDown(popupView, 50, -30);
+				             Log.d("Debug Family", "Aldrin: Start ShowAtLocation");
+				             
+				             popupWindow.showAtLocation(this.findViewById(R.id.relative_view), Gravity.CENTER, 0, 0);
+				             Log.d("Debug Family", "Aldrin: End ShowAtLocation");
+			}		
+		}else{
+			Log.d("Debug Family", "Aldrin: Answer: " + answer);
+			Log.d("Debug Family", "Aldrin: Index: " + itemno);
+			//NLG Part - Wrong
+			//tv_feedback.setText("Oops. That's " + answer + ", Try Again!");
+			feedback = evaluation.getImmediateFeedback(questions.get(itemno).getQ_num(), answer, lessonNumber);
+			Log.d("Debug Family", "Aldrin: Feedback: "+ feedback);
+			tv_feedback.setText(feedback + " " + question);
+			itemno++;
+			rerun();
 		}
 		
 		Log.d("Debug Family","Aldrin: Answer Check");	
 	}
-   
+
 	private void setChoices(){
-		Log.d("Debug Family","Aldrin: Setting Choices");
 		int answerIndex = new Random().nextInt(choices.length);
-		ArrayList<Integer> taken = new ArrayList<Integer>();
-		taken.add(index);
+		ArrayList<Integer> taken = new ArrayList();
+		taken.add(items.indexOf(questions.get(itemno)));
 		for(int i = 0; i < choices.length; i++){
 			if(i == answerIndex){
-				choices[i].setImageResource(questions.get(index).getImageID());
-				choices[i].setTag(questions.get(index).getWord());
+				choices[i].setImageResource(questions.get(itemno).getImageID());
+				choices[i].setTag(questions.get(itemno).getWord());
 			}
 			else{
 				int rand;
@@ -322,8 +311,8 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 					choices[i].setTag(items.get(rand).getWord());
 			}
 		}
-		Log.d("Debug Family","Aldrin: Setting Choices...Done");
 	}
+
 	@Override
 	public void onClick(View v) {
 		int choice = 0;

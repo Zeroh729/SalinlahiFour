@@ -42,6 +42,7 @@ public class House extends AbstractLessonActivity implements OnClickListener{
 	//Timer Vars
 	 //TextView timerTextView;
 	 //CountDownTimer timer;
+	int lessonNumber = 1;
 	private ImageButton[] choices;
 	private String question;
 	private String feedback;

@@ -32,6 +32,7 @@ public class Evaluation {
 	private String LessonName;
 	private String status = "Incorrect";
 	private UserLessonProgress userLessonProgressor = new UserLessonProgress();
+	
 	public Evaluation(iFeedback NLG, String LessonName, String activityLevel){	
 		this.NLG = NLG;
 		this.LessonName = LessonName;
@@ -51,27 +52,13 @@ public class Evaluation {
 		else 
 			star = StarType.GOLD.toString();
 		
-		userLessonProgressor = userLessonProgressOperator.getUserLessonProgress(UserID, LessonName);
-		if(userLessonProgressor == null){
-			if(activityLevel == LevelType.EASY.toString())
+		if(activityLevel == LevelType.EASY.toString())
 				userLessonProgressOperator.addUserLessonProgress(UserID, LessonName, star, null, null);
 			else if(activityLevel == LevelType.MEDIUM.toString())
 				userLessonProgressOperator.addUserLessonProgress(UserID, LessonName, null, star, null);
 			else
 				userLessonProgressOperator.addUserLessonProgress(UserID, LessonName, null, null, star);
-		} else {
-			if(activityLevel == LevelType.EASY.toString())
-				userLessonProgressor.setEasyStar(star);
-			else if(activityLevel == LevelType.MEDIUM.toString())
-				userLessonProgressor.setMediumStar(star);
-			else
-				userLessonProgressor.setHardStar(star);
-			
-			userLessonProgressOperator.updateUserLessonProgress(UserID, LessonName, userLessonProgressor.getEasyStar(), userLessonProgressor.getMediumStar(), userLessonProgressor.getHardStar());
-		}
-			
-		
-	}
+		} 
 	
 	private Item getMostImprovedItem(){
 		Item item = null;
@@ -99,9 +86,7 @@ public class Evaluation {
 			e.printStackTrace();
 		}
 		return Feedback;
-		
 	}
-	
 	public boolean evaluateAnswer(String CorrectAnswer, String UserAnswer, UserRecordOperations userRecordOperator, int UserID){
 		if(CorrectAnswer.equals(UserAnswer)){
 			score++;

@@ -46,9 +46,9 @@ public class UserLessonProgressOperations {
 		
 		UserLessonProgress latestProgress = getUserLessonProgress(userLessonProgressID, lessonName);
 		
-		//debugging
-				Toast toast = Toast.makeText(dbHandler.getContext(), "Added Progress: lessonName-" + latestProgress.getLessonName() + " E-" + latestProgress.getEasyStar() + " M-" + latestProgress.getMediumStar()+ " H-" + latestProgress.getHardStar(), Toast.LENGTH_LONG);
-				toast.show();
+//		//debugging
+//				Toast toast = Toast.makeText(dbHandler.getContext(), "Added Progress: lessonName-" + latestProgress.getLessonName() + " E-" + latestProgress.getEasyStar() + " M-" + latestProgress.getMediumStar()+ " H-" + latestProgress.getHardStar(), Toast.LENGTH_LONG);
+//				toast.show();
 				
 		return getUserLessonProgress(userLessonProgressID, lessonName);
 	}
@@ -120,18 +120,23 @@ public class UserLessonProgressOperations {
 	}	
 	
 	public UserLessonProgress getUserLessonProgress(long id, String lessonName){
-		Cursor cursor = database.query(dbHandler.TABLE_USERLESSONPROGRESS, 
-			USERLESSONPROGRESS_TABLE_COLUMNS,
-			dbHandler.USERLESSONPROGRESS_USERID + " = " + id + " AND " + dbHandler.USERLESSONPROGRESS_LESSONNAME + " = " + lessonName, null, null, null, null);
+		try{
+			Cursor cursor = database.query(dbHandler.TABLE_USERLESSONPROGRESS, 
+				USERLESSONPROGRESS_TABLE_COLUMNS,
+				dbHandler.USERLESSONPROGRESS_USERID + " = " + id + " AND " + dbHandler.USERLESSONPROGRESS_LESSONNAME + " = " + lessonName, null, null, null, null);
 
-		cursor.moveToFirst();
-		UserLessonProgress latestProgress = parseUserLessonProgress(cursor);
-		cursor.close();
+			cursor.moveToFirst();
+			UserLessonProgress latestProgress = parseUserLessonProgress(cursor);
+			cursor.close();
 		
-	    //debugging
-				Toast toast = Toast.makeText(dbHandler.getContext(), "Record Progress: lessonName-" + latestProgress.getLessonName() + " E-" + latestProgress.getEasyStar() + " M-" + latestProgress.getMediumStar()+ " H-" + latestProgress.getHardStar(), Toast.LENGTH_LONG);
-				toast.show();
-				
-		return latestProgress;
+		    //debugging
+					Toast toast = Toast.makeText(dbHandler.getContext(), "Record Progress: lessonName-" + latestProgress.getLessonName() + " E-" + latestProgress.getEasyStar() + " M-" + latestProgress.getMediumStar()+ " H-" + latestProgress.getHardStar(), Toast.LENGTH_LONG);
+					toast.show();
+					
+			return latestProgress;
+
+		}catch(Exception e){
+			return null;
+		}
 	}
 }
