@@ -147,11 +147,11 @@ public final class R {
         public static final int imageView4=0x7f0a005c;
         public static final int imageView5=0x7f0a005d;
         public static final int imageView6=0x7f0a0061;
-        public static final int img_choicea=0x7f0a003a;
+        public static final int img_choicea=0x7f0a0038;
         public static final int img_choiceb=0x7f0a0037;
         public static final int img_choicec=0x7f0a0036;
-        public static final int img_choiced=0x7f0a0038;
-        public static final int img_choicee=0x7f0a0039;
+        public static final int img_choiced=0x7f0a0039;
+        public static final int img_choicee=0x7f0a003a;
         public static final int img_choicef=0x7f0a003b;
         public static final int img_choiceg=0x7f0a003c;
         public static final int img_choiceh=0x7f0a003d;

@@ -44,6 +44,21 @@
                 			android:visibility="invisible"
                 			android:background="@null"/>
 						<ImageButton
+                			android:id="@+id/img_choiceb"
+                			android:layout_width="100dp"
+        					android:layout_height="100dp"
+        					android:scaleX="0.85"
+        					android:scaleY="0.85"
+                			android:layout_alignParentBottom="true"
+            			    android:layout_marginBottom="75dp"
+            			    android:layout_toRightOf="@+id/img_choicea"
+            			    android:layout_marginLeft="13dp"
+                			android:contentDescription="..."
+                			android:src="@drawable/boy" 
+                			android:onClick="onClick"
+                			android:visibility="invisible"
+                			android:background="@null"/>
+						<ImageButton
                 			android:id="@+id/img_choiced"
                 			android:layout_width="100dp"
         					android:layout_height="100dp"

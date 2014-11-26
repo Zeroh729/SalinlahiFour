@@ -51,11 +51,6 @@ public class RegistrationActivity extends Activity {
 		
 		Intent intent = new Intent(this, MapActivity.class);
 		startActivity(intent);
-		
-		SharedPreferences prefs = getSharedPreferences("appData", MODE_PRIVATE);
-		Editor editor = prefs.edit();
-		//editor.putInt("lastUserID", user.getId());
-		editor.commit();
 
 		//((SalinlahiFour)getApplication()).setUserID(user.getId());
 		//((SalinlahiFour)getApplication()).setUserName(user.getName());

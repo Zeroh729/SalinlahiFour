@@ -228,7 +228,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 				tv_feedback.setText(feedback);
 				evaluation.updateUserLessonProgress(lessonName, activityLevel, userLessonProgressOperator, UserID);
 				//feedback = NLG.GenerateDelayedFeedback(score, LessonNum);
-				feedback = "feedback placeholder";
+				//feedback = "feedback placeholder";
 				timer.cancel();
 				TextView tv_feedback_end;
 				TextView tv_score_end;
@@ -238,21 +238,24 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 				 Log.d("Debug Family", "Aldrin: Initializing");
 				 	View popupView = layoutInflater.inflate(R.layout.activity_end_popup, null);  
 				 	 Log.d("Debug Family", "Aldrin: Popupview Done...");
-				    
+				 	tv_feedback_end = (TextView)popupView.findViewById(R.id.tv_feedback_end);
+			        
+				 	
+				    tv_score_end = (TextView) popupView.findViewById(R.id.tv_score);
+		
 				             final PopupWindow popupWindow = new PopupWindow(popupView, LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);  
+				             
 				             Log.d("Debug Family", "Aldrin: Popupwindow Done...");
 				             //popupWindow.dismiss();
 				             popupWindow.setOutsideTouchable(true);
 				             popupWindow.setBackgroundDrawable(new BitmapDrawable());
 				             Log.d("Debug Family", "Aldrin: Popupwindow settings Done...");
-				             tv_feedback_end = (TextView) findViewById(R.id.tv_feedback_end);
 				             Log.d("Debug Family", "Aldrin: feedback Done...");
-				             
-							    tv_score_end = (TextView) popupWindow.getContentView().findViewById(R.id.tv_score);
-							    Log.d("Debug Family", "Aldrin: score Done...");
-							    //tv_feedback_end.setText(feedback);
+				     		    Log.d("Debug Family", "Aldrin: score Done...");
+							    tv_feedback_end.setText(""+feedback);
 							    Log.d("Debug Family", "Aldrin: feedback loaded...");
-							    tv_score_end.setText(evaluation.getScore());
+							    tv_score_end.setText(""+evaluation.getScore());
+							    Log.d("DEbug", "Aldrin:  " +evaluation.getScore());
 							    
 							    Log.d("Debug Family", "Aldrin: feedback score...");
 							    Log.d("Debug Family", "Aldrin: Initialized");
@@ -285,8 +288,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 			feedback = evaluation.getImmediateFeedback(questions.get(itemno).getQ_num(), answer, lessonNumber);
 			Log.d("Debug Family", "Aldrin: Feedback: "+ feedback);
 			tv_feedback.setText(feedback + " " + question);
-			itemno++;
-			rerun();
+		
 		}
 		
 		Log.d("Debug Family","Aldrin: Answer Check");	

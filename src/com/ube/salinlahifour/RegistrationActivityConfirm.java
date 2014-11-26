@@ -57,9 +57,10 @@ public class RegistrationActivityConfirm extends Activity {
 		Intent intent = new Intent(this, MapActivity.class);
 		startActivity(intent);
 		
-		SharedPreferences prefs = getSharedPreferences("lastUserID", MODE_PRIVATE);
+		SharedPreferences prefs = getSharedPreferences("appData", MODE_PRIVATE);
 		Editor editor = prefs.edit();
 		editor.putInt("lastUserID", user.getId());
+		editor.putInt("firstTime", 1);
 		editor.commit();
 
 		//((SalinlahiFour)getApplication()).setUserID(user.getId());
