@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/report_bg"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/tv_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_feedback_end"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="46dp"
+        android:text="100"
+        android:textSize="30sp"
+        android:textColor="#d02a2a" />
+
+    <TextView
+        android:id="@+id/tv_feedback_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/relativeLayout1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="62dp"
+        android:text="You Have Improved" 
+        android:textColor="#033A51"/>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        
+        android:translationY="-100dp"
+        android:layout_marginBottom="106dp" >
+
+        <ImageButton
+            android:id="@+id/ib_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:src="@drawable/report_retry" />
+			
+        <ImageButton
+            android:id="@+id/ib_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/ib_retry"
+            android:background="@null"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:src="@drawable/report_no" />
+    </RelativeLayout>
+
+</RelativeLayout>
