@@ -62,9 +62,9 @@ public class RegistrationActivityConfirm extends Activity {
 		editor.putInt("lastUserID", user.getId());
 		editor.commit();
 
-		((SalinlahiFour)getApplication()).setUserID(user.getId());
-		((SalinlahiFour)getApplication()).setUserName(user.getName());
-
+		//((SalinlahiFour)getApplication()).setUserID(user.getId());
+		//((SalinlahiFour)getApplication()).setUserName(user.getName());
+		((SalinlahiFour)getApplication()).setLoggedInUser(user);
 			}
 
 	@Override

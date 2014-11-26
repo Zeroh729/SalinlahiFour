@@ -3,7 +3,8 @@ package com.ube.salinlahifour;
 import android.app.Activity;
 import android.util.Log;
 
-public class Lesson {	private String name;
+public class Lesson {	
+	private String name;
 	private String activity;
 	private String tutorial;
 	private int image;

@@ -5,12 +5,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import android.util.Log;
+
 public class DateTimeConverter {
 	
 	public static String getCurrentDateTime(){
 		String currDateTime = "";
 		
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		currDateTime = dateFormat.format(date);
 		
@@ -18,7 +20,7 @@ public class DateTimeConverter {
 	}
 
 	public static Date convertStringToDateTime(String datetime) throws ParseException{
-		return new SimpleDateFormat("yyyy/MM/dd HH:mm").parse(datetime);
+		return new SimpleDateFormat("yyyy-MM-dd").parse(datetime);
 	}
 	
 	public static int getCurrentDay() {
@@ -28,7 +30,17 @@ public class DateTimeConverter {
 		Date date = new Date();
 		day = Integer.parseInt(dateFormat.format(date));
 		return day;
-	}
+	}	
 	
-
+	public static String getDateLastMonth() {
+		String day = "";
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		for(int i = 0; i < 30; i++)
+			date =  new Date(date.getTime() - 24 * 3600 * 1000 ); 
+		day = dateFormat.format(date).toString();
+		
+		return day;
+	}
 }

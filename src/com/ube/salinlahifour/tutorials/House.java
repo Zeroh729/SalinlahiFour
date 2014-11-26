@@ -11,10 +11,6 @@ public class House extends AbstractTutorialActivity  {
 		layoutID = R.layout.tutorial_house;
 	}
 	
-	public void btn_play(View view){
-		goToActivity();
-	}
-
 	@Override
 	protected void setEasyTutorial() {
 		// TODO Auto-generated method stub

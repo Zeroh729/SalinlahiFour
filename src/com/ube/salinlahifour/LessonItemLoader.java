@@ -3,11 +3,16 @@ package com.ube.salinlahifour;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.util.Log;
 
 import com.ube.salinlahifour.enumTypes.LevelType;
 
 public abstract class LessonItemLoader {
+	private static String error = "";
+	
 	public static ArrayList<Item> getLessonItems(Activity act, String activityName, String activityLevel){
 		ArrayList<Item> items = new ArrayList();
 		
@@ -81,7 +86,12 @@ public abstract class LessonItemLoader {
 				switch(activityLevel){
 					case "HARD":
 					case "MEDIUM":
-					case "EASY":
+					case "EASY":		
+						items.add(new Item("Pulis" , "Police", "Which one is police", 0, null, LevelType.EASY));
+						items.add(new Item("Bombero" , "Fireman", "Which one is Fireman", 0, null, LevelType.EASY));
+						items.add(new Item("Pulis" , "Police", "Which one is police", 0, null, LevelType.EASY));
+						items.add(new Item("Bombero" , "Fireman", "Which one is Fireman", 0, null, LevelType.EASY));
+						items.add(new Item("Pulis" , "Police", "Which one is police", 0, null, LevelType.EASY));
 				}
 			default:
 				switch(activityLevel){
@@ -101,7 +111,41 @@ public abstract class LessonItemLoader {
 				}
 		}
 		
+		int easyItems = 0;
+		int mediumItems = 0;
+		int hardItems = 0;
+		error = "";
+			
+		for(Item item : items){
+			
+			if(item.getLevel() == LevelType.EASY)
+				easyItems++;
+			else if(item.getLevel() == LevelType.MEDIUM)
+				mediumItems++;
+			else if(item.getLevel() == LevelType.HARD)
+				hardItems++;
+		}
+		switch(activityLevel){
+			case "HARD":
+				if(hardItems < 2)
+					error = "ERROR in LessonItemLoader class -> " + activityName + " : HARD(" + hardItems + ") should have at least 2 items!\n";
+			case "MEDIUM":
+				if(mediumItems < 2)
+					error += "ERROR in LessonItemLoader class -> " + activityName + " : MEDIUM(" + mediumItems + ") should have at least 2 items!\n";
+			case "EASY":
+				if(easyItems < 3)
+					error += "ERROR in LessonItemLoader class -> " + activityName + " : EASY(" + easyItems + ") should have at least 3 items!";
+		}
+		if(!error.equals("")){
+			return null;
+		}
+		
 		((SalinlahiFour)act.getApplication()).setLessonItems(items);
 		return ((SalinlahiFour)act.getApplication()).getLessonItems();
 	}
+	
+	public static String getError(){
+		return error;
+	}
+	
 }

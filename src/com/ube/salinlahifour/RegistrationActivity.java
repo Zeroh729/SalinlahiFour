@@ -48,12 +48,11 @@ public class RegistrationActivity extends Activity {
 				gender = "bisexual";
 		}*/
 
-		//UserDetail user = userDetailOperator.addUserDetail(name, gender);
 		
 		Intent intent = new Intent(this, MapActivity.class);
 		startActivity(intent);
 		
-		SharedPreferences prefs = getSharedPreferences("lastUserID", MODE_PRIVATE);
+		SharedPreferences prefs = getSharedPreferences("appData", MODE_PRIVATE);
 		Editor editor = prefs.edit();
 		//editor.putInt("lastUserID", user.getId());
 		editor.commit();

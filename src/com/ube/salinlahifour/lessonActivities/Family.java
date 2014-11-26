@@ -9,6 +9,7 @@ import org.jdom.JDOMException;
 import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
@@ -31,15 +32,28 @@ import android.widget.TextView;
 import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.MapActivity;
 import com.ube.salinlahifour.debugclasses.DebugUserModuleActivity;
+import com.ube.salinlahifour.database.UserDetailOperations;
+import com.ube.salinlahifour.database.UserLessonProgressOperations;
+import com.ube.salinlahifour.database.UserRecordOperations;
 import com.ube.salinlahifour.enumTypes.LevelType;
+import com.ube.salinlahifour.evaluationModule.Evaluation;
+import com.ube.salinlahifour.model.UserDetail;
 import com.ube.salinlahifour.R;
 
 public class Family extends AbstractLessonActivity implements OnClickListener, OnTouchListener {
 	private TextView tv_dialog;
 	private TextView tv_feedback;
 	private ImageButton[] choices;
+	String lessonName = "Family";
+	int lessonNumber = 1;
 	private int index;
 	private ImageView iv_swipe;
+	
+	private UserRecordOperations userRecordOperator = new UserRecordOperations(this);
+	private UserLessonProgressOperations userLessonProgressOperator = new UserLessonProgressOperations(this);
+	
+	private Evaluation evaluation = new Evaluation(NLG, lessonName, activityLevel); 
+
 	private String question;
 
 	private String feedback = " ";
@@ -52,7 +66,6 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		Log.d("Debug Family","Aldrin: Entered Family Class");
 		layoutID = R.layout.lessonactivity_family;
 		 mPauseLock = new Object();
-		
 	}
 	
 
@@ -194,12 +207,14 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	
 	protected void checkAnswer(String answer) {
 		Log.d("Debug Family","Aldrin: Checking Answer");
+		userRecordOperator.open();
+		userLessonProgressOperator.open();
 		try {
-			if(questions.get(index).getWord().equals(answer)){
+			if(evaluation.evaluateAnswer(questions.get(index).getWord(), answer, userRecordOperator, UserID)){
 				//NLG Part - Correct
 				Log.d("Debug Family", "Aldrin: Answer: " + answer);
 				Log.d("Debug Family", "Aldrin: Index: " + index);
-				feedback = NLG.GenerateImmediateFeedback(answer, index+1, 1);
+				feedback = evaluation.getImmediateFeedback(index, answer, lessonNumber);
 				Log.d("Debug Family", "Aldrin: Feedback: "+ feedback);
 				tv_feedback.setText(feedback + " " + question);
 				Log.d("Debug Family", "Aldrin: Immediate Feedback Completed");
@@ -210,7 +225,9 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 				}
 				else{
 					Log.d("Debug Family", "Aldrin: iFeedback says its finished (Delayed Feedback)");
-					tv_feedback.setText("Nakakatuwa! You finished the game! You learned \"Bilog\"! Play again to practice more on \"Parisukat\"");
+					feedback = evaluation.getEndofActivityFeedback(evaluation.getScore(), lessonNumber);
+					tv_feedback.setText(feedback);
+					evaluation.updateUserLessonProgress(lessonName, activityLevel, userLessonProgressOperator, UserID);
 					//feedback = NLG.GenerateDelayedFeedback(score, LessonNum);
 					feedback = "feedback placeholder";
 					timer.cancel();
@@ -267,6 +284,8 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 				feedback = NLG.GenerateImmediateFeedback(answer, index+1, 1);
 				Log.d("Debug Family", "Aldrin: Feedback: "+ feedback);
 				tv_feedback.setText(feedback + " " + question);
+				index++;
+				rerun();
 			}
 		
 		} catch (JDOMException e) {
@@ -277,6 +296,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 			// TODO Auto-generated catch block
 			Log.d("Debug Family", "Aldrin: Something went wrong in IO (CATCH)");
 			e.printStackTrace();
+
 		}
 		
 		Log.d("Debug Family","Aldrin: Answer Check");	

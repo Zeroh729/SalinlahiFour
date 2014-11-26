@@ -8,6 +8,7 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.XmlResourceParser;
@@ -25,7 +26,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ube.salinlahifour.database.UserDetailOperations;
 import com.ube.salinlahifour.debugclasses.DebugUserModuleActivity;
 import com.ube.salinlahifour.enumTypes.LevelType;
 
@@ -34,18 +34,42 @@ public class MapActivity extends Activity implements OnClickListener{
 	private ImageButton[] imgBtns;
 	private TextView[] txtViews;
 	private Scene scene;
+
+	private int UserID;
 	private Intent intent = null;
+
 	private ImageButton anchor;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Bundle extras = getIntent().getExtras();
+		if (extras != null) {
+		    UserID = extras.getInt("UserID");
+		}
 		imgBtns = new ImageButton[5];
 		txtViews = new TextView[5];
+
 		//setContentView(R.layout.activity_map);
 		
 		anchor = (ImageButton) findViewById(R.id.anchor);
-		
+		if(((SalinlahiFour)getApplication()).getLoggedInUser() == null){
+    		Intent intent = new Intent();
+    		intent.setClass(getApplicationContext(), RegistrationActivity.class);
+    		startActivity(intent);
+		}else{
+	        Toast toast = Toast.makeText(getApplicationContext(), "Welcome " + ((SalinlahiFour)getApplication()).getLoggedInUser().getName() + "!!!", Toast.LENGTH_SHORT);
+	        toast.show();
+			
+			Log.d("PasringXML","TestTestTest");
+			try {
+				parseXML();
+			} catch (XmlPullParserException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			setLayout();
 		Log.d("PasringXML","TestTestTest");
 		try {
 			parseXML();
@@ -91,7 +115,7 @@ public class MapActivity extends Activity implements OnClickListener{
 	             popupWindow.showAsDropDown(btnOpenPopup, 50, -30);
 	         
 	   }});
-		
+		}
 		
 	}
 	
@@ -107,6 +131,7 @@ public class MapActivity extends Activity implements OnClickListener{
 				break;
 		}
 	}
+		
 	
 	public void parseXML() throws XmlPullParserException, IOException{
 		scenes = new ArrayList();
@@ -186,33 +211,33 @@ public class MapActivity extends Activity implements OnClickListener{
 	public void onClick(View view) {
 		int index = -1;
 		switch(view.getId()){
-		case R.id.img_lesson1:
-			index = 0;
-			break;
-		case R.id.img_lesson2:
-			index = 1;
-			break;
-		case R.id.img_lesson3:
-			index = 2;
-			break;
-		case R.id.img_lesson4:
-			index = 3;
-			break;
-		case R.id.img_lesson5:
-			index = 4;
-			break;
-		case R.id.btn_usermodule:
-			intent = new Intent(this, DebugUserModuleActivity.class);
-			startActivity(intent);
-			break;
-		case R.id.btn_register:
-			intent = new Intent(this, RegistrationActivity.class);
-			startActivity(intent);
-			break;
-		case R.id.btn_logout:
-			intent = new Intent(this, LoginActivity.class);
-			startActivity(intent);
-			break;
+			case R.id.img_lesson1:
+				index = 0;
+				break;
+			case R.id.img_lesson2:
+				index = 1;
+				break;
+			case R.id.img_lesson3:
+				index = 2;
+				break;
+			case R.id.img_lesson4:
+				index = 3;
+				break;
+			case R.id.img_lesson5:
+				index = 4;
+				break;
+			case R.id.btn_usermodule:
+				intent = new Intent(this, DebugUserModuleActivity.class);
+				startActivity(intent);
+				break;
+			case R.id.btn_register:
+				intent = new Intent(this, RegistrationActivity.class);
+				startActivity(intent);
+				break;
+			case R.id.btn_logout:
+				intent = new Intent(this, LoginActivity.class);
+				startActivity(intent);
+				break;
 		}
 		
 		
@@ -254,6 +279,7 @@ public class MapActivity extends Activity implements OnClickListener{
 				             ImageButton hard = (ImageButton)popupView.findViewById(R.id.btn_hard_level);
 				             hard.setOnClickListener(new ImageButton.OnClickListener(){
 
+
 				        	     @Override
 				        	     public void onClick(View v) {
 				        	      // TODO Auto-generated method stub
@@ -269,5 +295,19 @@ public class MapActivity extends Activity implements OnClickListener{
 		}
 	}
 	
-	
+	private void errorPopup(Exception e, int index){
+		final AlertDialog.Builder builder=new AlertDialog.Builder(this);
+		builder.setTitle("Exception");
+		builder.setMessage(e.toString() + "\nCheck if:\n"
+				+"1. " + scene.getLessons().get(index).getTutorial() + " exists\n"
+				+"2. This <activity> has <intent-filter> tags in AndroidManifest.xml");
+		builder.setIcon(android.R.drawable.ic_dialog_alert);
+		builder.setNeutralButton("I'll debug it right away!", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				System.exit(0);
+			}
+		});
+		builder.show();
+	}
 }
