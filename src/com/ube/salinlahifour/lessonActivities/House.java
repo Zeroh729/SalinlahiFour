@@ -65,10 +65,10 @@ public class House extends AbstractLessonActivity implements OnClickListener{
 		//TV FEEDBACK END
 		choices = new ImageButton[4];
 		Log.d("Debug Family","Aldrin: Initiate Choices");
-		choices[0] = (ImageButton) findViewById(R.id.ib_pink);
-		choices[1] = (ImageButton) findViewById(R.id.ib_blue);
-		choices[2] = (ImageButton) findViewById(R.id.ib_skobe);
-		choices[3] = (ImageButton) findViewById(R.id.ib_yellow);
+		choices[0] = (ImageButton) findViewById(R.id.house_choice1);
+		choices[1] = (ImageButton) findViewById(R.id.house_choice2);
+		choices[2] = (ImageButton) findViewById(R.id.house_choice3);
+		choices[3] = (ImageButton) findViewById(R.id.house_choice4);
 		
 	
 		
@@ -94,10 +94,9 @@ public class House extends AbstractLessonActivity implements OnClickListener{
 		Log.d("Debug House","Aldrin: Running Done");
 	}
 	private void setChoices(){
-		Log.d("Debug House","Aldrin: Setting Choices");
 		int answerIndex = new Random().nextInt(choices.length);
-		ArrayList<Integer> taken = new ArrayList<Integer>();
-		taken.add(index);
+		ArrayList<Integer> taken = new ArrayList();
+		taken.add(items.indexOf(questions.get(index)));
 		for(int i = 0; i < choices.length; i++){
 			if(i == answerIndex){
 				choices[i].setImageResource(questions.get(index).getImageID());
@@ -113,7 +112,6 @@ public class House extends AbstractLessonActivity implements OnClickListener{
 					choices[i].setTag(items.get(rand).getWord());
 			}
 		}
-		Log.d("Debug House","Aldrin: Setting Choices...Done");
 	}
 
 	@Override
@@ -210,10 +208,10 @@ public class House extends AbstractLessonActivity implements OnClickListener{
 		
 		switch(v.getId()){
 		
-		case R.id.ib_pink:	
-		case R.id.ib_blue:	
-		case R.id.ib_skobe:	
-		case R.id.ib_yellow:	
+		case R.id.house_choice1:	
+		case R.id.house_choice2:	
+		case R.id.house_choice3:	
+		case R.id.house_choice4:	
 				checkAnswer(((ImageButton)findViewById(v.getId())).getTag() + "");
 							break;
 	

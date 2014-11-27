@@ -55,7 +55,7 @@ public class MapActivity extends Activity implements OnClickListener{
 		anchor = (ImageButton) findViewById(R.id.anchor);
 		if(((SalinlahiFour)getApplication()).getLoggedInUser() == null){
     		Intent intent = new Intent();
-    		intent.setClass(getApplicationContext(), RegistrationActivity.class);
+    		intent.setClass(getApplicationContext(), RegistrationActivityName.class);
     		startActivity(intent);
 		}else{
 	        Toast toast = Toast.makeText(getApplicationContext(), "Welcome " + ((SalinlahiFour)getApplication()).getLoggedInUser().getName() + "!!!", Toast.LENGTH_SHORT);
@@ -123,7 +123,7 @@ public class MapActivity extends Activity implements OnClickListener{
 	public void navigateWidget(int choice){
 		switch(choice){
 		case 1: Log.d("debug", "register intent go!");
-				intent = new Intent(this, RegistrationActivity.class);
+				intent = new Intent(this, RegistrationActivityName.class);
 				startActivity(intent); 
 				break;
 		case 2: intent = new Intent(this, LoginActivity.class);
@@ -231,7 +231,7 @@ public class MapActivity extends Activity implements OnClickListener{
 				startActivity(intent);
 				break;
 			case R.id.btn_register:
-				intent = new Intent(this, RegistrationActivity.class);
+				intent = new Intent(this, RegistrationActivityName.class);
 				startActivity(intent);
 				break;
 			case R.id.btn_logout:

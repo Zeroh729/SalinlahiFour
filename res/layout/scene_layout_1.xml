@@ -89,6 +89,7 @@
         android:layout_alignLeft="@+id/img_lesson1"
         android:layout_below="@+id/img_lesson1"
         android:layout_marginTop="21dp"
+        android:visibility="gone"
         android:text="" />
 
     <TextView
@@ -98,6 +99,7 @@
         android:layout_alignBaseline="@+id/tv_lesson1"
         android:layout_alignBottom="@+id/tv_lesson1"
         android:layout_alignLeft="@+id/img_lesson2"
+        android:visibility="gone"
         android:text="" />
 
     <TextView
@@ -107,6 +109,7 @@
         android:layout_alignBaseline="@+id/tv_lesson1"
         android:layout_alignBottom="@+id/TextView01"
         android:layout_alignLeft="@+id/img_lesson3"
+        android:visibility="gone"
         android:text="" />
 
     <TextView
@@ -116,6 +119,7 @@
         android:layout_alignBaseline="@+id/tv_lesson2"
         android:layout_alignBottom="@+id/tv_lesson2"
         android:layout_alignLeft="@+id/img_lesson4"
+        android:visibility="gone"
         android:text="" />
 
     <TextView
@@ -125,6 +129,7 @@
         android:layout_alignBaseline="@+id/tv_lesson3"
         android:layout_alignBottom="@+id/tv_lesson3"
         android:layout_alignLeft="@+id/img_lesson5"
+        android:visibility="gone"
         android:text="" />
 
     <Button
@@ -135,6 +140,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:text="Debug User Module" 
+        android:visibility="gone"
         android:onClick="onClick"/>
    
 
@@ -145,6 +151,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@id/btn_usermodule"
+        android:visibility="gone"
         android:text="Register User" 
         android:onClick="onClick"/>
     
@@ -155,6 +162,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@id/btn_register"
+        android:visibility="gone"
         android:text="Logout" 
         android:onClick="onClick"/>
 
@@ -164,6 +172,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:visibility="gone"
         android:background="@null"
         android:text="hey" />
     
