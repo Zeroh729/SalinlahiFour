@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/register_bg"
+    tools:context="${packageName}.${activityClass}" >
+    
+    <ImageView
+        android:id="@+id/img_registercard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/register1" />
+    
+    <EditText
+        android:id="@+id/tf_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/img_registercard"
+        android:layout_alignLeft="@+id/img_registercard"
+        android:layout_marginBottom="70dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="20dp"
+        android:layout_toLeftOf="@+id/btn_ok"
+        android:background="@null"
+        android:gravity="center_vertical|center_horizontal"
+        android:inputType="textNoSuggestions|textPersonName|textCapSentences"
+        android:scrollHorizontally="false"
+        android:singleLine="true"
+        android:textAlignment="center"
+        android:textSize="46dp" 
+        android:textColor="#3b3b3b">
+
+    </EditText>
+    <ImageButton
+            android:id="@+id/btn_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="registerUser"
+            android:layout_alignRight="@id/img_registercard"
+	        android:layout_alignBottom="@id/tf_name"
+	        android:layout_marginRight="30dp"
+            />
+
+
+</RelativeLayout>

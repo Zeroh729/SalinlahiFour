@@ -43,7 +43,7 @@ public class LoginActivity extends Activity implements OnClickListener, AdapterV
 		
 		if(userDetails.size() == 0){
     		Intent intent = new Intent();
-    		intent.setClass(getApplicationContext(), RegistrationActivity.class);
+    		intent.setClass(getApplicationContext(), RegistrationActivityName.class);
     		startActivity(intent);
 		}
 		
@@ -60,7 +60,7 @@ public class LoginActivity extends Activity implements OnClickListener, AdapterV
 		switch(v.getId()){
 			case R.id.btn_register:
         		Intent intent = new Intent();
-        		intent.setClass(getApplicationContext(), RegistrationActivity.class);
+        		intent.setClass(getApplicationContext(), RegistrationActivityName.class);
         		startActivity(intent);
 			break;
 		}
