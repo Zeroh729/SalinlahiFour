@@ -4,10 +4,10 @@ import java.sql.Date;
 
 import com.ube.salinlahifour.database.UserDetailOperations;
 import com.ube.salinlahifour.model.UserDetail;
-import com.ube.salinlahifour.uibuilders.BackButtonStateListBuilder;
-import com.ube.salinlahifour.uibuilders.ButtonStateListDirector;
-import com.ube.salinlahifour.uibuilders.OkButtonStateListBuilder;
-import com.ube.salinlahifour.uibuilders.StartButtonStateListBuilder;
+import com.ube.salinlahifour.uibuilders.Button.BackBtnStatesBuilder;
+import com.ube.salinlahifour.uibuilders.Button.BtnStatesDirector;
+import com.ube.salinlahifour.uibuilders.Button.OkBtnStatesBuilder;
+import com.ube.salinlahifour.uibuilders.Button.StartBtnStatesBuilder;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -63,8 +63,8 @@ public class RegistrationActivityConfirm extends Activity {
 		btn_start = (ImageButton)findViewById(R.id.btn_start);
 		btn_back = (ImageButton)findViewById(R.id.btn_back);
 
-		btn_start.setImageDrawable(ButtonStateListDirector.getImageDrawable(new StartButtonStateListBuilder()));
-		btn_back.setImageDrawable(ButtonStateListDirector.getImageDrawable(new BackButtonStateListBuilder()));
+		btn_start.setImageDrawable(BtnStatesDirector.getImageDrawable(new StartBtnStatesBuilder()));
+		btn_back.setImageDrawable(BtnStatesDirector.getImageDrawable(new BackBtnStatesBuilder()));
 
 		btn_start.setBackgroundDrawable(null);
 		btn_back.setBackgroundDrawable(null);

@@ -8,9 +8,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.ube.salinlahifour.database.UserDetailOperations;
-import com.ube.salinlahifour.uibuilders.ButtonStateListBuilder;
-import com.ube.salinlahifour.uibuilders.ButtonStateListDirector;
-import com.ube.salinlahifour.uibuilders.OkButtonStateListBuilder;
+import com.ube.salinlahifour.uibuilders.Button.AbstractBtnStatesBuilder;
+import com.ube.salinlahifour.uibuilders.Button.BtnStatesDirector;
+import com.ube.salinlahifour.uibuilders.Button.OkBtnStatesBuilder;
 
 public class RegistrationActivityName extends Activity {
 	private EditText tf_name;
@@ -31,10 +31,10 @@ public class RegistrationActivityName extends Activity {
 	
 	private void instantiateViews() {
 		tf_name = (EditText) findViewById(R.id.tf_name);
-		tf_name.setTypeface(SalinlahiFour.getFontbpreplay());
+		tf_name.setTypeface(SalinlahiFour.getFontBpreplay());
 		
 		btn_ok = (ImageButton)findViewById(R.id.btn_ok);
-		btn_ok.setImageDrawable(ButtonStateListDirector.getImageDrawable(new OkButtonStateListBuilder()));
+		btn_ok.setImageDrawable(BtnStatesDirector.getImageDrawable(new OkBtnStatesBuilder()));
 		btn_ok.setBackgroundDrawable(null);
 	}
 

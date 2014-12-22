@@ -12,7 +12,9 @@ public class SalinlahiFour extends Application{
 	private static SalinlahiFour salinlahifour;
 	private static Context context;
 	private static UserDetail loggedInUser;
-	private static Typeface font_bpreplay;
+	private static Typeface fontBpreplay;
+	private static Typeface fontKgsecondchances;
+
 	private static ArrayList<Item> lessonItems;
 	
 	@Override
@@ -23,8 +25,9 @@ public class SalinlahiFour extends Application{
 
 		if (context == null)
 			context = this.getApplicationContext();
-	
-		font_bpreplay = Typeface.createFromAsset(context.getAssets(), "fonts/BPREPLAYBOLD.OTF");
+
+		fontBpreplay = Typeface.createFromAsset(context.getAssets(), "fonts/BPREPLAYBOLD.OTF");
+		fontKgsecondchances = Typeface.createFromAsset(context.getAssets(), "fonts/KGSECONDCHANCESSOLID.TTF");
 	}
 	
 	public static SalinlahiFour getSalinlahifour() {
@@ -35,28 +38,29 @@ public class SalinlahiFour extends Application{
 		SalinlahiFour.salinlahifour = salinlahifour;
 	}
 	
-	public ArrayList<Item> getLessonItems() {
+	public static ArrayList<Item> getLessonItems() {
 		return lessonItems;
 	}
 
-	public void setLessonItems(ArrayList<Item> items) {
-		this.lessonItems = items;
+	public static void setLessonItems(ArrayList<Item> items) {
+		SalinlahiFour.lessonItems = items;
 	}
-	public UserDetail getLoggedInUser() {
+	
+	public static UserDetail getLoggedInUser() {
 		return loggedInUser;
 	}
 
-	public void setLoggedInUser(UserDetail loggedInUser) {
-		this.loggedInUser = loggedInUser;
+	public static void setLoggedInUser(UserDetail loggedInUser) {
+		SalinlahiFour.loggedInUser = loggedInUser;
 	}
 
 
-	public static Typeface getFontbpreplay() {
-		return font_bpreplay;
+	public static Typeface getFontBpreplay() {
+		return fontBpreplay;
 	}
-
-	public static void setFontbpreplay(Typeface font_bpreplay) {
-		SalinlahiFour.font_bpreplay = font_bpreplay;
+	
+	public static Typeface getFontKgsecondchances() {
+		return fontKgsecondchances;
 	}
 	
 	public static Context getContext() {
@@ -65,9 +69,5 @@ public class SalinlahiFour extends Application{
 
 	public static void setContext(Context context) {
 		SalinlahiFour.context = context;
-	}
-
-	public static Typeface getFont_bpreplay() {
-		return font_bpreplay;
 	}
 }

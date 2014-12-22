@@ -7,11 +7,11 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.ube.salinlahifour.database.UserDetailOperations;
-import com.ube.salinlahifour.uibuilders.BackButtonStateListBuilder;
-import com.ube.salinlahifour.uibuilders.ButtonStateListBuilder;
-import com.ube.salinlahifour.uibuilders.ButtonStateListDirector;
-import com.ube.salinlahifour.uibuilders.FemaleButtonStateListBuilder;
-import com.ube.salinlahifour.uibuilders.MaleButtonStateListBuilder;
+import com.ube.salinlahifour.uibuilders.Button.AbstractBtnStatesBuilder;
+import com.ube.salinlahifour.uibuilders.Button.BackBtnStatesBuilder;
+import com.ube.salinlahifour.uibuilders.Button.BtnStatesDirector;
+import com.ube.salinlahifour.uibuilders.Button.FemaleBtnStatesBuilder;
+import com.ube.salinlahifour.uibuilders.Button.MaleBtnStatesBuilder;
 
 public class RegistrationActivityGender extends Activity {
 	private String name;
@@ -39,9 +39,9 @@ public class RegistrationActivityGender extends Activity {
 		btn_female = (ImageButton)findViewById(R.id.btn_female);
 		btn_back = (ImageButton)findViewById(R.id.btn_back);
 		
-		btn_male.setImageDrawable(ButtonStateListDirector.getImageDrawable(new MaleButtonStateListBuilder()));
-		btn_female.setImageDrawable(ButtonStateListDirector.getImageDrawable(new FemaleButtonStateListBuilder()));
-		btn_back.setImageDrawable(ButtonStateListDirector.getImageDrawable(new BackButtonStateListBuilder()));
+		btn_male.setImageDrawable(BtnStatesDirector.getImageDrawable(new MaleBtnStatesBuilder()));
+		btn_female.setImageDrawable(BtnStatesDirector.getImageDrawable(new FemaleBtnStatesBuilder()));
+		btn_back.setImageDrawable(BtnStatesDirector.getImageDrawable(new BackBtnStatesBuilder()));
 
 		btn_male.setBackgroundDrawable(null);
 		btn_female.setBackgroundDrawable(null);

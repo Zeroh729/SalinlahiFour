@@ -46,9 +46,9 @@ public class UserRecordOperations {
 
 		UserRecord latestUserRecord = getUserRecord(id);
 		
-		//debugging
-				Toast toast = Toast.makeText(dbHandler.getContext(), "Latest Record: userid-" + latestUserRecord.getUserID() + " status-" + latestUserRecord.getStatus() + " datetime-" + latestUserRecord.getDateCreated(), Toast.LENGTH_LONG);
-				toast.show();
+//		//debugging
+//				Toast toast = Toast.makeText(dbHandler.getContext(), "Latest Record: userid-" + latestUserRecord.getUserID() + " status-" + latestUserRecord.getStatus() + " datetime-" + latestUserRecord.getDateCreated(), Toast.LENGTH_LONG);
+//				toast.show();
 				
 		return latestUserRecord;
 	}
@@ -66,9 +66,9 @@ public class UserRecordOperations {
 
 		UserRecord latestUserRecord = getUserRecord(id);
 		
-		//debugging
-				Toast toast = Toast.makeText(dbHandler.getContext(), "Latest Record: userid-" + latestUserRecord.getUserID() + " status-" + latestUserRecord.getStatus() + " datetime-" + latestUserRecord.getDateCreated(), Toast.LENGTH_LONG);
-				toast.show();
+//		//debugging
+//				Toast toast = Toast.makeText(dbHandler.getContext(), "Latest Record: userid-" + latestUserRecord.getUserID() + " status-" + latestUserRecord.getStatus() + " datetime-" + latestUserRecord.getDateCreated(), Toast.LENGTH_LONG);
+//				toast.show();
 				
 		return latestUserRecord;
 	}
@@ -82,9 +82,9 @@ public class UserRecordOperations {
 		cursor.close();
 		
 
-		//debugging
-				Toast toast = Toast.makeText(dbHandler.getContext(), "Latest Record: userid-" + latestUserRecord.getUserID() + " status-" + latestUserRecord.getStatus() + " datetime-" + latestUserRecord.getDateCreated(), Toast.LENGTH_LONG);
-				toast.show();
+//		//debugging
+//				Toast toast = Toast.makeText(dbHandler.getContext(), "Latest Record: userid-" + latestUserRecord.getUserID() + " status-" + latestUserRecord.getStatus() + " datetime-" + latestUserRecord.getDateCreated(), Toast.LENGTH_LONG);
+//				toast.show();
 				
 		return latestUserRecord;
 	}
