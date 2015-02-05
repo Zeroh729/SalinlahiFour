@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ube.salinlahifour.lessonActivities.PartsOFHouse.*;
 import com.ube.salinlahifour.R;
 
 public class House extends AbstractTutorialActivity  {
@@ -14,6 +15,7 @@ public class House extends AbstractTutorialActivity  {
 	
 	public House(){
 		layoutID = R.layout.tutorial_house;
+		
 	}
 	
 	@Override

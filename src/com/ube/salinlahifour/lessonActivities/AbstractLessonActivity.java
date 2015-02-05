@@ -65,8 +65,7 @@ public abstract class AbstractLessonActivity extends Activity {
 
 		items = ((SalinlahiFour)getApplication()).getLessonItems();
 		initiateNarrationModule();
-
-
+		
 		initiateViews();
 		getQuestions();
 		run();
@@ -77,8 +76,8 @@ public abstract class AbstractLessonActivity extends Activity {
 		Log.d("TESTINGLessonActivity", "Aldrin: getting Questions");
 		String lastDate = DateTimeConverter.getDateLastMonth();
 		UserRecordOperations userdb = new UserRecordOperations(this);
-		userdb.open();
-		ArrayList<UserRecord> records;
+		userdb.open();		ArrayList<UserRecord> records;
+
 		try {
 			records = userdb.getRecentUserRecordsFromUserId(((SalinlahiFour)getApplication()).getLoggedInUser().getId(), activityName);
 

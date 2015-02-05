@@ -33,8 +33,10 @@ public class Evaluation {
 	private String status = "Incorrect";
 	private UserLessonProgress userLessonProgressor = new UserLessonProgress();
 	
-	public Evaluation(iFeedback NLG, String LessonName, String activityLevel){	
-		this.NLG = NLG;
+	public Evaluation(String LessonName, String activityLevel){	
+		//this.NLG = NLG;
+		NLG = new iFeedback();
+		NLG.readProperties();
 		this.LessonName = LessonName;
 		
 	}

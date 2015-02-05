@@ -58,7 +58,7 @@ public class DebugUserModuleActivity extends Activity implements OnClickListener
                 		
                     	UserDetailOperations userDetailOperator = new UserDetailOperations(DebugUserModuleActivity.this);
                     	userDetailOperator.open();
-                    	userDetailOperator.deleteUserDetail(userDetails.get(position), lastUserID);
+                    	userDetailOperator.deleteUserDetail(userDetails.get(position),lastUserID);
                     	userDetailOperator.close();
                     	userDetails.remove(position);
                     	finish();

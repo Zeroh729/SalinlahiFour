@@ -73,7 +73,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	@Override
 	protected void initiateViews() {
 		Log.d("Debug Family","Aldrin: Initiate Views");
-		evaluation =  new Evaluation(NLG, lessonName, activityLevel);
+		evaluation =  new Evaluation(lessonName, activityLevel);
 		itemno = 0;
 		//Starts Timer
 		initiateTimer();

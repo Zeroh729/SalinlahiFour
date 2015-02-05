@@ -31,7 +31,7 @@ import com.ube.salinlahifour.evaluationModule.Evaluation;
 public class Cooking extends AbstractLessonActivity implements OnClickListener{
 	private TextView tv_dialog;
 	private TextView tv_feedback;
-	private Evaluation evaluation = new Evaluation(NLG, activityName, activityLevel);
+	private Evaluation evaluation = new Evaluation(activityName, activityLevel);
 	private ImageButton[] choices;
 	private int itemno;
 	private UserRecordOperations userRecordOperator = new UserRecordOperations(this);

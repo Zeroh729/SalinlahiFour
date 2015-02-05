@@ -2,6 +2,7 @@ package com.ube.salinlahifour.database;
 
 import java.util.ArrayList;
 
+import com.ube.salinlahifour.enumTypes.StarType;
 import com.ube.salinlahifour.model.UserLessonProgress;
 
 import android.content.ContentValues;
@@ -138,5 +139,22 @@ public class UserLessonProgressOperations {
 		}catch(Exception e){
 			return null;
 		}
+	}
+	
+	public int getGoldStarsCount(int userID){
+		ArrayList<UserLessonProgress> progressList = new ArrayList<UserLessonProgress>();
+		progressList = getAllUserLessonProgressOfUser(userID);
+		int count = 0;
+		
+		for(int i = 0; i < progressList.size(); i++){
+			if(progressList.get(i).getEasyStar().equals(StarType.GOLD))
+				count++;
+			if(progressList.get(i).getMediumStar().equals(StarType.GOLD))
+				count++;
+			if(progressList.get(i).getHardStar().equals(StarType.GOLD))
+				count++;
+		}
+		
+		return count;
 	}
 }
