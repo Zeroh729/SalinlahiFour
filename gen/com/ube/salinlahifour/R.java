@@ -135,12 +135,12 @@ public final class R {
         public static final int button4=0x7f0a001e;
         public static final int button5=0x7f0a001f;
         public static final int confirm=0x7f0a0003;
-        public static final int ib_blue=0x7f0a0042;
+        public static final int house_choice1=0x7f0a0041;
+        public static final int house_choice2=0x7f0a0042;
+        public static final int house_choice3=0x7f0a0043;
+        public static final int house_choice4=0x7f0a0044;
         public static final int ib_no=0x7f0a0015;
-        public static final int ib_pink=0x7f0a0041;
         public static final int ib_retry=0x7f0a0014;
-        public static final int ib_skobe=0x7f0a0043;
-        public static final int ib_yellow=0x7f0a0044;
         public static final int imageView1=0x7f0a0058;
         public static final int imageView2=0x7f0a0059;
         public static final int imageView3=0x7f0a005a;

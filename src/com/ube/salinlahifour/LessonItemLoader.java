@@ -35,26 +35,14 @@ public abstract class LessonItemLoader {
 			case "com.ube.salinlahifour.lessonActivities.Family":
 				switch(activityLevel){
 					case "HARD":
-						items.add(new Item(1,"Nanay" , "Mother", "Can you find nanay?", R.drawable.family_nanay, null, LevelType.HARD));
-						items.add(new Item(2,"Tatay" , "Father", "Can you find tatay?", R.drawable.family_tatay, null, LevelType.HARD));
-						items.add(new Item(3,"Kuya" , "Brother", "Can you find kuya?", R.drawable.family_kuya, null, LevelType.HARD));
-						items.add(new Item(4,"ate" , "Sister", "Can you find ate?", R.drawable.family_ate, null, LevelType.HARD));
-					
-						items.add(new Item(5,"Lolo" , "Grandfather", "Can you find lolo?", R.drawable.family_lolo, null, LevelType.HARD));
-						items.add(new Item(6,"Lola" , "Grandmother", "Can you find Lola?", R.drawable.family_lola, null, LevelType.HARD));
-						items.add(new Item(7,"Bunso" , "Youngest", "Can you find bunso?", R.drawable.family_bunso, null, LevelType.HARD));
 						
 						items.add(new Item(8,"Tito" , "Uncle", "Can you find tito?", R.drawable.family_tito, null, LevelType.HARD));
-						items.add(new Item(9,"Tita" , "Auntie", "Can you find tita?", R.drawable.family_tita, null, LevelType.HARD)); break;
+						items.add(new Item(9,"Tita" , "Auntie", "Can you find tita?", R.drawable.family_tita, null, LevelType.HARD));
 					case "MEDIUM":
-						items.add(new Item(1,"Nanay" , "Mother", "Can you find nanay?", R.drawable.family_nanay, null, LevelType.MEDIUM));
-						items.add(new Item(2,"Tatay" , "Father", "Can you find tatay?", R.drawable.family_tatay, null, LevelType.MEDIUM));
-						items.add(new Item(3,"Kuya" , "Brother", "Can you find kuya?", R.drawable.family_kuya, null, LevelType.MEDIUM));
-						items.add(new Item(4,"ate" , "Sister", "Can you find ate?", R.drawable.family_ate, null, LevelType.MEDIUM));
 						items.add(new Item(5,"Lolo" , "Grandfather", "Can you find lolo?", R.drawable.family_lolo, null, LevelType.MEDIUM));
 						items.add(new Item(6,"Lola" , "Grandmother", "Can you find Lola?", R.drawable.family_lola, null, LevelType.MEDIUM));
 						items.add(new Item(7,"Bunso" , "Youngest", "Can you find bunso?", R.drawable.family_bunso, null, LevelType.MEDIUM));
-						break;
+						
 						
 					case "EASY":
 						items.add(new Item(1,"Nanay" , "Mother", "Can you find nanay?", R.drawable.family_nanay, null, LevelType.EASY));
@@ -73,6 +61,7 @@ public abstract class LessonItemLoader {
 						items.add(new Item(2,"Paliguan" , "Bathroom", "Where is Paliguan?", R.drawable.house_blue, null, LevelType.EASY));
 						items.add(new Item(3,"Salas" , "Livingroom", "Where is salas?", R.drawable.house_skobe, null, LevelType.EASY));
 						items.add(new Item(4,"Lutuan" , "Kitchen", "Where is lutuan?", R.drawable.house_yellow, null, LevelType.EASY));
+						break;
 							}
 				break;
 			case "com.ube.salinlahifour.lessonActivities.Music":

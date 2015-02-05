@@ -137,7 +137,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		
 		for(int i = 0; i< MAX_CHOICES; i++){
 			params[i] = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT); 
-			params[i].topMargin = 100; //Y
+			params[i].topMargin = 200; //Y
 		}
 		params[0].leftMargin=500; //X
 		params[1].leftMargin=1000; //X

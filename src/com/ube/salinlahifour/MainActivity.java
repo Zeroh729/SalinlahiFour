@@ -200,7 +200,7 @@ public class MainActivity extends Activity {
 			        		((SalinlahiFour)getApplication()).setLoggedInUser(user);
 			        		intent.setClass(getApplicationContext(), MapActivity.class);
 		        		}else
-			        		intent.setClass(getApplicationContext(), RegistrationActivity.class);
+			        		intent.setClass(getApplicationContext(), RegistrationActivityName.class);
 		        		startActivity(intent);
 		        		}
 //		            MainActivity.this.finish();
