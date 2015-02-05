@@ -6,8 +6,8 @@
     android:background="@drawable/house_bg" >
     
     <RelativeLayout
-        android:id="@+id/relative_view" 
-     android:layout_width="wrap_content"
+    android:id="@+id/relative_view" 
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content" 
     android:gravity="center"
     android:layout_centerInParent="true">

@@ -13,8 +13,8 @@
     <q_num>1</q_num>
 	<word>Nanay</word>
     <w_type>definition</w_type>
-    <notes>is your mother</notes>
-    <hint>She usually cooks for the family.</hint>
+    <notes>your mother</notes>
+    <hint>She is a female who wears apron</hint>
 	<lesson>1</lesson>
 </Word_Entry>
 
@@ -22,8 +22,8 @@
     <q_num>2</q_num>
 	<word>Tatay</word>
     <w_type>definition</w_type>
-    <notes>is your father</notes>
-    <hint>He goes to work.</hint>
+    <notes>your father</notes>
+    <hint>He is a man, he usually wears a tie to go to work</hint>
 	<lesson>1</lesson>
 </Word_Entry>
 
@@ -31,32 +31,32 @@
     <q_num>3</q_num>
 	<word>Kuya</word>
     <w_type>definition</w_type>
-    <notes>is your older brother</notes>
-    <hint>He is older than you.</hint>
+    <notes>your older brother</notes>
+    <hint>He is a boy and he is older than you</hint>
 	<lesson>1</lesson>
 </Word_Entry>
 <Word_Entry>
     <q_num>4</q_num>
     <word>Ate</word>
     <w_type>definition</w_type>
-    <notes>is your older sister</notes>
-    <hint>She is also older than you.</hint>
+    <notes>your older sister</notes>
+    <hint>That girl is also older than you.</hint>
     <lesson>1</lesson>
 </Word_Entry>
 <Word_Entry>
 	<q_num>5</q_num>
     <word>Lolo</word>
     <w_type>definition</w_type>
-    <notes>It means Grandfather in enlish</notes>
-    <hint>He is your parent's parent</hint>
+    <notes>Grandfather in enlish</notes>
+    <hint>That man is old, He needs a crane to help him walk</hint>
 	<lesson>1</lesson>
 </Word_Entry>
 <Word_Entry>
     <q_num>6</q_num>
 	<word>Lola</word>
     <w_type>definition</w_type>
-    <notes>is your grandmother</notes>
-    <hint>She is your parent's parent</hint>
+    <notes>your grandmother</notes>
+    <hint>She is a female who is old. Her hair is colored gray</hint>
 	<lesson>1</lesson>
 </Word_Entry>
 
@@ -64,23 +64,23 @@
     <q_num>7</q_num>
     <word>Bunso</word>
     <w_type>definition</w_type>
-    <notes>is a greeting used every evening</notes>
-    <hint>He's is younger than you</hint>
+    <notes>a greeting used every evening</notes>
+    <hint>He is young, little and cute.</hint>
     <lesson>1</lesson>
 </Word_Entry>
 <Word_Entry>
     <q_num>8</q_num>
     <word>Tito</word>
     <w_type>definition</w_type>
-    <notes>is a greeting used every evening</notes>
-    <hint>He's your father's sibling.</hint>
+    <notes>a greeting used every evening</notes>
+    <hint>That man is younger than your father</hint>
     <lesson>1</lesson>
 </Word_Entry>
 <Word_Entry>
     <q_num>9</q_num>
     <word>Tita</word>
     <w_type>definition</w_type>
-    <notes>is a greeting used every evening</notes>
+    <notes>a greeting used every evening</notes>
     <hint>She is related to your tito.</hint>
     <lesson>1</lesson>
 </Word_Entry>
@@ -88,7 +88,7 @@
     <q_num>1</q_num>
 	<word>Tulugan</word>
     <w_type>definition</w_type>
-    <notes>is a greeting used every evening</notes>
+    <notes>a greeting used every evening</notes>
     <hint>It's nice to greet everyone magandang hating gabi every evening.</hint>
 	<lesson>2</lesson>
 </Word_Entry>
