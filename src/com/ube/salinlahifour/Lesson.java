@@ -1,28 +1,42 @@
 package com.ube.salinlahifour;
 
 import android.app.Activity;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
-public class Lesson {	
+public class Lesson implements Parcelable{	
 	private String name;
 	private String activity;
 	private String tutorial;
+	private String description;
 	private int image;
 	
-	public Lesson(String name, String className, int image){
+	public Lesson(){}
+	
+	public Lesson setValues(String name, String description, String className, int image){
 		this.name = name;
 		this.image = image;
+		this.description = description;
 		this.activity = "com.ube.salinlahifour.lessonActivities." + className;
 		this.tutorial = "com.ube.salinlahifour.tutorials." + className;
-		
+		return this;
 	}
-		
+	
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getActivity() {
@@ -47,5 +61,50 @@ public class Lesson {
 
 	public void setImage(int image) {
 		this.image = image;
+	}
+
+	public Lesson(Parcel in) {
+	    super();
+	    readFromParcel(in);
+	}
+	
+	public static final Parcelable.Creator<Lesson> CREATOR = new Parcelable.Creator<Lesson>() {
+	    public Lesson createFromParcel(Parcel in) {
+	        return new Lesson(in);
+	    }
+	
+	    public Lesson[] newArray(int size) {
+	
+	        return new Lesson[size];
+	    }
+	
+	};
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int arg1) {
+//		parcel.writeStringArray(new String[] { this.name, this.activity,
+//            this.tutorial, this.description, this.image+""});
+		dest.writeString(name);
+		dest.writeString(activity);
+		dest.writeString(tutorial);
+		dest.writeString(description);
+		dest.writeString(image+"");
+	}
+	
+
+	public void readFromParcel(Parcel in) {	
+	    this.name = in.readString();
+	    this.activity = in.readString();
+	    this.tutorial = in.readString();
+	    this.description = in.readString();
+	    this.image = Integer.parseInt(in.readString());
+	
+	
 	}
 }

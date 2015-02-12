@@ -1,14 +1,22 @@
 package com.ube.salinlahifour.lessonActivities;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
+import org.jdom.JDOMException;
+
 import android.content.ClipData;
+import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.DragEvent;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.DragShadowBuilder;
+import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
@@ -16,15 +24,17 @@ import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.RelativeLayout.LayoutParams;
 
 import com.ube.salinlahifour.Item;
+import com.ube.salinlahifour.MapActivity;
 import com.ube.salinlahifour.enumTypes.LevelType;
 import com.ube.salinlahifour.R;
 
-public class House extends AbstractLessonActivity implements OnDragListener, OnTouchListener {
+public class House extends AbstractLessonActivity implements OnClickListener{
 
 	private TextView tv_dialog;
 	private TextView tv_feedback;
@@ -32,12 +42,12 @@ public class House extends AbstractLessonActivity implements OnDragListener, OnT
 	//Timer Vars
 	 //TextView timerTextView;
 	 //CountDownTimer timer;
+	int lessonNumber = 1;
 	private ImageButton[] choices;
-	private LinearLayout[] options;
 	private String question;
 	private String feedback;
-	TextView timerTextView;
-	 CountDownTimer timer;
+	//TextView timerTextView;
+	// CountDownTimer timer;
 	public House(){
 		Log.d("Debug Family","Aldrin: Entered Family Class");
 		layoutID = R.layout.lessonactivity_house;
@@ -49,76 +59,42 @@ public class House extends AbstractLessonActivity implements OnDragListener, OnT
 		index = 0;
 		
 
-//		initiateTimer();
-		RelativeLayout.LayoutParams dialog_params =  new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
-		dialog_params.leftMargin=100; //X
-		dialog_params.topMargin = 30; //Y
-		//TV DIALOG INIT END
-		//Text View Feedback
-		//Text View Feedback 
-		
 		tv_feedback = (TextView) findViewById(R.id.tv_feedback);
 		tv_feedback.setText(" ");
-		RelativeLayout.LayoutParams feedback_params =  new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
-		feedback_params.leftMargin=100; //X
-		feedback_params.topMargin = 60; //Y
-		tv_feedback.setLayoutParams(feedback_params);
+	
 		//TV FEEDBACK END
-		choices = new ImageButton[5];
+		choices = new ImageButton[4];
 		Log.d("Debug Family","Aldrin: Initiate Choices");
-		choices[0] = (ImageButton) findViewById(R.id.img_choicea);
-		choices[1] = (ImageButton) findViewById(R.id.img_choiceb);
-		choices[2] = (ImageButton) findViewById(R.id.img_choicec);
-		choices[3] = (ImageButton) findViewById(R.id.img_choiced);
-		choices[4] = (ImageButton) findViewById(R.id.img_choicee);
+		choices[0] = (ImageButton) findViewById(R.id.ib_pink);
+		choices[1] = (ImageButton) findViewById(R.id.ib_blue);
+		choices[2] = (ImageButton) findViewById(R.id.ib_skobe);
+		choices[3] = (ImageButton) findViewById(R.id.ib_yellow);
 		
-		//options = new ImageView[12];
-		options = new LinearLayout[7];
-		options[0] = (LinearLayout) findViewById(R.id.option1);
-		options[1] = (LinearLayout) findViewById(R.id.option2);
-		options[2] = (LinearLayout) findViewById(R.id.option3);
-		options[3] = (LinearLayout) findViewById(R.id.option4);
-		options[4] = (LinearLayout) findViewById(R.id.option5);
-		options[5] = (LinearLayout) findViewById(R.id.option6);
-		options[6] = (LinearLayout) findViewById(R.id.option7);
+	
 		
-		for(int c = 0; c<choices.length; c++){
-			choices[c].setOnTouchListener(this);
-			
-		}
-		for(int c = 0; c<options.length; c++){
-			options[c].setOnDragListener(this);
-		}
 	}
 
 	@Override
 	protected void run() {
 		// TODO Auto-generated method stub
 		Log.d("Debug House","Aldrin: Running");
-		//setChoices();
-		//tv_dialog.setText(questions.get(index).getLabel());
+		setChoices();
 		question = questions.get(index).getLabel();
 		tv_feedback.setText(question);
-		timer.start();
+		
 		//timer.start();
 		Log.d("Debug House","Aldrin: Running Done");
 	}
 	protected void rerun() {
-		Log.d("Debug Family","Aldrin: Running");
-		//setChoices();
-		//tv_dialog.setText(questions.get(index).getLabel());
+		Log.d("Debug House","Aldrin: Running");
 		question = questions.get(index).getLabel();
 		 
-		tv_feedback.setText(question);
+		tv_feedback.setText(feedback + " " + question);
 		//timer.start();
-		Log.d("Debug Family","Aldrin: Running Done");
-		/*for(int choiceIndex = 0; choiceIndex < speech_bubble.length; choiceIndex++){
-			speech_bubble[choiceIndex].setVisibility(View.GONE);
-			feedback[choiceIndex].setVisibility(View.GONE);
-		}*/
+		Log.d("Debug House","Aldrin: Running Done");
 	}
 	private void setChoices(){
-		Log.d("Debug Family","Aldrin: Setting Choices");
+		Log.d("Debug House","Aldrin: Setting Choices");
 		int answerIndex = new Random().nextInt(choices.length);
 		ArrayList<Integer> taken = new ArrayList<Integer>();
 		taken.add(index);
@@ -137,124 +113,113 @@ public class House extends AbstractLessonActivity implements OnDragListener, OnT
 					choices[i].setTag(items.get(rand).getWord());
 			}
 		}
-		Log.d("Debug Family","Aldrin: Setting Choices...Done");
+		Log.d("Debug House","Aldrin: Setting Choices...Done");
 	}
 
 	@Override
 	protected void checkAnswer(String answer) {
-		Log.d("Debug Family","Aldrin: Checking Answer");
-		if(questions.get(index).getWord().equals(answer)){
+		Log.d("Debug House","Aldrin: Checking Answer");
+		
 			//NLG Part - Correct
-			feedback = "Magaling!" + answer + " is " + questions.get(index).getEnglish();
-			tv_feedback.setText(feedback + " " + question);
+			//feedback = "Magaling!" + answer + " is " + questions.get(index).getEnglish();
+			try {
+				if(questions.get(index).getWord().equals(answer)){
+				feedback = NLG.GenerateImmediateFeedback(answer, index+1, 2);
+				tv_feedback.setText(feedback + " " + question);
+			
+			
 			if(index < questions.size()-1){
 				index++;
 				rerun();
 			}
 			else{
 				tv_feedback.setText("Nakakatuwa! You finished the game! You learned \"Bilog\"! Play again to practice more on \"Parisukat\"");
-				timer.cancel();
+				//timer.cancel();
+				//feedback = NLG.GenerateDelayedFeedback(score, LessonNum);
+				feedback = "feedback placeholder";
+				TextView tv_feedback_end;
+				TextView tv_score_end;
+				Log.d("Debug Family", "Aldrin: Start Popup");
+
+				 LayoutInflater layoutInflater = (LayoutInflater)getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);  
+				 Log.d("Debug Family", "Aldrin: Initializing");
+				 	View popupView = layoutInflater.inflate(R.layout.activity_end_popup, null);  
+				 	 Log.d("Debug Family", "Aldrin: Popupview Done...");
+				    
+				             final PopupWindow popupWindow = new PopupWindow(popupView, LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);  
+				             Log.d("Debug Family", "Aldrin: Popupwindow Done...");
+				             //popupWindow.dismiss();
+				             popupWindow.setOutsideTouchable(true);
+				             popupWindow.setBackgroundDrawable(new BitmapDrawable());
+				             Log.d("Debug Family", "Aldrin: Popupwindow settings Done...");
+				             tv_feedback_end = (TextView) findViewById(R.id.tv_feedback_end);
+				             Log.d("Debug Family", "Aldrin: feedback Done...");
+							    tv_score_end = (TextView) findViewById(R.id.tv_score);
+							    Log.d("Debug Family", "Aldrin: score Done...");
+							    //tv_feedback_end.setText(feedback);
+							    Log.d("Debug Family", "Aldrin: feedback loaded...");
+							    //tv_score_end.setText(89);
+							    Log.d("Debug Family", "Aldrin: feedback score...");
+							    Log.d("Debug Family", "Aldrin: Initialized");
+				             ImageButton close_btn = (ImageButton)popupView.findViewById(R.id.ib_no);
+				             close_btn.setOnClickListener(new ImageButton.OnClickListener(){
+				        	     @Override
+				        	     public void onClick(View v) {
+				        	      // TODO Auto-generated method stub
+				        	    	 end_report(1);
+				        	     }});
+				             ImageButton retry_btn = (ImageButton)popupView.findViewById(R.id.ib_retry);
+				             retry_btn.setOnClickListener(new ImageButton.OnClickListener(){
+
+				        	     @Override
+				        	     public void onClick(View v) {
+				        	      // TODO Auto-generated method stub
+				        	    	 end_report(2);
+				        	     }});
+				             //popupWindow.showAsDropDown(popupView, 50, -30);
+				             Log.d("Debug Family", "Aldrin: Start ShowAtLocation");
+				             
+				             popupWindow.showAtLocation(this.findViewById(R.id.relative_view), Gravity.CENTER, 0, 0);
+				             Log.d("Debug Family", "Aldrin: End ShowAtLocation");
+
+				
 			}
+			
 		}else{
+			Log.d("Debug Family", "Aldrin: Answer: " + answer);
+			Log.d("Debug Family", "Aldrin: Index: " + index);
 			//NLG Part - Wrong
 			//tv_feedback.setText("Oops. That's " + answer + ", Try Again!");
-			feedback = "Oops. That's " + answer + ", Try Again!";
+			feedback = NLG.GenerateImmediateFeedback(answer, index+1, 2);
+			Log.d("Debug Family", "Aldrin: Feedback: "+ feedback);
 			tv_feedback.setText(feedback + " " + question);
 		}
+			} catch (JDOMException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		Log.d("Debug Family","Aldrin: Answer Check");	
 	}
-	@Override
-	public boolean onDrag(View v, DragEvent event) {
-		// TODO Auto-generated method stub
-		if (event.getAction()==DragEvent.ACTION_DROP) {
-			View view = (View) event.getLocalState();
-			ViewGroup from = (ViewGroup) view.getParent();
-			from.removeView(view);
-			LinearLayout to = (LinearLayout) v;
-			to.addView(view);
-			view.setVisibility(View.VISIBLE);
-		}
-		return true;
-	}
-	@Override
-	public boolean onTouch(View v, MotionEvent event) {
-		// TODO Auto-generated method stub
-		if (event.getAction() == MotionEvent.ACTION_DOWN) {
-		    //setup drag
-			ClipData data = ClipData.newPlainText("", "");
-			DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
-			//start dragging the item touched
-			v.startDrag(data, shadowBuilder, v, 0);
-			v.setVisibility(View.INVISIBLE);
-		    return true;
-		} 
-		else {
-		    return false;
-		}
-		
-	}
-}
-/*final class ChoiceTouchListener implements OnTouchListener {
-	public boolean onTouch(View view, MotionEvent motionEvent) {
-		if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-		    //setup drag
-			ClipData data = ClipData.newPlainText("", "");
-			DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
-			//start dragging the item touched
-			view.startDrag(data, shadowBuilder, view, 0);
-			view.setVisibility(View.INVISIBLE);
-		    return true;
-		} 
-		else {
-		    return false;
-		}
-	}
-}*/
 
-/*class ChoiceDragListener implements OnDragListener {
 	@Override
-	public boolean onDrag(View v, DragEvent event) {
-	    //handle drag events
-		switch (event.getAction()) {
-	    case DragEvent.ACTION_DRAG_STARTED:
-	        //no action necessary
-	        break;
-	    case DragEvent.ACTION_DRAG_ENTERED:
-	        //no action necessary
-	        break;
-	    case DragEvent.ACTION_DRAG_EXITED:        
-	        //no action necessary
-	        break;
-	    case DragEvent.ACTION_DROP:
-	    	Log.d("Debug Family","Aldrin: Dropping");
-	        //handle the dragged view being dropped over a drop view
-	    	/*View view = (View) event.getLocalState();
-	    	view.setVisibility(View.INVISIBLE);
-	    	TextView dropTarget = (TextView) v;
-	    	TextView dropped = (TextView) view;
-	    	dropTarget.setText(dropped.getText());*/
-	    	//dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
-	/*    	 View view = (View) event.getLocalState();
-	    	 Log.d("Debug Family","Aldrin: Dropping1");
-	         ViewGroup owner = (ViewGroup) view.getParent();
-	         Log.d("Debug Family","Aldrin: Dropping2");
-	         owner.removeView(view);
-	         Log.d("Debug Family","Aldrin: Dropping3");
-	         LinearLayout container = (LinearLayout) v;
-	         Log.d("Debug Family","Aldrin: Dropping4");
-	         container.addView(view);
-	         Log.d("Debug Family","Aldrin: Dropping5");
-	         view.setVisibility(View.VISIBLE);
-	    	Log.d("Debug Family","Aldrin: Dropped Correctly");
-	        break;
-	    case DragEvent.ACTION_DRAG_ENDED:
-	        //no action necessary
-	    	Log.d("Debug Family","Aldrin: Dropping end");
-	        break;
-	    default:
-	        break;
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		Log.d("OnClickListened", "Aldrin: Click!");
+		//tv_feedback.setText("in onclick");
+		Log.d("OnClickListened", "Aldrin: "+ ((ImageButton)findViewById(v.getId())).getTag() + " " + v.getId() );
+		
+		switch(v.getId()){
+		
+		case R.id.ib_pink:	
+		case R.id.ib_blue:	
+		case R.id.ib_skobe:	
+		case R.id.ib_yellow:	
+				checkAnswer(((ImageButton)findViewById(v.getId())).getTag() + "");
+							break;
+	
+		default: 
+			tv_feedback.setText("error in onclick");
 	}
-	    return true;
 	}
+	
 }
-*/

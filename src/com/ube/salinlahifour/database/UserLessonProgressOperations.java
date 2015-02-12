@@ -2,6 +2,7 @@ package com.ube.salinlahifour.database;
 
 import java.util.ArrayList;
 
+import com.ube.salinlahifour.enumTypes.StarType;
 import com.ube.salinlahifour.model.UserLessonProgress;
 
 import android.content.ContentValues;
@@ -44,13 +45,13 @@ public class UserLessonProgressOperations {
 
 		long userLessonProgressID = database.insert(dbHandler.TABLE_USERLESSONPROGRESS, null, value);
 		
-		UserLessonProgress latestProgress = getUserLessonProgress(userLessonProgressID);
+		UserLessonProgress latestProgress = getUserLessonProgress(userLessonProgressID, lessonName);
 		
-		//debugging
-				Toast toast = Toast.makeText(dbHandler.getContext(), "Added Progress: lessonName-" + latestProgress.getLessonName() + " E-" + latestProgress.getEasyStar() + " M-" + latestProgress.getMediumStar()+ " H-" + latestProgress.getHardStar(), Toast.LENGTH_LONG);
-				toast.show();
+//		//debugging
+//				Toast toast = Toast.makeText(dbHandler.getContext(), "Added Progress: lessonName-" + latestProgress.getLessonName() + " E-" + latestProgress.getEasyStar() + " M-" + latestProgress.getMediumStar()+ " H-" + latestProgress.getHardStar(), Toast.LENGTH_LONG);
+//				toast.show();
 				
-		return getUserLessonProgress(userLessonProgressID);
+		return getUserLessonProgress(userLessonProgressID, lessonName);
 	}
 	
 	public ArrayList<UserLessonProgress> getAllUserLessonProgress(){
@@ -82,7 +83,7 @@ public class UserLessonProgressOperations {
 		cursor.close();
 		return progressList;
 	}
-	
+
 	public void updateUserLessonProgress(int userID, String lessonName, String easyStar, String medStar, String hardStar) {
 	    ContentValues values = new ContentValues();
 	    
@@ -93,13 +94,13 @@ public class UserLessonProgressOperations {
 	    database.update(dbHandler.TABLE_USERLESSONPROGRESS,
 	        values,
 	        dbHandler.USERLESSONPROGRESS_USERID +"="+userID+
-	        " AND " + dbHandler.USERLESSONPROGRESS_LESSONNAME + "=" + lessonName,
+	        " AND " + dbHandler.USERLESSONPROGRESS_LESSONNAME + "='" + lessonName+"'",
 	        null);
 	    
 	    //debugging
-				UserLessonProgress latestProgress = getAllUserLessonProgressOfUser(userID).get(0);		
-				Toast toast = Toast.makeText(dbHandler.getContext(), "Updated Progress(0): lessonName-" + latestProgress.getLessonName() + " E-" + latestProgress.getEasyStar() + " M-" + latestProgress.getMediumStar()+ " H-" + latestProgress.getHardStar(), Toast.LENGTH_LONG);
-				toast.show();
+//				UserLessonProgress latestProgress = getAllUserLessonProgressOfUser(userID).get(0);		
+//				Toast toast = Toast.makeText(dbHandler.getContext(), "Updated Progress(0): lessonName-" + latestProgress.getLessonName() + " E-" + latestProgress.getEasyStar() + " M-" + latestProgress.getMediumStar()+ " H-" + latestProgress.getHardStar(), Toast.LENGTH_LONG);
+//				toast.show();
 	}
 	
 	public void deleteStudent(long id){
@@ -119,19 +120,78 @@ public class UserLessonProgressOperations {
 		return userLessonProgress;
 	}	
 	
-	public UserLessonProgress getUserLessonProgress(long id){
-		Cursor cursor = database.query(dbHandler.TABLE_USERLESSONPROGRESS, 
-			USERLESSONPROGRESS_TABLE_COLUMNS,
-			dbHandler.USERLESSONPROGRESS_ID + " = " + id, null, null, null, null);
+	public UserLessonProgress getUserLessonProgress(long id, String lessonName){
+		try{
+			Cursor cursor = database.query(dbHandler.TABLE_USERLESSONPROGRESS, 
+				USERLESSONPROGRESS_TABLE_COLUMNS,
+				dbHandler.USERLESSONPROGRESS_USERID + " = " + id + " AND " + dbHandler.USERLESSONPROGRESS_LESSONNAME + " = '" + lessonName + "'", null, null, null, null);
 
-		cursor.moveToFirst();
-		UserLessonProgress latestProgress = parseUserLessonProgress(cursor);
-		cursor.close();
+			cursor.moveToFirst();
+			UserLessonProgress latestProgress = parseUserLessonProgress(cursor);
+			cursor.close();
 		
-	    //debugging
-				Toast toast = Toast.makeText(dbHandler.getContext(), "Record Progress: lessonName-" + latestProgress.getLessonName() + " E-" + latestProgress.getEasyStar() + " M-" + latestProgress.getMediumStar()+ " H-" + latestProgress.getHardStar(), Toast.LENGTH_LONG);
-				toast.show();
-				
-		return latestProgress;
+		    //debugging
+//					Toast toast = Toast.makeText(dbHandler.getContext(), "Record Progress: lessonName-" + latestProgress.getLessonName() + " E-" + latestProgress.getEasyStar() + " M-" + latestProgress.getMediumStar()+ " H-" + latestProgress.getHardStar(), Toast.LENGTH_LONG);
+//					toast.show();
+					
+			return latestProgress;
+
+		}catch(Exception e){
+			return null;
+		}
 	}
+	
+	public int getGoldStarsCount(int userID){
+		ArrayList<UserLessonProgress> progressList = new ArrayList<UserLessonProgress>();
+		progressList = getAllUserLessonProgressOfUser(userID);
+		int count = 0;
+		
+		for(int i = 0; i < progressList.size(); i++){
+			if(progressList.get(i).getEasyStar().equals(StarType.GOLD.toString()))
+				count++;
+			if(progressList.get(i).getMediumStar().equals(StarType.GOLD.toString()))
+				count++;
+			if(progressList.get(i).getHardStar().equals(StarType.GOLD.toString()))
+				count++;
+		}
+		
+		return count;
+	}
+	
+	public int getSilverStarsCount(int userID){
+		ArrayList<UserLessonProgress> progressList = new ArrayList<UserLessonProgress>();
+		progressList = getAllUserLessonProgressOfUser(userID);
+		int count = 0;
+		
+		for(int i = 0; i < progressList.size(); i++){
+			if(progressList.get(i).getEasyStar().equals(StarType.SILVER.toString()))
+				count++;
+			if(progressList.get(i).getMediumStar().equals(StarType.SILVER.toString()))
+				count++;
+			if(progressList.get(i).getHardStar().equals(StarType.SILVER.toString()))
+				count++;
+		}
+		
+		return count;
+	}
+	
+	public int getBronzeStarsCount(int userID){
+		ArrayList<UserLessonProgress> progressList = new ArrayList<UserLessonProgress>();
+		progressList = getAllUserLessonProgressOfUser(userID);
+		int count = 0;
+		
+		for(int i = 0; i < progressList.size(); i++){
+			if(progressList.get(i).getEasyStar().equals(StarType.BRONZE.toString()))
+				count++;
+			if(progressList.get(i).getMediumStar().equals(StarType.BRONZE.toString()))
+				count++;
+			if(progressList.get(i).getHardStar().equals(StarType.BRONZE.toString()))
+				count++;
+		}
+		
+		return count;
+	}
+	
+	
+	
 }

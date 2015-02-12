@@ -1,65 +1,128 @@
 package com.ube.salinlahifour.evaluationModule;
 
+import java.io.IOException;
+
+import org.jdom.JDOMException;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
+
 import com.ube.salinlahifour.Item;
+import com.ube.salinlahifour.SalinlahiFour;
+import com.ube.salinlahifour.database.*;
+import com.ube.salinlahifour.model.UserDetail;
+import com.ube.salinlahifour.model.UserLessonProgress;
+import com.ube.salinlahifour.enumTypes.*;
+
+import iFeedback.iFeedback;
+
+
 
 public class Evaluation {
+	
+	protected iFeedback NLG;	
+	
+	SharedPreferences prefs;
+	//private Narration narration = new Narration();
 	private int score = 0;
-	public void recordUserAnswer(String LessonName, String Answer, boolean Status){
+	private int totscore = 0;
+	private Item item;
+	private String LessonName;
+	private String status = "Incorrect";
+	private StarType star;
+	private UserLessonProgress userLessonProgressor = new UserLessonProgress();
+	
+	public Evaluation(iFeedback NLG, String LessonName, String activityLevel){	
+		this.NLG = NLG;
+		this.LessonName = LessonName;
 		
 	}
-	/*
-	public void updateUserLessonProgress(String LessonName, StarType EasyStar, StartType MediumStar, StarType HardStar){
+	public void recordUserAnswer(String LessonName, String correctAnswer, String Status, UserRecordOperations userRecordOperator, int UserID){	
 		
+		userRecordOperator.addUserRecord(UserID, LessonName, correctAnswer, Status);
 	}
-	*/
+	
+	public void updateUserLessonProgress(String LessonName, String activityLevel, UserLessonProgressOperations userLessonProgressOperator, int UserID){
+
+		if(score <= totscore/2)
+			star = StarType.BRONZE;
+		else if(score >= totscore/2 && score != totscore)
+			star = StarType.SILVER;
+		else 
+			star = StarType.GOLD;
+		
+		
+		
+		if(activityLevel == LevelType.EASY.toString())
+				userLessonProgressOperator.addUserLessonProgress(UserID, LessonName, star.toString(), null, null);
+			else if(activityLevel == LevelType.MEDIUM.toString())
+				userLessonProgressOperator.addUserLessonProgress(UserID, LessonName, null, star.toString(), null);
+			else
+				userLessonProgressOperator.addUserLessonProgress(UserID, LessonName, null, null, star.toString());
+	} 
+	
 	private Item getMostImprovedItem(){
 		Item item = null;
-		
-		
-		
 		return item;
 	}
 	
-	public String getImmediateFeedback(Item item, int index, String answer){
+	public String getImmediateFeedback(int index, String answer, int lessonNumber){
 		String Feedback = null;
-		if(item.getWord().equals(answer))
-			Feedback = "Magaling!" + answer + " is " + item.getEnglish();
-		else
-			Feedback = "Oops. That's " + answer + ", Try Again!";
-		return Feedback;
+		try {
+			Feedback = NLG.GenerateImmediateFeedback(answer,index, lessonNumber);
+		} catch (JDOMException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return Feedback; 
 	}
 
 
-	public String getEndofActivityFeedback(){
-		
-		String Feedback = "Nakakatuwa! You finished the game! You learned \"Bilog\"! Play again to practice more on \"Parisukat\" Your total score is:"+score;
+	public String getEndofActivityFeedback(int score, int lessonNumber){
+		String Feedback = null;
+		try {
+			Feedback = NLG.GenerateDelayedFeedback(score, lessonNumber);
+		} catch (JDOMException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return Feedback;
-		
 	}
 	
-	public boolean evaluateAnswer(String CorrectAnswer, String UserAnswer){
+	public boolean evaluateAnswer(String CorrectAnswer, String UserAnswer, UserRecordOperations userRecordOperator, int UserID){
 		if(CorrectAnswer.equals(UserAnswer)){
 			score++;
+			totscore++;
+			status = "Correct";
+			Log.d("Evaluation","Updating User Record");
+			recordUserAnswer(LessonName, CorrectAnswer, status, userRecordOperator, UserID);
+			Log.d("Evaluation","Updated User Record");
 			return true;
 		}
-		else
+		else{
+			status = "Incorrect";
+			totscore++;
+			Log.d("Evaluation","Updating User Record");
+			recordUserAnswer(LessonName, CorrectAnswer, status, userRecordOperator, UserID);
+			Log.d("Evaluation","Updating User Record");
 			return false;
-	}
-	/*
-	 * public boolean evaluateAnswer(String CorrectAnswer, String UserAnswer, something timeanswered){
-			if(CorrectAnswer.equals(UserAnswer)){
-				score++;
-				getpercentage(timeanswered);
-					record to the database;
-				return true;
-			}
-			else
-				return false;
 		}
-	 */
+	}
+
 	public int getScore()
 	{
 		return score;
+	}
+	
+	public int getTotalScore()
+	{
+		return totscore;
+	}
+	
+	public StarType getStar()
+	{
+		return star;
 	}
 
 	

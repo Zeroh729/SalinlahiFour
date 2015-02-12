@@ -2,34 +2,35 @@ package com.ube.salinlahifour;
 
 //import android.R;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStreamWriter;
-import org.jdom.*;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-import android.widget.Toast;
+import android.view.View;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
 
 import com.ube.salinlahifour.database.DatabaseHandler;
 import com.ube.salinlahifour.database.UserDetailOperations;
 import com.ube.salinlahifour.model.UserDetail;
-import com.ube.salinlahifour.tools.DateTimeConverter;
 
 public class MainActivity extends Activity {
 	private UserDetailOperations userDetailOperator;		
-	private int SPLASH_TIME = 2 * 1000;// 3 seconds
+	private int SPLASH_TIME = 1 * 1000;// 3 seconds //Now 4 secs
 //	private final Intent registationActivity = new Intent(this, RegistrationActivity.class);
 //	private final Intent mapActivity = new Intent(this, MapActivity.class);
 
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
+		
 		//Load File from res or assets
 		//InputStream ins = getResources().openRawResource( getResources().getIdentifier("raw/properties", "raw", getPackageName()));
 		File properties = new File("/sdcard/properties.txt");
@@ -146,13 +147,36 @@ public class MainActivity extends Activity {
 
 		userDetailOperator = new UserDetailOperations(this);
 		
+		 ImageView cloud1 = (ImageView) findViewById(R.id.Splash_Cloud1);
+		 ImageView cloud2 = (ImageView) findViewById(R.id.Splash_Cloud2);
+		 //ImageView logo = (ImageView) findViewById(R.id.Splash_Logo);
+		 TranslateAnimation animation = new TranslateAnimation(0.0f, 100.0f,0.0f, 0.0f);
+		 TranslateAnimation animation2 = new TranslateAnimation(0.0f, 100.0f,0.0f, 0.0f);
+		// TranslateAnimation animation3 = new TranslateAnimation(0.0f, 0.0f,0.0f, -400.0f);
+		 animation.setDuration(SPLASH_TIME);
+		 
+		 animation.setRepeatCount(1);
+		 //animation.setRepeatMode(2);
+		 //animation.setFillAfter(true);
+		 animation2.setDuration(SPLASH_TIME+3000);
+		 animation2.setRepeatCount(1);
+		 //animation2.setRepeatMode(2);
+		// animation2.setFillAfter(true);
+		 //animation3.setDuration(SPLASH_TIME);
+		// animation3.setRepeatCount(1);
+		 //animation3.setRepeatMode(2);
+		 //animation3.setFillAfter(true);
+		 cloud1.startAnimation(animation);
+		 cloud2.startAnimation(animation2);
+		 //logo.startAnimation(animation3);
 		   new Handler().postDelayed(new Runnable() {
 
 		        public void run() {
 		        	if(firstTime == -1){	//If app is launched for the first time ever, go to Register Screen
 		        		Intent intent = new Intent();
-		        		intent.setClass(getApplicationContext(), RegistrationActivity.class);
-		        		startActivity(intent);	
+		        		intent.setClass(getApplicationContext(), RegistrationActivityName.class);
+		        		startActivity(intent);
+
 		        	}
 		        	else if(lastUserID == -1){ //If there is no last logged in user, go to Login Screen
 			        	Intent intent = new Intent();
@@ -164,12 +188,14 @@ public class MainActivity extends Activity {
 		        		UserDetail user = userDetailOperator.getUserDetail(lastUserID);
 		        		userDetailOperator.close();
 		        		Intent intent = new Intent();
-		        		if(user != null){
+		        		
+		        		intent.putExtra("UserID", user.getId());		        		
+		        		if(lastUserID != -1){
 			        		((SalinlahiFour)getApplication()).setLoggedInUser(user);
 			        		intent.setClass(getApplicationContext(), MapActivity.class);
 		        		}else
-			        		intent.setClass(getApplicationContext(), RegistrationActivity.class);
-		        		startActivity(intent);
+			        		intent.setClass(getApplicationContext(), RegistrationActivityName.class);
+		        			startActivity(intent);
 		        		}
 //		            MainActivity.this.finish();
 		        }    
@@ -177,5 +203,6 @@ public class MainActivity extends Activity {
 		    }, SPLASH_TIME);
 		   
 	}
+
 	
 }

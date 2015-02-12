@@ -13,11 +13,13 @@ import android.util.Log;
 import android.view.View;
 
 import com.ube.salinlahifour.Item;
+import com.ube.salinlahifour.Lesson;
 import com.ube.salinlahifour.LessonItemLoader;
 import com.ube.salinlahifour.tutorials.*;
 import com.ube.salinlahifour.enumTypes.LevelType;
 
 public abstract class AbstractTutorialActivity extends Activity {
+	protected Lesson lesson;
 	protected ArrayList<SoundPool> voiceovers;
 	protected ArrayList<Item> items;
 	protected ArrayList<String> description;
@@ -25,10 +27,12 @@ public abstract class AbstractTutorialActivity extends Activity {
 	protected String activityName;
 	protected String activityLevel;
 	protected int layoutID;
-
+	protected int UserID;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
 		try{
 			setContentView(layoutID);
 		}catch(Exception e){
@@ -37,8 +41,13 @@ public abstract class AbstractTutorialActivity extends Activity {
 					+ "2. layoutID has been set in Constructor");
 		}
 		Bundle bundle = getIntent().getExtras();
-		activityClass = bundle.getString("activityClass");
+
+		UserID = bundle.getInt("UserID");
+		//QQ Testing Retreiving Lesson class
+		lesson = (Lesson) bundle.getParcelable("lesson");
+		activityClass = lesson.getActivity();
 		activityLevel = bundle.getString("activityLevel");
+		Log.d("LESSON Name: ", lesson.getName());
 		
 		activityName = activityClass.replace("com.ube.salinlahifour.lessonActivities.", "");
 		
@@ -68,11 +77,16 @@ public abstract class AbstractTutorialActivity extends Activity {
 	}
 	
 	protected void goToActivity(){
+
 		try{
 			Intent intent = new Intent(activityClass);            	
 			intent.putExtra("activityName", activityName);
+			intent.putExtra("UserID", UserID);
 			intent.putExtra("activityLevel", activityLevel);
-			Log.d(activityClass, "TEST passing from ActivityName");
+ 			Bundle bundle = new Bundle();
+ 			bundle.putParcelable("lesson", lesson);
+ 			intent.putExtras(bundle);
+ 			
 			startActivity(intent);
 		}catch(Exception e){
 			errorPopup("Activity Error", "Check if:\n"

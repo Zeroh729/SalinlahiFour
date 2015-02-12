@@ -1,28 +1,35 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-	<Lesson>
-		<Name>Cooking</Name>
-		<Image>placeholder_lesson</Image>
-		<ActivityName>Cooking</ActivityName>
+    <Lesson>
+		<Name>F a m i l y!</Name>
+		<Image>lesson1_icon</Image>
+		<ActivityName>Family</ActivityName>
+		<Description>Meet Pepay's Brother, Sister, Parents, and more!</Description>
 	</Lesson>
 	<Lesson>
 		<Name>House</Name>
-		<Image>placeholder_lesson</Image>
+		<Image>lesson2_icon</Image>
 		<ActivityName>House</ActivityName>
+		<Description></Description>
 	</Lesson>
+	
 	<Lesson>
-		<Name>F a m i l y!</Name>
-		<Image>placeholder_lesson</Image>
-		<ActivityName>Family</ActivityName>
+		<Name>Cooking</Name>
+		<Image>lesson0_icon</Image>
+		<ActivityName>Cooking</ActivityName>
+		<Description></Description>
 	</Lesson>
 	<Lesson>
 		<Name>Music</Name>
-		<Image>placeholder_lesson</Image>
+		<Image>lesson0_icon</Image>
 		<ActivityName>Music</ActivityName>
+		<Description></Description>
 	</Lesson>
 	<Lesson>
 		<Name>Society</Name>
-		<Image>placeholder_lesson</Image>
+		<Image>lesson0_icon</Image>
 		<ActivityName>Society</ActivityName>
+		<Description></Description>
 	</Lesson>
+
 </resources>

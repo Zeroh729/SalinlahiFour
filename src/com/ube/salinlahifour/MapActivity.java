@@ -8,58 +8,164 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.XmlResourceParser;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.qwerjk.better_text.MagicTextView;
 import com.ube.salinlahifour.debugclasses.DebugUserModuleActivity;
 import com.ube.salinlahifour.enumTypes.LevelType;
+import com.ube.salinlahifour.uibuilders.Button.BtnStatesDirector;
+import com.ube.salinlahifour.uibuilders.Button.EasyBtnStatesBuilder;
+import com.ube.salinlahifour.uibuilders.Button.HardBtnStatesBuilder;
+import com.ube.salinlahifour.uibuilders.Button.LogoutBtnStatesBuilder;
+import com.ube.salinlahifour.uibuilders.Button.MediumBtnStatesBuilder;
+import com.ube.salinlahifour.uibuilders.Button.PopupcloseBtnStatesBuilder;
+import com.ube.salinlahifour.uibuilders.Button.ProgressBtnStatesBuilder;
 
 public class MapActivity extends Activity implements OnClickListener{
 	private ArrayList<Scene> scenes;
 	private ImageButton[] imgBtns;
 	private TextView[] txtViews;
 	private Scene scene;
+	private ImageButton btn_progress;
+	private ImageButton btn_logout;
+	
+	private PopupWindow popupWindow;
+	private View popupView;
+	private MagicTextView tv_title;
+	private TextView tv_desc;
+	private ImageButton btn_popupclose;
+	private ImageButton btn_easy;
+	private ImageButton btn_medium;
+	private ImageButton btn_hard;
+	private ImageView img_popupmap;
+	
+	private int UserID;
 	private Intent intent = null;
+
+	private ImageButton anchor;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Bundle extras = getIntent().getExtras();
+		if (extras != null) {
+		    UserID = extras.getInt("UserID");
+		}
+		
 		imgBtns = new ImageButton[5];
 		txtViews = new TextView[5];
+
+		//setContentView(R.layout.activity_map);
 		
+		anchor = (ImageButton) findViewById(R.id.anchor);
 		if(((SalinlahiFour)getApplication()).getLoggedInUser() == null){
     		Intent intent = new Intent();
-    		intent.setClass(getApplicationContext(), RegistrationActivity.class);
+    		intent.setClass(getApplicationContext(), RegistrationActivityName.class);
     		startActivity(intent);
 		}else{
 	        Toast toast = Toast.makeText(getApplicationContext(), "Welcome " + ((SalinlahiFour)getApplication()).getLoggedInUser().getName() + "!!!", Toast.LENGTH_SHORT);
 	        toast.show();
 			
-			Log.d("PasringXML","TestTestTest");
-			try {
-				parseXML();
-			} catch (XmlPullParserException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			setLayout();
+		try {
+			parseXML();
+		} catch (XmlPullParserException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		setLayout();
+
+		
+		if(SalinlahiFour.getLoggedInUser().getGender().equals("female")){
+			findViewById(R.id.account_btn).setBackgroundResource(R.drawable.map_hud_pepay_talking);
+		}else{
+			findViewById(R.id.account_btn).setBackgroundResource(R.drawable.map_hud_popoi_talking);
+		}
+		
+		instantiateViews();
+		}
+		scene = scenes.get(0);
+	}
+	
+
+	private void instantiateViews() {
+		btn_logout = (ImageButton)findViewById(R.id.btn_logout);
+		btn_progress = (ImageButton)findViewById(R.id.btn_progress);
+
+		btn_logout.setImageDrawable(BtnStatesDirector.getImageDrawable(new LogoutBtnStatesBuilder()));
+		btn_progress.setImageDrawable(BtnStatesDirector.getImageDrawable(new ProgressBtnStatesBuilder()));
+	}
+
+	public void instantiatePopupView(){
+		LayoutInflater layoutInflater = (LayoutInflater)getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);  
+	    popupView = layoutInflater.inflate(R.layout.activity_difficulty, null);
+	    
+		popupWindow = new PopupWindow(popupView, LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);  
+        popupWindow.setOutsideTouchable(false);
+        popupWindow.setBackgroundDrawable(new BitmapDrawable());
+        
+	    
+		btn_easy = (ImageButton)popupView.findViewById(R.id.btn_easy);
+		btn_medium = (ImageButton)popupView.findViewById(R.id.btn_med);
+		btn_hard = (ImageButton)popupView.findViewById(R.id.btn_hard);
+		btn_popupclose = (ImageButton)popupView.findViewById(R.id.btn_popupclose);
+		img_popupmap = (ImageView)popupView.findViewById(R.id.popup_mapimg);
+
+	    tv_desc = (TextView)popupView.findViewById(R.id.tv_description);
+	    tv_desc.setTypeface(SalinlahiFour.getFontBpreplay());
+	    tv_title = (MagicTextView)popupView.findViewById(R.id.tv_title);
+		for(int i = 0; i < 30; i++)
+			tv_title.addOuterShadow(5, 0, 0, 0xFF164366);
+		tv_title.setTypeface(SalinlahiFour.getFontKgsecondchances());
+
+		btn_popupclose.setImageDrawable(BtnStatesDirector.getImageDrawable(new PopupcloseBtnStatesBuilder()));
+		btn_easy.setImageDrawable(BtnStatesDirector.getImageDrawable(new EasyBtnStatesBuilder()));
+		btn_medium.setImageDrawable(BtnStatesDirector.getImageDrawable(new MediumBtnStatesBuilder()));
+		btn_hard.setImageDrawable(BtnStatesDirector.getImageDrawable(new HardBtnStatesBuilder()));
+        
+	}
+	
+
+	public void navigateWidget(int choice){
+		switch(choice){
+		case 1: Log.d("debug", "register intent go!");
+				intent = new Intent(this, RegistrationActivityName.class);
+				startActivity(intent); 
+				break;
+		case 2: intent = new Intent(this, LoginActivity.class);
+				startActivity(intent);
+				break;
 		}
 	}
+		
 	
 	public void parseXML() throws XmlPullParserException, IOException{
 		scenes = new ArrayList();
 		scene = makeNewScene();
 		String lessonName = "";
+		String lessonDesc = "";
 		String activityName = "";
 		String value = "";
 		int lessonImgID = 0;
@@ -79,17 +185,24 @@ public class MapActivity extends Activity implements OnClickListener{
         	 Log.d("Start tag "+parser.getName(), "TEST");
          } else if(eventType == XmlPullParser.END_TAG) {
         	 if(parser.getName().equals("Lesson")){
-        		 scene.addLesson(new Lesson(lessonName, activityName, lessonImgID));
+        		 Lesson lesson = new Lesson();
+        		 scene.addLesson(lesson.setValues(lessonName, lessonDesc, activityName, lessonImgID));
         		 lessonName = "";
+        		 lessonDesc = "";
         		 activityName = "";
         		 value = "";
         		 lessonImgID = 0;
+        		 if(scene.getLessons().size() > 5){
+        			 scene = makeNewScene();
+        		 }
         	 }else if(parser.getName().equals("Name")){
         		 lessonName = value;
         	 }else if(parser.getName().equals("Image")){
         		 lessonImgID = getResources().getIdentifier(value, "drawable", getPackageName());
         	 }else if(parser.getName().equals("ActivityName")){
         		 activityName = value;
+        	 }else if(parser.getName().equals("Description")){
+        		 lessonDesc = value;
         	 }
          } else if(eventType == XmlPullParser.TEXT) {
         	 value = parser.getText();
@@ -105,6 +218,9 @@ public class MapActivity extends Activity implements OnClickListener{
 		case 0:
 			scenes.add(new Scene(null, R.layout.scene_layout_1));
 			break;
+		default:
+			scenes.add(new Scene(null, R.layout.scene_layout_1));
+			break;
 		}
 		return scenes.get(scenes.size()-1);
 	}
@@ -116,17 +232,41 @@ public class MapActivity extends Activity implements OnClickListener{
 		imgBtns[2] = (ImageButton)findViewById(R.id.img_lesson3);
 		imgBtns[3] = (ImageButton)findViewById(R.id.img_lesson4);
 		imgBtns[4] = (ImageButton)findViewById(R.id.img_lesson5);
-		txtViews[0] = (TextView)findViewById(R.id.tv_lesson1);
-		txtViews[1] = (TextView)findViewById(R.id.tv_lesson2);
-		txtViews[2] = (TextView)findViewById(R.id.tv_lesson3);
-		txtViews[3] = (TextView)findViewById(R.id.tv_lesson4);
-		txtViews[4] = (TextView)findViewById(R.id.tv_lesson5);
+		
+		RelativeLayout parentView = (RelativeLayout)findViewById(R.id.parent_view);
+		float scale = getResources().getDisplayMetrics().density;
+//		int paddingDp = 1;
+		int paddingDp = (int) (7*scale + 0.5f);
 		
 		for(int i = 0; i < scene.getLessons().size(); i++){
 			imgBtns[i].setImageResource(scene.getLessons().get(i).getImage());
-			txtViews[i].setText(scene.getLessons().get(i).getName());
+			imgBtns[i].setTag(i);
 			imgBtns[i].setVisibility(View.VISIBLE);
 			imgBtns[i].setOnClickListener(this);
+			
+			LayoutParams imgBtnMargins = (LayoutParams) imgBtns[i].getLayoutParams();
+			int topMargin = (int) (imgBtnMargins.topMargin*scale + 0.5f);
+			//QQ Check if +30 is enough to bring mapLabel down
+			int bottomMargin = (int) ((imgBtnMargins.bottomMargin + 30)*scale + 0.5f);
+			int leftMargin = (int) (imgBtnMargins.leftMargin*scale + 0.5f);
+			int rightMargin = (int) (imgBtnMargins.rightMargin*scale + 0.5f);
+					
+			LayoutParams p = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+			        ViewGroup.LayoutParams.WRAP_CONTENT);
+
+			p.addRule(RelativeLayout.BELOW, imgBtns[i].getId());
+			p.addRule(RelativeLayout.ALIGN_LEFT, imgBtns[i].getId());
+			p.addRule(RelativeLayout.ALIGN_RIGHT, imgBtns[i].getId());
+			
+			txtViews[i] = new TextView(this);
+			txtViews[i].setText(scene.getLessons().get(i).getName());
+			txtViews[i].setTextAppearance(getApplicationContext(), R.style.mapLabel);
+			txtViews[i].setTypeface(SalinlahiFour.getFontPlaytime());
+		
+			txtViews[i].setLayoutParams(p);
+			txtViews[i].setBackgroundResource(R.drawable.map_labels);
+			
+			parentView.addView(txtViews[i]);
 		}
 	}
 
@@ -154,65 +294,83 @@ public class MapActivity extends Activity implements OnClickListener{
 				startActivity(intent);
 				break;
 			case R.id.btn_register:
-				intent = new Intent(this, RegistrationActivity.class);
+				intent = new Intent(this, RegistrationActivityName.class);
 				startActivity(intent);
 				break;
 			case R.id.btn_logout:
 				intent = new Intent(this, LoginActivity.class);
 				startActivity(intent);
 				break;
+			case R.id.btn_progress:
+				int numLesson = 0;
+				for(Scene scene : scenes){
+					numLesson += scene.getLessons().size();
+				}
+				intent = new Intent(this, ProgressTree.class);
+				intent.putExtra("numLessons", numLesson);
+				startActivity(intent);
+				break;
+			case R.id.btn_popupclose:
+				popupWindow.dismiss();
+				break;
 		}
 		
-		if(index != -1){
-			selectLevelPopup(index);
-		}
-	}
-	
-	public void selectLevelPopup(final int index){
-		AlertDialog.Builder alertDialog = new AlertDialog.Builder(MapActivity.this);
-        alertDialog.setTitle(scene.getLessons().get(index).getName());
-        alertDialog.setMessage("Choose difficulty:");
-	        alertDialog.setNegativeButton("EASY", new DialogInterface.OnClickListener() {
-	            public void onClick(DialogInterface dialog, int which) {	
-	            	try{
-		            	intent = new Intent(scene.getLessons().get(index).getTutorial());
-		    			intent.putExtra("activityClass", scene.getLessons().get(index).getActivity());
-		    			intent.putExtra("activityLevel", LevelType.EASY.toString());
-		    			startActivity(intent);
-		            }catch(Exception e){
-		            	errorPopup(e, index);
-		            }
-	            }
-	        });
-	        
-	        alertDialog.setNeutralButton("MEDIUM", new DialogInterface.OnClickListener() {
-	            public void onClick(DialogInterface dialog, int which) {		
-	            	try{
-		            	intent = new Intent(scene.getLessons().get(index).getTutorial());
-		    			intent.putExtra("activityClass", scene.getLessons().get(index).getActivity());
-		    			intent.putExtra("activityLevel", LevelType.MEDIUM.toString());
-		    			startActivity(intent);
-		            }catch(Exception e){
-		            	errorPopup(e, index);
-		            }
-	            }
-	        });
-	
-	        alertDialog.setPositiveButton("HARD", new DialogInterface.OnClickListener() {
-	            public void onClick(DialogInterface dialog, int which) {	
-	            	try{
-		            	intent = new Intent(scene.getLessons().get(index).getTutorial());
-		    			intent.putExtra("activityClass", scene.getLessons().get(index).getActivity());
-		    			intent.putExtra("activityLevel", LevelType.HARD.toString());
-		    			startActivity(intent);		            
-	    			}catch(Exception e){
-		            	errorPopup(e, index);
-		            }
-	            }
-	        });
-        
+		
+		final int fIndex = index;
+		
+		if(index != -1){ //If lesson is pressed, continue
+//		//	selectLevelPopup(index);
+//			imgBtns[index].setOnClickListener(new ImageButton.OnClickListener(){
+//				
+//				   @Override
+//				   public void onClick(View view) {
 
-        alertDialog.show();
+					instantiatePopupView();
+			
+				    final Lesson lessonDetails = scene.getLessons().get(Integer.parseInt(((ImageButton)view).getTag().toString()));				
+				    tv_title.setText(lessonDetails.getName());
+				    tv_desc.setText(lessonDetails.getDescription());
+				    img_popupmap.setImageResource(lessonDetails.getImage());
+				    
+				    Log.d("Pressed a lesson", "TEST");
+				    
+				             ImageButton easy = (ImageButton)popupView.findViewById(R.id.btn_easy);
+				             easy.setOnClickListener(new ImageButton.OnClickListener(){
+				        	     @Override
+				        	     public void onClick(View v) {
+				        	    	intent = new Intent(scene.getLessons().get(fIndex).getTutorial());
+				         			intent.putExtra("activityClass", scene.getLessons().get(fIndex).getActivity());
+				         			intent.putExtra("activityLevel", LevelType.EASY.toString());
+				         			Bundle bundle = new Bundle();
+				         			bundle.putParcelable("lesson", lessonDetails);
+				         			intent.putExtras(bundle);
+				         			startActivity(intent);
+				        	     }});
+				             ImageButton medium = (ImageButton)popupView.findViewById(R.id.btn_med);
+				             medium.setOnClickListener(new ImageButton.OnClickListener(){
+
+				        	     @Override
+				        	     public void onClick(View v) {
+				        	    	 intent = new Intent(scene.getLessons().get(fIndex).getTutorial());
+				         			intent.putExtra("activityClass", scene.getLessons().get(fIndex).getActivity());
+				         			intent.putExtra("activityLevel", LevelType.MEDIUM.toString());
+				         			startActivity(intent);
+				        	     }});
+				             ImageButton hard = (ImageButton)popupView.findViewById(R.id.btn_hard);
+				             hard.setOnClickListener(new ImageButton.OnClickListener(){
+
+
+				        	     @Override
+				        	     public void onClick(View v) {
+				        	    	 intent = new Intent(scene.getLessons().get(fIndex).getTutorial());
+				         			intent.putExtra("activityClass", scene.getLessons().get(fIndex).getActivity());
+				         			intent.putExtra("activityLevel", LevelType.HARD.toString());
+				         			startActivity(intent);
+				        	     }});
+
+				            popupWindow.showAsDropDown(popupView);
+				            
+			}
 	}
 	
 	private void errorPopup(Exception e, int index){

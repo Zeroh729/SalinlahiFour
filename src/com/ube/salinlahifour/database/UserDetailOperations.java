@@ -44,10 +44,10 @@ public class UserDetailOperations {
 
 		UserDetail userDetail = getUserDetail(userID);
 		
-		//debugging
-				name = userDetail.getName();
-				Toast toast = Toast.makeText(dbHandler.getContext(), "Latest User: " + name, Toast.LENGTH_SHORT);
-				toast.show();
+//		//debugging
+//				name = userDetail.getName();
+//				Toast toast = Toast.makeText(dbHandler.getContext(), "Latest User: " + name, Toast.LENGTH_SHORT);
+//				toast.show();
 				
 		return userDetail;
 	}
@@ -65,10 +65,10 @@ public class UserDetailOperations {
 		}
 		cursor.close();
 		
-		//debugging
-				int num = userDetailList.size();
-				Toast toast = Toast.makeText(dbHandler.getContext(), "Users got: " + num + " with first ID as: " + userDetailList.get(0).getId(), Toast.LENGTH_SHORT);
-				toast.show();
+//		//debugging
+//				int num = userDetailList.size();
+//				Toast toast = Toast.makeText(dbHandler.getContext(), "Users got: " + num + " with first ID as: " + userDetailList.get(0).getId(), Toast.LENGTH_SHORT);
+//				toast.show();
 				
 		
 		return userDetailList;
@@ -85,10 +85,10 @@ public class UserDetailOperations {
 				userDetail = parseUserDetail(cursor);
 				cursor.close();
 		
-				//debugging
-					String name = userDetail.getName();
-					Toast toast = Toast.makeText(dbHandler.getContext(), "User got: " + name, Toast.LENGTH_SHORT);
-					toast.show();
+//				//debugging
+//					String name = userDetail.getName();
+//					Toast toast = Toast.makeText(dbHandler.getContext(), "User got: " + name, Toast.LENGTH_SHORT);
+//					toast.show();
 				
 				return userDetail;
 			}
@@ -98,13 +98,24 @@ public class UserDetailOperations {
 		return null;
 	}
 	
-	public void deleteUserDetail(UserDetail userDetail, int loggedInID){
+	public void deleteUserDetail(UserDetail userDetail){
 		long id = userDetail.getId();
 
-		//debugging
-		String name = userDetail.getName();
-		Toast toast = Toast.makeText(dbHandler.getContext(), "User vanised: " + name, Toast.LENGTH_SHORT);
-		toast.show();
+//		//debugging
+//		String name = userDetail.getName();
+//		Toast toast = Toast.makeText(dbHandler.getContext(), "User vanised: " + name, Toast.LENGTH_SHORT);
+//		toast.show();
+		
+		database.delete(dbHandler.TABLE_USERDETAIL, dbHandler.USERDETAIL_ID + " = " + id, null);
+	}
+	
+	public void deleteUserDetail(UserDetail userDetail,int loggedInID){
+		long id = userDetail.getId();
+
+//		//debugging
+//		String name = userDetail.getName();
+//		Toast toast = Toast.makeText(dbHandler.getContext(), "User vanised: " + name, Toast.LENGTH_SHORT);
+//		toast.show();
 		
 		database.delete(dbHandler.TABLE_USERDETAIL, dbHandler.USERDETAIL_ID + " = " + id, null);
 		
