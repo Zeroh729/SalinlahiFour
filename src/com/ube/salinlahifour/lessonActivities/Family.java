@@ -45,8 +45,6 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	private TextView tv_dialog;
 	private TextView tv_feedback;
 	private ImageButton[] choices;
-	private String lessonName;// = "Family";
-	int lessonNumber = 1;
 	private int itemno;
 	private ImageView iv_swipe;
 	
@@ -72,7 +70,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	@Override
 	protected void initiateViews() {
 		Log.d("Debug Family","Aldrin: Initiate Views");
-		evaluation =  new Evaluation(NLG, lessonName, activityLevel.toString());
+		evaluation =  new Evaluation(NLG, lesson.getName(), activityLevel.toString());
 		itemno = 0;
 		//Starts Timer
 		initiateTimer();
@@ -212,7 +210,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 			//NLG Part - Correct
 			Log.d("Debug Family", "Aldrin: Answer: " + answer);
 			Log.d("Debug Family", "Aldrin: Index: " + itemno);
-			feedback = evaluation.getImmediateFeedback(questions.get(itemno).getQ_num(), answer, lessonNumber);
+			feedback = evaluation.getImmediateFeedback(questions.get(itemno).getQ_num(), answer, lesson.getLessonNumber());
 			Log.d("Debug Family", "Aldrin: Feedback: "+ feedback);
 			tv_feedback.setText(feedback + " " + question);
 			Log.d("Debug Family", "Aldrin: Immediate Feedback Completed");
@@ -223,9 +221,9 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 			}
 			else{
 				Log.d("Debug Family", "Aldrin: iFeedback says its finished (Delayed Feedback)");
-				feedback = evaluation.getEndofActivityFeedback(evaluation.getScore(), lessonNumber);
+				feedback = evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber());
 				tv_feedback.setText(feedback);
-				evaluation.updateUserLessonProgress(lessonName, activityLevel.toString(), userLessonProgressOperator, UserID);
+				evaluation.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), userLessonProgressOperator, UserID);
 				//feedback = NLG.GenerateDelayedFeedback(score, LessonNum);
 				//feedback = "feedback placeholder";
 				timer.cancel();
@@ -295,7 +293,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 			Log.d("Debug Family", "Aldrin: Index: " + itemno);
 			//NLG Part - Wrong
 			//tv_feedback.setText("Oops. That's " + answer + ", Try Again!");
-			feedback = evaluation.getImmediateFeedback(questions.get(itemno).getQ_num(), answer, lessonNumber);
+			feedback = evaluation.getImmediateFeedback(questions.get(itemno).getQ_num(), answer, lesson.getLessonNumber());
 			Log.d("Debug Family", "Aldrin: Feedback: "+ feedback);
 			tv_feedback.setText(feedback + " " + question);
 		

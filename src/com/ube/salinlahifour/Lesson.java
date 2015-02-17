@@ -11,15 +11,19 @@ public class Lesson implements Parcelable{
 	private String tutorial;
 	private String description;
 	private int image;
+	private boolean locked;
+	private int lessonNumber;
 	
+
 	public Lesson(){}
 	
-	public Lesson setValues(String name, String description, String className, int image){
+	public Lesson setValues(String name, String description, String className, int image, int lessonNumber){
 		this.name = name;
 		this.image = image;
 		this.description = description;
 		this.activity = "com.ube.salinlahifour.lessonActivities." + className;
 		this.tutorial = "com.ube.salinlahifour.tutorials." + className;
+		this.lessonNumber = lessonNumber;
 		return this;
 	}
 	
@@ -62,6 +66,22 @@ public class Lesson implements Parcelable{
 	public void setImage(int image) {
 		this.image = image;
 	}
+	
+	public void setLocked(boolean locked){
+		this.locked = locked;
+	}
+	
+	public boolean getLocked(){
+		return locked;
+	}
+
+	public int getLessonNumber() {
+		return lessonNumber;
+	}
+
+	public void setLessonNumber(int lessonNumber) {
+		this.lessonNumber = lessonNumber;
+	}
 
 	public Lesson(Parcel in) {
 	    super();
@@ -95,6 +115,7 @@ public class Lesson implements Parcelable{
 		dest.writeString(tutorial);
 		dest.writeString(description);
 		dest.writeString(image+"");
+		dest.writeString(lessonNumber+"");
 	}
 	
 
@@ -104,7 +125,7 @@ public class Lesson implements Parcelable{
 	    this.tutorial = in.readString();
 	    this.description = in.readString();
 	    this.image = Integer.parseInt(in.readString());
-	
-	
+	    this.lessonNumber = Integer.parseInt(in.readString());
 	}
+
 }

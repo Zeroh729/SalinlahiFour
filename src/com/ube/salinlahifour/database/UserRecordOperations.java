@@ -116,16 +116,41 @@ public class UserRecordOperations {
 		return userRecordList;
 	}
 	
-	public UserRecord getAllUserRecordsFromUserId(long userId){
+	public ArrayList<UserRecord> getAllUserRecordsFromUserId(long userId){
+		ArrayList<UserRecord> list = new ArrayList<UserRecord>();
 		Cursor cursor = database.query(dbHandler.TABLE_USERRECORD, 
 				USERRECORD_TABLE_COLUMNS,
 				dbHandler.USERRECORD_USERID + " = " + userId, null, null, null, null);
 		cursor.moveToFirst();
 
-		UserRecord userRecord = parseUserRecord(cursor);
+		while(!cursor.isAfterLast()){
+			UserRecord student = parseUserRecord(cursor);
+			list.add(student);
+			cursor.moveToNext();
+		}
 		cursor.close();
 
-		return userRecord;
+		return list;
+	}	
+
+	public ArrayList<UserRecord> getAllUserRecordsFromUserId(long userId, String lessonName){
+		ArrayList<UserRecord> list = new ArrayList<UserRecord>();
+		Cursor cursor = database.query(dbHandler.TABLE_USERRECORD, 
+				USERRECORD_TABLE_COLUMNS,
+				dbHandler.USERRECORD_USERID + " = " + userId + " AND " +
+				dbHandler.USERRECORD_LESSONNAME + " = '" + lessonName + "'", null, null, null, null);
+		
+		Log.d(cursor.getCount()+"", "TEST");
+		cursor.moveToFirst();
+
+		while(!cursor.isAfterLast()){
+			UserRecord student = parseUserRecord(cursor);
+			list.add(student);
+			cursor.moveToNext();
+		}
+		cursor.close();
+
+		return list;
 	}	
 	
 	public void deleteUserRecord(UserRecord userRecord){
@@ -191,5 +216,6 @@ public class UserRecordOperations {
 
 		return userRecordList;
 	}
+
 	
 }

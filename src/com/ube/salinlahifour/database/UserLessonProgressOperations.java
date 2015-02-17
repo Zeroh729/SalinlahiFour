@@ -30,8 +30,6 @@ public class UserLessonProgressOperations {
 		dbHandler.close();
 	}
 	
-	
-	
 	public UserLessonProgress addUserLessonProgress(int userID, String lessonName, String easyStar, String medStar, String hardStar){ //add parameter for each attribute, id not included
 		ContentValues value = new ContentValues();
 		
@@ -147,12 +145,14 @@ public class UserLessonProgressOperations {
 		int count = 0;
 		
 		for(int i = 0; i < progressList.size(); i++){
-			if(progressList.get(i).getEasyStar().equals(StarType.GOLD.toString()))
-				count++;
-			if(progressList.get(i).getMediumStar().equals(StarType.GOLD.toString()))
-				count++;
-			if(progressList.get(i).getHardStar().equals(StarType.GOLD.toString()))
-				count++;
+			try{
+				if(progressList.get(i).getEasyStar().equals(StarType.GOLD.toString()))
+					count++;
+				if(progressList.get(i).getMediumStar().equals(StarType.GOLD.toString()))
+					count++;
+				if(progressList.get(i).getHardStar().equals(StarType.GOLD.toString()))
+					count++;
+			}catch(Exception e){}
 		}
 		
 		return count;
@@ -164,12 +164,14 @@ public class UserLessonProgressOperations {
 		int count = 0;
 		
 		for(int i = 0; i < progressList.size(); i++){
-			if(progressList.get(i).getEasyStar().equals(StarType.SILVER.toString()))
-				count++;
-			if(progressList.get(i).getMediumStar().equals(StarType.SILVER.toString()))
-				count++;
-			if(progressList.get(i).getHardStar().equals(StarType.SILVER.toString()))
-				count++;
+			try{
+				if(progressList.get(i).getEasyStar().equals(StarType.SILVER.toString()))
+					count++;
+				if(progressList.get(i).getMediumStar().equals(StarType.SILVER.toString()))
+					count++;
+				if(progressList.get(i).getHardStar().equals(StarType.SILVER.toString()))
+					count++;
+			}catch(Exception e){}
 		}
 		
 		return count;
@@ -181,12 +183,14 @@ public class UserLessonProgressOperations {
 		int count = 0;
 		
 		for(int i = 0; i < progressList.size(); i++){
-			if(progressList.get(i).getEasyStar().equals(StarType.BRONZE.toString()))
-				count++;
-			if(progressList.get(i).getMediumStar().equals(StarType.BRONZE.toString()))
-				count++;
-			if(progressList.get(i).getHardStar().equals(StarType.BRONZE.toString()))
-				count++;
+			try{
+				if(progressList.get(i).getEasyStar().equals(StarType.BRONZE.toString()))
+					count++;
+				if(progressList.get(i).getMediumStar().equals(StarType.BRONZE.toString()))
+					count++;
+				if(progressList.get(i).getHardStar().equals(StarType.BRONZE.toString()))
+					count++;
+			}catch(Exception e){}
 		}
 		
 		return count;

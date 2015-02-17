@@ -33,6 +33,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.qwerjk.better_text.MagicTextView;
+import com.ube.salinlahifour.database.UserLessonProgressOperations;
 import com.ube.salinlahifour.debugclasses.DebugUserModuleActivity;
 import com.ube.salinlahifour.enumTypes.LevelType;
 import com.ube.salinlahifour.uibuilders.Button.BtnStatesDirector;
@@ -90,6 +91,23 @@ public class MapActivity extends Activity implements OnClickListener{
 			
 		try {
 			parseXML();
+			
+			UserLessonProgressOperations userdb = new UserLessonProgressOperations(this);
+			userdb.open();
+			for(Scene scene : scenes){
+				for(Lesson lesson : scene.getLessons()){
+					if(userdb.getUserLessonProgress(UserID, lesson.getName()) != null){
+						lesson.setLocked(false);
+					}else{
+						lesson.setLocked(true);
+					}
+					try{
+						scene.getLessons().get(0).setLocked(false);
+					}catch(Exception e){
+						
+					}
+				}
+			}
 		} catch (XmlPullParserException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -169,6 +187,7 @@ public class MapActivity extends Activity implements OnClickListener{
 		String activityName = "";
 		String value = "";
 		int lessonImgID = 0;
+		int lessonNumber = 0;
 		
 		XmlResourceParser parser = getResources().getXml(R.xml.lessonlist);
 		
@@ -185,8 +204,9 @@ public class MapActivity extends Activity implements OnClickListener{
         	 Log.d("Start tag "+parser.getName(), "TEST");
          } else if(eventType == XmlPullParser.END_TAG) {
         	 if(parser.getName().equals("Lesson")){
+        		 lessonNumber++;
         		 Lesson lesson = new Lesson();
-        		 scene.addLesson(lesson.setValues(lessonName, lessonDesc, activityName, lessonImgID));
+        		 scene.addLesson(lesson.setValues(lessonName, lessonDesc, activityName, lessonImgID, lessonNumber));
         		 lessonName = "";
         		 lessonDesc = "";
         		 activityName = "";
@@ -235,38 +255,34 @@ public class MapActivity extends Activity implements OnClickListener{
 		
 		RelativeLayout parentView = (RelativeLayout)findViewById(R.id.parent_view);
 		float scale = getResources().getDisplayMetrics().density;
-//		int paddingDp = 1;
 		int paddingDp = (int) (7*scale + 0.5f);
 		
 		for(int i = 0; i < scene.getLessons().size(); i++){
-			imgBtns[i].setImageResource(scene.getLessons().get(i).getImage());
-			imgBtns[i].setTag(i);
 			imgBtns[i].setVisibility(View.VISIBLE);
-			imgBtns[i].setOnClickListener(this);
+			if(!scene.getLessons().get(i).getLocked()){
+				imgBtns[i].setImageResource(scene.getLessons().get(i).getImage());
+				imgBtns[i].setTag(i);
+				imgBtns[i].setOnClickListener(this);
+				
+				LayoutParams p = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+				        ViewGroup.LayoutParams.WRAP_CONTENT);
+	
+				p.addRule(RelativeLayout.BELOW, imgBtns[i].getId());
+				p.addRule(RelativeLayout.ALIGN_LEFT, imgBtns[i].getId());
+				p.addRule(RelativeLayout.ALIGN_RIGHT, imgBtns[i].getId());
+				
+				txtViews[i] = new TextView(this);
+				txtViews[i].setText(scene.getLessons().get(i).getName());
+				txtViews[i].setTextAppearance(getApplicationContext(), R.style.mapLabel);
+				txtViews[i].setTypeface(SalinlahiFour.getFontPlaytime());
 			
-			LayoutParams imgBtnMargins = (LayoutParams) imgBtns[i].getLayoutParams();
-			int topMargin = (int) (imgBtnMargins.topMargin*scale + 0.5f);
-			//QQ Check if +30 is enough to bring mapLabel down
-			int bottomMargin = (int) ((imgBtnMargins.bottomMargin + 30)*scale + 0.5f);
-			int leftMargin = (int) (imgBtnMargins.leftMargin*scale + 0.5f);
-			int rightMargin = (int) (imgBtnMargins.rightMargin*scale + 0.5f);
-					
-			LayoutParams p = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-			        ViewGroup.LayoutParams.WRAP_CONTENT);
-
-			p.addRule(RelativeLayout.BELOW, imgBtns[i].getId());
-			p.addRule(RelativeLayout.ALIGN_LEFT, imgBtns[i].getId());
-			p.addRule(RelativeLayout.ALIGN_RIGHT, imgBtns[i].getId());
-			
-			txtViews[i] = new TextView(this);
-			txtViews[i].setText(scene.getLessons().get(i).getName());
-			txtViews[i].setTextAppearance(getApplicationContext(), R.style.mapLabel);
-			txtViews[i].setTypeface(SalinlahiFour.getFontPlaytime());
-		
-			txtViews[i].setLayoutParams(p);
-			txtViews[i].setBackgroundResource(R.drawable.map_labels);
-			
-			parentView.addView(txtViews[i]);
+				txtViews[i].setLayoutParams(p);
+				txtViews[i].setBackgroundResource(R.drawable.map_labels);
+				
+				parentView.addView(txtViews[i]);
+			}else{
+				imgBtns[i].setImageResource(R.drawable.lesson0_icon);
+			}
 		}
 	}
 
@@ -307,7 +323,13 @@ public class MapActivity extends Activity implements OnClickListener{
 					numLesson += scene.getLessons().size();
 				}
 				intent = new Intent(this, ProgressTree.class);
-				intent.putExtra("numLessons", numLesson);
+				Bundle bundle = new Bundle();
+				ArrayList<Lesson> lessons = new ArrayList();
+				for(Scene scene : scenes)
+					for(Lesson lesson : scene.getLessons())
+						lessons.add(lesson);
+				bundle.putParcelableArrayList("lessons", lessons);
+				intent.putExtras(bundle);
 				startActivity(intent);
 				break;
 			case R.id.btn_popupclose:

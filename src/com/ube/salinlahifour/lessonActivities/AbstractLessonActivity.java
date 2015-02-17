@@ -69,7 +69,7 @@ public abstract class AbstractLessonActivity extends Activity {
 		Log.d("activityLevel:", activityLevel.toString());
 		lesson = (Lesson) bundle.getParcelable("lesson");
 		
-		UserID = bundle.getInt("UserID");
+		UserID = SalinlahiFour.getLoggedInUser().getId();
 		Log.d(activityName, "TEST ActivityName in lesson act");
 
 		items = ((SalinlahiFour)getApplication()).getLessonItems();
@@ -179,7 +179,7 @@ public abstract class AbstractLessonActivity extends Activity {
 	}
 	
 	protected void showReportCard(Context context){
-		reportCard = new ReportCard(context, lesson, activityLevel, evaluation, "mahusay yey \n#sosmart");
+		reportCard = new ReportCard(context, lesson, activityLevel, evaluation, evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber()));
 		reportCard.reveal();
 	}
 

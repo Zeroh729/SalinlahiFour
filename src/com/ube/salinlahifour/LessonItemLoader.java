@@ -13,10 +13,10 @@ import com.ube.salinlahifour.enumTypes.LevelType;
 public abstract class LessonItemLoader {
 	private static String error = "";
 	
-	public static ArrayList<Item> getLessonItems(Activity act, String activityName, String activityLevel){
+	public static ArrayList<Item> getLessonItems(String activityName, String activityLevel){
 		ArrayList<Item> items = new ArrayList();
 		
-		Log.d(activityName, "TESTTEST");
+		
 		switch(activityName){
 			case "com.ube.salinlahifour.lessonActivities.Cooking":
 				switch(activityLevel){
@@ -65,6 +65,11 @@ public abstract class LessonItemLoader {
 					case "HARD":
 					case "MEDIUM":
 					case "EASY":
+						items.add(new Item(1,"Pulis" , "Police", "Which one is police", 0, null, LevelType.EASY));
+						items.add(new Item(2,"Bombero" , "Fireman", "Which one is Fireman", 0, null, LevelType.EASY));
+						items.add(new Item(3,"Pulis" , "Police", "Which one is police", 0, null, LevelType.EASY));
+						items.add(new Item(4,"Bombero" , "Fireman", "Which one is Fireman", 0, null, LevelType.EASY));
+						items.add(new Item(5,"Pulis" , "Police", "Which one is police", 0, null, LevelType.EASY));
 				}
 				break;
 			case "com.ube.salinlahifour.lessonActivities.Society":
@@ -125,8 +130,8 @@ public abstract class LessonItemLoader {
 			return null;
 		}
 		
-		((SalinlahiFour)act.getApplication()).setLessonItems(items);
-		return ((SalinlahiFour)act.getApplication()).getLessonItems();
+		SalinlahiFour.setLessonItems(items);
+		return SalinlahiFour.getLessonItems();
 	}
 	
 	public static String getError(){

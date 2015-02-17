@@ -52,7 +52,7 @@ public abstract class AbstractTutorialActivity extends Activity {
 		activityName = activityClass.replace("com.ube.salinlahifour.lessonActivities.", "");
 		
 		Log.d(activityClass, "TEST ActivityName");
-		items = LessonItemLoader.getLessonItems(this, activityClass, activityLevel);
+		items = LessonItemLoader.getLessonItems(activityClass, activityLevel);
 		
 		if(items == null){
 			errorPopup("Lesson Items Insufficient", LessonItemLoader.getError());
