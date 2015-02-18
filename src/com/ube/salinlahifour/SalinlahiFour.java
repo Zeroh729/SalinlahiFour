@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Application;
 import android.content.Context;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 
 import com.ube.salinlahifour.model.UserDetail;
 
@@ -17,7 +18,7 @@ public class SalinlahiFour extends Application{
 	private static Typeface fontPlaytime;
 	private static Typeface fontPlaytimeoblique;
 	private static Typeface fontKgtangledupin;
-	
+	private static MediaPlayer bgm;
 
 	private static ArrayList<Item> lessonItems;
 	
@@ -35,6 +36,9 @@ public class SalinlahiFour extends Application{
 		fontPlaytime = Typeface.createFromAsset(context.getAssets(), "fonts/PLAYTIME.TTF");
 		fontPlaytimeoblique = Typeface.createFromAsset(context.getAssets(), "fonts/PLAYTIMEOBLIQUE.TTF");
 		fontKgtangledupin = Typeface.createFromAsset(context.getAssets(), "fonts/KGTANGLEDUPINYOU.TTF");
+		bgm = MediaPlayer.create(this, R.raw.bgm_map2);
+		bgm.setLooping(true);
+		bgm.setVolume(100, 100);
 		}
 	
 	public static SalinlahiFour getSalinlahifour() {
@@ -88,5 +92,9 @@ public class SalinlahiFour extends Application{
 
 	public static void setContext(Context context) {
 		SalinlahiFour.context = context;
+	}
+	
+	public static MediaPlayer getBgm(){
+		return bgm;
 	}
 }

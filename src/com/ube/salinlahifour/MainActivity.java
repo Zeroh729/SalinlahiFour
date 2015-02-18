@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+		SalinlahiFour.getBgm().start();
 		
 		//Load File from res or assets
 		//InputStream ins = getResources().openRawResource( getResources().getIdentifier("raw/properties", "raw", getPackageName()));

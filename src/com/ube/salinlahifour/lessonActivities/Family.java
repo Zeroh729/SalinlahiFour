@@ -1,45 +1,31 @@
 package com.ube.salinlahifour.lessonActivities;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-import org.jdom.JDOMException;
-
-import android.content.ClipData;
-import android.content.Intent;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Bundle;
+import android.graphics.LightingColorFilter;
+import android.media.SoundPool;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.util.Log;
-import android.view.DragEvent;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.DragShadowBuilder;
 import android.view.View.OnClickListener;
-import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.ube.salinlahifour.Item;
-import com.ube.salinlahifour.MapActivity;
-import com.ube.salinlahifour.ReportCard;
-import com.ube.salinlahifour.debugclasses.DebugUserModuleActivity;
-import com.ube.salinlahifour.database.UserDetailOperations;
+import com.ube.salinlahifour.R;
+import com.ube.salinlahifour.animation.AnimatedButtonListener;
 import com.ube.salinlahifour.database.UserLessonProgressOperations;
 import com.ube.salinlahifour.database.UserRecordOperations;
 import com.ube.salinlahifour.enumTypes.LevelType;
 import com.ube.salinlahifour.evaluationModule.Evaluation;
-import com.ube.salinlahifour.model.UserDetail;
-import com.ube.salinlahifour.R;
 
 public class Family extends AbstractLessonActivity implements OnClickListener, OnTouchListener {
 	private TextView tv_dialog;
@@ -47,6 +33,9 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	private ImageButton[] choices;
 	private int itemno;
 	private ImageView iv_swipe;
+	private AnimatedButtonListener buttonAnimation;
+	private SoundPool sfx_correct;
+	private SoundPool sfx_wrong;
 	
 	private UserRecordOperations userRecordOperator = new UserRecordOperations(this);
 	private UserLessonProgressOperations userLessonProgressOperator = new UserLessonProgressOperations(this);
@@ -57,12 +46,10 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	//Timer Vars
 	private TextView timerTextView;
 	private CountDownTimer timer;
-	//End Timer
-	private Object mPauseLock;
+	
 	public Family(){
 		Log.d("Debug Family","Aldrin: Entered Family Class");
 		layoutID = R.layout.lessonactivity_family;
-		 mPauseLock = new Object();
 	}
 	
 
@@ -90,15 +77,13 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		//feedback_params.bottomMargin = 60; //Y
 		//tv_feedback.setLayoutParams(feedback_params);
 		//TV FEEDBACK END
+		buttonAnimation = new AnimatedButtonListener();
 		if(activityLevel.equals(LevelType.EASY)){
 			choices = new ImageButton[4];
 			choices[0] = (ImageButton) findViewById(R.id.img_choicea);
 			choices[1] = (ImageButton) findViewById(R.id.img_choicec);
 			choices[2] = (ImageButton) findViewById(R.id.img_choiced);
 			choices[3] = (ImageButton) findViewById(R.id.img_choicef);
-			for(int i = 0; i<choices.length;i++){
-				choices[i].setVisibility(View.VISIBLE);
-			}
 		}
 		else if(activityLevel.equals(LevelType.MEDIUM)){
 			choices = new ImageButton[6];
@@ -109,9 +94,6 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 			choices[3] = (ImageButton) findViewById(R.id.img_choicef);
 			choices[4] = (ImageButton) findViewById(R.id.img_choiceg);
 			choices[5] = (ImageButton) findViewById(R.id.img_choicei);
-			for(int i = 0; i<choices.length;i++){
-				choices[i].setVisibility(View.VISIBLE);
-			}
 		}else{
 			choices = new ImageButton[9];
 			Log.d("Debug Family","Aldrin: Initiate Choices");
@@ -124,9 +106,10 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 			choices[6] = (ImageButton) findViewById(R.id.img_choiceg);
 			choices[7] = (ImageButton) findViewById(R.id.img_choiceh);
 			choices[8] = (ImageButton) findViewById(R.id.img_choicei);
-			for(int i = 0; i<choices.length;i++){
-				choices[i].setVisibility(View.VISIBLE);
-			}
+		}
+		for(int i = 0; i<choices.length;i++){
+			choices[i].setVisibility(View.VISIBLE);
+		//	choices[i].setOnTouchListener(buttonAnimation);
 		}
 		
 		int MAX_CHOICES = 9;
@@ -155,6 +138,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		//Initialize Swipe Indicator
 		iv_swipe = (ImageView) findViewById(R.id.swipe_ind);
 		Log.d("Debug Family","Aldrin: Initiate Views...Done");
+		
 	}
 
 	protected void initiateItems() {
@@ -202,7 +186,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		Log.d("Debug Family","Aldrin: Initiate Timer...Done");
 	}
 	
-	protected void checkAnswer(String answer) {
+	protected boolean checkAnswer(String answer) {
 		Log.d("Debug Family","Aldrin: Checking Answer");
 		userRecordOperator.open();
 		userLessonProgressOperator.open();
@@ -214,6 +198,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 			Log.d("Debug Family", "Aldrin: Feedback: "+ feedback);
 			tv_feedback.setText(feedback + " " + question);
 			Log.d("Debug Family", "Aldrin: Immediate Feedback Completed");
+			
 			if(itemno < questions.size()-1){
 				Log.d("Debug Family", "Aldrin: Next Question(Reruns)");
 				itemno++;
@@ -227,67 +212,9 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 				//feedback = NLG.GenerateDelayedFeedback(score, LessonNum);
 				//feedback = "feedback placeholder";
 				timer.cancel();
-
-				//QQ ReportCard.java - AbstractLessonActivity.java
 				showReportCard(this);
-				
-//				LayoutInflater layoutInflater = (LayoutInflater)getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);  
-//			    View popupView = layoutInflater.inflate(R.layout.reportcard, null);
-//				PopupWindow popupWindow = new PopupWindow(popupView, LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);  
-//		        popupWindow.setOutsideTouchable(false);
-//		        popupWindow.setBackgroundDrawable(new BitmapDrawable());
-//		        popupWindow.showAsDropDown(popupView);
-				
-//				TextView tv_feedback_end;
-//				TextView tv_score_end;
-//				Log.d("Debug Family", "Aldrin: Start Popup");
-//
-//				 LayoutInflater layoutInflater = (LayoutInflater)getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);  
-//				 Log.d("Debug Family", "Aldrin: Initializing");
-//				 	View popupView = layoutInflater.inflate(R.layout.activity_end_popup, null);  
-//				 	 Log.d("Debug Family", "Aldrin: Popupview Done...");
-//				 	tv_feedback_end = (TextView)popupView.findViewById(R.id.tv_feedback_end);
-//			        
-//				 	
-//				    tv_score_end = (TextView) popupView.findViewById(R.id.tv_score);
-//		
-//				             final PopupWindow popupWindow = new PopupWindow(popupView, LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);  
-//				             
-//				             Log.d("Debug Family", "Aldrin: Popupwindow Done...");
-//				             //popupWindow.dismiss();
-//				             popupWindow.setOutsideTouchable(true);
-//				             popupWindow.setBackgroundDrawable(new BitmapDrawable());
-//				             Log.d("Debug Family", "Aldrin: Popupwindow settings Done...");
-//				             Log.d("Debug Family", "Aldrin: feedback Done...");
-//				     		    Log.d("Debug Family", "Aldrin: score Done...");
-//							    tv_feedback_end.setText(""+feedback);
-//							    Log.d("Debug Family", "Aldrin: feedback loaded...");
-//							    tv_score_end.setText(""+evaluation.getScore());
-//							    Log.d("DEbug", "Aldrin:  " +evaluation.getScore());
-//							    
-//							    Log.d("Debug Family", "Aldrin: feedback score...");
-//							    Log.d("Debug Family", "Aldrin: Initialized");
-//				             ImageButton close_btn = (ImageButton)popupView.findViewById(R.id.ib_no);
-//				             close_btn.setOnClickListener(new ImageButton.OnClickListener(){
-//				        	     @Override
-//				        	     public void onClick(View v) {
-//				        	      // TODO Auto-generated method stub
-//				        	    	 end_report(1);
-//				        	     }});
-//				             ImageButton retry_btn = (ImageButton)popupView.findViewById(R.id.ib_retry);
-//				             retry_btn.setOnClickListener(new ImageButton.OnClickListener(){
-//
-//				        	     @Override
-//				        	     public void onClick(View v) {
-//				        	      // TODO Auto-generated method stub
-//				        	    	 end_report(2);
-//				        	     }});
-//				             //popupWindow.showAsDropDown(popupView, 50, -30);
-//				             Log.d("Debug Family", "Aldrin: Start ShowAtLocation");
-//				             
-//				             popupWindow.showAtLocation(this.findViewById(R.id.relative_view), Gravity.CENTER, 0, 0);
-//				             Log.d("Debug Family", "Aldrin: End ShowAtLocation");
 			}		
+			return true;
 		}else{
 			Log.d("Debug Family", "Aldrin: Answer: " + answer);
 			Log.d("Debug Family", "Aldrin: Index: " + itemno);
@@ -296,10 +223,8 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 			feedback = evaluation.getImmediateFeedback(questions.get(itemno).getQ_num(), answer, lesson.getLessonNumber());
 			Log.d("Debug Family", "Aldrin: Feedback: "+ feedback);
 			tv_feedback.setText(feedback + " " + question);
-		
+			return false;
 		}
-		
-		Log.d("Debug Family","Aldrin: Answer Check");	
 	}
 
 	private void setChoices(){
@@ -339,8 +264,20 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 			case R.id.img_choiceg:	
 			case R.id.img_choiceh:	
 			case R.id.img_choicei:	
-					checkAnswer(((ImageButton)findViewById(v.getId())).getTag() + "");
-								break;
+				for(int i = 0; i < choices.length; i++){
+					ImageView img = choices[i];
+					img.setColorFilter(new LightingColorFilter(0xffffffff, 0x000000));
+				}
+					if(checkAnswer(v.getTag().toString())){
+						YoYo.with(Techniques.Pulse).playOn(v);
+					}else{
+						YoYo.with(Techniques.Shake).playOn(v);
+						ImageView img = (ImageButton)v;
+						img.setColorFilter(new LightingColorFilter(0xffcc0000, 0x000000));
+						
+						//v.getBackground().setColorFilter(new LightingColorFilter(0xff888888, 0x000000));
+					}
+					break;
 		
 			default: 
 				//tv_feedback.setText("error in onclick");

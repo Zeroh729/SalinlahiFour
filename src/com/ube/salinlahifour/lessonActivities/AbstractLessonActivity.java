@@ -186,7 +186,7 @@ public abstract class AbstractLessonActivity extends Activity {
 	
 	abstract protected void initiateViews();
 	abstract protected void run();
-	abstract protected void checkAnswer(String answer);
+	abstract protected boolean checkAnswer(String answer);
 	
 	private void errorPopup(String title, String error){
 		final AlertDialog.Builder builder=new AlertDialog.Builder(this);

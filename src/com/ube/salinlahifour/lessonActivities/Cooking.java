@@ -48,7 +48,7 @@ public class Cooking extends AbstractLessonActivity implements OnClickListener{
 	}
 
 	@Override
-	protected void checkAnswer(String answer) {
+	protected boolean checkAnswer(String answer) {
 		Log.d("Debug Family","Aldrin: Checking Answer");
 		String feedback;
 		userRecordOperator.open();
@@ -119,6 +119,7 @@ public class Cooking extends AbstractLessonActivity implements OnClickListener{
 					             popupWindow.showAtLocation(this.findViewById(R.id.relative_view), Gravity.CENTER, 0, 0);
 					             Log.d("Debug Family", "Aldrin: End ShowAtLocation");
 				}		
+				return true;
 			}else{
 				Log.d("Debug Family", "Aldrin: Answer: " + answer);
 				Log.d("Debug Family", "Aldrin: Index: " + 1);
@@ -142,6 +143,7 @@ public class Cooking extends AbstractLessonActivity implements OnClickListener{
 		}
 		
 		Log.d("Debug Family","Aldrin: Answer Check");
+		return false;
 	}
 	
 	private void setChoices(){

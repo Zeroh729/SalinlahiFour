@@ -174,8 +174,8 @@
         android:background="@null"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
 		android:layout_toLeftOf="@id/btn_logout"
+		android:layout_alignTop="@id/btn_logout"
 		android:layout_alignBaseline="@id/btn_logout"
         android:onClick="onClick"/>
 
