@@ -16,7 +16,6 @@ public abstract class LessonItemLoader {
 	public static ArrayList<Item> getLessonItems(Activity act, String activityName, String activityLevel){
 		ArrayList<Item> items = new ArrayList();
 		
-		Log.d(activityName, "TESTTEST");
 		switch(activityName){
 			case "com.ube.salinlahifour.lessonActivities.Cooking":
 				switch(activityLevel){
@@ -51,13 +50,19 @@ public abstract class LessonItemLoader {
 			case "com.ube.salinlahifour.lessonActivities.House":
 				switch(activityLevel){
 					case "HARD":
+						items.add(new Item(7,"Garahe" , "Garage", "Where is garahe?", R.drawable.house_pink, null, LevelType.HARD));
+						items.add(new Item(8,"Bakuran" , "fence", "Where is bakuran?", R.drawable.house_blue, null, LevelType.HARD));
+						
 					case "MEDIUM":
+						items.add(new Item(5,"Garahe" , "Garage", "Where is garahe?", R.drawable.house_pink, null, LevelType.MEDIUM));
+						items.add(new Item(6,"Bakuran" , "fence", "Where is bakuran?", R.drawable.house_blue, null, LevelType.MEDIUM));
+						
 					case "EASY":
 						items.add(new Item(1,"Bubong" , "Roof", "Where is Bubong?", R.drawable.house_pink, null, LevelType.EASY));
 						items.add(new Item(2,"Dingding" , "Wall", "Where is Dingding?", R.drawable.house_blue, null, LevelType.EASY));
 						items.add(new Item(3,"Pintuan" , "Door", "Where is Pintuan?", R.drawable.house_skobe, null, LevelType.EASY));
 						items.add(new Item(4,"Bintana" , "Window", "Where is Bintana?", R.drawable.house_yellow, null, LevelType.EASY));
-						break;
+					
 							}
 				break;
 			case "com.ube.salinlahifour.lessonActivities.Music":

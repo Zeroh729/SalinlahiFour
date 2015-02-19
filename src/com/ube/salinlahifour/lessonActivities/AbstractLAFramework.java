@@ -32,6 +32,9 @@ import com.ube.salinlahifour.enumTypes.StatusType;
 import com.ube.salinlahifour.model.UserRecord;
 import com.ube.salinlahifour.tools.DateTimeConverter;
 
+import iFeedback.iFeedback;
+
+
 public abstract class AbstractLAFramework extends AndroidGame {
 
 	protected ArrayList<ImageView> backgrounds;
@@ -48,18 +51,19 @@ public abstract class AbstractLAFramework extends AndroidGame {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
+		
 		Bundle bundle = getIntent().getExtras();
 		
 		activityName = bundle.getString("activityName");
 		activityLevel = bundle.getString("activityLevel");
 		UserID = bundle.getInt("UserID");
 		Log.d(activityName, "TEST ActivityName in lesson act");
+		Log.d(activityLevel, "TEST ActivityLevel in lesson act: " + activityLevel);
 		items = ((SalinlahiFour)getApplication()).getLessonItems();
-
-		initiateViews();
+		
 		getQuestions();
-		run();
+		initiateNarrationModule();
+		super.onCreate(savedInstanceState);
 	}
 
 	@Override
@@ -167,10 +171,6 @@ public abstract class AbstractLAFramework extends AndroidGame {
 		
 	}
 
-	
-	abstract protected void initiateViews();
-	abstract protected void run();
-	abstract protected void checkAnswer(String answer);
 	
 	private void errorPopup(String title, String error){
 		final AlertDialog.Builder builder=new AlertDialog.Builder(this);

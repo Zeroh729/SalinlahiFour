@@ -2,9 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
-    android:orientation="horizontal">
-
-    <Button
+    android:id="@+id/mainLayout">
+<Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,14 +15,84 @@
         android:onClick="btn_play"/>
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/imageView1"
+       	android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="126dp"
+        android:layout_marginTop="68dp" /> <!--LOLO  --> 
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/imageView1"
+        android:layout_centerVertical="true" /> <!--Lola  --> 
+
+    <ImageView
+        android:id="@+id/imageView3"
+         android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/imageView2"
+        android:layout_below="@+id/imageView2" /> <!--Nanay  --> 
+
+    <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView1"
+        android:layout_marginBottom="43dp"
+        android:layout_marginLeft="41dp"
+        android:layout_toRightOf="@+id/imageView1"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_centerVertical="true"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView01"
+        android:layout_alignTop="@+id/imageView3"
+        android:layout_marginTop="43dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+         android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignTop="@+id/imageView1"
+        android:layout_marginLeft="146dp"
+        android:layout_toRightOf="@+id/TextView02"/> <!--Tatay  --> 
+
+    <ImageView
+        android:id="@+id/imageView5"
+         android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_alignLeft="@+id/imageView4"
-        android:layout_alignTop="@+id/imageView2"
-        android:visibility="gone" 
-        android:src="@drawable/traingle" />
-<!-- Pakitanggal yung visibility after demo -->
+        android:layout_alignTop="@+id/imageView2"/> <!--Kuya  -->
+         
+		<ImageView
+        android:id="@+id/imageView6"
+         android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/imageView5"
+        android:layout_alignTop="@+id/imageView3"/> <!--Ate  --> 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_marginLeft="31dp"
+        android:layout_toRightOf="@+id/imageView4"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/textView3"
@@ -32,88 +101,14 @@
         android:layout_alignBaseline="@+id/TextView01"
         android:layout_alignBottom="@+id/TextView01"
         android:layout_alignLeft="@+id/textView2"
-        android:text="parisukat"
-        android:visibility="gone" 
         android:textAppearance="?android:attr/textAppearanceLarge" />
-<!-- Pakitanggal yung visibility after demo -->
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/textView1"
-        android:scaleX="0.5"
-        android:scaleY="0.5"
-        android:src="@drawable/house_blue" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/textView1"
-        android:scaleX="0.5"
-        android:scaleY="0.5"
-        android:src="@drawable/house_skobe" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imageView3"
-        android:layout_alignTop="@+id/imageView1"
-        android:scaleX="0.5"
-        android:scaleY="0.5"
-        android:src="@drawable/house_yellow" />
-
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="66dp"
-        android:scaleX="0.5"
-        android:scaleY="0.5"
-        android:src="@drawable/house_pink" />
-
     <TextView
-        android:id="@+id/TextView02"
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/imageView3"
-        android:layout_below="@+id/imageView4"
-        android:layout_marginTop="21dp"
-        android:text="Sala"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/imageView2"
-        android:layout_marginLeft="21dp"
-        android:layout_toRightOf="@+id/imageView1"
-        android:text="Tulugan"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/TextView01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView4"
-        android:layout_toLeftOf="@+id/imageView3"
-        android:text="Paliguan"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/imageView3"
-        android:layout_below="@+id/textView1"
-        android:text="Lutuan"
+        android:layout_alignBaseline="@+id/TextView02"
+        android:layout_alignBottom="@+id/TextView02"
+        android:layout_alignLeft="@+id/textView3"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
