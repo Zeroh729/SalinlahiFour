@@ -18,6 +18,8 @@ public class SalinlahiFour extends Application{
 	private static Typeface fontPlaytime;
 	private static Typeface fontPlaytimeoblique;
 	private static Typeface fontKgtangledupin;
+	private static Typeface fontAndy;
+
 	private static MediaPlayer bgm;
 
 	private static ArrayList<Item> lessonItems;
@@ -36,6 +38,7 @@ public class SalinlahiFour extends Application{
 		fontPlaytime = Typeface.createFromAsset(context.getAssets(), "fonts/PLAYTIME.TTF");
 		fontPlaytimeoblique = Typeface.createFromAsset(context.getAssets(), "fonts/PLAYTIMEOBLIQUE.TTF");
 		fontKgtangledupin = Typeface.createFromAsset(context.getAssets(), "fonts/KGTANGLEDUPINYOU.TTF");
+		fontAndy = Typeface.createFromAsset(context.getAssets(), "fonts/ANDYB.TTF");
 		bgm = MediaPlayer.create(this, R.raw.bgm_map2);
 		bgm.setLooping(true);
 		bgm.setVolume(100, 100);
@@ -84,6 +87,10 @@ public class SalinlahiFour extends Application{
 	
 	public static Typeface getFontPlaytimeOblique() {
 		return fontPlaytimeoblique;
+	}
+	
+	public static Typeface getFontAndy() {
+		return fontAndy;
 	}
 	
 	public static Context getContext() {

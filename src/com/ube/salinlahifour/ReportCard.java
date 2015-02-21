@@ -114,7 +114,7 @@ public class ReportCard extends PopupWindow implements OnClickListener{
 				//CHANGE TO BRONZE COLOR
 				//tv_score.setTextColor(Color.parseColor("#c4b723"));
 				
-				subtv_next.setText("");
+				subtv_next.setVisibility(View.INVISIBLE);
 				btn_next.setVisibility(View.INVISIBLE);
 				subtv_replay.setText("retry to get\nSILVER!");
 				break;

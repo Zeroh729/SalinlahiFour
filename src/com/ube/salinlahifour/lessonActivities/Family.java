@@ -21,6 +21,7 @@ import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.R;
+import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.animation.AnimatedButtonListener;
 import com.ube.salinlahifour.database.UserLessonProgressOperations;
 import com.ube.salinlahifour.database.UserRecordOperations;
@@ -71,6 +72,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		//TV DIALOG INIT END
 		//Text View Feedback 
 		tv_feedback = (TextView) findViewById(R.id.tv_feedback);
+		tv_feedback.setTypeface(SalinlahiFour.getFontAndy());
 		tv_feedback.setText(" ");
 		//RelativeLayout.LayoutParams feedback_params =  new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
 		//feedback_params.leftMargin=100; //X

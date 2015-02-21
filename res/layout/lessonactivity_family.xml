@@ -162,19 +162,22 @@
             				
                 			/>
 	  						    
-	
 			
-         					<TextView
+         				<TextView
 	             			android:id="@+id/tv_feedback"
                 			android:layout_width="match_parent"
-                			android:layout_height="wrap_content"
+                			android:layout_height="120dp"
+                			android:layout_marginLeft="50dp"
+                			android:layout_marginRight="50dp"
                 			android:text="text"
                 			android:layout_alignParentBottom="true"
             				android:layout_centerHorizontal="true"
             				android:gravity="center"
-            				android:layout_marginBottom="40dp"
-            			 	android:background="@drawable/dialogbox"
-                			android:textSize="22sp" />
+            				android:layout_marginBottom="20dp"
+            				android:layout_marginTop="40dp"
+            			 	android:background="@drawable/feedbackbox"
+                			android:textSize="29sp"
+                			android:textColor="#3b3b3b" />
                 				
                   	    <TextView
     					    android:id="@+id/timer_dialog" 
