@@ -7,7 +7,6 @@
 	<HorizontalScrollView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-         
         android:id="@+id/main_screen" >
         
          			<RelativeLayout
@@ -167,14 +166,14 @@
 			
          					<TextView
 	             			android:id="@+id/tv_feedback"
-                			android:layout_width="wrap_content"
+                			android:layout_width="match_parent"
                 			android:layout_height="wrap_content"
                 			android:text="text"
                 			android:layout_alignParentBottom="true"
             				android:layout_centerHorizontal="true"
             				android:gravity="center"
             				android:layout_marginBottom="40dp"
-            			 	android:background="@drawable/subtitle_bg"
+            			 	android:background="@drawable/dialogbox"
                 			android:textSize="22sp" />
                 				
                   	    <TextView

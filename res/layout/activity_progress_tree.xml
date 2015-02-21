@@ -2,49 +2,151 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="${packageName}.${activityClass}" >
+    tools:context="${packageName}.${activityClass}" 
+    android:background="@drawable/progress_bg">
 
-    <TextView
+    <com.qwerjk.better_text.MagicTextView
+        xmlns:qwerjk="http://schemas.android.com/apk/res/com.qwerjk.better_text"
         android:id="@+id/tv_username"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/tv_goldcount"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_username"/>
-    <TextView
-        android:id="@+id/tv_silvercount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_goldcount"/>
-    <TextView
-        android:id="@+id/tv_bronzecount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_silvercount"/>
-    <TextView
-        android:id="@+id/tv_totalstarscount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_bronzecount"/>
-    <TextView
-        android:id="@+id/tv_lessons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_totalstarscount"/>
-    <ListView
-        android:id="@+id/lv_recentprogress"
-        android:layout_width="300dp"
-        android:layout_height="match_parent"
-        android:layout_below="@id/tv_lessons"
-        />
-    <ListView
-        android:id="@+id/lv_totalprogress"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="25dp"
+        android:textColor="#FFF34F"
+        android:layout_centerHorizontal="true"
+        android:textSize="55dp"/>
+    <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/tv_lessons"
-        android:layout_toRightOf="@id/lv_recentprogress"/>
+        android:layout_marginTop="200dp"
+        android:weightSum="1.0">
+        
+	    <RelativeLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="0.6"
+	        android:paddingLeft="50dp">
+	        <ImageView
+	            android:id="@+id/img_gold"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/report_card_gold"
+		        android:layout_alignParentLeft="true"
+		        android:layout_marginBottom="20dp"/>
+		    <TextView
+		        android:id="@+id/tv_goldcount"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_toRightOf="@id/img_gold"
+		        android:layout_alignTop="@id/img_gold"
+		        android:layout_alignBottom="@id/img_gold"
+		        android:gravity="center"
+		        android:layout_marginLeft="20dp"
+		        android:textSize="42sp"
+		        android:text="90"
+		        android:textColor="#FFFFFF"/>
+		    <TextView
+		        android:id="@+id/tv_totalstarscount"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_toRightOf="@id/tv_goldcount"
+		        android:layout_alignBaseline="@id/tv_goldcount"
+		        android:gravity="center"
+		        android:layout_marginLeft="10dp"
+		        android:textSize="35sp"
+		        android:text="90"
+		        android:textColor="#FFFFFF"/>
+		    <ImageView
+	            android:id="@+id/img_silver"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/report_card_silver"
+		        android:layout_below="@id/img_gold"
+		        android:layout_marginBottom="20dp"
+		        />
+		    <TextView
+		        android:id="@+id/tv_silvercount"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@id/tv_goldcount"
+		        android:layout_toRightOf="@id/img_silver"
+		        android:layout_alignTop="@id/img_silver"
+		        android:layout_alignBottom="@id/img_silver"
+		        android:gravity="center"
+		        android:layout_marginLeft="10dp"
+		        android:textSize="42sp"
+		        android:textColor="#598309"
+		        android:text="-1"/>
+		    <ImageView
+	            android:id="@+id/img_bronze"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/report_card_bronze"
+		        android:layout_below="@id/img_silver"
+		        />
+		    <TextView
+		        android:id="@+id/tv_bronzecount"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@id/tv_silvercount"
+		        android:layout_toRightOf="@id/img_bronze"
+		        android:layout_alignTop="@id/img_bronze"
+		        android:layout_alignBottom="@id/img_bronze"
+		        android:gravity="center"
+		        android:layout_marginLeft="10dp"
+		        android:textSize="42sp"
+		        android:textColor="#598309"
+		        android:text="-1"/>
+	        </RelativeLayout>
+    
+	    <RelativeLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="0.4">
+	        
+		    <ListView 
+		        android:id="@+id/lv_data"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        android:layout_above="@+id/radiog_data"
+		        android:layout_marginBottom="10dp"
+		        android:background="@drawable/bg_progresslistview"
+		        android:layout_marginRight="30dp"
+		        />
+		    
+		    <RadioGroup 
+		        android:id="@+id/radiog_data"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal"
+		        android:layout_alignParentBottom="true"
+		        android:gravity="center_horizontal"
+		        android:layout_marginBottom="20dp">
+			    <RadioButton 
+			        android:id="@+id/rdo_recent"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:button="@null"
+			        />
+			    <RadioButton 
+			        android:id="@+id/rdo_all"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:button="@null"
+			        android:layout_marginLeft="100dp"
+			        />
+	        </RadioGroup>
+		    
+	    </RelativeLayout>
+    </LinearLayout>
+   
+    <ImageButton 
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="back"
+        android:layout_margin="10dp"
+        android:background="@null"/>
     
 
 </RelativeLayout>
