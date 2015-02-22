@@ -36,6 +36,8 @@ import com.qwerjk.better_text.MagicTextView;
 import com.ube.salinlahifour.database.UserLessonProgressOperations;
 import com.ube.salinlahifour.debugclasses.DebugUserModuleActivity;
 import com.ube.salinlahifour.enumTypes.LevelType;
+import com.ube.salinlahifour.enumTypes.StarType;
+import com.ube.salinlahifour.model.UserLessonProgress;
 import com.ube.salinlahifour.uibuilders.Button.BtnStatesDirector;
 import com.ube.salinlahifour.uibuilders.Button.EasyBtnStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.HardBtnStatesBuilder;
@@ -95,19 +97,28 @@ public class MapActivity extends Activity implements OnClickListener{
 			UserLessonProgressOperations userdb = new UserLessonProgressOperations(this);
 			userdb.open();
 			for(Scene scene : scenes){
-				for(Lesson lesson : scene.getLessons()){
-					if(userdb.getUserLessonProgress(UserID, lesson.getName()) != null){
-						lesson.setLocked(false);
-					}else{
-						lesson.setLocked(true);
-					}
-					try{
-						scene.getLessons().get(0).setLocked(false);
-					}catch(Exception e){
-						
+				for(int i = 0; i < scene.getLessons().size(); i++){
+					if(scene.getLessons().get(i).getLocked()){
+						UserLessonProgress progress = userdb.getUserLessonProgress(UserID, scene.getLessons().get(i).getName());
+						if(progress != null){
+							scene.getLessons().get(i).setLocked(false);
+							if(progress.getHardStar() != null){
+								if(progress.getHardStar().equals(StarType.SILVER.toString()) || progress.getHardStar().equals(StarType.GOLD.toString()))
+									if((i+1) < scene.getLessons().size())
+									scene.getLessons().get(i+1).setLocked(false);
+							}
+						}else{
+							scene.getLessons().get(i).setLocked(true);
+						}
+						try{
+							scene.getLessons().get(0).setLocked(false);
+						}catch(Exception e){
+							
+						}
 					}
 				}
 			}
+			userdb.close();
 		} catch (XmlPullParserException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -206,6 +217,7 @@ public class MapActivity extends Activity implements OnClickListener{
         	 if(parser.getName().equals("Lesson")){
         		 lessonNumber++;
         		 Lesson lesson = new Lesson();
+        		 lesson.setLocked(true);
         		 scene.addLesson(lesson.setValues(lessonName, lessonDesc, activityName, lessonImgID, lessonNumber));
         		 lessonName = "";
         		 lessonDesc = "";
@@ -395,7 +407,76 @@ public class MapActivity extends Activity implements OnClickListener{
 				         			intent.putExtras(bundle);
 				         			startActivity(intent);
 				        	     }});
-
+				             
+				             UserLessonProgressOperations userdb = new UserLessonProgressOperations(this);
+				             userdb.open();
+				             UserLessonProgress lesson = userdb.getUserLessonProgress(SalinlahiFour.getLoggedInUser().getId(), lessonDetails.getName());
+				             
+				             if(lesson == null){
+				            	 lesson = new UserLessonProgress();
+				            	 lesson.setEasyStar(null);
+				             }
+					             if(lesson.getEasyStar() != null){
+					            	 switch(lesson.getEasyStar()){
+					            	 	case "GOLD":
+					            	 		((ImageView)popupView.findViewById(R.id.star1)).setImageResource(R.drawable.lvlselect_gold);
+					            	 		break;
+					            	 	case "SILVER":
+					            	 		((ImageView)popupView.findViewById(R.id.star1)).setImageResource(R.drawable.lvlselect_silver);
+					            	 		break;
+					            	 	case "BRONZE":
+					            	 		((ImageView)popupView.findViewById(R.id.star1)).setImageResource(R.drawable.lvlselect_bronze);
+					            	 		btn_medium.setEnabled(false);
+					            	 		btn_hard.setEnabled(false);
+					            	 		break;
+					            	 	default:
+					            	 		lesson.setEasyStar(null);
+					            	 		btn_medium.setEnabled(false);
+					            	 		btn_hard.setEnabled(false);
+					            	 }
+					             }else{
+				            	 	((ImageView)popupView.findViewById(R.id.star1)).setImageResource(R.drawable.lvlselect_null);
+			            	 		btn_medium.setEnabled(false);
+			            	 		btn_hard.setEnabled(false);
+					             }
+					             if(lesson.getMediumStar() != null){
+					            	 switch(lesson.getMediumStar()){
+					            	 	case "GOLD":
+					            	 		((ImageView)popupView.findViewById(R.id.star2)).setImageResource(R.drawable.lvlselect_gold);
+					            	 		break;
+					            	 	case "SILVER":
+					            	 		((ImageView)popupView.findViewById(R.id.star2)).setImageResource(R.drawable.lvlselect_silver);
+					            	 		break;
+					            	 	case "BRONZE":
+					            	 		((ImageView)popupView.findViewById(R.id.star2)).setImageResource(R.drawable.lvlselect_bronze);
+					            	 		btn_hard.setEnabled(false);
+					            	 		break;
+					            	 	default:
+					            	 		lesson.setMediumStar(null);
+					            	 }
+					             }else{
+				            	 	((ImageView)popupView.findViewById(R.id.star2)).setImageResource(R.drawable.lvlselect_null);
+			            	 		btn_hard.setEnabled(false);
+					             }
+					             if(lesson.getHardStar() != null){
+					            	 switch(lesson.getHardStar()){
+					            	 	case "GOLD":
+					            	 		((ImageView)popupView.findViewById(R.id.star3)).setImageResource(R.drawable.lvlselect_gold);
+					            	 		break;
+					            	 	case "SILVER":
+					            	 		((ImageView)popupView.findViewById(R.id.star3)).setImageResource(R.drawable.lvlselect_silver);
+					            	 		break;
+					            	 	case "BRONZE":
+					            	 		((ImageView)popupView.findViewById(R.id.star3)).setImageResource(R.drawable.lvlselect_bronze);
+					            	 		break;
+					            	 	default:
+					            	 		lesson.setHardStar(null);
+					            	 }
+					             }else{
+				            	 	((ImageView)popupView.findViewById(R.id.star3)).setImageResource(R.drawable.lvlselect_null);
+					             }
+				             
+				             userdb.close();
 				            popupWindow.showAsDropDown(popupView);
 				            
 			}

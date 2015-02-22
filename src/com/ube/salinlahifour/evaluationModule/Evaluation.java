@@ -43,23 +43,35 @@ public class Evaluation {
 		userRecordOperator.addUserRecord(UserID, LessonName, correctAnswer, Status);
 	}
 	
-	public void updateUserLessonProgress(String LessonName, String activityLevel, UserLessonProgressOperations userLessonProgressOperator, int UserID){
-
+	public void updateUserLessonProgress(String lessonName, String activityLevel, UserLessonProgressOperations userLessonProgressOperator, int UserID){
+		String easyStar;
+		String mediumStar;
+		String hardStar;
+		
 		if(score <= totscore/2)
 			star = StarType.BRONZE;
 		else if(score >= totscore/2 && score != totscore)
 			star = StarType.SILVER;
 		else 
 			star = StarType.GOLD;
-		
-		
-		
-		if(activityLevel == LevelType.EASY.toString())
-				userLessonProgressOperator.addUserLessonProgress(UserID, LessonName, star.toString(), null, null);
-			else if(activityLevel == LevelType.MEDIUM.toString())
-				userLessonProgressOperator.addUserLessonProgress(UserID, LessonName, null, star.toString(), null);
-			else
-				userLessonProgressOperator.addUserLessonProgress(UserID, LessonName, null, null, star.toString());
+
+		if(userLessonProgressOperator.getUserLessonProgress(UserID, lessonName) == null){
+			userLessonProgressOperator.addUserLessonProgress(UserID, lessonName, star.toString(), null, null);
+		}else{
+			easyStar = userLessonProgressOperator.getUserLessonProgress(UserID, lessonName).getEasyStar();
+			mediumStar = userLessonProgressOperator.getUserLessonProgress(UserID, lessonName).getMediumStar();
+			hardStar = userLessonProgressOperator.getUserLessonProgress(UserID, lessonName).getHardStar();
+			if(activityLevel == LevelType.EASY.toString()){
+					userLessonProgressOperator.updateUserLessonProgress(UserID, lessonName, star.toString(), mediumStar, hardStar);
+			}
+			else if(activityLevel == LevelType.MEDIUM.toString()){
+				userLessonProgressOperator.updateUserLessonProgress(UserID, lessonName, easyStar, star.toString(), hardStar);
+			}
+			else{
+				easyStar = userLessonProgressOperator.getUserLessonProgress(UserID, lessonName).getEasyStar();
+				userLessonProgressOperator.updateUserLessonProgress(UserID, lessonName, easyStar, mediumStar, star.toString());
+			}
+		}
 	} 
 	
 	private Item getMostImprovedItem(){

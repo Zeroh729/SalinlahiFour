@@ -88,14 +88,15 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 			choices[3] = (ImageButton) findViewById(R.id.img_choicef);
 		}
 		else if(activityLevel.equals(LevelType.MEDIUM)){
-			choices = new ImageButton[6];
+			choices = new ImageButton[7];
 			Log.d("Debug Family","Aldrin: Initiate Choices");
 			choices[0] = (ImageButton) findViewById(R.id.img_choicea);
-			choices[1] = (ImageButton) findViewById(R.id.img_choicec);
-			choices[2] = (ImageButton) findViewById(R.id.img_choicee);
-			choices[3] = (ImageButton) findViewById(R.id.img_choicef);
+			choices[1] = (ImageButton) findViewById(R.id.img_choiceb);
+			choices[2] = (ImageButton) findViewById(R.id.img_choiced);
+			choices[3] = (ImageButton) findViewById(R.id.img_choicee);
 			choices[4] = (ImageButton) findViewById(R.id.img_choiceg);
-			choices[5] = (ImageButton) findViewById(R.id.img_choicei);
+			choices[5] = (ImageButton) findViewById(R.id.img_choiceh);
+			choices[6] = (ImageButton) findViewById(R.id.img_choicei);
 		}else{
 			choices = new ImageButton[9];
 			Log.d("Debug Family","Aldrin: Initiate Choices");
@@ -164,6 +165,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	protected void rerun() {
 		Log.d("Debug Family","Aldrin: Running");
 		question = questions.get(itemno).getLabel();
+//		setChoices();
 		 
 		//tv_feedback.setText(question);
 		tv_feedback.setText(feedback + " " + question);
@@ -272,6 +274,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 				}
 					if(checkAnswer(v.getTag().toString())){
 						YoYo.with(Techniques.Pulse).playOn(v);
+//						setChoices();
 					}else{
 						YoYo.with(Techniques.Shake).playOn(v);
 						ImageView img = (ImageButton)v;
