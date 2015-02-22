@@ -15,6 +15,7 @@ import android.view.View;
 import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.Lesson;
 import com.ube.salinlahifour.LessonItemLoader;
+import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.tutorials.*;
 import com.ube.salinlahifour.enumTypes.LevelType;
 
@@ -107,6 +108,21 @@ public abstract class AbstractTutorialActivity extends Activity {
 			}
 			});
 		builder.show();
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		SalinlahiFour.getBgm().start();
+	}
+
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		SalinlahiFour.getBgm().pause();
 	}
 
 	abstract protected void setEasyTutorial();

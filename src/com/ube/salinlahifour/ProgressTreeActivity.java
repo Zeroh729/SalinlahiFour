@@ -28,7 +28,7 @@ import com.ube.salinlahifour.uibuilders.RadioButton.AllprogressRadioBtnStatesBui
 import com.ube.salinlahifour.uibuilders.RadioButton.RadioBtnStatesDirector;
 import com.ube.salinlahifour.uibuilders.RadioButton.RecentRadioBtnStatesBuilder;
 
-public class ProgressTree extends Activity implements OnCheckedChangeListener{
+public class ProgressTreeActivity extends Activity implements OnCheckedChangeListener{
 	private String username;
 	private int stars_gold;
 	private int stars_silver;
@@ -266,6 +266,21 @@ public class ProgressTree extends Activity implements OnCheckedChangeListener{
 
 	public void back(View view){
 		this.finish();
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		SalinlahiFour.getBgm().start();
+	}
+
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		SalinlahiFour.getBgm().pause();
 	}
 	
 }

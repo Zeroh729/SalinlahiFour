@@ -322,7 +322,7 @@ public class MapActivity extends Activity implements OnClickListener{
 				for(Scene scene : scenes){
 					numLesson += scene.getLessons().size();
 				}
-				intent = new Intent(this, ProgressTree.class);
+				intent = new Intent(this, ProgressTreeActivity.class);
 				Bundle bundle = new Bundle();
 				ArrayList<Lesson> lessons = new ArrayList();
 				for(Scene scene : scenes)
@@ -376,6 +376,9 @@ public class MapActivity extends Activity implements OnClickListener{
 				        	    	 intent = new Intent(scene.getLessons().get(fIndex).getTutorial());
 				         			intent.putExtra("activityClass", scene.getLessons().get(fIndex).getActivity());
 				         			intent.putExtra("activityLevel", LevelType.MEDIUM.toString());
+				         			Bundle bundle = new Bundle();
+				         			bundle.putParcelable("lesson", lessonDetails);
+				         			intent.putExtras(bundle);
 				         			startActivity(intent);
 				        	     }});
 				             ImageButton hard = (ImageButton)popupView.findViewById(R.id.btn_hard);
@@ -387,6 +390,9 @@ public class MapActivity extends Activity implements OnClickListener{
 				        	    	 intent = new Intent(scene.getLessons().get(fIndex).getTutorial());
 				         			intent.putExtra("activityClass", scene.getLessons().get(fIndex).getActivity());
 				         			intent.putExtra("activityLevel", LevelType.HARD.toString());
+				         			Bundle bundle = new Bundle();
+				         			bundle.putParcelable("lesson", lessonDetails);
+				         			intent.putExtras(bundle);
 				         			startActivity(intent);
 				        	     }});
 
@@ -409,5 +415,21 @@ public class MapActivity extends Activity implements OnClickListener{
 			}
 		});
 		builder.show();
+	}
+
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		SalinlahiFour.getBgm().start();
+	}
+
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		SalinlahiFour.getBgm().pause();
 	}
 }

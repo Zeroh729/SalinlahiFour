@@ -223,4 +223,18 @@ public class LoginActivity extends Activity implements OnClickListener, OnChecke
 		progressOperator.close();
 		tv_userdetails.setText("Name: " + user.getName() + "\nGold Stars: " + 0);
 	}
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		SalinlahiFour.getBgm().start();
+	}
+
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		SalinlahiFour.getBgm().pause();
+	}
 }

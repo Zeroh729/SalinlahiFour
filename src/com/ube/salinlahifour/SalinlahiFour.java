@@ -24,6 +24,8 @@ public class SalinlahiFour extends Application{
 
 	private static ArrayList<Item> lessonItems;
 	
+	
+	
 	@Override
 	public void onCreate() {
 		super.onCreate();
@@ -39,7 +41,7 @@ public class SalinlahiFour extends Application{
 		fontPlaytimeoblique = Typeface.createFromAsset(context.getAssets(), "fonts/PLAYTIMEOBLIQUE.TTF");
 		fontKgtangledupin = Typeface.createFromAsset(context.getAssets(), "fonts/KGTANGLEDUPINYOU.TTF");
 		fontAndy = Typeface.createFromAsset(context.getAssets(), "fonts/ANDYB.TTF");
-		bgm = MediaPlayer.create(this, R.raw.bgm_map2);
+		bgm = MediaPlayer.create(this, R.raw.bgm_map);
 		bgm.setLooping(true);
 		bgm.setVolume(100, 100);
 		}

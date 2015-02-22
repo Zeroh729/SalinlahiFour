@@ -47,12 +47,14 @@ public class RegistrationActivityName extends Activity {
 	@Override
 	protected void onPause() {
 		userDetailOperator.close();
+		SalinlahiFour.getBgm().pause();
 		super.onPause();
 	}
 
 	@Override
 	protected void onResume() {
 		userDetailOperator.open();
+		SalinlahiFour.getBgm().start();
 		super.onResume();
 	} 
 }
