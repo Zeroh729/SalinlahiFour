@@ -1,7 +1,7 @@
 package com.ube.salinlahifour.lessonActivities.CookingColors;
 
 public class Parts {
-	private int x,y,moveX,moveY;
+	private int x,y;
 	
 	public Parts(int x, int y){
 		this.x = x;

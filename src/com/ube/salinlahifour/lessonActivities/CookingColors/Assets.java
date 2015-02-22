@@ -5,9 +5,11 @@ import com.kilobolt.framework.Image;
 import com.kilobolt.framework.Sound;
 public class Assets {
 
-	public static Image gamebg, belt, breader, creamer,sprinkler,plate;
-	public static Image red, blue, green, white, black, orange, yellow, violet, brown;
-	public static ArrayList<Image> rice, chicken, vinegar;
+	public static Image bg, nothingness;
+	public static ArrayList<Image> buttons;
+	public static ArrayList<Image> bread;
+	public static ArrayList<Image> frosting;
+	public static ArrayList<Image> sprinkles;
 	
 
 }
