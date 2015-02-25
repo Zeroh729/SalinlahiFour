@@ -107,8 +107,10 @@ public class LoginActivity extends Activity implements OnClickListener, OnChecke
 					break;
 				}
 			}
+			rdoBtns[selected].setChecked(true);
+		}else{
+			
 		}
-		rdoBtns[selected].setChecked(true);
 	}
 
 	private void instantiateViews() {
@@ -223,5 +225,19 @@ public class LoginActivity extends Activity implements OnClickListener, OnChecke
 		int goldStars = progressOperator.getGoldStarsCount(user.getId());
 		progressOperator.close();
 		tv_userdetails.setText("Name: " + user.getName() + "\nGold Stars: " + 0);
+	}
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		SalinlahiFour.getBgm().start();
+	}
+
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		SalinlahiFour.getBgm().pause();
 	}
 }

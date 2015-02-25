@@ -13,5 +13,7 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_debug_user_record">DebugUserRecordActivity</string>
     <string name="title_activity_debug_user_lesson_progress">DebugUserLessonProgressActivity</string>
- 	<string name="hello">Hello World, MagicTextViewActivity!</string>
+    <string name="hello">Hello World, MagicTextViewActivity!</string>
+    <string name="title_activity_progress_tree">ProgressTree</string>
+
 </resources>

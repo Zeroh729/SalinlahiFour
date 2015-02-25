@@ -1,5 +1,7 @@
 package com.ube.salinlahifour.lessonActivities;
 
+import iFeedback.iFeedback;
+
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,38 +15,42 @@ import java.util.Map;
 import java.util.Random;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.ube.salinlahifour.Item;
+import com.ube.salinlahifour.Lesson;
 import com.ube.salinlahifour.MapActivity;
+import com.ube.salinlahifour.ReportCard;
 import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.database.UserRecordOperations;
 import com.ube.salinlahifour.enumTypes.LevelType;
 import com.ube.salinlahifour.enumTypes.StatusType;
+import com.ube.salinlahifour.evaluationModule.Evaluation;
 import com.ube.salinlahifour.model.UserRecord;
 import com.ube.salinlahifour.tools.DateTimeConverter;
 
-import iFeedback.iFeedback;
-
 public abstract class AbstractLessonActivity extends Activity {
+	protected Lesson lesson;
 	protected ArrayList<ImageView> backgrounds;
 	protected ArrayList<Item> items;
 	protected ArrayList<Item> questions;
 	protected ArrayList<SoundPool> timeoutvoices;
 	protected String activityName;
-	protected String activityLevel;
+	protected LevelType activityLevel;
 	protected int layoutID;
 	protected int UserID;	
 	protected iFeedback NLG;
-
+	protected ReportCard reportCard;
+	protected Evaluation evaluation;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -59,13 +65,16 @@ public abstract class AbstractLessonActivity extends Activity {
 		
 		Bundle bundle = getIntent().getExtras();
 		activityName = bundle.getString("activityName");
-		activityLevel = bundle.getString("activityLevel");
-		UserID = bundle.getInt("UserID");
+		activityLevel = LevelType.valueOf(bundle.getString("activityLevel"));
+		Log.d("activityLevel:", activityLevel.toString());
+		lesson = (Lesson) bundle.getParcelable("lesson");
+		
+		UserID = SalinlahiFour.getLoggedInUser().getId();
 		Log.d(activityName, "TEST ActivityName in lesson act");
 
 		items = ((SalinlahiFour)getApplication()).getLessonItems();
 		initiateNarrationModule();
-		
+
 		initiateViews();
 		getQuestions();
 		run();
@@ -93,6 +102,7 @@ public abstract class AbstractLessonActivity extends Activity {
 			}
 			
             Log.d("records size: " + records.size(), "TEST");
+            Log.d("itemKeys size: " + itemKeys.size(), "TEST");
 					
 			for(int i = 0; i < records.size(); i++){
 	//			int index = itemNames.indexOf(records.get(i).getCorrectAnswer());
@@ -166,15 +176,17 @@ public abstract class AbstractLessonActivity extends Activity {
 				startActivity(intent1);break;
 	    	}
 	    	
-	    }
-	protected void showReportCard(){
-		
+	}
+	
+	protected void showReportCard(Context context){
+		reportCard = new ReportCard(context, lesson, activityLevel, evaluation, evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber()));
+		reportCard.reveal();
 	}
 
 	
 	abstract protected void initiateViews();
 	abstract protected void run();
-	abstract protected void checkAnswer(String answer);
+	abstract protected boolean checkAnswer(String answer);
 	
 	private void errorPopup(String title, String error){
 		final AlertDialog.Builder builder=new AlertDialog.Builder(this);
@@ -188,5 +200,20 @@ public abstract class AbstractLessonActivity extends Activity {
 			}
 			});
 		builder.show();
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		SalinlahiFour.getBgm().start();
+	}
+
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		SalinlahiFour.getBgm().pause();
 	}
 }
