@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+	<View 
+        android:id="@+id/view_blackoverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66000000"
+    ></View>
+    
+    <ImageView
+        android:id="@+id/img_reportcard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/report_card"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        />
+    
+    <TextView 
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/img_reportcard"
+        android:text="Pepay's House"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textColor="#fc6363"
+        android:textSize="39sp"
+        />
+
+    <TextView 
+        android:id="@+id/tv_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(EASY)"
+        android:layout_centerHorizontal="true"
+		android:layout_below="@id/tv_title"
+		android:layout_marginTop="10dp"
+        android:textColor="#99e574"
+        android:textSize="26sp"
+        />
+    
+    <ImageView 
+        android:id="@+id/img_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/img_reportcard"
+        android:layout_marginRight="33dp"
+		android:layout_below="@id/tv_level"
+        android:layout_marginTop="65dp"
+        android:src="@drawable/report_card_gold"
+        />
+    
+    <TextView
+        android:id="@id/tv_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_star"
+        android:layout_alignLeft="@id/img_star"
+		android:layout_alignRight="@id/img_star"
+		android:layout_marginTop="6dp"
+		android:textSize="29sp"
+		android:text="PERFECT!"
+		android:textColor="#c4b723"
+		android:gravity="center_horizontal"
+        />
+    
+    <TextView 
+        android:id="@+id/tv_replaytxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/img_reportcard"
+        android:layout_alignBottom="@+id/img_reportcard"
+        android:layout_marginLeft="55dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal"
+        android:textColor="#e65437"
+        android:textSize="22sp"
+        android:text="retry to get \n SILVER"/> 
+             
+    
+    <ImageButton
+        android:id="@+id/btn_replay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/report_card_replay"
+        android:background="@null"
+        android:layout_above="@id/tv_replaytxt"
+        android:layout_alignLeft="@id/tv_replaytxt"
+        android:layout_marginLeft="-10dp"
+        />
+    
+    
+    <ImageButton
+        android:id="@+id/btn_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/report_card_home"
+        android:background="@null"
+        android:layout_alignRight="@id/img_reportcard"
+        android:layout_alignBottom="@+id/btn_replay"
+        android:layout_marginRight="55dp"
+        />
+   
+    <TextView 
+        android:id="@+id/tv_nexttxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn_next"
+        android:layout_alignRight="@+id/btn_next"
+        android:layout_alignBottom="@+id/img_reportcard"
+        android:layout_alignBaseline="@id/tv_replaytxt"
+        android:gravity="center_horizontal"
+        android:textColor="#97ca1b"
+        android:textSize="22sp"
+        android:text="play MEDIUM"/>  
+    
+    <ImageButton
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tv_nexttxt"
+        android:layout_alignBottom="@id/btn_replay"
+        android:layout_toLeftOf="@id/btn_home"
+        android:layout_toRightOf="@id/btn_replay"
+        android:background="@null"
+        android:src="@drawable/report_card_next" />
+    
+    
+    <TextView 
+        android:id="@+id/tv_evaluation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/img_star"
+        android:layout_above="@id/btn_next"
+        android:layout_below="@id/tv_level"
+        android:paddingLeft="65dp"
+        android:paddingRight="15dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="20dp"
+        android:layout_alignLeft="@id/img_reportcard"
+        android:text="Mahusay!"
+        android:textSize="28sp"
+        android:textColor="#3f3f3f"
+        />
+    
+</RelativeLayout>

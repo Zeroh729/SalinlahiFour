@@ -31,7 +31,7 @@ import com.ube.salinlahifour.evaluationModule.Evaluation;
 public class Cooking extends AbstractLessonActivity implements OnClickListener{
 	private TextView tv_dialog;
 	private TextView tv_feedback;
-	private Evaluation evaluation = new Evaluation(NLG, activityName, activityLevel);
+	private Evaluation evaluation = new Evaluation(NLG, activityName, activityLevel.toString());
 	private ImageButton[] choices;
 	private int itemno;
 	private UserRecordOperations userRecordOperator = new UserRecordOperations(this);
@@ -48,7 +48,7 @@ public class Cooking extends AbstractLessonActivity implements OnClickListener{
 	}
 
 	@Override
-	protected void checkAnswer(String answer) {
+	protected boolean checkAnswer(String answer) {
 		Log.d("Debug Family","Aldrin: Checking Answer");
 		String feedback;
 		userRecordOperator.open();
@@ -70,7 +70,7 @@ public class Cooking extends AbstractLessonActivity implements OnClickListener{
 					Log.d("Debug Family", "Aldrin: iFeedback says its finished (Delayed Feedback)");
 					feedback = evaluation.getEndofActivityFeedback(evaluation.getScore(), 3);
 					tv_feedback.setText(feedback);
-					evaluation.updateUserLessonProgress("Cooking", activityLevel, userLessonProgressOperator, UserID);
+					evaluation.updateUserLessonProgress("Cooking", activityLevel.toString(), userLessonProgressOperator, UserID);
 					//feedback = NLG.GenerateDelayedFeedback(score, LessonNum);
 					feedback = "feedback placeholder";
 				//	timer.cancel();
@@ -119,6 +119,7 @@ public class Cooking extends AbstractLessonActivity implements OnClickListener{
 					             popupWindow.showAtLocation(this.findViewById(R.id.relative_view), Gravity.CENTER, 0, 0);
 					             Log.d("Debug Family", "Aldrin: End ShowAtLocation");
 				}		
+				return true;
 			}else{
 				Log.d("Debug Family", "Aldrin: Answer: " + answer);
 				Log.d("Debug Family", "Aldrin: Index: " + 1);
@@ -142,6 +143,7 @@ public class Cooking extends AbstractLessonActivity implements OnClickListener{
 		}
 		
 		Log.d("Debug Family","Aldrin: Answer Check");
+		return false;
 	}
 	
 	private void setChoices(){

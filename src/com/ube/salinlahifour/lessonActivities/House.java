@@ -117,7 +117,7 @@ public class House extends AbstractLessonActivity implements OnClickListener{
 	}
 
 	@Override
-	protected void checkAnswer(String answer) {
+	protected boolean checkAnswer(String answer) {
 		Log.d("Debug House","Aldrin: Checking Answer");
 		
 			//NLG Part - Correct
@@ -184,7 +184,7 @@ public class House extends AbstractLessonActivity implements OnClickListener{
 
 				
 			}
-			
+			return true;
 		}else{
 			Log.d("Debug Family", "Aldrin: Answer: " + answer);
 			Log.d("Debug Family", "Aldrin: Index: " + index);
@@ -199,6 +199,7 @@ public class House extends AbstractLessonActivity implements OnClickListener{
 				e.printStackTrace();
 			}
 		Log.d("Debug Family","Aldrin: Answer Check");	
+		return false;
 	}
 
 	@Override

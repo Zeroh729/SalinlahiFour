@@ -2,6 +2,7 @@ package com.ube.salinlahifour.database;
 
 import java.util.ArrayList;
 
+import com.ube.salinlahifour.enumTypes.StarType;
 import com.ube.salinlahifour.model.UserLessonProgress;
 
 import android.content.ContentValues;
@@ -28,8 +29,6 @@ public class UserLessonProgressOperations {
 	public void close(){
 		dbHandler.close();
 	}
-	
-	
 	
 	public UserLessonProgress addUserLessonProgress(int userID, String lessonName, String easyStar, String medStar, String hardStar){ //add parameter for each attribute, id not included
 		ContentValues value = new ContentValues();
@@ -82,7 +81,7 @@ public class UserLessonProgressOperations {
 		cursor.close();
 		return progressList;
 	}
-	
+
 	public void updateUserLessonProgress(int userID, String lessonName, String easyStar, String medStar, String hardStar) {
 	    ContentValues values = new ContentValues();
 	    
@@ -139,4 +138,64 @@ public class UserLessonProgressOperations {
 			return null;
 		}
 	}
+	
+	public int getGoldStarsCount(int userID){
+		ArrayList<UserLessonProgress> progressList = new ArrayList<UserLessonProgress>();
+		progressList = getAllUserLessonProgressOfUser(userID);
+		int count = 0;
+		
+		for(int i = 0; i < progressList.size(); i++){
+			try{
+				if(progressList.get(i).getEasyStar().equals(StarType.GOLD.toString()))
+					count++;
+				if(progressList.get(i).getMediumStar().equals(StarType.GOLD.toString()))
+					count++;
+				if(progressList.get(i).getHardStar().equals(StarType.GOLD.toString()))
+					count++;
+			}catch(Exception e){}
+		}
+		
+		return count;
+	}
+	
+	public int getSilverStarsCount(int userID){
+		ArrayList<UserLessonProgress> progressList = new ArrayList<UserLessonProgress>();
+		progressList = getAllUserLessonProgressOfUser(userID);
+		int count = 0;
+		
+		for(int i = 0; i < progressList.size(); i++){
+			try{
+				if(progressList.get(i).getEasyStar().equals(StarType.SILVER.toString()))
+					count++;
+				if(progressList.get(i).getMediumStar().equals(StarType.SILVER.toString()))
+					count++;
+				if(progressList.get(i).getHardStar().equals(StarType.SILVER.toString()))
+					count++;
+			}catch(Exception e){}
+		}
+		
+		return count;
+	}
+	
+	public int getBronzeStarsCount(int userID){
+		ArrayList<UserLessonProgress> progressList = new ArrayList<UserLessonProgress>();
+		progressList = getAllUserLessonProgressOfUser(userID);
+		int count = 0;
+		
+		for(int i = 0; i < progressList.size(); i++){
+			try{
+				if(progressList.get(i).getEasyStar().equals(StarType.BRONZE.toString()))
+					count++;
+				if(progressList.get(i).getMediumStar().equals(StarType.BRONZE.toString()))
+					count++;
+				if(progressList.get(i).getHardStar().equals(StarType.BRONZE.toString()))
+					count++;
+			}catch(Exception e){}
+		}
+		
+		return count;
+	}
+	
+	
+	
 }

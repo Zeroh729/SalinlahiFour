@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    tools:context="${packageName}.${activityClass}" >
+    tools:context="${packageName}.${activityClass}"
+    android:background="@drawable/splash_bg" >
 
   <!--   <ImageView
         android:id="@+id/Splash"
@@ -13,7 +14,7 @@
         
         <ImageView
         android:id="@+id/Splash_BG"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:src="@drawable/splash_bg"
         android:layout_gravity="center" />
