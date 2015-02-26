@@ -200,6 +200,8 @@ public class ProgressTreeActivity extends Activity implements OnCheckedChangeLis
 
 		radiog_data.setOnCheckedChangeListener(this);
 		
+		((TextView)findViewById(R.id.tv_progress)).setTypeface(SalinlahiFour.getFontMvboli());
+		
 		for(int i = 0; i < 30; i++)
 			tv_username.addOuterShadow(5, 0, 0, 0xFF54460e);
 

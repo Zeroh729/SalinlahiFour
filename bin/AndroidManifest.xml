@@ -176,7 +176,7 @@
             android:label="@string/title_activity_debug_user_lesson_progress" >
         </activity>
         <activity
-            android:name="com.ube.salinlahifour.ProgressTree"
+            android:name="com.ube.salinlahifour.ProgressTreeActivity"
             android:label="@string/title_activity_progress_tree" >
         </activity>
     </application>
