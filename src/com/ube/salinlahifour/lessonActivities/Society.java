@@ -26,9 +26,9 @@ public class Society  extends AbstractLessonActivity{
 	}
 
 	@Override
-	protected void checkAnswer(String answer) {
+	protected boolean checkAnswer(String answer) {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
 
 }

@@ -2,41 +2,35 @@ package com.ube.salinlahifour;
 
 //import android.R;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStreamWriter;
-
-import org.jdom.*;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-
+import android.view.View;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
-
-import android.util.Log;
-
-import android.widget.Toast;
 
 import com.ube.salinlahifour.database.DatabaseHandler;
 import com.ube.salinlahifour.database.UserDetailOperations;
 import com.ube.salinlahifour.model.UserDetail;
-import com.ube.salinlahifour.tools.DateTimeConverter;
 
 public class MainActivity extends Activity {
 	private UserDetailOperations userDetailOperator;		
-	private int SPLASH_TIME = 7 * 1000;// 3 seconds //Now 4 secs
+	private int SPLASH_TIME = 1 * 1000;// 3 seconds //Now 4 secs
 //	private final Intent registationActivity = new Intent(this, RegistrationActivity.class);
 //	private final Intent mapActivity = new Intent(this, MapActivity.class);
 
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		SalinlahiFour.getBgm().start();
+		
 		//Load File from res or assets
 		//InputStream ins = getResources().openRawResource( getResources().getIdentifier("raw/properties", "raw", getPackageName()));
 		File properties = new File("/sdcard/properties.txt");
@@ -196,12 +190,12 @@ public class MainActivity extends Activity {
 		        		Intent intent = new Intent();
 		        		
 		        		intent.putExtra("UserID", user.getId());		        		
-		        		if(user != null){
+		        		if(lastUserID != -1){
 			        		((SalinlahiFour)getApplication()).setLoggedInUser(user);
 			        		intent.setClass(getApplicationContext(), MapActivity.class);
 		        		}else
-			        		intent.setClass(getApplicationContext(), RegistrationActivity.class);
-		        		startActivity(intent);
+			        		intent.setClass(getApplicationContext(), RegistrationActivityName.class);
+		        			startActivity(intent);
 		        		}
 //		            MainActivity.this.finish();
 		        }    
@@ -209,5 +203,20 @@ public class MainActivity extends Activity {
 		    }, SPLASH_TIME);
 		   
 	}
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		SalinlahiFour.getBgm().start();
+	}
+
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		SalinlahiFour.getBgm().pause();
+	}
+
 	
 }
