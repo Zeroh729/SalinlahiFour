@@ -16,6 +16,7 @@ public class Cooking extends AbstractLAFramework  {
 	 
 	 @Override
 	 public Screen getInitScreen() {
+		 Log.d("Debug Init", "Cooking");
 		 return new LoadingScreen(this, activityLevel, UserID); 
 	 }
 	 @Override
