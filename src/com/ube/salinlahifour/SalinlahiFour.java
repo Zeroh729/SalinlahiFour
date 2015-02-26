@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Application;
 import android.content.Context;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 
 import com.ube.salinlahifour.model.UserDetail;
 
@@ -14,8 +15,16 @@ public class SalinlahiFour extends Application{
 	private static UserDetail loggedInUser;
 	private static Typeface fontBpreplay;
 	private static Typeface fontKgsecondchances;
+	private static Typeface fontPlaytime;
+	private static Typeface fontPlaytimeoblique;
+	private static Typeface fontKgtangledupin;
+	private static Typeface fontAndy;
+
+	private static MediaPlayer bgm;
 
 	private static ArrayList<Item> lessonItems;
+	
+	
 	
 	@Override
 	public void onCreate() {
@@ -28,7 +37,14 @@ public class SalinlahiFour extends Application{
 
 		fontBpreplay = Typeface.createFromAsset(context.getAssets(), "fonts/BPREPLAYBOLD.OTF");
 		fontKgsecondchances = Typeface.createFromAsset(context.getAssets(), "fonts/KGSECONDCHANCESSOLID.TTF");
-	}
+		fontPlaytime = Typeface.createFromAsset(context.getAssets(), "fonts/PLAYTIME.TTF");
+		fontPlaytimeoblique = Typeface.createFromAsset(context.getAssets(), "fonts/PLAYTIMEOBLIQUE.TTF");
+		fontKgtangledupin = Typeface.createFromAsset(context.getAssets(), "fonts/KGTANGLEDUPINYOU.TTF");
+		fontAndy = Typeface.createFromAsset(context.getAssets(), "fonts/ANDYB.TTF");
+		bgm = MediaPlayer.create(this, R.raw.bgm_map);
+		bgm.setLooping(true);
+		bgm.setVolume(100, 100);
+		}
 	
 	public static SalinlahiFour getSalinlahifour() {
 		return salinlahifour;
@@ -58,9 +74,25 @@ public class SalinlahiFour extends Application{
 	public static Typeface getFontBpreplay() {
 		return fontBpreplay;
 	}
-	
+
 	public static Typeface getFontKgsecondchances() {
 		return fontKgsecondchances;
+	}
+	
+	public static Typeface getFontPlaytime() {
+		return fontPlaytime;
+	}
+	
+	public static Typeface getFontKgtangledupinyou() {
+		return fontKgtangledupin;
+	}
+	
+	public static Typeface getFontPlaytimeOblique() {
+		return fontPlaytimeoblique;
+	}
+	
+	public static Typeface getFontAndy() {
+		return fontAndy;
 	}
 	
 	public static Context getContext() {
@@ -69,5 +101,9 @@ public class SalinlahiFour extends Application{
 
 	public static void setContext(Context context) {
 		SalinlahiFour.context = context;
+	}
+	
+	public static MediaPlayer getBgm(){
+		return bgm;
 	}
 }

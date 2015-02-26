@@ -13,6 +13,7 @@ import com.ube.salinlahifour.lessonActivities.PartsOFHouse.LoadingScreen;
 
 public class House extends AbstractLAFramework  {
 
+
 	 
 	 @Override
 	 public Screen getInitScreen() {
@@ -22,4 +23,4 @@ public class House extends AbstractLAFramework  {
 	 public void onBackPressed() {
 		 getCurrentScreen().backButton();
 	 }
-	}
+}
