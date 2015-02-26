@@ -74,6 +74,7 @@ public class LoginActivity extends Activity implements OnClickListener, OnChecke
 		
 		populateRadioButtons();
 		
+
 		switch(userDetails.size()){
 			case 0: btn_login.setEnabled(false);
 					break;
@@ -82,6 +83,7 @@ public class LoginActivity extends Activity implements OnClickListener, OnChecke
 			case 3: rdo_char3.setVisibility(View.VISIBLE);
 			case 2: rdo_char2.setVisibility(View.VISIBLE);
 			case 1: rdo_char1.setVisibility(View.VISIBLE);
+
 		}
 		
 	}
@@ -105,8 +107,10 @@ public class LoginActivity extends Activity implements OnClickListener, OnChecke
 					break;
 				}
 			}
+			rdoBtns[selected].setChecked(true);
+		}else{
+			
 		}
-		rdoBtns[selected].setChecked(true);
 	}
 
 	private void instantiateViews() {
@@ -194,6 +198,7 @@ public class LoginActivity extends Activity implements OnClickListener, OnChecke
 				intent = new Intent(this, MapActivity.class);
 				startActivity(intent);
 				break;
+
 		}
 		
 	}
@@ -220,5 +225,19 @@ public class LoginActivity extends Activity implements OnClickListener, OnChecke
 		int goldStars = progressOperator.getGoldStarsCount(user.getId());
 		progressOperator.close();
 		tv_userdetails.setText("Name: " + user.getName() + "\nGold Stars: " + 0);
+	}
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		SalinlahiFour.getBgm().start();
+	}
+
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		SalinlahiFour.getBgm().pause();
 	}
 }

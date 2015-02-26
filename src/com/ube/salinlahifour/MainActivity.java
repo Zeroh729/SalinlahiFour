@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+		SalinlahiFour.getBgm().start();
 		
 		//Load File from res or assets
 		//InputStream ins = getResources().openRawResource( getResources().getIdentifier("raw/properties", "raw", getPackageName()));
@@ -190,18 +190,32 @@ public class MainActivity extends Activity {
 		        		Intent intent = new Intent();
 		        		
 		        		intent.putExtra("UserID", user.getId());		        		
-		        		if(user != null){
+		        		if(lastUserID != -1){
 			        		((SalinlahiFour)getApplication()).setLoggedInUser(user);
 			        		intent.setClass(getApplicationContext(), MapActivity.class);
 		        		}else
 			        		intent.setClass(getApplicationContext(), RegistrationActivityName.class);
-		        		startActivity(intent);
+		        			startActivity(intent);
 		        		}
 //		            MainActivity.this.finish();
 		        }    
 
 		    }, SPLASH_TIME);
 		   
+	}
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		SalinlahiFour.getBgm().start();
+	}
+
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		SalinlahiFour.getBgm().pause();
 	}
 
 	

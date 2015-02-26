@@ -21,7 +21,6 @@ public class Family extends AbstractTutorialActivity {
 	
 	public Family(){
 		layoutID = R.layout.tutorial_family;
-		
 	}
 
 	@Override

@@ -107,7 +107,6 @@
 		android:background="@null"
 	/>
 	
-    
     <RelativeLayout 
         android:id="@+id/layout_popup"
         android:layout_width="match_parent"
@@ -115,7 +114,6 @@
         android:visibility="gone"
         android:onClick="onClick"
         >
-        
         
     <View 
         android:id="@+id/view_blackoverlay"

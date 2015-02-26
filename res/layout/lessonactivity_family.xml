@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="horizontal">
@@ -7,7 +7,6 @@
 	<HorizontalScrollView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-         
         android:id="@+id/main_screen" >
         
          			<RelativeLayout
@@ -32,8 +31,6 @@
                 			android:id="@+id/img_choicec"
                 			android:layout_width="100dp"
         					android:layout_height="100dp"
-        					android:scaleX="0.85"
-        					android:scaleY="0.85"
                 			android:layout_alignParentBottom="true"
             			    android:layout_marginBottom="75dp"
             			    android:layout_toRightOf="@+id/img_choiceb"
@@ -47,8 +44,6 @@
                 			android:id="@+id/img_choiceb"
                 			android:layout_width="100dp"
         					android:layout_height="100dp"
-        					android:scaleX="0.85"
-        					android:scaleY="0.85"
                 			android:layout_alignParentBottom="true"
             			    android:layout_marginBottom="75dp"
             			    android:layout_toRightOf="@+id/img_choicea"
@@ -62,8 +57,6 @@
                 			android:id="@+id/img_choiced"
                 			android:layout_width="100dp"
         					android:layout_height="100dp"
-        					android:scaleX="0.85"
-        					android:scaleY="0.85"
                 			android:layout_alignParentBottom="true"
             			    android:layout_marginBottom="75dp"
             			    android:layout_marginLeft="13dp"
@@ -77,8 +70,6 @@
                 			android:id="@+id/img_choicee"
                 			android:layout_width="100dp"
         					android:layout_height="100dp"
-        					android:scaleX="0.85"
-        					android:scaleY="0.85"
                 			android:layout_alignParentBottom="true"
             			    android:layout_marginBottom="75dp"
             			    android:layout_marginLeft="13dp"
@@ -93,8 +84,6 @@
             			    android:id="@+id/img_choicea"
             			   android:layout_width="100dp"
         					android:layout_height="100dp"
-        					android:scaleX="0.85"
-        					android:scaleY="0.85"
             				android:layout_alignParentBottom="true"
             			    android:layout_marginBottom="75dp"
             			    android:layout_marginLeft="13dp"
@@ -108,8 +97,6 @@
             			    android:id="@+id/img_choicef"
             			   android:layout_width="100dp"
         					android:layout_height="100dp"
-        					android:scaleX="0.85"
-        					android:scaleY="0.85"
             				android:layout_alignParentBottom="true"
             			    android:layout_marginBottom="75dp"
             			    android:layout_marginLeft="13dp"
@@ -123,8 +110,6 @@
             			    android:id="@+id/img_choiceg"
             			   android:layout_width="100dp"
         					android:layout_height="100dp"
-        					android:scaleX="0.85"
-        					android:scaleY="0.85"
             				android:layout_alignParentBottom="true"
             			    android:layout_marginBottom="75dp"
             			    android:layout_marginLeft="13dp"
@@ -138,8 +123,6 @@
             			    android:id="@+id/img_choiceh"
             			   android:layout_width="100dp"
         					android:layout_height="100dp"
-        					android:scaleX="0.85"
-        					android:scaleY="0.85"
             				android:layout_alignParentBottom="true"
             			    android:layout_marginBottom="75dp"
             			    android:layout_marginLeft="13dp"
@@ -153,8 +136,6 @@
             			    android:id="@+id/img_choicei"
             			   android:layout_width="100dp"
         					android:layout_height="100dp"
-        					android:scaleX="0.85"
-        					android:scaleY="0.85"
             				android:layout_alignParentBottom="true"
             			    android:layout_marginBottom="75dp"
             			    android:layout_marginLeft="13dp"
@@ -181,19 +162,22 @@
             				
                 			/>
 	  						    
-	
 			
-         					<TextView
+         				<TextView
 	             			android:id="@+id/tv_feedback"
-                			android:layout_width="wrap_content"
-                			android:layout_height="wrap_content"
+                			android:layout_width="match_parent"
+                			android:layout_height="120dp"
+                			android:layout_marginLeft="50dp"
+                			android:layout_marginRight="50dp"
                 			android:text="text"
                 			android:layout_alignParentBottom="true"
             				android:layout_centerHorizontal="true"
             				android:gravity="center"
-            				android:layout_marginBottom="40dp"
-            			 	android:background="@drawable/subtitle_bg"
-                			android:textSize="22sp" />
+            				android:layout_marginBottom="20dp"
+            				android:layout_marginTop="40dp"
+            			 	android:background="@drawable/feedbackbox"
+                			android:textSize="29sp"
+                			android:textColor="#3b3b3b" />
                 				
                   	    <TextView
     					    android:id="@+id/timer_dialog" 

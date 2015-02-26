@@ -1,34 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ <RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical" 
-    android:background="@drawable/difficulty_bg">
+    android:layout_height="match_parent">
     
-    <ImageButton 
-        android:id="@+id/btn_easy_level"
-        android:layout_width="fill_parent"
+	<View 
+        android:id="@+id/view_blackoverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66000000"
+    ></View>
+	
+	
+    <ImageView 
+        android:id="@+id/popup"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/easy"
-        android:background="@null"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="60dp"
-        
-        />
-    <ImageButton 
-        android:id="@+id/btn_medium_level"
-        android:layout_width="fill_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/popupwindow"/>
+    
+    
+    <ImageButton
+        android:id="@+id/btn_popupclose"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/medium"
+        android:layout_alignRight="@id/popup"
+        android:layout_alignTop="@id/popup"
+        android:layout_marginRight="-20dp"
+        android:layout_marginTop="-20dp"
         android:background="@null"
-        android:layout_marginBottom="10dp"
+        android:onClick="onClick"
         />
-    <ImageButton 
-        android:id="@+id/btn_hard_level"
-        android:layout_width="fill_parent"
+    
+    <ImageView
+        android:id="@+id/popup_mapimg"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/hard"
-        android:background="@null"
-        android:layout_marginBottom="10dp"
+        android:layout_alignLeft="@id/popup"
+        android:layout_alignTop="@id/popup"
+        android:layout_marginTop="40dp"
+        android:paddingLeft="40dp"
         />
-</LinearLayout>
+    
+    <com.qwerjk.better_text.MagicTextView
+        xmlns:qwerjk="http://schemas.android.com/apk/res/com.qwerjk.better_text"
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/popup_mapimg"
+        android:layout_marginLeft="30dp"
+        android:layout_alignTop="@id/popup"
+        android:layout_marginTop="43dp"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp" 
+        android:padding="10dp"/>
+    
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title"
+        android:layout_alignLeft="@id/tv_title"
+        android:layout_alignRight="@id/popup"
+        android:paddingRight="15dp"
+		android:paddingLeft="5dp"
+		android:textSize="22sp"
+		android:textColor="#FFFFFF"
+        />
+         
+	<ImageView 
+	    android:id="@+id/popup_layout"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:src="@drawable/popupwindow_layout"
+	    android:layout_alignBottom="@id/popup"
+	    android:layout_marginBottom="30dp"
+	    android:layout_centerHorizontal="true"
+	    android:scaleX="1.2"
+	    />
+	         
+	<ImageView 
+	    android:id="@+id/star1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:src="@drawable/lvlselect_gold"
+	    android:layout_alignLeft="@id/popup_layout"
+	    android:layout_alignTop="@id/popup_layout"
+	    android:layout_marginTop="10dp"
+	    />   
+	    
+	<ImageView 
+	    android:id="@+id/star3"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:src="@drawable/lvlselect_gold"
+	    android:layout_alignLeft="@id/popup_layout"
+	    android:layout_alignBottom="@id/popup_layout"
+	    android:layout_marginBottom="10dp"
+	    />
+	
+	<ImageView 
+	    android:id="@+id/star2"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:src="@drawable/lvlselect_gold"
+	    android:layout_alignLeft="@id/popup_layout"
+	    android:layout_below="@id/star1"
+	    android:layout_above="@id/star3"
+	    />
+	
+	<ImageButton 
+	    android:id="@+id/btn_easy"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignRight="@id/popup_layout"
+	    android:layout_alignTop="@id/popup_layout"
+	    android:layout_marginTop="10dp"
+	    android:background="@null"
+	    /> 
+	    	    
+	<ImageButton 
+	    android:id="@+id/btn_hard"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignRight="@id/popup_layout"
+	    android:layout_alignBottom="@id/popup_layout"
+	    android:layout_marginBottom="10dp"
+	    android:background="@null"
+	    />
+	
+	<ImageButton 
+	    android:id="@+id/btn_med"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignRight="@id/popup_layout"
+	    android:layout_below="@id/btn_easy"
+	    android:layout_above="@id/btn_hard"
+	    android:background="@null"
+	    />
+    
+     
+ </RelativeLayout>
