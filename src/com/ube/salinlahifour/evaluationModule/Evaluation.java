@@ -96,6 +96,7 @@ public class Evaluation {
 	public String getEndofActivityFeedback(int score, int lessonNumber){
 		String Feedback = null;
 		try {
+			
 			Feedback = NLG.GenerateDelayedFeedback(score, lessonNumber);
 		} catch (JDOMException | IOException e) {
 			// TODO Auto-generated catch block

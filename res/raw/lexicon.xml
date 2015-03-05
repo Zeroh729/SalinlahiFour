@@ -1,135 +1,221 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
-    Document   : Lexicon.xml
-    Created on : July 11, 2011, 3:55 PM
-    Author     : Ledian
-    Description:
-        Purpose of the document follows.
--->
-
 <type>
     <Word_Entry>
-    <q_num>1</q_num>
-	<word>Nanay</word>
-    <w_type>definition</w_type>
-    <notes>your mother</notes>
-    <hint>She is a female who wears apron</hint>
-	<lesson>1</lesson>
-</Word_Entry>
+		<q_num>1</q_num>
+		<word>Nanay</word>
+		<w_type>definition</w_type>
+		<notes>your mother</notes>
+		<hint>She is a female who wears apron</hint>
+		<lesson>1</lesson>
+	</Word_Entry>
 
-<Word_Entry>
-    <q_num>2</q_num>
-	<word>Tatay</word>
-    <w_type>definition</w_type>
-    <notes>your father</notes>
-    <hint>He is a man, he usually wears a tie to go to work</hint>
-	<lesson>1</lesson>
-</Word_Entry>
-
-<Word_Entry>
-    <q_num>3</q_num>
-	<word>Kuya</word>
-    <w_type>definition</w_type>
-    <notes>your older brother</notes>
-    <hint>He is a boy and he is older than you</hint>
-	<lesson>1</lesson>
-</Word_Entry>
-<Word_Entry>
-    <q_num>4</q_num>
-    <word>Ate</word>
-    <w_type>definition</w_type>
-    <notes>your older sister</notes>
-    <hint>That girl is also older than you.</hint>
-    <lesson>1</lesson>
-</Word_Entry>
-<Word_Entry>
-	<q_num>5</q_num>
-    <word>Lolo</word>
-    <w_type>definition</w_type>
-    <notes>Grandfather in enlish</notes>
-    <hint>That man is old, He needs a crane to help him walk</hint>
-	<lesson>1</lesson>
-</Word_Entry>
-<Word_Entry>
-    <q_num>6</q_num>
-	<word>Lola</word>
-    <w_type>definition</w_type>
-    <notes>your grandmother</notes>
-    <hint>She is a female who is old. Her hair is colored gray</hint>
-	<lesson>1</lesson>
-</Word_Entry>
-
-<Word_Entry>
-    <q_num>7</q_num>
-    <word>Bunso</word>
-    <w_type>definition</w_type>
-    <notes>a greeting used every evening</notes>
-    <hint>He is young, little and cute.</hint>
-    <lesson>1</lesson>
-</Word_Entry>
-<Word_Entry>
-    <q_num>8</q_num>
-    <word>Tito</word>
-    <w_type>definition</w_type>
-    <notes>a greeting used every evening</notes>
-    <hint>That man is younger than your father</hint>
-    <lesson>1</lesson>
-</Word_Entry>
-<Word_Entry>
-    <q_num>9</q_num>
-    <word>Tita</word>
-    <w_type>definition</w_type>
-    <notes>a greeting used every evening</notes>
-    <hint>She is related to your tito.</hint>
-    <lesson>1</lesson>
-</Word_Entry>
-<Word_Entry>
-    <q_num>1</q_num>
-	<word>Bubong</word>
-    <w_type>definition</w_type>
-    <notes>a greeting used every evening</notes>
-    <hint>Roof Hints</hint>
-	<lesson>2</lesson>
-</Word_Entry>
-<Word_Entry>
-    <q_num>2</q_num>
-	<word>Dingding</word>
-    <w_type>definition</w_type>
-    <notes>is a greeting used every evening</notes>
-    <hint>Wall Hints</hint>
-	<lesson>2</lesson>
-</Word_Entry>
-<Word_Entry>
-    <q_num>3</q_num>
-	<word>Pinto</word>
-    <w_type>definition</w_type>
-    <notes>is a greeting used every evening</notes>
-    <hint>Pinto Hints</hint>
-	<lesson>2</lesson>
-</Word_Entry>
-<Word_Entry>
-    <q_num>4</q_num>
-	<word>Bintana</word>
-    <w_type>definition</w_type>
-    <notes>is a greeting used every evening</notes>
-    <hint>Bintana Hints</hint>
-	<lesson>2</lesson>
-</Word_Entry>
-<Word_Entry>
-    <q_num>5</q_num>
-	<word>Garahe</word>
-    <w_type>definition</w_type>
-    <notes>is a greeting used every evening</notes>
-    <hint>Garahe Hints</hint>
-	<lesson>2</lesson>
-</Word_Entry>
-<Word_Entry>
-    <q_num>6</q_num>
-	<word>Bakuran</word>
-    <w_type>definition</w_type>
-    <notes>is a greeting used every evening</notes>
-    <hint>Bakuran Hints</hint>
-	<lesson>2</lesson>
-</Word_Entry>
+	<Word_Entry>
+		<q_num>2</q_num>
+		<word>Tatay</word>
+		<w_type>definition</w_type>
+		<notes>your father</notes>
+		<hint>He is a man, he usually wears a tie to go to work</hint>
+		<lesson>1</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>3</q_num>
+		<word>Kuya</word>
+		<w_type>definition</w_type>
+		<notes>your older brother</notes>
+		<hint>He is a boy and he is older than you</hint>
+		<lesson>1</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>4</q_num>
+		<word>Ate</word>
+		<w_type>definition</w_type>
+		<notes>your older sister</notes>
+		<hint>That girl is also older than you.</hint>
+		<lesson>1</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>5</q_num>
+		<word>Lolo</word>
+		<w_type>definition</w_type>
+		<notes>Grandfather in enlish</notes>
+		<hint>That man is old, He needs a crane to help him walk</hint>
+		<lesson>1</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>6</q_num>
+		<word>Lola</word>
+		<w_type>definition</w_type>
+		<notes>your grandmother</notes>
+		<hint>She is a female who is old. Her hair is colored gray</hint>
+		<lesson>1</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>7</q_num>
+		<word>Bunso</word>
+		<w_type>definition</w_type>
+		<notes>a greeting used every evening</notes>
+		<hint>He is young, little and cute.</hint>
+		<lesson>1</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>8</q_num>
+		<word>Tito</word>
+		<w_type>definition</w_type>
+		<notes>a greeting used every evening</notes>
+		<hint>That man is younger than your father</hint>
+		<lesson>1</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>9</q_num>
+		<word>Tita</word>
+		<w_type>definition</w_type>
+		<notes>a greeting used every evening</notes>
+		<hint>She is related to your tito.</hint>
+		<lesson>1</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>1</q_num>
+		<word>Bubong</word>
+		<w_type>definition</w_type>
+		<notes>a greeting used every evening</notes>
+		<hint>Roof Hints</hint>
+		<lesson>2</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>2</q_num>
+		<word>Dingding</word>
+		<w_type>definition</w_type>
+		<notes>is a greeting used every evening</notes>
+		<hint>Wall Hints</hint>
+		<lesson>2</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>3</q_num>
+		<word>Pinto</word>
+		<w_type>definition</w_type>
+		<notes>is a greeting used every evening</notes>
+		<hint>Pinto Hints</hint>
+		<lesson>2</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>4</q_num>
+		<word>Bintana</word>
+		<w_type>definition</w_type>
+		<notes>is a greeting used every evening</notes>
+		<hint>Bintana Hints</hint>
+		<lesson>2</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>5</q_num>
+		<word>Garahe</word>
+		<w_type>definition</w_type>
+		<notes>is a greeting used every evening</notes>
+		<hint>Garahe Hints</hint>
+		<lesson>2</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>6</q_num>
+		<word>Bakuran</word>
+		<w_type>definition</w_type>
+		<notes>is a greeting used every evening</notes>
+		<hint>Bakuran Hints</hint>
+		<lesson>2</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>1</q_num>
+		<word>Asul</word>
+		<w_type>definition</w_type>
+		<notes>Asul Notes</notes>
+		<hint>Bakuran Hints</hint>
+		<lesson>3</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>2</q_num>
+		<word>Berde</word>
+		<w_type>definition</w_type>
+		<notes>Berde Notes</notes>
+		<hint>Berde Hints</hint>
+		<lesson>3</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>3</q_num>
+		<word>Pula</word>
+		<w_type>definition</w_type>
+		<notes>Pula Notes</notes>
+		<hint>Pula Hints</hint>
+		<lesson>3</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>4</q_num>
+		<word>Dilaw</word>
+		<w_type>definition</w_type>
+		<notes>Dilaw Notes</notes>
+		<hint>Dilaw Hints</hint>
+		<lesson>3</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>5</q_num>
+		<word>Kayumanggi</word>
+		<w_type>definition</w_type>
+		<notes>Kayumanggi Notes</notes>
+		<hint>Kayumanggi Hints</hint>
+		<lesson>3</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>6</q_num>
+		<word>Lila</word>
+		<w_type>definition</w_type>
+		<notes>Lila Notes</notes>
+		<hint>Lila</hint>
+		<lesson>3</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>7</q_num>
+		<word>Itim</word>
+		<w_type>definition</w_type>
+		<notes>Itim Notes</notes>
+		<hint>Itim Hints</hint>
+		<lesson>3</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>8</q_num>
+		<word>Puti</word>
+		<w_type>definition</w_type>
+		<notes>Puti Notes</notes>
+		<hint>Puti Hints</hint>
+		<lesson>3</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>1</q_num>
+		<word>Bilog</word>
+		<w_type>definition</w_type>
+		<notes>Bilog Notes</notes>
+		<hint>Bilog Hints</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>2</q_num>
+		<word>Parisukat</word>
+		<w_type>definition</w_type>
+		<notes>Parisukat Notes</notes>
+		<hint>Parisukat Hints</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>3</q_num>
+		<word>Bituin</word>
+		<w_type>definition</w_type>
+		<notes>Bituin Notes</notes>
+		<hint>Bituin Hints</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>4</q_num>
+		<word>Tatsulok</word>
+		<w_type>definition</w_type>
+		<notes>Tatsulok Notes</notes>
+		<hint>Tatsulok Hints</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
 </type>

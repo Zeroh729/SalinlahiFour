@@ -3,6 +3,7 @@ package com.ube.salinlahifour.lessonActivities.CookingColors;
 
 import java.util.List;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.Log;
@@ -12,6 +13,7 @@ import com.kilobolt.framework.Graphics;
 import com.kilobolt.framework.Image;
 import com.kilobolt.framework.Screen;
 import com.kilobolt.framework.Input.TouchEvent;
+import com.ube.salinlahifour.Lesson;
 import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.evaluationModule.*;
 import com.ube.salinlahifour.lessonActivities.AbstractGameScreen;
@@ -32,22 +34,27 @@ public class GameScreen extends AbstractGameScreen  {
 	    private Image bg;
 	    private Image[] buttons;
 	    private Image bread, frosting, sprinkles;
-	    //private Parts pBread, pFrosting, pSprinkles, pButtons;
 	    private Cake cake;
 	    private ButtonSet breaderButtons, creamerButtons, sprinklerButtons;
-	    //private boolean isBread, isFrosted, isSprinkled;
-	    int livesLeft = 0, answer = 0, userID, isSubmit = 0;
+	    private int answer = 0, userID, isSubmit = 1;
+	    
 	    // Edit lives left to the question size
+	    private String[] questions;
+	    private String[] feedbacks;
 	    
-	    
-	    public GameScreen(Game game, String activityLevel, int userID) {
+	    public GameScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson) {
 	    	//Super Parameters Game, ActivityName, ActivityLevel, UserID
-	        super(game, activityName, activityLevel, userID);
+	        super(game, activityName, activityLevel, userID, context, lesson);
 	        Log.d("Aldrin ExtendedFramework", "This should be after abstract Game");
 	        this.userID = userID;
 	        this.activityLevel = activityLevel;
 	        Log.d("Aldrin ExtendedFramework", "Gamescreen constructor...");
-	        
+	       questions = new String[3];
+	       feedbacks = new String[3];
+	       rounds = 1;
+	       for(int i=0; i<feedbacks.length;i++){
+	    	   feedbacks[i] = "";
+	       }
 	    }
 
 		@Override
@@ -86,7 +93,15 @@ public class GameScreen extends AbstractGameScreen  {
 	        livesLeft = 3;
 	        
 	        cake = new Cake();
-	        
+
+			breaderButtons.loadAnswer(activityLevel);
+			creamerButtons.loadAnswer(activityLevel);
+			sprinklerButtons.loadAnswer(activityLevel);
+			
+			breaderButtons.loadQuestions();
+			creamerButtons.loadQuestions();
+			sprinklerButtons.loadQuestions();
+			
 	        Log.d("Aldrin ExtendedFramework", "Positioning Easy Assets...Done");
 		}
 
@@ -114,6 +129,10 @@ public class GameScreen extends AbstractGameScreen  {
 			breaderButtons.loadAnswer(activityLevel);
 			creamerButtons.loadAnswer(activityLevel);
 			sprinklerButtons.loadAnswer(activityLevel);
+			
+			breaderButtons.loadQuestions();
+			creamerButtons.loadQuestions();
+			sprinklerButtons.loadQuestions();
 			
  	       Log.d("GameScreen", "Positioning Medium...Done"); 
 		}
@@ -145,10 +164,19 @@ public class GameScreen extends AbstractGameScreen  {
 		@Override
 		protected void updateRunningEasy(List<TouchEvent> touchEvents,float deltaTime) {
 			// TODO Auto-generated method stub
+			 
 			int len = touchEvents.size();
 	        for (int i = 0; i < len; i++) {
 	            TouchEvent event = touchEvents.get(i);
-	            
+	            if(isSubmit == 1){
+	            	questions[0] = breaderButtons.createQuestions(activityLevel,0);
+	            	questions[1] = creamerButtons.createQuestions(activityLevel,1);
+	            	questions[2] = sprinklerButtons.createQuestions(activityLevel,2);
+	            	isSubmit = 0;
+	            	Log.d("Question", breaderButtons.getQuestionColor() + "");
+	            	Log.d("Question", creamerButtons.getQuestionColor() + "");
+	            	Log.d("Question", sprinklerButtons.getQuestionColor()+ "");
+	            }
 	            /////////////////////////////////////////////
 	            if (event.type == TouchEvent.TOUCH_DOWN) { //Happens When you press a specifi
 	            	Log.d("Touched Down", "X: " + event.x + "Y: " + event.y );
@@ -213,10 +241,34 @@ public class GameScreen extends AbstractGameScreen  {
 	            		}
 	            	}
 	            	
-	            	if(inBounds(event, cake.getX() , cake.getX(), bread.getWidth(), bread.getHeight())){
+	            	if(inBounds(event, cake.getX() , cake.getY(), bread.getWidth(), bread.getHeight())){
+	            		Log.d("Cake", "You clicked on cake");
 	            		if(cake.isBread() && cake.isCream() && cake.isSprinkled()){
+	            			userRecordOperator.open();
+	            			userLessonProgressOperator.open();
 	            			//eval.evaluateAnswer(CorrectAnswer, UserAnswer, userRecordOperator, UserID)
-	            			String feedback1, feedback2, feedback3;
+	            			
+	            			int cor1 = 0, cor2 = 0, cor3 = 0;
+	            		
+	            			if(eval.evaluateAnswer( breaderButtons.getQuestionColor(), cake.getAnswer(0), userRecordOperator, userID)){
+	            				cor1 = 1;
+	            				feedbacks[0] = eval.getImmediateFeedback(breaderButtons.getNumberColor(), cake.getAnswer(0), lessonNumber);
+	            			}
+	            			if(eval.evaluateAnswer( creamerButtons.getQuestionColor(), cake.getAnswer(1), userRecordOperator, userID)){
+	            				cor2 = 1;
+	            				feedbacks[1] = eval.getImmediateFeedback(creamerButtons.getNumberColor(), cake.getAnswer(1), lessonNumber);
+	            			}
+	            			if(eval.evaluateAnswer( sprinklerButtons.getQuestionColor(), cake.getAnswer(2), userRecordOperator, userID)){
+	            				cor3 = 1;
+	            				feedbacks[2] = eval.getImmediateFeedback(sprinklerButtons.getNumberColor(), cake.getAnswer(2), lessonNumber);
+	            			}
+	            			if(cor1 == 1 && cor2 == 1 && cor3 == 1){
+	            				isSubmit = 1;
+	            				livesLeft--;
+	            				Log.d("DING", "Its done");
+	            			}
+	            			userRecordOperator.close();
+	            			userLessonProgressOperator.close();
 	            		}
 	            	}
 	            	
@@ -224,11 +276,6 @@ public class GameScreen extends AbstractGameScreen  {
 	            }
 	            if (event.type == TouchEvent.TOUCH_UP) {
 	            	
-	            }
-	            if (event.type == TouchEvent.TOUCH_DRAGGED) {
-	            	if(inBounds(event, cake.getX() ,cake.getY() , bread.getWidth(), bread.getHeight())){
-	            		isSubmit = 1;
-	            	}
 	            }
 	        }
 		}
@@ -239,7 +286,12 @@ public class GameScreen extends AbstractGameScreen  {
 			int len = touchEvents.size();
 	        for (int i = 0; i < len; i++) {
 	            TouchEvent event = touchEvents.get(i);
-	            
+	            if(isSubmit == 1){
+	            questions[0] = breaderButtons.createQuestions(activityLevel,0);
+	            questions[1] = creamerButtons.createQuestions(activityLevel,0);
+	            questions[2] = sprinklerButtons.createQuestions(activityLevel,0);
+	            isSubmit = 0;
+	            }
 	            /////////////////////////////////////////////
 	            if (event.type == TouchEvent.TOUCH_DOWN) {
 	            	if(inBounds(event, breaderButtons.getInitX() ,breaderButtons.getInitY() , buttons[0].getWidth() * 2, buttons[0].getHeight() * 2)){//if bread
@@ -302,12 +354,38 @@ public class GameScreen extends AbstractGameScreen  {
 	            			sprinkles = Assets.sprinkles.get(sprinklerButtons.getChosenColors(3));
 	            			cake.addSprinkles(sprinklerButtons.getAnswer(3));
 	            		}
+	            		if(inBounds(event, cake.getX() , cake.getY(), bread.getWidth(), bread.getHeight())){
+	            			if(cake.isBread() && cake.isCream() && cake.isSprinkled()){
+		            			userRecordOperator.open();
+		            			userLessonProgressOperator.open();
+		            			//eval.evaluateAnswer(CorrectAnswer, UserAnswer, userRecordOperator, UserID)
+		            			
+		            			int cor1 = 0, cor2 = 0, cor3 = 0;
+		            		
+		            			if(eval.evaluateAnswer( breaderButtons.getQuestionColor(), cake.getAnswer(0), userRecordOperator, userID)){
+		            				cor1 = 1;
+		            				feedbacks[0] = eval.getImmediateFeedback(breaderButtons.getNumberColor(), cake.getAnswer(0), lessonNumber);
+		            			}
+		            			if(eval.evaluateAnswer( creamerButtons.getQuestionColor(), cake.getAnswer(1), userRecordOperator, userID)){
+		            				cor2 = 1;
+		            				feedbacks[1] = eval.getImmediateFeedback(creamerButtons.getNumberColor(), cake.getAnswer(1), lessonNumber);
+		            			}
+		            			if(eval.evaluateAnswer( sprinklerButtons.getQuestionColor(), cake.getAnswer(2), userRecordOperator, userID)){
+		            				cor3 = 1;
+		            				feedbacks[2] = eval.getImmediateFeedback(sprinklerButtons.getNumberColor(), cake.getAnswer(2), lessonNumber);
+		            			}
+		            			if(cor1 == 1 && cor2 == 1 && cor3 == 1){
+		            				isSubmit = 1;
+		            				livesLeft--;
+		            				Log.d("DING", "Its done");
+		            			}
+		            			userRecordOperator.close();
+		            			userLessonProgressOperator.close();
+		            		}
+		            	}
 	            	}
 	            }
 	            if (event.type == TouchEvent.TOUCH_UP) {
-	            	
-	            }
-	            if (event.type == TouchEvent.TOUCH_DRAGGED) {
 	            	
 	            }
 	        }
@@ -398,8 +476,12 @@ public class GameScreen extends AbstractGameScreen  {
 		protected void drawRunningUI() {
 			// TODO Auto-generated method stub
 			Graphics g = game.getGraphics();
-	        g.drawString("sFeedback", 300, 400, paint2);//sFeedback 
-	        g.drawString("sQuestion", 50, 400, paint2);//sQuestion
+			g.drawString(feedbacks[0], 400, 425, paint3);//sFeedback 
+			g.drawString(feedbacks[1], 400, 450, paint3);//sFeedback 
+	        g.drawString(feedbacks[2], 400, 475, paint3);//sFeedback 
+	        g.drawString(questions[0], 100, 425, paint2);//sQuestion
+	        g.drawString(questions[1], 100, 450, paint2);//sQuestion
+	        g.drawString(questions[2], 100, 475, paint2);//sQuestion
 	        
 	       
 		}

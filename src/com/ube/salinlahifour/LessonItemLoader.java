@@ -65,7 +65,7 @@ public abstract class LessonItemLoader {
 					
 							}
 				break;
-			case "com.ube.salinlahifour.lessonActivities.Music":
+			case "com.ube.salinlahifour.lessonActivities.Shape":
 				switch(activityLevel){
 					case "HARD":
 					case "MEDIUM":

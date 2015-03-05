@@ -525,9 +525,9 @@ containing a value of this type.
         public static final int title_activity_lesson=0x7f0a0004;
         public static final int title_activity_login=0x7f0a0009;
         public static final int title_activity_map=0x7f0a0003;
-        public static final int title_activity_music=0x7f0a0006;
         public static final int title_activity_progress_tree=0x7f0a000d;
         public static final int title_activity_select_user=0x7f0a0002;
+        public static final int title_activity_shape=0x7f0a0006;
     }
     public static final class style {
         /** 
