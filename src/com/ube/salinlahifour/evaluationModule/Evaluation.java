@@ -43,6 +43,7 @@ public class Evaluation {
 		
 	}
 	public void recordUserAnswer(String LessonName, String correctAnswer, String Status, int UserID){	
+		Log.d("Recording: Lesson Name: " + LessonName, "TEST");
 		UserRecordOperations userRecordOperator = new UserRecordOperations(context);
 		userRecordOperator.open();
 		userRecordOperator.addUserRecord(UserID, LessonName, correctAnswer, Status);
@@ -113,8 +114,6 @@ public class Evaluation {
 	}
 	
 	public boolean evaluateAnswer(String CorrectAnswer, String UserAnswer, int UserID){
-		UserRecordOperations userRecordOperator = new UserRecordOperations(context);
-		userRecordOperator.open();
 		if(CorrectAnswer.equals(UserAnswer)){
 			score++;
 			totscore++;
@@ -122,7 +121,6 @@ public class Evaluation {
 			Log.d("Evaluation","Updating User Record");
 			recordUserAnswer(LessonName, CorrectAnswer, status, UserID);
 			Log.d("Evaluation","Updated User Record");
-			userRecordOperator.close();
 			return true;
 		}
 		else{
@@ -131,7 +129,6 @@ public class Evaluation {
 			Log.d("Evaluation","Updating User Record");
 			recordUserAnswer(LessonName, CorrectAnswer, status, UserID);
 			Log.d("Evaluation","Updating User Record");
-			userRecordOperator.close();
 			return false;
 		}
 	}
