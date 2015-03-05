@@ -2,6 +2,7 @@ package com.ube.salinlahifour;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -12,23 +13,20 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.XmlResourceParser;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.TranslateAnimation;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -93,32 +91,8 @@ public class MapActivity extends Activity implements OnClickListener{
 			
 		try {
 			parseXML();
+			setLevelStatuses();
 			
-			UserLessonProgressOperations userdb = new UserLessonProgressOperations(this);
-			userdb.open();
-			for(Scene scene : scenes){
-				for(int i = 0; i < scene.getLessons().size(); i++){
-					if(scene.getLessons().get(i).getLocked()){
-						UserLessonProgress progress = userdb.getUserLessonProgress(UserID, scene.getLessons().get(i).getName());
-						if(progress != null){
-							scene.getLessons().get(i).setLocked(false);
-							if(progress.getHardStar() != null){
-								if(progress.getHardStar().equals(StarType.SILVER.toString()) || progress.getHardStar().equals(StarType.GOLD.toString()))
-									if((i+1) < scene.getLessons().size())
-									scene.getLessons().get(i+1).setLocked(false);
-							}
-						}else{
-							scene.getLessons().get(i).setLocked(true);
-						}
-						try{
-							scene.getLessons().get(0).setLocked(false);
-						}catch(Exception e){
-							
-						}
-					}
-				}
-			}
-			userdb.close();
 		} catch (XmlPullParserException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -138,6 +112,36 @@ public class MapActivity extends Activity implements OnClickListener{
 		scene = scenes.get(0);
 	}
 	
+
+	private void setLevelStatuses() {
+		UserLessonProgressOperations userdb = new UserLessonProgressOperations(this);
+		userdb.open();
+		for(Scene scene : scenes){
+			for(int i = 0; i < scene.getLessons().size(); i++){
+				if(scene.getLessons().get(i).getLocked()){
+					UserLessonProgress progress = userdb.getUserLessonProgress(UserID, scene.getLessons().get(i).getName());
+					if(progress != null){
+						scene.getLessons().get(i).setLocked(false);
+						if(progress.getHardStar() != null){
+							if(progress.getHardStar().equals(StarType.SILVER.toString()) || progress.getHardStar().equals(StarType.GOLD.toString()))
+								if((i+1) < scene.getLessons().size())
+								scene.getLessons().get(i+1).setLocked(false);
+						}
+					}else{
+						scene.getLessons().get(i).setLocked(true);
+					}
+					try{
+						scene.getLessons().get(0).setLocked(false);
+					}catch(Exception e){
+						
+					}
+				}
+//				scene.getLessons().get(i).setLocked(false);
+			}
+		}
+		userdb.close();
+	}
+
 
 	private void instantiateViews() {
 		btn_logout = (ImageButton)findViewById(R.id.btn_logout);
@@ -301,6 +305,24 @@ public class MapActivity extends Activity implements OnClickListener{
 	@Override
 	public void onClick(View view) {
 		int index = -1;
+		
+//		SoundPoolManager.CreateInstance();
+//		List<Integer> sounds = new ArrayList<Integer>();
+//		sounds.add(R.raw.family_ate);
+//		SoundPoolManager.getInstance().setSounds(sounds);
+//		try {
+//		    SoundPoolManager.getInstance().InitializeSoundPool(this, new ISoundPoolLoaded() {
+//		        @Override
+//		        public void onSuccess() {
+//		        	SoundPoolManager.getInstance().playSound(R.raw.family_ate);
+//		        }
+//		    });
+//		} catch (Exception e) {
+//		    e.printStackTrace();
+//		}
+//		
+//		
+		
 		switch(view.getId()){
 			case R.id.img_lesson1:
 				index = 0;

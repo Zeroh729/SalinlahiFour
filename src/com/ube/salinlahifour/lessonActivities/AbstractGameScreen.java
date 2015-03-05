@@ -27,16 +27,13 @@ public abstract class AbstractGameScreen extends Screen {
 	  protected Paint paint, paint2;
 	  protected String sFeedback = "",  sQuestion = "", sAnswer = "";
 	  protected int userID;
-	  protected UserRecordOperations userRecordOperator = new UserRecordOperations(SalinlahiFour.getContext());
-	  protected UserLessonProgressOperations userLessonProgressOperator = new UserLessonProgressOperations(SalinlahiFour.getContext());
-		
 	    
 	public AbstractGameScreen(Game game, String activityName,String activityLevel ,int userID) {
 		super(game);
         Log.d("Aldrin ExtendedFramework", "Abstract game Screen loading");
 
 		// TODO Auto-generated constructor stub
-		 eval = new Evaluation(activtityName, activityLevel);
+		 eval = new Evaluation(SalinlahiFour.getContext(), activtityName, activityLevel);
 		 this.userID = userID;
 	     this.activityLevel = activityLevel;
 		 
