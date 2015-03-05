@@ -250,15 +250,15 @@ public class GameScreen extends AbstractGameScreen  {
 	            			
 	            			int cor1 = 0, cor2 = 0, cor3 = 0;
 	            		
-	            			if(eval.evaluateAnswer( breaderButtons.getQuestionColor(), cake.getAnswer(0), userRecordOperator, userID)){
+	            			if(eval.evaluateAnswer( breaderButtons.getQuestionColor(), cake.getAnswer(0), userID)){
 	            				cor1 = 1;
 	            				feedbacks[0] = eval.getImmediateFeedback(breaderButtons.getNumberColor(), cake.getAnswer(0), lessonNumber);
 	            			}
-	            			if(eval.evaluateAnswer( creamerButtons.getQuestionColor(), cake.getAnswer(1), userRecordOperator, userID)){
+	            			if(eval.evaluateAnswer( creamerButtons.getQuestionColor(), cake.getAnswer(1), userID)){
 	            				cor2 = 1;
 	            				feedbacks[1] = eval.getImmediateFeedback(creamerButtons.getNumberColor(), cake.getAnswer(1), lessonNumber);
 	            			}
-	            			if(eval.evaluateAnswer( sprinklerButtons.getQuestionColor(), cake.getAnswer(2), userRecordOperator, userID)){
+	            			if(eval.evaluateAnswer( sprinklerButtons.getQuestionColor(), cake.getAnswer(2), userID)){
 	            				cor3 = 1;
 	            				feedbacks[2] = eval.getImmediateFeedback(sprinklerButtons.getNumberColor(), cake.getAnswer(2), lessonNumber);
 	            			}
@@ -362,15 +362,15 @@ public class GameScreen extends AbstractGameScreen  {
 		            			
 		            			int cor1 = 0, cor2 = 0, cor3 = 0;
 		            		
-		            			if(eval.evaluateAnswer( breaderButtons.getQuestionColor(), cake.getAnswer(0), userRecordOperator, userID)){
+		            			if(eval.evaluateAnswer( breaderButtons.getQuestionColor(), cake.getAnswer(0), userID)){
 		            				cor1 = 1;
 		            				feedbacks[0] = eval.getImmediateFeedback(breaderButtons.getNumberColor(), cake.getAnswer(0), lessonNumber);
 		            			}
-		            			if(eval.evaluateAnswer( creamerButtons.getQuestionColor(), cake.getAnswer(1), userRecordOperator, userID)){
+		            			if(eval.evaluateAnswer( creamerButtons.getQuestionColor(), cake.getAnswer(1), userID)){
 		            				cor2 = 1;
 		            				feedbacks[1] = eval.getImmediateFeedback(creamerButtons.getNumberColor(), cake.getAnswer(1), lessonNumber);
 		            			}
-		            			if(eval.evaluateAnswer( sprinklerButtons.getQuestionColor(), cake.getAnswer(2), userRecordOperator, userID)){
+		            			if(eval.evaluateAnswer( sprinklerButtons.getQuestionColor(), cake.getAnswer(2), userID)){
 		            				cor3 = 1;
 		            				feedbacks[2] = eval.getImmediateFeedback(sprinklerButtons.getNumberColor(), cake.getAnswer(2), lessonNumber);
 		            			}

@@ -224,7 +224,7 @@ public class LoginActivity extends Activity implements OnClickListener, OnChecke
 		progressOperator.open();
 		int goldStars = progressOperator.getGoldStarsCount(user.getId());
 		progressOperator.close();
-		tv_userdetails.setText("Name: " + user.getName() + "\nGold Stars: " + 0);
+		tv_userdetails.setText("Name: " + user.getName() + "\nGold Stars: " + goldStars);
 	}
 	@Override
 	protected void onResume() {

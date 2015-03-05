@@ -12,7 +12,6 @@ import com.kilobolt.framework.Game;
 import com.kilobolt.framework.Graphics;
 import com.kilobolt.framework.Input.TouchEvent;
 import com.kilobolt.framework.Screen;
-import com.ube.salinlahifour.GameOver;
 import com.ube.salinlahifour.Lesson;
 import com.ube.salinlahifour.ReportCard;
 import com.ube.salinlahifour.SalinlahiFour;
@@ -39,15 +38,15 @@ public abstract class AbstractGameScreen extends Screen {
 	  protected ReportCard reportCard;
 	  private Context context;
 	  private Lesson lesson;
-	  protected GameOver gameOver;
 	  private boolean gameOverLock;
 	  
 	public AbstractGameScreen(Game game, String activityName,String activityLevel ,int userID, Context context, Lesson lesson) {
+
 		super(game);
         Log.d("Aldrin ExtendedFramework", "Abstract game Screen loading");
         this.context = context;
 		// TODO Auto-generated constructor stub
-		 eval = new Evaluation(activtityName, activityLevel);
+		 eval = new Evaluation(SalinlahiFour.getContext(), activtityName, activityLevel);
 		 this.userID = userID;
 	     this.activityLevel = activityLevel;
 	     this.lesson = lesson;
@@ -119,7 +118,7 @@ public abstract class AbstractGameScreen extends Screen {
 //	  				  Runnable runnable2 = new Runnable() {
 //	  				      @Override
 //	  				      public void run() {
-	  				    	 eval.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), userLessonProgressOperator, userID);
+	  				    	 eval.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), userID);
 		  			        LevelType LTActLevel = null;
 		  					switch(activityLevel){
 		  					case "EASY": LTActLevel = LevelType.EASY; break;

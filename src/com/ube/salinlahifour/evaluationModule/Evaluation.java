@@ -27,25 +27,30 @@ public class Evaluation {
 	//private Narration narration = new Narration();
 	private int score = 0;
 	private int totscore = 0;
+	private Context context;
 	private Item item;
 	private String LessonName;
 	private String status = "Incorrect";
 	private StarType star;
 	private UserLessonProgress userLessonProgressor = new UserLessonProgress();
 	
-	public Evaluation(String LessonName, String activityLevel){	
+	public Evaluation(Context context, String LessonName, String activityLevel){	
 		//this.NLG = NLG;
+		this.context = context;
 		NLG = new iFeedback();
 		NLG.readProperties();
 		this.LessonName = LessonName;
 		
 	}
-	public void recordUserAnswer(String LessonName, String correctAnswer, String Status, UserRecordOperations userRecordOperator, int UserID){	
-		
+	public void recordUserAnswer(String LessonName, String correctAnswer, String Status, int UserID){	
+		Log.d("Recording: Lesson Name: " + LessonName, "TEST");
+		UserRecordOperations userRecordOperator = new UserRecordOperations(context);
+		userRecordOperator.open();
 		userRecordOperator.addUserRecord(UserID, LessonName, correctAnswer, Status);
+		userRecordOperator.close();
 	}
 	
-	public void updateUserLessonProgress(String lessonName, String activityLevel, UserLessonProgressOperations userLessonProgressOperator, int UserID){
+	public void updateUserLessonProgress(String lessonName, String activityLevel, int UserID){
 		String easyStar;
 		String mediumStar;
 		String hardStar;
@@ -56,6 +61,9 @@ public class Evaluation {
 			star = StarType.SILVER;
 		else 
 			star = StarType.GOLD;
+		
+		UserLessonProgressOperations userLessonProgressOperator = new UserLessonProgressOperations(context);
+		userLessonProgressOperator.open();
 
 		if(userLessonProgressOperator.getUserLessonProgress(UserID, lessonName) == null){
 			userLessonProgressOperator.addUserLessonProgress(UserID, lessonName, star.toString(), null, null);
@@ -74,6 +82,7 @@ public class Evaluation {
 				userLessonProgressOperator.updateUserLessonProgress(UserID, lessonName, easyStar, mediumStar, star.toString());
 			}
 		}
+		userLessonProgressOperator.close();
 	} 
 	
 	private Item getMostImprovedItem(){
@@ -105,13 +114,13 @@ public class Evaluation {
 		return Feedback;
 	}
 	
-	public boolean evaluateAnswer(String CorrectAnswer, String UserAnswer, UserRecordOperations userRecordOperator, int UserID){
+	public boolean evaluateAnswer(String CorrectAnswer, String UserAnswer, int UserID){
 		if(CorrectAnswer.equals(UserAnswer)){
 			score++;
 			totscore++;
 			status = "Correct";
 			Log.d("Evaluation","Updating User Record");
-			recordUserAnswer(LessonName, CorrectAnswer, status, userRecordOperator, UserID);
+			recordUserAnswer(LessonName, CorrectAnswer, status, UserID);
 			Log.d("Evaluation","Updated User Record");
 			return true;
 		}
@@ -119,7 +128,7 @@ public class Evaluation {
 			status = "Incorrect";
 			totscore++;
 			Log.d("Evaluation","Updating User Record");
-			recordUserAnswer(LessonName, CorrectAnswer, status, userRecordOperator, UserID);
+			recordUserAnswer(LessonName, CorrectAnswer, status, UserID);
 			Log.d("Evaluation","Updating User Record");
 			return false;
 		}

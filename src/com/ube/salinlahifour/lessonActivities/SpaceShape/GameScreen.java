@@ -166,7 +166,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            		Log.d("Feedback debug", "User Answer: " + sAnswer);
 	            		Log.d("Feedback debug", "Index: " + index);
 	            		
-	            		if(eval.evaluateAnswer(cAnswer, sAnswer, userRecordOperator, userID)){
+	            		if(eval.evaluateAnswer(cAnswer, sAnswer, userID)){
 	            			Log.d("Feedback debug", "Evaluation true");
 	            			if(index == 0){
 	            				index=1;
@@ -186,7 +186,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            		Log.d("Feedback debug", "Correct Answer: " + cAnswer);
 	            		Log.d("Feedback debug", "User Answer: " + sAnswer);
 	            		Log.d("Feedback debug", "Index: " + index);
-	            		if(eval.evaluateAnswer(cAnswer, sAnswer, userRecordOperator, userID)){
+	            		if(eval.evaluateAnswer(cAnswer, sAnswer, userID)){
 	            			Log.d("Feedback debug", "Evaluation true");
 	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			isEnemyExist = false;
@@ -204,7 +204,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            		Log.d("Feedback debug", "User Answer: " + sAnswer);
 	            		Log.d("Feedback debug", "Index: " + index);
 	            		Log.d("Answered", cAnswer + " " +sAnswer);
-	            		if(eval.evaluateAnswer(cAnswer, sAnswer, userRecordOperator, userID)){
+	            		if(eval.evaluateAnswer(cAnswer, sAnswer, userID)){
 	            			Log.d("Feedback debug", "Evaluation true");
 	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			isEnemyExist = false;
@@ -221,7 +221,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            		Log.d("Feedback debug", "Correct Answer: " + cAnswer);
 	            		Log.d("Feedback debug", "User Answer: " + sAnswer);
 	            		Log.d("Feedback debug", "Index: " + index);
-	            		if(eval.evaluateAnswer(cAnswer, sAnswer, userRecordOperator, userID)){
+	            		if(eval.evaluateAnswer(cAnswer, sAnswer, userID)){
 	            			Log.d("Feedback debug", "Evaluation true");
 	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			isEnemyExist = false;
