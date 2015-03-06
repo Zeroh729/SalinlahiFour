@@ -10,6 +10,6 @@ public class Assets {
 	public static ArrayList<Image> bread;
 	public static ArrayList<Image> frosting;
 	public static ArrayList<Image> sprinkles;
-	
+	public static Image chef;
 
 }

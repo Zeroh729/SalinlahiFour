@@ -9,6 +9,7 @@ import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.ImageButton;
@@ -37,9 +38,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	private AnimatedButtonListener buttonAnimation;
 	private SoundPool sfx_correct;
 	private SoundPool sfx_wrong;
-	
-	private UserRecordOperations userRecordOperator = new UserRecordOperations(this);
-	private UserLessonProgressOperations userLessonProgressOperator = new UserLessonProgressOperations(this);
+	private TextView itemLabel;
 
 	private String question;
 
@@ -59,7 +58,6 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	protected void initiateViews() {
 		Log.d("Debug Family","Aldrin: Initiate Views");
 
-		evaluation =  new Evaluation(activityName, activityLevel.toString());
 
 		itemno = 0;
 		//Starts Timer
@@ -143,7 +141,6 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		//Initialize Swipe Indicator
 		iv_swipe = (ImageView) findViewById(R.id.swipe_ind);
 		Log.d("Debug Family","Aldrin: Initiate Views...Done");
-		
 	}
 
 	protected void initiateItems() {
@@ -159,6 +156,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		Log.d("Debug Family","Aldrin: Running");
 		setChoices();
 		question = questions.get(itemno).getLabel();
+		questions.get(itemno).playFilipinoSound();
 		tv_feedback.setText(question);
 		timer.start();
 		Log.d("Debug Family","Aldrin: Running Done");
@@ -167,6 +165,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	protected void rerun() {
 		Log.d("Debug Family","Aldrin: Running");
 		question = questions.get(itemno).getLabel();
+		questions.get(itemno).playFilipinoSound();
 //		setChoices();
 		 
 		//tv_feedback.setText(question);
@@ -194,15 +193,13 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	
 	protected boolean checkAnswer(String answer) {
 		Log.d("Debug Family","Aldrin: Checking Answer");
-		userRecordOperator.open();
-		userLessonProgressOperator.open();
-		if(evaluation.evaluateAnswer(questions.get(itemno).getWord(), answer, userRecordOperator, UserID)){
+		if(evaluation.evaluateAnswer(questions.get(itemno).getWord(), answer, UserID)){
 			//NLG Part - Correct
 			Log.d("Debug Family", "Aldrin: Answer: " + answer);
 			Log.d("Debug Family", "Aldrin: Index: " + itemno);
 			feedback = evaluation.getImmediateFeedback(questions.get(itemno).getQ_num(), answer, lesson.getLessonNumber());
 			Log.d("Debug Family", "Aldrin: Feedback: "+ feedback);
-			tv_feedback.setText(feedback + " " + question);
+			tv_feedback.setText(feedback + "\n" + question);
 			Log.d("Debug Family", "Aldrin: Immediate Feedback Completed");
 			
 			if(itemno < questions.size()-1){
@@ -214,7 +211,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 				Log.d("Debug Family", "Aldrin: iFeedback says its finished (Delayed Feedback)");
 				feedback = evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber());
 				tv_feedback.setText(feedback);
-				evaluation.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), userLessonProgressOperator, UserID);
+				evaluation.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), UserID);
 				//feedback = NLG.GenerateDelayedFeedback(score, LessonNum);
 				//feedback = "feedback placeholder";
 				timer.cancel();
@@ -270,6 +267,19 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 			case R.id.img_choiceg:	
 			case R.id.img_choiceh:	
 			case R.id.img_choicei:	
+				LayoutParams p = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+				        ViewGroup.LayoutParams.WRAP_CONTENT);
+	
+				p.addRule(RelativeLayout.ABOVE, v.getId());
+				p.addRule(RelativeLayout.ALIGN_LEFT, v.getId());
+				p.addRule(RelativeLayout.ALIGN_RIGHT, v.getId());
+				
+				itemLabel = new TextView(this);
+				itemLabel.setText("That's " + v.getTag().toString());
+				itemLabel.setLayoutParams(p);
+				itemLabel.setTextSize(32);			
+				
+				
 				for(int i = 0; i < choices.length; i++){
 					ImageView img = choices[i];
 					img.setColorFilter(new LightingColorFilter(0xffffffff, 0x000000));
@@ -281,7 +291,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 						YoYo.with(Techniques.Shake).playOn(v);
 						ImageView img = (ImageButton)v;
 						img.setColorFilter(new LightingColorFilter(0xffcc0000, 0x000000));
-						
+						questions.get(itemno).playFilipinoSound();
 						//v.getBackground().setColorFilter(new LightingColorFilter(0xff888888, 0x000000));
 					}
 					break;

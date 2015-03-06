@@ -75,6 +75,8 @@ public abstract class AbstractLessonActivity extends Activity {
 		items = ((SalinlahiFour)getApplication()).getLessonItems();
 		initiateNarrationModule();
 
+		evaluation =  new Evaluation(this, activityName, activityLevel.toString());
+		
 		initiateViews();
 		getQuestions();
 		run();
@@ -85,12 +87,13 @@ public abstract class AbstractLessonActivity extends Activity {
 		Log.d("TESTINGLessonActivity", "Aldrin: getting Questions");
 		String lastDate = DateTimeConverter.getDateLastMonth();
 		UserRecordOperations userdb = new UserRecordOperations(this);
-		userdb.open();		ArrayList<UserRecord> records;
+		userdb.open();		
+		ArrayList<UserRecord> records;
 
 		try {
-			records = userdb.getRecentUserRecordsFromUserId(((SalinlahiFour)getApplication()).getLoggedInUser().getId(), activityName);
+			records = userdb.getRecentUserRecordsFromUserId(SalinlahiFour.getLoggedInUser().getId(), activityName);
 
-			ArrayList<Item> items = ((SalinlahiFour)getApplication()).getLessonItems();
+			ArrayList<Item> items = SalinlahiFour.getLessonItems();
 	//		ArrayList<String> itemNames = new ArrayList();
 	//		ArrayList<Integer> itemScores = new ArrayList();
 			HashMap<String, Integer> itemKeys = new HashMap();

@@ -1,20 +1,24 @@
 package com.ube.salinlahifour.lessonActivities;
 import java.util.List;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
 import com.kilobolt.framework.Game;
 import com.kilobolt.framework.Graphics;
-import com.kilobolt.framework.Image;
-import com.kilobolt.framework.Screen;
 import com.kilobolt.framework.Input.TouchEvent;
+import com.kilobolt.framework.Screen;
+import com.ube.salinlahifour.Lesson;
+import com.ube.salinlahifour.ReportCard;
 import com.ube.salinlahifour.SalinlahiFour;
-import com.ube.salinlahifour.evaluationModule.*;
-import com.ube.salinlahifour.database.UserDetailOperations;
 import com.ube.salinlahifour.database.UserLessonProgressOperations;
 import com.ube.salinlahifour.database.UserRecordOperations;
+import com.ube.salinlahifour.enumTypes.LevelType;
+import com.ube.salinlahifour.evaluationModule.Evaluation;
 public abstract class AbstractGameScreen extends Screen {
 	enum GameState {
         Ready, Running, Paused, GameOver
@@ -24,22 +28,31 @@ public abstract class AbstractGameScreen extends Screen {
 	  protected String activtityName;
 	  protected int lessonNumber;
 	  protected String activityLevel;
-	  protected Paint paint, paint2;
-	  protected String sFeedback = "",  sQuestion = "", sAnswer = "";
+	  protected Paint paint, paint2, paint3;
+	  protected String sFeedback = "",  sQuestion = "", sAnswer = "", cAnswer = "";
 	  protected int userID;
 	  protected UserRecordOperations userRecordOperator = new UserRecordOperations(SalinlahiFour.getContext());
 	  protected UserLessonProgressOperations userLessonProgressOperator = new UserLessonProgressOperations(SalinlahiFour.getContext());
-		
-	    
-	public AbstractGameScreen(Game game, String activityName,String activityLevel ,int userID) {
+	  protected int livesLeft;
+	  protected int rounds;
+	  protected ReportCard reportCard;
+	  private Context context;
+	  private Lesson lesson;
+	  private boolean gameOverLock;
+	  
+	public AbstractGameScreen(Game game, String activityName,String activityLevel ,int userID, Context context, Lesson lesson) {
+
 		super(game);
         Log.d("Aldrin ExtendedFramework", "Abstract game Screen loading");
-
+        this.context = context;
 		// TODO Auto-generated constructor stub
-		 eval = new Evaluation(activtityName, activityLevel);
+		 eval = new Evaluation(SalinlahiFour.getContext(), activtityName, activityLevel);
 		 this.userID = userID;
 	     this.activityLevel = activityLevel;
-		 
+	     this.lesson = lesson;
+	     this.gameOverLock = false;
+		 Log.d("Abstract Game Screen", activityName + " " + activityLevel);
+		 Looper.prepare();
 	     
 	     	loadAssets();
 		 //Asset Positioning
@@ -64,6 +77,12 @@ public abstract class AbstractGameScreen extends Screen {
 			paint2.setTextAlign(Paint.Align.CENTER);
 			paint2.setAntiAlias(true);
 			paint2.setColor(Color.BLUE);
+
+			paint3 = new Paint();
+			paint3.setTextSize(10);
+			paint3.setTextAlign(Paint.Align.LEFT);
+			paint3.setAntiAlias(true);
+			paint3.setColor(Color.BLUE);
 			Log.d("Abstract GamesScreen", "Initializing Paint Methods...done");
 	}
 	
@@ -88,7 +107,36 @@ public abstract class AbstractGameScreen extends Screen {
 	        	case "EASY":
 	        		updateRunningEasy(touchEvents, deltaTime);break;
 	        	}
-	            
+	        	  if (livesLeft == 0 || rounds == 0) {
+	  	            state = GameState.GameOver;
+	  	            Looper.myLooper().quit();
+	  		        if(!gameOverLock){
+	  		        	Log.d("SEMAPHORE", gameOverLock + "");
+	  					gameOverLock = true;
+	  			        
+//	  				    final Handler handler2 = new Handler();
+//	  				  Runnable runnable2 = new Runnable() {
+//	  				      @Override
+//	  				      public void run() {
+	  				    	 eval.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), userID);
+		  			        LevelType LTActLevel = null;
+		  					switch(activityLevel){
+		  					case "EASY": LTActLevel = LevelType.EASY; break;
+		  					case "MEDIUM": LTActLevel = LevelType.MEDIUM; break;
+		  					case "HARD": LTActLevel = LevelType.HARD; break;
+		  					}
+	  	  			        reportCard = new ReportCard(context, lesson,LTActLevel, eval, eval.getEndofActivityFeedback(eval.getScore(), lessonNumber));
+		  					reportCard.setHeight(100);
+		  					reportCard.setWidth(100);
+		  					reportCard.setFocusable(true);
+	  	  			        reportCard.reveal();
+//	  				      }
+//	  				      
+//	  				      
+//	  				  };
+//	  				  handler2.post(runnable2);
+	  		        }
+	  	        }
 	        }
 	        if (state == GameState.Paused)
 	            updatePaused(touchEvents);
@@ -156,10 +204,11 @@ public abstract class AbstractGameScreen extends Screen {
 	  protected void drawGameOverUI() {
 	        Graphics g = game.getGraphics();
 	        String endFeedback = "";
-	        g.drawRect(0, 0, 1281, 801, Color.BLACK);
-	        endFeedback = eval.getEndofActivityFeedback(eval.getScore(), lessonNumber);
-	        g.drawString(endFeedback, 640, 300, paint2);
-
+	        //Image bg = g.newImage("house/Medium/roof.png", ImageFormat.RGB565);
+	        //g.drawImage(bg, 0, 0);
+	        
+	        
+	        
 	    }
 		abstract protected void loadAssets();
 		abstract protected void assetPositionEasy();

@@ -58,7 +58,7 @@ public abstract class AbstractTutorialActivity extends Activity {
 		activityLevel = bundle.getString("activityLevel");
 		Log.d("LESSON Name: ", lesson.getName());
 		
-		activityName = activityClass.replace("com.ube.salinlahifour.lessonActivities.", "");
+		activityName = lesson.getName();
 		
 		Log.d(activityClass, "TEST ActivityName");
 		items = LessonItemLoader.getLessonItems(activityClass, activityLevel);

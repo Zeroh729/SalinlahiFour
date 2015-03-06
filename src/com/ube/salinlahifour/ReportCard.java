@@ -169,6 +169,7 @@ public class ReportCard extends PopupWindow implements OnClickListener{
 	
 	public void reveal(){
 		showAsDropDown(popupView);
+		Log.d("ReportCard", "Hillo");
 		YoYo.with(Techniques.BounceIn).playOn(img_star);
 	}
 }
