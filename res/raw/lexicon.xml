@@ -13,8 +13,8 @@
     <q_num>1</q_num>
 	<word>Nanay</word>
     <w_type>definition</w_type>
-    <notes>your mother</notes>
-    <hint>She is a female who wears apron</hint>
+    <notes>She makes delicious adobo. Very tasty!</notes>
+    <hint>Nanay - Pepay's Mother. She's the one that cooks for the family</hint>
 	<lesson>1</lesson>
 </Word_Entry>
 
@@ -22,8 +22,8 @@
     <q_num>2</q_num>
 	<word>Tatay</word>
     <w_type>definition</w_type>
-    <notes>your father</notes>
-    <hint>He is a man, he usually wears a tie to go to work</hint>
+    <notes>He was the one that made our treehouse in the backyard.</notes>
+    <hint>This is my father. He is the one that works for the family</hint>
 	<lesson>1</lesson>
 </Word_Entry>
 
@@ -31,32 +31,32 @@
     <q_num>3</q_num>
 	<word>Kuya</word>
     <w_type>definition</w_type>
-    <notes>your older brother</notes>
-    <hint>He is a boy and he is older than you</hint>
+    <notes>He also teases me a lot.</notes>
+    <hint>My older brother. He likes to play basketball and all different kinds of sports.</hint>
 	<lesson>1</lesson>
 </Word_Entry>
 <Word_Entry>
     <q_num>4</q_num>
     <word>Ate</word>
     <w_type>definition</w_type>
-    <notes>your older sister</notes>
-    <hint>That girl is also older than you.</hint>
+    <notes>She told me she really likes this boy once. i forgot his name.</notes>
+    <hint>She is my older sister. She likes to spend her time with her phone.</hint>
     <lesson>1</lesson>
 </Word_Entry>
 <Word_Entry>
 	<q_num>5</q_num>
     <word>Lolo</word>
     <w_type>definition</w_type>
-    <notes>Grandfather in enlish</notes>
-    <hint>That man is old, He needs a crane to help him walk</hint>
+    <notes>We play board games a lot</notes>
+    <hint>My father's father. He uses glasses to read the newspaper</hint>
 	<lesson>1</lesson>
 </Word_Entry>
 <Word_Entry>
     <q_num>6</q_num>
 	<word>Lola</word>
     <w_type>definition</w_type>
-    <notes>your grandmother</notes>
-    <hint>She is a female who is old. Her hair is colored gray</hint>
+    <notes>She also likes to tell us stories from her time.</notes>
+    <hint>My father's mother. She walks around with a cane</hint>
 	<lesson>1</lesson>
 </Word_Entry>
 
@@ -64,72 +64,72 @@
     <q_num>7</q_num>
     <word>Bunso</word>
     <w_type>definition</w_type>
-    <notes>a greeting used every evening</notes>
-    <hint>He is young, little and cute.</hint>
+    <notes>He is also very cute. </notes>
+    <hint>My younger sibling. He likes to play toys</hint>
     <lesson>1</lesson>
 </Word_Entry>
 <Word_Entry>
     <q_num>8</q_num>
     <word>Tito</word>
     <w_type>definition</w_type>
-    <notes>a greeting used every evening</notes>
-    <hint>That man is younger than your father</hint>
+    <notes>He tells horrible jokes. </notes>
+    <hint>He is my parent's brother. I don't know which one though</hint>
     <lesson>1</lesson>
 </Word_Entry>
 <Word_Entry>
     <q_num>9</q_num>
     <word>Tita</word>
     <w_type>definition</w_type>
-    <notes>a greeting used every evening</notes>
-    <hint>She is related to your tito.</hint>
+    <notes>She likes to hang out with my mother.</notes>
+    <hint>My mother's sister. She is a great cook too</hint>
     <lesson>1</lesson>
 </Word_Entry>
 <Word_Entry>
     <q_num>1</q_num>
 	<word>Bubong</word>
     <w_type>definition</w_type>
-    <notes>a greeting used every evening</notes>
-    <hint>Roof Hints</hint>
+    <notes>It also protects us from rain</notes>
+    <hint>Bubong - It covers the top part of the house</hint>
 	<lesson>2</lesson>
 </Word_Entry>
 <Word_Entry>
     <q_num>2</q_num>
 	<word>Dingding</word>
     <w_type>definition</w_type>
-    <notes>is a greeting used every evening</notes>
-    <hint>Wall Hints</hint>
+    <notes>Tita hangs picture frames around here</notes>
+    <hint>Dingding - Covers the front, side and back parts of the house</hint>
 	<lesson>2</lesson>
 </Word_Entry>
 <Word_Entry>
     <q_num>3</q_num>
 	<word>Pinto</word>
     <w_type>definition</w_type>
-    <notes>is a greeting used every evening</notes>
-    <hint>Pinto Hints</hint>
+    <notes>We use this to get to different parts of the house too</notes>
+    <hint>Pinto - We open this one to get inside the house</hint>
 	<lesson>2</lesson>
 </Word_Entry>
 <Word_Entry>
     <q_num>4</q_num>
 	<word>Bintana</word>
     <w_type>definition</w_type>
-    <notes>is a greeting used every evening</notes>
-    <hint>Bintana Hints</hint>
+    <notes>Sometimes you see birds just outside here</notes>
+    <hint>Bintana - They are made of glass so that you can look from the inside</hint>
 	<lesson>2</lesson>
 </Word_Entry>
 <Word_Entry>
     <q_num>5</q_num>
 	<word>Garahe</word>
     <w_type>definition</w_type>
-    <notes>is a greeting used every evening</notes>
-    <hint>Garahe Hints</hint>
+    <notes>Tito keeps his tools here as well</notes>
+    <hint>Garahe - This is where tito parks his car.</hint>
 	<lesson>2</lesson>
 </Word_Entry>
 <Word_Entry>
     <q_num>6</q_num>
 	<word>Bakuran</word>
     <w_type>definition</w_type>
-    <notes>is a greeting used every evening</notes>
-    <hint>Bakuran Hints</hint>
+    <notes>It looks like arrows pointing up</notes>
+    <hint>Bakuran - This protects our house from strangers</hint>
 	<lesson>2</lesson>
 </Word_Entry>
 </type>
