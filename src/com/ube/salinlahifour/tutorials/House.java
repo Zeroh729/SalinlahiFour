@@ -31,15 +31,11 @@ public class House extends AbstractTutorialActivity {
 		int j = 0;
 		for(int i = 0; i < items.size(); i++){
 			if(items.get(i).getLevel().toString().equals(activityLevel)){
-				textviews[j].setText(items.get(i).getWord());
+				textviews[j].setText(items.get(i).getLabel());
 				imgviews[j].setImageResource(items.get(i).getImageID());
 				j++;
 			}
 		}
-		textviews[0].setText("Bubong - It covers the top part of the house");
-	    textviews[1].setText("Dingding - Covers the front, side and back parts of the house");
-	    textviews[2].setText("Pintuan - We open this one to get inside the house");
-	    textviews[3].setText("Bintana - They’re made of glass so that you can look from the inside");
 		final AnimatorSet setRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(),
 				R.animator.flipout);
 	 
@@ -132,14 +128,11 @@ public class House extends AbstractTutorialActivity {
 		int j = 0;
 		for(int i = 0; i < items.size(); i++){
 			if(items.get(i).getLevel().toString().equals(activityLevel)){
-				textviews[j].setText(items.get(i).getWord());
+				textviews[j].setText(items.get(i).getLabel());
 				imgviews[j].setImageResource(items.get(i).getImageID());
 				j++;
 			}
 		}
-		textviews[0].setText("Garahe - This is where tito parks his car.");
-	    textviews[1].setText("Bakuran - This protects our house from strangers");
-
 		final AnimatorSet setRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(),
 				R.animator.flipout);
 	 
@@ -232,15 +225,12 @@ public class House extends AbstractTutorialActivity {
 		int j = 0;
 		for(int i = 0; i < items.size(); i++){
 			if(items.get(i).getLevel().toString().equals(activityLevel)){
-				textviews[j].setText(items.get(i).getWord());
+				textviews[j].setText(items.get(i).getLabel());
 				imgviews[j].setImageResource(items.get(i).getImageID());
 				j++;
 			}
 		}
-		textviews[0].setText("Garahe - This is where tito parks his car.");
-	    textviews[1].setText("Bakuran - This protects our house from strangers");
-	    
-	    final AnimatorSet setRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(),
+		final AnimatorSet setRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(),
 				R.animator.flipout);
 	 
 		final AnimatorSet setLeftIn = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(),

@@ -31,15 +31,11 @@ public class Cooking extends AbstractTutorialActivity {
 		int j = 0;
 		for(int i = 0; i < items.size(); i++){
 			if(items.get(i).getLevel().toString().equals(activityLevel)){
-				textviews[j].setText(items.get(i).getWord());
+				textviews[j].setText(items.get(i).getLabel());
 				imgviews[j].setImageResource(items.get(i).getImageID());
 				j++;
 			}
 		}
-		textviews[0].setText("Pula - This is RED. It's like the color of an apple");
-	    textviews[1].setText("Dilaw - This is YELLOW. It's like the color of the sun");
-	    textviews[2].setText("Berde - This is GREEN. It's like the color of the grass and leaves");
-	    textviews[3].setText("Asul - This is BLUE. It's like the color of the sky");
 		final AnimatorSet setRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(),
 				R.animator.flipout);
 	 
@@ -132,14 +128,11 @@ public class Cooking extends AbstractTutorialActivity {
 		int j = 0;
 		for(int i = 0; i < items.size(); i++){
 			if(items.get(i).getLevel().toString().equals(activityLevel)){
-				textviews[j].setText(items.get(i).getWord());
+				textviews[j].setText(items.get(i).getLabel());
 				imgviews[j].setImageResource(items.get(i).getImageID());
 				j++;
 			}
 		}
-		textviews[0].setText("Itim - This is BLACK. It's like the color of the night sky");
-	    textviews[1].setText("Puti - This is WHITE. It's like the color of the clouds");
-
 		final AnimatorSet setRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(),
 				R.animator.flipout);
 	 
@@ -232,13 +225,11 @@ public class Cooking extends AbstractTutorialActivity {
 		int j = 0;
 		for(int i = 0; i < items.size(); i++){
 			if(items.get(i).getLevel().toString().equals(activityLevel)){
-				textviews[j].setText(items.get(i).getWord());
+				textviews[j].setText(items.get(i).getLabel());
 				imgviews[j].setImageResource(items.get(i).getImageID());
 				j++;
 			}
 		}
-		textviews[0].setText("Lila - This is VIOLET. It's like the color of an eggplant");
-	    textviews[1].setText("Kayumanggi - This is BROWN. It's like the color of the trunk of a tree");
 		final AnimatorSet setRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(),
 				R.animator.flipout);
 	 

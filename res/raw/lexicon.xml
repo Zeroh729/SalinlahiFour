@@ -124,6 +124,22 @@
     <hint>Bakuran - This protects our house from strangers</hint>
 	<lesson>2</lesson>
 </Word_Entry>
+<Word_Entry>
+    <q_num>7</q_num>
+	<word>Tsimenea</word>
+    <w_type>definition</w_type>
+    <notes>Did you know, Santa uses this to give us presents</notes>
+    <hint>Smoke comes out of here.</hint>
+	<lesson>2</lesson>
+</Word_Entry>
+<Word_Entry>
+    <q_num>8</q_num>
+	<word>Hagdanan</word>
+    <w_type>definition</w_type>
+    <notes>We used this earlier to get inside the house</notes>
+    <hint>Makes us go up!</hint>
+	<lesson>2</lesson>
+</Word_Entry>
 
 	<Word_Entry>
 		<q_num>1</q_num>
@@ -218,7 +234,55 @@
 		<word>Tatsulok</word>
 		<w_type>definition</w_type>
 		<notes>MMM I'd like a slice of pizza right about now.</notes>
-		<hint>Tatsulok - A triangle. It has 3 sides. Oh and it shoots lasers/</hint>
+		<hint>Tatsulok - A triangle. It has 3 sides. Oh and it shoots lasers</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>5</q_num>
+		<word>Krus</word>
+		<w_type>definition</w_type>
+		<notes>You see these around hospitals</notes>
+		<hint>Krus - It looks like the letter t!</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>6</q_num>
+		<word>Diamante</word>
+		<w_type>definition</w_type>
+		<notes>I wonder if diamonds really looks like these</notes>
+		<hint>Diamante - It's like a square standing on its edge.</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>7</q_num>
+		<word>Parihaba</word>
+		<w_type>definition</w_type>
+		<notes>It’s like a door too</notes>
+		<hint>Rektanggulo - It looks like a long box.</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>8</q_num>
+		<word>Palaso</word>
+		<w_type>definition</w_type>
+		<notes>It’s like a triangle and a rectangle put together.</notes>
+		<hint>Palaso - An arrow. It looks like it's pointing to something</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>9</q_num>
+		<word>Gasuklay</word>
+		<w_type>definition</w_type>
+		<notes>It looks like the moon sometimes too.</notes>
+		<hint>Gasuklay - Looks like a banana or a fingernail.</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>10</q_num>
+		<word>Puso</word>
+		<w_type>definition</w_type>
+		<notes>A common shape during Valentine’s Day</notes>
+		<hint>A heart. It's such a LOVELY shape.</hint>
 		<lesson>4</lesson>
 	</Word_Entry>
 </type>
