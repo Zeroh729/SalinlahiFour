@@ -118,13 +118,12 @@
 </Word_Entry>
 <Word_Entry>
     <q_num>6</q_num>
-	<word>Bakuran</word>
+	<word>Bakod</word>
     <w_type>definition</w_type>
     <notes>It looks like arrows pointing up</notes>
-    <hint>Bakuran - This protects our house from strangers</hint>
+    <hint>Bakod - This protects our house from strangers</hint>
 	<lesson>2</lesson>
 </Word_Entry>
-
 	<Word_Entry>
 		<q_num>1</q_num>
 		<word>Asul</word>
@@ -165,6 +164,17 @@
 		<hint>Kayumanggi - This is BROWN. It is the color of a trunk of a tree</hint>
 		<lesson>3</lesson>
 	</Word_Entry>
+=======
+<Word_Entry>
+<q_num>5</q_num>
+<word>Kayumanggi</word>
+<w_type>definition</w_type>
+<notes>Kayumanggi Notes</notes>
+<hint>Kayumanggi Hints</hint>
+<lesson>3</lesson>
+
+</Word_Entry>
+>>>>>>> aldrin
 	<Word_Entry>
 		<q_num>6</q_num>
 		<word>Lila</word>
