@@ -2,23 +2,28 @@ package com.ube.salinlahifour;
 
 import com.ube.salinlahifour.enumTypes.LevelType;
 
+import android.media.MediaPlayer;
 import android.media.SoundPool;
+import android.view.View;
 
 public class Item {
 	private String word;
 	private String english;
-	private SoundPool voiceover;
+	private int voiceFilID;
+	private int voiceEngID;
 	private String label;
 	private LevelType level;
 	private int imageID;
 	private int q_num;
+	private View view;
 	
-	public Item(int q_num,String word, String english, String description, int imageID, SoundPool voiceover, LevelType level){
+	public Item(int q_num,String word, String english, String description, int imageID, int voiceFilID, int voiceEngID, LevelType level){
 		this.q_num = q_num;
 		this.word = word;
 		this.english = english;
 		this.label = description;
-		this.voiceover = voiceover;
+		this.voiceFilID = voiceFilID;
+		this.voiceEngID = voiceEngID;
 		this.level = level;
 		this.imageID = imageID;
 	}
@@ -51,12 +56,12 @@ public class Item {
 		this.english = english;
 	}
 
-	public SoundPool getVoiceover() {
-		return voiceover;
+	public int getVoiceFilID() {
+		return voiceFilID;
 	}
-
-	public void setVoiceover(SoundPool voiceover) {
-		this.voiceover = voiceover;
+	
+	public int getVoiceEngID() {
+		return voiceEngID;
 	}
 
 	public String getLabel() {
@@ -75,4 +80,19 @@ public class Item {
 		this.level = level;
 	}
 	
+	public void playFilipinoSound(){
+		if(voiceFilID != 0){
+			MediaPlayer mPlayer = MediaPlayer.create(SalinlahiFour.getContext(), voiceFilID);
+			mPlayer.setVolume(1, 1);
+			mPlayer.start();
+		}
+	}
+	
+	public void playEnglishSound(){
+		if(voiceEngID != 0){
+			MediaPlayer mPlayer = MediaPlayer.create(SalinlahiFour.getContext(), voiceEngID);
+			mPlayer.setVolume(1, 1);
+			mPlayer.start();
+		}
+	}
 }

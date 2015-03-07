@@ -7,6 +7,13 @@
 		<Description>Meet Pepay's Brother, Sister, Parents, and more!</Description>
 	</Lesson>
 	<Lesson>
+		<Name>Cooking</Name>
+		<Image>lesson2_icon</Image>
+		<ActivityName>Cooking</ActivityName>
+		<Description></Description>
+	</Lesson>
+	
+	<Lesson>
 		<Name>House</Name>
 		<Image>lesson2_icon</Image>
 		<ActivityName>House</ActivityName>
@@ -14,15 +21,9 @@
 	</Lesson>
 	
 	<Lesson>
-		<Name>Cooking</Name>
+		<Name>SpaceShape</Name>
 		<Image>lesson0_icon</Image>
-		<ActivityName>Cooking</ActivityName>
-		<Description></Description>
-	</Lesson>
-	<Lesson>
-		<Name>Music</Name>
-		<Image>lesson0_icon</Image>
-		<ActivityName>Music</ActivityName>
+		<ActivityName>Shape</ActivityName>
 		<Description></Description>
 	</Lesson>
 	<Lesson>

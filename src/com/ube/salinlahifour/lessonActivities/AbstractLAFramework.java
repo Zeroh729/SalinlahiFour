@@ -14,6 +14,7 @@ import java.util.Random;
 
 import iFeedback.iFeedback;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
@@ -25,10 +26,14 @@ import android.widget.ImageView;
 import com.kilobolt.framework.Screen;
 import com.kilobolt.framework.implementation.AndroidGame;
 import com.ube.salinlahifour.Item;
+import com.ube.salinlahifour.Lesson;
 import com.ube.salinlahifour.MapActivity;
+import com.ube.salinlahifour.ReportCard;
 import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.database.UserRecordOperations;
+import com.ube.salinlahifour.enumTypes.LevelType;
 import com.ube.salinlahifour.enumTypes.StatusType;
+import com.ube.salinlahifour.evaluationModule.Evaluation;
 import com.ube.salinlahifour.model.UserRecord;
 import com.ube.salinlahifour.tools.DateTimeConverter;
 
@@ -36,7 +41,7 @@ import iFeedback.iFeedback;
 
 
 public abstract class AbstractLAFramework extends AndroidGame {
-
+	protected Lesson lesson;
 	protected ArrayList<ImageView> backgrounds;
 	protected ArrayList<Item> items;
 	protected ArrayList<Item> questions;
@@ -46,26 +51,29 @@ public abstract class AbstractLAFramework extends AndroidGame {
 	protected int layoutID;
 	protected int UserID;	
 	protected iFeedback NLG;
-
-
+	protected ReportCard reportCard;
+	protected Evaluation evaluation;
+	public static Context mContext;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		
 		Bundle bundle = getIntent().getExtras();
-		
+		lesson = (Lesson) bundle.getParcelable("lesson");
 		activityName = bundle.getString("activityName");
 		activityLevel = bundle.getString("activityLevel");
 		UserID = bundle.getInt("UserID");
 		Log.d(activityName, "TEST ActivityName in lesson act");
 		Log.d(activityLevel, "TEST ActivityLevel in lesson act: " + activityLevel);
 		items = ((SalinlahiFour)getApplication()).getLessonItems();
-		
+		mContext = getBaseContext();
 		getQuestions();
 		initiateNarrationModule();
 		super.onCreate(savedInstanceState);
 	}
-
+	public static Context getContext() {
+	    return mContext;
+	}
 	@Override
 	public Screen getInitScreen() {
 		// TODO Auto-generated method stub
@@ -167,8 +175,15 @@ public abstract class AbstractLAFramework extends AndroidGame {
 	    	}
 	    	
 	    }
-	protected void showReportCard(){
-		
+	protected void showReportCard(Context context, String activityLevel, Evaluation eval, int score, int lessonnumber){
+		LevelType LTActLevel = null;
+		switch(activityLevel){
+		case "EASY": LTActLevel = LevelType.EASY; break;
+		case "MEDIUM": LTActLevel = LevelType.MEDIUM; break;
+		case "HARD": LTActLevel = LevelType.HARD; break;
+		}
+		reportCard = new ReportCard(context, lesson, LTActLevel, eval, evaluation.getEndofActivityFeedback(score, lessonnumber));
+		reportCard.reveal();
 	}
 
 	

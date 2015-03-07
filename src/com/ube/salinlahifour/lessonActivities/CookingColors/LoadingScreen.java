@@ -1,6 +1,7 @@
 package com.ube.salinlahifour.lessonActivities.CookingColors;
 import java.util.ArrayList;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.kilobolt.framework.Game;
@@ -8,14 +9,19 @@ import com.kilobolt.framework.Graphics;
 import com.kilobolt.framework.Image;
 import com.kilobolt.framework.Screen;
 import com.kilobolt.framework.Graphics.ImageFormat;
+import com.ube.salinlahifour.Lesson;
 
 public class LoadingScreen extends Screen {
 	private String activityLevel;
 	private int userID;
-	 public LoadingScreen(Game game, String activityLevel, int userID) {
+	private Context context;
+	private Lesson lesson;
+	 public LoadingScreen(Game game, String activityLevel, int userID, Context cont, Lesson lesson) {
 	        super(game);
+	        context = cont;
 	        this.activityLevel = activityLevel;
 	        this.userID = userID;
+	        this.lesson = lesson;
 			Log.d("Lodaing Screen", "TEST ActivityLevel in lesson act: " + activityLevel);
 
 	    }
@@ -87,7 +93,7 @@ public class LoadingScreen extends Screen {
 	        	Assets.nothingness = g.newImage("cooking/nothingness.png", ImageFormat.RGB565);
 	        break;
 	        }
-	        game.setScreen(new GameScreen(game, activityLevel,userID));
+	        game.setScreen(new GameScreen(game, activityLevel,userID, context, lesson));
 
 
 	    }

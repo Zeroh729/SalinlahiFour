@@ -1,6 +1,9 @@
 package com.ube.salinlahifour.lessonActivities.PartsOFHouse;
 import java.util.List;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.Log;
@@ -10,9 +13,11 @@ import com.kilobolt.framework.Graphics;
 import com.kilobolt.framework.Image;
 import com.kilobolt.framework.Screen;
 import com.kilobolt.framework.Input.TouchEvent;
+import com.ube.salinlahifour.Lesson;
 import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.evaluationModule.*;
 import com.ube.salinlahifour.lessonActivities.AbstractGameScreen;
+import com.ube.salinlahifour.lessonActivities.House;
 import com.ube.salinlahifour.database.UserDetailOperations;
 import com.ube.salinlahifour.database.UserLessonProgressOperations;
 import com.ube.salinlahifour.database.UserRecordOperations;
@@ -22,34 +27,39 @@ public class GameScreen extends AbstractGameScreen  {
 	    // Variable Setup
 	    // You would create game objects here.
 	    static String activityName = "House";
-	    private int lessonNumber = 2;
+	    //private int lessonNumber = 2;
 	    String activityLevel;
+	    private House main_control;
 	    private Image bg, body, bodyholder, door, doorholder, gamebg,roof,roofholder,window,windowholder;
 	    private Parts pRoof, pBody, pDoor,pWindow, pRoofH, pBodyH, pDoorH, pWindowH ;
 	    private Image garage, garageholder, fence, fenceholder;
 	    private Parts pGarage, pFence, pGarageH, pFenceH ;
 	    private Image tooltip;
 	    private Parts pTooltip;
-	    int livesLeft = 5 , answer = 0, userID;
+	    int answer = 0, userID;
 	    // Edit lives left to the question size
 	    
 	   // private String sFeedback = "",  sQuestion = "", sAnswer = "";
 	    
-	    public GameScreen(Game game, String activityLevel, int userID) {
+	    public GameScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson) {
 	    	//Super Parameters Game, ActivityName, ActivityLevel, UserID
-	        super(game, activityName, activityLevel, userID);
+	        super(game, activityName, activityLevel, userID, context, lesson);
 	        Log.d("Aldrin ExtendedFramework", "This should be after abstract Game");
 	        this.userID = userID;
 	        this.activityLevel = activityLevel;
-
+	        lessonNumber = 2;
+	        rounds = 1;
+	        //main_control = new House();
 	        Log.d("Aldrin ExtendedFramework", "Gamescreen constructor...");
+	        
 	    }
-
+	    
 		@Override
 		protected void loadAssets() {
 			// TODO Auto-generated method stub
 	        Log.d("Aldrin ExtendedFramework", "Loading Assets");
 //hello
+	        livesLeft = 4;
 				bg =  Assets.gamebg;
 		        body =Assets.body_selected;
 		        bodyholder = Assets.bodyholder;
@@ -118,15 +128,13 @@ public class GameScreen extends AbstractGameScreen  {
 
 		@Override
 		protected void updateRunningEasy(List<TouchEvent> touchEvents,float deltaTime) {
-
+			Log.d("Lives", Integer.toString(livesLeft));
+			
 			// TODO Auto-generated method stub
 			int len = touchEvents.size();
 	        for (int i = 0; i < len; i++) {
 	            TouchEvent event = touchEvents.get(i);
-	            
-	            /////////////////////////////////////////////
 	            if (event.type == TouchEvent.TOUCH_DOWN) {
-	  	          
 	            	Log.d("Debug GameScreen", "Touch down");
 	            	if(inBounds(event, pRoofH.getX() ,pRoofH.getY() , roofholder.getWidth(), roofholder.getHeight())){
 	            		Log.d("Debug GameScreen", "Roof Holder: " + event.x + ", " + event.y);
@@ -137,8 +145,26 @@ public class GameScreen extends AbstractGameScreen  {
 	            		sQuestion = "Bubong";
 	            		pTooltip.move(pRoofH.getX()-125, pRoofH.getY()-140);
 	            		tooltip = Assets.tooltip_left;
-	            	}
-	            	else if(inBounds(event, pWindowH.getX(), pWindowH.getY(), windowholder.getWidth(), windowholder.getHeight())){
+	            		if(answer > 0){
+	            			userRecordOperator.open();
+	                		userLessonProgressOperator.open();
+	            			if(eval.evaluateAnswer(sQuestion, sAnswer, userID)){
+		            			Log.d("Debug GameScreen", "CORRECT THATS A Bubong");
+		            			sFeedback =  eval.getImmediateFeedback(1, sAnswer, lessonNumber);
+		            			livesLeft--;
+		            			pRoof.move(pRoofH.getX() , pRoofH.getY());
+		            			roof = Assets.roof;
+		            			Log.d("Debug GameScreen EVENT","X: " +event.x + "Y: " + event.y);
+		            			Log.d("Debug GameScreen pRoof","X: " +pRoof.getX() + "Y: " + pRoof.getY());	
+		            			
+		            		}else{
+		            			Log.d("Wenks", "Mali");
+		            			sFeedback =  eval.getImmediateFeedback(1, sAnswer, lessonNumber);
+		            		}
+	            			userRecordOperator.close();
+	                		userLessonProgressOperator.close();
+	            		}
+	            	}	else if(inBounds(event, pWindowH.getX(), pWindowH.getY(), windowholder.getWidth(), windowholder.getHeight())){
 	            		Log.d("Debug GameScreen", "Window Holder: " + event.x + ", " + event.y);
 	            		//windowholder = Assets.bodyholder_selected;
 	            		bodyholder = Assets.bodyholder;
@@ -148,6 +174,21 @@ public class GameScreen extends AbstractGameScreen  {
 	            		sQuestion = "Bintana";
 	            		pTooltip.move(pWindowH.getX()-125, pWindowH.getY()-140);
 	            		tooltip = Assets.tooltip_left;
+	            		if(answer > 0){
+	            			userRecordOperator.open();
+	                		userLessonProgressOperator.open();
+	            			if(eval.evaluateAnswer(sQuestion, sAnswer, userID)){
+		            			Log.d("Debug GameScreen", "CORRECT THATS A WINDOW");
+		            			sFeedback =  eval.getImmediateFeedback(4, sAnswer, lessonNumber);
+		            			livesLeft--;
+		            			pWindow.move(pWindowH.getX() , pWindowH.getY());
+		            			window = Assets.window;
+		            		}else{
+		            			sFeedback =  eval.getImmediateFeedback(4, sAnswer, lessonNumber);
+		            		}
+	            			userRecordOperator.close();
+	                		userLessonProgressOperator.close();
+	            		}
 	            	}
 	            	else if(inBounds(event, pDoorH.getX(), pDoorH.getY(), doorholder.getWidth(), doorholder.getHeight())){
 	            		Log.d("Debug GameScreen", "DoorHolder: " + event.x + ", " + event.y);	
@@ -158,6 +199,21 @@ public class GameScreen extends AbstractGameScreen  {
 	            		sQuestion = "Pinto";
 	            		pTooltip.move(pDoorH.getX()-125, pDoorH.getY()-140);
 	            		tooltip = Assets.tooltip_left;
+	            		if(answer > 0){
+	            			userRecordOperator.open();
+	                		userLessonProgressOperator.open();
+	            			if(eval.evaluateAnswer(sQuestion, sAnswer, userID)){
+		            			Log.d("Debug GameScreen", "CORRECT THATS A door");
+		            			sFeedback =  eval.getImmediateFeedback(3, sAnswer, lessonNumber);
+		            			livesLeft--;
+		            			pDoor.move(pDoorH.getX() , pDoorH.getY());
+		            			door = Assets.door;
+		            		}else{
+		            			sFeedback =  eval.getImmediateFeedback(3, sAnswer, lessonNumber);
+		            		}
+	            			userRecordOperator.close();
+	                		userLessonProgressOperator.close();
+	            		}
 	            	}
 	            	
 	            	else if(inBounds(event, pBodyH.getX(), pBodyH.getY(), bodyholder.getWidth(), bodyholder.getHeight())){
@@ -169,117 +225,49 @@ public class GameScreen extends AbstractGameScreen  {
 	            		sQuestion = "Dingding";
 	            		pTooltip.move(pBodyH.getX()-125, pBodyH.getY()-140);
 	            		tooltip = Assets.tooltip_left;
-	            	}
-	            	
-	            	else{
-	            		Log.d("Debug GameScreen","NONE: " + event.x + ", " + event.y);
-	            	}
-	            }
-	            ///////////////////////////
-	            ///////////////////////////
-	            if (event.type == TouchEvent.TOUCH_UP) {	
-	            	if(answer > 0){
-	            	if(inBounds(event, pRoofH.getX() , pRoofH.getY() , roofholder.getWidth(), roofholder.getHeight())){
-	            		Log.d("Debug GameScreen SIZE", "Roof Holder: " + roofholder.getWidth() + ", " +roofholder.getHeight());
-	            		if(eval.evaluateAnswer("Bubong", sAnswer, userRecordOperator, userID)){
-	            			Log.d("Debug GameScreen", "CORRECT THATS A Bubong");
-	            			sFeedback =  eval.getImmediateFeedback(1, sAnswer, lessonNumber);
-	            			livesLeft--;
-	            			pRoof.move(pRoofH.getX() , pRoofH.getY());
-	            			roof = Assets.roof;
-	            			Log.d("Debug GameScreen EVENT","X: " +event.x + "Y: " + event.y);
-	            			Log.d("Debug GameScreen pRoof","X: " +pRoof.getX() + "Y: " + pRoof.getY());		
-	            		}else{
-	            			Log.d("Wenks", "Mali");
-	            			sFeedback =  eval.getImmediateFeedback(1, sAnswer, lessonNumber);
-	            		}
-	            	}
-	            	 else if(inBounds(event,pDoorH.getX() , pDoorH.getY(), doorholder.getWidth(), doorholder.getHeight())){
-		            		//Log.d("Debug GameScreen", "DoorHolder: " + event.x + ", " + event.y);	
-		            		if(eval.evaluateAnswer("Pinto", sAnswer, userRecordOperator, userID)){
-		            			Log.d("Debug GameScreen", "CORRECT THATS A door");
-		            			sFeedback =  eval.getImmediateFeedback(3, sAnswer, lessonNumber);
-		            			livesLeft--;
-		            			pDoor.move(pDoorH.getX() , pDoorH.getY());
-		            			door = Assets.door;
-		            		}else{
-		            			sFeedback =  eval.getImmediateFeedback(3, sAnswer, lessonNumber);
-		            		}
-		            	}
-		            	else if(inBounds(event, pWindowH.getX() , pWindowH.getY() , windowholder.getWidth(), windowholder.getHeight())){
-		            		//Log.d("Debug GameScreen", "Roof Holder: " + event.x + ", " + event.y);
-		            		Log.d("Debug GameScreen", "WINDOW UP");
-		            		if(eval.evaluateAnswer("Bintana", sAnswer, userRecordOperator, userID)){
-		            			Log.d("Debug GameScreen", "CORRECT THATS A WINDOW");
-		            			sFeedback =  eval.getImmediateFeedback(4, sAnswer, lessonNumber);
-		            			livesLeft--;
-		            			pWindow.move(pWindowH.getX() , pWindowH.getY());
-		            			window = Assets.window;
-		            		}else{
-		            			sFeedback =  eval.getImmediateFeedback(4, sAnswer, lessonNumber);
-		            		}
-		            	}
-	            	else if(inBounds(event, pBodyH.getX() , pBodyH.getY() , bodyholder.getWidth(), bodyholder.getHeight())){
-	            		//Log.d("Debug GameScreen", "Roof Holder: " + event.x + ", " + event.y);
-	            		if(eval.evaluateAnswer("Dingding", sAnswer, userRecordOperator, userID)){
-	            			Log.d("Debug GameScreen", "CORRECT THATS A BODY");
-	            			sFeedback =  eval.getImmediateFeedback(2, sAnswer, lessonNumber);
-	            			livesLeft--;
-	            			pBody.move(pBodyH.getX() , pBodyH.getY());
-	            			body = Assets.body;
-	            		}else{
-	            			Log.d("Wenks", "Mali");
-	            			sFeedback =  eval.getImmediateFeedback(2, sAnswer, lessonNumber);
 
-	            		}
-	            	}
+	            		if(answer > 0){
+	            			userRecordOperator.open();
+	                		userLessonProgressOperator.open();
+	            			if(eval.evaluateAnswer(sQuestion, sAnswer, userID)){
+		            			Log.d("Debug GameScreen", "CORRECT THATS A BODY");
+		            			sFeedback =  eval.getImmediateFeedback(2, sAnswer, lessonNumber);
+		            			livesLeft--;
+		            			pBody.move(pBodyH.getX() , pBodyH.getY());
+		            			body = Assets.body;
+		            		}else{
+		            			Log.d("Wenks", "Mali");
+		            			sFeedback =  eval.getImmediateFeedback(2, sAnswer, lessonNumber);
 
+		            		}
+	            			userRecordOperator.close();
+	                		userLessonProgressOperator.close();
+	            		}
+	            	} 
 	            	
+	            	
+	            	if(inBounds(event, pRoof.getX(), pRoof.getY(), roof.getWidth()-25, roof.getHeight()-25)){
+	            		Log.d("Debug GameScreen", "Click roof");
+	            		answer = 1;
+	            		sAnswer = "Bubong";
+	            	}	else if(inBounds(event, pBody.getX(), pBody.getY(), body.getWidth(), body.getHeight())){
+	            		Log.d("Debug GameScreen", "Click body");	
+	            		answer = 2;
+	            		sAnswer = "Dingding";
+	            	}	else if(inBounds(event, pDoor.getX(), pDoor.getY(), door.getWidth(), door.getHeight())){
+	            		Log.d("Debug GameScreen", "Click door");	
+	            		answer = 3;
+	            		sAnswer = "Pinto";
 	            	}
-	            	answer = 0;
-	            }
-	          //// END TOUCH UP
-///////////////////////////////////////////
-	            if (event.type == TouchEvent.TOUCH_DRAGGED) {
-	            	userRecordOperator.open();
-	        		userLessonProgressOperator.open();
-	            	 if(inBounds(event, pRoof.getX(), pRoof.getY(), roof.getWidth()-25, roof.getHeight()-25)){
-		            		Log.d("Debug GameScreen", "DRAGS roof");
-		            		answer = 1;
-		            		sAnswer = "Bubong";
-		            		//Log.d("Debug GameScreen", "X: "+event.x +"Y: "+event.y);
-		            		//Log.d("Debug GameScreen: pRoof", "X: "+pRoof.getX() +"Y: "+pRoof.getY());
-		            		//Log.d("Debug GameScreen", event.pointer);
-		            		
-		            	}
-	            	 	else if(inBounds(event, pBody.getX(), pBody.getY(), body.getWidth(), body.getHeight())){
-		            		//Log.d("Debug GameScreen", "body: " + event.x + ", " + event.y);
-		            		Log.d("Debug GameScreen", "DRAGS body");	
-		            		answer = 2;
-		            		sAnswer = "Dingding";
-		            	}
-		            	
-		            	else if(inBounds(event, pDoor.getX(), pDoor.getY(), door.getWidth(), door.getHeight())){
-		            		//Log.d("Debug GameScreen", "door: " + event.x + ", " + event.y);	
-		            		Log.d("Debug GameScreen", "DRAGS door");	
-		            		answer = 3;
-		            		sAnswer = "Pinto";
-		            		
-		            	}
-		            	else if(inBounds(event, pWindow.getX(), pWindow.getY(), window.getWidth(), window.getHeight())){
-		            		//Log.d("Debug GameScreen", "body: " + event.x + ", " + event.y);
-		            		Log.d("Debug GameScreen", "DRAGS window");	
-		            		answer = 4;
-		            		sAnswer = "Bintana";
-		            	}
-		            	else{
-		            		Log.d("Debug GameScreen: NONE", "X: "+event.x +"Y: "+event.y);
-		            	}
-	            	 
-	            }
-	            ///////////////////////////
-	            
-	        }
+	            	else if(inBounds(event, pWindow.getX(), pWindow.getY(), window.getWidth(), window.getHeight())){
+	            		Log.d("Debug GameScreen", "Click window");	
+	            		answer = 4;
+	            		sAnswer = "Bintana";
+	            	} else{
+	            		answer = 0;
+	            	}
+	            }//End touchdown
+	        }//end loop
 		}
 
 		@Override
@@ -379,7 +367,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            	if(inBounds(event, pGarageH.getX() , pGarageH.getY() , garageholder.getWidth(), garageholder.getHeight())){
 	            		Log.d("Debug GameScreen SIZE", "Garage Holder: " + garageholder.getWidth() + ", " +garageholder.getHeight());
 	            		Log.d("gameScreen", "userID");
-	            		if(eval.evaluateAnswer("Garahe", sAnswer, userRecordOperator, userID)){
+	            		if(eval.evaluateAnswer(sQuestion, sAnswer, userID)){
 	            			Log.d("Debug GameScreen", "CORRECT THATS A Garahe");
 	            			sFeedback =  eval.getImmediateFeedback(5, sAnswer, lessonNumber);
 	            			livesLeft--;
@@ -396,7 +384,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            	}
 	            	else if(inBounds(event, pFenceH.getX() , pFenceH.getY() , fenceholder.getWidth(), fenceholder.getHeight())){
 	            		//Log.d("Debug GameScreen", "Roof Holder: " + event.x + ", " + event.y);
-	            		if(eval.evaluateAnswer("Bakod", sAnswer, userRecordOperator, userID)){
+	            		if(eval.evaluateAnswer(sQuestion, sAnswer, userID)){
 	            			Log.d("Debug GameScreen", "CORRECT THATS A FENCE");
 	            			sFeedback =  eval.getImmediateFeedback(6, sAnswer, lessonNumber);
 	            			livesLeft--;
@@ -411,7 +399,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            	
 	            	else if(inBounds(event, pRoofH.getX() , pRoofH.getY() , roofholder.getWidth(), roofholder.getHeight())){
 		            		Log.d("Debug GameScreen SIZE", "Roof Holder: " + roofholder.getWidth() + ", " +roofholder.getHeight());
-		            		if(eval.evaluateAnswer("Bubong", sAnswer, userRecordOperator, userID)){
+		            		if(eval.evaluateAnswer(sQuestion, sAnswer, userID)){
 		            			Log.d("Debug GameScreen", "CORRECT THATS A Bubong");
 		            			sFeedback =  eval.getImmediateFeedback(1, sAnswer, lessonNumber);
 		            			livesLeft--;
@@ -427,7 +415,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            		}
 		            	}else if(inBounds(event,pDoorH.getX() , pDoorH.getY(), doorholder.getWidth(), doorholder.getHeight())){
 		            		//Log.d("Debug GameScreen", "DoorHolder: " + event.x + ", " + event.y);	
-		            		if(eval.evaluateAnswer("Pinto", sAnswer, userRecordOperator, userID)){
+		            		if(eval.evaluateAnswer(sQuestion, sAnswer, userID)){
 		            			Log.d("Debug GameScreen", "CORRECT THATS A door");
 		            			sFeedback =  eval.getImmediateFeedback(3, sAnswer, lessonNumber);
 		            			livesLeft--;
@@ -441,7 +429,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            	else if(inBounds(event, pWindowH.getX() , pWindowH.getY() , windowholder.getWidth(), windowholder.getHeight())){
 		            		//Log.d("Debug GameScreen", "Roof Holder: " + event.x + ", " + event.y);
 		            		Log.d("Debug GameScreen", "WINDOW UP");
-		            		if(eval.evaluateAnswer("Bintana", sAnswer, userRecordOperator, userID)){
+		            		if(eval.evaluateAnswer(sQuestion, sAnswer, userID)){
 		            			Log.d("Debug GameScreen", "CORRECT THATS A WINDOW");
 		            			sFeedback =  eval.getImmediateFeedback(4, sAnswer, lessonNumber);
 		            			livesLeft--;
@@ -454,7 +442,9 @@ public class GameScreen extends AbstractGameScreen  {
 		            	}
 		            	else if(inBounds(event, pBodyH.getX() , pBodyH.getY() , bodyholder.getWidth(), bodyholder.getHeight())){
 		            		//Log.d("Debug GameScreen", "Roof Holder: " + event.x + ", " + event.y);
-		            		if(eval.evaluateAnswer("Dingding", sAnswer, userRecordOperator, userID)){
+
+		            		if(eval.evaluateAnswer(sQuestion, sAnswer, userID)){
+
 		            			Log.d("Debug GameScreen", "CORRECT THATS A BODY");
 		            			sFeedback =  eval.getImmediateFeedback(2, sAnswer, lessonNumber);
 		            			livesLeft--;
@@ -472,8 +462,6 @@ public class GameScreen extends AbstractGameScreen  {
 
 	            }
 	            if (event.type == TouchEvent.TOUCH_DRAGGED) {
-	            	userRecordOperator.open();
-	        		userLessonProgressOperator.open();
 	        		
 	        		if(answer == 0){
 	        		///
@@ -533,6 +521,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            
 	            
 	        }
+	        
 		}
 
 		@Override
@@ -554,6 +543,8 @@ public class GameScreen extends AbstractGameScreen  {
 		@Override
 		protected void updateGameOver(List<TouchEvent> touchEvents) {
 			// TODO Auto-generated method stub
+		
+
 			
 		}
 
@@ -584,6 +575,7 @@ public class GameScreen extends AbstractGameScreen  {
 		protected void painterEasy() {
 			// TODO Auto-generated method stub
 			 Graphics g = game.getGraphics();
+			 
 			 	g.drawImage(bg, 0, 0);
 		        g.drawImage(roofholder, pRoofH.getX(), pRoofH.getY());
 		        g.drawImage(bodyholder, pBodyH.getX(), pBodyH.getY());

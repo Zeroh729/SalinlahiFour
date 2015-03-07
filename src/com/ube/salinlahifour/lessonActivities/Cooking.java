@@ -17,10 +17,15 @@ public class Cooking extends AbstractLAFramework  {
 	 
 	 @Override
 	 public Screen getInitScreen() {
-		 return new LoadingScreen(this, activityLevel, UserID); 
+		 Log.d("Debug Init", "Cooking");
+		 return new LoadingScreen(this, activityLevel, UserID, this, lesson); 
 	 }
 	 @Override
 	 public void onBackPressed() {
 		 getCurrentScreen().backButton();
 	 }
+	/* public void showReportCard(){
+		 super.showReportCard(this);
+	 }*/
+	 
 	}

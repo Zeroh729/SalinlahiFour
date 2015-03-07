@@ -15,6 +15,9 @@ public class ButtonSet {
 	private int width, height; 
 	private int[] chosenColors;
 	private ArrayList<String> fColors;
+	private int qColor;
+	private ArrayList<String> fQuestions;
+	
 	private Random rand;
 	public ButtonSet(int size, int initX,int initY){
 		Log.d("ButtonSet", "Initializing ButtonSet");
@@ -121,6 +124,7 @@ public class ButtonSet {
 		case "HARD": 
 			fColors.add("Itim");
 			fColors.add("Puti");
+			//fQuestions.add("");
 		case "MEDIUM":
 			fColors.add("Kayumanggi");
 			fColors.add("Violet");
@@ -134,6 +138,31 @@ public class ButtonSet {
 	public String getAnswer(int colorIndex){
 		return fColors.get(colorIndex);
 	}
-	
+	public void loadQuestions(){
+		fQuestions = new ArrayList<String>();
+		fQuestions.add("Cake");
+		fQuestions.add("Frosting");
+		fQuestions.add("Sprinkles");
+	}
+	public String createQuestions(String actlevel, int nQuestion ){
+		int randColor;
+		switch(actlevel){
+		case "EASY":
+		randColor =  rand.nextInt(fColors.size());
+		qColor = randColor;
+		break;
+		case "MEDIUM":
+		case "HARD":
+			randColor =  rand.nextInt(chosenColors.length);
+			qColor = this.getChosenColors(randColor);break;
+		}
+		return fColors.get(qColor) + fQuestions.get(nQuestion);
+	}
+	public String getQuestionColor(){
+		return fColors.get(qColor);
+	}
+	public int getNumberColor(){
+		return qColor;
+	}
 	
 }

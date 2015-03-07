@@ -128,6 +128,7 @@ public class AndroidGraphics implements Graphics {
     
     @Override
     public void drawImage(Image Image, int x, int y) {
+    	
     	if(((AndroidImage)Image).bitmap != null && !((AndroidImage)Image).bitmap.isRecycled()){
     		canvas.drawBitmap(((AndroidImage)Image).bitmap, x, y, null);
     	}

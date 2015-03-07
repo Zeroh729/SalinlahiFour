@@ -1,20 +1,25 @@
 package com.ube.salinlahifour.lessonActivities.PartsOFHouse;
+import android.content.Context;
 import android.util.Log;
 
 import com.kilobolt.framework.Game;
 import com.kilobolt.framework.Graphics;
 import com.kilobolt.framework.Screen;
 import com.kilobolt.framework.Graphics.ImageFormat;
+import com.ube.salinlahifour.Lesson;
 
 public class LoadingScreen extends Screen {
 	private String activityLevel;
 	private int userID;
-	 public LoadingScreen(Game game, String activityLevel, int userID) {
+	private Context context;
+	private Lesson lesson;
+	 public LoadingScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson) {
 	        super(game);
 	        this.activityLevel = activityLevel;
 	        this.userID = userID;
 			Log.d("Lodaing Screen", "TEST ActivityLevel in lesson act: " + activityLevel);
-
+			this.context = context;
+			this.lesson = lesson;
 	    }
 	 @Override
 	    public void update(float deltaTime) {
@@ -95,7 +100,7 @@ public class LoadingScreen extends Screen {
 	        Assets.tooltip_left = g.newImage("house/tooltip_left.png", ImageFormat.RGB565);
 	        Assets.tooltip_right =  g.newImage("house/tooltip_right.png", ImageFormat.RGB565);
 	        Assets.nothingness = g.newImage("house/nothingness.png", ImageFormat.RGB565);
-	        game.setScreen(new GameScreen(game, activityLevel,userID));
+	        game.setScreen(new GameScreen(game, activityLevel,userID,context,lesson ));
 
 
 	    }

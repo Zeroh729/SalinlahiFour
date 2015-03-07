@@ -148,16 +148,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.ube.salinlahifour.tutorials.Music"
-            android:label="@string/title_activity_music"
-            android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            android:name="com.ube.salinlahifour.lessonActivities.Shape"
+            android:label="@string/title_activity_lesson"
+            android:screenOrientation="landscape" >
             <intent-filter>
-                <action android:name="com.ube.salinlahifour.tutorials.Music" />
+                <action android:name="com.ube.salinlahifour.lessonActivities.Shape" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.ube.salinlahifour.tutorials.Shape"
+            android:label="@string/title_activity_shape"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="com.ube.salinlahifour.tutorials.Shape" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
         <activity
             android:name="com.ube.salinlahifour.debugclasses.DebugUserModuleActivity"
             android:label="@string/title_activity_debug_user_module"

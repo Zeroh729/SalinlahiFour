@@ -15,7 +15,11 @@ public class Cake {
 		isCream = false;
 		
 	}
-	
+	public void resetFlags(){
+		isBread = false;
+		isSprinkled = false;
+		isCream = false;
+	}
 	public void move(int newX, int newY){
 		 X = newX;
          Y = newY;

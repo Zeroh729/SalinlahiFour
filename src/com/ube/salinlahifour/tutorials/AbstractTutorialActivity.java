@@ -2,6 +2,8 @@ package com.ube.salinlahifour.tutorials;
 
 import java.util.ArrayList;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -11,10 +13,12 @@ import android.media.SoundPool;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.View.*;
 
 import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.Lesson;
 import com.ube.salinlahifour.LessonItemLoader;
+import com.ube.salinlahifour.R;
 import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.tutorials.*;
 import com.ube.salinlahifour.enumTypes.LevelType;
@@ -29,6 +33,10 @@ public abstract class AbstractTutorialActivity extends Activity {
 	protected String activityLevel;
 	protected int layoutID;
 	protected int UserID;
+	boolean isBackVisibleimageView1 = false; // Boolean variable to check if the back image is vis
+	boolean isBackVisibleimageView2 = false; // Boolean variable to check if the back image is vis
+	boolean isBackVisibleimageView3 = false; // Boolean variable to check if the back image is vis
+	boolean isBackVisibleimageView4 = false; // Boolean variable to check if the back image is vis
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +58,7 @@ public abstract class AbstractTutorialActivity extends Activity {
 		activityLevel = bundle.getString("activityLevel");
 		Log.d("LESSON Name: ", lesson.getName());
 		
-		activityName = activityClass.replace("com.ube.salinlahifour.lessonActivities.", "");
+		activityName = lesson.getName();
 		
 		Log.d(activityClass, "TEST ActivityName");
 		items = LessonItemLoader.getLessonItems(activityClass, activityLevel);
