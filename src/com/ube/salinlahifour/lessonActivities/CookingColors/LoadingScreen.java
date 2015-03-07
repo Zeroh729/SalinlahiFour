@@ -9,6 +9,7 @@ import com.kilobolt.framework.Graphics;
 import com.kilobolt.framework.Image;
 import com.kilobolt.framework.Screen;
 import com.kilobolt.framework.Graphics.ImageFormat;
+import com.kilobolt.framework.Sound;
 import com.ube.salinlahifour.Lesson;
 
 public class LoadingScreen extends Screen {
@@ -34,10 +35,12 @@ public class LoadingScreen extends Screen {
 	        
 	        //Assets.menubg = g.newImage("menubg.png", ImageFormat.RGB565);
 	        Assets.bg = g.newImage("cooking/bg.png", ImageFormat.RGB565);
+	        Assets.wrong = g.newImage("cooking/wrong.png", ImageFormat.RGB565);
 	        Assets.bread = new ArrayList<Image>();
         	Assets.buttons = new ArrayList<Image>();
         	Assets.frosting = new ArrayList<Image>();
         	Assets.sprinkles = new ArrayList<Image>();
+        	Assets.sound = new ArrayList<Sound>();
 	        switch(activityLevel){
 	        case "HARD":
 	        	Assets.buttons.add( g.newImage("cooking/Hard/buttons/black.png", ImageFormat.RGB565)); 
@@ -51,6 +54,10 @@ public class LoadingScreen extends Screen {
 
 	        	Assets.frosting.add( g.newImage("cooking/Hard/frosting/black.png", ImageFormat.RGB565)); 
 	        	Assets.frosting.add( g.newImage("cooking/Hard/frosting/white.png", ImageFormat.RGB565)); 
+	        	
+	        	Assets.sound.add(game.getAudio().createSound("cooking/Sounds/color_itim.mp3"));
+	        	Assets.sound.add(game.getAudio().createSound("cooking/Sounds/color_puti.mp3"));
+	        	
 	        	
 	        case "MEDIUM": 
 	        	
@@ -66,6 +73,8 @@ public class LoadingScreen extends Screen {
 	        	Assets.frosting.add( g.newImage("cooking/Medium/frosting/brown.png", ImageFormat.RGB565)); 
 	        	Assets.frosting.add(g.newImage("cooking/Medium/frosting/violet.png", ImageFormat.RGB565)); 
 	        	
+	        	Assets.sound.add(game.getAudio().createSound("cooking/Sounds/color_kayumanggi.mp3"));
+	        	Assets.sound.add(game.getAudio().createSound("cooking/Sounds/color_lila.mp3"));
 	        case "EASY":
 	        	
 	        	
@@ -89,6 +98,12 @@ public class LoadingScreen extends Screen {
 	        	Assets.sprinkles.add(g.newImage("cooking/Easy/sprinkles/green.png", ImageFormat.RGB565)); 
 	        	Assets.sprinkles.add(g.newImage("cooking/Easy/sprinkles/red.png", ImageFormat.RGB565)); 
 	        	Assets.sprinkles.add(g.newImage("cooking/Easy/sprinkles/yellow.png", ImageFormat.RGB565)); 
+	        	
+	        	//Assets.click = game.getAudio().createSound("explode.ogg");
+	        	Assets.sound.add(game.getAudio().createSound("cooking/Sounds/color_asul.mp3"));
+	        	Assets.sound.add(game.getAudio().createSound("cooking/Sounds/color_berde.mp3"));
+	        	Assets.sound.add(game.getAudio().createSound("cooking/Sounds/color_pula.mp3"));
+	        	Assets.sound.add(game.getAudio().createSound("cooking/Sounds/color_dilao.mp3"));
 	        	
 	        	Assets.nothingness = g.newImage("cooking/nothingness.png", ImageFormat.RGB565);
 	        break;
