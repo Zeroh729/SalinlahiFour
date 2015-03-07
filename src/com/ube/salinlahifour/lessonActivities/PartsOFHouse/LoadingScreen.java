@@ -7,6 +7,7 @@ import com.kilobolt.framework.Graphics;
 import com.kilobolt.framework.Screen;
 import com.kilobolt.framework.Graphics.ImageFormat;
 import com.ube.salinlahifour.Lesson;
+import com.ube.salinlahifour.lessonActivities.PartsOFHouse.Assets;
 
 public class LoadingScreen extends Screen {
 	private String activityLevel;
@@ -27,11 +28,52 @@ public class LoadingScreen extends Screen {
 	        //Assets.menu = g.newImage("menu.jpg", ImageFormat.RGB565);
 	        //Assets.click = game.getAudio().createSound("explode.ogg");
 	       // Assets.splashbg = g.newImage("splashbg.png", ImageFormat.RGB565);
-	        
+	        Assets.wrong = g.newImage("house/wrong.png", ImageFormat.RGB565);
 	        //Assets.menubg = g.newImage("menubg.png", ImageFormat.RGB565);
 	        switch(activityLevel){
 	        case "HARD":
-		 	       
+	        	Assets.roof = g.newImage("house/Medium/roof.png", ImageFormat.RGB565);
+	   	        Assets.roofholder = g.newImage("house/Medium/roofholder.png", ImageFormat.RGB565);
+		        Assets.roofholder_selected = g.newImage("house/Medium/roofholder_selected.png", ImageFormat.RGB565);
+		        Assets.roof_selected = g.newImage("house/Medium/roof_selected.png", ImageFormat.RGB565);
+	        	
+		        Assets.body = g.newImage("house/Easy/body.png", ImageFormat.RGB565);
+		        Assets.bodyholder = g.newImage("house/Easy/bodyholder.png", ImageFormat.RGB565);
+		        Assets.bodyholder_selected = g.newImage("house/Easy/bodyholder_selected.png", ImageFormat.RGB565);
+		        Assets.body_selected = g.newImage("house/Easy/body_selected.png", ImageFormat.RGB565);
+		        
+		        Assets.door = g.newImage("house/Easy/door.png", ImageFormat.RGB565);
+		        Assets.doorholder = g.newImage("house/Easy/doorholder.png", ImageFormat.RGB565);
+		        Assets.doorholder_selected = g.newImage("house/Easy/doorholder_selected.png", ImageFormat.RGB565);
+		        Assets.door_selected = g.newImage("house/Easy/door_selected.png", ImageFormat.RGB565);
+		        
+		        Assets.window = g.newImage("house/Easy/window.png", ImageFormat.RGB565);
+		        Assets.windowholder = g.newImage("house/Easy/windowholder.png", ImageFormat.RGB565);
+		        Assets.windowholder_selected = g.newImage("house/Easy/windowholder_selected.png", ImageFormat.RGB565);
+		        Assets.window_selected = g.newImage("house/Easy/window_selected.png", ImageFormat.RGB565);
+	        	Log.d("Loading Screen", "Loading Garage " + activityLevel);  
+	        	Assets.garage = g.newImage("house/Medium/garage.png", ImageFormat.RGB565);
+	        	Assets.garageholder = g.newImage("house/Medium/garageholder.png", ImageFormat.RGB565);
+	        	Assets.garage_selected = g.newImage("house/Medium/garage_selected.png", ImageFormat.RGB565);
+	        	Assets.garageholder_selected = g.newImage("house/Medium/garageholder_selected.png", ImageFormat.RGB565);
+	        	Log.d("Loading Screen", "Loading Garage...Done " + activityLevel); 
+	        	Log.d("Loading Screen", "Loading Fence " + activityLevel); 
+	        	Assets.fence = g.newImage("house/Medium/fence.png", ImageFormat.RGB565);
+	        	Assets.fenceholder = g.newImage("house/Medium/fenceholder.png", ImageFormat.RGB565);
+	        	Assets.fence_selected = g.newImage("house/Medium/fence_selected.png", ImageFormat.RGB565);
+	        	Assets.fenceholder_selected = g.newImage("house/Medium/fenceholder_selected.png", ImageFormat.RGB565);
+	        	Log.d("Loading Screen", "Loading Fence...Done " + activityLevel); 
+	        	Log.d("Loading Screen", "Medium loaded: " + activityLevel);
+		        //Assets.sound.add(game.getAudio().createSound("cooking/Sounds/color_puti.mp3"));
+	        	
+	        	Assets.dingding = game.getAudio().createSound("house/Sounds/house_dingding.mp3");
+	        	Assets.bintana = game.getAudio().createSound("house/Sounds/house_bintana.mp3");
+	        	Assets.bubong = game.getAudio().createSound("house/Sounds/house_bubong.mp3");
+	        	Assets.pinto = game.getAudio().createSound("house/Sounds/house_pinto.mp3");
+	        	
+	        	Assets.garahe = game.getAudio().createSound("house/Sounds/house_garahe.mp3");
+	        	Assets.bakod = game.getAudio().createSound("house/Sounds/house_bakod.mp3");
+	        	   
 	        	
 	        case "MEDIUM": 
 	        	Log.d("Loading Screen", "Medium loading");
@@ -69,7 +111,18 @@ public class LoadingScreen extends Screen {
 	        	Assets.fenceholder_selected = g.newImage("house/Medium/fenceholder_selected.png", ImageFormat.RGB565);
 	        	Log.d("Loading Screen", "Loading Fence...Done " + activityLevel); 
 	        	Log.d("Loading Screen", "Medium loaded: " + activityLevel);
-	        
+		        //Assets.sound.add(game.getAudio().createSound("cooking/Sounds/color_puti.mp3"));
+	        	
+	        	Assets.dingding = game.getAudio().createSound("house/Sounds/house_dingding.mp3");
+	        	Assets.bintana = game.getAudio().createSound("house/Sounds/house_bintana.mp3");
+	        	Assets.bubong = game.getAudio().createSound("house/Sounds/house_bubong.mp3");
+	        	Assets.pinto = game.getAudio().createSound("house/Sounds/house_pinto.mp3");
+	        	
+	        	Assets.garahe = game.getAudio().createSound("house/Sounds/house_garahe.mp3");
+	        	Assets.bakod = game.getAudio().createSound("house/Sounds/house_bakod.mp3");
+	        	Assets.hagdan = game.getAudio().createSound("house/Sounds/house_hagdan.mp3");
+	       // 	Assets.hardin = game.getAudio().createSound("house/Sounds/house_hardin.mp3");
+	        	
 	        	break;
 	        case "EASY":
 	        	Log.d("Loading Screen", "Easy loading");
@@ -92,6 +145,13 @@ public class LoadingScreen extends Screen {
 	        Assets.roof_selected = g.newImage("house/Easy/roof_selected.png", ImageFormat.RGB565);
 	        Assets.door_selected = g.newImage("house/Easy/door_selected.png", ImageFormat.RGB565);
 	        Assets.window_selected = g.newImage("house/Easy/window_selected.png", ImageFormat.RGB565);
+	        
+	        Assets.dingding = game.getAudio().createSound("house/Sounds/house_dingding.mp3");
+        	Assets.bintana = game.getAudio().createSound("house/Sounds/house_bintana.mp3");
+        	Assets.bubong = game.getAudio().createSound("house/Sounds/house_bubong.mp3");
+        	Assets.pinto = game.getAudio().createSound("house/Sounds/house_pinto.mp3");
+        	
+	        
 	        Log.d("Loading Screen", "Easy loaded");
 	        	
 	       
