@@ -20,31 +20,32 @@ public abstract class LessonItemLoader {
 			case "com.ube.salinlahifour.lessonActivities.Cooking":
 				switch(activityLevel){
 					case "HARD":
-						items.add(new Item(1, "Puso" , "Heart", "Which one is Puso", R.drawable.cooking_heart, 0, 0, LevelType.HARD));
-						items.add(new Item(2,"Linya" , "Line", "Which one is Linya", R.drawable.cooking_circle, 0, 0, LevelType.HARD));
+						items.add(new Item(5,"Kayumanggi" , "Brown", "", 0, R.raw.color_kayumanggi, 0, LevelType.HARD));
+						items.add(new Item(6,"Lila" , "Purple", "", 0, R.drawable.cooking_star, 0, LevelType.HARD));
 					case "MEDIUM":			
-						items.add(new Item(3,"Parihaba" , "Rectangle", "Which one is Parihaba", R.drawable.cooking_rectangle, 0, 0, LevelType.MEDIUM));
-						items.add(new Item(4,"Bituin" , "Star", "Which one is Bituin", R.drawable.cooking_star, 0, 0, LevelType.MEDIUM));
+						items.add(new Item(7, "Itim" , "Black", "", 0, R.raw.color_itim, R.raw.color_black, LevelType.MEDIUM));
+						items.add(new Item(8,"Puti" , "White", "", 0, R.raw.color_puti, R.raw.color_white, LevelType.MEDIUM));
 					case "EASY":	
-						items.add(new Item(5,"Tatsulok" , "Triangle", "Which one is Tatsulok", R.drawable.cooking_triangle, 0, 0, LevelType.EASY));
-						items.add(new Item(6,"Bilog" , "Circle", "Which one is Bilog", R.drawable.cooking_circle,0, 0, LevelType.EASY));
-						items.add(new Item(7,"Parisukat" , "Square", "Which one is Parisukat", R.drawable.cooking_square, 0, 0, LevelType.EASY));
+						items.add(new Item(1,"Asul" , "Blue", "", 0,R.raw.color_asul, R.raw.color_blue, LevelType.EASY));
+						items.add(new Item(2,"Berde" , "Green", "", 0,R.raw.color_berde, R.raw.color_green, LevelType.EASY));
+						items.add(new Item(3,"Pula" , "Red", "", 0, R.raw.color_pula, R.raw.color_red, LevelType.EASY));
+						items.add(new Item(4,"Dilaw" , "Yellow", "", 0, R.raw.color_dilao, R.raw.color_yellow, LevelType.EASY));
 				}
 				break;
 			case "com.ube.salinlahifour.lessonActivities.Family":
 				switch(activityLevel){
 					case "HARD":
-						items.add(new Item(8,"Tito" , "Uncle", "Can you find tito?", R.drawable.family_tito, R.raw.family_tito, R.raw.family_uncle, LevelType.HARD));
-						items.add(new Item(9,"Tita" , "Auntie", "Can you find tita?", R.drawable.family_tita, R.raw.family_tita, R.raw.family_aunt, LevelType.HARD));
+						items.add(new Item(8,"Tito" , "Uncle", "Can you find <font color=#299190>tito</font>?", R.drawable.family_tito, R.raw.family_tito, R.raw.family_uncle, LevelType.HARD));
+						items.add(new Item(9,"Tita" , "Auntie", "Can you find <font color=#299190>tita</font>?", R.drawable.family_tita, R.raw.family_tita, R.raw.family_aunt, LevelType.HARD));
 					case "MEDIUM":
-						items.add(new Item(5,"Lolo" , "Grandfather", "Can you find lolo?", R.drawable.family_lolo, R.raw.family_lolo, R.raw.family_grandfather, LevelType.MEDIUM));
-						items.add(new Item(6,"Lola" , "Grandmother", "Can you find Lola?", R.drawable.family_lola, R.raw.family_lola, R.raw.family_grandmother, LevelType.MEDIUM));
-						items.add(new Item(7,"Bunso" , "Youngest", "Can you find bunso?", R.drawable.family_bunso, R.raw.family_bunso, R.raw.family_youngestsibling, LevelType.MEDIUM));
+						items.add(new Item(5,"Lolo" , "Grandfather", "Can you <font color=#299190>find lolo</font>?", R.drawable.family_lolo, R.raw.family_lolo, R.raw.family_grandfather, LevelType.MEDIUM));
+						items.add(new Item(6,"Lola" , "Grandmother", "Can you <font color=#299190>find Lola</font>?", R.drawable.family_lola, R.raw.family_lola, R.raw.family_grandmother, LevelType.MEDIUM));
+						items.add(new Item(7,"Bunso" , "Youngest", "Can you <font color=#299190>find bunso</font>?", R.drawable.family_bunso, R.raw.family_bunso, R.raw.family_youngestsibling, LevelType.MEDIUM));
 					case "EASY":
-						items.add(new Item(1,"Nanay" , "Mother", "Can you find nanay?", R.drawable.family_nanay, R.raw.family_nanay, R.raw.family_mother, LevelType.EASY));
-						items.add(new Item(2,"Tatay" , "Father", "Can you find tatay?", R.drawable.family_tatay, R.raw.family_tatay, R.raw.family_father, LevelType.EASY));
-						items.add(new Item(3,"Kuya" , "Brother", "Can you find kuya?", R.drawable.family_kuya, R.raw.family_kuya, R.raw.family_olderbrother, LevelType.EASY));
-						items.add(new Item(4,"ate" , "Sister", "Can you find ate?", R.drawable.family_ate, R.raw.family_ate, R.raw.family_oldersister, LevelType.EASY));
+						items.add(new Item(1,"Nanay" , "Mother", "Can you find <font color=#299190>nanay</font>?", R.drawable.family_nanay, R.raw.family_nanay, R.raw.family_mother, LevelType.EASY));
+						items.add(new Item(2,"Tatay" , "Father", "Can you find <font color=#299190>tatay</font>?", R.drawable.family_tatay, R.raw.family_tatay, R.raw.family_father, LevelType.EASY));
+						items.add(new Item(3,"Kuya" , "Brother", "Can you find <font color=#299190>kuya</font>?", R.drawable.family_kuya, R.raw.family_kuya, R.raw.family_olderbrother, LevelType.EASY));
+						items.add(new Item(4,"ate" , "Sister", "Can you find <font color=#299190>ate</font>?", R.drawable.family_ate, R.raw.family_ate, R.raw.family_oldersister, LevelType.EASY));
 				}	
 				break;
 			case "com.ube.salinlahifour.lessonActivities.House":
@@ -54,18 +55,18 @@ public abstract class LessonItemLoader {
 						items.add(new Item(8,"Bakuran" , "fence", "Where is bakuran?", R.drawable.house_blue, 0, 0, LevelType.HARD));
 						
 					case "MEDIUM":
-						items.add(new Item(5,"Garahe" , "Garage", "Where is garahe?", R.drawable.house_pink, 0, 0, LevelType.MEDIUM));
-						items.add(new Item(6,"Bakuran" , "fence", "Where is bakuran?", R.drawable.house_blue, 0, 0, LevelType.MEDIUM));
+						items.add(new Item(5,"Garahe" , "Garage", "Where is garahe?", R.drawable.house_pink, R.raw.house_garahe, R.raw.house_garage, LevelType.MEDIUM));
+						items.add(new Item(6,"Bakuran" , "fence", "Where is bakuran?", R.drawable.house_blue, R.raw.house_bakod, R.raw.house_fence, LevelType.MEDIUM));
 						
 					case "EASY":
-						items.add(new Item(1,"Bubong" , "Roof", "Where is Bubong?", R.drawable.house_pink, 0, 0, LevelType.EASY));
-						items.add(new Item(2,"Dingding" , "Wall", "Where is Dingding?", R.drawable.house_blue, 0, 0, LevelType.EASY));
-						items.add(new Item(3,"Pintuan" , "Door", "Where is Pintuan?", R.drawable.house_skobe, 0, 0, LevelType.EASY));
-						items.add(new Item(4,"Bintana" , "Window", "Where is Bintana?", R.drawable.house_yellow, 0, 0, LevelType.EASY));
+						items.add(new Item(1,"Bubong" , "Roof", "Where is Bubong?", R.drawable.roof_selected, R.raw.house_bubong, R.raw.house_roof, LevelType.EASY));
+						items.add(new Item(2,"Dingding" , "Wall", "Where is Dingding?", R.drawable.body_selected, R.raw.house_dingding, R.raw.house_walls, LevelType.EASY));
+						items.add(new Item(3,"Pinto" , "Door", "Where is Pinto?", R.drawable.door_selected, R.raw.house_pinto, R.raw.house_door, LevelType.EASY));
+						items.add(new Item(4,"Bintana" , "Window", "Where is Bintana?", R.drawable.window_selected, R.raw.house_bintana, R.raw.house_windows, LevelType.EASY));
 					
 							}
 				break;
-			case "com.ube.salinlahifour.lessonActivities.Shape":
+			case "com.ube.salinlahifour.lessonActivities.Music":
 				switch(activityLevel){
 					case "HARD":
 					case "MEDIUM":
