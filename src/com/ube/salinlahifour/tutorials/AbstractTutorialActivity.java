@@ -2,6 +2,8 @@ package com.ube.salinlahifour.tutorials;
 
 import java.util.ArrayList;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -11,13 +13,18 @@ import android.media.SoundPool;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.View.*;
 
 import com.ube.salinlahifour.Item;
+import com.ube.salinlahifour.Lesson;
 import com.ube.salinlahifour.LessonItemLoader;
+import com.ube.salinlahifour.R;
+import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.tutorials.*;
 import com.ube.salinlahifour.enumTypes.LevelType;
 
 public abstract class AbstractTutorialActivity extends Activity {
+	protected Lesson lesson;
 	protected ArrayList<SoundPool> voiceovers;
 	protected ArrayList<Item> items;
 	protected ArrayList<String> description;
@@ -26,6 +33,10 @@ public abstract class AbstractTutorialActivity extends Activity {
 	protected String activityLevel;
 	protected int layoutID;
 	protected int UserID;
+	boolean isBackVisibleimageView1 = false; // Boolean variable to check if the back image is vis
+	boolean isBackVisibleimageView2 = false; // Boolean variable to check if the back image is vis
+	boolean isBackVisibleimageView3 = false; // Boolean variable to check if the back image is vis
+	boolean isBackVisibleimageView4 = false; // Boolean variable to check if the back image is vis
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +52,16 @@ public abstract class AbstractTutorialActivity extends Activity {
 		Bundle bundle = getIntent().getExtras();
 
 		UserID = bundle.getInt("UserID");
-		activityClass = bundle.getString("activityClass");
+		//QQ Testing Retreiving Lesson class
+		lesson = (Lesson) bundle.getParcelable("lesson");
+		activityClass = lesson.getActivity();
 		activityLevel = bundle.getString("activityLevel");
+		Log.d("LESSON Name: ", lesson.getName());
 		
-		activityName = activityClass.replace("com.ube.salinlahifour.lessonActivities.", "");
+		activityName = lesson.getName();
 		
 		Log.d(activityClass, "TEST ActivityName");
-		items = LessonItemLoader.getLessonItems(this, activityClass, activityLevel);
+		items = LessonItemLoader.getLessonItems(activityClass, activityLevel);
 		
 		if(items == null){
 			errorPopup("Lesson Items Insufficient", LessonItemLoader.getError());
@@ -78,7 +92,10 @@ public abstract class AbstractTutorialActivity extends Activity {
 			intent.putExtra("activityName", activityName);
 			intent.putExtra("UserID", UserID);
 			intent.putExtra("activityLevel", activityLevel);
-			Log.d(activityClass, "TEST passing from ActivityName");
+ 			Bundle bundle = new Bundle();
+ 			bundle.putParcelable("lesson", lesson);
+ 			intent.putExtras(bundle);
+ 			
 			startActivity(intent);
 		}catch(Exception e){
 			errorPopup("Activity Error", "Check if:\n"
@@ -99,6 +116,21 @@ public abstract class AbstractTutorialActivity extends Activity {
 			}
 			});
 		builder.show();
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		SalinlahiFour.getBgm().start();
+	}
+
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		SalinlahiFour.getBgm().pause();
 	}
 
 	abstract protected void setEasyTutorial();

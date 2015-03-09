@@ -29,14 +29,50 @@
 <Lesson_Num>
     <entry>2</entry>
     <Lesson_Name>Parts of The House</Lesson_Name>
-    <Lesson_PreReq>1</Lesson_PreReq>
+    <Lesson_PreReq>0</Lesson_PreReq>
      <Q_List>
      <qentry>1</qentry>
      <qentry>2</qentry>
      <qentry>3</qentry>
      <qentry>4</qentry>
+     <qentry>5</qentry>
+     <qentry>6</qentry>
      </Q_List>
     <Summary>Know what you call the parts of your house in Filipino</Summary>
+</Lesson_Num>
+<Lesson_Num>
+    <entry>3</entry>
+    <Lesson_Name>Bake a Cake</Lesson_Name>
+    <Lesson_PreReq>0</Lesson_PreReq>
+     <Q_List>
+     <qentry>1</qentry>
+     <qentry>2</qentry>
+     <qentry>3</qentry>
+     <qentry>4</qentry>
+     <qentry>5</qentry>
+     <qentry>6</qentry>
+     <qentry>7</qentry>
+     <qentry>8</qentry>
+     </Q_List>
+    <Summary>Know the colors used in filipino</Summary>
+</Lesson_Num>
+<Lesson_Num>
+    <entry>4</entry>
+    <Lesson_Name>Spaceshape</Lesson_Name>
+    <Lesson_PreReq>0</Lesson_PreReq>
+     <Q_List>
+     <qentry>1</qentry>
+     <qentry>2</qentry>
+     <qentry>3</qentry>
+     <qentry>4</qentry>
+     <qentry>5</qentry>
+     <qentry>6</qentry>
+     <qentry>7</qentry>
+     <qentry>8</qentry>
+     <qentry>9</qentry>
+     <qentry>10</qentry>
+     </Q_List>
+    <Summary>Battle aliens using the correct shape together with po</Summary>
 </Lesson_Num>
 </type>
 

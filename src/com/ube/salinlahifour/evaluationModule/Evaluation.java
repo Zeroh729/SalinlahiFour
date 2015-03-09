@@ -21,44 +21,69 @@ import iFeedback.iFeedback;
 
 public class Evaluation {
 	
-	protected iFeedback NLG;
-	
+	protected iFeedback NLG;	
 	
 	SharedPreferences prefs;
 	//private Narration narration = new Narration();
 	private int score = 0;
 	private int totscore = 0;
+	private Context context;
 	private Item item;
 	private String LessonName;
 	private String status = "Incorrect";
+	private StarType star;
 	private UserLessonProgress userLessonProgressor = new UserLessonProgress();
 	
-	public Evaluation(iFeedback NLG, String LessonName, String activityLevel){	
-		this.NLG = NLG;
+	public Evaluation(Context context, String LessonName, String activityLevel){	
+		//this.NLG = NLG;
+		this.context = context;
+		NLG = new iFeedback();
+		NLG.readProperties();
 		this.LessonName = LessonName;
 		
 	}
-	public void recordUserAnswer(String LessonName, String correctAnswer, String Status, UserRecordOperations userRecordOperator, int UserID){	
-		
+	public void recordUserAnswer(String LessonName, String correctAnswer, String Status, int UserID){	
+		Log.d("Recording: Lesson Name: " + LessonName, "TEST");
+		UserRecordOperations userRecordOperator = new UserRecordOperations(context);
+		userRecordOperator.open();
 		userRecordOperator.addUserRecord(UserID, LessonName, correctAnswer, Status);
+		userRecordOperator.close();
 	}
 	
-	public void updateUserLessonProgress(String LessonName, String activityLevel, UserLessonProgressOperations userLessonProgressOperator, int UserID){
-		String star;
-		if(score <= totscore/2)
-			star = StarType.BRONZE.toString();
-		else if(score >= totscore/2 && score != totscore)
-			star = StarType.SILVER.toString();
-		else 
-			star = StarType.GOLD.toString();
+	public void updateUserLessonProgress(String lessonName, String activityLevel, int UserID){
+		String easyStar;
+		String mediumStar;
+		String hardStar;
 		
-		if(activityLevel == LevelType.EASY.toString())
-				userLessonProgressOperator.addUserLessonProgress(UserID, LessonName, star, null, null);
-			else if(activityLevel == LevelType.MEDIUM.toString())
-				userLessonProgressOperator.addUserLessonProgress(UserID, LessonName, null, star, null);
-			else
-				userLessonProgressOperator.addUserLessonProgress(UserID, LessonName, null, null, star);
-		} 
+		if(score <= totscore/2)
+			star = StarType.BRONZE;
+		else if(score >= totscore/2 && score != totscore)
+			star = StarType.SILVER;
+		else 
+			star = StarType.GOLD;
+		
+		UserLessonProgressOperations userLessonProgressOperator = new UserLessonProgressOperations(context);
+		userLessonProgressOperator.open();
+
+		if(userLessonProgressOperator.getUserLessonProgress(UserID, lessonName) == null){
+			userLessonProgressOperator.addUserLessonProgress(UserID, lessonName, star.toString(), null, null);
+		}else{
+			easyStar = userLessonProgressOperator.getUserLessonProgress(UserID, lessonName).getEasyStar();
+			mediumStar = userLessonProgressOperator.getUserLessonProgress(UserID, lessonName).getMediumStar();
+			hardStar = userLessonProgressOperator.getUserLessonProgress(UserID, lessonName).getHardStar();
+			if(activityLevel == LevelType.EASY.toString()){
+					userLessonProgressOperator.updateUserLessonProgress(UserID, lessonName, star.toString(), mediumStar, hardStar);
+			}
+			else if(activityLevel == LevelType.MEDIUM.toString()){
+				userLessonProgressOperator.updateUserLessonProgress(UserID, lessonName, easyStar, star.toString(), hardStar);
+			}
+			else{
+				easyStar = userLessonProgressOperator.getUserLessonProgress(UserID, lessonName).getEasyStar();
+				userLessonProgressOperator.updateUserLessonProgress(UserID, lessonName, easyStar, mediumStar, star.toString());
+			}
+		}
+		userLessonProgressOperator.close();
+	} 
 	
 	private Item getMostImprovedItem(){
 		Item item = null;
@@ -80,6 +105,7 @@ public class Evaluation {
 	public String getEndofActivityFeedback(int score, int lessonNumber){
 		String Feedback = null;
 		try {
+			
 			Feedback = NLG.GenerateDelayedFeedback(score, lessonNumber);
 		} catch (JDOMException | IOException e) {
 			// TODO Auto-generated catch block
@@ -87,13 +113,14 @@ public class Evaluation {
 		}
 		return Feedback;
 	}
-	public boolean evaluateAnswer(String CorrectAnswer, String UserAnswer, UserRecordOperations userRecordOperator, int UserID){
+	
+	public boolean evaluateAnswer(String CorrectAnswer, String UserAnswer, int UserID){
 		if(CorrectAnswer.equals(UserAnswer)){
 			score++;
 			totscore++;
 			status = "Correct";
 			Log.d("Evaluation","Updating User Record");
-			recordUserAnswer(LessonName, CorrectAnswer, status, userRecordOperator, UserID);
+			recordUserAnswer(LessonName, CorrectAnswer, status, UserID);
 			Log.d("Evaluation","Updated User Record");
 			return true;
 		}
@@ -101,7 +128,7 @@ public class Evaluation {
 			status = "Incorrect";
 			totscore++;
 			Log.d("Evaluation","Updating User Record");
-			recordUserAnswer(LessonName, CorrectAnswer, status, userRecordOperator, UserID);
+			recordUserAnswer(LessonName, CorrectAnswer, status, UserID);
 			Log.d("Evaluation","Updating User Record");
 			return false;
 		}
@@ -110,6 +137,16 @@ public class Evaluation {
 	public int getScore()
 	{
 		return score;
+	}
+	
+	public int getTotalScore()
+	{
+		return totscore;
+	}
+	
+	public StarType getStar()
+	{
+		return star;
 	}
 
 	

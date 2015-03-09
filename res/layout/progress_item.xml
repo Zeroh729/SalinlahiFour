@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp" >
+    
+    <RelativeLayout
+    	android:id="@+id/layout_lessonname"
+    	android:layout_width="match_parent"
+    	android:layout_height="match_parent"
+        >
+        <TextView 
+            android:id="@+id/tv_lessonname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Family"
+            android:textSize="27sp"
+            android:textColor="#FFFFFF"/>
+        <ImageView 
+            android:id="@+id/lesson_easystar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_lessonname"
+            android:layout_alignBottom="@id/tv_lessonname"
+            android:layout_alignTop="@id/tv_lessonname"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/map_star_gold"/>
+        <ImageView 
+            android:id="@+id/lesson_medstar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/lesson_easystar"
+            android:layout_alignBottom="@id/tv_lessonname"
+            android:layout_alignTop="@id/tv_lessonname"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/map_star_gold"/>
+        <ImageView 
+            android:id="@+id/lesson_hardstar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/lesson_medstar"
+            android:layout_alignBottom="@id/tv_lessonname"
+            android:layout_alignTop="@id/tv_lessonname"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/map_star_bronze"/>
+    </RelativeLayout>
+    
+    <LinearLayout
+        android:id="@+id/layout_lessonitems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1.0">
+        
+        <TextView
+            android:id="@+id/tv_lessonitem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:text="Kuya"
+            android:textSize="22sp"
+            android:textColor="#FFFFFF"
+            android:layout_weight="0.7"
+            />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:progressDrawable="@drawable/style_progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@id/tv_lessonitem"
+            android:layout_alignTop="@id/tv_lessonitem"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/tv_lessonitem"
+            android:progress="15"
+            android:layout_weight="0.3" />
+
+    </LinearLayout>
+
+</RelativeLayout>

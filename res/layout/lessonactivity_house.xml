@@ -6,14 +6,14 @@
     android:background="@drawable/house_bg" >
     
     <RelativeLayout
-        android:id="@+id/relative_view" 
-     android:layout_width="wrap_content"
+    android:id="@+id/relative_view" 
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content" 
     android:gravity="center"
     android:layout_centerInParent="true">
     
     <ImageButton
-        android:id="@+id/ib_pink"
+        android:id="@+id/house_choice1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/house_pink"
@@ -21,30 +21,30 @@
         android:onClick="onClick" />
 
     <ImageButton
-        android:id="@+id/ib_blue" 
+        android:id="@+id/house_choice2" 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/house_blue"
-        android:layout_toRightOf="@+id/ib_pink"
+        android:layout_toRightOf="@+id/house_choice1"
         android:background="@null"
         android:onClick="onClick"
         />
     <ImageButton
-        android:id="@+id/ib_skobe" 
+        android:id="@+id/house_choice3" 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/house_skobe"
-        android:layout_below="@+id/ib_pink"
+        android:layout_below="@+id/house_choice1"
         android:background="@null"
         android:onClick="onClick"
         />
     <ImageButton
-        android:id="@+id/ib_yellow" 
+        android:id="@+id/house_choice4" 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/house_yellow"
-        android:layout_toRightOf="@+id/ib_skobe"
-        android:layout_below="@+id/ib_blue"
+        android:layout_toRightOf="@+id/house_choice3"
+        android:layout_below="@+id/house_choice2"
         android:background="@null"
         android:onClick="onClick"
         />

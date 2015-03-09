@@ -2,39 +2,66 @@ package com.ube.salinlahifour;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.XmlResourceParser;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.LinearLayout.LayoutParams;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.qwerjk.better_text.MagicTextView;
+import com.ube.salinlahifour.database.UserLessonProgressOperations;
 import com.ube.salinlahifour.debugclasses.DebugUserModuleActivity;
 import com.ube.salinlahifour.enumTypes.LevelType;
+import com.ube.salinlahifour.enumTypes.StarType;
+import com.ube.salinlahifour.model.UserLessonProgress;
+import com.ube.salinlahifour.uibuilders.Button.BtnStatesDirector;
+import com.ube.salinlahifour.uibuilders.Button.EasyBtnStatesBuilder;
+import com.ube.salinlahifour.uibuilders.Button.HardBtnStatesBuilder;
+import com.ube.salinlahifour.uibuilders.Button.LogoutBtnStatesBuilder;
+import com.ube.salinlahifour.uibuilders.Button.MediumBtnStatesBuilder;
+import com.ube.salinlahifour.uibuilders.Button.PopupcloseBtnStatesBuilder;
+import com.ube.salinlahifour.uibuilders.Button.ProgressBtnStatesBuilder;
 
 public class MapActivity extends Activity implements OnClickListener{
 	private ArrayList<Scene> scenes;
 	private ImageButton[] imgBtns;
 	private TextView[] txtViews;
 	private Scene scene;
-
+	private ImageButton btn_progress;
+	private ImageButton btn_logout;
+	
+	private PopupWindow popupWindow;
+	private View popupView;
+	private MagicTextView tv_title;
+	private TextView tv_desc;
+	private ImageButton btn_popupclose;
+	private ImageButton btn_easy;
+	private ImageButton btn_medium;
+	private ImageButton btn_hard;
+	private ImageView img_popupmap;
+	
 	private int UserID;
 	private Intent intent = null;
 
@@ -47,6 +74,7 @@ public class MapActivity extends Activity implements OnClickListener{
 		if (extras != null) {
 		    UserID = extras.getInt("UserID");
 		}
+		
 		imgBtns = new ImageButton[5];
 		txtViews = new TextView[5];
 
@@ -55,75 +83,109 @@ public class MapActivity extends Activity implements OnClickListener{
 		anchor = (ImageButton) findViewById(R.id.anchor);
 		if(((SalinlahiFour)getApplication()).getLoggedInUser() == null){
     		Intent intent = new Intent();
-    		intent.setClass(getApplicationContext(), RegistrationActivity.class);
+    		intent.setClass(getApplicationContext(), RegistrationActivityName.class);
     		startActivity(intent);
 		}else{
 	        Toast toast = Toast.makeText(getApplicationContext(), "Welcome " + ((SalinlahiFour)getApplication()).getLoggedInUser().getName() + "!!!", Toast.LENGTH_SHORT);
 	        toast.show();
 			
-			Log.d("PasringXML","TestTestTest");
-			try {
-				parseXML();
-			} catch (XmlPullParserException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			setLayout();
-		Log.d("PasringXML","TestTestTest");
 		try {
 			parseXML();
+			setLevelStatuses();
+			
+
 		} catch (XmlPullParserException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		setLayout();
-		
-		
-		 final ImageButton btnOpenPopup = (ImageButton)findViewById(R.id.account_btn);
-	        btnOpenPopup.setOnClickListener(new ImageButton.OnClickListener(){
 
-	   @Override
-	   public void onClick(View view) {
-	    LayoutInflater layoutInflater = (LayoutInflater)getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);  
-	    View popupView = layoutInflater.inflate(R.layout.map_widgets, null);  
-	             final PopupWindow popupWindow = new PopupWindow(popupView, LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);  
-	             //popupWindow.dismiss();
-	             popupWindow.setOutsideTouchable(true);
-	             popupWindow.setBackgroundDrawable(new BitmapDrawable());
-	             ImageButton reg_btn = (ImageButton)popupView.findViewById(R.id.btn_register_widget);
-	             reg_btn.setOnClickListener(new ImageButton.OnClickListener(){
-	        	     @Override
-	        	     public void onClick(View v) {
-	        	      // TODO Auto-generated method stub
-	        	    	 navigateWidget(1);
-	        	      popupWindow.dismiss();
-	        	     }});
-	             ImageButton out_btn = (ImageButton)popupView.findViewById(R.id.btn_logout_widget);
-	             out_btn.setOnClickListener(new ImageButton.OnClickListener(){
-
-	        	     @Override
-	        	     public void onClick(View v) {
-	        	      // TODO Auto-generated method stub
-	        	    	 navigateWidget(2);
-	        	      popupWindow.dismiss();
-	        	     }});
-	        
-	             popupWindow.showAsDropDown(btnOpenPopup, 50, -30);
-	         
-	   }});
+		
+		if(SalinlahiFour.getLoggedInUser().getGender().equals("female")){
+			findViewById(R.id.account_btn).setBackgroundResource(R.drawable.map_hud_pepay_talking);
+		}else{
+			findViewById(R.id.account_btn).setBackgroundResource(R.drawable.map_hud_popoi_talking);
 		}
 		
+		instantiateViews();
+		}
+		scene = scenes.get(0);
+	}
+	
+
+	private void setLevelStatuses() {
+		UserLessonProgressOperations userdb = new UserLessonProgressOperations(this);
+		userdb.open();
+		for(Scene scene : scenes){
+			for(int i = 0; i < scene.getLessons().size(); i++){
+				if(scene.getLessons().get(i).getLocked()){
+					UserLessonProgress progress = userdb.getUserLessonProgress(UserID, scene.getLessons().get(i).getName());
+					if(progress != null){
+						scene.getLessons().get(i).setLocked(false);
+						if(progress.getHardStar() != null){
+							if(progress.getHardStar().equals(StarType.SILVER.toString()) || progress.getHardStar().equals(StarType.GOLD.toString()))
+								if((i+1) < scene.getLessons().size())
+								scene.getLessons().get(i+1).setLocked(false);
+						}
+					}else{
+						scene.getLessons().get(i).setLocked(false);
+					}
+					try{
+						scene.getLessons().get(0).setLocked(false);
+					}catch(Exception e){
+						
+					}
+				}
+//				scene.getLessons().get(i).setLocked(false);
+			}
+		}
+		userdb.close();
+	}
+
+
+	private void instantiateViews() {
+		btn_logout = (ImageButton)findViewById(R.id.btn_logout);
+		btn_progress = (ImageButton)findViewById(R.id.btn_progress);
+
+		btn_logout.setImageDrawable(BtnStatesDirector.getImageDrawable(new LogoutBtnStatesBuilder()));
+		btn_progress.setImageDrawable(BtnStatesDirector.getImageDrawable(new ProgressBtnStatesBuilder()));
+	}
+
+	public void instantiatePopupView(){
+		LayoutInflater layoutInflater = (LayoutInflater)getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);  
+	    popupView = layoutInflater.inflate(R.layout.activity_difficulty, null);
+	    
+		popupWindow = new PopupWindow(popupView, LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);  
+        popupWindow.setOutsideTouchable(false);
+        popupWindow.setBackgroundDrawable(new BitmapDrawable());
+        
+	    
+		btn_easy = (ImageButton)popupView.findViewById(R.id.btn_easy);
+		btn_medium = (ImageButton)popupView.findViewById(R.id.btn_med);
+		btn_hard = (ImageButton)popupView.findViewById(R.id.btn_hard);
+		btn_popupclose = (ImageButton)popupView.findViewById(R.id.btn_popupclose);
+		img_popupmap = (ImageView)popupView.findViewById(R.id.popup_mapimg);
+
+	    tv_desc = (TextView)popupView.findViewById(R.id.tv_description);
+	    tv_desc.setTypeface(SalinlahiFour.getFontBpreplay());
+	    tv_title = (MagicTextView)popupView.findViewById(R.id.tv_title);
+		for(int i = 0; i < 30; i++)
+			tv_title.addOuterShadow(5, 0, 0, 0xFF164366);
+		tv_title.setTypeface(SalinlahiFour.getFontKgsecondchances());
+
+		btn_popupclose.setImageDrawable(BtnStatesDirector.getImageDrawable(new PopupcloseBtnStatesBuilder()));
+		btn_easy.setImageDrawable(BtnStatesDirector.getImageDrawable(new EasyBtnStatesBuilder()));
+		btn_medium.setImageDrawable(BtnStatesDirector.getImageDrawable(new MediumBtnStatesBuilder()));
+		btn_hard.setImageDrawable(BtnStatesDirector.getImageDrawable(new HardBtnStatesBuilder()));
+        
 	}
 	
 
 	public void navigateWidget(int choice){
 		switch(choice){
 		case 1: Log.d("debug", "register intent go!");
-				intent = new Intent(this, RegistrationActivity.class);
+				intent = new Intent(this, RegistrationActivityName.class);
 				startActivity(intent); 
 				break;
 		case 2: intent = new Intent(this, LoginActivity.class);
@@ -137,9 +199,11 @@ public class MapActivity extends Activity implements OnClickListener{
 		scenes = new ArrayList();
 		scene = makeNewScene();
 		String lessonName = "";
+		String lessonDesc = "";
 		String activityName = "";
 		String value = "";
 		int lessonImgID = 0;
+		int lessonNumber = 0;
 		
 		XmlResourceParser parser = getResources().getXml(R.xml.lessonlist);
 		
@@ -156,17 +220,26 @@ public class MapActivity extends Activity implements OnClickListener{
         	 Log.d("Start tag "+parser.getName(), "TEST");
          } else if(eventType == XmlPullParser.END_TAG) {
         	 if(parser.getName().equals("Lesson")){
-        		 scene.addLesson(new Lesson(lessonName, activityName, lessonImgID));
+        		 lessonNumber++;
+        		 Lesson lesson = new Lesson();
+        		 lesson.setLocked(true);
+        		 scene.addLesson(lesson.setValues(lessonName, lessonDesc, activityName, lessonImgID, lessonNumber));
         		 lessonName = "";
+        		 lessonDesc = "";
         		 activityName = "";
         		 value = "";
         		 lessonImgID = 0;
+        		 if(scene.getLessons().size() > 5){
+        			 scene = makeNewScene();
+        		 }
         	 }else if(parser.getName().equals("Name")){
         		 lessonName = value;
         	 }else if(parser.getName().equals("Image")){
         		 lessonImgID = getResources().getIdentifier(value, "drawable", getPackageName());
         	 }else if(parser.getName().equals("ActivityName")){
         		 activityName = value;
+        	 }else if(parser.getName().equals("Description")){
+        		 lessonDesc = value;
         	 }
          } else if(eventType == XmlPullParser.TEXT) {
         	 value = parser.getText();
@@ -182,6 +255,9 @@ public class MapActivity extends Activity implements OnClickListener{
 		case 0:
 			scenes.add(new Scene(null, R.layout.scene_layout_1));
 			break;
+		default:
+			scenes.add(new Scene(null, R.layout.scene_layout_1));
+			break;
 		}
 		return scenes.get(scenes.size()-1);
 	}
@@ -193,23 +269,61 @@ public class MapActivity extends Activity implements OnClickListener{
 		imgBtns[2] = (ImageButton)findViewById(R.id.img_lesson3);
 		imgBtns[3] = (ImageButton)findViewById(R.id.img_lesson4);
 		imgBtns[4] = (ImageButton)findViewById(R.id.img_lesson5);
-		txtViews[0] = (TextView)findViewById(R.id.tv_lesson1);
-		txtViews[1] = (TextView)findViewById(R.id.tv_lesson2);
-		txtViews[2] = (TextView)findViewById(R.id.tv_lesson3);
-		txtViews[3] = (TextView)findViewById(R.id.tv_lesson4);
-		txtViews[4] = (TextView)findViewById(R.id.tv_lesson5);
+		
+		RelativeLayout parentView = (RelativeLayout)findViewById(R.id.parent_view);
+		float scale = getResources().getDisplayMetrics().density;
+		int paddingDp = (int) (7*scale + 0.5f);
 		
 		for(int i = 0; i < scene.getLessons().size(); i++){
-			imgBtns[i].setImageResource(scene.getLessons().get(i).getImage());
-			txtViews[i].setText(scene.getLessons().get(i).getName());
 			imgBtns[i].setVisibility(View.VISIBLE);
-			imgBtns[i].setOnClickListener(this);
+			if(!scene.getLessons().get(i).getLocked()){
+				imgBtns[i].setImageResource(scene.getLessons().get(i).getImage());
+				imgBtns[i].setTag(i);
+				imgBtns[i].setOnClickListener(this);
+				
+				LayoutParams p = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+				        ViewGroup.LayoutParams.WRAP_CONTENT);
+	
+				p.addRule(RelativeLayout.BELOW, imgBtns[i].getId());
+				p.addRule(RelativeLayout.ALIGN_LEFT, imgBtns[i].getId());
+				p.addRule(RelativeLayout.ALIGN_RIGHT, imgBtns[i].getId());
+				
+				txtViews[i] = new TextView(this);
+				txtViews[i].setText(scene.getLessons().get(i).getName());
+				txtViews[i].setTextAppearance(getApplicationContext(), R.style.mapLabel);
+				txtViews[i].setTypeface(SalinlahiFour.getFontPlaytime());
+			
+				txtViews[i].setLayoutParams(p);
+				txtViews[i].setBackgroundResource(R.drawable.map_labels);
+				
+				parentView.addView(txtViews[i]);
+			}else{
+				imgBtns[i].setImageResource(R.drawable.lesson0_icon);
+			}
 		}
 	}
 
 	@Override
 	public void onClick(View view) {
 		int index = -1;
+		
+//		SoundPoolManager.CreateInstance();
+//		List<Integer> sounds = new ArrayList<Integer>();
+//		sounds.add(R.raw.family_ate);
+//		SoundPoolManager.getInstance().setSounds(sounds);
+//		try {
+//		    SoundPoolManager.getInstance().InitializeSoundPool(this, new ISoundPoolLoaded() {
+//		        @Override
+//		        public void onSuccess() {
+//		        	SoundPoolManager.getInstance().playSound(R.raw.family_ate);
+//		        }
+//		    });
+//		} catch (Exception e) {
+//		    e.printStackTrace();
+//		}
+//		
+//		
+		
 		switch(view.getId()){
 			case R.id.img_lesson1:
 				index = 0;
@@ -231,68 +345,164 @@ public class MapActivity extends Activity implements OnClickListener{
 				startActivity(intent);
 				break;
 			case R.id.btn_register:
-				intent = new Intent(this, RegistrationActivity.class);
+				intent = new Intent(this, RegistrationActivityName.class);
 				startActivity(intent);
 				break;
 			case R.id.btn_logout:
 				intent = new Intent(this, LoginActivity.class);
 				startActivity(intent);
 				break;
+			case R.id.btn_progress:
+				int numLesson = 0;
+				for(Scene scene : scenes){
+					numLesson += scene.getLessons().size();
+				}
+				intent = new Intent(this, ProgressTreeActivity.class);
+				Bundle bundle = new Bundle();
+				ArrayList<Lesson> lessons = new ArrayList();
+				for(Scene scene : scenes)
+					for(Lesson lesson : scene.getLessons())
+						lessons.add(lesson);
+				bundle.putParcelableArrayList("lessons", lessons);
+				intent.putExtras(bundle);
+				startActivity(intent);
+				break;
+			case R.id.btn_popupclose:
+				popupWindow.dismiss();
+				break;
 		}
 		
 		
 		final int fIndex = index;
 		
-		if(index != -1){
-		//	selectLevelPopup(index);
-			imgBtns[index].setOnClickListener(new ImageButton.OnClickListener(){
+		if(index != -1){ //If lesson is pressed, continue
+//		//	selectLevelPopup(index);
+//			imgBtns[index].setOnClickListener(new ImageButton.OnClickListener(){
+//				
+//				   @Override
+//				   public void onClick(View view) {
 
-				   @Override
-				   public void onClick(View view) {
-				    LayoutInflater layoutInflater = (LayoutInflater)getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);  
-				    View popupView = layoutInflater.inflate(R.layout.activity_difficulty, null);  
-				             final PopupWindow popupWindow = new PopupWindow(popupView, LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);  
-				             //popupWindow.dismiss();
-				             popupWindow.setOutsideTouchable(true);
-				             popupWindow.setBackgroundDrawable(new BitmapDrawable());
-				             ImageButton easy = (ImageButton)popupView.findViewById(R.id.btn_easy_level);
+					instantiatePopupView();
+			
+				    final Lesson lessonDetails = scene.getLessons().get(Integer.parseInt(((ImageButton)view).getTag().toString()));				
+				    tv_title.setText(lessonDetails.getName());
+				    tv_desc.setText(lessonDetails.getDescription());
+				    img_popupmap.setImageResource(lessonDetails.getImage());
+				    
+				    Log.d("Pressed a lesson", "TEST");
+				    
+				             ImageButton easy = (ImageButton)popupView.findViewById(R.id.btn_easy);
 				             easy.setOnClickListener(new ImageButton.OnClickListener(){
 				        	     @Override
 				        	     public void onClick(View v) {
-				        	      // TODO Auto-generated method stub
-				        	    	 intent = new Intent(scene.getLessons().get(fIndex).getTutorial());
+				        	    	intent = new Intent(scene.getLessons().get(fIndex).getTutorial());
 				         			intent.putExtra("activityClass", scene.getLessons().get(fIndex).getActivity());
 				         			intent.putExtra("activityLevel", LevelType.EASY.toString());
+				         			Bundle bundle = new Bundle();
+				         			bundle.putParcelable("lesson", lessonDetails);
+				         			intent.putExtras(bundle);
 				         			startActivity(intent);
 				        	     }});
-				             ImageButton medium = (ImageButton)popupView.findViewById(R.id.btn_medium_level);
+				             ImageButton medium = (ImageButton)popupView.findViewById(R.id.btn_med);
 				             medium.setOnClickListener(new ImageButton.OnClickListener(){
 
 				        	     @Override
 				        	     public void onClick(View v) {
-				        	      // TODO Auto-generated method stub
 				        	    	 intent = new Intent(scene.getLessons().get(fIndex).getTutorial());
 				         			intent.putExtra("activityClass", scene.getLessons().get(fIndex).getActivity());
 				         			intent.putExtra("activityLevel", LevelType.MEDIUM.toString());
+				         			Bundle bundle = new Bundle();
+				         			bundle.putParcelable("lesson", lessonDetails);
+				         			intent.putExtras(bundle);
 				         			startActivity(intent);
 				        	     }});
-				             ImageButton hard = (ImageButton)popupView.findViewById(R.id.btn_hard_level);
+				             ImageButton hard = (ImageButton)popupView.findViewById(R.id.btn_hard);
 				             hard.setOnClickListener(new ImageButton.OnClickListener(){
 
 
 				        	     @Override
 				        	     public void onClick(View v) {
-				        	      // TODO Auto-generated method stub
 				        	    	 intent = new Intent(scene.getLessons().get(fIndex).getTutorial());
 				         			intent.putExtra("activityClass", scene.getLessons().get(fIndex).getActivity());
 				         			intent.putExtra("activityLevel", LevelType.HARD.toString());
+				         			Bundle bundle = new Bundle();
+				         			bundle.putParcelable("lesson", lessonDetails);
+				         			intent.putExtras(bundle);
 				         			startActivity(intent);
 				        	     }});
-				        
-				            popupWindow.showAsDropDown(imgBtns[fIndex],50,-100);
+				             
+				             UserLessonProgressOperations userdb = new UserLessonProgressOperations(this);
+				             userdb.open();
+				             UserLessonProgress lesson = userdb.getUserLessonProgress(SalinlahiFour.getLoggedInUser().getId(), lessonDetails.getName());
+				             
+				             if(lesson == null){
+				            	 lesson = new UserLessonProgress();
+				            	 lesson.setEasyStar(null);
+				             }
+					             if(lesson.getEasyStar() != null){
+					            	 switch(lesson.getEasyStar()){
+					            	 	case "GOLD":
+					            	 		((ImageView)popupView.findViewById(R.id.star1)).setImageResource(R.drawable.lvlselect_gold);
+					            	 		break;
+					            	 	case "SILVER":
+					            	 		((ImageView)popupView.findViewById(R.id.star1)).setImageResource(R.drawable.lvlselect_silver);
+					            	 		break;
+					            	 	case "BRONZE":
+					            	 		((ImageView)popupView.findViewById(R.id.star1)).setImageResource(R.drawable.lvlselect_bronze);
+					            	 		btn_medium.setEnabled(false);
+					            	 		btn_hard.setEnabled(false);
+					            	 		break;
+					            	 	default:
+					            	 		lesson.setEasyStar(null);
+					            	 		btn_medium.setEnabled(false);
+					            	 		btn_hard.setEnabled(false);
+					            	 }
+					             }else{
+				            	 	((ImageView)popupView.findViewById(R.id.star1)).setImageResource(R.drawable.lvlselect_null);
+			            	 		btn_medium.setEnabled(false);
+			            	 		btn_hard.setEnabled(false);
+					             }
+					             if(lesson.getMediumStar() != null){
+					            	 switch(lesson.getMediumStar()){
+					            	 	case "GOLD":
+					            	 		((ImageView)popupView.findViewById(R.id.star2)).setImageResource(R.drawable.lvlselect_gold);
+					            	 		break;
+					            	 	case "SILVER":
+					            	 		((ImageView)popupView.findViewById(R.id.star2)).setImageResource(R.drawable.lvlselect_silver);
+					            	 		break;
+					            	 	case "BRONZE":
+					            	 		((ImageView)popupView.findViewById(R.id.star2)).setImageResource(R.drawable.lvlselect_bronze);
+					            	 		btn_hard.setEnabled(false);
+					            	 		break;
+					            	 	default:
+					            	 		lesson.setMediumStar(null);
+					            	 }
+					             }else{
+				            	 	((ImageView)popupView.findViewById(R.id.star2)).setImageResource(R.drawable.lvlselect_null);
+			            	 		btn_hard.setEnabled(false);
+					             }
+					             if(lesson.getHardStar() != null){
+					            	 switch(lesson.getHardStar()){
+					            	 	case "GOLD":
+					            	 		((ImageView)popupView.findViewById(R.id.star3)).setImageResource(R.drawable.lvlselect_gold);
+					            	 		break;
+					            	 	case "SILVER":
+					            	 		((ImageView)popupView.findViewById(R.id.star3)).setImageResource(R.drawable.lvlselect_silver);
+					            	 		break;
+					            	 	case "BRONZE":
+					            	 		((ImageView)popupView.findViewById(R.id.star3)).setImageResource(R.drawable.lvlselect_bronze);
+					            	 		break;
+					            	 	default:
+					            	 		lesson.setHardStar(null);
+					            	 }
+					             }else{
+				            	 	((ImageView)popupView.findViewById(R.id.star3)).setImageResource(R.drawable.lvlselect_null);
+					             }
+				             
+				             userdb.close();
+				            popupWindow.showAsDropDown(popupView);
 				            
-				   }});
-		}
+			}
 	}
 	
 	private void errorPopup(Exception e, int index){
@@ -309,5 +519,21 @@ public class MapActivity extends Activity implements OnClickListener{
 			}
 		});
 		builder.show();
+	}
+
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		SalinlahiFour.getBgm().start();
+	}
+
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		SalinlahiFour.getBgm().pause();
 	}
 }

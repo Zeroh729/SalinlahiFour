@@ -1,4 +1,4 @@
-NSupportType=0
+NSupportType=4
 PSupportType=0
 AllowableMistakes=3
 PassingGrade=5
