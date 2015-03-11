@@ -494,20 +494,21 @@ containing a value of this type.
         public static final int activity_registration_gender=0x7f03000c;
         public static final int activity_registration_name=0x7f03000d;
         public static final int debug_listlayout_usermodule=0x7f03000e;
-        public static final int lessonactivity_cooking=0x7f03000f;
-        public static final int lessonactivity_family=0x7f030010;
-        public static final int lessonactivity_house=0x7f030011;
-        public static final int lessonactivity_music=0x7f030012;
-        public static final int lessonactivity_society=0x7f030013;
-        public static final int map_widgets=0x7f030014;
-        public static final int progress_item=0x7f030015;
-        public static final int reportcard=0x7f030016;
-        public static final int scene_layout_1=0x7f030017;
-        public static final int tutorial_cooking=0x7f030018;
-        public static final int tutorial_family=0x7f030019;
-        public static final int tutorial_house=0x7f03001a;
-        public static final int tutorial_music=0x7f03001b;
-        public static final int tutorial_society=0x7f03001c;
+        public static final int game_over=0x7f03000f;
+        public static final int lessonactivity_cooking=0x7f030010;
+        public static final int lessonactivity_family=0x7f030011;
+        public static final int lessonactivity_house=0x7f030012;
+        public static final int lessonactivity_music=0x7f030013;
+        public static final int lessonactivity_society=0x7f030014;
+        public static final int map_widgets=0x7f030015;
+        public static final int progress_item=0x7f030016;
+        public static final int reportcard=0x7f030017;
+        public static final int scene_layout_1=0x7f030018;
+        public static final int tutorial_cooking=0x7f030019;
+        public static final int tutorial_family=0x7f03001a;
+        public static final int tutorial_house=0x7f03001b;
+        public static final int tutorial_music=0x7f03001c;
+        public static final int tutorial_society=0x7f03001d;
     }
     public static final class menu {
         public static final int debug_user_module=0x7f0d0000;
@@ -611,6 +612,7 @@ containing a value of this type.
         public static final int title_activity_progress_tree=0x7f0b000d;
         public static final int title_activity_select_user=0x7f0b0002;
         public static final int title_activity_shape=0x7f0b0006;
+        public static final int title_gameover=0x7f0b000e;
     }
     public static final class style {
         /** 

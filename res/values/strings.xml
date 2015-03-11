@@ -15,6 +15,7 @@
     <string name="title_activity_debug_user_lesson_progress">DebugUserLessonProgressActivity</string>
     <string name="hello">Hello World, MagicTextViewActivity!</string>
     <string name="title_activity_progress_tree">ProgressTree</string>
+    <string name="title_gameover">Game Over</string>
     <string-array name="tutorial_family_easy">
         <item >Nanay - She is my mother. She usually cooks for the family</item>
         <item >Tatay - This is my father. He is the one that works for the family</item>

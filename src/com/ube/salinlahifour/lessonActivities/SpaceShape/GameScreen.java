@@ -30,7 +30,7 @@ public class GameScreen extends AbstractGameScreen  {
 	    // Variable Setup
 	    // You would create game objects here.
 	    static String activityName = "Shape";
-	    private int lessonNumber = 4;
+	    
 	    //String activityLevel;
 	   
 	    private Image bg;
@@ -51,7 +51,7 @@ public class GameScreen extends AbstractGameScreen  {
 	        this.userID = userID;
 	        this.activityLevel = activityLevel;
 	        Log.d("Aldrin ExtendedFramework", "Gamescreen constructor...");
-	        
+	        lessonNumber = 4;
 	    }
 
 		@Override
