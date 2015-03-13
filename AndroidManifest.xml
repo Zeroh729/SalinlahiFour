@@ -8,9 +8,9 @@
         android:minSdkVersion="11"
         android:targetSdkVersion="19" />
 
-		<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-		<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-		<uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -168,7 +168,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
         <activity
             android:name="com.ube.salinlahifour.lessonActivities.Animals"
             android:label="@string/title_activity_lesson"
@@ -197,6 +196,19 @@
             android:screenOrientation="landscape"
             android:theme="@style/AppBaseTheme" >
         </activity>
+        
+        
+        <activity
+            android:name="com.ube.salinlahifour.narrativeDialog.NarrativeDialog"
+            android:label="@string/title_activity_login" >
+        </activity>
+        
+        <activity
+            android:name="com.ube.salinlahifour.narrativeDialog.FamilyNarrativeActivity"
+            android:label="@string/title_activity_login" >
+        </activity>
+        
+        
         <activity
             android:name="com.ube.salinlahifour.LoginActivity"
             android:label="@string/title_activity_login"

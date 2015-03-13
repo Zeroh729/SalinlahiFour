@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <TextView
+        android:id="@+id/tv_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:background="#ffffff"
+        android:textSize="22sp"
+        android:padding="10dp"
+        android:gravity="center_horizontal"
+        />
+    
+    <ImageView
+        android:id="@+id/character1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:visibility="invisible"
+     />
+    
+    <ImageView
+        android:id="@+id/character2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/character1"
+        android:layout_alignBottom="@id/character1"
+        android:visibility="invisible"
+     />
+    <ImageView
+        android:id="@+id/character3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/character2"
+        android:layout_alignBottom="@id/character1"
+        android:visibility="invisible"
+     />
+    <ImageView
+        android:id="@+id/character4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/character3"
+        android:layout_alignBottom="@id/character1"
+        android:visibility="invisible"
+     />
+    
+    <ImageButton
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:onClick="next"
+        android:background="@null"
+        />
+
+</RelativeLayout>
