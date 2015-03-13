@@ -10,26 +10,26 @@
 		<Name>Cooking</Name>
 		<Image>lesson2_icon</Image>
 		<ActivityName>Cooking</ActivityName>
-		<Description>Bake a colorful cake!</Description>
+		<Description></Description>
 	</Lesson>
 	
 	<Lesson>
 		<Name>House</Name>
 		<Image>lesson2_icon</Image>
 		<ActivityName>House</ActivityName>
-		<Description>Build a house from the broken pieces!</Description>
+		<Description></Description>
 	</Lesson>
 	
 	<Lesson>
-		<Name>Space Shape</Name>
+		<Name>SpaceShape</Name>
 		<Image>lesson0_icon</Image>
 		<ActivityName>Shape</ActivityName>
-		<Description>Defeat the aliens in your space ship!</Description>
+		<Description></Description>
 	</Lesson>
 	<Lesson>
-		<Name>Zoo Cards</Name>
-		<Image>lesson1_icon</Image>
-		<ActivityName>Animals</ActivityName>
+		<Name>Society</Name>
+		<Image>lesson0_icon</Image>
+		<ActivityName>Society</ActivityName>
 		<Description></Description>
 	</Lesson>
 

@@ -168,27 +168,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.ube.salinlahifour.lessonActivities.Animals"
-            android:label="@string/title_activity_lesson"
-            android:screenOrientation="landscape" >
-            <intent-filter>
-                <action android:name="com.ube.salinlahifour.lessonActivities.Animals" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.ube.salinlahifour.tutorials.Animals"
-            android:label="@string/title_activity_abstract_tutorial"
-            android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
-            <intent-filter>
-                <action android:name="com.ube.salinlahifour.tutorials.Animals" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
         
         <activity
             android:name="com.ube.salinlahifour.debugclasses.DebugUserModuleActivity"

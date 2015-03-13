@@ -89,24 +89,6 @@ public abstract class LessonItemLoader {
 						items.add(new Item(4,"Bombero" , "Fireman", "Which one is Fireman", 0, 0, 0, LevelType.EASY));
 						items.add(new Item(5,"Pulis" , "Police", "Which one is police", 0, 0, 0, LevelType.EASY));
 				}
-				break;
-			case "com.ube.salinlahifour.lessonActivities.Animals":
-				switch(activityLevel){
-					case "HARD":
-						items.add(new Item(9,"Elefante" , "Elephant", "Match <font color=#376df7>elefante</font> with its English word, animal sound, and its picture.", R.drawable.animals_elephant, R.raw.animals_elefante, R.raw.animals_elephant, LevelType.HARD));
-						items.add(new Item(10,"Oso" , "Bear", "Match <font color=#376df7>oso</font> with its English word, animal sound, and its picture.", R.drawable.animals_bear, R.raw.animals_oso, R.raw.animals_bear, LevelType.HARD));
-					case "MEDIUM":		
-						items.add(new Item(5,"Palaka" , "Frog", "Match <font color=#376df7>palaka</font> with its English word, animal sound, and its picture.", R.drawable.animals_frog, R.raw.animals_palaka, R.raw.animals_frog, LevelType.MEDIUM));
-						items.add(new Item(6,"Unggoy" , "Monkey", "Match <font color=#376df7>unggoy</font> with its English word, animal sound, and its picture.", R.drawable.animals_monkey, R.raw.animals_unggoy, R.raw.animals_monkey, LevelType.MEDIUM));
-						items.add(new Item(7,"Ibon" , "Bird", "Match <font color=#376df7>ibon</font> with its English word, animal sound, and its picture.", R.drawable.animals_birl, R.raw.animals_ibon, R.raw.animals_bird, LevelType.MEDIUM));
-						items.add(new Item(8,"Daga" , "Mouse", "Match <font color=#376df7>daga</font> with its English word, animal sound, and its picture.", R.drawable.animals_mouse, R.raw.animals_daga, R.raw.animals_mouse, LevelType.MEDIUM));
-					case "EASY":	
-						items.add(new Item(1,"Pusa" , "Cat", "Match <font color=#376df7>pusa</font> with its English word, animal sound, and its picture.", R.drawable.animals_cat, R.raw.animals_pusa, R.raw.animals_cat, LevelType.EASY));
-						items.add(new Item(2,"Aso" , "Dog", "Match <font color=#376df7>aso</font> with its English word, animal sound, and its picture.", R.drawable.animals_dog, R.raw.animals_asp, R.raw.animals_dog, LevelType.EASY));
-						items.add(new Item(3,"Manok" , "Chicken", "Match <font color=#376df7>manok</font> with its English word, animal sound, and its picture.", R.drawable.animals_chicken, R.raw.animals_manok, R.raw.animals_chicken, LevelType.EASY));
-						items.add(new Item(4,"Kalabaw" , "Carabao", "Match <font color=#376df7>kalabaw</font> with its English word, animal sound, and its picture.", R.drawable.animals_carabao, R.raw.animals_kalabao, R.raw.animals_carabao, LevelType.EASY));
-				}
-				break;
 			default:
 				switch(activityLevel){
 					case "HARD":

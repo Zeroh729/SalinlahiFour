@@ -34,29 +34,6 @@ public class AnimatedButtonListener implements OnTouchListener{
 					break;
 				}
 				break;
-			case R.id.btn_english_up:
-			case R.id.btn_english_down:
-			case R.id.btn_sound_up:
-			case R.id.btn_sound_down:
-			case R.id.btn_picture_up:
-			case R.id.btn_picture_down:
-			case R.id.btn_filipino_up:
-			case R.id.btn_filipino_down:
-				switch(event.getAction()){
-				case MotionEvent.ACTION_DOWN:
-					animation = new TranslateAnimation(0, 0, 0, 10);
-					animation.setDuration(10);
-					animation.setFillAfter(true);
-					v.startAnimation(animation);
-					break;
-				case MotionEvent.ACTION_UP:
-				case MotionEvent.ACTION_CANCEL:
-					animation = new TranslateAnimation(0,0,0,10);
-					v.startAnimation(animation);
-					YoYo.with(Techniques.Bounce).playOn(v);
-					break;
-				}
-				break;
 			
 			default:
 				switch(event.getAction()){
