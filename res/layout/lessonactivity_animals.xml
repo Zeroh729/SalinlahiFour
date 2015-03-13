@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    android:background="@drawable/animals_bg"
+    
+    >
+    
+    <TextView 
+        android:id="@+id/tv_questionno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5"
+        android:textSize="45sp"
+        android:layout_toLeftOf="@+id/tv_score"
+        android:layout_alignTop="@+id/tv_score"
+        android:layout_marginRight="5dp"
+        android:textColor="#163c8b"
+        />
+    
+    <TextView 
+        android:id="@+id/tv_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" / 10"
+        android:textSize="30sp"
+        android:layout_alignParentRight="true"
+        android:textColor="#163c8b"
+        />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_score"
+        android:layout_marginTop="-10dp"
+        android:gravity="center_horizontal"
+        >
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+	            
+		    <ImageButton 
+		        android:id="@+id/btn_english_up"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/animal_btn_yellow"
+		        android:layout_alignLeft="@+id/btn_englishcard"
+		        android:layout_alignRight="@+id/btn_englishcard"
+		        android:layout_alignParentTop="true"
+		        android:layout_marginBottom="16dp"
+       			android:paddingTop="30dp"
+		        android:background="@null"
+		        />
+			<ImageButton
+		        android:id="@+id/btn_englishcard"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:background="@null"
+		        android:src="@drawable/animals_eng_chicken"
+		        android:layout_marginRight="40dp"
+		        android:layout_below="@id/btn_english_up"
+		        />
+		    
+		    <ImageButton 
+		        android:id="@+id/btn_english_down"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/animal_btn_yellow_down"
+		        android:layout_below="@id/btn_englishcard"
+		        android:layout_alignLeft="@id/btn_englishcard"
+		        android:layout_alignRight="@id/btn_englishcard"
+		        android:layout_marginTop="16dp"
+       			android:paddingBottom="10dp"
+		        android:background="@null"
+		        />
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+	            
+		    <ImageButton 
+		        android:id="@+id/btn_sound_up"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/animal_btn_green"
+		        android:layout_alignLeft="@+id/btn_soundcard"
+		        android:layout_alignRight="@+id/btn_soundcard"
+		        android:layout_alignParentTop="true"
+		        android:layout_marginBottom="16dp"
+       			android:paddingTop="30dp"
+		        android:background="@null"
+		        />
+			<ImageButton
+		        android:id="@+id/btn_soundcard"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:background="@null"
+		        android:src="@drawable/animals_sound_cat"
+		        android:layout_marginRight="40dp"
+		        android:layout_below="@id/btn_sound_up"
+		        />
+		    
+		    <ImageButton 
+		        android:id="@+id/btn_sound_down"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/animal_btn_green_down"
+		        android:layout_below="@id/btn_soundcard"
+		        android:layout_alignLeft="@id/btn_soundcard"
+		        android:layout_alignRight="@id/btn_soundcard"
+		        android:layout_marginTop="16dp"
+       			android:paddingBottom="10dp"
+		        android:background="@null"
+		        />
+        </RelativeLayout>    
+	        
+        
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+	            
+		    <ImageButton 
+		        android:id="@+id/btn_picture_up"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/animal_btn_red"
+		        android:layout_alignLeft="@+id/btn_picturecard"
+		        android:layout_alignRight="@+id/btn_picturecard"
+		        android:layout_alignParentTop="true"
+		        android:layout_marginBottom="16dp"
+       			android:paddingTop="30dp"
+		        android:background="@null"
+		        />
+			<ImageButton
+		        android:id="@+id/btn_picturecard"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:background="@null"
+		        android:src="@drawable/animals_carabao"
+		        android:layout_marginRight="40dp"
+		        android:layout_below="@id/btn_picture_up"
+		        />
+		    
+		    <ImageButton 
+		        android:id="@+id/btn_picture_down"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/animal_btn_red_down"
+		        android:layout_below="@id/btn_picturecard"
+		        android:layout_alignLeft="@id/btn_picturecard"
+		        android:layout_alignRight="@id/btn_picturecard"
+		        android:layout_marginTop="16dp"
+       			android:paddingBottom="10dp"
+		        android:background="@null"
+		        />
+        </RelativeLayout>    
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+	            
+		    <ImageButton 
+		        android:id="@+id/btn_filipino_up"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/animal_btn_blue"
+		        android:layout_alignLeft="@+id/btn_filipinocard"
+		        android:layout_alignRight="@+id/btn_filipinocard"
+		        android:layout_alignParentTop="true"
+		        android:layout_marginBottom="16dp"
+       			android:paddingTop="30dp"
+		        android:background="@null"
+		        />
+			<ImageButton
+		        android:id="@+id/btn_filipinocard"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:background="@null"
+		        android:src="@drawable/animals_fil_aso"
+		        android:layout_marginRight="40dp"
+		        android:layout_below="@id/btn_filipino_up"
+		        />
+		    
+		    <ImageButton 
+		        android:id="@+id/btn_filipino_down"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/animal_btn_blue_down"
+		        android:layout_below="@id/btn_filipinocard"
+		        android:layout_alignLeft="@id/btn_filipinocard"
+		        android:layout_alignRight="@id/btn_filipinocard"
+		        android:layout_marginTop="16dp"
+       			android:paddingBottom="10dp"
+		        android:background="@null"
+		        />
+        </RelativeLayout>   
+     </LinearLayout>
+    
+        
+        <ImageView
+            android:id="@+id/img_dialog"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+        	android:src="@drawable/animals_pepaitalking"
+	        android:layout_alignParentBottom="true"
+	        android:layout_alignParentLeft="true"
+            />
+        
+	    <TextView
+	        android:id="@+id/tv_dialog"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:paddingLeft="180dp"
+	        android:paddingRight="30dp"
+	        android:paddingTop="30dp"
+	        android:paddingBottom="30dp"
+	        android:textColor="#2c2c2c"
+	        android:textSize="22sp"
+	        android:layout_alignRight="@id/img_dialog"
+	        android:layout_alignLeft="@id/img_dialog"
+	        android:layout_alignBottom="@id/img_dialog"
+	        android:layout_alignTop="@id/img_dialog"
+	        android:gravity="center"
+	        android:text="Hi my name is pepai!\n Can you find the english, sound, pciture, and tagalog of yah?"
+	        />
+        
+    <ImageButton
+        android:id="@+id/btn_function"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/animal_btn_checkanswer"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:paddingBottom="10dp"
+        android:background="@null"
+        />
+    
+</RelativeLayout>
