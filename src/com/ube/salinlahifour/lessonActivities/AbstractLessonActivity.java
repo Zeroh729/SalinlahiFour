@@ -47,6 +47,7 @@ public abstract class AbstractLessonActivity extends Activity {
 	protected LevelType activityLevel;
 	protected int layoutID;
 	protected int UserID;	
+	protected int cnt_question;
 	protected iFeedback NLG;
 	protected ReportCard reportCard;
 	protected Evaluation evaluation;
@@ -76,6 +77,7 @@ public abstract class AbstractLessonActivity extends Activity {
 		initiateNarrationModule();
 
 		evaluation =  new Evaluation(this, activityName, activityLevel.toString());
+		cnt_question = 0;
 		
 		initiateViews();
 		getQuestions();
@@ -121,14 +123,19 @@ public abstract class AbstractLessonActivity extends Activity {
 			Map<String, Integer> sortedItemKeys = sortByComparator(itemKeys);
 			
 			for(String key : sortedItemKeys.keySet()){
-				ArrayList<Item> lessonItems = ((SalinlahiFour)getApplication()).getLessonItems();
+				ArrayList<Item> lessonItems = SalinlahiFour.getLessonItems();
 				for(int i = 0; i < lessonItems.size(); i++)
 					if(lessonItems.get(i).getWord().equals(key)){
 						questions.add(lessonItems.get(i));
 						break;
 					}
-				Collections.shuffle(questions,  new Random(System.nanoTime()));
 			}
+			
+			if(cnt_question > 0 && cnt_question < questions.size()){
+				questions.remove(cnt_question);
+			}
+
+			Collections.shuffle(questions,  new Random(System.nanoTime()));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
