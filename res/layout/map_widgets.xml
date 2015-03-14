@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" 
+    android:background="@drawable/container">
+    
+    <ImageButton 
+        android:id="@+id/btn_register_widget"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/new_user"
+        android:background="@null"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="25dp"
+        
+        />
+    <ImageButton 
+        android:id="@+id/btn_logout_widget"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logout"
+        android:background="@null"
+        />
+</LinearLayout>

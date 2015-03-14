@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<type>
+    <Word_Entry>
+    <q_num>1</q_num>
+	<word>Nanay</word>
+    <w_type>definition</w_type>
+    <notes>She makes delicious adobo. Very tasty!</notes>
+    <hint>Nanay - Pepay's Mother. She's the one that cooks for the family</hint>
+	<lesson>1</lesson>
+</Word_Entry>
+
+<Word_Entry>
+    <q_num>2</q_num>
+	<word>Tatay</word>
+    <w_type>definition</w_type>
+    <notes>He was the one that made our treehouse in the backyard.</notes>
+    <hint>This is my father. He is the one that works for the family</hint>
+	<lesson>1</lesson>
+</Word_Entry>
+
+<Word_Entry>
+    <q_num>3</q_num>
+	<word>Kuya</word>
+    <w_type>definition</w_type>
+    <notes>He also teases me a lot.</notes>
+    <hint>My older brother. He likes to play basketball and all different kinds of sports.</hint>
+	<lesson>1</lesson>
+</Word_Entry>
+<Word_Entry>
+    <q_num>4</q_num>
+    <word>Ate</word>
+    <w_type>definition</w_type>
+    <notes>She told me she really likes this boy once. i forgot his name.</notes>
+    <hint>She is my older sister. She likes to spend her time with her phone.</hint>
+    <lesson>1</lesson>
+</Word_Entry>
+<Word_Entry>
+	<q_num>5</q_num>
+    <word>Lolo</word>
+    <w_type>definition</w_type>
+    <notes>We play board games a lot</notes>
+    <hint>My father's father. He uses glasses to read the newspaper</hint>
+	<lesson>1</lesson>
+</Word_Entry>
+<Word_Entry>
+    <q_num>6</q_num>
+	<word>Lola</word>
+    <w_type>definition</w_type>
+    <notes>She also likes to tell us stories from her time.</notes>
+    <hint>My father's mother. She walks around with a cane</hint>
+	<lesson>1</lesson>
+</Word_Entry>
+
+<Word_Entry>
+    <q_num>7</q_num>
+    <word>Bunso</word>
+    <w_type>definition</w_type>
+    <notes>He is also very cute. </notes>
+    <hint>My younger sibling. He likes to play toys</hint>
+    <lesson>1</lesson>
+</Word_Entry>
+<Word_Entry>
+    <q_num>8</q_num>
+    <word>Tito</word>
+    <w_type>definition</w_type>
+    <notes>He tells horrible jokes. </notes>
+    <hint>He is my parent's brother. I don't know which one though</hint>
+    <lesson>1</lesson>
+</Word_Entry>
+<Word_Entry>
+    <q_num>9</q_num>
+    <word>Tita</word>
+    <w_type>definition</w_type>
+    <notes>She likes to hang out with my mother.</notes>
+    <hint>My mother's sister. She is a great cook too</hint>
+    <lesson>1</lesson>
+</Word_Entry>
+<Word_Entry>
+    <q_num>1</q_num>
+	<word>Bubong</word>
+    <w_type>definition</w_type>
+    <notes>It also protects us from rain</notes>
+    <hint>Bubong - It covers the top part of the house</hint>
+	<lesson>2</lesson>
+</Word_Entry>
+<Word_Entry>
+    <q_num>2</q_num>
+	<word>Dingding</word>
+    <w_type>definition</w_type>
+    <notes>Tita hangs picture frames around here</notes>
+    <hint>Dingding - Covers the front, side and back parts of the house</hint>
+	<lesson>2</lesson>
+</Word_Entry>
+<Word_Entry>
+    <q_num>3</q_num>
+	<word>Pinto</word>
+    <w_type>definition</w_type>
+    <notes>We use this to get to different parts of the house too</notes>
+    <hint>Pinto - We open this one to get inside the house</hint>
+	<lesson>2</lesson>
+</Word_Entry>
+<Word_Entry>
+    <q_num>4</q_num>
+	<word>Bintana</word>
+    <w_type>definition</w_type>
+    <notes>Sometimes you see birds just outside here</notes>
+    <hint>Bintana - They are made of glass so that you can look from the inside</hint>
+	<lesson>2</lesson>
+</Word_Entry>
+<Word_Entry>
+    <q_num>5</q_num>
+	<word>Garahe</word>
+    <w_type>definition</w_type>
+    <notes>Tito keeps his tools here as well</notes>
+    <hint>Garahe - This is where tito parks his car.</hint>
+	<lesson>2</lesson>
+</Word_Entry>
+<Word_Entry>
+    <q_num>6</q_num>
+	<word>Bakod</word>
+    <w_type>definition</w_type>
+    <notes>It looks like arrows pointing up</notes>
+    <hint>Bakod - This protects our house from strangers</hint>
+	<lesson>2</lesson>
+</Word_Entry>
+
+<Word_Entry>
+    <q_num>7</q_num>
+	<word>Tsimenea</word>
+    <w_type>definition</w_type>
+    <notes>Did you know, Santa uses this to give us presents</notes>
+    <hint>Smoke comes out of here.</hint>
+	<lesson>2</lesson>
+</Word_Entry>
+<Word_Entry>
+    <q_num>8</q_num>
+	<word>Hagdanan</word>
+    <w_type>definition</w_type>
+    <notes>We used this earlier to get inside the house</notes>
+    <hint>Makes us go up!</hint>
+	<lesson>2</lesson>
+</Word_Entry>
+
+	<Word_Entry>
+		<q_num>1</q_num>
+		<word>Asul</word>
+		<w_type>definition</w_type>
+		<notes>It's also the color of the sea</notes>
+		<hint>Asul - This is BLUE. It is the color of the sky</hint>
+		<lesson>3</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>2</q_num>
+		<word>Berde</word>
+		<w_type>definition</w_type>
+		<notes>It's also the color of crocodiles and alligators</notes>
+		<hint>Berde - This is GREEN. It is the color of the grass and leaves</hint>
+		<lesson>3</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>3</q_num>
+		<word>Pula</word>
+		<w_type>definition</w_type>
+		<notes>It is also the color of a firetruck</notes>
+		<hint>Pula - This is RED. It is the color of an apple</hint>
+		<lesson>3</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>4</q_num>
+		<word>Dilaw</word>
+		<w_type>definition</w_type>
+		<notes>It is also the color of a rubber ducky</notes>
+		<hint>Dilaw - This is YELLOW. It is the color of the sun.</hint>
+		<lesson>3</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>5</q_num>
+		<word>Kayumanggi</word>
+		<w_type>definition</w_type>
+		<notes>It is also the color of the skin</notes>
+		<hint>Kayumanggi - This is BROWN. It is the color of a trunk of a tree</hint>
+		<lesson>3</lesson>
+	</Word_Entry>
+
+	<Word_Entry>
+		<q_num>6</q_num>
+		<word>Lila</word>
+		<w_type>definition</w_type>
+		<notes>It is also the color of grapes</notes>
+		<hint>Lila - This is VIOLET. It is also the color of eggplants</hint>
+		<lesson>3</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>7</q_num>
+		<word>Itim</word>
+		<w_type>definition</w_type>
+		<notes>It is also the color of car tires</notes>
+		<hint>Itim - This is BLACK. it is also the color fot he night sky</hint>
+		<lesson>3</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>8</q_num>
+		<word>Puti</word>
+		<w_type>definition</w_type>
+		<notes>It is also the color of doves</notes>
+		<hint>Puti - This is WHITE. It is also the color of clouds</hint>
+		<lesson>3</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>1</q_num>
+		<word>Bilog</word>
+		<w_type>definition</w_type>
+		<notes>It looks like the shape of a ball right?</notes>
+		<hint>Bilog - Circle. It is round and has no edges. It also puts a shield around us. Cool!</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>2</q_num>
+		<word>Parisukat</word>
+		<w_type>definition</w_type>
+		<notes>It looks like a door too.</notes>
+		<hint>Parsukat - A rectangle! It looks like a long box. It releases a sword. Why does this ship have a sword?</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>3</q_num>
+		<word>Bituin</word>
+		<w_type>definition</w_type>
+		<notes>I wonder if a star really looks like this.</notes>
+		<hint>Bituin - A star shape! Teachers gives us these when we do well. It fires fire. Hahaha!</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>4</q_num>
+		<word>Tatsulok</word>
+		<w_type>definition</w_type>
+		<notes>MMM I'd like a slice of pizza right about now.</notes>
+		<hint>Tatsulok - A triangle. It has 3 sides. Oh and it shoots lasers</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>5</q_num>
+		<word>Krus</word>
+		<w_type>definition</w_type>
+		<notes>You see these around hospitals</notes>
+		<hint>Krus - It looks like the letter t!</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>6</q_num>
+		<word>Diamante</word>
+		<w_type>definition</w_type>
+		<notes>I wonder if diamonds really looks like these</notes>
+		<hint>Diamante - It's like a square standing on its edge.</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>7</q_num>
+		<word>Parihaba</word>
+		<w_type>definition</w_type>
+		<notes>It’s like a door too</notes>
+		<hint>Rektanggulo - It looks like a long box.</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>8</q_num>
+		<word>Palaso</word>
+		<w_type>definition</w_type>
+		<notes>It’s like a triangle and a rectangle put together.</notes>
+		<hint>Palaso - An arrow. It looks like it's pointing to something</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>9</q_num>
+		<word>Gasuklay</word>
+		<w_type>definition</w_type>
+		<notes>It looks like the moon sometimes too.</notes>
+		<hint>Gasuklay - Looks like a banana or a fingernail.</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>10</q_num>
+		<word>Puso</word>
+		<w_type>definition</w_type>
+		<notes>A common shape during Valentine’s Day</notes>
+		<hint>A heart. It's such a LOVELY shape.</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>1</q_num>
+		<word>Pusa</word>
+		<w_type>definition</w_type>
+		<notes>People believe that the black ones are unlucky</notes>
+		<hint>They are said to have 9 lives and always land on their feet.</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>2</q_num>
+		<word>Aso</word>
+		<w_type>definition</w_type>
+		<notes>These guys and cats usually fight.</notes>
+		<hint>They are usually made as pets. They bark at everything.</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>3</q_num>
+		<word>Manok</word>
+		<w_type>definition</w_type>
+		<notes>They also make for a pretty tasty meal.</notes>
+		<hint>This animal can't fly even though it's a bird. It also lays eggs.</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>4</q_num>
+		<word>Kalabaw</word>
+		<w_type>definition</w_type>
+		<notes>Farmers also use them to go around faster.</notes>
+		<hint>Farmers use these guys to help them with farming. They also have horns like a bull</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>5</q_num>
+		<word>Unggoy</word>
+		<w_type>definition</w_type>
+		<notes>Some say we were once like that.</notes>
+		<hint>They like to eat bananas and hang around in trees</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>6</q_num>
+		<word>Ibon</word>
+		<w_type>definition</w_type>
+		<notes>You might see them in windows and trees as well</notes>
+		<hint>These animals fly around in the sky.</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>7</q_num>
+		<word>Daga</word>
+		<w_type>definition</w_type>
+		<notes>They are chased by cats.</notes>
+		<hint>Little animals that like to eat cheese and run around the house</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>8</q_num>
+		<word>Elepante</word>
+		<w_type>definition</w_type>
+		<notes>They are the largest land animal</notes>
+		<hint>These are big animals with long trunks</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>9</q_num>
+		<word>Oso</word>
+		<w_type>definition</w_type>
+		<notes>Teddy bear dolls are made to look like them too.</notes>
+		<hint>They live in caves and have long claws</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	
+</type>

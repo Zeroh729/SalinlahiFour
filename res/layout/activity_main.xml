@@ -1,14 +1,52 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    tools:context="${packageName}.${activityClass}" >
+    tools:context="${packageName}.${activityClass}"
+    android:background="@drawable/splash_bg" >
 
-    <ImageView
+  <!--   <ImageView
         android:id="@+id/Splash"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:src="@drawable/splash"
+        android:layout_gravity="center" /> --> 
+        
+        <ImageView
+        android:id="@+id/Splash_BG"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/splash_bg"
         android:layout_gravity="center" />
+		
+       
+        
 
+			 <ImageView
+        android:id="@+id/Splash_Cloud2"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/splash_clouds2"
+        android:layout_gravity="center"
+        android:scaleX="2"
+            android:scaleY="2"/>
+			         <ImageView
+            android:id="@+id/Splash_Cloud1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/splash_clouds1" 
+            android:scaleX="2"
+            android:scaleY="2"/>
+		<ImageView
+            android:id="@+id/Splash_Logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:src="@drawable/splash_logo"
+            />
+
+			 		        
 </RelativeLayout>

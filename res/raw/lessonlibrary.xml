@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : LessonLibrary.xml
+    Created on : July 11, 2011, 3:27 PM
+    Author     : Ledian
+    Description:
+        Purpose of the document follows.
+-->
+
+<type>
+<Lesson_Num>
+    <entry>1</entry>
+    <Lesson_Name>Family Members</Lesson_Name>
+        <Q_List>
+        <qentry>1</qentry>
+		<qentry>2</qentry>
+		<qentry>3</qentry>
+		<qentry>4</qentry>
+        <qentry>5</qentry>
+        <qentry>6</qentry>
+        <qentry>7</qentry>
+        <qentry>8</qentry>
+        <qentry>9</qentry>
+    </Q_List>
+    <Lesson_PreReq>0</Lesson_PreReq>
+    <Summary>Get To know how you call your parents in Filipino</Summary>
+</Lesson_Num>
+<Lesson_Num>
+    <entry>2</entry>
+    <Lesson_Name>Parts of The House</Lesson_Name>
+    <Lesson_PreReq>0</Lesson_PreReq>
+     <Q_List>
+     <qentry>1</qentry>
+     <qentry>2</qentry>
+     <qentry>3</qentry>
+     <qentry>4</qentry>
+     <qentry>5</qentry>
+     <qentry>6</qentry>
+     </Q_List>
+    <Summary>Know what you call the parts of your house in Filipino</Summary>
+</Lesson_Num>
+<Lesson_Num>
+    <entry>3</entry>
+    <Lesson_Name>Bake a Cake</Lesson_Name>
+    <Lesson_PreReq>0</Lesson_PreReq>
+     <Q_List>
+     <qentry>1</qentry>
+     <qentry>2</qentry>
+     <qentry>3</qentry>
+     <qentry>4</qentry>
+     <qentry>5</qentry>
+     <qentry>6</qentry>
+     <qentry>7</qentry>
+     <qentry>8</qentry>
+     </Q_List>
+    <Summary>Know the colors used in filipino</Summary>
+</Lesson_Num>
+<Lesson_Num>
+    <entry>4</entry>
+    <Lesson_Name>Spaceshape</Lesson_Name>
+    <Lesson_PreReq>0</Lesson_PreReq>
+     <Q_List>
+     <qentry>1</qentry>
+     <qentry>2</qentry>
+     <qentry>3</qentry>
+     <qentry>4</qentry>
+     <qentry>5</qentry>
+     <qentry>6</qentry>
+     <qentry>7</qentry>
+     <qentry>8</qentry>
+     <qentry>9</qentry>
+     <qentry>10</qentry>
+     </Q_List>
+    <Summary>Battle aliens using the correct shape together with your friend</Summary>
+</Lesson_Num>
+</type>
+
+<!--
+Lesson Library Format:
+<Lesson_Num>
+    <entry>*<entry>
+    <Lesson_Name>Sample1</Lesson_Name>
+    <Q_List>
+    <qentry>1</qentry>  //contains question numbers to be compared later
+    <qentry>2</qentry>
+    <qentry>3</qentry>
+    </Q_List>
+    <Lesson_PreReq>0**</Lesson_PreReq>
+    <Summary>summary here</Summary>
+</Lesson_Num>
+*current lesson number
+**zero indicates that the lesson has no prerequisite
+-->

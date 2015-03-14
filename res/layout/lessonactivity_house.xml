@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/house_bg" >
+    
+    <RelativeLayout
+    android:id="@+id/relative_view" 
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" 
+    android:gravity="center"
+    android:layout_centerInParent="true">
+    
+    <ImageButton
+        android:id="@+id/house_choice1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/house_pink"
+        android:background="@null"
+        android:onClick="onClick" />
+
+    <ImageButton
+        android:id="@+id/house_choice2" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/house_blue"
+        android:layout_toRightOf="@+id/house_choice1"
+        android:background="@null"
+        android:onClick="onClick"
+        />
+    <ImageButton
+        android:id="@+id/house_choice3" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/house_skobe"
+        android:layout_below="@+id/house_choice1"
+        android:background="@null"
+        android:onClick="onClick"
+        />
+    <ImageButton
+        android:id="@+id/house_choice4" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/house_yellow"
+        android:layout_toRightOf="@+id/house_choice3"
+        android:layout_below="@+id/house_choice2"
+        android:background="@null"
+        android:onClick="onClick"
+        />
+   
+    </RelativeLayout>
+     <TextView
+	          android:id="@+id/tv_feedback"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="text"
+               android:layout_alignParentBottom="true"
+            	android:layout_centerHorizontal="true"
+            	android:gravity="center"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/subtitle_bg"
+              android:textSize="22sp" />
+</RelativeLayout>

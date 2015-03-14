@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : TemplateCatalogue.xml
+    Created on : March 9, 2011, 1:37 PM
+    Modified on: December 15, 2014, 10:54 AM
+    Author     : rixx
+    edited by  : aldrin
+    Description:
+        Purpose of the document follows.
+-->
+
+
+<type>
+    <Hint>
+       <template>I'll give you a hint! [Hint]</template>
+       <template>Here's a hint for you: [Hint]</template>
+       <template>[Hint]</template>
+    </Hint>
+    <Encouragement>
+        <template>Keep on trying!</template> 
+		<template>You can do it!</template> 
+		<template>You are almost there!</template> 
+		<template>With a little more practice, you'll get this right.</template> 
+		<template>Try again next time!</template> 
+		<template>How about you try it again??</template>
+    </Encouragement>
+    <Praise>
+        <template>Keep it up!</template>
+        <template>You're doing great!</template>
+        <template>That's it! great work!</template>
+    </Praise>
+    <Trivia>
+        <template>Did you know that the [Type] of [Word] is [Notes]</template>
+        <template>[Word] 's [Type] is [Notes]</template>
+    </Trivia>
+   <Positive_Acknowledgement>
+        <template>Correct! That is [Answer]</template>
+        <template>Good, you got the right answer! Which is [Answer]</template>
+        <template>Very good!, The answer is [Answer]</template>
+        <template>Excellent! The answer is [Answer]</template>
+        <template>Brilliant! [Answer] is correct</template>
+        <template>Fantastic! You're correct!</template>
+        <template>Amazing! The answer is [Answer]</template>
+   </Positive_Acknowledgement>
+   <Negative_Acknowledgement>
+		<template>That seems to be incorrect!</template> 
+		<template>Are you sure of your answer?</template> 
+		<template>You missed it</template> 
+		<template>Oops! That is [UserInput]</template>
+		<template>Wrong! That is [UserInput]</template>
+		<template>The answer [UserInput] is wrong</template>
+	</Negative_Acknowledgement>
+	<Answer> 
+		<template>That is not [Answer]</template> 
+		<template>The answer you are looking for is [Answer]</template>
+	</Answer>
+   <NextLesson_F>
+    <template>Seems you need to study again.</template>
+    <template>You need more practice. Try again next time.</template>
+	<template>Try your luck next time.</template>
+   </NextLesson_F>
+   <NextLesson_P>
+    <template>You can proceed to the next lesson.</template>
+    <template>Off to the next lesson!</template>
+   </NextLesson_P>
+</type>
+
