@@ -58,6 +58,11 @@
             android:screenOrientation="landscape" >
         </activity>
         <activity
+            android:name="com.ube.salinlahifour.lessonActivities.GameOver"
+            android:label="@string/title_gameover"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
             android:name="com.ube.salinlahifour.lessonActivities.AbstractLessonActivity"
             android:label="@string/title_activity_lesson"
             android:screenOrientation="landscape" >

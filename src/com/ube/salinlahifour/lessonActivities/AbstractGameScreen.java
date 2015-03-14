@@ -2,8 +2,10 @@ package com.ube.salinlahifour.lessonActivities;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
@@ -113,12 +115,25 @@ public abstract class AbstractGameScreen extends Screen {
 	  		        if(!gameOverLock){
 	  		        	Log.d("SEMAPHORE", gameOverLock + "");
 	  					gameOverLock = true;
-	  			        
+	  					
+	  					Intent intent = new Intent(context,GameOver.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);  
+	  					Bundle extras = new Bundle();
+	  					
+	  					extras.putString("ActivityName",activtityName);
+	  					extras.putString("ActivityLevel", activityLevel);
+	  					extras.putInt("LessonNum", lessonNumber);
+	  					extras.putInt("userID", userID);
+	  					Log.d("LessonNum", lessonNumber + "");
+	  					extras.putString("EOAFeedback", eval.getEndofActivityFeedback(eval.getScore(), lessonNumber));
+	  					extras.putParcelable("lesson", lesson);
+	  					
+	  					intent.putExtras(extras);
+	  					context.startActivity(intent); 
 //	  				    final Handler handler2 = new Handler();
 //	  				  Runnable runnable2 = new Runnable() {
-//	  				      @Override
+//	  				     @Override
 //	  				      public void run() {
-	  				    	 eval.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), userID);
+	  				/*    	 eval.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), userID);
 		  			        LevelType LTActLevel = null;
 		  					switch(activityLevel){
 		  					case "EASY": LTActLevel = LevelType.EASY; break;
@@ -129,7 +144,7 @@ public abstract class AbstractGameScreen extends Screen {
 		  					reportCard.setHeight(100);
 		  					reportCard.setWidth(100);
 		  					reportCard.setFocusable(true);
-	  	  			        reportCard.reveal();
+	  	  			        reportCard.reveal();*/
 //	  				      }
 //	  				      
 //	  				      
