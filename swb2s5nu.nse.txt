@@ -1,0 +1,89 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch aldrin
+# Your branch is up-to-date with 'origin/aldrin'.
+#
+# Changes to be committed:
+#	new file:   assets/cooking/Sounds/color_asul.mp3
+#	new file:   assets/cooking/Sounds/color_berde.mp3
+#	new file:   assets/cooking/Sounds/color_black.mp3
+#	new file:   assets/cooking/Sounds/color_blue.mp3
+#	new file:   assets/cooking/Sounds/color_brown.mp3
+#	new file:   assets/cooking/Sounds/color_dilao.mp3
+#	new file:   assets/cooking/Sounds/color_green.mp3
+#	new file:   assets/cooking/Sounds/color_itim.mp3
+#	new file:   assets/cooking/Sounds/color_kahel.mp3
+#	new file:   assets/cooking/Sounds/color_kayumanggi.mp3
+#	new file:   assets/cooking/Sounds/color_lila.mp3
+#	new file:   assets/cooking/Sounds/color_orange.mp3
+#	new file:   assets/cooking/Sounds/color_pula.mp3
+#	new file:   assets/cooking/Sounds/color_puti.mp3
+#	new file:   assets/cooking/Sounds/color_red.mp3
+#	new file:   assets/cooking/Sounds/color_violet.mp3
+#	new file:   assets/cooking/Sounds/color_white.mp3
+#	new file:   assets/cooking/Sounds/color_yellow.mp3
+#	new file:   assets/cooking/wrong.png
+#	new file:   assets/house/Hard/body.png
+#	new file:   assets/house/Hard/body_selected.png
+#	new file:   assets/house/Hard/bodyholder.png
+#	new file:   assets/house/Hard/chimney.png
+#	new file:   assets/house/Hard/chimney_selected.png
+#	new file:   assets/house/Hard/chimneyholder.png
+#	new file:   assets/house/Hard/roof.png
+#	new file:   assets/house/Hard/roof_holder.png
+#	new file:   assets/house/Hard/roof_seleted.png
+#	new file:   assets/house/Hard/stairs.png
+#	new file:   assets/house/Hard/stairs_selected.png
+#	new file:   assets/house/Hard/stairsholder.png
+#	new file:   assets/house/Sounds/house_bakod.mp3
+#	new file:   assets/house/Sounds/house_bintana.mp3
+#	new file:   assets/house/Sounds/house_bubong.mp3
+#	new file:   assets/house/Sounds/house_chimnea.mp3
+#	new file:   assets/house/Sounds/house_chimney.mp3
+#	new file:   assets/house/Sounds/house_dingding.mp3
+#	new file:   assets/house/Sounds/house_door.mp3
+#	new file:   assets/house/Sounds/house_fence.mp3
+#	new file:   assets/house/Sounds/house_garage.mp3
+#	new file:   assets/house/Sounds/house_garahe.mp3
+#	new file:   assets/house/Sounds/house_hagdan.mp3
+#	new file:   assets/house/Sounds/house_pinto.mp3
+#	new file:   assets/house/Sounds/house_roof.mp3
+#	new file:   assets/house/Sounds/house_stairs.mp3
+#	new file:   assets/house/Sounds/house_walls.mp3
+#	new file:   assets/house/Sounds/house_windows.mp3
+#	new file:   assets/house/wrong.png
+#	new file:   assets/shapes/Sounds/shape_arrow.mp3
+#	new file:   assets/shapes/Sounds/shape_bilog.mp3
+#	new file:   assets/shapes/Sounds/shape_bituin.mp3
+#	new file:   assets/shapes/Sounds/shape_circle.mp3
+#	new file:   assets/shapes/Sounds/shape_crescent.mp3
+#	new file:   assets/shapes/Sounds/shape_cross.mp3
+#	new file:   assets/shapes/Sounds/shape_diamante.mp3
+#	new file:   assets/shapes/Sounds/shape_diamond.mp3
+#	new file:   assets/shapes/Sounds/shape_gasuklay.mp3
+#	new file:   assets/shapes/Sounds/shape_heart.mp3
+#	new file:   assets/shapes/Sounds/shape_krus.mp3
+#	new file:   assets/shapes/Sounds/shape_parihaba.mp3
+#	new file:   assets/shapes/Sounds/shape_parisukat.mp3
+#	new file:   assets/shapes/Sounds/shape_puso.mp3
+#	new file:   assets/shapes/Sounds/shape_rectangle.mp3
+#	new file:   assets/shapes/Sounds/shape_square.mp3
+#	new file:   assets/shapes/Sounds/shape_star.mp3
+#	new file:   assets/shapes/Sounds/shape_tatsulok.mp3
+#	new file:   assets/shapes/Sounds/shape_triangle.mp3
+#	new file:   assets/shapes/Sounds/shape_tunod.mp3
+#	new file:   assets/shapes/wrong.png
+#	modified:   bin/resources.ap_
+#	modified:   res/raw/lexicon.xml
+#	modified:   src/com/ube/salinlahifour/lessonActivities/CookingColors/Assets.java
+#	modified:   src/com/ube/salinlahifour/lessonActivities/CookingColors/GameScreen.java
+#	modified:   src/com/ube/salinlahifour/lessonActivities/CookingColors/LoadingScreen.java
+#	modified:   src/com/ube/salinlahifour/lessonActivities/PartsOFHouse/Assets.java
+#	modified:   src/com/ube/salinlahifour/lessonActivities/PartsOFHouse/GameScreen.java
+#	modified:   src/com/ube/salinlahifour/lessonActivities/PartsOFHouse/LoadingScreen.java
+#	modified:   src/com/ube/salinlahifour/lessonActivities/SpaceShape/Assets.java
+#	modified:   src/com/ube/salinlahifour/lessonActivities/SpaceShape/GameScreen.java
+#	modified:   src/com/ube/salinlahifour/lessonActivities/SpaceShape/LoadingScreen.java
+#
+

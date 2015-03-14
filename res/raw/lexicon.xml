@@ -118,12 +118,13 @@
 </Word_Entry>
 <Word_Entry>
     <q_num>6</q_num>
-	<word>Bakuran</word>
+	<word>Bakod</word>
     <w_type>definition</w_type>
     <notes>It looks like arrows pointing up</notes>
-    <hint>Bakuran - This protects our house from strangers</hint>
+    <hint>Bakod - This protects our house from strangers</hint>
 	<lesson>2</lesson>
 </Word_Entry>
+
 <Word_Entry>
     <q_num>7</q_num>
 	<word>Tsimenea</word>
@@ -181,6 +182,7 @@
 		<hint>Kayumanggi - This is BROWN. It is the color of a trunk of a tree</hint>
 		<lesson>3</lesson>
 	</Word_Entry>
+
 	<Word_Entry>
 		<q_num>6</q_num>
 		<word>Lila</word>
@@ -285,4 +287,77 @@
 		<hint>A heart. It's such a LOVELY shape.</hint>
 		<lesson>4</lesson>
 	</Word_Entry>
+	<Word_Entry>
+		<q_num>1</q_num>
+		<word>Pusa</word>
+		<w_type>definition</w_type>
+		<notes>People believe that the black ones are unlucky</notes>
+		<hint>They are said to have 9 lives and always land on their feet.</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>2</q_num>
+		<word>Aso</word>
+		<w_type>definition</w_type>
+		<notes>These guys and cats usually fight.</notes>
+		<hint>They are usually made as pets. They bark at everything.</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>3</q_num>
+		<word>Manok</word>
+		<w_type>definition</w_type>
+		<notes>They also make for a pretty tasty meal.</notes>
+		<hint>This animal can't fly even though it's a bird. It also lays eggs.</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>4</q_num>
+		<word>Kalabaw</word>
+		<w_type>definition</w_type>
+		<notes>Farmers also use them to go around faster.</notes>
+		<hint>Farmers use these guys to help them with farming. They also have horns like a bull</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>5</q_num>
+		<word>Unggoy</word>
+		<w_type>definition</w_type>
+		<notes>Some say we were once like that.</notes>
+		<hint>They like to eat bananas and hang around in trees</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>6</q_num>
+		<word>Ibon</word>
+		<w_type>definition</w_type>
+		<notes>You might see them in windows and trees as well</notes>
+		<hint>These animals fly around in the sky.</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>7</q_num>
+		<word>Daga</word>
+		<w_type>definition</w_type>
+		<notes>They are chased by cats.</notes>
+		<hint>Little animals that like to eat cheese and run around the house</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>8</q_num>
+		<word>Elepante</word>
+		<w_type>definition</w_type>
+		<notes>They are the largest land animal</notes>
+		<hint>These are big animals with long trunks</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>9</q_num>
+		<word>Oso</word>
+		<w_type>definition</w_type>
+		<notes>Teddy bear dolls are made to look like them too.</notes>
+		<hint>They live in caves and have long claws</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	
 </type>

@@ -129,6 +129,7 @@ public class MapActivity extends Activity implements OnClickListener{
 								scene.getLessons().get(i+1).setLocked(false);
 						}
 					}else{
+						scene.getLessons().get(i).setLocked(true);
 						scene.getLessons().get(i).setLocked(false);
 					}
 					try{
