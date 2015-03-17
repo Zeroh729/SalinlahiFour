@@ -38,25 +38,11 @@ public class Cooking extends AbstractTutorialActivity {
 		int j = 0;
 		for(int i = 0; i < items.size(); i++){
 			if(items.get(i).getLevel().toString().equals(activityLevel)){
-				textviews[j].setText(items.get(i).getWord());
-//				imgviews[j].setImageResource(items.get(i).getImageID());
+				textviews[j].setText(items.get(i).getLabel());
+				imgviews[j].setBackgroundColor(items.get(i).getImageID());
 				j++;
 			}
-		}
-//		textviews[0].setText("Pula\nThis is RED. It's like the color of an apple");
-//	    textviews[1].setText("Dilaw\nThis is YELLOW. It's like the color of the sun");
-//	    textviews[2].setText("Berde\nThis is GREEN. It's like the color of the grass and leaves");
-//	    textviews[3].setText("Asul\nThis is BLUE. It's like the color of the sky");
-	    textviews[0].setText("This is Asul. It's the color of the sky");
-	    textviews[1].setText("This is Berde. It's the color of grass and leaves");
-	    textviews[2].setText("This is Pula. It's the color of an apple");
-	    textviews[3].setText("This is Dilaw. It's the color of the sun");
-	    
-	    imgviews[0].setBackgroundColor(Color.BLUE);
-	    imgviews[1].setBackgroundColor(Color.GREEN);
-	    imgviews[2].setBackgroundColor(Color.RED);
-	    imgviews[3].setBackgroundColor(Color.YELLOW);
-	    
+		}	    
 		final AnimatorSet setRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(),
 				R.animator.flipout);
 	 
@@ -168,20 +154,11 @@ public class Cooking extends AbstractTutorialActivity {
 		int j = 0;
 		for(int i = 0; i < items.size(); i++){
 			if(items.get(i).getLevel().toString().equals(activityLevel)){
-				textviews[j].setText(items.get(i).getWord());
-//				imgviews[j].setImageResource(items.get(i).getImageID());
+				textviews[j].setText(items.get(i).getLabel());
+				imgviews[j].setBackgroundColor(items.get(i).getImageID());
 				j++;
 			}
 		}
-//		textviews[0].setText("Itim\nThis is BLACK. It's like the color of the night sky");
-//	    textviews[1].setText("Puti\nThis is WHITE. It's like the color of the clouds");
-		
-
-	    textviews[0].setText("This is Itim. It's the color of darkness");
-	    textviews[1].setText("This is Puti. It's the color of clouds");
-	    
-	    imgviews[0].setBackgroundColor(Color.BLACK);
-	    imgviews[1].setBackgroundColor(Color.WHITE);
 	    
 	    findViewById(R.id.layout2).setVisibility(View.INVISIBLE);
 	    
@@ -296,21 +273,15 @@ public class Cooking extends AbstractTutorialActivity {
 		int j = 0;
 		for(int i = 0; i < items.size(); i++){
 			if(items.get(i).getLevel().toString().equals(activityLevel)){
-				textviews[j].setText(items.get(i).getWord());
-//				imgviews[j].setImageResource(items.get(i).getImageID());
+
+				textviews[j].setText(items.get(i).getLabel());
+				imgviews[j].setBackgroundColor(items.get(i).getImageID());
 				j++;
 			}
 		}
-//		textviews[0].setText("Lila\nThis is VIOLET. It's like the color of an eggplant");
-//	    textviews[1].setText("Kayumanggi\nThis is BROWN. It's like the color of the trunk of a tree");	    
-	    
-	    textviews[0].setText("This is Lila. It's the color of eggplants");
-	    textviews[1].setText("This is Kayumanggi. It's the color of wood");
-	    
-	    imgviews[0].setBackgroundColor(Color.parseColor("#993399"));
-	    imgviews[1].setBackgroundColor(Color.parseColor("#CC6600"));
-	    
+   
 	    findViewById(R.id.layout2).setVisibility(View.INVISIBLE);
+
 		final AnimatorSet setRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(),
 				R.animator.flipout);
 	 

@@ -20,16 +20,16 @@ public abstract class LessonItemLoader {
 			case "com.ube.salinlahifour.lessonActivities.Cooking":
 				switch(activityLevel){
 					case "HARD":
-						items.add(new Item(5,"Kayumanggi" , "Brown", "", 0, R.raw.color_kayumanggi, 0, LevelType.HARD));
-						items.add(new Item(6,"Lila" , "Purple", "", 0, R.drawable.cooking_star, 0, LevelType.HARD));
+						items.add(new Item(7, "Itim" , "Black", "Itim - This is BLACK. it is also the color fot he night sky", R.drawable.black, 0, 0, LevelType.HARD));
+						items.add(new Item(8,"Puti" , "White", "Puti - This is WHITE. It is also the color of clouds", R.drawable.white, 0, 0, LevelType.HARD));
 					case "MEDIUM":			
-						items.add(new Item(7, "Itim" , "Black", "", 0, R.raw.color_itim, R.raw.color_black, LevelType.MEDIUM));
-						items.add(new Item(8,"Puti" , "White", "", 0, R.raw.color_puti, R.raw.color_white, LevelType.MEDIUM));
+						items.add(new Item(5,"Kayumanggi" , "Brown", "Kayumanggi - This is BROWN. It is the color of a trunk of a tree", R.drawable.brown, 0, 0, LevelType.MEDIUM));
+						items.add(new Item(6,"Lila" , "Violet", "Lila - This is VIOLET. It is also the color of eggplants", R.drawable.violet, 0, 0, LevelType.MEDIUM));
 					case "EASY":	
-						items.add(new Item(1,"Asul" , "Blue", "", 0,R.raw.color_asul, R.raw.color_blue, LevelType.EASY));
-						items.add(new Item(2,"Berde" , "Green", "", 0,R.raw.color_berde, R.raw.color_green, LevelType.EASY));
-						items.add(new Item(3,"Pula" , "Red", "", 0, R.raw.color_pula, R.raw.color_red, LevelType.EASY));
-						items.add(new Item(4,"Dilaw" , "Yellow", "", 0, R.raw.color_dilao, R.raw.color_yellow, LevelType.EASY));
+						items.add(new Item(1,"Asul" , "Blue", "Asul - This is BLUE. It is the color of the sky", R.drawable.blue, 0, 0, LevelType.EASY));
+						items.add(new Item(2,"Berde" , "Green", "Berde - This is GREEN. It is the color of the grass and leaves", R.drawable.green,0, 0, LevelType.EASY));
+						items.add(new Item(3,"Pula" , "Red", "Pula - This is RED. It is the color of an apple", R.drawable.red, 0, 0, LevelType.EASY));
+						items.add(new Item(4,"Dilaw" , "Yellow", "Dilaw - This is YELLOW. It is the color of the sun.", R.drawable.yellow, 0, 0, LevelType.EASY));
 				}
 				break;
 			case "com.ube.salinlahifour.lessonActivities.Family":
@@ -42,40 +42,49 @@ public abstract class LessonItemLoader {
 						items.add(new Item(6,"Lola" , "Grandmother", "Can you <font color=#299190>find Lola</font>?", R.drawable.family_lola, R.raw.family_lola, R.raw.family_grandmother, LevelType.MEDIUM));
 						items.add(new Item(7,"Bunso" , "Youngest", "Can you <font color=#299190>find bunso</font>?", R.drawable.family_bunso, R.raw.family_bunso, R.raw.family_youngestsibling, LevelType.MEDIUM));
 					case "EASY":
-						items.add(new Item(1,"Nanay" , "Mother", "Can you find <font color=#299190>nanay</font>?", R.drawable.family_nanay, R.raw.family_nanay, R.raw.family_mother, LevelType.EASY));
-						items.add(new Item(2,"Tatay" , "Father", "Can you find <font color=#299190>tatay</font>?", R.drawable.family_tatay, R.raw.family_tatay, R.raw.family_father, LevelType.EASY));
-						items.add(new Item(3,"Kuya" , "Brother", "Can you find <font color=#299190>kuya</font>?", R.drawable.family_kuya, R.raw.family_kuya, R.raw.family_olderbrother, LevelType.EASY));
-						items.add(new Item(4,"ate" , "Sister", "Can you find <font color=#299190>ate</font>?", R.drawable.family_ate, R.raw.family_ate, R.raw.family_oldersister, LevelType.EASY));
+
+						items.add(new Item(1,"Nanay" , "Mother", "Can you find nanay?", R.drawable.family_nanay, R.raw.family_nanay, R.raw.family_mother, LevelType.EASY));
+						items.add(new Item(2,"Tatay" , "Father", "Can you find tatay?", R.drawable.family_tatay, R.raw.family_tatay, R.raw.family_father, LevelType.EASY));
+						items.add(new Item(3,"Kuya" , "Brother", "Can you find kuya?", R.drawable.family_kuya, R.raw.family_kuya, R.raw.family_olderbrother, LevelType.EASY));
+						items.add(new Item(4,"Ate" , "Sister", "Can you find ate?", R.drawable.family_ate, R.raw.family_ate, R.raw.family_oldersister, LevelType.EASY));
+
 				}	
 				break;
 			case "com.ube.salinlahifour.lessonActivities.House":
 				switch(activityLevel){
 					case "HARD":
-						items.add(new Item(7,"Garahe" , "Garage", "Where is garahe?", R.drawable.house_pink,  0, 0, LevelType.HARD));
-						items.add(new Item(8,"Bakuran" , "fence", "Where is bakuran?", R.drawable.house_blue, 0, 0, LevelType.HARD));
-						
+						items.add(new Item(7,"Tsimenea" , "Chimney", "Smoke comes out of here when tita cooks.", R.drawable.chimney,  0, 0, LevelType.HARD));
+						items.add(new Item(8,"Hagdanan" , "Stairs", "Makes us go up!", R.drawable.stairs, 0, 0, LevelType.HARD));						
 					case "MEDIUM":
-						items.add(new Item(5,"Garahe" , "Garage", "Where is garahe?", R.drawable.house_pink, R.raw.house_garahe, R.raw.house_garage, LevelType.MEDIUM));
-						items.add(new Item(6,"Bakuran" , "fence", "Where is bakuran?", R.drawable.house_blue, R.raw.house_bakod, R.raw.house_fence, LevelType.MEDIUM));
+						items.add(new Item(5,"Garahe" , "Garage", "Garahe - This is where tito parks his car.", R.drawable.garage, 0, 0, LevelType.MEDIUM));
+						items.add(new Item(6,"Bakuran" , "fence", "Bakuran - This protects our house from strangers", R.drawable.fence, 0, 0, LevelType.MEDIUM));
 						
 					case "EASY":
-						items.add(new Item(1,"Bubong" , "Roof", "Where is Bubong?", R.drawable.roof_selected, R.raw.house_bubong, R.raw.house_roof, LevelType.EASY));
-						items.add(new Item(2,"Dingding" , "Wall", "Where is Dingding?", R.drawable.body_selected, R.raw.house_dingding, R.raw.house_walls, LevelType.EASY));
-						items.add(new Item(3,"Pinto" , "Door", "Where is Pinto?", R.drawable.door_selected, R.raw.house_pinto, R.raw.house_door, LevelType.EASY));
-						items.add(new Item(4,"Bintana" , "Window", "Where is Bintana?", R.drawable.window_selected, R.raw.house_bintana, R.raw.house_windows, LevelType.EASY));
+						items.add(new Item(1,"Bubong" , "Roof", "Bubong - It covers the top part of the house", R.drawable.roof, 0, 0, LevelType.EASY));
+						items.add(new Item(2,"Dingding" , "Wall", "Dingding - Covers the front, side and back parts of the house", R.drawable.wall, 0, 0, LevelType.EASY));
+						items.add(new Item(3,"Pinto" , "Door", "Pinto - We open this one to get inside the house", R.drawable.door, 0, 0, LevelType.EASY));
+						items.add(new Item(4,"Bintana" , "Window", "Bintana - They are made of glass so that you can look from the inside", R.drawable.window, 0, 0, LevelType.EASY));
 					
 							}
 				break;
 			case "com.ube.salinlahifour.lessonActivities.Music":
 				switch(activityLevel){
 					case "HARD":
+						items.add(new Item(8,"Palaso" , "Arrow", "Palaso - An arrow. It looks like it's pointing to something", R.drawable.arrow, 0, 0, LevelType.HARD));
+						items.add(new Item(9,"Gasuklay" , "Crescent", "Gasuklay - Looks like a banana or a fingernail.", R.drawable.cresent, 0, 0, LevelType.HARD));
+						items.add(new Item(10,"Puso" , "Heart", "A heart - It's such a LOVELY shape.", R.drawable.heart, 0, 0, LevelType.HARD));
+
 					case "MEDIUM":
+						items.add(new Item(5,"Krus" , "Cross", "Krus - It looks like the letter t!", R.drawable.cross, 0, 0, LevelType.MEDIUM));
+						items.add(new Item(6,"Diamante" , "Diamond", "Diamante - It's like a square standing on its edge.", R.drawable.diamond, 0, 0, LevelType.MEDIUM));
+						items.add(new Item(7,"Parihaba" , "Rectangle", "Parihaba - It looks like a long box.", R.drawable.rectangle, 0, 0, LevelType.MEDIUM));
+
 					case "EASY":
-						items.add(new Item(1,"Pulis" , "Police", "Which one is police", 0, 0, 0, LevelType.EASY));
-						items.add(new Item(2,"Bombero" , "Fireman", "Which one is Fireman", 0, 0, 0, LevelType.EASY));
-						items.add(new Item(3,"Pulis" , "Police", "Which one is police", 0, 0, 0, LevelType.EASY));
-						items.add(new Item(4,"Bombero" , "Fireman", "Which one is Fireman", 0, 0, 0, LevelType.EASY));
-						items.add(new Item(5,"Pulis" , "Police", "Which one is police", 0, 0, 0, LevelType.EASY));
+						items.add(new Item(1,"Bilog" , "Circle", "Bilog - It looks like a ball. It also puts a shield around us. Cool!", R.drawable.circle, 0, 0, LevelType.EASY));
+						items.add(new Item(2,"Parisukat" , "Square", "Parisukat - It has 4 sides. It also shoots bullets", R.drawable.square, 0, 0, LevelType.EASY));
+						items.add(new Item(3,"Bituin" , "Star", "Bituin - Teachers gives these when we do well.", R.drawable.star, 0, 0, LevelType.EASY));
+						items.add(new Item(4,"Tatsulok" , "Triangle", "Tatsulok - It has 3 sides.", R.drawable.triangle, 0, 0, LevelType.EASY));
+						
 				}
 				break;
 			case "com.ube.salinlahifour.lessonActivities.Society":
@@ -93,12 +102,12 @@ public abstract class LessonItemLoader {
 				case "com.ube.salinlahifour.lessonActivities.Animals":
 					switch(activityLevel){
 						case "HARD":
-							items.add(new Item(9,"Elefante" , "Elephant", "Match <font color=#376df7>elefante</font> with its English word, animal sound, and its picture.", R.drawable.animals_elephant, R.raw.animals_elefante, R.raw.animals_elephant, LevelType.HARD));
-							items.add(new Item(10,"Oso" , "Bear", "Match <font color=#376df7>oso</font> with its English word, animal sound, and its picture.", R.drawable.animals_bear, R.raw.animals_oso, R.raw.animals_bear, LevelType.HARD));
+							items.add(new Item(8,"Elefante" , "Elephant", "Match <font color=#376df7>elefante</font> with its English word, animal sound, and its picture.", R.drawable.animals_elephant, R.raw.animals_elefante, R.raw.animals_elephant, LevelType.HARD));
+							items.add(new Item(9,"Oso" , "Bear", "Match <font color=#376df7>oso</font> with its English word, animal sound, and its picture.", R.drawable.animals_bear, R.raw.animals_oso, R.raw.animals_bear, LevelType.HARD));
 						case "MEDIUM":	items.add(new Item(5,"Palaka" , "Frog", "Match <font color=#376df7>palaka</font> with its English word, animal sound, and its picture.", R.drawable.animals_frog, R.raw.animals_palaka, R.raw.animals_frog, LevelType.MEDIUM));
-							items.add(new Item(6,"Unggoy" , "Monkey", "Match <font color=#376df7>unggoy</font> with its English word, animal sound, and its picture.", R.drawable.animals_monkey, R.raw.animals_unggoy, R.raw.animals_monkey, LevelType.MEDIUM));
-							items.add(new Item(7,"Ibon" , "Bird", "Match <font color=#376df7>ibon</font> with its English word, animal sound, and its picture.", R.drawable.animals_birl, R.raw.animals_ibon, R.raw.animals_bird, LevelType.MEDIUM));	
-							items.add(new Item(8,"Daga" , "Mouse", "Match <font color=#376df7>daga</font> with its English word, animal sound, and its picture.", R.drawable.animals_mouse, R.raw.animals_daga, R.raw.animals_mouse, LevelType.MEDIUM));
+							items.add(new Item(5,"Unggoy" , "Monkey", "Match <font color=#376df7>unggoy</font> with its English word, animal sound, and its picture.", R.drawable.animals_monkey, R.raw.animals_unggoy, R.raw.animals_monkey, LevelType.MEDIUM));
+							items.add(new Item(6,"Ibon" , "Bird", "Match <font color=#376df7>ibon</font> with its English word, animal sound, and its picture.", R.drawable.animals_birl, R.raw.animals_ibon, R.raw.animals_bird, LevelType.MEDIUM));	
+							items.add(new Item(7,"Daga" , "Mouse", "Match <font color=#376df7>daga</font> with its English word, animal sound, and its picture.", R.drawable.animals_mouse, R.raw.animals_daga, R.raw.animals_mouse, LevelType.MEDIUM));
 						case "EASY":	
 							items.add(new Item(1,"Pusa" , "Cat", "Match <font color=#376df7>pusa</font> with its English word, animal sound, and its picture.", R.drawable.animals_cat, R.raw.animals_pusa, R.raw.animals_cat, LevelType.EASY));
 							items.add(new Item(2,"Aso" , "Dog", "Match <font color=#376df7>aso</font> with its English word, animal sound, and its picture.", R.drawable.animals_dog, R.raw.animals_asp, R.raw.animals_dog, LevelType.EASY));

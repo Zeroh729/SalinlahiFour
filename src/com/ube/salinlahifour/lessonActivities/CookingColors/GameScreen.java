@@ -29,7 +29,7 @@ public class GameScreen extends AbstractGameScreen  {
 	    // Variable Setup
 	    // You would create game objects here.
 	    static String activityName = "Colors";
-	    private int lessonNumber = 3;
+	   
 	    //String activityLevel;
 	    
 	    private Image bg, wrong;
@@ -53,7 +53,7 @@ public class GameScreen extends AbstractGameScreen  {
 	       questions = new String[3];
 	       feedbacks = new String[3];
 	       rounds = 1;
-	       
+	       lessonNumber = 3;
 	       for(int i=0; i<feedbacks.length;i++){
 	    	   feedbacks[i] = "";
 	       }
@@ -280,15 +280,18 @@ public class GameScreen extends AbstractGameScreen  {
 	            		
 	            			if(eval.evaluateAnswer( breaderButtons.getQuestionColor(), cake.getAnswer(0), userID)){
 	            				cor1 = 1;
-	            				feedbacks[0] = eval.getImmediateFeedback(breaderButtons.getNumberColor(), cake.getAnswer(0), lessonNumber);
+	            				Log.d("Debug Eval",breaderButtons.getNumberColor()+1 + " + " + cake.getAnswer(0) + " + " + lessonNumber  + " X" +  breaderButtons.getQuestionColor());
+	            				feedbacks[0] = eval.getImmediateFeedback(breaderButtons.getNumberColor()+1, cake.getAnswer(0), lessonNumber);
 	            			}
 	            			if(eval.evaluateAnswer( creamerButtons.getQuestionColor(), cake.getAnswer(1), userID)){
 	            				cor2 = 1;
-	            				feedbacks[1] = eval.getImmediateFeedback(creamerButtons.getNumberColor(), cake.getAnswer(1), lessonNumber);
+	            				Log.d("Debug Eval",creamerButtons.getNumberColor()+1+ " + " + cake.getAnswer(1) + " + " + lessonNumber + " X" +  creamerButtons.getQuestionColor() );
+	            				feedbacks[1] = eval.getImmediateFeedback(creamerButtons.getNumberColor()+1, cake.getAnswer(1), lessonNumber);
 	            			}
 	            			if(eval.evaluateAnswer( sprinklerButtons.getQuestionColor(), cake.getAnswer(2), userID)){
 	            				cor3 = 1;
-	            				feedbacks[2] = eval.getImmediateFeedback(sprinklerButtons.getNumberColor(), cake.getAnswer(2), lessonNumber);
+	            				Log.d("Debug Eval",sprinklerButtons.getNumberColor()+1 + " + " + cake.getAnswer(2) + " + " + lessonNumber + " X" +  sprinklerButtons.getQuestionColor() );
+	            				feedbacks[2] = eval.getImmediateFeedback(sprinklerButtons.getNumberColor()+1, cake.getAnswer(2), lessonNumber);
 	            			}
 	            			if(cor1 == 1 && cor2 == 1 && cor3 == 1){
 	            				isSubmit = 1;
@@ -407,15 +410,15 @@ public class GameScreen extends AbstractGameScreen  {
 		            		
 		            			if(eval.evaluateAnswer( breaderButtons.getQuestionColor(), cake.getAnswer(0), userID)){
 		            				cor1 = 1;
-		            				feedbacks[0] = eval.getImmediateFeedback(breaderButtons.getNumberColor(), cake.getAnswer(0), lessonNumber);
+		            				feedbacks[0] = eval.getImmediateFeedback(breaderButtons.getNumberColor()+1, cake.getAnswer(0), lessonNumber);
 		            			}
 		            			if(eval.evaluateAnswer( creamerButtons.getQuestionColor(), cake.getAnswer(1), userID)){
 		            				cor2 = 1;
-		            				feedbacks[1] = eval.getImmediateFeedback(creamerButtons.getNumberColor(), cake.getAnswer(1), lessonNumber);
+		            				feedbacks[1] = eval.getImmediateFeedback(creamerButtons.getNumberColor()+1, cake.getAnswer(1), lessonNumber);
 		            			}
 		            			if(eval.evaluateAnswer( sprinklerButtons.getQuestionColor(), cake.getAnswer(2), userID)){
 		            				cor3 = 1;
-		            				feedbacks[2] = eval.getImmediateFeedback(sprinklerButtons.getNumberColor(), cake.getAnswer(2), lessonNumber);
+		            				feedbacks[2] = eval.getImmediateFeedback(sprinklerButtons.getNumberColor()+1, cake.getAnswer(2), lessonNumber);
 		            			}
 		            			if(cor1 == 1 && cor2 == 1 && cor3 == 1){
 		            				isSubmit = 1;

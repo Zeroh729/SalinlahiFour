@@ -37,15 +37,17 @@ public class House extends AbstractTutorialActivity {
 		int j = 0;
 		for(int i = 0; i < items.size(); i++){
 			if(items.get(i).getLevel().toString().equals(activityLevel)){
-				textviews[j].setText(items.get(i).getWord());
+				textviews[j].setText(items.get(i).getLabel());
 				imgviews[j].setImageResource(items.get(i).getImageID());
 				j++;
 			}
 		}
+
 		textviews[0].setText("Bubong\ncovers the top part of the house");
 	    textviews[1].setText("Dingding\ncovers the front, side and back parts of the house");
 	    textviews[2].setText("Pinto\n can be opened to get inside the house");
 	    textviews[3].setText("Bintana\nis made of glass");
+
 		final AnimatorSet setRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(),
 				R.animator.flipout);
 	 
@@ -156,11 +158,12 @@ public class House extends AbstractTutorialActivity {
 		int j = 0;
 		for(int i = 0; i < items.size(); i++){
 			if(items.get(i).getLevel().toString().equals(activityLevel)){
-				textviews[j].setText(items.get(i).getWord());
+				textviews[j].setText(items.get(i).getLabel());
 				imgviews[j].setImageResource(items.get(i).getImageID());
 				j++;
 			}
 		}
+
 		textviews[0].setText("Garahe\n is where tatay parks his car.");
 	    textviews[1].setText("Bakuran\b protects our house from strangers");
 
@@ -274,15 +277,14 @@ public class House extends AbstractTutorialActivity {
 		int j = 0;
 		for(int i = 0; i < items.size(); i++){
 			if(items.get(i).getLevel().toString().equals(activityLevel)){
-				textviews[j].setText(items.get(i).getWord());
+				textviews[j].setText(items.get(i).getLabel());
 				imgviews[j].setImageResource(items.get(i).getImageID());
 				j++;
 			}
 		}
-		textviews[0].setText("Garahe\n is where tatay parks his car.");
-	    textviews[1].setText("Bakuran\n protects our house from strangers");
-	    
+  
 	    final AnimatorSet setRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(),
+
 				R.animator.flipout);
 	 
 		final AnimatorSet setLeftIn = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(),

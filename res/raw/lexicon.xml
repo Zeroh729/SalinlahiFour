@@ -124,6 +124,24 @@
     <hint>Bakod - This protects our house from strangers</hint>
 	<lesson>2</lesson>
 </Word_Entry>
+
+<Word_Entry>
+    <q_num>7</q_num>
+	<word>Tsimenea</word>
+    <w_type>definition</w_type>
+    <notes>Did you know, Santa uses this to give us presents</notes>
+    <hint>Smoke comes out of here.</hint>
+	<lesson>2</lesson>
+</Word_Entry>
+<Word_Entry>
+    <q_num>8</q_num>
+	<word>Hagdanan</word>
+    <w_type>definition</w_type>
+    <notes>We used this earlier to get inside the house</notes>
+    <hint>Makes us go up!</hint>
+	<lesson>2</lesson>
+</Word_Entry>
+
 	<Word_Entry>
 		<q_num>1</q_num>
 		<word>Asul</word>
@@ -164,17 +182,7 @@
 		<hint>Kayumanggi - This is BROWN. It is the color of a trunk of a tree</hint>
 		<lesson>3</lesson>
 	</Word_Entry>
-=======
-<Word_Entry>
-<q_num>5</q_num>
-<word>Kayumanggi</word>
-<w_type>definition</w_type>
-<notes>Kayumanggi Notes</notes>
-<hint>Kayumanggi Hints</hint>
-<lesson>3</lesson>
 
-</Word_Entry>
->>>>>>> aldrin
 	<Word_Entry>
 		<q_num>6</q_num>
 		<word>Lila</word>
@@ -228,7 +236,128 @@
 		<word>Tatsulok</word>
 		<w_type>definition</w_type>
 		<notes>MMM I'd like a slice of pizza right about now.</notes>
-		<hint>Tatsulok - A triangle. It has 3 sides. Oh and it shoots lasers/</hint>
+		<hint>Tatsulok - A triangle. It has 3 sides. Oh and it shoots lasers</hint>
 		<lesson>4</lesson>
 	</Word_Entry>
+	<Word_Entry>
+		<q_num>5</q_num>
+		<word>Krus</word>
+		<w_type>definition</w_type>
+		<notes>You see these around hospitals</notes>
+		<hint>Krus - It looks like the letter t!</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>6</q_num>
+		<word>Diamante</word>
+		<w_type>definition</w_type>
+		<notes>I wonder if diamonds really looks like these</notes>
+		<hint>Diamante - It's like a square standing on its edge.</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>7</q_num>
+		<word>Parihaba</word>
+		<w_type>definition</w_type>
+		<notes>It’s like a door too</notes>
+		<hint>Rektanggulo - It looks like a long box.</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>8</q_num>
+		<word>Palaso</word>
+		<w_type>definition</w_type>
+		<notes>It’s like a triangle and a rectangle put together.</notes>
+		<hint>Palaso - An arrow. It looks like it's pointing to something</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>9</q_num>
+		<word>Gasuklay</word>
+		<w_type>definition</w_type>
+		<notes>It looks like the moon sometimes too.</notes>
+		<hint>Gasuklay - Looks like a banana or a fingernail.</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>10</q_num>
+		<word>Puso</word>
+		<w_type>definition</w_type>
+		<notes>A common shape during Valentine’s Day</notes>
+		<hint>A heart. It's such a LOVELY shape.</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>1</q_num>
+		<word>Pusa</word>
+		<w_type>definition</w_type>
+		<notes>People believe that the black ones are unlucky</notes>
+		<hint>They are said to have 9 lives and always land on their feet.</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>2</q_num>
+		<word>Aso</word>
+		<w_type>definition</w_type>
+		<notes>These guys and cats usually fight.</notes>
+		<hint>They are usually made as pets. They bark at everything.</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>3</q_num>
+		<word>Manok</word>
+		<w_type>definition</w_type>
+		<notes>They also make for a pretty tasty meal.</notes>
+		<hint>This animal can't fly even though it's a bird. It also lays eggs.</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>4</q_num>
+		<word>Kalabaw</word>
+		<w_type>definition</w_type>
+		<notes>Farmers also use them to go around faster.</notes>
+		<hint>Farmers use these guys to help them with farming. They also have horns like a bull</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>5</q_num>
+		<word>Unggoy</word>
+		<w_type>definition</w_type>
+		<notes>Some say we were once like that.</notes>
+		<hint>They like to eat bananas and hang around in trees</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>6</q_num>
+		<word>Ibon</word>
+		<w_type>definition</w_type>
+		<notes>You might see them in windows and trees as well</notes>
+		<hint>These animals fly around in the sky.</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>7</q_num>
+		<word>Daga</word>
+		<w_type>definition</w_type>
+		<notes>They are chased by cats.</notes>
+		<hint>Little animals that like to eat cheese and run around the house</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>8</q_num>
+		<word>Elepante</word>
+		<w_type>definition</w_type>
+		<notes>They are the largest land animal</notes>
+		<hint>These are big animals with long trunks</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>9</q_num>
+		<word>Oso</word>
+		<w_type>definition</w_type>
+		<notes>Teddy bear dolls are made to look like them too.</notes>
+		<hint>They live in caves and have long claws</hint>
+		<lesson>5</lesson>
+	</Word_Entry>
+	
 </type>
