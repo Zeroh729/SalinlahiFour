@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<type>
+  
+	<Word_Entry>
+		<q_num>1</q_num>
+		<word>Bilog</word>
+		<w_type>definition</w_type>
+		<notes>It looks like the shape of a ball right?</notes>
+		<hint>Bilog - Circle. It is round and has no edges. It also puts a shield around us. Cool!</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>2</q_num>
+		<word>Parisukat</word>
+		<w_type>definition</w_type>
+		<notes>It looks like a door too.</notes>
+		<hint>Parsukat - A rectangle! It looks like a long box. It releases a sword. Why does this ship have a sword?</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>3</q_num>
+		<word>Bituin</word>
+		<w_type>definition</w_type>
+		<notes>I wonder if a star really looks like this.</notes>
+		<hint>Bituin - A star shape! Teachers gives us these when we do well. It fires fire. Hahaha!</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>4</q_num>
+		<word>Tatsulok</word>
+		<w_type>definition</w_type>
+		<notes>MMM I'd like a slice of pizza right about now.</notes>
+		<hint>Tatsulok - A triangle. It has 3 sides. Oh and it shoots lasers/</hint>
+		<lesson>4</lesson>
+	</Word_Entry>
+</type>

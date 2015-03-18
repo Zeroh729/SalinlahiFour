@@ -54,6 +54,7 @@ public class GameScreen extends AbstractGameScreen  {
 	       feedbacks = new String[3];
 	       rounds = 1;
 	       lessonNumber = 3;
+	       
 	       for(int i=0; i<feedbacks.length;i++){
 	    	   feedbacks[i] = "";
 	       }
@@ -63,6 +64,8 @@ public class GameScreen extends AbstractGameScreen  {
 		protected void loadAssets() {
 			// TODO Auto-generated method stub
 	        Log.d("Aldrin ExtendedFramework", "Loading Assets");
+	        eval.setLexiconDir("lexicon_cooking.xml");
+
 	        buttons = new Image[Assets.buttons.size()];
 	        sounds = new Sound[Assets.sound.size()];
 	        bg = Assets.bg;

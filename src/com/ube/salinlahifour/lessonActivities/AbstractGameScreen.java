@@ -50,6 +50,7 @@ public abstract class AbstractGameScreen extends Screen {
 		// TODO Auto-generated constructor stub
 		 eval = new Evaluation(SalinlahiFour.getContext(), activtityName, activityLevel);
 		 this.userID = userID;
+		 this.activtityName = activityName;
 	     this.activityLevel = activityLevel;
 	     this.lesson = lesson;
 	     this.gameOverLock = false;
