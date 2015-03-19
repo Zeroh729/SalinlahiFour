@@ -54,14 +54,14 @@ public class GameScreen extends AbstractGameScreen  {
 	        rounds = 1;
 	        //main_control = new House();
 	        Log.d("Aldrin ExtendedFramework", "Gamescreen constructor...");
-	        
 	    }
 	    
 		@Override
 		protected void loadAssets() {
 			// TODO Auto-generated method stub
 	        Log.d("Aldrin ExtendedFramework", "Loading Assets");
-//hello
+//hello	
+	        eval.setLexiconDir("lexicon_house.xml");
 	        livesLeft = 4;
 				bg =  Assets.gamebg;
 		        body =Assets.body_selected;

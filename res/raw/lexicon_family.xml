@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<type>
+    <Word_Entry>
+    <q_num>1</q_num>
+	<word>Nanay</word>
+    <w_type>definition</w_type>
+    <notes>She makes delicious adobo. Very tasty!</notes>
+    <hint>Nanay - Pepay's Mother. She's the one that cooks for the family</hint>
+	<lesson>1</lesson>
+</Word_Entry>
+
+<Word_Entry>
+    <q_num>2</q_num>
+	<word>Tatay</word>
+    <w_type>definition</w_type>
+    <notes>He was the one that made our treehouse in the backyard.</notes>
+    <hint>This is my father. He is the one that works for the family</hint>
+	<lesson>1</lesson>
+</Word_Entry>
+
+<Word_Entry>
+    <q_num>3</q_num>
+	<word>Kuya</word>
+    <w_type>definition</w_type>
+    <notes>He also teases me a lot.</notes>
+    <hint>My older brother. He likes to play basketball and all different kinds of sports.</hint>
+	<lesson>1</lesson>
+</Word_Entry>
+<Word_Entry>
+    <q_num>4</q_num>
+    <word>Ate</word>
+    <w_type>definition</w_type>
+    <notes>She told me she really likes this boy once. i forgot his name.</notes>
+    <hint>She is my older sister. She likes to spend her time with her phone.</hint>
+    <lesson>1</lesson>
+</Word_Entry>
+<Word_Entry>
+	<q_num>5</q_num>
+    <word>Lolo</word>
+    <w_type>definition</w_type>
+    <notes>We play board games a lot</notes>
+    <hint>My father's father. He uses glasses to read the newspaper</hint>
+	<lesson>1</lesson>
+</Word_Entry>
+<Word_Entry>
+    <q_num>6</q_num>
+	<word>Lola</word>
+    <w_type>definition</w_type>
+    <notes>She also likes to tell us stories from her time.</notes>
+    <hint>My father's mother. She walks around with a cane</hint>
+	<lesson>1</lesson>
+</Word_Entry>
+
+<Word_Entry>
+    <q_num>7</q_num>
+    <word>Bunso</word>
+    <w_type>definition</w_type>
+    <notes>He is also very cute. </notes>
+    <hint>My younger sibling. He likes to play toys</hint>
+    <lesson>1</lesson>
+</Word_Entry>
+<Word_Entry>
+    <q_num>8</q_num>
+    <word>Tito</word>
+    <w_type>definition</w_type>
+    <notes>He tells horrible jokes. </notes>
+    <hint>He is my parent's brother. I don't know which one though</hint>
+    <lesson>1</lesson>
+</Word_Entry>
+<Word_Entry>
+    <q_num>9</q_num>
+    <word>Tita</word>
+    <w_type>definition</w_type>
+    <notes>She likes to hang out with my mother.</notes>
+    <hint>My mother's sister. She is a great cook too</hint>
+    <lesson>1</lesson>
+</Word_Entry>
+
+</type>

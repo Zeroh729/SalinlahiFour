@@ -118,7 +118,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 			choices[i].setVisibility(View.VISIBLE);
 		//	choices[i].setOnTouchListener(buttonAnimation);
 		}
-		
+		evaluation.setLexiconDir("lexicon_family.xml");
 		int MAX_CHOICES = 9;
 		RelativeLayout.LayoutParams params[] = new RelativeLayout.LayoutParams[MAX_CHOICES];
 		
@@ -154,7 +154,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		//tv_feedback.setText("");	//delete
 		Log.d("Debug Family","Aldrin: Initiate Items");
 		items = new ArrayList<Item>();
-
+		
 		Log.d("Debug Family","Aldrin: Initiate Items...Done");
 	}
 

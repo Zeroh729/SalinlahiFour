@@ -58,6 +58,7 @@ public class GameScreen extends AbstractGameScreen  {
 		protected void loadAssets() {
 			// TODO Auto-generated method stub
 	        Log.d("Aldrin ExtendedFramework", "Loading Assets");
+	        eval.setLexiconDir("lexicon_shape.xml");
 	        enemies = new EnemyList(activityLevel);
 	        enemies.loadEnemy();
 	        bg = Assets.bg;
