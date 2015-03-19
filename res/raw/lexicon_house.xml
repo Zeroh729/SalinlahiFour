@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<type>
+  
+<Word_Entry>
+    <q_num>1</q_num>
+	<word>Bubong</word>
+    <w_type>definition</w_type>
+    <notes>It also protects us from rain</notes>
+    <hint>Bubong - It covers the top part of the house</hint>
+	<lesson>2</lesson>
+</Word_Entry>
+<Word_Entry>
+    <q_num>2</q_num>
+	<word>Dingding</word>
+    <w_type>definition</w_type>
+    <notes>Tita hangs picture frames around here</notes>
+    <hint>Dingding - Covers the front, side and back parts of the house</hint>
+	<lesson>2</lesson>
+</Word_Entry>
+<Word_Entry>
+    <q_num>3</q_num>
+	<word>Pinto</word>
+    <w_type>definition</w_type>
+    <notes>We use this to get to different parts of the house too</notes>
+    <hint>Pinto - We open this one to get inside the house</hint>
+	<lesson>2</lesson>
+</Word_Entry>
+<Word_Entry>
+    <q_num>4</q_num>
+	<word>Bintana</word>
+    <w_type>definition</w_type>
+    <notes>Sometimes you see birds just outside here</notes>
+    <hint>Bintana - They are made of glass so that you can look from the inside</hint>
+	<lesson>2</lesson>
+</Word_Entry>
+<Word_Entry>
+    <q_num>5</q_num>
+	<word>Garahe</word>
+    <w_type>definition</w_type>
+    <notes>Tito keeps his tools here as well</notes>
+    <hint>Garahe - This is where tito parks his car.</hint>
+	<lesson>2</lesson>
+</Word_Entry>
+<Word_Entry>
+    <q_num>6</q_num>
+	<word>Bakod</word>
+    <w_type>definition</w_type>
+    <notes>It looks like arrows pointing up</notes>
+    <hint>Bakod - This protects our house from strangers</hint>
+	<lesson>2</lesson>
+</Word_Entry>
+	
+</type>
