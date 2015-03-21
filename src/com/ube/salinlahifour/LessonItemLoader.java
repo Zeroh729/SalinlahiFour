@@ -57,7 +57,7 @@ public abstract class LessonItemLoader {
 						items.add(new Item(8,"Hagdanan" , "Stairs", "Makes us go up!", R.drawable.stairs, 0, 0, LevelType.HARD));						
 					case "MEDIUM":
 						items.add(new Item(5,"Garahe" , "Garage", "Garahe - This is where tito parks his car.", R.drawable.garage, 0, 0, LevelType.MEDIUM));
-						items.add(new Item(6,"Bakuran" , "fence", "Bakuran - This protects our house from strangers", R.drawable.fence, 0, 0, LevelType.MEDIUM));
+						items.add(new Item(6,"Bakod" , "fence", "Bakod - This protects our house from strangers", R.drawable.fence, 0, 0, LevelType.MEDIUM));
 						
 					case "EASY":
 						items.add(new Item(1,"Bubong" , "Roof", "Bubong - It covers the top part of the house", R.drawable.roof, 0, 0, LevelType.EASY));

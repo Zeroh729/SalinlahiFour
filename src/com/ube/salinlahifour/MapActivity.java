@@ -129,7 +129,7 @@ public class MapActivity extends Activity implements OnClickListener{
 								scene.getLessons().get(i+1).setLocked(false);
 						}
 					}else{
-						scene.getLessons().get(i).setLocked(true);
+						//scene.getLessons().get(i).setLocked(true);
 						scene.getLessons().get(i).setLocked(false);
 					}
 					try{
@@ -455,13 +455,13 @@ public class MapActivity extends Activity implements OnClickListener{
 					            	 		break;
 					            	 	default:
 					            	 		lesson.setEasyStar(null);
-					            	 		btn_medium.setEnabled(false);
-					            	 		btn_hard.setEnabled(false);
+					            	 		btn_medium.setEnabled(true);
+					            	 		btn_hard.setEnabled(true);
 					            	 }
 					             }else{
 				            	 	((ImageView)popupView.findViewById(R.id.star1)).setImageResource(R.drawable.lvlselect_null);
-			            	 		btn_medium.setEnabled(false);
-			            	 		btn_hard.setEnabled(false);
+			            	 		btn_medium.setEnabled(true);
+			            	 		btn_hard.setEnabled(true);
 					             }
 					             if(lesson.getMediumStar() != null){
 					            	 switch(lesson.getMediumStar()){
