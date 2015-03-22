@@ -70,10 +70,10 @@ public abstract class LessonItemLoader {
 							}
 				Log.d("Lesson Loader", items.get(0).getLabel());
 				break;
-			case "com.ube.salinlahifour.lessonActivities.Music":
+			case "com.ube.salinlahifour.lessonActivities.Shape":
 				switch(activityLevel){
 					case "HARD":
-						items.add(new Item(8,"Palaso" , "Arrow", "Palaso - An arrow. It looks like it's pointing to something", R.drawable.arrow, 0, 0, LevelType.HARD));
+						items.add(new Item(8,"Tunod" , "Arrow", "Tunod - An arrow. It looks like it's pointing to something", R.drawable.arrow, 0, 0, LevelType.HARD));
 						items.add(new Item(9,"Gasuklay" , "Crescent", "Gasuklay - Looks like a banana or a fingernail.", R.drawable.cresent, 0, 0, LevelType.HARD));
 						items.add(new Item(10,"Puso" , "Heart", "A heart - It's such a LOVELY shape.", R.drawable.heart, 0, 0, LevelType.HARD));
 

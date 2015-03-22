@@ -22,7 +22,19 @@ public class EnemyList {
 	public void loadEnemy(){
 		switch(ActivityLevel){
 		case "HARD":
+					sEnemy[8] = "Tunod";
+					question[8]="Its a Arrow Formation!";
+					sEnemy[9] = "Gasuklay";
+					question[9]="Its a Crecent Formation!";
+					sEnemy[10] = "Puso";
+					question[10]="Its a Heart Formation!";
 		case "MEDIUM":
+					sEnemy[5] = "Krus";
+					question[5]="Its a Cross Formation!";
+					sEnemy[6] = "Diamante";
+					question[6]="Its a Diamond Formation!";
+					sEnemy[7] = "Parihaba";
+					question[7]="Its a Rectangle Formation!";
 		case "EASY":
 			sEnemy[0] = "Bilog";
 			question[0]="Its a Circle Formation!";
