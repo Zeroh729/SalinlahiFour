@@ -39,11 +39,12 @@ public class LoadingScreen extends Screen {
 	        //Assets.menubg = g.newImage("menubg.png", ImageFormat.RGB565);
 	        switch(activityLevel){
 	        case "HARD":
-	        	Assets.roof = g.newImage("house/Medium/roof.png", ImageFormat.RGB565);
-	   	        Assets.roofholder = g.newImage("house/Medium/roofholder.png", ImageFormat.RGB565);
-	   	        Assets.roof_selected = g.newImage("house/Medium/roof_selected.png", ImageFormat.RGB565);
-	   	        Assets.roof_error =  g.newImage("house/Medium/roof_error.png", ImageFormat.RGB565);
-	   	        Assets.roof_choice = g.newImage("house/Medium/roof_choice.png", ImageFormat.RGB565);
+	        	Assets.gamebg = g.newImage("house/Hard/bg.png", ImageFormat.RGB565);
+	        	Assets.roof = g.newImage("house/Hard/roof.png", ImageFormat.RGB565);
+	   	        Assets.roofholder = g.newImage("house/Hard/roofholder.png", ImageFormat.RGB565);
+	   	        Assets.roof_selected = g.newImage("house/Hard/roof_selected.png", ImageFormat.RGB565);
+	   	        Assets.roof_error =  g.newImage("house/Hard/roof_error.png", ImageFormat.RGB565);
+	   	        Assets.roof_choice = g.newImage("house/Hard/roof_choice.png", ImageFormat.RGB565);
 	   	        
 		        Assets.body = g.newImage("house/Hard/body.png", ImageFormat.RGB565);
 		        Assets.bodyholder = g.newImage("house/Hard/bodyholder.png", ImageFormat.RGB565);
@@ -51,30 +52,41 @@ public class LoadingScreen extends Screen {
 		        Assets.body_error =  g.newImage("house/Hard/body_error.png", ImageFormat.RGB565);
 	   	        Assets.body_choice = g.newImage("house/Hard/body_choice.png", ImageFormat.RGB565);
 	   	        
-		        Assets.door = g.newImage("house/Easy/door.png", ImageFormat.RGB565);
-		        Assets.doorholder = g.newImage("house/Easy/doorholder.png", ImageFormat.RGB565);
-		        Assets.door_selected = g.newImage("house/Easy/door_selected.png", ImageFormat.RGB565);
-		        Assets.door_error =  g.newImage("house/Easy/door_error.png", ImageFormat.RGB565);
-	   	        Assets.door_choice = g.newImage("house/Easy/door_choice.png", ImageFormat.RGB565);
+		        Assets.door = g.newImage("house/Hard/door.png", ImageFormat.RGB565);
+		        Assets.doorholder = g.newImage("house/Hard/doorholder.png", ImageFormat.RGB565);
+		        Assets.door_selected = g.newImage("house/Hard/door_selected.png", ImageFormat.RGB565);
+		        Assets.door_error =  g.newImage("house/Hard/door_error.png", ImageFormat.RGB565);
+	   	        Assets.door_choice = g.newImage("house/Hard/door_choice.png", ImageFormat.RGB565);
 	   	        
-		        Assets.window = g.newImage("house/Easy/window.png", ImageFormat.RGB565);
-		        Assets.windowholder = g.newImage("house/Easy/windowholder.png", ImageFormat.RGB565);
-		        Assets.window_selected = g.newImage("house/Easy/window_selected.png", ImageFormat.RGB565);
-		        Assets.window_error =  g.newImage("house/Easy/window_error.png", ImageFormat.RGB565);
-	   	        Assets.window_choice = g.newImage("house/Easy/window_choice.png", ImageFormat.RGB565);
+		        Assets.window = g.newImage("house/Hard/window.png", ImageFormat.RGB565);
+		        Assets.windowholder = g.newImage("house/Hard/windowholder.png", ImageFormat.RGB565);
+		        Assets.window_selected = g.newImage("house/Hard/window_selected.png", ImageFormat.RGB565);
+		        Assets.window_error =  g.newImage("house/Hard/window_error.png", ImageFormat.RGB565);
+	   	        Assets.window_choice = g.newImage("house/Hard/window_choice.png", ImageFormat.RGB565);
 	   	        
-	        	Assets.garage = g.newImage("house/Medium/garage.png", ImageFormat.RGB565);
-	        	Assets.garageholder = g.newImage("house/Medium/garageholder.png", ImageFormat.RGB565);
-	        	Assets.garage_selected = g.newImage("house/Medium/garage_selected.png", ImageFormat.RGB565);
-	        	Assets.garage_error =  g.newImage("house/Medium/garage_error.png", ImageFormat.RGB565);
-	   	        Assets.garage_choice = g.newImage("house/Medium/garage_choice.png", ImageFormat.RGB565); 
+	        	Assets.garage = g.newImage("house/Hard/garage.png", ImageFormat.RGB565);
+	        	Assets.garageholder = g.newImage("house/Hard/garageholder.png", ImageFormat.RGB565);
+	        	Assets.garage_selected = g.newImage("house/Hard/garage_selected.png", ImageFormat.RGB565);
+	        	Assets.garage_error =  g.newImage("house/Hard/garage_error.png", ImageFormat.RGB565);
+	   	        Assets.garage_choice = g.newImage("house/Hard/garage_choice.png", ImageFormat.RGB565); 
 	   	        
-	        	Assets.fence = g.newImage("house/Medium/fence.png", ImageFormat.RGB565);
-	        	Assets.fenceholder = g.newImage("house/Medium/fenceholder.png", ImageFormat.RGB565);
-	        	Assets.fence_selected = g.newImage("house/Medium/fence_selected.png", ImageFormat.RGB565);
-	        	Assets.fence_error =  g.newImage("house/Medium/fence_error.png", ImageFormat.RGB565);
-	   	        Assets.fence_choice = g.newImage("house/Medium/fence_choice.png", ImageFormat.RGB565);   
+	        	Assets.fence = g.newImage("house/Hard/fence.png", ImageFormat.RGB565);
+	        	Assets.fenceholder = g.newImage("house/Hard/fenceholder.png", ImageFormat.RGB565);
+	        	Assets.fence_selected = g.newImage("house/Hard/fence_selected.png", ImageFormat.RGB565);
+	        	Assets.fence_error =  g.newImage("house/Hard/fence_error.png", ImageFormat.RGB565);
+	   	        Assets.fence_choice = g.newImage("house/Hard/fence_choice.png", ImageFormat.RGB565);   
 	   	        
+	   	        Assets.chimney = g.newImage("house/Hard/chimney.png", ImageFormat.RGB565);
+	        	Assets.chimneyholder = g.newImage("house/Hard/chimneyholder.png", ImageFormat.RGB565);
+	        	Assets.chimney_selected = g.newImage("house/Hard/chimney_selected.png", ImageFormat.RGB565);
+	        	Assets.chimney_error =  g.newImage("house/Hard/chimney_error.png", ImageFormat.RGB565);
+	   	        Assets.chimney_choice = g.newImage("house/Hard/chimney_choice.png", ImageFormat.RGB565);  
+	   	        
+	   	        Assets.stairs = g.newImage("house/Hard/stairs.png", ImageFormat.RGB565);
+	        	Assets.stairsholder = g.newImage("house/Hard/stairsholder.png", ImageFormat.RGB565);
+	        	Assets.stairs_selected = g.newImage("house/Hard/stairs_selected.png", ImageFormat.RGB565);
+	        	Assets.stairs_error =  g.newImage("house/Hard/stairs_error.png", ImageFormat.RGB565);
+	   	        Assets.stairs_choice = g.newImage("house/Hard/stairs_choice.png", ImageFormat.RGB565);  
 		        //Assets.sound.add(game.getAudio().createSound("cooking/Sounds/color_puti.mp3"));
 	        	
 	        	Assets.dingding = game.getAudio().createSound("house/Sounds/house_dingding.mp3");
@@ -86,8 +98,9 @@ public class LoadingScreen extends Screen {
 	        	Assets.bakod = game.getAudio().createSound("house/Sounds/house_bakod.mp3");
 
 	        	Assets.hagdan = game.getAudio().createSound("house/Sounds/house_hagdan.mp3");
-	        	Assets.hardin = game.getAudio().createSound("house/Sounds/house_hardin.mp3"); 
-	        	
+	        	Assets.chimnea = game.getAudio().createSound("house/Sounds/house_chimney.mp3");
+	        	//Assets.hardin = game.getAudio().createSound("house/Sounds/house_hardin.mp3"); 
+	        	break;
 	        case "MEDIUM": 
 	        	Log.d("Loading Screen", "Medium loading");
 	        	Assets.gamebg = g.newImage("house/Medium/gamebg.png", ImageFormat.RGB565);
@@ -98,23 +111,23 @@ public class LoadingScreen extends Screen {
 	   	        Assets.roof_error =  g.newImage("house/Medium/roof_error.png", ImageFormat.RGB565);
 	   	        Assets.roof_choice = g.newImage("house/Medium/roof_choice.png", ImageFormat.RGB565);
 	   	        
-		        Assets.body = g.newImage("house/Easy/body.png", ImageFormat.RGB565);
-		        Assets.bodyholder = g.newImage("house/Easy/bodyholder.png", ImageFormat.RGB565);
-		        Assets.body_selected = g.newImage("house/Easy/body_selected.png", ImageFormat.RGB565);
-		        Assets.body_error =  g.newImage("house/Easy/body_error.png", ImageFormat.RGB565);
-	   	        Assets.body_choice = g.newImage("house/Easy/body_choice.png", ImageFormat.RGB565);
+		        Assets.body = g.newImage("house/Medium/body.png", ImageFormat.RGB565);
+		        Assets.bodyholder = g.newImage("house/Medium/bodyholder.png", ImageFormat.RGB565);
+		        Assets.body_selected = g.newImage("house/Medium/body_selected.png", ImageFormat.RGB565);
+		        Assets.body_error =  g.newImage("house/Medium/body_error.png", ImageFormat.RGB565);
+	   	        Assets.body_choice = g.newImage("house/Medium/body_choice.png", ImageFormat.RGB565);
 	   	        
-		        Assets.door = g.newImage("house/Easy/door.png", ImageFormat.RGB565);
-		        Assets.doorholder = g.newImage("house/Easy/doorholder.png", ImageFormat.RGB565);
-		        Assets.door_selected = g.newImage("house/Easy/door_selected.png", ImageFormat.RGB565);
-		        Assets.door_error =  g.newImage("house/Easy/door_error.png", ImageFormat.RGB565);
-	   	        Assets.door_choice = g.newImage("house/Easy/door_choice.png", ImageFormat.RGB565);
+		        Assets.door = g.newImage("house/Medium/door.png", ImageFormat.RGB565);
+		        Assets.doorholder = g.newImage("house/Medium/doorholder.png", ImageFormat.RGB565);
+		        Assets.door_selected = g.newImage("house/Medium/door_selected.png", ImageFormat.RGB565);
+		        Assets.door_error =  g.newImage("house/Medium/door_error.png", ImageFormat.RGB565);
+	   	        Assets.door_choice = g.newImage("house/Medium/door_choice.png", ImageFormat.RGB565);
 	   	        
-		        Assets.window = g.newImage("house/Easy/window.png", ImageFormat.RGB565);
-		        Assets.windowholder = g.newImage("house/Easy/windowholder.png", ImageFormat.RGB565);
-		        Assets.window_selected = g.newImage("house/Easy/window_selected.png", ImageFormat.RGB565);
-		        Assets.window_error =  g.newImage("house/Easy/window_error.png", ImageFormat.RGB565);
-	   	        Assets.window_choice = g.newImage("house/Easy/window_choice.png", ImageFormat.RGB565);
+		        Assets.window = g.newImage("house/Medium/window.png", ImageFormat.RGB565);
+		        Assets.windowholder = g.newImage("house/Medium/windowholder.png", ImageFormat.RGB565);
+		        Assets.window_selected = g.newImage("house/Medium/window_selected.png", ImageFormat.RGB565);
+		        Assets.window_error =  g.newImage("house/Medium/window_error.png", ImageFormat.RGB565);
+	   	        Assets.window_choice = g.newImage("house/Medium/window_choice.png", ImageFormat.RGB565);
 	   	        
 	        	Assets.garage = g.newImage("house/Medium/garage.png", ImageFormat.RGB565);
 	        	Assets.garageholder = g.newImage("house/Medium/garageholder.png", ImageFormat.RGB565);

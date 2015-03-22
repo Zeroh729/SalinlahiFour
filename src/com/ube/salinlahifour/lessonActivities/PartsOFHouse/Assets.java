@@ -21,9 +21,9 @@ public class Assets {
 	//Hard Assets
 	
 	public static Image stairs, stairs_choice, stairsholder;
-	public static Image garden, garden_choice, gardenholder;
-	public static Image stairs_error, garden_error;
-	public static Image stairs_selected, garden_selected;
+	public static Image chimney, chimney_choice, chimneyholder;
+	public static Image stairs_error, chimney_error;
+	public static Image stairs_selected, chimney_selected;
 	//Sound assets
 	
 	public static Sound bakod, bintana, bubong, chimnea, dingding, garahe, hagdan, pinto, hardin;

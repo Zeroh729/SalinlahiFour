@@ -154,6 +154,7 @@ public class GameScreen extends AbstractGameScreen  {
 		@Override
 		protected void assetPositionHard() {
 			// TODO Auto-generated method stub
+			 livesLeft = 10;
 			breaderButtons = new ButtonSet(4, 70,40);
 	        Log.d("ButtonDebug", "Wdith: " + buttons_bread[0].getWidth() + " Height: " + buttons_bread[0].getHeight());
 	        breaderButtons.calculateButtonPosition(buttons_bread[0].getWidth(), buttons_bread[0].getHeight(), 2, 3);
@@ -173,6 +174,10 @@ public class GameScreen extends AbstractGameScreen  {
 			breaderButtons.loadAnswer(activityLevel);
 			creamerButtons.loadAnswer(activityLevel);
 			sprinklerButtons.loadAnswer(activityLevel);
+			
+			breaderButtons.loadQuestions();
+			creamerButtons.loadQuestions();
+			sprinklerButtons.loadQuestions();
 		}
 
 		@Override

@@ -50,5 +50,20 @@
     <hint>Bakod - This protects our house from strangers</hint>
 	<lesson>2</lesson>
 </Word_Entry>
-	
+	<Word_Entry>
+    <q_num>7</q_num>
+	<word>Tsimnea</word>
+    <w_type>definition</w_type>
+    <notes>It looks like arrows pointing up</notes>
+    <hint>Tsimnea - Smoke comes out of here when tita cooks.</hint>
+	<lesson>2</lesson>
+</Word_Entry>
+<Word_Entry>
+    <q_num>8</q_num>
+	<word>Hagdan</word>
+    <w_type>definition</w_type>
+    <notes>It looks like arrows pointing up</notes>
+    <hint>Hagdan - Makes us go up</hint>
+	<lesson>2</lesson>
+</Word_Entry>
 </type>

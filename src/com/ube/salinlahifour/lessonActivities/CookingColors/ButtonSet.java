@@ -171,6 +171,8 @@ public class ButtonSet {
 			break;
 
 		}
+		Log.d("Random Question Debug", "Question: " +fColors.get(qColor) + " na ");
+		Log.d("Random Question Debug", "Question: "+ fQuestions.get(nQuestion));
 		return fColors.get(qColor) + " na "+ fQuestions.get(nQuestion);
 	}
 	public String getQuestionColor(){

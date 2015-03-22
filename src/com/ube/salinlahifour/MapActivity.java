@@ -450,8 +450,8 @@ public class MapActivity extends Activity implements OnClickListener{
 					            	 		break;
 					            	 	case "BRONZE":
 					            	 		((ImageView)popupView.findViewById(R.id.star1)).setImageResource(R.drawable.lvlselect_bronze);
-					            	 		btn_medium.setEnabled(false);
-					            	 		btn_hard.setEnabled(false);
+					            	 		btn_medium.setEnabled(true);
+					            	 		btn_hard.setEnabled(true);
 					            	 		break;
 					            	 	default:
 					            	 		lesson.setEasyStar(null);
@@ -473,14 +473,14 @@ public class MapActivity extends Activity implements OnClickListener{
 					            	 		break;
 					            	 	case "BRONZE":
 					            	 		((ImageView)popupView.findViewById(R.id.star2)).setImageResource(R.drawable.lvlselect_bronze);
-					            	 		btn_hard.setEnabled(false);
+					            	 		btn_hard.setEnabled(true);
 					            	 		break;
 					            	 	default:
 					            	 		lesson.setMediumStar(null);
 					            	 }
 					             }else{
 				            	 	((ImageView)popupView.findViewById(R.id.star2)).setImageResource(R.drawable.lvlselect_null);
-			            	 		btn_hard.setEnabled(false);
+			            	 		btn_hard.setEnabled(true);
 					             }
 					             if(lesson.getHardStar() != null){
 					            	 switch(lesson.getHardStar()){
