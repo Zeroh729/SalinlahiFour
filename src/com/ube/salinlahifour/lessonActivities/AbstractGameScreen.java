@@ -118,14 +118,25 @@ public abstract class AbstractGameScreen extends Screen {
 	  		        if(!gameOverLock){
 	  		        	Log.d("SEMAPHORE", gameOverLock + "");
 	  					gameOverLock = true;
-	  					
+	  					eval.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), userID);
 	  					Intent intent = new Intent(context,GameOver.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);  
 	  					Bundle extras = new Bundle();
+	  					
+	  					Log.d("Debug ReportCard", "Activity Name: " + activtityName);
+	  					Log.d("Debug ReportCard", "Activity Level: " + activityLevel);
+	  					Log.d("Debug ReportCard", "Lesson Number: " + lessonNumber);
+	  					Log.d("Debug ReportCard", "userID: " + userID);
+	  					Log.d("Debug ReportCard", "Lesson: " + lesson.getName());
+	  					Log.d("Debug ReportCard", "Eval Score: " + eval.getScore() );
+	  					Log.d("Debug ReportCard", "Eval Total Score: " + eval.getTotalScore() );
+	  					Log.d("Debug ReportCard", "Throwing...");
 	  					
 	  					extras.putString("ActivityName",activtityName);
 	  					extras.putString("ActivityLevel", activityLevel);
 	  					extras.putInt("LessonNum", lessonNumber);
 	  					extras.putInt("userID", userID);
+	  					extras.putInt("e_score", eval.getScore());
+	  					extras.putInt("e_total", eval.getTotalScore());
 	  					Log.d("LessonNum", lessonNumber + "");
 	  					extras.putString("EOAFeedback", eval.getEndofActivityFeedback(eval.getScore(), lessonNumber));
 	  					extras.putParcelable("lesson", lesson);
