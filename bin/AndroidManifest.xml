@@ -213,6 +213,25 @@
             android:label="@string/title_activity_login" >
         </activity>
         
+        <activity
+			android:name="com.ube.salinlahifour.narrativeDialog.HouseNarrativeActivity"
+			android:label="@string/title_activity_login" >
+        </activity>
+        
+        <activity
+			android:name="com.ube.salinlahifour.narrativeDialog.CookingNarrativeActivity"
+			android:label="@string/title_activity_login" >
+        </activity>
+        
+        <activity
+			android:name="com.ube.salinlahifour.narrativeDialog.ShapeNarrativeActivity"
+			android:label="@string/title_activity_login" >
+        </activity>
+        
+        <activity
+			android:name="com.ube.salinlahifour.narrativeDialog.AnimalsNarrativeActivity"
+			android:label="@string/title_activity_login" >
+        </activity>
         
         <activity
             android:name="com.ube.salinlahifour.LoginActivity"
