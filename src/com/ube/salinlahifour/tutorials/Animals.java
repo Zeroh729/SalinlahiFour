@@ -16,6 +16,7 @@ import android.widget.ImageView;
 
 import com.ube.salinlahifour.R;
 import com.ube.salinlahifour.SalinlahiFour;
+import com.ube.salinlahifour.narrativeDialog.AnimalsNarrativeActivity;
 import com.ube.salinlahifour.uibuilders.Button.BtnNextArrowStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.BtnStatesDirector;
 
@@ -33,6 +34,7 @@ public class Animals extends AbstractTutorialActivity {
 
 	@Override
 	protected void setEasyTutorial() {
+		startActivity(new Intent(this, AnimalsNarrativeActivity.class));
 		Log.d(items.size() + "","TEST");
 		int j = 0;
 		for(int i = 0; i < items.size(); i++){

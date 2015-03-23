@@ -5,8 +5,9 @@ import com.kilobolt.framework.Image;
 import com.kilobolt.framework.Sound;
 public class Assets {
 
-	public static Image bg, nothingness, wrong;
+	public static Image bg, nothingness, wrong,ready;
 	public static ArrayList<Image> buttons;
+	public static ArrayList<Image> buttons_pressed;
 	public static ArrayList<Image> bread;
 	public static ArrayList<Image> frosting;
 	public static ArrayList<Image> sprinkles;

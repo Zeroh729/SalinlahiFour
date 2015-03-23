@@ -31,6 +31,7 @@ public abstract class LessonItemLoader {
 						items.add(new Item(3,"Pula" , "Red", "Pula - This is RED. It is the color of an apple", R.drawable.red, 0, 0, LevelType.EASY));
 						items.add(new Item(4,"Dilaw" , "Yellow", "Dilaw - This is YELLOW. It is the color of the sun.", R.drawable.yellow, 0, 0, LevelType.EASY));
 				}
+				Log.d("Lesson Loader", items.toString());
 				break;
 			case "com.ube.salinlahifour.lessonActivities.Family":
 				switch(activityLevel){
@@ -47,17 +48,18 @@ public abstract class LessonItemLoader {
 						items.add(new Item(2,"Tatay" , "Father", "Can you find tatay?", R.drawable.family_tatay, R.raw.family_tatay, R.raw.family_father, LevelType.EASY));
 						items.add(new Item(3,"Kuya" , "Brother", "Can you find kuya?", R.drawable.family_kuya, R.raw.family_kuya, R.raw.family_olderbrother, LevelType.EASY));
 						items.add(new Item(4,"Ate" , "Sister", "Can you find ate?", R.drawable.family_ate, R.raw.family_ate, R.raw.family_oldersister, LevelType.EASY));
-
+						
 				}	
+				Log.d("Lesson Loader", items.get(0).getLabel());
 				break;
 			case "com.ube.salinlahifour.lessonActivities.House":
 				switch(activityLevel){
 					case "HARD":
 						items.add(new Item(7,"Tsimenea" , "Chimney", "Smoke comes out of here when tita cooks.", R.drawable.chimney,  0, 0, LevelType.HARD));
-						items.add(new Item(8,"Hagdanan" , "Stairs", "Makes us go up!", R.drawable.stairs, 0, 0, LevelType.HARD));						
+						items.add(new Item(8,"Hagdan" , "Stairs", "Makes us go up!", R.drawable.stairs, 0, 0, LevelType.HARD));						
 					case "MEDIUM":
 						items.add(new Item(5,"Garahe" , "Garage", "Garahe - This is where tito parks his car.", R.drawable.garage, 0, 0, LevelType.MEDIUM));
-						items.add(new Item(6,"Bakuran" , "fence", "Bakuran - This protects our house from strangers", R.drawable.fence, 0, 0, LevelType.MEDIUM));
+						items.add(new Item(6,"Bakod" , "fence", "Bakod - This protects our house from strangers", R.drawable.fence, 0, 0, LevelType.MEDIUM));
 						
 					case "EASY":
 						items.add(new Item(1,"Bubong" , "Roof", "Bubong - It covers the top part of the house", R.drawable.roof, 0, 0, LevelType.EASY));
@@ -66,11 +68,12 @@ public abstract class LessonItemLoader {
 						items.add(new Item(4,"Bintana" , "Window", "Bintana - They are made of glass so that you can look from the inside", R.drawable.window, 0, 0, LevelType.EASY));
 					
 							}
+				Log.d("Lesson Loader", items.get(0).getLabel());
 				break;
-			case "com.ube.salinlahifour.lessonActivities.Music":
+			case "com.ube.salinlahifour.lessonActivities.Shape":
 				switch(activityLevel){
 					case "HARD":
-						items.add(new Item(8,"Palaso" , "Arrow", "Palaso - An arrow. It looks like it's pointing to something", R.drawable.arrow, 0, 0, LevelType.HARD));
+						items.add(new Item(8,"Tunod" , "Arrow", "Tunod - An arrow. It looks like it's pointing to something", R.drawable.arrow, 0, 0, LevelType.HARD));
 						items.add(new Item(9,"Gasuklay" , "Crescent", "Gasuklay - Looks like a banana or a fingernail.", R.drawable.cresent, 0, 0, LevelType.HARD));
 						items.add(new Item(10,"Puso" , "Heart", "A heart - It's such a LOVELY shape.", R.drawable.heart, 0, 0, LevelType.HARD));
 

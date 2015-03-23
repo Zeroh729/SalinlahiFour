@@ -14,7 +14,7 @@ public class Shape extends AbstractLAFramework {
 	 @Override
 	 public Screen getInitScreen() {
 		 Log.d("Debug Init", "Space");
-		 return new LoadingScreen(this, activityLevel, UserID, this, lesson); 
+		 return new LoadingScreen(this, activityLevel, UserID, this, lesson, items); 
 	 }
 	 @Override
 	 public void onBackPressed() {
