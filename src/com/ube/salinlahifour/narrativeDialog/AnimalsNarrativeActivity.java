@@ -12,6 +12,7 @@ public class AnimalsNarrativeActivity extends NarrativeDialog{
 	
 	@Override
 	public void initiateCharacters() {
+		setBackground(R.drawable.animals_tutt);
 		if(SalinlahiFour.getLoggedInUser().getGender().equals("female")){
 			maincharacter = new Character(this, tv_dialog, iv_characters[0], R.drawable.pepay_handsonwaist);
 			maincharacter.addExpression(Expression.POINT, R.drawable.pepay_wave);
@@ -26,7 +27,10 @@ public class AnimalsNarrativeActivity extends NarrativeDialog{
 			maincharacter.addExpression(Expression.SHOCKED, R.drawable.popoy_surprisedface);
 			maincharacterName = "Popoi";
 		}
-		guard = new Character(this, tv_dialog, iv_characters[3], R.drawable.chef);
+		guard = new Character(this, tv_dialog, iv_characters[3], R.drawable.police_waist);
+		guard.addExpression(Expression.SPECIAL_1, R.drawable.police_waisttalk);
+		guard.addExpression(Expression.WAVE, R.drawable.police_wave);
+		guard.addExpression(Expression.SPECIAL_2, R.drawable.police_wavetalk);
 		
 	}
 
@@ -58,7 +62,7 @@ public class AnimalsNarrativeActivity extends NarrativeDialog{
 				maincharacter.say(script.get(1));
 				break;
 			case 2:
-				maincharacter.setExpression(Expression.HAPPY);
+				maincharacter.setExpression(Expression.POINT);
 				maincharacter.say(script.get(2));
 				break;
 			case 3:
@@ -74,17 +78,18 @@ public class AnimalsNarrativeActivity extends NarrativeDialog{
 				maincharacter.say(script.get(5));
 				break;
 			case 6:
-				maincharacter.setExpression(Expression.SAD);
 				maincharacter.say(script.get(6));
 				break;
 			case 7:
+				guard.setExpression(Expression.SPECIAL_1);
 				guard.say(script.get(7));
 				break;
 			case 8:
+				guard.setExpression(Expression.WAVE);
 				guard.say(script.get(8));
 				break;
 			case 9:
-				maincharacter.setExpression(Expression.HAPPY);
+				maincharacter.setExpression(Expression.POINT);
 				maincharacter.say(script.get(9));
 				break;
 			
@@ -92,8 +97,8 @@ public class AnimalsNarrativeActivity extends NarrativeDialog{
 				maincharacter.setExpression(Expression.QUESTION);
 				maincharacter.say(script.get(10));
 				break;
-			
 			case 11:
+				guard.setExpression(Expression.SPECIAL_2);
 				guard.say(script.get(11));
 				break;
 			

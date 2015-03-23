@@ -8,10 +8,12 @@ import com.ube.salinlahifour.SalinlahiFour;
 public class HouseNarrativeActivity extends NarrativeDialog{
 	private Character maincharacter;
 	private Character pichi;
+	private Character house;
 	private String maincharacterName;
 	
 	@Override
 	public void initiateCharacters() {
+		setBackground(R.drawable.house_tutt);
 		if(SalinlahiFour.getLoggedInUser().getGender().equals("female")){
 			maincharacter = new Character(this, tv_dialog, iv_characters[0], R.drawable.pepay_handsonwaist);
 			maincharacter.addExpression(Expression.POINT, R.drawable.pepay_wave);
@@ -26,7 +28,12 @@ public class HouseNarrativeActivity extends NarrativeDialog{
 			maincharacter.addExpression(Expression.SHOCKED, R.drawable.popoy_surprisedface);
 			maincharacterName = "Popoi";
 		}
-		pichi = new Character(this, tv_dialog, iv_characters[3], R.drawable.pichi);
+		pichi = new Character(this, tv_dialog, iv_characters[1], R.drawable.pichi);
+		pichi.addExpression(Expression.SPECIAL_1, R.drawable.pichi_hands);
+		pichi.addExpression(Expression.SPECIAL_2, R.drawable.pichi_handstalk);
+		pichi.addExpression(Expression.SHOCKED, R.drawable.pichi_surprisedface);
+		
+		house = new Character(this, tv_dialog, iv_characters[2], R.drawable.house_tutthouse);
 	}
 
 	@Override
@@ -60,21 +67,24 @@ public class HouseNarrativeActivity extends NarrativeDialog{
 				pichi.say(script.get(2));
 				break;
 			case 3:
+				pichi.setExpression(Expression.SPECIAL_1);
 				pichi.say(script.get(3));
 				break;
 			case 4:
 				pichi.say(script.get(4));
+				pichi.setExpression(Expression.SPECIAL_2);
 				break;
 			case 5:
 				pichi.say(script.get(5));
-				// show thing Entrance from heaven then exit
+				house.entranceFromHeaven();
+				pichi.setExpression(Expression.SHOCKED);
+				house.exitToHell();
 				break;
 			case 6:
 				maincharacter.setExpression(Expression.SHOCKED);
 				maincharacter.say(script.get(6));
 				break;
 			case 7:
-				//pichi.setExpression(Expression.SAD);
 				pichi.say(script.get(7));
 				pichi.exitToRight();
 				break;

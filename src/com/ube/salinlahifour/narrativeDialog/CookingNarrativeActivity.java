@@ -12,6 +12,7 @@ public class CookingNarrativeActivity extends NarrativeDialog{
 	
 	@Override
 	public void initiateCharacters() {
+		setBackground(R.drawable.colors_tutt);
 		if(SalinlahiFour.getLoggedInUser().getGender().equals("female")){
 			maincharacter = new Character(this, tv_dialog, iv_characters[0], R.drawable.pepay_handsonwaist);
 			maincharacter.addExpression(Expression.POINT, R.drawable.pepay_wave);
@@ -27,6 +28,8 @@ public class CookingNarrativeActivity extends NarrativeDialog{
 			maincharacterName = "Popoi";
 		}
 		chef = new Character(this, tv_dialog, iv_characters[3], R.drawable.chef);
+		chef.addExpression(Expression.SPECIAL_1, R.drawable.chef_cross);
+		chef.addExpression(Expression.SPECIAL_2, R.drawable.chef_talk);
 	}
 
 	@Override
@@ -52,29 +55,28 @@ public class CookingNarrativeActivity extends NarrativeDialog{
 			case 1:
 				maincharacter.setExpression(Expression.SHOCKED);
 				chef.entranceFromRight();
-				//mad chef
+				chef.setExpression(Expression.SPECIAL_1);
 				chef.say(script.get(1));
 				break;
 			case 2:
-				//question chef
 				chef.say(script.get(2));
 				break;
 			case 3:
-				//default chef
+				chef.setExpression(Expression.SPECIAL_2);
 				chef.say(script.get(3));
 				break;
 			case 4:
-				//default chef
 				chef.say(script.get(4));
 				break;
 			case 5:
-				maincharacter.setExpression(Expression.SCARED);
+				maincharacter.setExpression(Expression.SHOCKED);
 				maincharacter.say(script.get(5));
 				break;
 			case 6:
 				maincharacter.say(script.get(6));
 				break;
 			case 7:
+				chef.setExpression(Expression.SPECIAL_1);
 				chef.say(script.get(7));
 				chef.exitToRight();
 				break;

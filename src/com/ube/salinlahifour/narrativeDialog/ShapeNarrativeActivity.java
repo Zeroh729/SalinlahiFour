@@ -13,6 +13,7 @@ public class ShapeNarrativeActivity extends NarrativeDialog{
 	
 	@Override
 	public void initiateCharacters() {
+		setBackground(R.drawable.shapes_tutt);
 		if(SalinlahiFour.getLoggedInUser().getGender().equals("female")){
 			maincharacter = new Character(this, tv_dialog, iv_characters[0], R.drawable.pepay_handsonwaist);
 			maincharacter.addExpression(Expression.POINT, R.drawable.pepay_wave);
@@ -27,8 +28,7 @@ public class ShapeNarrativeActivity extends NarrativeDialog{
 			maincharacter.addExpression(Expression.SHOCKED, R.drawable.popoy_surprisedface);
 			maincharacterName = "Popoi";
 		}
-		crew = new Character(this, tv_dialog, iv_characters[3], R.drawable.chef);
-		alien = new Character(this, tv_dialog, iv_characters[3], R.drawable.family_bunso);
+		crew = new Character(this, tv_dialog, iv_characters[3], R.drawable.crew_handstalk);
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class ShapeNarrativeActivity extends NarrativeDialog{
 		switch(dialogIndex){
 			case 0:
 				maincharacter.entranceFromLeft();
-				maincharacter.setExpression(Expression.HAPPY);
+				maincharacter.setExpression(Expression.POINT);
 				maincharacter.say(script.get(0));
 				break;
 			case 1:
@@ -73,15 +73,14 @@ public class ShapeNarrativeActivity extends NarrativeDialog{
 				maincharacter.say(script.get(5));
 				break;
 			case 6:
-				alien.entranceFromHeaven();
-				alien.say(script.get(6));
+				setBackground(R.drawable.shapes_alien);
+				crew.say(script.get(6));
 				break;
 			case 7:
 				maincharacter.panic();
 				maincharacter.say(script.get(7));
 				break;
 			case 8:
-				maincharacter.setExpression(Expression.SCARED);
 				maincharacter.say(script.get(7));
 				break;
 			default:
