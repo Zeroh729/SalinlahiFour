@@ -19,6 +19,7 @@ public class Cake {
 		isBread = false;
 		isSprinkled = false;
 		isCream = false;
+		Log.d("Reset Flags", "Bread,Cream and Sprinkle gone");
 	}
 	public void move(int newX, int newY){
 		 X = newX;

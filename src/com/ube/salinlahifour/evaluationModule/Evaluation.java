@@ -138,6 +138,13 @@ public class Evaluation {
 		}
 	}
 
+	public void setScore(int score){
+		this.score = score;
+	}
+	public void setTotScore(int total){
+		this.totscore = total;
+	}
+	
 	public int getScore()
 	{
 		return score;

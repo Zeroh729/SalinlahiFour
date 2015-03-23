@@ -1,6 +1,7 @@
 package com.ube.salinlahifour.lessonActivities.SpaceShape;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -15,6 +16,7 @@ import com.kilobolt.framework.Image;
 import com.kilobolt.framework.Screen;
 import com.kilobolt.framework.Sound;
 import com.kilobolt.framework.Input.TouchEvent;
+import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.Lesson;
 import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.evaluationModule.*;
@@ -35,16 +37,27 @@ public class GameScreen extends AbstractGameScreen  {
 	   
 	    private Image bg;
 	    // Edit lives left to the question size
-
-		public static Sound v_bilog,v_parisukat, v_bituin, v_tatsulok;
-	    private Image circle,square,star,triangle,easy_panel;
 	    private Image spaceship, enemy, projectile, wrong;
-	    private Parts pEasyPanel, pCircle,pSquare,pStar,pTriangle,pSpaceship, pEnemy,pWrong;
+	    private Parts pSpaceship, pEnemy,pWrong;
+	    
+		
+	    private Image circle,square,star,triangle;
+	    private Parts pCircle,pSquare,pStar,pTriangle;
+	    public static Sound v_bilog,v_parisukat, v_bituin, v_tatsulok;
+	    
+	    private Image cross,diamond,rectangle;
+	    private Parts pCross,pDiamond,pRectangle;
+	    public static Sound v_krus,v_diamante, v_parihaba;
+	    
+	    private Image arrow,cresent,heart;
+	    private Parts pArrow,pCresent,pHeart;
+	    public static Sound v_tunod,v_gasuklay, v_puso;
+	    
 	    private EnemyList enemies;
 	    private Projectile ammo;
 	    private boolean isEnemyExist = false;
 	   int index = 0;
-	    public GameScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson) {
+	    public GameScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson, ArrayList<Item> items) {
 	    	//Super Parameters Game, ActivityName, ActivityLevel, UserID
 	        super(game, activityName, activityLevel, userID, context,lesson);
 	        Log.d("Aldrin ExtendedFramework", "This should be after abstract Game");
@@ -52,6 +65,7 @@ public class GameScreen extends AbstractGameScreen  {
 	        this.activityLevel = activityLevel;
 	        Log.d("Aldrin ExtendedFramework", "Gamescreen constructor...");
 	        lessonNumber = 4;
+	        super.items = items;
 	    }
 
 		@Override
@@ -66,16 +80,32 @@ public class GameScreen extends AbstractGameScreen  {
 	        square = Assets.square;
 	        star = Assets.star;
 	        triangle = Assets.triangle;
-	        easy_panel = Assets.easy_panel;
+	        
+	        cross = Assets.cross;
+	        diamond = Assets.diamond;
+	        rectangle = Assets.rectangle;
+	        
+	        arrow = Assets.arrow;
+	        cresent = Assets.cresent;
+	        heart = Assets.heart;
+	        
 	        enemy = Assets.nothingness;
 	        spaceship = Assets.spaceship;
 	        projectile = Assets.nothingness;
 	        wrong = Assets.nothingness;
 	        ammo = new Projectile();
+	        
 	        v_bilog = Assets.bilog;
 	        v_bituin = Assets.bituin;
 	        v_parisukat = Assets.parisukat;
 	        v_tatsulok = Assets.tatsulok;
+	        v_krus = Assets.krus;
+	        v_diamante = Assets.diamante;
+	        v_parihaba = Assets.parihaba;
+	        v_tunod = Assets.tunod;
+	        v_gasuklay = Assets.gasuklay;
+	        v_puso = Assets.puso;
+	        
 		    Log.d("Aldrin ExtendedFramework", "Loading Assets...Done");
 		}
 
@@ -84,11 +114,12 @@ public class GameScreen extends AbstractGameScreen  {
 			// TODO Auto-generated method stub
 	        Log.d("Aldrin ExtendedFramework", "Positioning Easy Assets");
 			
-	        pEasyPanel = new Parts(0,600);
+	       
 	        pCircle = new Parts (120,415);
 	        pSquare= new Parts (495,415);
 	        pStar= new Parts (385,390);
 	        pTriangle = new Parts (247,385);
+	        
 	        pSpaceship = new Parts(310,235);
 	        pEnemy = new Parts(300,45);
 	        livesLeft = 4;
@@ -104,6 +135,11 @@ public class GameScreen extends AbstractGameScreen  {
 			// TODO Auto-generated method stub
 		   Log.d("GameScreen", "Positioning Medium"); 
 			assetPositionEasy();
+			  
+	        pCross = new Parts(75 - 30, 340-30);
+	        pDiamond = new Parts(75 - 30,260-30);
+	        pRectangle = new Parts(5,185-30);
+	        
 			livesLeft = 4;
 	        rounds  = 15;
  	       Log.d("GameScreen", "Positioning Medium...Done"); 
@@ -112,8 +148,11 @@ public class GameScreen extends AbstractGameScreen  {
 		@Override
 		protected void assetPositionHard() {
 			// TODO Auto-generated method stub
-			assetPositionEasy();
 			assetPositionMedium();
+			
+			pArrow = new Parts(570-30, 340-30);
+	        pCresent = new Parts(570-30,260-30);
+	        pHeart = new Parts(570-30, 180-30);
 			livesLeft = 4;
 	        rounds = 20;
 		}
@@ -121,11 +160,20 @@ public class GameScreen extends AbstractGameScreen  {
 			Random rand = new Random();
 			isEnemyExist = true;
 			index = rand.nextInt(size);
+			if(index <size){
+			this.resetButtonStates();
 			//enemyInfo = enemies.getEnemy(index);
-			sQuestion = enemies.getEnemyQuestion(index);
-			cAnswer = enemies.getEnemy(index);
-			enemy = Assets.enemyShapes.get(index);
+			if(index == 0){
+				index = 1;
+			}
+			//sQuestion = enemies.getEnemyQuestion(index);
+			sQuestion = items.get(index).getLabel();
+			//cAnswer = enemies.getEnemy(index);
+			cAnswer = items.get(index).getWord();
+			Log.d("Enemies Size", "Size: " + Assets.enemyShapes.size());
+			enemy = Assets.enemyShapes.get(items.get(index).getQ_num());
 			Log.d("Enemy Index: ", "i: " + index + " enemy formation: " + enemies.getEnemy(index)  );
+			}
 		}
 		
 		@Override
@@ -186,14 +234,15 @@ public class GameScreen extends AbstractGameScreen  {
 	            			if(index == 0){
 	            				index=1;
 	            			}
-	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
+	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
 	            			isEnemyExist = false;
 	            			rounds--;
 	            		}else{
 	            			Log.d("Feedback debug", "Evaluation false");
-	            			wrong = Assets.wrong;
-	            			pWrong.move(pCircle.getX(), pCircle.getY());
-	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
+	            			//wrong = Assets.wrong;
+	            			//pWrong.move(pCircle.getX(), pCircle.getY());
+	            			circle = Assets.circle_error;
+	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
 	            			livesLeft--;
 	            		}
 	            	}else if(inBounds(event, pSquare.getX() ,pSquare.getY() , square.getWidth(), square.getHeight())){
@@ -205,14 +254,15 @@ public class GameScreen extends AbstractGameScreen  {
 	            		Log.d("Feedback debug", "Index: " + index);
 	            		if(eval.evaluateAnswer(cAnswer, sAnswer, userID)){
 	            			Log.d("Feedback debug", "Evaluation true");
-	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
+	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
 	            			isEnemyExist = false;
 	            			rounds--;
 	            		}else{
 	            			Log.d("Feedback debug", "Evaluation false");
-	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
-	            			wrong = Assets.wrong;
-	            			pWrong.move(pSquare.getX(), pSquare.getY());
+	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+	            			//wrong = Assets.wrong;
+	            			//pWrong.move(pSquare.getX(), pSquare.getY());
+	            			square = Assets.square_error;
 	            			livesLeft--;
 	            		}
 	            	}else if(inBounds(event, pStar.getX() ,pStar.getY() , star.getWidth(), star.getHeight())){
@@ -225,14 +275,15 @@ public class GameScreen extends AbstractGameScreen  {
 	            		Log.d("Answered", cAnswer + " " +sAnswer);
 	            		if(eval.evaluateAnswer(cAnswer, sAnswer, userID)){
 	            			Log.d("Feedback debug", "Evaluation true");
-	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
+	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
 	            			isEnemyExist = false;
 	            			rounds--;
 	            		}else{
 	            			Log.d("Feedback debug", "Evaluation false");
-	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
-	            			wrong = Assets.wrong;
-	            			pWrong.move(pStar.getX(), pStar.getY());
+	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+	            			//wrong = Assets.wrong;
+	            			//pWrong.move(pStar.getX(), pStar.getY());
+	            			star = Assets.star_error;
 	            			livesLeft--;
 	            		}
 	            	}else if(inBounds(event, pTriangle.getX() ,pTriangle.getY() , triangle.getWidth(), triangle.getHeight())){
@@ -244,14 +295,15 @@ public class GameScreen extends AbstractGameScreen  {
 	            		Log.d("Feedback debug", "Index: " + index);
 	            		if(eval.evaluateAnswer(cAnswer, sAnswer, userID)){
 	            			Log.d("Feedback debug", "Evaluation true");
-	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
+	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
 	            			isEnemyExist = false;
 	            			rounds--;
 	            		}else{
 	            			Log.d("Feedback debug", "Evaluation false");
-	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
-	            			wrong = Assets.wrong;
-	            			pWrong.move(pTriangle.getX(), pTriangle.getY());
+	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+	            			//wrong = Assets.wrong;
+	            			//pWrong.move(pTriangle.getX(), pTriangle.getY());
+	            			triangle = Assets.triangle_error;
 	            			livesLeft--;
 	            		}
 	            	}
@@ -266,6 +318,7 @@ public class GameScreen extends AbstractGameScreen  {
 		@Override
 		protected void updateRunningMedium(List<TouchEvent> touchEvents,float deltaTime) {
 			// TODO Auto-generated method stub
+			updateRunningEasy(touchEvents, deltaTime);
 			int len = touchEvents.size();
 			if(isEnemyExist == false){
 				spawnEnemy(7);
@@ -276,57 +329,214 @@ public class GameScreen extends AbstractGameScreen  {
 	            /////////////////////////////////////////////
 	            if (event.type == TouchEvent.TOUCH_DOWN) {
 	            	Log.d("Touched Down", "X: " + event.x + "Y: " + event.y );
-	            	if(inBounds(event, pCircle.getX() ,pCircle.getY() , circle.getWidth(), circle.getHeight())){
-	            		
-	            	}else if(inBounds(event, pSquare.getX() ,pSquare.getY() , square.getWidth(), square.getHeight())){
-	            		
-	            	}else if(inBounds(event, pStar.getX() ,pStar.getY() , star.getWidth(), star.getHeight())){
-	            		
-	            	}else if(inBounds(event, pTriangle.getX() ,pTriangle.getY() , triangle.getWidth(), triangle.getHeight())){
-	            		
+	            	wrong = Assets.nothingness;
+	            	Log.d("Touched Down", "X: " + event.x + "Y: " + event.y );
+	            	//ammo.shoot();
+	            	if(inBounds(event, pCross.getX() ,pCross.getY() , cross.getWidth(), cross.getHeight())){
+	            		Log.d("Pew", "Pewpew cross");
+	            		cross = Assets.crossP;
+	            		v_krus.play(0.85f);
+	            	}else if(inBounds(event, pDiamond.getX() ,pDiamond.getY() , diamond.getWidth(), diamond.getHeight())){
+	            		Log.d("Pew", "Pewpew diamond");
+	            		diamond = Assets.diamondP;
+	            		v_diamante.play(0.85f);
+	            	}else if(inBounds(event, pRectangle.getX() ,pRectangle.getY() , rectangle.getWidth(), rectangle.getHeight())){
+	            		Log.d("Pew", "Pewpew rectangle");
+	            		rectangle = Assets.rectangleP;
+	            		v_parihaba.play(0.85f);
 	            	}
 		         }
 	            if (event.type == TouchEvent.TOUCH_UP) {
-	            	
+	            	userRecordOperator.open();
+        			userLessonProgressOperator.open();
+        			
+	            	if(inBounds(event, pCross.getX() ,pCross.getY() , cross.getWidth(), cross.getHeight())){
+	            		Log.d("Pew", "Pewpew cross");
+	            		cross = Assets.cross;
+	            		//projectile = Assets.circleP;
+	            		sAnswer = "Krus";
+	            		Log.d("Feedback debug", "Correct Answer: " + cAnswer);
+	            		Log.d("Feedback debug", "User Answer: " + sAnswer);
+	            		Log.d("Feedback debug", "Index: " + index);
+	            		
+	            		if(eval.evaluateAnswer(cAnswer, sAnswer, userID)){
+	            			Log.d("Feedback debug", "Evaluation true");
+	            			if(index == 0){
+	            				index=1;
+	            			}
+	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+	            			isEnemyExist = false;
+	            			rounds--;
+	            		}else{
+	            			Log.d("Feedback debug", "Evaluation false");
+	            			//wrong = Assets.wrong;
+	            			//pWrong.move(pCircle.getX(), pCircle.getY());
+	            			cross = Assets.cross_error;
+	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+	            			livesLeft--;
+	            		}
+	            	}else if(inBounds(event, pDiamond.getX() ,pDiamond.getY() , diamond.getWidth(), diamond.getHeight())){
+	            		Log.d("Pew", "Pewpew diamond");
+	            		diamond = Assets.diamond;
+	            		sAnswer="Diamante";
+	            		Log.d("Feedback debug", "Correct Answer: " + cAnswer);
+	            		Log.d("Feedback debug", "User Answer: " + sAnswer);
+	            		Log.d("Feedback debug", "Index: " + index);
+	            		if(eval.evaluateAnswer(cAnswer, sAnswer, userID)){
+	            			Log.d("Feedback debug", "Evaluation true");
+	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+	            			isEnemyExist = false;
+	            			rounds--;
+	            		}else{
+	            			Log.d("Feedback debug", "Evaluation false");
+	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+	            			//wrong = Assets.wrong;
+	            			//pWrong.move(pSquare.getX(), pSquare.getY());
+	            			diamond = Assets.diamond_error;
+	            			livesLeft--;
+	            		}
+	            	}else if(inBounds(event, pRectangle.getX() ,pRectangle.getY() , rectangle.getWidth(), rectangle.getHeight())){
+	            		Log.d("Pew", "Pewpew rectangle");
+	            		rectangle = Assets.rectangle;
+	            		sAnswer = "Parihaba";
+	            		Log.d("Feedback debug", "Correct Answer: " + cAnswer);
+	            		Log.d("Feedback debug", "User Answer: " + sAnswer);
+	            		Log.d("Feedback debug", "Index: " + index);
+	            		Log.d("Answered", cAnswer + " " +sAnswer);
+	            		if(eval.evaluateAnswer(cAnswer, sAnswer, userID)){
+	            			Log.d("Feedback debug", "Evaluation true");
+	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+	            			isEnemyExist = false;
+	            			rounds--;
+	            		}else{
+	            			Log.d("Feedback debug", "Evaluation false");
+	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+	            		
+	            			rectangle = Assets.rectangle_error;
+	            			livesLeft--;
+	            		}
+	            	}
+	            	userRecordOperator.close();
+        			userLessonProgressOperator.close();
 	            }
-	            if (event.type == TouchEvent.TOUCH_DRAGGED) {
-	            	
-	            }
+	          
 	        }
 		}
 
 		@Override
 		protected void updateRunningHard(List<TouchEvent> touchEvents, float deltaTime) {
 			// TODO Auto-generated method stub
+			updateRunningMedium(touchEvents, deltaTime);
 						int len = touchEvents.size();
 						if(isEnemyExist == false){
-							spawnEnemy(7);
+							spawnEnemy(10);
 						}
 				        for (int i = 0; i < len; i++) {
 				            TouchEvent event = touchEvents.get(i);
-				            
 				            /////////////////////////////////////////////
 				            if (event.type == TouchEvent.TOUCH_DOWN) {
 				            	Log.d("Touched Down", "X: " + event.x + "Y: " + event.y );
-				            	if(inBounds(event, pCircle.getX() ,pCircle.getY() , circle.getWidth(), circle.getHeight())){
-				            		
-				            	}else if(inBounds(event, pSquare.getX() ,pSquare.getY() , square.getWidth(), square.getHeight())){
-				            		
-				            	}else if(inBounds(event, pStar.getX() ,pStar.getY() , star.getWidth(), star.getHeight())){
-				            		
-				            	}else if(inBounds(event, pTriangle.getX() ,pTriangle.getY() , triangle.getWidth(), triangle.getHeight())){
-				            		
+				            	if(inBounds(event, pArrow.getX() ,pArrow.getY() , arrow.getWidth(), arrow.getHeight())){
+				            		Log.d("Pew", "Pewpew cross");
+				            		arrow = Assets.arrowP;
+				            		v_tunod.play(0.85f);
+				            	}else if(inBounds(event, pCresent.getX() ,pCresent.getY() , cresent.getWidth(), cresent.getHeight())){
+				            		Log.d("Pew", "Pewpew cresent");
+				            		cresent = Assets.cresentP;
+				            		v_gasuklay.play(0.85f);
+				            	}else if(inBounds(event, pHeart.getX() ,pHeart.getY() , heart.getWidth(), heart.getHeight())){
+				            		Log.d("Pew", "Pewpew heart");
+				            		heart = Assets.heartP;
+				            		v_puso.play(0.85f);
 				            	}
 					         }
 				            if (event.type == TouchEvent.TOUCH_UP) {
-				            	
+				            	userRecordOperator.open();
+			        			userLessonProgressOperator.open();
+			        			
+				            	if(inBounds(event, pArrow.getX() ,pArrow.getY() , arrow.getWidth(), arrow.getHeight())){
+				            		Log.d("Pew", "Pewpew arrow");
+				            		arrow = Assets.arrow;
+				            		//projectile = Assets.circleP;
+				            		sAnswer = "Tunod";
+				            		Log.d("Feedback debug", "Correct Answer: " + cAnswer);
+				            		Log.d("Feedback debug", "User Answer: " + sAnswer);
+				            		Log.d("Feedback debug", "Index: " + index);
+				            		
+				            		if(eval.evaluateAnswer(cAnswer, sAnswer, userID)){
+				            			Log.d("Feedback debug", "Evaluation true");
+				            			if(index == 0){
+				            				index=1;
+				            			}
+				            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+				            			isEnemyExist = false;
+				            			rounds--;
+				            		}else{
+				            			Log.d("Feedback debug", "Evaluation false");
+				            			//wrong = Assets.wrong;
+				            			//pWrong.move(pCircle.getX(), pCircle.getY());
+				            			arrow = Assets.arrow_error;
+				            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+				            			livesLeft--;
+				            		}
+				            	}else if(inBounds(event, pCresent.getX() ,pCresent.getY() , cresent.getWidth(), cresent.getHeight())){
+				            		Log.d("Pew", "Pewpew cresent");
+				            		cresent = Assets.cresent;
+				            		sAnswer="Gasuklay";
+				            		Log.d("Feedback debug", "Correct Answer: " + cAnswer);
+				            		Log.d("Feedback debug", "User Answer: " + sAnswer);
+				            		Log.d("Feedback debug", "Index: " + index);
+				            		if(eval.evaluateAnswer(cAnswer, sAnswer, userID)){
+				            			Log.d("Feedback debug", "Evaluation true");
+				            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+				            			isEnemyExist = false;
+				            			rounds--;
+				            		}else{
+				            			Log.d("Feedback debug", "Evaluation false");
+				            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+				            			//wrong = Assets.wrong;
+				            			//pWrong.move(pSquare.getX(), pSquare.getY());
+				            			cresent = Assets.cresent_error;
+				            			livesLeft--;
+				            		}
+				            	}else if(inBounds(event, pHeart.getX() ,pHeart.getY() , heart.getWidth(), heart.getHeight())){
+				            		Log.d("Pew", "Pewpew heart");
+				            		heart = Assets.heart;
+				            		sAnswer = "Puso";
+				            		Log.d("Feedback debug", "Correct Answer: " + cAnswer);
+				            		Log.d("Feedback debug", "User Answer: " + sAnswer);
+				            		Log.d("Feedback debug", "Index: " + index);
+				            		Log.d("Answered", cAnswer + " " +sAnswer);
+				            		if(eval.evaluateAnswer(cAnswer, sAnswer, userID)){
+				            			Log.d("Feedback debug", "Evaluation true");
+				            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+				            			isEnemyExist = false;
+				            			livesLeft++;
+				            		}else{
+				            			Log.d("Feedback debug", "Evaluation false");
+				            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+				            			heart = Assets.heart_error;
+				            		}
+				            	}
+				            	userRecordOperator.close();
+			        			userLessonProgressOperator.close();
 				            }
-				            if (event.type == TouchEvent.TOUCH_DRAGGED) {
-				            	
-				            }
+				           
 				        }
 			}
 
+		private void resetButtonStates(){
+			circle = Assets.circle;
+			square = Assets.square;
+			star = Assets.star;
+			triangle = Assets.triangle;
+			cross = Assets.cross;
+			diamond = Assets.diamond;
+			rectangle= Assets.rectangle;
+			 arrow= Assets.arrow;
+			cresent = Assets.cresent;
+			heart = Assets.heart;
+		}
 		@Override
 		protected void updatePaused(List<TouchEvent> touchEvents) {
 			// TODO Auto-generated method stub
@@ -357,7 +567,6 @@ public class GameScreen extends AbstractGameScreen  {
 			 
 			 g.drawImage(bg, 0, 0);
 			 g.drawImage(spaceship, pSpaceship.getX(), pSpaceship.getY());
-			 g.drawImage(easy_panel, pEasyPanel.getX(), pEasyPanel.getY());
 			 g.drawImage(circle, pCircle.getX(), pCircle.getY());
 			 g.drawImage(square, pSquare.getX(), pSquare.getY());
 			 g.drawImage(star, pStar.getX(), pStar.getY());
@@ -370,12 +579,18 @@ public class GameScreen extends AbstractGameScreen  {
 			// TODO Auto-generated method stub
 			Graphics g = game.getGraphics();
 				painterEasy();
+				g.drawImage(cross, pCross.getX(), pCross.getY());
+				g.drawImage(diamond, pDiamond.getX(), pDiamond.getY());
+				g.drawImage(rectangle, pRectangle.getX(), pRectangle.getY());
 			}
 		protected void painterHard() {
 			// TODO Auto-generated method stub
 			 Graphics g = game.getGraphics();
 			 painterEasy();
 			 painterMedium();
+			 g.drawImage(arrow, pArrow.getX(), pArrow.getY());
+			 g.drawImage(cresent, pCresent.getX(), pCresent.getY());
+			 g.drawImage(heart, pHeart.getX(), pHeart.getY());
 			}
 
 		@Override
@@ -384,7 +599,7 @@ public class GameScreen extends AbstractGameScreen  {
 			Graphics g = game.getGraphics();
 	       // g.drawString("sFeedback", 300, 400, paint2);//sFeedback 
 	        g.drawString(sFeedback, 545, 40, paint3);//sQuestion
-	        g.drawString(sQuestion, 545, 60, paint3);//sQuestion
+	        g.drawString(sQuestion, 27, 40, paint3);//sQuestion
 	        
 	       
 		}
