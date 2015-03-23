@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.qwerjk.better_text.MagicTextView;
+import com.ube.salinlahifour.database.*;
 import com.ube.salinlahifour.database.UserDetailOperations;
 import com.ube.salinlahifour.database.UserLessonProgressOperations;
 import com.ube.salinlahifour.debugclasses.DebugUserModuleActivity;

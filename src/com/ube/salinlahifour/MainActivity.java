@@ -42,6 +42,10 @@ public class MainActivity extends Activity {
 			File dhistory = new File ("/sdcard/dhistory.txt");
 			File lessonlibrary = new File ("/sdcard/lessonlibrary.xml");
 			File lexicon = new File ("/sdcard/lexicon.xml");
+			File lexicon_cooking = new File ("/sdcard/lexicon_cooking.xml");
+			File lexicon_family = new File ("/sdcard/lexicon_family.xml");
+			File lexicon_house = new File ("/sdcard/lexicon_house.xml");
+			File lexicon_shape = new File ("/sdcard/lexicon_shape.xml");
 			File templatecatalogue = new File ("/sdcard/templatecatalogue.xml");
 		try {
 			properties.createNewFile();
@@ -49,6 +53,7 @@ public class MainActivity extends Activity {
 			dhistory.createNewFile();
 			lessonlibrary.createNewFile();
 			lexicon.createNewFile();
+			lexicon_cooking.createNewFile();
 			templatecatalogue.createNewFile();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
@@ -114,6 +119,54 @@ public class MainActivity extends Activity {
 		 in = getResources().openRawResource(R.raw.lexicon);
 		 try{
 		    FileOutputStream out = new FileOutputStream("/sdcard/lexicon.xml");
+		    byte[] buff = new byte[4096];
+		    int read = 0;
+		       while ((read = in.read(buff)) > 0) {
+		          out.write(buff, 0, read);
+		         in.close();
+		         out.close();
+		    }
+		 }catch(Exception e){
+		 }
+		 in = getResources().openRawResource(R.raw.lexicon_cooking);
+		 try{
+		    FileOutputStream out = new FileOutputStream("/sdcard/lexicon_cooking.xml");
+		    byte[] buff = new byte[4096];
+		    int read = 0;
+		       while ((read = in.read(buff)) > 0) {
+		          out.write(buff, 0, read);
+		         in.close();
+		         out.close();
+		    }
+		 }catch(Exception e){
+		 }
+		 in = getResources().openRawResource(R.raw.lexicon_family);
+		 try{
+		    FileOutputStream out = new FileOutputStream("/sdcard/lexicon_family.xml");
+		    byte[] buff = new byte[4096];
+		    int read = 0;
+		       while ((read = in.read(buff)) > 0) {
+		          out.write(buff, 0, read);
+		         in.close();
+		         out.close();
+		    }
+		 }catch(Exception e){
+		 }
+		 in = getResources().openRawResource(R.raw.lexicon_house);
+		 try{
+		    FileOutputStream out = new FileOutputStream("/sdcard/lexicon_house.xml");
+		    byte[] buff = new byte[4096];
+		    int read = 0;
+		       while ((read = in.read(buff)) > 0) {
+		          out.write(buff, 0, read);
+		         in.close();
+		         out.close();
+		    }
+		 }catch(Exception e){
+		 }
+		 in = getResources().openRawResource(R.raw.lexicon_shape);
+		 try{
+		    FileOutputStream out = new FileOutputStream("/sdcard/lexicon_shape.xml");
 		    byte[] buff = new byte[4096];
 		    int read = 0;
 		       while ((read = in.read(buff)) > 0) {
