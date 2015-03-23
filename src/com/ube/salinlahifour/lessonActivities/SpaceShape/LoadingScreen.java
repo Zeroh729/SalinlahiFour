@@ -36,7 +36,8 @@ public class LoadingScreen extends Screen {
         	Assets.bg = g.newImage("shapes/bg.png", ImageFormat.RGB565);
         	Assets.nothingness = g.newImage("shapes/nothingness.png", ImageFormat.RGB565);
         	Assets.spaceship = g.newImage("shapes/spaceship.png", ImageFormat.RGB565);
-
+        	Assets.wrong = g.newImage("shapes/wrong.png", ImageFormat.RGB565);
+        	
         	Assets.enemyShapes.add(0,g.newImage("shapes/Easy/em_circle.png", ImageFormat.RGB565));
 	       	switch(activityLevel){
 	        case "HARD":
@@ -58,7 +59,10 @@ public class LoadingScreen extends Screen {
 	        	Assets.enemyShapes.add(g.newImage("shapes/Easy/em_square.png", ImageFormat.RGB565));
 	        	Assets.enemyShapes.add(g.newImage("shapes/Easy/em_star.png", ImageFormat.RGB565));
 	        	Assets.enemyShapes.add(g.newImage("shapes/Easy/em_triangle.png", ImageFormat.RGB565));
-	        	
+	        	Assets.bilog = game.getAudio().createSound("shapes/Sounds/shape_bilog.mp3");
+	        	Assets.parisukat = game.getAudio().createSound("shapes/Sounds/shape_parisukat.mp3");
+	        	Assets.bituin = game.getAudio().createSound("shapes/Sounds/shape_bituin.mp3");
+	        	Assets.tatsulok = game.getAudio().createSound("shapes/Sounds/shape_tatsulok.mp3");
 	        break;
 	        }
 	        game.setScreen(new GameScreen(game, activityLevel,userID, context,lesson));

@@ -2,6 +2,7 @@ package com.ube.salinlahifour.tutorials;
 
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -9,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ube.salinlahifour.R;
+import com.ube.salinlahifour.narrativeDialog.HouseNarrativeActivity;
+import com.ube.salinlahifour.narrativeDialog.ShapeNarrativeActivity;
 
 public class Shape extends AbstractTutorialActivity {
 	private TextView[] textviews;
@@ -20,6 +23,7 @@ public class Shape extends AbstractTutorialActivity {
 
 	@Override
 	protected void setEasyTutorial() {
+		startActivity(new Intent(this, ShapeNarrativeActivity.class));
 		Log.d(items.size() + "","TEST");
 		int j = 0;
 		for(int i = 0; i < items.size(); i++){

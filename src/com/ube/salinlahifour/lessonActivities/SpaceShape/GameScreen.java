@@ -13,6 +13,7 @@ import com.kilobolt.framework.Game;
 import com.kilobolt.framework.Graphics;
 import com.kilobolt.framework.Image;
 import com.kilobolt.framework.Screen;
+import com.kilobolt.framework.Sound;
 import com.kilobolt.framework.Input.TouchEvent;
 import com.ube.salinlahifour.Lesson;
 import com.ube.salinlahifour.SalinlahiFour;
@@ -29,14 +30,16 @@ public class GameScreen extends AbstractGameScreen  {
 	    // Variable Setup
 	    // You would create game objects here.
 	    static String activityName = "Shape";
-	    private int lessonNumber = 4;
+	    
 	    //String activityLevel;
 	   
 	    private Image bg;
 	    // Edit lives left to the question size
+
+		public static Sound v_bilog,v_parisukat, v_bituin, v_tatsulok;
 	    private Image circle,square,star,triangle,easy_panel;
-	    private Image spaceship, enemy, projectile;
-	    private Parts pEasyPanel, pCircle,pSquare,pStar,pTriangle,pSpaceship, pEnemy;
+	    private Image spaceship, enemy, projectile, wrong;
+	    private Parts pEasyPanel, pCircle,pSquare,pStar,pTriangle,pSpaceship, pEnemy,pWrong;
 	    private EnemyList enemies;
 	    private Projectile ammo;
 	    private boolean isEnemyExist = false;
@@ -48,13 +51,14 @@ public class GameScreen extends AbstractGameScreen  {
 	        this.userID = userID;
 	        this.activityLevel = activityLevel;
 	        Log.d("Aldrin ExtendedFramework", "Gamescreen constructor...");
-	        
+	        lessonNumber = 4;
 	    }
 
 		@Override
 		protected void loadAssets() {
 			// TODO Auto-generated method stub
 	        Log.d("Aldrin ExtendedFramework", "Loading Assets");
+	        eval.setLexiconDir("lexicon_shape.xml");
 	        enemies = new EnemyList(activityLevel);
 	        enemies.loadEnemy();
 	        bg = Assets.bg;
@@ -66,7 +70,12 @@ public class GameScreen extends AbstractGameScreen  {
 	        enemy = Assets.nothingness;
 	        spaceship = Assets.spaceship;
 	        projectile = Assets.nothingness;
+	        wrong = Assets.nothingness;
 	        ammo = new Projectile();
+	        v_bilog = Assets.bilog;
+	        v_bituin = Assets.bituin;
+	        v_parisukat = Assets.parisukat;
+	        v_tatsulok = Assets.tatsulok;
 		    Log.d("Aldrin ExtendedFramework", "Loading Assets...Done");
 		}
 
@@ -84,6 +93,7 @@ public class GameScreen extends AbstractGameScreen  {
 	        pEnemy = new Parts(300,45);
 	        livesLeft = 4;
 	        rounds = 10;
+	        pWrong = new Parts(0,0);
 	        ammo.loadAmmos(pSpaceship.getX(), pSpaceship.getY());
 	        
 	        Log.d("Aldrin ExtendedFramework", "Positioning Easy Assets...Done");
@@ -136,20 +146,25 @@ public class GameScreen extends AbstractGameScreen  {
 	            
 	            /////////////////////////////////////////////
 	            if (event.type == TouchEvent.TOUCH_DOWN) { //Happens When you press a specifi
+	            	wrong = Assets.nothingness;
 	            	Log.d("Touched Down", "X: " + event.x + "Y: " + event.y );
 	            	//ammo.shoot();
 	            	if(inBounds(event, pCircle.getX() ,pCircle.getY() , circle.getWidth(), circle.getHeight())){
 	            		Log.d("Pew", "Pewpew Circle");
 	            		circle = Assets.circleP;
+	            		v_bilog.play(0.85f);
 	            	}else if(inBounds(event, pSquare.getX() ,pSquare.getY() , square.getWidth(), square.getHeight())){
 	            		Log.d("Pew", "Pewpew Square");
 	            		square = Assets.squareP;
+	            		v_parisukat.play(0.85f);
 	            	}else if(inBounds(event, pStar.getX() ,pStar.getY() , star.getWidth(), star.getHeight())){
 	            		Log.d("Pew", "Pewpew Star");
 	            		star = Assets.starP;
+	            		v_bituin.play(0.85f);
 	            	}else if(inBounds(event, pTriangle.getX() ,pTriangle.getY() , triangle.getWidth(), triangle.getHeight())){
 	            		Log.d("Pew", "Pewpew Triangle");
 	            		triangle = Assets.triangleP;
+	            		v_tatsulok.play(0.85f);
 	            	}
 	            }
 	
@@ -176,6 +191,8 @@ public class GameScreen extends AbstractGameScreen  {
 	            			rounds--;
 	            		}else{
 	            			Log.d("Feedback debug", "Evaluation false");
+	            			wrong = Assets.wrong;
+	            			pWrong.move(pCircle.getX(), pCircle.getY());
 	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			livesLeft--;
 	            		}
@@ -194,6 +211,8 @@ public class GameScreen extends AbstractGameScreen  {
 	            		}else{
 	            			Log.d("Feedback debug", "Evaluation false");
 	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
+	            			wrong = Assets.wrong;
+	            			pWrong.move(pSquare.getX(), pSquare.getY());
 	            			livesLeft--;
 	            		}
 	            	}else if(inBounds(event, pStar.getX() ,pStar.getY() , star.getWidth(), star.getHeight())){
@@ -212,6 +231,8 @@ public class GameScreen extends AbstractGameScreen  {
 	            		}else{
 	            			Log.d("Feedback debug", "Evaluation false");
 	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
+	            			wrong = Assets.wrong;
+	            			pWrong.move(pStar.getX(), pStar.getY());
 	            			livesLeft--;
 	            		}
 	            	}else if(inBounds(event, pTriangle.getX() ,pTriangle.getY() , triangle.getWidth(), triangle.getHeight())){
@@ -229,6 +250,8 @@ public class GameScreen extends AbstractGameScreen  {
 	            		}else{
 	            			Log.d("Feedback debug", "Evaluation false");
 	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
+	            			wrong = Assets.wrong;
+	            			pWrong.move(pTriangle.getX(), pTriangle.getY());
 	            			livesLeft--;
 	            		}
 	            	}
@@ -341,7 +364,7 @@ public class GameScreen extends AbstractGameScreen  {
 			 g.drawImage(triangle, pTriangle.getX(), pTriangle.getY());
 			 g.drawImage(enemy, pEnemy.getX(), pEnemy.getY());
 			 g.drawImage(projectile, ammo.getCurX(), ammo.getCurY());
-			 
+			 g.drawImage(wrong, pWrong.getX(), pWrong.getY());
 			 }
 		protected void painterMedium() {
 			// TODO Auto-generated method stub

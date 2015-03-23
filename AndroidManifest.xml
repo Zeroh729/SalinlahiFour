@@ -8,9 +8,9 @@
         android:minSdkVersion="11"
         android:targetSdkVersion="19" />
 
-		<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-		<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-		<uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -55,6 +55,11 @@
         <activity
             android:name="com.ube.salinlahifour.MapActivity"
             android:label="@string/title_activity_map"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="com.ube.salinlahifour.lessonActivities.GameOver"
+            android:label="@string/title_gameover"
             android:screenOrientation="landscape" >
         </activity>
         <activity
@@ -168,6 +173,27 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.ube.salinlahifour.lessonActivities.Animals"
+            android:label="@string/title_activity_lesson"
+            android:screenOrientation="landscape" >
+            <intent-filter>
+                <action android:name="com.ube.salinlahifour.lessonActivities.Animals" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ube.salinlahifour.tutorials.Animals"
+            android:label="@string/title_activity_abstract_tutorial"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="com.ube.salinlahifour.tutorials.Animals" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         
         <activity
             android:name="com.ube.salinlahifour.debugclasses.DebugUserModuleActivity"
@@ -175,6 +201,38 @@
             android:screenOrientation="landscape"
             android:theme="@style/AppBaseTheme" >
         </activity>
+        
+        
+        <activity
+            android:name="com.ube.salinlahifour.narrativeDialog.NarrativeDialog"
+            android:label="@string/title_activity_login" >
+        </activity>
+        
+        <activity
+            android:name="com.ube.salinlahifour.narrativeDialog.FamilyNarrativeActivity"
+            android:label="@string/title_activity_login" >
+        </activity>
+        
+        <activity
+			android:name="com.ube.salinlahifour.narrativeDialog.HouseNarrativeActivity"
+			android:label="@string/title_activity_login" >
+        </activity>
+        
+        <activity
+			android:name="com.ube.salinlahifour.narrativeDialog.CookingNarrativeActivity"
+			android:label="@string/title_activity_login" >
+        </activity>
+        
+        <activity
+			android:name="com.ube.salinlahifour.narrativeDialog.ShapeNarrativeActivity"
+			android:label="@string/title_activity_login" >
+        </activity>
+        
+        <activity
+			android:name="com.ube.salinlahifour.narrativeDialog.AnimalsNarrativeActivity"
+			android:label="@string/title_activity_login" >
+        </activity>
+        
         <activity
             android:name="com.ube.salinlahifour.LoginActivity"
             android:label="@string/title_activity_login"
