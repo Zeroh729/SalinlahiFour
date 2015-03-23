@@ -17,6 +17,8 @@ import android.widget.ImageView;
 
 import com.ube.salinlahifour.R;
 import com.ube.salinlahifour.SalinlahiFour;
+import com.ube.salinlahifour.narrativeDialog.CookingNarrativeActivity;
+import com.ube.salinlahifour.narrativeDialog.HouseNarrativeActivity;
 import com.ube.salinlahifour.uibuilders.Button.BtnNextArrowStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.BtnStatesDirector;
 
@@ -34,6 +36,7 @@ public class Cooking extends AbstractTutorialActivity {
 
 	@Override
 	protected void setEasyTutorial() {
+		startActivity(new Intent(this, CookingNarrativeActivity.class));
 		Log.d(items.size() + "","TEST");
 		int j = 0;
 		for(int i = 0; i < items.size(); i++){
