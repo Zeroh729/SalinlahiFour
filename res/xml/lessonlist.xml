@@ -8,7 +8,7 @@
 	</Lesson>
 	<Lesson>
 		<Name>Cooking</Name>
-		<Image>lesson2_icon</Image>
+		<Image>lesson3_icon</Image>
 		<ActivityName>Cooking</ActivityName>
 		<Description>Bake a colorful cake!</Description>
 	</Lesson>
@@ -22,7 +22,7 @@
 	
 	<Lesson>
 		<Name>SpaceShape</Name>
-		<Image>lesson0_icon</Image>
+		<Image>lesson4_icon</Image>
 		<ActivityName>Shape</ActivityName>
 		<Description>Defeat the aliens in your space ship!</Description>
 	</Lesson>
@@ -32,6 +32,24 @@
 		<Image>lesson0_icon</Image>
 		<ActivityName>Animals</ActivityName>
 		<Description>Identify Animals called in Filipino</Description>
+	</Lesson>
+	<Lesson>
+		<Name>Zoo Cards</Name>
+		<Image>lesson1_icon</Image>
+		<ActivityName>Animals</ActivityName>
+		<Description></Description>
+	</Lesson>
+	<Lesson>
+		<Name>Zoo Cards</Name>
+		<Image>lesson1_icon</Image>
+		<ActivityName>Animals1</ActivityName>
+		<Description></Description>
+	</Lesson>
+	<Lesson>
+		<Name>Zoo Cards</Name>
+		<Image>lesson1_icon</Image>
+		<ActivityName>Animals2</ActivityName>
+		<Description></Description>
 	</Lesson>
 
 </resources>

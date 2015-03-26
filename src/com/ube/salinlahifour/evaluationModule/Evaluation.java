@@ -121,7 +121,7 @@ public class Evaluation {
 	public boolean evaluateAnswer(String CorrectAnswer, String UserAnswer, int UserID){
 		if(CorrectAnswer.equals(UserAnswer)){
 			score++;
-			totscore++;
+			totscore++; //FIX THIS: must be items.getSize()
 			status = "Correct";
 			Log.d("Evaluation","Updating User Record");
 			recordUserAnswer(LessonName, CorrectAnswer, status, UserID);
@@ -130,7 +130,7 @@ public class Evaluation {
 		}
 		else{
 			status = "Incorrect";
-			totscore++;
+			totscore++; //FIX THIS: must be items.getSize()
 			Log.d("Evaluation","Updating User Record");
 			recordUserAnswer(LessonName, CorrectAnswer, status, UserID);
 			Log.d("Evaluation","Updating User Record");

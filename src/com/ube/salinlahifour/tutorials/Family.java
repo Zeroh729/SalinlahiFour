@@ -293,7 +293,8 @@ public class Family extends AbstractTutorialActivity {
 				j++;
 			}
 		}
-		
+
+		findViewById(R.id.frame_3).setVisibility(View.INVISIBLE);
 		findViewById(R.id.frame_4).setVisibility(View.INVISIBLE);
 		
 		textviews[0].setText("Tito\nHe is the brother of my parent. I do not know which one though.");
