@@ -42,7 +42,7 @@ public class AnimalsNarrativeActivity extends NarrativeDialog{
 		script.add(new ScriptLine("Hi! Can we go inside?",R.raw.narration_family_5));
 		script.add(new ScriptLine("Sure! It's 2000 pesos each.",R.raw.narration_family_6));
 		script.add(new ScriptLine("What? We don't have that much",R.raw.narration_family_7));
-		script.add(new ScriptLine(SalinlahiFour.getLoggedInUser().getName() + " , whar do we do now?",R.raw.narration_family_8));
+		script.add(new ScriptLine(SalinlahiFour.getLoggedInUser().getName() + " , what do we do now?",R.raw.narration_family_8));
 		script.add(new ScriptLine("If you can answer my quiz, I will let you in for free.",R.raw.narration_family_6));
 		script.add(new ScriptLine("Don't worry, madali lang.",R.raw.narration_family_6));
 		script.add(new ScriptLine("Talaga?",R.raw.narration_family_6));
