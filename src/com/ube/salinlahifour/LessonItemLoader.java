@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.graphics.Color;
 import android.util.Log;
 
 import com.ube.salinlahifour.enumTypes.LevelType;
@@ -20,16 +21,16 @@ public abstract class LessonItemLoader {
 			case "com.ube.salinlahifour.lessonActivities.Cooking":
 				switch(activityLevel){
 					case "HARD":
-						items.add(new Item(7, "Itim" , "Black", "Itim - This is BLACK. it is also the color fot he night sky", R.drawable.black, 0, 0, LevelType.HARD));
-						items.add(new Item(8,"Puti" , "White", "Puti - This is WHITE. It is also the color of clouds", R.drawable.white, 0, 0, LevelType.HARD));
+						items.add(new Item(7, "Itim" , "Black", "Itim - This is BLACK. it is also the color fot he night sky", Color.BLACK, 0, 0, LevelType.HARD));
+						items.add(new Item(8,"Puti" , "White", "Puti - This is WHITE. It is also the color of clouds", Color.WHITE , 0, 0, LevelType.HARD));
 					case "MEDIUM":			
 						items.add(new Item(5,"Kayumanggi" , "Brown", "Kayumanggi - This is BROWN. It is the color of a trunk of a tree", R.drawable.brown, 0, 0, LevelType.MEDIUM));
 						items.add(new Item(6,"Lila" , "Violet", "Lila - This is VIOLET. It is also the color of eggplants", R.drawable.violet, 0, 0, LevelType.MEDIUM));
 					case "EASY":	
-						items.add(new Item(1,"Asul" , "Blue", "Asul - This is BLUE. It is the color of the sky", R.drawable.blue, 0, 0, LevelType.EASY));
-						items.add(new Item(2,"Berde" , "Green", "Berde - This is GREEN. It is the color of the grass and leaves", R.drawable.green,0, 0, LevelType.EASY));
-						items.add(new Item(3,"Pula" , "Red", "Pula - This is RED. It is the color of an apple", R.drawable.red, 0, 0, LevelType.EASY));
-						items.add(new Item(4,"Dilaw" , "Yellow", "Dilaw - This is YELLOW. It is the color of the sun.", R.drawable.yellow, 0, 0, LevelType.EASY));
+						items.add(new Item(1,"Asul" , "Blue", "Asul - This is BLUE. It is the color of the sky", Color.BLUE, 0, 0, LevelType.EASY));
+						items.add(new Item(2,"Berde" , "Green", "Berde - This is GREEN. It is the color of the grass and leaves", Color.GREEN,0, 0, LevelType.EASY));
+						items.add(new Item(3,"Pula" , "Red", "Pula - This is RED. It is the color of an apple", Color.RED, 0, 0, LevelType.EASY));
+						items.add(new Item(4,"Dilaw" , "Yellow", "Dilaw - This is YELLOW. It is the color of the sun.", Color.YELLOW, 0, 0, LevelType.EASY));
 				}
 				Log.d("Lesson Loader", items.toString());
 				break;
