@@ -4,18 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
     android:background="@drawable/map_bg">
-    
-    <ImageView
-        android:id="@+id/account_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:scaleX="0.8"
-        android:scaleY="0.8"
-        />
+
     
     <ImageButton
         android:id="@+id/img_lesson3"
@@ -24,131 +13,60 @@
         android:background="@null"
         android:src="@drawable/lesson1_icon"
         android:layout_centerInParent="true"
-        android:paddingBottom="70dp"
-        android:paddingLeft="70dp"
         android:scaleX="0.8"
         android:scaleY="0.8"/>
-    
     
     <ImageButton
         android:id="@+id/img_lesson1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@null"
-        android:src="@drawable/lesson1_icon"
-        android:layout_toLeftOf="@id/img_lesson3"
         android:layout_above="@id/img_lesson3"
-        android:layout_marginBottom="-100dp"
+        android:layout_marginBottom="-20dp"
+        android:layout_marginRight="50dp"
+        android:layout_toLeftOf="@id/img_lesson3"
+        android:background="@null"
         android:scaleX="0.8"
         android:scaleY="0.8"
-        />
+        android:src="@drawable/lesson1_icon" />
     
     <ImageButton
         android:id="@+id/img_lesson2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/img_lesson3"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="-30dp"
+        android:layout_toLeftOf="@id/img_lesson3"
         android:background="@null"
-        android:src="@drawable/lesson1_icon"
-		android:layout_toLeftOf="@id/img_lesson3"
-		android:layout_below="@id/img_lesson3"
-		android:layout_marginTop="-70dp"
-		android:layout_marginRight="70dp"
         android:scaleX="0.8"
-        android:scaleY="0.8"/>
+        android:scaleY="0.8"
+        android:src="@drawable/lesson1_icon" />
 
     <ImageButton
         android:id="@+id/img_lesson4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@null"
-        android:src="@drawable/lesson1_icon"
-        android:layout_toRightOf="@id/img_lesson3"
         android:layout_above="@id/img_lesson3"
-        android:layout_marginBottom="-80dp"
-        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="-50dp"
+        android:layout_toRightOf="@id/img_lesson3"
+        android:background="@null"
         android:scaleX="0.8"
-        android:scaleY="0.8"/>
+        android:scaleY="0.8"
+        android:src="@drawable/lesson1_icon" />
     
     <ImageButton
         android:id="@+id/img_lesson5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@null"
-        android:src="@drawable/lesson1_icon"
-        android:layout_toRightOf="@id/img_lesson3"
         android:layout_below="@id/img_lesson3"
-        android:layout_marginTop="-110dp"
-        android:layout_marginLeft="80dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="-80dp"
+        android:layout_toRightOf="@id/img_lesson3"
+        android:background="@null"
         android:scaleX="0.8"
         android:scaleY="0.8"
-         />
-
-    <!--  
-
-    <TextView
-        android:id="@+id/tv_lesson1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-<<<<<<< HEAD
-        android:layout_alignLeft="@+id/img_lesson1"
-        android:layout_below="@+id/img_lesson1"
-        android:layout_marginTop="21dp"
-        android:visibility="gone"
-        android:text="" />
-=======
-        android:layout_below="@+id/img_lesson5"
-        android:layout_alignLeft="@id/img_lesson5"
-        android:layout_alignRight="@id/img_lesson5"
-        android:textAlignment="center"
-        android:textColor="#313131"
-        android:textSize="22dp"
-        android:layout_marginTop="5dp"
-        android:gravity="center_horizontal"
-        android:background="@drawable/map_labels"
-        android:padding="7dp"
-        android:text="LESSON !" />
->>>>>>> upstream/joyce
-
-    <TextView
-        android:id="@+id/tv_lesson2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tv_lesson1"
-        android:layout_alignBottom="@+id/tv_lesson1"
-        android:layout_alignLeft="@+id/img_lesson2"
-        android:visibility="gone"
-        android:text="" />
-
-    <TextView
-        android:id="@+id/tv_lesson3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tv_lesson1"
-        android:layout_alignBottom="@+id/TextView01"
-        android:layout_alignLeft="@+id/img_lesson3"
-        android:visibility="gone"
-        android:text="" />
-
-    <TextView
-        android:id="@+id/tv_lesson4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tv_lesson2"
-        android:layout_alignBottom="@+id/tv_lesson2"
-        android:layout_alignLeft="@+id/img_lesson4"
-        android:visibility="gone"
-        android:text="" />
-
-    <TextView
-        android:id="@+id/tv_lesson5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tv_lesson3"
-        android:layout_alignBottom="@+id/tv_lesson3"
-        android:layout_alignLeft="@+id/img_lesson5"
-        android:visibility="gone"
-        android:text="" />
--->
+        android:src="@drawable/lesson1_icon" />
+    
     <Button
         android:id="@+id/btn_usermodule"
         style="?android:attr/buttonStyleSmall"
@@ -169,38 +87,5 @@
         android:layout_toRightOf="@id/btn_usermodule"
         android:text="Register User" 
         android:onClick="onClick"/>
-    
-    <ImageButton
-        android:id="@+id/btn_logout"
-        android:background="@null"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="25dp"
-        android:onClick="onClick"/>
-    
-    <ImageButton
-        android:id="@+id/btn_progress"
-        android:background="@null"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-		android:layout_toLeftOf="@id/btn_logout"
-		android:layout_alignTop="@id/btn_logout"
-		android:layout_alignBaseline="@id/btn_logout"
-
-        android:onClick="onClick"/>
-
-    <ImageButton
-        android:id="@+id/anchor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:visibility="gone"
-        android:background="@null"
-        android:text="hey" />
     
 </RelativeLayout>
