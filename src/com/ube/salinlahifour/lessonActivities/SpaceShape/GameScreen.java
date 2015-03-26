@@ -604,5 +604,11 @@ public class GameScreen extends AbstractGameScreen  {
 	       
 		}
 
+		@Override
+		protected void showTransition() {
+			// TODO Auto-generated method stub
+			Graphics g = game.getGraphics();
+		}
+
 	   
 }

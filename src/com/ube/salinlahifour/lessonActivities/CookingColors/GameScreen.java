@@ -45,6 +45,7 @@ public class GameScreen extends AbstractGameScreen  {
 	    private String[] questions;
 	    private String[] feedbacks;
 	    
+	    
 	    public GameScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson) {
 	    	//Super Parameters Game, ActivityName, ActivityLevel, UserID
 	        super(game, activityName, activityLevel, userID, context, lesson);
@@ -67,7 +68,7 @@ public class GameScreen extends AbstractGameScreen  {
 			// TODO Auto-generated method stub
 	        Log.d("Aldrin ExtendedFramework", "Loading Assets");
 	        eval.setLexiconDir("lexicon_cooking.xml");
-
+	        transition = false;
 	        buttons_bread = new Image[Assets.buttons.size()];
 	        buttons_frosting = new Image[Assets.buttons.size()];
 	        buttons_sprinkles = new Image[Assets.buttons.size()];
@@ -560,7 +561,10 @@ public class GameScreen extends AbstractGameScreen  {
 			// TODO Auto-generated method stub
 			
 		}
-
+		
+		
+		
+		
 		@Override
 		protected void nullify() {
 			// TODO Auto-generated method stub
@@ -643,6 +647,15 @@ public class GameScreen extends AbstractGameScreen  {
 	        g.drawString(questions[2], 100, 475, paint2);//sQuestion
 	        
 	       
+		}
+
+		@Override
+		protected void showTransition() {
+			// TODO Auto-generated method stub
+			Graphics g = game.getGraphics();
+			if(super.transition){
+				  g.drawARGB(155, 0, 0, 0);
+			}
 		}
 
 	   

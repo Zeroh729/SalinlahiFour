@@ -32,7 +32,7 @@ public class GameScreen extends AbstractGameScreen  {
 	    static String activityName = "House";
 	    //private int lessonNumber = 2;
 	    String activityLevel;
-	    private Image bg, dialogbox;
+	    private Image bg, dialogbox, feedboxBoy, feedboxGirl;
 	    private Parts pDialog;
 	    private Image body,door,roof,window;
 	    private Image bodyholder,doorholder,roofholder,windowholder;
@@ -75,9 +75,10 @@ public class GameScreen extends AbstractGameScreen  {
 			// TODO Auto-generated method stub
 	        Log.d("Aldrin ExtendedFramework", "Loading Assets");
 //hello		
-	        
+	        	transition = false;
 	        	eval.setLexiconDir("lexicon_house.xml");
-	        	
+	        	feedboxBoy = Assets.feedboxBoy;
+	        	feedboxGirl = Assets.feedboxGirl;
 				bg =  Assets.gamebg;
 				dialogbox = Assets.dialogbox;
 		        body =Assets.body_choice;
@@ -194,6 +195,7 @@ public class GameScreen extends AbstractGameScreen  {
 	        for (int i = 0; i < len; i++) {
 	            TouchEvent event = touchEvents.get(i);
 	            if (event.type == TouchEvent.TOUCH_DOWN) {
+	            	transition = true;
 	            	Log.d("Touched Down", "X: " + event.x + "Y: " + event.y );
 	            	if(!pRoof.isPlaced()){
 	    				roof = Assets.roof_choice;
@@ -641,7 +643,7 @@ public class GameScreen extends AbstractGameScreen  {
 		protected void painterEasy() {
 			// TODO Auto-generated method stub
 			 Graphics g = game.getGraphics();
-			 
+			 showTransition();
 			 	g.drawImage(bg, 0, 0);
 			 	g.drawImage(dialogbox, pDialog.getX(), pDialog.getY());
 		        g.drawImage(roofholder, pRoofH.getX(), pRoofH.getY());
@@ -655,7 +657,7 @@ public class GameScreen extends AbstractGameScreen  {
 		        g.drawImage(windowholder, pWindowH.getX(), pWindowH.getY());
 		        g.drawImage(door, pDoor.getX(), pDoor.getY());
 		        g.drawImage(window, pWindow.getX(), pWindow.getY());
-
+		        
 		}
 		protected void painterMedium() {
 			// TODO Auto-generated method stub
@@ -694,6 +696,17 @@ public class GameScreen extends AbstractGameScreen  {
 			  Graphics g = game.getGraphics();
 		        g.drawString(sFeedback, 97, 43, paint2);
 		        g.drawString(sQuestion, 97, 63, paint);
+		}
+
+		@Override
+		protected void showTransition() {
+			// TODO Auto-generated method stub
+			Graphics g = game.getGraphics();
+			if(super.transition){
+				Log.d("Transition Debug", "Enters: Knock Knock");
+				  g.drawARGB(200, 100, 0, 0);
+				  g.drawImage(feedboxBoy, this.pDialog.getX(), pDialog.getY());
+			}
 		}
 
 	   

@@ -44,6 +44,7 @@ public abstract class AbstractGameScreen extends Screen {
 	  protected Lesson lesson;
 	  private boolean gameOverLock;
 	  protected ArrayList<Item> items;
+	  protected boolean transition;
 	public AbstractGameScreen(Game game, String activityName,String activityLevel ,int userID, Context context, Lesson lesson) {
 
 		super(game);
@@ -112,6 +113,7 @@ public abstract class AbstractGameScreen extends Screen {
 	        	case "EASY":
 	        		updateRunningEasy(touchEvents, deltaTime);break;
 	        	}
+	        	this.transitionTouchEvent(touchEvents);
 	        	  if (livesLeft == 0 || rounds == 0) {
 	  	            state = GameState.GameOver;
 	  	            Looper.myLooper().quit();
@@ -194,6 +196,7 @@ public abstract class AbstractGameScreen extends Screen {
 	  @Override
 	    public void paint(float deltaTime) {
 	        Graphics g = game.getGraphics();
+	        showTransition();
 	        switch(activityLevel){
 	        case "HARD":painterHard();break;
 	        case "MEDIUM":painterMedium();break;
@@ -239,6 +242,16 @@ public abstract class AbstractGameScreen extends Screen {
 	        
 	        
 	    }
+	  
+	  protected void transitionTouchEvent(List<TouchEvent> touchEvents){
+		  if(transition){
+			  if (touchEvents.size() > 0){
+				  Log.d("Transition Debug", "Falseing");
+				 // transition = false;
+			  }
+		  }
+	  }
+	  
 		abstract protected void loadAssets();
 		abstract protected void assetPositionEasy();
 		abstract protected void assetPositionMedium();
@@ -252,6 +265,7 @@ public abstract class AbstractGameScreen extends Screen {
 		abstract protected void painterEasy();
 		abstract protected void painterMedium();
 		abstract protected void painterHard();
+		abstract protected void showTransition();
 		abstract protected void nullify();
 		
 		

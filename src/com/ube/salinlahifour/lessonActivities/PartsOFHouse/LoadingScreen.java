@@ -191,6 +191,8 @@ public class LoadingScreen extends Screen {
 	       
 	        break;
 	        }
+	        Assets.feedboxBoy = g.newImage("house/pepaybox.png", ImageFormat.RGB565);
+	        Assets.feedboxGirl = g.newImage("house/popoibox.png", ImageFormat.RGB565);
 	        Assets.nothingness = g.newImage("house/nothingness.png", ImageFormat.RGB565);
 	        game.setScreen(new GameScreen(game, activityLevel,userID,context,lesson, items ));
 
