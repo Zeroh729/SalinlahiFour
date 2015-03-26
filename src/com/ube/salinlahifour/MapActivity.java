@@ -418,121 +418,6 @@ public class MapActivity extends Activity implements OnClickListener{
 //		
 		if(view == btn_account){
 			
-<<<<<<< HEAD
-				    final Lesson lessonDetails = scene.getLessons().get(Integer.parseInt(((ImageButton)view).getTag().toString()));				
-				    tv_title.setText(lessonDetails.getName());
-				    tv_desc.setText(lessonDetails.getDescription());
-				    img_popupmap.setImageResource(lessonDetails.getImage());
-				    
-				    Log.d("Pressed a lesson", "TEST");
-				    
-				             ImageButton easy = (ImageButton)popupView.findViewById(R.id.btn_easy);
-				             easy.setOnClickListener(new ImageButton.OnClickListener(){
-				        	     @Override
-				        	     public void onClick(View v) {
-				        	    	intent = new Intent(scene.getLessons().get(fIndex).getTutorial());
-				         			intent.putExtra("activityClass", scene.getLessons().get(fIndex).getActivity());
-				         			intent.putExtra("activityLevel", LevelType.EASY.toString());
-				         			Bundle bundle = new Bundle();
-				         			bundle.putParcelable("lesson", lessonDetails);
-				         			intent.putExtras(bundle);
-				         			startActivity(intent);
-				        	     }});
-				             ImageButton medium = (ImageButton)popupView.findViewById(R.id.btn_med);
-				             medium.setOnClickListener(new ImageButton.OnClickListener(){
-
-				        	     @Override
-				        	     public void onClick(View v) {
-				        	    	 intent = new Intent(scene.getLessons().get(fIndex).getTutorial());
-				         			intent.putExtra("activityClass", scene.getLessons().get(fIndex).getActivity());
-				         			intent.putExtra("activityLevel", LevelType.MEDIUM.toString());
-				         			Bundle bundle = new Bundle();
-				         			bundle.putParcelable("lesson", lessonDetails);
-				         			intent.putExtras(bundle);
-				         			startActivity(intent);
-				        	     }});
-				             ImageButton hard = (ImageButton)popupView.findViewById(R.id.btn_hard);
-				             hard.setOnClickListener(new ImageButton.OnClickListener(){
-
-
-				        	     @Override
-				        	     public void onClick(View v) {
-				        	    	 intent = new Intent(scene.getLessons().get(fIndex).getTutorial());
-				         			intent.putExtra("activityClass", scene.getLessons().get(fIndex).getActivity());
-				         			intent.putExtra("activityLevel", LevelType.HARD.toString());
-				         			Bundle bundle = new Bundle();
-				         			bundle.putParcelable("lesson", lessonDetails);
-				         			intent.putExtras(bundle);
-				         			startActivity(intent);
-				        	     }});
-				             
-				             UserLessonProgressOperations userdb = new UserLessonProgressOperations(this);
-				             userdb.open();
-				             UserLessonProgress lesson = userdb.getUserLessonProgress(SalinlahiFour.getLoggedInUser().getId(), lessonDetails.getName());
-				             
-				             if(lesson == null){
-				            	 lesson = new UserLessonProgress();
-				            	 lesson.setEasyStar(null);
-				             }
-					             if(lesson.getEasyStar() != null){
-					            	 switch(lesson.getEasyStar()){
-					            	 	case "GOLD":
-					            	 		((ImageView)popupView.findViewById(R.id.star1)).setImageResource(R.drawable.lvlselect_gold);
-					            	 		break;
-					            	 	case "SILVER":
-					            	 		((ImageView)popupView.findViewById(R.id.star1)).setImageResource(R.drawable.lvlselect_silver);
-					            	 		break;
-					            	 	case "BRONZE":
-					            	 		((ImageView)popupView.findViewById(R.id.star1)).setImageResource(R.drawable.lvlselect_bronze);
-					            	 		btn_medium.setEnabled(true);
-					            	 		btn_hard.setEnabled(true);
-					            	 		break;
-					            	 	default:
-					            	 		lesson.setEasyStar(null);
-					            	 		btn_medium.setEnabled(true);
-					            	 		btn_hard.setEnabled(true);
-					            	 }
-					             }else{
-				            	 	((ImageView)popupView.findViewById(R.id.star1)).setImageResource(R.drawable.lvlselect_null);
-			            	 		btn_medium.setEnabled(true);
-			            	 		btn_hard.setEnabled(true);
-					             }
-					             if(lesson.getMediumStar() != null){
-					            	 switch(lesson.getMediumStar()){
-					            	 	case "GOLD":
-					            	 		((ImageView)popupView.findViewById(R.id.star2)).setImageResource(R.drawable.lvlselect_gold);
-					            	 		break;
-					            	 	case "SILVER":
-					            	 		((ImageView)popupView.findViewById(R.id.star2)).setImageResource(R.drawable.lvlselect_silver);
-					            	 		break;
-					            	 	case "BRONZE":
-					            	 		((ImageView)popupView.findViewById(R.id.star2)).setImageResource(R.drawable.lvlselect_bronze);
-					            	 		btn_hard.setEnabled(true);
-					            	 		break;
-					            	 	default:
-					            	 		lesson.setMediumStar(null);
-					            	 }
-					             }else{
-				            	 	((ImageView)popupView.findViewById(R.id.star2)).setImageResource(R.drawable.lvlselect_null);
-			            	 		btn_hard.setEnabled(true);
-					             }
-					             if(lesson.getHardStar() != null){
-					            	 switch(lesson.getHardStar()){
-					            	 	case "GOLD":
-					            	 		((ImageView)popupView.findViewById(R.id.star3)).setImageResource(R.drawable.lvlselect_gold);
-					            	 		break;
-					            	 	case "SILVER":
-					            	 		((ImageView)popupView.findViewById(R.id.star3)).setImageResource(R.drawable.lvlselect_silver);
-					            	 		break;
-					            	 	case "BRONZE":
-					            	 		((ImageView)popupView.findViewById(R.id.star3)).setImageResource(R.drawable.lvlselect_bronze);
-					            	 		break;
-					            	 	default:
-					            	 		lesson.setHardStar(null);
-					            	 }
-					             }else{
-				            	 	((ImageView)popupView.findViewById(R.id.star3)).setImageResource(R.drawable.lvlselect_null);
-=======
 		}else if(view == btn_logout){
 			intent = new Intent(this, LoginActivity.class);
 			startActivity(intent);
@@ -650,7 +535,7 @@ public class MapActivity extends Activity implements OnClickListener{
 					             if(lesson == null){
 					            	 lesson = new UserLessonProgress();
 					            	 lesson.setEasyStar(null);
->>>>>>> Updated Assets & Map Fixes
+
 					             }
 						             if(lesson.getEasyStar() != null){
 						            	 switch(lesson.getEasyStar()){
