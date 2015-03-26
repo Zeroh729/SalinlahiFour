@@ -1,9 +1,12 @@
 package com.ube.salinlahifour.lessonActivities;
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
@@ -12,6 +15,7 @@ import com.kilobolt.framework.Game;
 import com.kilobolt.framework.Graphics;
 import com.kilobolt.framework.Input.TouchEvent;
 import com.kilobolt.framework.Screen;
+import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.Lesson;
 import com.ube.salinlahifour.ReportCard;
 import com.ube.salinlahifour.SalinlahiFour;
@@ -37,9 +41,9 @@ public abstract class AbstractGameScreen extends Screen {
 	  protected int rounds;
 	  protected ReportCard reportCard;
 	  private Context context;
-	  private Lesson lesson;
+	  protected Lesson lesson;
 	  private boolean gameOverLock;
-	  
+	  protected ArrayList<Item> items;
 	public AbstractGameScreen(Game game, String activityName,String activityLevel ,int userID, Context context, Lesson lesson) {
 
 		super(game);
@@ -48,12 +52,13 @@ public abstract class AbstractGameScreen extends Screen {
 		// TODO Auto-generated constructor stub
 		 eval = new Evaluation(SalinlahiFour.getContext(), activtityName, activityLevel);
 		 this.userID = userID;
+		 this.activtityName = activityName;
 	     this.activityLevel = activityLevel;
 	     this.lesson = lesson;
 	     this.gameOverLock = false;
 		 Log.d("Abstract Game Screen", activityName + " " + activityLevel);
 		 Looper.prepare();
-	     
+		 
 	     	loadAssets();
 		 //Asset Positioning
 		 	switch(activityLevel){
@@ -67,14 +72,14 @@ public abstract class AbstractGameScreen extends Screen {
 	        // Defining a paint object
 		 	Log.d("Abstract GamesScreen", "Initializing Paint Methods");
 	        paint = new Paint();
-	        paint.setTextSize(30);
-	        paint.setTextAlign(Paint.Align.CENTER);
+	        paint.setTextSize(20);
+	        paint.setTextAlign(Paint.Align.LEFT);
 	        paint.setAntiAlias(true);
 	        paint.setColor(Color.BLACK);
 	        
 	        paint2 = new Paint();
-			paint2.setTextSize(20);
-			paint2.setTextAlign(Paint.Align.CENTER);
+			paint2.setTextSize(13);
+			paint2.setTextAlign(Paint.Align.LEFT);
 			paint2.setAntiAlias(true);
 			paint2.setColor(Color.BLUE);
 
@@ -113,12 +118,36 @@ public abstract class AbstractGameScreen extends Screen {
 	  		        if(!gameOverLock){
 	  		        	Log.d("SEMAPHORE", gameOverLock + "");
 	  					gameOverLock = true;
-	  			        
+	  					eval.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), userID);
+	  					Intent intent = new Intent(context,GameOver.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);  
+	  					Bundle extras = new Bundle();
+	  					
+	  					Log.d("Debug ReportCard", "Activity Name: " + activtityName);
+	  					Log.d("Debug ReportCard", "Activity Level: " + activityLevel);
+	  					Log.d("Debug ReportCard", "Lesson Number: " + lessonNumber);
+	  					Log.d("Debug ReportCard", "userID: " + userID);
+	  					Log.d("Debug ReportCard", "Lesson: " + lesson.getName());
+	  					Log.d("Debug ReportCard", "Eval Score: " + eval.getScore() );
+	  					Log.d("Debug ReportCard", "Eval Total Score: " + eval.getTotalScore() );
+	  					Log.d("Debug ReportCard", "Throwing...");
+	  					
+	  					extras.putString("ActivityName",activtityName);
+	  					extras.putString("ActivityLevel", activityLevel);
+	  					extras.putInt("LessonNum", lessonNumber);
+	  					extras.putInt("userID", userID);
+	  					extras.putInt("e_score", eval.getScore());
+	  					extras.putInt("e_total", eval.getTotalScore());
+	  					Log.d("LessonNum", lessonNumber + "");
+	  					extras.putString("EOAFeedback", eval.getEndofActivityFeedback(eval.getScore(), lessonNumber));
+	  					extras.putParcelable("lesson", lesson);
+	  					
+	  					intent.putExtras(extras);
+	  					context.startActivity(intent); 
 //	  				    final Handler handler2 = new Handler();
 //	  				  Runnable runnable2 = new Runnable() {
-//	  				      @Override
+//	  				     @Override
 //	  				      public void run() {
-	  				    	 eval.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), userID);
+	  				/*    	 eval.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), userID);
 		  			        LevelType LTActLevel = null;
 		  					switch(activityLevel){
 		  					case "EASY": LTActLevel = LevelType.EASY; break;
@@ -129,7 +158,7 @@ public abstract class AbstractGameScreen extends Screen {
 		  					reportCard.setHeight(100);
 		  					reportCard.setWidth(100);
 		  					reportCard.setFocusable(true);
-	  	  			        reportCard.reveal();
+	  	  			        reportCard.reveal();*/
 //	  				      }
 //	  				      
 //	  				      

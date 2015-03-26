@@ -122,18 +122,30 @@ public class ButtonSet {
 		fColors = new ArrayList<String>();
 		switch(ActivityLevel){
 		case "HARD": 
-			fColors.add("Itim");
-			fColors.add("Puti");
-			//fQuestions.add("");
+			easyAns();
+			medAns();
+			hardAns();
 		case "MEDIUM":
-			fColors.add("Kayumanggi");
-			fColors.add("Violet");
+			easyAns();
+			medAns();
 		case "EASY":
-			fColors.add("Asul");
-			fColors.add("Berde");
-			fColors.add("Pula");
-			fColors.add("Dilaw");
+			easyAns();
 		}
+	}
+	
+	private void easyAns(){
+		fColors.add("Asul");
+		fColors.add("Berde");
+		fColors.add("Pula");
+		fColors.add("Dilaw");
+	}
+	private void medAns(){
+		fColors.add("Kayumanggi");
+		fColors.add("Lila");
+	}
+	private void hardAns(){
+		fColors.add("Itim");
+		fColors.add("Puti");
 	}
 	public String getAnswer(int colorIndex){
 		return fColors.get(colorIndex);
@@ -153,10 +165,15 @@ public class ButtonSet {
 		break;
 		case "MEDIUM":
 		case "HARD":
-			randColor =  rand.nextInt(chosenColors.length);
-			qColor = this.getChosenColors(randColor);break;
+			randColor =  rand.nextInt(3);
+			qColor = this.getChosenColors(randColor);
+			Log.d("Random Question Debug", "qColor: "+ qColor + " randColor: "+ randColor);
+			break;
+
 		}
-		return fColors.get(qColor) + fQuestions.get(nQuestion);
+		Log.d("Random Question Debug", "Question: " +fColors.get(qColor) + " na ");
+		Log.d("Random Question Debug", "Question: "+ fQuestions.get(nQuestion));
+		return fColors.get(qColor) + " na "+ fQuestions.get(nQuestion);
 	}
 	public String getQuestionColor(){
 		return fColors.get(qColor);

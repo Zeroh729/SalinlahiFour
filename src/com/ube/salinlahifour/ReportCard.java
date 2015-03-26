@@ -51,7 +51,7 @@ public class ReportCard extends PopupWindow implements OnClickListener{
 		this.context = context;
 		this.lesson = lesson;
 		this.level = level;
-		
+		Log.d("Debug ReportCard", "Inside ReportCard Class");
 		LayoutInflater layoutInflater = (LayoutInflater)this.context.getSystemService(this.context.LAYOUT_INFLATER_SERVICE);  
 	    popupView = layoutInflater.inflate(R.layout.reportcard, null);
 	    
@@ -98,7 +98,7 @@ public class ReportCard extends PopupWindow implements OnClickListener{
 			case GOLD:
 				img_star.setImageResource(R.drawable.report_card_gold);
 				tv_score.setText("PERFECT!");
-				
+				Log.d("Debug ReportCard", "You get Gold");
 				subtv_replay.setText("");
 				break;
 			case SILVER:
@@ -106,12 +106,15 @@ public class ReportCard extends PopupWindow implements OnClickListener{
 				tv_score.setText(evaluation.getScore() + "/" + evaluation.getTotalScore());
 				//CHANGE TO SILVER COLOR
 				//tv_score.setTextColor(Color.parseColor("#c4b723"));
+				Log.d("Debug ReportCard", "you get Silver");
 				subtv_replay.setText("retry to get\nGOLD!");
 				break;
 			case BRONZE:
 				img_star.setImageResource(R.drawable.report_card_bronze);
 				tv_score.setText(evaluation.getScore() + "/" + evaluation.getTotalScore());
 				//CHANGE TO BRONZE COLOR
+				
+				Log.d("Debug ReportCard", "you get Bronze");
 				//tv_score.setTextColor(Color.parseColor("#c4b723"));
 				
 				subtv_next.setVisibility(View.INVISIBLE);
@@ -127,6 +130,8 @@ public class ReportCard extends PopupWindow implements OnClickListener{
 		}else if(level.equals(LevelType.HARD)){
 			subtv_next.setText("");
 			btn_next.setVisibility(View.INVISIBLE);
+		}else{
+			Log.d("Debug ReportCard", "playNext Missing");
 		}
 	}
 

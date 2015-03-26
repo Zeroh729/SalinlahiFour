@@ -90,6 +90,10 @@ public class Evaluation {
 		return item;
 	}
 	
+	public void setLexiconDir(String filename){
+		NLG.setLexiconDirectory("/sdcard/"+filename);
+	}
+	
 	public String getImmediateFeedback(int index, String answer, int lessonNumber){
 		String Feedback = null;
 		try {
@@ -134,6 +138,13 @@ public class Evaluation {
 		}
 	}
 
+	public void setScore(int score){
+		this.score = score;
+	}
+	public void setTotScore(int total){
+		this.totscore = total;
+	}
+	
 	public int getScore()
 	{
 		return score;
