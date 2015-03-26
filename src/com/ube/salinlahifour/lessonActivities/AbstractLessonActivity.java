@@ -94,7 +94,8 @@ public abstract class AbstractLessonActivity extends Activity {
 
 		try {
 			records = userdb.getRecentUserRecordsFromUserId(SalinlahiFour.getLoggedInUser().getId(), activityName);
-
+			int cnt_itemLevel = 0;
+			
 			ArrayList<Item> items = SalinlahiFour.getLessonItems();
 	//		ArrayList<String> itemNames = new ArrayList();
 	//		ArrayList<Integer> itemScores = new ArrayList();
@@ -103,7 +104,12 @@ public abstract class AbstractLessonActivity extends Activity {
 			for(int i = 0; i < items.size(); i++){
 	//			itemNames.add(items.get(i).getWord());
 	//			itemScores.add(0);
-				itemKeys.put(items.get(i).getWord(), 0);
+				if(!items.get(i).getLevel().equals(activityLevel)){
+					itemKeys.put(items.get(i).getWord(), 0);
+				}else{
+					cnt_itemLevel++;
+					questions.add(items.get(i));
+				}
 			}
 			
             Log.d("records size: " + records.size(), "TEST");
@@ -111,30 +117,38 @@ public abstract class AbstractLessonActivity extends Activity {
 					
 			for(int i = 0; i < records.size(); i++){
 	//			int index = itemNames.indexOf(records.get(i).getCorrectAnswer());
-				int value = itemKeys.get(records.get(i).getCorrectAnswer());
-				if(records.get(i).getStatus().equals(StatusType.CORRECT.toString())){
-					value += 1;
-				}else{
-					value -= 1;
+				if(itemKeys.containsKey(records.get(i).getCorrectAnswer())){
+					int value = itemKeys.get(records.get(i).getCorrectAnswer());
+					if(records.get(i).getStatus().equals(StatusType.CORRECT.toString())){
+						value += 1;
+					}else{
+						value -= 1;
+					}
+					itemKeys.put(records.get(i).getCorrectAnswer(), value);
 				}
-				itemKeys.put(records.get(i).getCorrectAnswer(), value);
 			}		
 			
 			Map<String, Integer> sortedItemKeys = sortByComparator(itemKeys);
 			
+			int i = 0;
 			for(String key : sortedItemKeys.keySet()){
-				ArrayList<Item> lessonItems = SalinlahiFour.getLessonItems();
-				for(int i = 0; i < lessonItems.size(); i++)
-					if(lessonItems.get(i).getWord().equals(key)){
-						questions.add(lessonItems.get(i));
-						break;
-					}
-				if(cnt_question > 0 && cnt_question < questions.size()){
-					questions.remove(cnt_question);
+				if(cnt_question == 0 || ((cnt_question - cnt_itemLevel) > i)){
+					ArrayList<Item> lessonItems = SalinlahiFour.getLessonItems();
+					for(int j = 0; j < lessonItems.size(); j++)
+						if(lessonItems.get(j).getWord().equals(key)){
+	//						if(lessonItems.get(j).getLevel().equals(activityLevel))
+								questions.add(lessonItems.get(j));
+	//						else if(cnt_question > 0 && cnt_question < j){
+	//							
+	//						}
+							break;
+						}
+				}else{
+					break;
 				}
-
-				Collections.shuffle(questions,  new Random(System.nanoTime()));
+				i++;
 			}
+			Collections.shuffle(questions,  new Random(System.nanoTime()));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -209,6 +223,10 @@ public abstract class AbstractLessonActivity extends Activity {
 			}
 			});
 		builder.show();
+	}
+	
+	protected void setCntQuestions(int x){
+		cnt_question = x;
 	}
 
 	@Override
