@@ -460,6 +460,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            questions[1] = creamerButtons.createQuestions(activityLevel,1);
 	            questions[2] = sprinklerButtons.createQuestions(activityLevel,2);
 	            isSubmit = 0;
+	            recipe = Assets.instructions;
 	            }
 	            
 	            /////////////////////////////////////////////
