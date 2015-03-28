@@ -4,8 +4,11 @@ package com.ube.salinlahifour.lessonActivities.CookingColors;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.Bundle;
+import android.os.Looper;
 import android.util.Log;
 
 import com.kilobolt.framework.Game;
@@ -15,10 +18,13 @@ import com.kilobolt.framework.Screen;
 import com.kilobolt.framework.Input.TouchEvent;
 import com.kilobolt.framework.Sound;
 import com.ube.salinlahifour.Lesson;
+import com.ube.salinlahifour.MapActivity;
 import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.evaluationModule.*;
 import com.ube.salinlahifour.lessonActivities.AbstractGameScreen;
+import com.ube.salinlahifour.lessonActivities.GameOver;
 import com.ube.salinlahifour.lessonActivities.CookingColors.Assets;
+import com.ube.salinlahifour.lessonActivities.PartsOFHouse.Parts;
 import com.ube.salinlahifour.database.UserDetailOperations;
 import com.ube.salinlahifour.database.UserLessonProgressOperations;
 import com.ube.salinlahifour.database.UserRecordOperations;
@@ -32,7 +38,8 @@ public class GameScreen extends AbstractGameScreen  {
 	   
 	    //String activityLevel;
 	    
-	    private Image bg, wrong, ready;
+	    private Image bg, wrong, ready,feedboxChef,nextBtn,recipe;
+	    private Parts pDialog, pRecipe;
 	    private Image[] buttons_sprinkles;
 	    private Image[] buttons_bread;
 	    private Image[] buttons_frosting;
@@ -44,8 +51,8 @@ public class GameScreen extends AbstractGameScreen  {
 	    // Edit lives left to the question size
 	    private String[] questions;
 	    private String[] feedbacks;
-	    
-	    
+	    private Image backbtn, nobtn, yesbtn, bgBack;
+	    private Parts pNo,pYes,pBackg;
 	    public GameScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson) {
 	    	//Super Parameters Game, ActivityName, ActivityLevel, UserID
 	        super(game, activityName, activityLevel, userID, context, lesson);
@@ -69,6 +76,7 @@ public class GameScreen extends AbstractGameScreen  {
 	        Log.d("Aldrin ExtendedFramework", "Loading Assets");
 	        eval.setLexiconDir("lexicon_cooking.xml");
 	        transition = false;
+	        exit = false;
 	        buttons_bread = new Image[Assets.buttons.size()];
 	        buttons_frosting = new Image[Assets.buttons.size()];
 	        buttons_sprinkles = new Image[Assets.buttons.size()];
@@ -79,14 +87,23 @@ public class GameScreen extends AbstractGameScreen  {
 	        sprinkles = Assets.nothingness;
 	        wrong = Assets.nothingness;
 	        ready = Assets.nothingness;
+	        feedboxChef = Assets.nothingness;
+	        recipe = Assets.envelope;
+	        pDialog = new Parts(160,10);
+	        pRecipe = new Parts(160,375);
 	        for (int i = 0; i< buttons_bread.length; i++){
 	        	buttons_bread[i] = Assets.buttons.get(i);
 	        	buttons_frosting[i] = Assets.buttons.get(i);
 	        	buttons_sprinkles[i] = Assets.buttons.get(i);
 	        	sounds[i] = Assets.sound.get(i);
 	        }
-	        
-	        
+	        this.backbtn = Assets.backbtn;
+	        this.bgBack = Assets.bgBack;
+	        this.yesbtn = Assets.yesbtn;
+	        this.nobtn = Assets.nobtn;
+	        pNo = new Parts(220,300);
+	        pYes = new Parts(400,300);
+	        pBackg = new Parts(195, 100);
 		    Log.d("Aldrin ExtendedFramework", "Loading Assets...Done");
 		}
 
@@ -188,12 +205,13 @@ public class GameScreen extends AbstractGameScreen  {
 			int len = touchEvents.size();
 	        for (int i = 0; i < len; i++) {
 	            TouchEvent event = touchEvents.get(i);
+	            
 	            if(isSubmit == 1){
 	            	questions[0] = breaderButtons.createQuestions(activityLevel,0);
 	            	questions[1] = creamerButtons.createQuestions(activityLevel,1);
 	            	questions[2] = sprinklerButtons.createQuestions(activityLevel,2);
 	            	isSubmit = 0;
-	            	
+	            	recipe = Assets.instructions;
 	        		
 	            	Log.d("Question", breaderButtons.getQuestionColor() + "");
 	            	Log.d("Question", creamerButtons.getQuestionColor() + "");
@@ -202,7 +220,31 @@ public class GameScreen extends AbstractGameScreen  {
 	            /////////////////////////////////////////////
 	            if (event.type == TouchEvent.TOUCH_DOWN) { //Happens When you press a specifi
 	            	Log.d("Touched Down", "X: " + event.x + "Y: " + event.y );
-	            	
+	            	if(inBounds(event, 1 ,1 ,this.backbtn.getWidth(), this.backbtn.getHeight())){
+	            		exit = true;
+	            	}
+		            if(exit){
+		            	if(inBounds(event, pNo.getX() ,pNo.getY() ,this.nobtn.getWidth(), this.nobtn.getWidth())){
+		            		Log.d("Exit Debug", "This should be once: NO");
+		            		exit = false;
+		            	}else if (inBounds(event, pYes.getX() ,pYes.getY() ,this.yesbtn.getWidth(), this.yesbtn.getWidth())){
+		            		Log.d("Exit Debug", "Quit");
+		            		Looper.myLooper().quit();
+		            		Intent intent = new Intent(context,MapActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);  
+		            		context.startActivity(intent); 
+			            }else if(inBounds(event, pNo.getX() ,pNo.getY() ,this.nobtn.getWidth(), this.nobtn.getWidth())){
+			            	exit = false;
+			            	Log.d("Exit Debug", "Continue");
+			            }
+		            }
+	            	if(transition){
+	            		if(inBounds(event, pRecipe.getX() ,pRecipe.getY() , recipe.getWidth(), recipe.getHeight())){
+	            		Log.d("Transition Debug", "Falseing in easy");
+	            		recipe = Assets.instructions;
+	   				  	transition = false;
+	            		}
+	            	}else{
+	 	            	
 	            	if(inBounds(event, breaderButtons.getInitX() ,breaderButtons.getInitY() , buttons_bread[0].getWidth() * 2, buttons_bread[0].getHeight() * 2)){//if bread
 	            		cake.move(50, 250);
 	            		Log.d("GameScreen", "Thats a breader");
@@ -340,6 +382,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            			if(cor1 == 1 && cor2 == 1 && cor3 == 1){
 	            				isSubmit = 1;
 	            				livesLeft--;
+	            				transition = true;
 	            				   cor1 = 0; 
 		            			    cor2 = 0;
 		            			    cor3 = 0;
@@ -348,11 +391,13 @@ public class GameScreen extends AbstractGameScreen  {
 		            			    frosting = Assets.nothingness;
 		            			    sprinkles = Assets.nothingness;
 		            			    cake.resetFlags();
+		            			    
 	            				Log.d("DING", "Its done");
 	            			}else{
 	            				ready = Assets.nothingness;
 	            				wrong = Assets.wrong;
 	            				Log.d("DING", "Wrong Order!");
+	            				transition = true;
 	            				cor1 = 0; 
 		            			cor2 = 0;
 		            			cor3 = 0;
@@ -362,8 +407,8 @@ public class GameScreen extends AbstractGameScreen  {
 	            			userLessonProgressOperator.close();
 	            		}
 	            	}
-	            	
-	
+	 	            	}
+	            
 	            }
 	            if (event.type == TouchEvent.TOUCH_UP) {
 	            	if(inBounds(event, breaderButtons.getInitX() ,breaderButtons.getInitY() , buttons_bread[0].getWidth() * 2, buttons_bread[0].getHeight() * 2)){//if bread
@@ -416,8 +461,34 @@ public class GameScreen extends AbstractGameScreen  {
 	            questions[2] = sprinklerButtons.createQuestions(activityLevel,2);
 	            isSubmit = 0;
 	            }
+	            
 	            /////////////////////////////////////////////
 	            if (event.type == TouchEvent.TOUCH_DOWN) {
+	            	if(inBounds(event, 1 ,1 ,this.backbtn.getWidth(), this.backbtn.getHeight())){
+	            		exit = true;
+	            	}
+		            if(exit){
+		            	if(inBounds(event, pNo.getX() ,pNo.getY() ,this.nobtn.getWidth(), this.nobtn.getWidth())){
+		            		Log.d("Exit Debug", "This should be once: NO");
+		            		exit = false;
+		            	}else if (inBounds(event, pYes.getX() ,pYes.getY() ,this.yesbtn.getWidth(), this.yesbtn.getWidth())){
+		            		Log.d("Exit Debug", "Quit");
+		            		Looper.myLooper().quit();
+		            		Intent intent = new Intent(context,MapActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);  
+		            		context.startActivity(intent); 
+			            }else if(inBounds(event, pNo.getX() ,pNo.getY() ,this.nobtn.getWidth(), this.nobtn.getWidth())){
+			            	exit = false;
+			            	Log.d("Exit Debug", "Continue");
+			            }
+		            }
+	            	if(transition){
+	            		if(inBounds(event, pRecipe.getX() ,pRecipe.getY() , recipe.getWidth(), recipe.getHeight())){
+	            		Log.d("Transition Debug", "Falseing in easy");
+	            		recipe = Assets.instructions;
+	   				  	transition = false;
+	   				  	
+	            		}
+	            	}else{
 	            	wrong = Assets.nothingness;
 	            	if(inBounds(event, breaderButtons.getInitX() ,breaderButtons.getInitY() , buttons_bread[0].getWidth() * 2, buttons_bread[0].getHeight() * 2)){//if bread
 	            		cake.move(50, 250);
@@ -496,6 +567,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            				isSubmit = 1;
 		            				livesLeft--;
 		            				Log.d("DING", "Its done");
+		            				transition = true;
 		            				cor1 = 0; 
 		            			    cor2 = 0;
 		            			    cor3 = 0;
@@ -508,6 +580,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            				ready = Assets.nothingness;
 		            				wrong = Assets.wrong;
 		            				Log.d("DING", "Wrong Order!");
+		            				transition = true;
 		            				cor1 = 0; 
 			            			cor2 = 0;
 			            			cor3 = 0;
@@ -517,6 +590,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            			userLessonProgressOperator.close();
 		            		}
 		            	}
+	            }
 	            	}
 	            
 	            if (event.type == TouchEvent.TOUCH_UP) {
@@ -587,6 +661,7 @@ public class GameScreen extends AbstractGameScreen  {
 			 g.drawImage(bg, 0, 0);
 			 g.drawImage(wrong, cake.getX(), cake.getY());
 			 g.drawImage(ready, cake.getX(), cake.getY());
+			 g.drawImage(recipe, pRecipe.getX(), pRecipe.getY());
 			 
 			 if(cake.isBread()){
 				 g.drawImage(bread, cake.getX(), cake.getY());
@@ -613,6 +688,7 @@ public class GameScreen extends AbstractGameScreen  {
 			g.drawImage(bg, 0, 0);
 			g.drawImage(ready, cake.getX(), cake.getY());
 			g.drawImage(wrong, cake.getX(), cake.getY());
+			g.drawImage(recipe, pRecipe.getX(), pRecipe.getY());
 			 if(cake.isBread()){
 				 g.drawImage(bread, cake.getX(), cake.getY());
 			 }
@@ -639,13 +715,15 @@ public class GameScreen extends AbstractGameScreen  {
 		protected void drawRunningUI() {
 			// TODO Auto-generated method stub
 			Graphics g = game.getGraphics();
-			g.drawString(feedbacks[0], 300, 425, paint3);//sFeedback 
-			g.drawString(feedbacks[1], 300, 450, paint3);//sFeedback 
-	        g.drawString(feedbacks[2], 300, 475, paint3);//sFeedback 
-	        g.drawString(questions[0], 100, 425, paint2);//sQuestion
-	        g.drawString(questions[1], 100, 450, paint2);//sQuestion
-	        g.drawString(questions[2], 100, 475, paint2);//sQuestion
-	        
+			g.drawImage(backbtn, 1, 1);
+			//g.drawString(feedbacks[0], 300, 425, paint3);//sFeedback 
+			//g.drawString(feedbacks[1], 300, 450, paint3);//sFeedback 
+	        //g.drawString(feedbacks[2], 300, 475, paint3);//sFeedback 
+	        g.drawString(questions[0], 305, 425, paint2);//sQuestion
+	        g.drawString(questions[1], 305, 450, paint2);//sQuestion
+	        g.drawString(questions[2], 305, 475, paint2);//sQuestion
+	        showTransition();
+	        showExit();
 	       
 		}
 
@@ -654,7 +732,40 @@ public class GameScreen extends AbstractGameScreen  {
 			// TODO Auto-generated method stub
 			Graphics g = game.getGraphics();
 			if(super.transition){
+				Log.d("Transition Debug", "Enters: Knock Knock");
 				  g.drawARGB(155, 0, 0, 0);
+				  feedboxChef = Assets.feedboxChef;
+				  recipe = Assets.envelope;
+				  g.drawImage(this.feedboxChef, pDialog.getX(), pDialog.getY());
+				  g.drawImage(this.recipe, pRecipe.getX(), pRecipe.getY());
+				  g.drawString(feedbacks[0], 350,155, paint4);
+				  g.drawString(feedbacks[1], 350,175, paint4);
+				  g.drawString(feedbacks[2], 350,195, paint4);
+			}
+		}
+
+		@Override
+		protected void drawReadyUI() {
+			// TODO Auto-generated method stub
+			Graphics g = game.getGraphics();
+			feedboxChef = Assets.feedbox;
+			g.drawARGB(200, 0, 0, 0);
+			g.drawImage(this.feedboxChef, pDialog.getX(), pDialog.getY());
+			g.drawImage(this.recipe, pRecipe.getX(), pRecipe.getY());
+			g.drawString("Tap the envelope to get the new", 350,95, paint4);
+			g.drawString("recipe and create the cake!",350, 115, paint4);
+			g.drawString("Tap the cake when it's ready!", 350, 145, paint4);
+		}
+
+		@Override
+		protected void showExit() {
+			// TODO Auto-generated method stub
+			Graphics g = game.getGraphics();
+			if(exit){
+				 g.drawARGB(200, 0, 0, 0);
+				 g.drawImage(bgBack, this.pBackg.getX(), pBackg.getY());
+				 g.drawImage(nobtn, this.pNo.getX(), pNo.getY());
+				 g.drawImage(yesbtn, pYes.getX(), pYes.getY());
 			}
 		}
 

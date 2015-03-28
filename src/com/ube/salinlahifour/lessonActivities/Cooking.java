@@ -25,6 +25,7 @@ public class Cooking extends AbstractLAFramework  {
 	 @Override
 	 public void onBackPressed() {
 		 getCurrentScreen().backButton();
+		
 	 }
 	/* public void showReportCard(){
 		 super.showReportCard(this);

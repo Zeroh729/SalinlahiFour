@@ -4,8 +4,8 @@ import com.kilobolt.framework.Sound;
 public class Assets {
 	//public static Image menu;
    //public static Sound click;
-	public static Image splashbg,menubg,charboy, chargirl, wrong, dialogbox, feedboxBoy, feedboxGirl;
-	
+	public static Image splashbg,menubg,charboy, chargirl, wrong, dialogbox, feedboxBoy, feedboxGirl, nextBtn,nextBtn_pressed;
+	public static Image bgBack,backbtn,yesbtn,nobtn; 
 	public static Image gamebg, body, door, roof, window;
 	public static Image roof_choice, body_choice,door_choice,window_choice;
 	public static Image bodyholder, doorholder, roofholder,windowholder;

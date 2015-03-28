@@ -5,8 +5,9 @@ import com.kilobolt.framework.Image;
 import com.kilobolt.framework.Sound;
 public class Assets {
 
-	public static Image bg, nothingness, spaceship, wrong;
-	
+	public static Image bg, nothingness, spaceship, wrong,  feedboxBoy, feedboxGirl, nextBtn,nextBtn_pressed, tooltip;
+	public static ArrayList<Image> lives;
+	public static Image bgBack,backbtn,yesbtn,nobtn; 
 	public static Image circle,square,star,triangle;
 	public static Image circleP,squareP,starP,triangleP;
 	public static Image circle_error,square_error,star_error,triangle_error;

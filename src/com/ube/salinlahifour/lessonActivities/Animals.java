@@ -3,6 +3,7 @@ package com.ube.salinlahifour.lessonActivities;
 import java.util.ArrayList;
 import java.util.Random;
 
+import android.app.Activity;
 import android.media.MediaPlayer;
 import android.util.Log;
 import android.view.View;
@@ -64,7 +65,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 		btn_cards = new ImageButton[4];
 		
 		questionno = 0;
-	
+		
 		btn_up[0] = (ImageButton)findViewById(R.id.btn_english_up);
 		btn_up[1] = (ImageButton)findViewById(R.id.btn_sound_up);
 		btn_up[2] = (ImageButton)findViewById(R.id.btn_picture_up);

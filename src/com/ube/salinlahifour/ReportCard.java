@@ -92,7 +92,7 @@ public class ReportCard extends PopupWindow implements OnClickListener{
 		
 		tv_title.setText(lesson.getName());
 		tv_level.setText("("+level.toString()+")");
-		tv_evaluation.setText(nlg_evaluation);
+		tv_evaluation.setText(evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber()));
 		
 		switch(evaluation.getStar()){
 			case GOLD:
