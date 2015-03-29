@@ -40,15 +40,15 @@ public abstract class LessonItemLoader {
 						items.add(new Item(8,"Tito" , "Uncle", "Can you find <font color=#299190>tito</font>?", R.drawable.family_tito, R.raw.family_tito, R.raw.family_uncle, LevelType.HARD));
 						items.add(new Item(9,"Tita" , "Auntie", "Can you find <font color=#299190>tita</font>?", R.drawable.family_tita, R.raw.family_tita, R.raw.family_aunt, LevelType.HARD));
 					case "MEDIUM":
-						items.add(new Item(5,"Lolo" , "Grandfather", "Can you <font color=#299190>find lolo</font>?", R.drawable.family_lolo, R.raw.family_lolo, R.raw.family_grandfather, LevelType.MEDIUM));
-						items.add(new Item(6,"Lola" , "Grandmother", "Can you <font color=#299190>find Lola</font>?", R.drawable.family_lola, R.raw.family_lola, R.raw.family_grandmother, LevelType.MEDIUM));
-						items.add(new Item(7,"Bunso" , "Youngest", "Can you <font color=#299190>find bunso</font>?", R.drawable.family_bunso, R.raw.family_bunso, R.raw.family_youngestsibling, LevelType.MEDIUM));
+						items.add(new Item(5,"Lolo" , "Grandfather", "Can you find<font color=#299190> lolo</font>?", R.drawable.family_lolo, R.raw.family_lolo, R.raw.family_grandfather, LevelType.MEDIUM));
+						items.add(new Item(6,"Lola" , "Grandmother", "Can you find<font color=#299190> Lola</font>?", R.drawable.family_lola, R.raw.family_lola, R.raw.family_grandmother, LevelType.MEDIUM));
+						items.add(new Item(7,"Bunso" , "Youngest", "Can you find<font color=#299190> bunso</font>?", R.drawable.family_bunso, R.raw.family_bunso, R.raw.family_youngestsibling, LevelType.MEDIUM));
 					case "EASY":
 
-						items.add(new Item(1,"Nanay" , "Mother", "Can you find nanay?", R.drawable.family_nanay, R.raw.family_nanay, R.raw.family_mother, LevelType.EASY));
-						items.add(new Item(2,"Tatay" , "Father", "Can you find tatay?", R.drawable.family_tatay, R.raw.family_tatay, R.raw.family_father, LevelType.EASY));
-						items.add(new Item(3,"Kuya" , "Brother", "Can you find kuya?", R.drawable.family_kuya, R.raw.family_kuya, R.raw.family_olderbrother, LevelType.EASY));
-						items.add(new Item(4,"Ate" , "Sister", "Can you find ate?", R.drawable.family_ate, R.raw.family_ate, R.raw.family_oldersister, LevelType.EASY));
+						items.add(new Item(1,"Nanay" , "Mother", "Can you find <font color=#299190>nanay</font>?", R.drawable.family_nanay, R.raw.family_nanay, R.raw.family_mother, LevelType.EASY));
+						items.add(new Item(2,"Tatay" , "Father", "Can you find <font color=#299190>tatay</font>?", R.drawable.family_tatay, R.raw.family_tatay, R.raw.family_father, LevelType.EASY));
+						items.add(new Item(3,"Kuya" , "Brother", "Can you find <font color=#299190>kuya</font>?", R.drawable.family_kuya, R.raw.family_kuya, R.raw.family_olderbrother, LevelType.EASY));
+						items.add(new Item(4,"Ate" , "Sister", "Can you find <font color=#299190>ate</font>?", R.drawable.family_ate, R.raw.family_ate, R.raw.family_oldersister, LevelType.EASY));
 						
 				}	
 				Log.d("Lesson Loader", items.get(0).getLabel());

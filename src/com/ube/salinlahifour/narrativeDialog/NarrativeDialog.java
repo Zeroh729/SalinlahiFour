@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.ube.salinlahifour.R;
 import com.ube.salinlahifour.uibuilders.Button.BtnNextArrowStatesBuilder;
+import com.ube.salinlahifour.uibuilders.Button.BtnSkipStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.BtnStatesDirector;
 
 public abstract class NarrativeDialog extends Activity{
@@ -41,6 +42,7 @@ public abstract class NarrativeDialog extends Activity{
 		dialogIndex = 0;
 		
 		((ImageButton)findViewById(R.id.btn_next)).setImageDrawable(BtnStatesDirector.getImageDrawable(new BtnNextArrowStatesBuilder()));
+		((ImageButton)findViewById(R.id.btn_skip)).setImageDrawable(BtnStatesDirector.getImageDrawable(new BtnSkipStatesBuilder()));
 		
 		initiateCharacters();
 		initiateScript();
@@ -51,10 +53,14 @@ public abstract class NarrativeDialog extends Activity{
 	public abstract void initiateCharacters();
 	public abstract void initiateScript();
 	public abstract void runDialog();
-	
+
 	public void next(View view){
 		dialogIndex++;
 		runDialog();
+	}
+	
+	public void skip(View view){
+		finish();
 	}
 	
 	public void setBackground(int resID){

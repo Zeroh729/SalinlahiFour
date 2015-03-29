@@ -8,6 +8,7 @@ import com.ube.salinlahifour.uibuilders.Button.BackBtnStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.BtnStatesDirector;
 import com.ube.salinlahifour.uibuilders.Button.OkBtnStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.StartBtnStatesBuilder;
+import com.ube.salinlahifour.uibuilders.Button.YesBtnStatesBuilder;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -63,7 +64,7 @@ public class RegistrationActivityConfirm extends Activity {
 		btn_start = (ImageButton)findViewById(R.id.btn_start);
 		btn_back = (ImageButton)findViewById(R.id.btn_back);
 
-		btn_start.setImageDrawable(BtnStatesDirector.getImageDrawable(new StartBtnStatesBuilder()));
+		btn_start.setImageDrawable(BtnStatesDirector.getImageDrawable(new YesBtnStatesBuilder()));
 		btn_back.setImageDrawable(BtnStatesDirector.getImageDrawable(new BackBtnStatesBuilder()));
 
 		btn_start.setBackgroundDrawable(null);

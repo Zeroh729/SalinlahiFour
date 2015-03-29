@@ -7,6 +7,7 @@ import java.util.Random;
 import android.content.res.Resources.NotFoundException;
 import android.graphics.Color;
 import android.graphics.LightingColorFilter;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.CountDownTimer;
 import android.text.Html;
@@ -29,6 +30,8 @@ import com.ube.salinlahifour.R;
 import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.animation.AnimatedButtonListener;
 import com.ube.salinlahifour.enumTypes.LevelType;
+import com.ube.salinlahifour.uibuilders.Button.BtnNextArrowStatesBuilder;
+import com.ube.salinlahifour.uibuilders.Button.BtnStatesDirector;
 
 public class Family extends AbstractLessonActivity implements OnClickListener, OnTouchListener {
 	private TextView tv_dialog;
@@ -40,6 +43,9 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	private SoundPool sfx_correct;
 	private SoundPool sfx_wrong;
 	private TextView itemLabel;
+	private TextView tv_questionno;
+	private ImageView img_itemLabel;
+	private ImageButton btn_nxt;
 
 	private String question;
 
@@ -78,6 +84,10 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		tv_feedback.setTypeface(SalinlahiFour.getFontAndy());
 		tv_feedback.setText(" ");
 		tv_feedback.setOnClickListener(this);
+		tv_questionno = (TextView)findViewById(R.id.tv_questionno);
+		tv_questionno.setTypeface(SalinlahiFour.getFontPlaytime());
+		((TextView)findViewById(R.id.tv_score)).setTypeface(SalinlahiFour.getFontPlaytime());
+		
 		//RelativeLayout.LayoutParams feedback_params =  new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
 		//feedback_params.leftMargin=100; //X
 		//feedback_params.bottomMargin = 60; //Y
@@ -148,8 +158,18 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		Log.d("Debug Family","Aldrin: Initiate Views...Done");
 		
 		itemLabel = (TextView)findViewById(R.id.tv_itemlabel);
-		itemLabel.setTypeface(SalinlahiFour.getFontBpreplay());
-		itemLabel.setTextSize(40);		
+		itemLabel.setTypeface(SalinlahiFour.getFontAndy());	
+		img_itemLabel = (ImageView)findViewById(R.id.img_itemLabel);
+		if(SalinlahiFour.getLoggedInUser().getGender().equals("female"))
+			img_itemLabel.setBackgroundResource(R.drawable.animals_pepaitalking);
+		else
+			img_itemLabel.setBackgroundResource(R.drawable.animals_popoitalking);		
+		
+		btn_nxt = (ImageButton)findViewById(R.id.btn_next);
+		btn_nxt.setImageDrawable(BtnStatesDirector.getImageDrawable(new BtnNextArrowStatesBuilder()));
+		btn_nxt.setOnClickListener(this);
+		
+		((RelativeLayout)findViewById(R.id.parent_view)).addView(getPauseButton());
 	}
 
 	protected void initiateItems() {
@@ -162,25 +182,38 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 
 	@Override
 	protected void run() {
+		tv_questionno.setText((itemno + 1) + "");
+		((TextView)findViewById(R.id.tv_score)).setText(" / " + questions.size());
+		
 		Log.d("Debug Family","Aldrin: Running");
 		setChoices();
 		question = questions.get(itemno).getLabel();
-		questions.get(itemno).playFilipinoSound();
+//		questions.get(itemno).playFilipinoSound();
 		tv_feedback.setText(Html.fromHtml(question));
 //		timer.start();
 		Log.d("Debug Family","Aldrin: Running Done");
 		
+		itemLabel.setVisibility(View.INVISIBLE);
+		img_itemLabel.setVisibility(View.INVISIBLE);
+		btn_nxt.setVisibility(View.INVISIBLE);
 	}
 	protected void rerun() {
+		tv_questionno.setText((itemno + 1) + "");
+		((TextView)findViewById(R.id.tv_score)).setText(" / " + questions.size());
+		
 		Log.d("Debug Family","Aldrin: Running");
 		question = questions.get(itemno).getLabel();
-		questions.get(itemno).playFilipinoSound();
+//		questions.get(itemno).playFilipinoSound();
 //		setChoices();
 		 
 		//tv_feedback.setText(question);
-		tv_feedback.setText(Html.fromHtml(feedback + " " + question));
+		tv_feedback.setText(Html.fromHtml(question));
 		//timer.start();
 		Log.d("Debug Family","Aldrin: Running Done");
+		
+		itemLabel.setVisibility(View.INVISIBLE);
+		img_itemLabel.setVisibility(View.INVISIBLE);
+		btn_nxt.setVisibility(View.INVISIBLE);
 	}
 	public void initiateTimer(){
 		Log.d("Debug Family","Aldrin: Initiate Timer");
@@ -202,14 +235,25 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	
 	protected boolean checkAnswer(String answer) {
 		Log.d("Debug Family","Aldrin: Checking Answer");
+
+		for(int i = 0; i < questions.size(); i++){
+			if(questions.get(i).getWord().equals(answer)){
+				 MediaPlayer sound = MediaPlayer.create(this,questions.get(i).getVoiceFilID());
+				 sound.start();
+			}
+		}
+		
 		if(evaluation.evaluateAnswer(questions.get(itemno).getWord(), answer, UserID)){
 			//NLG Part - Correct
 			Log.d("Debug Family", "Aldrin: Answer: " + answer);
 			Log.d("Debug Family", "Aldrin: Index: " + itemno);
 			feedback = evaluation.getImmediateFeedback(questions.get(itemno).getQ_num(), answer, lesson.getLessonNumber());
 			Log.d("Debug Family", "Aldrin: Feedback: "+ feedback);
-			tv_feedback.setText( Html.fromHtml(feedback + "\n" +question));
+			tv_feedback.setText( Html.fromHtml(question));
+			tv_feedback.setVisibility(View.INVISIBLE);
 			Log.d("Debug Family", "Aldrin: Immediate Feedback Completed");
+//			tv_feedback.setVisibility(View.INVISIBLE);
+//			tv_dialog.setText(feedback);
 			
 			if(itemno < questions.size()-1){
 				Log.d("Debug Family", "Aldrin: Next Question(Reruns)");
@@ -234,7 +278,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 			//tv_feedback.setText("Oops. That's " + answer + ", Try Again!");
 			feedback = evaluation.getImmediateFeedback(questions.get(itemno).getQ_num(), answer, lesson.getLessonNumber());
 			Log.d("Debug Family", "Aldrin: Feedback: "+ feedback);
-			tv_feedback.setText(Html.fromHtml(feedback + " " + question));
+			tv_feedback.setText(Html.fromHtml(feedback + "\n" + question));
 			return false;
 		}
 	}
@@ -266,44 +310,61 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	@Override
 	public void onClick(View v) {
 		int choice = 0;
-		switch(v.getId()){
-			case R.id.img_choicea: 	
-			case R.id.img_choiceb:	
-			case R.id.img_choicec:	
-			case R.id.img_choiced:	
-			case R.id.img_choicee:	
-			case R.id.img_choicef:	
-			case R.id.img_choiceg:	
-			case R.id.img_choiceh:	
-			case R.id.img_choicei:	
-				
-				
-				for(int i = 0; i < choices.length; i++){
-					ImageView img = choices[i];
-					img.setColorFilter(new LightingColorFilter(0xffffffff, 0x000000));
-				}
-					if(checkAnswer(v.getTag().toString())){
-						itemLabel.setTextColor(Color.GREEN);
-						itemLabel.setText("Correct! That's " + v.getTag().toString());
-						YoYo.with(Techniques.Pulse).playOn(v);
-//						setChoices();
-					}else{
-						itemLabel.setTextColor(Color.RED);
-						itemLabel.setText("That's " + v.getTag().toString());
-						YoYo.with(Techniques.Shake).playOn(v);
-						ImageView img = (ImageButton)v;
-						img.setColorFilter(new LightingColorFilter(0xffcc0000, 0x000000));
-						questions.get(itemno).playFilipinoSound();
-						//v.getBackground().setColorFilter(new LightingColorFilter(0xff888888, 0x000000));
+		if(img_itemLabel.getVisibility() == View.INVISIBLE){
+			switch(v.getId()){
+				case R.id.img_choicea: 	
+				case R.id.img_choiceb:	
+				case R.id.img_choicec:	
+				case R.id.img_choiced:	
+				case R.id.img_choicee:	
+				case R.id.img_choicef:	
+				case R.id.img_choiceg:	
+				case R.id.img_choiceh:	
+				case R.id.img_choicei:	
+					
+					
+					for(int i = 0; i < choices.length; i++){
+						ImageView img = choices[i];
+						img.setColorFilter(new LightingColorFilter(0xffffffff, 0x000000));
 					}
+						if(checkAnswer(v.getTag().toString())){
+	//						itemLabel.setTextColor(Color.GREEN);
+	//						itemLabel.setText("Correct! That's " + v.getTag().toString());
+							itemLabel.setText(feedback);
+							itemLabel.setVisibility(View.VISIBLE);
+							btn_nxt.setVisibility(View.VISIBLE);
+							img_itemLabel.setVisibility(View.VISIBLE);
+							tv_feedback.setVisibility(View.INVISIBLE);
+							YoYo.with(Techniques.Pulse).playOn(v);
+	//						setChoices();
+						}else{
+	//						itemLabel.setTextColor(Color.RED);
+	//						itemLabel.setText("That's " + v.getTag().toString());
+							YoYo.with(Techniques.Shake).playOn(v);
+							ImageView img = (ImageButton)v;
+							img.setColorFilter(new LightingColorFilter(0xffcc0000, 0x000000));
+							questions.get(itemno).playFilipinoSound();
+							//v.getBackground().setColorFilter(new LightingColorFilter(0xff888888, 0x000000));
+						}
+						break;
+				case R.id.tv_feedback:
+						questions.get(itemno).playFilipinoSound();
 					break;
-			case R.id.tv_feedback:
-					questions.get(itemno).playFilipinoSound();
-				break;
-			default: 
-				//tv_feedback.setText("error in onclick");
+				default: 
+					//tv_feedback.setText("error in onclick");
+			}
+		}else{
+			switch(v.getId()){
+				case R.id.btn_next:
+						btn_nxt.setVisibility(View.INVISIBLE);
+						img_itemLabel.setVisibility(View.INVISIBLE);
+						itemLabel.setVisibility(View.INVISIBLE);
+						tv_feedback.setVisibility(View.VISIBLE);
+					break;
+			}
 		}
-		}
+
+	}
 
 	
 

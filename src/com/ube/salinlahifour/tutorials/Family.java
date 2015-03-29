@@ -387,9 +387,9 @@ public class Family extends AbstractTutorialActivity {
 						}        
 		             break;
 		           }
-		    	   for(int i = 0; i < pressed.length-1; i++){
+		    	   for(int i = 0; i < pressed.length-2; i++){
 		    		   if(pressed[i]){
-		    			   if((i+1) == pressed.length-1){
+		    			   if((i+1) == pressed.length-2){
 		    				   btn_next.setVisibility(View.VISIBLE);
 		    			   }
 		    		   }else{

@@ -166,9 +166,10 @@ public class Animals extends AbstractTutorialActivity {
 			}
 		}
 
-		textviews[0].setText("Unggoy\n They like to eat bananas and hang around in trees");
-	    textviews[1].setText("Ibon\b These animals fly around in the sky.");
-	    textviews[2].setText("Daga\b Little animals that like to eat cheese and run around the house");
+	    textviews[0].setText("Palaka\b They jump around lilly pads and eat insects with their long tongues.");
+		textviews[1].setText("Unggoy\n They like to eat bananas and hang around in trees");
+	    textviews[2].setText("Ibon\b These animals fly around in the sky.");
+	    textviews[3].setText("Daga\b Little animals that like to eat cheese and run around the house");
 
 		final AnimatorSet setRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(),
 				R.animator.flipout);

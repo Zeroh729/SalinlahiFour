@@ -107,7 +107,7 @@ public class ReportCard extends PopupWindow implements OnClickListener{
 				//CHANGE TO SILVER COLOR
 				//tv_score.setTextColor(Color.parseColor("#c4b723"));
 				Log.d("Debug ReportCard", "you get Silver");
-				subtv_replay.setText("retry to get\nGOLD!");
+				subtv_replay.setText("retry to get\n3 stars!");
 				break;
 			case BRONZE:
 				img_star.setImageResource(R.drawable.report_card_bronze);
@@ -119,7 +119,7 @@ public class ReportCard extends PopupWindow implements OnClickListener{
 				
 				subtv_next.setVisibility(View.INVISIBLE);
 				btn_next.setVisibility(View.INVISIBLE);
-				subtv_replay.setText("retry to get\nSILVER!");
+				subtv_replay.setText("retry to get\n2 stars!");
 				break;
 		}
 		
