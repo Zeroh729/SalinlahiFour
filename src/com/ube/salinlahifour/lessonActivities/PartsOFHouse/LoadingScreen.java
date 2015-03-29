@@ -35,7 +35,10 @@ public class LoadingScreen extends Screen {
 	       // Assets.splashbg = g.newImage("splashbg.png", ImageFormat.RGB565);
 	        Assets.wrong = g.newImage("house/wrong.png", ImageFormat.RGB565);
 	        Assets.dialogbox = g.newImage("house/dialogbox.png", ImageFormat.RGB565);
-	       
+	        Assets.bgBack = g.newImage("back/window.png", ImageFormat.RGB565);
+	        Assets.backbtn = g.newImage("back/backbtn.png", ImageFormat.RGB565);
+	        Assets.yesbtn = g.newImage("back/yesbtn.png", ImageFormat.RGB565);
+	        Assets.nobtn = g.newImage("back/nobtn.png", ImageFormat.RGB565);
 	        //Assets.menubg = g.newImage("menubg.png", ImageFormat.RGB565);
 	        switch(activityLevel){
 	        case "HARD":
@@ -191,7 +194,11 @@ public class LoadingScreen extends Screen {
 	       
 	        break;
 	        }
+	        Assets.feedboxBoy = g.newImage("charbox/pepaybox.png", ImageFormat.RGB565);
+	        Assets.feedboxGirl = g.newImage("charbox/popoibox.png", ImageFormat.RGB565);
 	        Assets.nothingness = g.newImage("house/nothingness.png", ImageFormat.RGB565);
+	        Assets.nextBtn = g.newImage("buttons/btn.png", ImageFormat.RGB565);
+        	Assets.nextBtn_pressed = g.newImage("buttons/btn-pressed.png", ImageFormat.RGB565);
 	        game.setScreen(new GameScreen(game, activityLevel,userID,context,lesson, items ));
 
 

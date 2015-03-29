@@ -34,6 +34,7 @@ public abstract class LessonItemLoader {
 				}
 				Log.d("Lesson Loader", items.toString());
 				break;
+			
 			case "com.ube.salinlahifour.lessonActivities.Family":
 				switch(activityLevel){
 					case "HARD":
@@ -119,6 +120,7 @@ public abstract class LessonItemLoader {
 							items.add(new Item(4,"Kalabaw" , "Carabao", "Match <font color=#376df7>kalabaw</font> with its English word, animal sound, and its picture.", R.drawable.animals_carabao, R.raw.animals_kalabao, R.raw.animals_carabao, LevelType.EASY));
 					}
 					break;
+					
 			default:
 				switch(activityLevel){
 					case "HARD":

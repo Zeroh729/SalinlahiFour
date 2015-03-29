@@ -35,16 +35,21 @@
         <template>[Word] 's [Type] is [Notes]</template>
     </Trivia>
    <Positive_Acknowledgement>
-        <template>Correct! That is [Answer]</template>
-        <template>Good, you got the right answer! Which is [Answer]</template>
-        <template>Very good!, The answer is [Answer]</template>
-        <template>Excellent! The answer is [Answer]</template>
-        <template>Brilliant! [Answer] is correct</template>
-        <template>Fantastic! You're correct!</template>
-        <template>Amazing! The answer is [Answer]</template>
+        <template>Correct!</template>
+        <template>You're answer is Correct!</template>
+        <template>Good, you got the right answer!</template>
+        <template>Very good! Keep it up</template>
+        <template>Excellent!</template>
+        <template>Brilliant! You're very smart</template>
+        <template>Fantastic! You're very good at this</template>
+        <template>Amazing! keep it up</template>
+        <template>Good Job!</template>
+        <template>You're doing great! Keep it up.</template>
    </Positive_Acknowledgement>
    <Negative_Acknowledgement>
 		<template>That seems to be incorrect!</template> 
+		<template>Oops, Sorry that is wrong</template> 
+		<template>That is wrong, you should try harder</template> 
 		<template>Are you sure of your answer?</template> 
 		<template>You missed it</template> 
 		<template>Oops! That is [UserInput]</template>

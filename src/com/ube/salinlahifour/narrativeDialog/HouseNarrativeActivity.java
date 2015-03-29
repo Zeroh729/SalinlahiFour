@@ -13,7 +13,7 @@ public class HouseNarrativeActivity extends NarrativeDialog{
 	
 	@Override
 	public void initiateCharacters() {
-		setBackground(R.drawable.house_tutt);
+		
 		if(SalinlahiFour.getLoggedInUser().getGender().equals("female")){
 			maincharacter = new Character(this, tv_dialog, iv_characters[0], R.drawable.pepay_handsonwaist);
 			maincharacter.addExpression(Expression.POINT, R.drawable.pepay_wave);
@@ -54,6 +54,7 @@ public class HouseNarrativeActivity extends NarrativeDialog{
 	public void runDialog() {
 		switch(dialogIndex){
 			case 0:
+				setBackground(R.drawable.house_tutt);
 				maincharacter.entranceFromLeft();
 				maincharacter.say(script.get(0));
 				break;

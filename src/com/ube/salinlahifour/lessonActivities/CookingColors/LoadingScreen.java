@@ -11,6 +11,7 @@ import com.kilobolt.framework.Screen;
 import com.kilobolt.framework.Graphics.ImageFormat;
 import com.kilobolt.framework.Sound;
 import com.ube.salinlahifour.Lesson;
+import com.ube.salinlahifour.lessonActivities.CookingColors.Assets;
 
 public class LoadingScreen extends Screen {
 	private String activityLevel;
@@ -34,17 +35,26 @@ public class LoadingScreen extends Screen {
 	       // Assets.splashbg = g.newImage("splashbg.png", ImageFormat.RGB565);
 	        
 	        //Assets.menubg = g.newImage("menubg.png", ImageFormat.RGB565);
+	        Assets.bgBack = g.newImage("back/window.png", ImageFormat.RGB565);
+	        Assets.backbtn = g.newImage("back/backbtn.png", ImageFormat.RGB565);
+	        Assets.yesbtn = g.newImage("back/yesbtn.png", ImageFormat.RGB565);
+	        Assets.nobtn = g.newImage("back/nobtn.png", ImageFormat.RGB565);
 	        Assets.bg = g.newImage("cooking/bg.png", ImageFormat.RGB565);
 	        Assets.nothingness = g.newImage("cooking/nothingness.png", ImageFormat.RGB565);
 	        Assets.wrong = g.newImage("cooking/wrong.png", ImageFormat.RGB565);
 	        Assets.ready = g.newImage("cooking/ready.png", ImageFormat.RGB565);
+	        Assets.envelope = g.newImage("cooking/envelope.png", ImageFormat.RGB565);
+	        Assets.instructions = g.newImage("cooking/instructions.png", ImageFormat.RGB565);
+	        Assets.feedboxChef = g.newImage("charbox/chefbubble2.png", ImageFormat.RGB565);
+	        Assets.feedbox = g.newImage("charbox/chefbubble1.png", ImageFormat.RGB565);
 	        Assets.bread = new ArrayList<Image>();
         	Assets.buttons = new ArrayList<Image>();
         	Assets.buttons_pressed = new ArrayList<Image>();
         	Assets.frosting = new ArrayList<Image>();
         	Assets.sprinkles = new ArrayList<Image>();
         	Assets.sound = new ArrayList<Sound>();
-        
+        	Assets.nextBtn = g.newImage("buttons/btn.png", ImageFormat.RGB565);
+        	Assets.nextBtn_pressed = g.newImage("buttons/btn-pressed.png", ImageFormat.RGB565);
 	        switch(activityLevel){
 	        case "HARD":
 	        	loadEasy(g);

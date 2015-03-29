@@ -1712,20 +1712,23 @@ containing a value of this type.
         public static final int lessonactivity_family=0x7f03002b;
         public static final int lessonactivity_house=0x7f03002c;
         public static final int lessonactivity_music=0x7f03002d;
-        public static final int lessonactivity_society=0x7f03002e;
-        public static final int map_widgets=0x7f03002f;
-        public static final int narrativedialog_activity=0x7f030030;
-        public static final int progress_item=0x7f030031;
-        public static final int reportcard=0x7f030032;
-        public static final int scene_layout_1=0x7f030033;
-        public static final int scene_layout_2=0x7f030034;
-        public static final int support_simple_spinner_dropdown_item=0x7f030035;
-        public static final int tutorial_animals=0x7f030036;
-        public static final int tutorial_cooking=0x7f030037;
-        public static final int tutorial_family=0x7f030038;
-        public static final int tutorial_house=0x7f030039;
-        public static final int tutorial_shape=0x7f03003a;
-        public static final int tutorial_society=0x7f03003b;
+        public static final int lessonactivity_raiza=0x7f03002e;
+        public static final int lessonactivity_society=0x7f03002f;
+        public static final int map_widgets=0x7f030030;
+        public static final int narrativedialog_activity=0x7f030031;
+        public static final int progress_item=0x7f030032;
+        public static final int reportcard=0x7f030033;
+        public static final int scene_layout_1=0x7f030034;
+        public static final int scene_layout_2=0x7f030035;
+        public static final int support_simple_spinner_dropdown_item=0x7f030036;
+        public static final int tutorial_animals=0x7f030037;
+        public static final int tutorial_candies=0x7f030038;
+        public static final int tutorial_cooking=0x7f030039;
+        public static final int tutorial_family=0x7f03003a;
+        public static final int tutorial_house=0x7f03003b;
+        public static final int tutorial_raiza=0x7f03003c;
+        public static final int tutorial_shape=0x7f03003d;
+        public static final int tutorial_society=0x7f03003e;
     }
     public static final class menu {
         public static final int debug_user_module=0x7f100000;
