@@ -35,7 +35,7 @@ public abstract class AbstractGameScreen extends Screen {
 	  protected String activtityName;
 	  protected int lessonNumber;
 	  protected String activityLevel;
-	  protected Paint paint, paint2, paint3,paint4;
+	  protected Paint paint, paint2, paint3,paint4,paint5;
 	  protected String sFeedback = "",  sQuestion = "", sAnswer = "", cAnswer = "";
 	  protected int userID;
 	  protected UserRecordOperations userRecordOperator = new UserRecordOperations(SalinlahiFour.getContext());
@@ -93,7 +93,7 @@ public abstract class AbstractGameScreen extends Screen {
 	        
 	        paint2 = new Paint();
 	        paint2.setTypeface(tf);
-			paint2.setTextSize(13);
+			paint2.setTextSize(15);
 			paint2.setTextAlign(Paint.Align.LEFT);
 			paint2.setAntiAlias(true);
 			paint2.setColor(Color.BLUE);
@@ -111,6 +111,13 @@ public abstract class AbstractGameScreen extends Screen {
 			paint4.setTextAlign(Paint.Align.CENTER);
 			paint4.setAntiAlias(true);
 			paint4.setColor(Color.BLUE);
+			
+			paint5 = new Paint();
+			paint5.setTypeface(tf);
+			paint5.setTextSize(20);
+			paint5.setTextAlign(Paint.Align.CENTER);
+			paint5.setAntiAlias(true);
+			paint5.setColor(Color.RED);
 			
 			Log.d("Abstract GamesScreen", "Initializing Paint Methods...done");
 	}

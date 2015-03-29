@@ -53,6 +53,8 @@ public class GameScreen extends AbstractGameScreen  {
 	    private String[] feedbacks;
 	    private Image backbtn, nobtn, yesbtn, bgBack;
 	    private Parts pNo,pYes,pBackg;
+	    private boolean isMistake = false;
+	    private int cor1 = 0, cor2 = 0, cor3 = 0;
 	    public GameScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson) {
 	    	//Super Parameters Game, ActivityName, ActivityLevel, UserID
 	        super(game, activityName, activityLevel, userID, context, lesson);
@@ -242,6 +244,9 @@ public class GameScreen extends AbstractGameScreen  {
 	            		Log.d("Transition Debug", "Falseing in easy");
 	            		recipe = Assets.instructions;
 	   				  	transition = false;
+	   				  		cor1 = 0; 
+	   				  		cor2 = 0;
+	   				  		cor3 = 0;
 	            		}
 	            	}else{
 	 	            	
@@ -353,7 +358,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            			for(int s = 0; s<feedbacks.length;s++){
 	            				feedbacks[s] = "";
 	            			}
-	            			int cor1 = 0, cor2 = 0, cor3 = 0;
+	            			//int cor1 = 0, cor2 = 0, cor3 = 0;
 	            		
 	            			if(eval.evaluateAnswer( breaderButtons.getQuestionColor(), cake.getAnswer(0), userID)){
 	            				cor1 = 1;
@@ -382,7 +387,9 @@ public class GameScreen extends AbstractGameScreen  {
 	            			if(cor1 == 1 && cor2 == 1 && cor3 == 1){
 	            				isSubmit = 1;
 	            				livesLeft--;
+	            				isMistake = false;
 	            				transition = true;
+	            				sFeedback = feedbacks[0];
 	            				   cor1 = 0; 
 		            			    cor2 = 0;
 		            			    cor3 = 0;
@@ -402,6 +409,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            			cor2 = 0;
 		            			cor3 = 0;
 		            			cake.resetFlags();
+		            			isMistake = true;
 	            			}
 	            			userRecordOperator.close();
 	            			userLessonProgressOperator.close();
@@ -487,7 +495,9 @@ public class GameScreen extends AbstractGameScreen  {
 	            		Log.d("Transition Debug", "Falseing in easy");
 	            		recipe = Assets.instructions;
 	   				  	transition = false;
-	   				  	
+	   				  	cor1 = 0; 
+	   				  	cor2 = 0;
+	   				  	cor3 = 0;
 	            		}
 	            	}else{
 	            	wrong = Assets.nothingness;
@@ -546,7 +556,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            			userLessonProgressOperator.open();
 		            			//eval.evaluateAnswer(CorrectAnswer, UserAnswer, userRecordOperator, UserID)
 		            			
-		            			int cor1 = 0, cor2 = 0, cor3 = 0;
+		            			
 		            			Log.d("Question  Color",breaderButtons.getQuestionColor()+"- " +creamerButtons.getQuestionColor()+"-"+sprinklerButtons.getQuestionColor() );
 		            			Log.d("Cake Colors",cake.getAnswer(0)+"- " +cake.getAnswer(1)+"-"+cake.getAnswer(2) );
 		            			Log.d("Number Color",breaderButtons.getNumberColor()+"- " +creamerButtons.getNumberColor()+"-"+sprinklerButtons.getNumberColor() );
@@ -554,37 +564,44 @@ public class GameScreen extends AbstractGameScreen  {
 		            			if(eval.evaluateAnswer( breaderButtons.getQuestionColor(), cake.getAnswer(0), userID)){
 		            				cor1 = 1;
 		            				feedbacks[0] = eval.getImmediateFeedback(breaderButtons.getNumberColor()+1, cake.getAnswer(0), lessonNumber);
+		            			}else{
+		            				feedbacks[0] = eval.getImmediateFeedback(breaderButtons.getNumberColor()+1, cake.getAnswer(0), lessonNumber);
+			            			
 		            			}
 		            			if(eval.evaluateAnswer( creamerButtons.getQuestionColor(), cake.getAnswer(1), userID)){
 		            				cor2 = 1;
 		            				feedbacks[1] = eval.getImmediateFeedback(creamerButtons.getNumberColor()+1, cake.getAnswer(1), lessonNumber);
+		            			}else{
+		            				feedbacks[1] = eval.getImmediateFeedback(creamerButtons.getNumberColor()+1, cake.getAnswer(0), lessonNumber);
+			            			
 		            			}
 		            			if(eval.evaluateAnswer( sprinklerButtons.getQuestionColor(), cake.getAnswer(2), userID)){
 		            				cor3 = 1;
 		            				feedbacks[2] = eval.getImmediateFeedback(sprinklerButtons.getNumberColor()+1, cake.getAnswer(2), lessonNumber);
+		            			}else{
+		            				feedbacks[2] = eval.getImmediateFeedback(sprinklerButtons.getNumberColor()+1, cake.getAnswer(0), lessonNumber);
+			            			
 		            			}
 		            			if(cor1 == 1 && cor2 == 1 && cor3 == 1){
-		            				
+		            				isMistake = false;
+		            				transition = true;
 		            				isSubmit = 1;
 		            				livesLeft--;
 		            				Log.d("DING", "Its done");
-		            				transition = true;
-		            				cor1 = 0; 
-		            			    cor2 = 0;
-		            			    cor3 = 0;
+		            				
+		            				
 		            			    ready = Assets.nothingness;
 		            				bread = Assets.nothingness;
 		            			    frosting = Assets.nothingness;
 		            			    sprinkles = Assets.nothingness;
 		            			    cake.resetFlags();
 		            			}else{
+		            				transition = true;
+		            				isMistake = true;
 		            				ready = Assets.nothingness;
 		            				wrong = Assets.wrong;
 		            				Log.d("DING", "Wrong Order!");
-		            				transition = true;
-		            				cor1 = 0; 
-			            			cor2 = 0;
-			            			cor3 = 0;
+		            				
 			            			cake.resetFlags();
 		            			}
 		            			userRecordOperator.close();
@@ -739,9 +756,23 @@ public class GameScreen extends AbstractGameScreen  {
 				  recipe = Assets.envelope;
 				  g.drawImage(this.feedboxChef, pDialog.getX(), pDialog.getY());
 				  g.drawImage(this.recipe, pRecipe.getX(), pRecipe.getY());
-				  g.drawString(feedbacks[0], 350,155, paint4);
-				  g.drawString(feedbacks[1], 350,175, paint4);
-				  g.drawString(feedbacks[2], 350,195, paint4);
+				  //g.drawString(feedbacks[0], 350,155, paint4);
+				  //g.drawString(feedbacks[1], 350,175, paint4);
+				  //g.drawString(feedbacks[2], 350,195, paint4);
+				  
+				  if(isMistake){
+						if(cor1 == 0){
+							g.drawString(feedbacks[0], 350,155, paint5);
+						}
+						if(cor2 == 0){
+							g.drawString(feedbacks[1], 350,175, paint5);
+						}
+						if(cor3== 0){
+							g.drawString(feedbacks[2], 350,195, paint5);
+						}
+				  }else{
+						g.drawString(feedbacks[0], 350,155, paint4);
+					}
 			}
 		}
 
@@ -756,6 +787,7 @@ public class GameScreen extends AbstractGameScreen  {
 			g.drawString("Tap the envelope to get the new", 350,95, paint4);
 			g.drawString("recipe and create the cake!",350, 115, paint4);
 			g.drawString("Tap the cake when it's ready!", 350, 145, paint4);
+			
 		}
 
 		@Override
