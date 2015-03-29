@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+	<View 
+        android:id="@+id/view_blackoverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66000000"
+    ></View>
+    
+    <ImageView
+        android:id="@+id/popupwindow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/popupwindow"
+        />
+    
+	<ImageView
+	    android:id="@+id/img_screenshot"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignLeft="@id/popupwindow"
+	    android:layout_alignLeft="@id/popupwindow"
+	    android:layout_alignRight="@id/popupwindow"
+	    android:layout_marginLeft="100dp"
+	    android:layout_marginRight="100dp"
+	    android:src="@drawable/samplehowtoplay" />
+	
+	<TextView
+	    android:id="@+id/tv_instructions"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:layout_below="@+id/img_screenshot"
+	    android:text="THIS IS YEAH"
+	    android:background="@android:color/white"
+	    />
+
+</RelativeLayout>
