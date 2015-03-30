@@ -40,7 +40,7 @@ public class ShapeNarrativeActivity extends NarrativeDialog{
 		script.add(new ScriptLine("I guess a little acting won't hurt.",R.raw.narration_shape_5));
 		script.add(new ScriptLine("Tignan mo. Someone is on the screen " +SalinlahiFour.getLoggedInUser().getName(),R.raw.narration_shape_6));
 		script.add(new ScriptLine("WORLD DOMINATION",R.raw.narration_shape_7));
-		script.add(new ScriptLine("Naku! We have to defeat the alien quick!",R.raw.narration_shape_8));
+		script.add(new ScriptLine("Naku! We have to defeat the aliens quickly!",R.raw.narration_shape_8));
 		script.add(new ScriptLine("Let's figure out what these buttons do.",R.raw.narration_shape_9));
 	}
 

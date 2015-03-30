@@ -103,8 +103,8 @@ public class GameScreen extends AbstractGameScreen  {
 	        this.bgBack = Assets.bgBack;
 	        this.yesbtn = Assets.yesbtn;
 	        this.nobtn = Assets.nobtn;
-	        pNo = new Parts(220,300);
-	        pYes = new Parts(400,300);
+	        pYes = new Parts(220,300);
+	        pNo = new Parts(400,300);
 	        pBackg = new Parts(195, 100);
 		    Log.d("Aldrin ExtendedFramework", "Loading Assets...Done");
 		}
@@ -390,9 +390,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            				isMistake = false;
 	            				transition = true;
 	            				sFeedback = feedbacks[0];
-	            				   cor1 = 0; 
-		            			    cor2 = 0;
-		            			    cor3 = 0;
+	            				   
 		            			    ready = Assets.nothingness;
 		            				bread = Assets.nothingness;
 		            			    frosting = Assets.nothingness;
@@ -405,9 +403,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            				wrong = Assets.wrong;
 	            				Log.d("DING", "Wrong Order!");
 	            				transition = true;
-	            				cor1 = 0; 
-		            			cor2 = 0;
-		            			cor3 = 0;
+	            				
 		            			cake.resetFlags();
 		            			isMistake = true;
 	            			}
@@ -572,14 +568,14 @@ public class GameScreen extends AbstractGameScreen  {
 		            				cor2 = 1;
 		            				feedbacks[1] = eval.getImmediateFeedback(creamerButtons.getNumberColor()+1, cake.getAnswer(1), lessonNumber);
 		            			}else{
-		            				feedbacks[1] = eval.getImmediateFeedback(creamerButtons.getNumberColor()+1, cake.getAnswer(0), lessonNumber);
+		            				feedbacks[1] = eval.getImmediateFeedback(creamerButtons.getNumberColor()+1, cake.getAnswer(1), lessonNumber);
 			            			
 		            			}
 		            			if(eval.evaluateAnswer( sprinklerButtons.getQuestionColor(), cake.getAnswer(2), userID)){
 		            				cor3 = 1;
 		            				feedbacks[2] = eval.getImmediateFeedback(sprinklerButtons.getNumberColor()+1, cake.getAnswer(2), lessonNumber);
 		            			}else{
-		            				feedbacks[2] = eval.getImmediateFeedback(sprinklerButtons.getNumberColor()+1, cake.getAnswer(0), lessonNumber);
+		            				feedbacks[2] = eval.getImmediateFeedback(sprinklerButtons.getNumberColor()+1, cake.getAnswer(2), lessonNumber);
 			            			
 		            			}
 		            			if(cor1 == 1 && cor2 == 1 && cor3 == 1){
@@ -759,23 +755,68 @@ public class GameScreen extends AbstractGameScreen  {
 				  //g.drawString(feedbacks[0], 350,155, paint4);
 				  //g.drawString(feedbacks[1], 350,175, paint4);
 				  //g.drawString(feedbacks[2], 350,195, paint4);
-				  
+			
+				String[] cuttedWord;
+				
 				  if(isMistake){
 						if(cor1 == 0){
-							g.drawString(feedbacks[0], 350,155, paint5);
+							String lineOne = "", lineTwo ="";
+							//g.drawString("- ", 350,155, paint5);
+							//g.drawString(feedbacks[0], 350,155, paint5);
+							cuttedWord = sentenceCutter(feedbacks[0]);
+							for(int s = 0; s<cuttedWord.length;s++){
+								if(s>5){
+									lineTwo += cuttedWord[s] + " ";
+								}else{
+									lineOne += cuttedWord[s]+ " ";
+								}
+							}
+							g.drawString("1: " + lineOne, 352,155, paint5);
+							g.drawString(lineTwo, 352,175, paint5);
 						}
 						if(cor2 == 0){
-							g.drawString(feedbacks[1], 350,175, paint5);
+							String lineOne = "", lineTwo ="";
+							//g.drawString(feedbacks[1], 350,195, paint5);
+							//g.drawString("- ", 350,195, paint5);
+							cuttedWord = sentenceCutter(feedbacks[1]);
+							for(int s = 0; s<cuttedWord.length;s++){
+								if(s>5){
+									lineTwo += cuttedWord[s] + " ";
+								}else{
+									lineOne += cuttedWord[s]+ " ";
+								}
+							}
+							g.drawString("2: " + lineOne, 352,195, paint5);
+							g.drawString(lineTwo, 352,215, paint5);
 						}
 						if(cor3== 0){
-							g.drawString(feedbacks[2], 350,195, paint5);
+							String lineOne = "", lineTwo ="";
+							//g.drawString(feedbacks[2], 350,225, paint5);
+							//g.drawString("- ", 350,225, paint5);
+							cuttedWord = sentenceCutter(feedbacks[2]);
+							for(int s = 0; s<cuttedWord.length;s++){
+								if(s>5){
+									lineTwo += cuttedWord[s] + " ";
+								}else{
+									lineOne += cuttedWord[s]+ " ";
+								}
+							}
+							g.drawString("3: " + lineOne, 352,235, paint5);
+							g.drawString(lineTwo, 352,255, paint5);
 						}
 				  }else{
 						g.drawString(feedbacks[0], 350,155, paint4);
 					}
 			}
 		}
-
+		
+		private String[] sentenceCutter(String sentence){
+			  String[] words;
+			  words = sentence.split(" ");
+			  
+			  return words;
+		}
+		
 		@Override
 		protected void drawReadyUI() {
 			// TODO Auto-generated method stub

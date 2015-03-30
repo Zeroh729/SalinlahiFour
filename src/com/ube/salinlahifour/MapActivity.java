@@ -86,6 +86,9 @@ public class MapActivity extends Activity implements OnClickListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		Log.d("ONCREATING", "TESTTESTTESTEST");
+		
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
 		    UserID = extras.getInt("UserID");
@@ -110,7 +113,9 @@ public class MapActivity extends Activity implements OnClickListener{
 	        toast.show();
 			
 			try {
+				Log.d("parseXML()", "TESTTESTTESTEST");
 				parseXML();
+				Log.d("settingLevelStatuses", "TESTTESTTESTEST");
 				setLevelStatuses();
 				
 				
@@ -215,23 +220,41 @@ public class MapActivity extends Activity implements OnClickListener{
 		parentView.addView(btn_prevscene);
 		parentView.addView(tv_friendTalk);
 	}
+	
+	private int getLessonCount(){
+		int total = 0;
+		for(int i = 0; i < scenes.size(); i++){
+			for(int j = 0; j < scenes.get(i).getLessons().size(); j++){
+				total++;
+			}
+		}
+		return total;
+	}
 
 	private void setLevelStatuses() {
 		UserLessonProgressOperations userdb = new UserLessonProgressOperations(this);
 		userdb.open();
+		Log.d("scene count: " + scenes.size(), "FINAL CHECKING");
 		for(Scene scene : scenes){
 			for(int i = 0; i < scene.getLessons().size(); i++){
 				if(scene.getLessons().get(i).getLocked()){
 					UserLessonProgress progress = userdb.getUserLessonProgress(UserID, scene.getLessons().get(i).getName());
 					if(progress != null){
 						scene.getLessons().get(i).setLocked(false);
+						Log.d("THERE", "FINAL CHECK");
 						if(progress.getHardStar() != null){
-							if(progress.getHardStar().equals(StarType.SILVER.toString()) || progress.getHardStar().equals(StarType.GOLD.toString()))
-								if((i+1) < scene.getLessons().size())
-								scene.getLessons().get(i+1).setLocked(false);
+							Log.d("THEREEEE", "FINAL CHECK");
+							if(!progress.getHardStar().equals(StarType.BRONZE.toString())){
+								Log.d("ALMOST THEREEEE", "FINAL CHECK");
+								if((i+1) < scene.getLessons().size()){
+									scene.getLessons().get(i+1).setLocked(false);
+									Log.d("UNLOCKING: " + scene.getLessons().get(i+1).getName(), "FINAL CHECK");
+								}
+							}
 						}
-					}else{
-						//scene.getLessons().get(i).setLocked(true);
+					}
+					else{
+//						scene.getLessons().get(i).setLocked(true);
 						scene.getLessons().get(i).setLocked(false);
 					}
 					try{
@@ -240,9 +263,13 @@ public class MapActivity extends Activity implements OnClickListener{
 						
 					}
 				}
+
+				Log.d("Lesson no. : " + i + " ->" + scene.getLessons().get(i).getLocked(),"FINAL CHECKING");
+				
 //				scene.getLessons().get(i).setLocked(false);
 			}
 		}
+		
 		userdb.close();
 	}
 
@@ -346,7 +373,7 @@ public class MapActivity extends Activity implements OnClickListener{
         		 activityName = "";
         		 value = "";
         		 lessonImgID = 0;
-        		 if(scene.getLessons().size() >= 5){
+        		 if(scene.getLessons().size() > 5){
         			 scene = makeNewScene();
         		 }
         	 }else if(parser.getName().equals("Name")){
@@ -670,6 +697,10 @@ public class MapActivity extends Activity implements OnClickListener{
 						             if(!btn_hard.isEnabled()){
 						            	 ((ImageView)popupView.findViewById(R.id.star3)).setImageResource(R.drawable.lvlselect_null);
 						             }
+						             
+						             //DELETE AT ONCE
+
+				            	 		btn_hard.setEnabled(true);
 						             
 					             userdb.close();
 					            popupWindow.showAsDropDown(popupView);

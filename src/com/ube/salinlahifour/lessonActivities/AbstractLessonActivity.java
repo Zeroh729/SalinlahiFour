@@ -248,7 +248,7 @@ public abstract class AbstractLessonActivity extends Activity {
 	}
 	
 	protected void showReportCard(Context context){
-		reportCard = new ReportCard(context, lesson, activityLevel, evaluation, evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber()));
+		reportCard = new ReportCard(context, lesson, activityLevel, evaluation, evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber()),activityName);
 		reportCard.reveal();
 	}
 

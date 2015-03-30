@@ -92,7 +92,7 @@ public class ProgressTreeActivity extends Activity implements OnCheckedChangeLis
 //		tv_goldcount.setText(stars_gold+"");
 //		tv_silvercount.setText(stars_silver+"");
 //		tv_bronzecount.setText(stars_bronze+"");
-		tv_goldcount.setText(totalStars);
+		tv_goldcount.setText(totalStars+"");
 		tv_totalstarscount.setText(" /"+(lessons.size()*3));
 
 		if(stars_silver == 0){

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +21,8 @@ import com.ube.salinlahifour.R;
 import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.animation.AnimatedButtonListener;
 import com.ube.salinlahifour.enumTypes.LevelType;
+import com.ube.salinlahifour.howtoplay.AnimalsHowToPlay;
+import com.ube.salinlahifour.howtoplay.FamilyHowToPlay;
 
 public class Animals extends AbstractLessonActivity implements OnClickListener{
 	private ImageButton[] btn_up;
@@ -100,7 +103,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 			btn_down[i].setOnClickListener(this);
 			btn_cards[i].setOnClickListener(this);
 		}
-		
+		evaluation.setLexiconDir("lexicon_animals.xml");
 
 		btn_function.setOnTouchListener(touchListener);
 		btn_function.setOnClickListener(this);
@@ -113,6 +116,8 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 		}
 		
 		initiateCards();
+
+		startActivity(new Intent(this, AnimalsHowToPlay.class));
 	}
 	
 	private void initiateCards(){

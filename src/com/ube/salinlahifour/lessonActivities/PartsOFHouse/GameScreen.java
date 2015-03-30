@@ -117,8 +117,8 @@ public class GameScreen extends AbstractGameScreen  {
 		        v_pinto = Assets.pinto;
 		        nextBtn = Assets.nextBtn;
 		        p_nextBtn = new Parts(510,60);
-		        pNo = new Parts(220,300);
-		        pYes = new Parts(400,300);
+		        pYes = new Parts(220,300);
+		        pNo = new Parts(400,300);
 		        pBackg = new Parts(195, 100);
 		        
 		     
@@ -133,7 +133,7 @@ public class GameScreen extends AbstractGameScreen  {
 	        	livesLeft = 4;
 	        	pDialog = new Parts(65,15);
 	        	pRoof = new Parts(27,185);	
-		        pBody = new Parts(480,110);
+		        pBody = new Parts(480,150);
 		        pDoor = new Parts(490,355);
 		        pWindow = new Parts(120,395);
 		        
@@ -151,15 +151,15 @@ public class GameScreen extends AbstractGameScreen  {
 			Log.d("GameScreen", "Positioning Medium"); 
 			livesLeft = 6;
 			pDialog = new Parts(65,15);
-			pRoof = new Parts(59,60);	
-	        pBody = new Parts(480,110);
+			pRoof = new Parts(59,70);	
+	        pBody = new Parts(480,150);
 	        pDoor = new Parts(510,270);
 	        pWindow = new Parts(351,445);
 	        
         	pGarage = new Parts(17,232);
         	pFence = new Parts(34,157);
         	
-        	pGarageH = new Parts(359,265);
+        	pGarageH = new Parts(355,260);
         	pFenceH = new Parts(0,385);
         	
         	pRoofH = new Parts(165,190);
@@ -176,18 +176,18 @@ public class GameScreen extends AbstractGameScreen  {
 			livesLeft = 8;
 			pDialog = new Parts(65,15);
 			pRoof = new Parts(383,425);	
-	        pBody = new Parts(480,110);
+	        pBody = new Parts(480,150);
 	        pDoor = new Parts(498,270);
 	        pWindow = new Parts(351,445);
 	        
         	pGarage = new Parts(17,232);
         	pFence = new Parts(34,157);
         	
-        	pChimney = new Parts(0,0);
-        	pStairs = new Parts(0,0);
+        	pChimney = new Parts(390,125);
+        	pStairs = new Parts(590,265);
         	
-        	pChimneyH = new Parts(282,145);
-        	pStairsH = new Parts(200,330);
+        	pChimneyH = new Parts(270,143);
+        	pStairsH = new Parts(205,330);
         	
         	pGarageH = new Parts(345,265);
         	pFenceH = new Parts(0,385);
@@ -284,11 +284,15 @@ public class GameScreen extends AbstractGameScreen  {
 		            			transition = true;
 		            			
 		            		}else{
-		            			
+		            			if(answer == items.get(rounds-1).getQ_num()){
+		            				sFeedback =  eval.getImmediateFeedback(1, sAnswer, lessonNumber);
+		            			}else{
+		            				sFeedback = "Sorry That is not what i'm asking";
+		            			}
 		            			Log.d("Debug Error", "Mali");
-		            			sFeedback =  eval.getImmediateFeedback(1, sAnswer, lessonNumber);
 		            			transition = true;
 		            			changeToError(sAnswer);
+		            			
 		            		}
 	            			userRecordOperator.close();
 	                		userLessonProgressOperator.close();
@@ -311,9 +315,11 @@ public class GameScreen extends AbstractGameScreen  {
 		            			pWindow.setPlaced(true);
 		            			transition = true;
 		            		}else{
-		            			Log.d("Debug Error", "Mali");
-		            		
-		            			sFeedback =  eval.getImmediateFeedback(4, sAnswer, lessonNumber);
+		            			if(answer == items.get(rounds-1).getQ_num()){
+		            				sFeedback =  eval.getImmediateFeedback(4, sAnswer, lessonNumber);
+		            			}else{
+		            				sFeedback = "Sorry That is not what i'm asking";
+		            			}
 		            			transition = true;
 		            			changeToError(sAnswer);
 		            		}
@@ -339,8 +345,12 @@ public class GameScreen extends AbstractGameScreen  {
 		            			pDoor.setPlaced(true);
 		            			transition = true;
 		            		}else{
-		            			Log.d("Wenks", "Mali");
-		            			sFeedback =  eval.getImmediateFeedback(3, sAnswer, lessonNumber);
+		            			if(answer == items.get(rounds-1).getQ_num()){
+		            				sFeedback =  eval.getImmediateFeedback(3, sAnswer, lessonNumber);
+		            			}else{
+		            				sFeedback = "Sorry That is not what i'm asking";
+		            			}
+		            			Log.d("Debug Error", "Mali");
 		            			transition = true;
 		            			changeToError(sAnswer);
 		            		}
@@ -369,9 +379,12 @@ public class GameScreen extends AbstractGameScreen  {
 		            			transition = true;
 		            			
 		            		}else{
-		            			Log.d("Wenks", "Mali");
-		            			
-		            			sFeedback =  eval.getImmediateFeedback(2, sAnswer, lessonNumber);
+		            			if(answer == items.get(rounds-1).getQ_num()){
+		            				sFeedback =  eval.getImmediateFeedback(2, sAnswer, lessonNumber);
+		            			}else{
+		            				sFeedback = "Sorry That is not what i'm asking";
+		            			}
+		            			Log.d("Debug Error", "Mali");
 		            			transition = true;
 		            			changeToError(sAnswer);
 		            		}
@@ -389,6 +402,8 @@ public class GameScreen extends AbstractGameScreen  {
 	            			v_bubong.play(0.85f);
 	            			roof = Assets.roof_selected;
 	            			Log.d("Select", "Selected Roof");
+	            		}else{
+	            			answer = 0;
 	            		}
 	            	}	else if(inBounds(event, pBody.getX(), pBody.getY(), body.getWidth(), body.getHeight())){
 	            		Log.d("Debug GameScreen", "Click body");
@@ -398,6 +413,8 @@ public class GameScreen extends AbstractGameScreen  {
 	            			v_dingding.play(0.85f);
 	            			body = Assets.body_selected;
 	            			Log.d("Select", "Selected Body");
+	            		}else{
+	            			answer = 0;
 	            		}
 	            	}	else if(inBounds(event, pDoor.getX(), pDoor.getY(), door.getWidth(), door.getHeight())){
 	            		Log.d("Debug GameScreen", "Click door");
@@ -407,6 +424,8 @@ public class GameScreen extends AbstractGameScreen  {
 	            			v_pinto.play(0.85f);
 	            			door = Assets.door_selected;
 	            			Log.d("Select", "Selected Door");
+	            		}else{
+	            			answer = 0;
 	            		}
 	            	}
 	            	else if(inBounds(event, pWindow.getX(), pWindow.getY(), window.getWidth(), window.getHeight())){
@@ -417,6 +436,8 @@ public class GameScreen extends AbstractGameScreen  {
 	            			v_bintana.play(0.85f);
 	            			window = Assets.window_selected;
 	            			Log.d("Select", "Selected Window");
+	            		}else{
+	            			answer = 0;
 	            		}
 	            	}else{
 	            		if(activityLevel=="EASY"){
@@ -478,9 +499,12 @@ public class GameScreen extends AbstractGameScreen  {
 		            			pGarage.setPlaced(true);
 		            			transition = true;
 		            		}else{
-		            			Log.d("Wenks", "Mali");
-		            			Log.d("Debug Medium", "Mali");
-		            			sFeedback =  eval.getImmediateFeedback(5, sAnswer, lessonNumber);
+		            			if(answer == items.get(rounds-1).getQ_num()){
+		            				sFeedback =  eval.getImmediateFeedback(5, sAnswer, lessonNumber);
+		            			}else{
+		            				sFeedback = "Sorry That is not what i'm asking";
+		            			}
+		            			Log.d("Debug Error", "Mali");
 		            			transition = true;
 		            			changeToError(sAnswer);
 		            			
@@ -505,9 +529,12 @@ public class GameScreen extends AbstractGameScreen  {
 		            			pFence.setPlaced(true);
 		            			transition = true;
 		            		}else{
-		            			
-		            			Log.d("Wenks", "Mali");
-		            			sFeedback =  eval.getImmediateFeedback(6, sAnswer, lessonNumber);
+		            			if(answer == items.get(rounds-1).getQ_num()){
+		            				sFeedback =  eval.getImmediateFeedback(6, sAnswer, lessonNumber);
+		            			}else{
+		            				sFeedback = "Sorry That is not what i'm asking";
+		            			}
+		            			Log.d("Debug Error", "Mali");
 		            			transition = true;
 		            			changeToError(sAnswer);
 		            			
@@ -529,6 +556,8 @@ public class GameScreen extends AbstractGameScreen  {
             			sAnswer = "Garahe";
             			garage = Assets.garage_selected;
             			v_garahe.play(0.85f);
+            		}else{
+            			answer = 0;
             		}
             	}
         	 	else if(inBounds(event, pFence.getX(), pFence.getY(), fence.getWidth(), fence.getHeight())){
@@ -539,6 +568,8 @@ public class GameScreen extends AbstractGameScreen  {
             			sAnswer = "Bakod";
             			fence = Assets.fence_selected;
             			v_bakod.play(0.85f);
+            		}else{
+            			answer = 0;
             		}
             	}else{
             		if(activityLevel=="MEDIUM"){
@@ -564,8 +595,10 @@ public class GameScreen extends AbstractGameScreen  {
 	            if (event.type == TouchEvent.TOUCH_DOWN) {
 	            	//super.transitionTouchEvent(event);
 	            	if(transition){
-	            		Log.d("Transition Debug", "Falseing");
-	   				  transition = false;
+	            		if(inBounds(event, p_nextBtn.getX() ,p_nextBtn.getY() , nextBtn.getWidth(), nextBtn.getHeight())){
+	            			Log.d("Transition Debug", "Falseing in medium");
+	   				  		transition = false;
+	            		}
 	            	}
 	            	Log.d("Touched Down", "X: " + event.x + "Y: " + event.y );
 	            	if(!pChimney.isPlaced()){
@@ -600,9 +633,12 @@ public class GameScreen extends AbstractGameScreen  {
 		            			Log.d("Debug GameScreen pChimney","X: " +pChimney.getX() + "Y: " + pChimney.getY());	
 		            			transition = true;
 		            		}else{
+		            			if(answer == items.get(rounds-1).getQ_num()){
+		            				sFeedback =  eval.getImmediateFeedback(7, sAnswer, lessonNumber);
+		            			}else{
+		            				sFeedback = "Sorry That is not what i'm asking";
+		            			}
 		            			Log.d("Debug Error", "Mali");
-		            			
-		            			sFeedback =  eval.getImmediateFeedback(7, sAnswer, lessonNumber);
 		            			transition = true;
 		            			changeToError(sAnswer);
 		            		}
@@ -629,8 +665,12 @@ public class GameScreen extends AbstractGameScreen  {
 		            			Log.d("Debug GameScreen pChimney","X: " +pStairs.getX() + "Y: " + pStairs.getY());	
 		            			transition = true;
 		            		}else{
+		            			if(answer == items.get(rounds-1).getQ_num()){
+		            				sFeedback =  eval.getImmediateFeedback(8, sAnswer, lessonNumber);
+		            			}else{
+		            				sFeedback = "Sorry That is not what i'm asking";
+		            			}
 		            			Log.d("Debug Error", "Mali");
-		            			sFeedback =  eval.getImmediateFeedback(8, sAnswer, lessonNumber);
 		            			transition = true;
 		            			changeToError(sAnswer);
 		            		}
@@ -647,6 +687,8 @@ public class GameScreen extends AbstractGameScreen  {
 	            			v_chimnea.play(0.85f);
 	            			chimney = Assets.chimney_selected;
 	            			Log.d("Select", "Selected chimney");
+	            		}else{
+	            			answer = 0;
 	            		}
 	            	}else if(inBounds(event, pStairs.getX(), pStairs.getY(), stairs.getWidth(), stairs.getHeight())){
 	            		Log.d("Debug GameScreen", "Click stairs");
@@ -656,9 +698,11 @@ public class GameScreen extends AbstractGameScreen  {
 	            			v_hagdan.play(0.85f);
 	            			stairs = Assets.stairs_selected;
 	            			Log.d("Select", "Selected stairs");
+	            		}else{
+	            			answer = 0;
 	            		}
 	            	}else{
-	            		if(activityLevel=="EASY"){
+	            		if(activityLevel=="HARD"){
 	            			answer = 0;
 	            		}
 	            	}	
@@ -774,7 +818,7 @@ public class GameScreen extends AbstractGameScreen  {
 		        showTransition();
 		        showExit();
 		}
-
+		String[] cuttedWord;
 		@Override
 		protected void showTransition() {
 			// TODO Auto-generated method stub
@@ -784,7 +828,19 @@ public class GameScreen extends AbstractGameScreen  {
 				Log.d("Transition Debug", "Enters: Knock Knock");
 				  g.drawARGB(200, 0, 0, 0);
 				  g.drawImage(feedboxBoy, this.pDialog.getX(), pDialog.getY());
-				  g.drawString(sFeedback, 97, 63, paint);
+				  
+				  String lineOne = "", lineTwo ="";
+				  cuttedWord = sentenceCutter(sFeedback);
+				  for(int s = 0; s<cuttedWord.length;s++){
+						if(s>8){
+							lineTwo += cuttedWord[s] + " ";
+						}else{
+							lineOne += cuttedWord[s]+ " ";
+						}
+					}
+				  g.drawString(lineOne, 165,63, paint);
+				  g.drawString(lineTwo, 165,83, paint);
+				  //g.drawString(sFeedback, 165, 63, paint);
 				  g.drawImage(nextBtn, p_nextBtn.getX(), p_nextBtn.getY());
 				  switch(answer){
 				  case 1: g.drawImage(roof, pRoof.getX(), pRoof.getY());break;
@@ -798,6 +854,12 @@ public class GameScreen extends AbstractGameScreen  {
 				  
 				  }
 			}
+		}
+		private String[] sentenceCutter(String sentence){
+			  String[] words;
+			  words = sentence.split(" ");
+			  
+			  return words;
 		}
 
 		@Override

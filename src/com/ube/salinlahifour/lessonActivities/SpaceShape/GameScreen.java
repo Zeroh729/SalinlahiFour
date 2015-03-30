@@ -144,8 +144,8 @@ public class GameScreen extends AbstractGameScreen  {
 	        ammo.loadAmmos(pSpaceship.getX(), pSpaceship.getY());
 	        pLives = new Parts(130-30,480-30);
 	      
-	        pNo = new Parts(220,300);
-	        pYes = new Parts(400,300);
+	        pYes = new Parts(220,300);
+	        pNo = new Parts(400,300);
 	        pBackg = new Parts(195, 100);
 	        Log.d("Aldrin ExtendedFramework", "Positioning Easy Assets...Done");
 		}
@@ -186,12 +186,12 @@ public class GameScreen extends AbstractGameScreen  {
 			if(index == 0){
 				index = 1;
 			}
-			//sQuestion = enemies.getEnemyQuestion(index);
-			sQuestion = items.get(index).getLabel();
-			//cAnswer = enemies.getEnemy(index);
-			cAnswer = items.get(index).getWord();
+			sQuestion = enemies.getEnemyQuestion(index);
+			//sQuestion = items.get(index).getLabel();
+			cAnswer = enemies.getEnemy(index);
+			//cAnswer = items.get(index).getWord();
 			Log.d("Enemies Size", "Size: " + Assets.enemyShapes.size());
-			enemy = Assets.enemyShapes.get(items.get(index).getQ_num());
+			enemy = Assets.enemyShapes.get(index);
 			Log.d("Enemy Index: ", "i: " + index + " enemy formation: " + enemies.getEnemy(index)  );
 			}
 		}
@@ -286,7 +286,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            			if(index == 0){
 	            				index=1;
 	            			}
-	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			isEnemyExist = false;
 	            			rounds--;
 	            			transition = true;
@@ -295,7 +295,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            			//wrong = Assets.wrong;
 	            			//pWrong.move(pCircle.getX(), pCircle.getY());
 	            			circle = Assets.circle_error;
-	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			livesLeft--;
 	            			transition = true;
 	            		}
@@ -308,13 +308,13 @@ public class GameScreen extends AbstractGameScreen  {
 	            		Log.d("Feedback debug", "Index: " + index);
 	            		if(eval.evaluateAnswer(cAnswer, sAnswer, userID)){
 	            			Log.d("Feedback debug", "Evaluation true");
-	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			isEnemyExist = false;
 	            			rounds--;
 	            			transition = true;
 	            		}else{
 	            			Log.d("Feedback debug", "Evaluation false");
-	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			//wrong = Assets.wrong;
 	            			//pWrong.move(pSquare.getX(), pSquare.getY());
 	            			square = Assets.square_error;
@@ -331,13 +331,13 @@ public class GameScreen extends AbstractGameScreen  {
 	            		Log.d("Answered", cAnswer + " " +sAnswer);
 	            		if(eval.evaluateAnswer(cAnswer, sAnswer, userID)){
 	            			Log.d("Feedback debug", "Evaluation true");
-	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			isEnemyExist = false;
 	            			rounds--;
 	            			transition = true;
 	            		}else{
 	            			Log.d("Feedback debug", "Evaluation false");
-	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			//wrong = Assets.wrong;
 	            			//pWrong.move(pStar.getX(), pStar.getY());
 	            			star = Assets.star_error;
@@ -353,13 +353,13 @@ public class GameScreen extends AbstractGameScreen  {
 	            		Log.d("Feedback debug", "Index: " + index);
 	            		if(eval.evaluateAnswer(cAnswer, sAnswer, userID)){
 	            			Log.d("Feedback debug", "Evaluation true");
-	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			isEnemyExist = false;
 	            			rounds--;
 	            			transition = true;
 	            		}else{
 	            			Log.d("Feedback debug", "Evaluation false");
-	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			//wrong = Assets.wrong;
 	            			//pWrong.move(pTriangle.getX(), pTriangle.getY());
 	            			triangle = Assets.triangle_error;
@@ -431,7 +431,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            			if(index == 0){
 	            				index=1;
 	            			}
-	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			isEnemyExist = false;
 	            			rounds--;
 	            			transition = true;
@@ -440,7 +440,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            			//wrong = Assets.wrong;
 	            			//pWrong.move(pCircle.getX(), pCircle.getY());
 	            			cross = Assets.cross_error;
-	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			livesLeft--;
 	            			transition = true;
 	            		}
@@ -453,13 +453,13 @@ public class GameScreen extends AbstractGameScreen  {
 	            		Log.d("Feedback debug", "Index: " + index);
 	            		if(eval.evaluateAnswer(cAnswer, sAnswer, userID)){
 	            			Log.d("Feedback debug", "Evaluation true");
-	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			isEnemyExist = false;
 	            			rounds--;
 	            			transition = true;
 	            		}else{
 	            			Log.d("Feedback debug", "Evaluation false");
-	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			//wrong = Assets.wrong;
 	            			//pWrong.move(pSquare.getX(), pSquare.getY());
 	            			diamond = Assets.diamond_error;
@@ -476,13 +476,13 @@ public class GameScreen extends AbstractGameScreen  {
 	            		Log.d("Answered", cAnswer + " " +sAnswer);
 	            		if(eval.evaluateAnswer(cAnswer, sAnswer, userID)){
 	            			Log.d("Feedback debug", "Evaluation true");
-	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			isEnemyExist = false;
 	            			rounds--;
 	            			transition = true;
 	            		}else{
 	            			Log.d("Feedback debug", "Evaluation false");
-	            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            		
 	            			rectangle = Assets.rectangle_error;
 	            			livesLeft--;
@@ -548,7 +548,7 @@ public class GameScreen extends AbstractGameScreen  {
 				            			if(index == 0){
 				            				index=1;
 				            			}
-				            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+				            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 				            			isEnemyExist = false;
 				            			rounds--;
 				            			transition = true;
@@ -557,7 +557,7 @@ public class GameScreen extends AbstractGameScreen  {
 				            			//wrong = Assets.wrong;
 				            			//pWrong.move(pCircle.getX(), pCircle.getY());
 				            			arrow = Assets.arrow_error;
-				            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+				            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 				            			livesLeft--;
 				            			transition = true;
 				            		}
@@ -570,13 +570,13 @@ public class GameScreen extends AbstractGameScreen  {
 				            		Log.d("Feedback debug", "Index: " + index);
 				            		if(eval.evaluateAnswer(cAnswer, sAnswer, userID)){
 				            			Log.d("Feedback debug", "Evaluation true");
-				            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+				            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 				            			isEnemyExist = false;
 				            			rounds--;
 				            			transition = true;
 				            		}else{
 				            			Log.d("Feedback debug", "Evaluation false");
-				            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+				            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 				            			//wrong = Assets.wrong;
 				            			//pWrong.move(pSquare.getX(), pSquare.getY());
 				            			cresent = Assets.cresent_error;
@@ -593,13 +593,13 @@ public class GameScreen extends AbstractGameScreen  {
 				            		Log.d("Answered", cAnswer + " " +sAnswer);
 				            		if(eval.evaluateAnswer(cAnswer, sAnswer, userID)){
 				            			Log.d("Feedback debug", "Evaluation true");
-				            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+				            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 				            			isEnemyExist = false;
 				            			livesLeft++;
 				            			transition = true;
 				            		}else{
 				            			Log.d("Feedback debug", "Evaluation false");
-				            			sFeedback =  eval.getImmediateFeedback(items.get(index).getQ_num(), sAnswer, lessonNumber);
+				            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 				            			heart = Assets.heart_error;
 				            			transition = true;
 				            		}
@@ -694,23 +694,41 @@ public class GameScreen extends AbstractGameScreen  {
 			g.drawImage(backbtn, 1, 1);
 	       // g.drawString("sFeedback", 300, 400, paint2);//sFeedback 
 	       // g.drawString(sFeedback, 545, 40, paint3);//sQuestion
-	        g.drawString(sQuestion, 322, 63, paint4);//sQuestion
+	        g.drawString(sQuestion, 350, 63, paint4);//sQuestion
 	        showTransition();
 	        showExit();
 	       
 		}
-
+		String[] cuttedWord;
 		@Override
 		protected void showTransition() {
 			// TODO Auto-generated method stub
 			Graphics g = game.getGraphics();
 			if(super.transition){
 				Log.d("Transition Debug", "Enters: Knock Knock");
+				
 			 g.drawARGB(155, 0, 0, 0);
 			 g.drawImage(feedboxBoy, this.pDialog.getX(), pDialog.getY());
 			 g.drawImage(nextBtn, p_nextBtn.getX(), p_nextBtn.getY());
-			 g.drawString(sFeedback, 322, 63, paint4);
+			  String lineOne = "", lineTwo ="";
+			  cuttedWord = sentenceCutter(sFeedback);
+			  for(int s = 0; s<cuttedWord.length;s++){
+					if(s>8){
+						lineTwo += cuttedWord[s] + " ";
+					}else{
+						lineOne += cuttedWord[s]+ " ";
+					}
+				}
+			  g.drawString(lineOne, 350,63, paint4);
+			  g.drawString(lineTwo, 350,83, paint4);
+			 //g.drawString(sFeedback, 322, 63, paint4);
 			}
+		}
+		private String[] sentenceCutter(String sentence){
+			  String[] words;
+			  words = sentence.split(" ");
+			  
+			  return words;
 		}
 
 		@Override
@@ -719,8 +737,8 @@ public class GameScreen extends AbstractGameScreen  {
 			Graphics g = game.getGraphics();
 			g.drawARGB(200, 0, 0, 0);
 			 g.drawImage(feedboxBoy, this.pDialog.getX(), pDialog.getY());
-			 g.drawString("Tap the pieces asked and place it", 322, 63, paint4);
-			 g.drawString("on its proper position", 322, 78, paint4);
+			 g.drawString("Tap 'BOOST' to face the next alien", 322, 63, paint4);
+			 g.drawString("Tap the correct button to deafeat it", 322, 78, paint4);
 			 g.drawImage(nextBtn, p_nextBtn.getX(), p_nextBtn.getY());
 			 g.drawImage(lives, pLives.getX(), pLives.getY());
 			 g.drawImage(tooltip, pTooltip.getX(), pTooltip.getY());

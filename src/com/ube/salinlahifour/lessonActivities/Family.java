@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
+import android.content.Intent;
 import android.content.res.Resources.NotFoundException;
 import android.graphics.Color;
 import android.graphics.LightingColorFilter;
@@ -30,6 +31,7 @@ import com.ube.salinlahifour.R;
 import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.animation.AnimatedButtonListener;
 import com.ube.salinlahifour.enumTypes.LevelType;
+import com.ube.salinlahifour.howtoplay.FamilyHowToPlay;
 import com.ube.salinlahifour.uibuilders.Button.BtnNextArrowStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.BtnStatesDirector;
 
@@ -66,7 +68,6 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	@Override
 	protected void initiateViews() {
 		Log.d("Debug Family","Aldrin: Initiate Views");
-
 
 		itemno = 0;
 		//Starts Timer
@@ -170,6 +171,8 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		btn_nxt.setOnClickListener(this);
 		
 		((RelativeLayout)findViewById(R.id.parent_view)).addView(getPauseButton());
+
+		startActivity(new Intent(this, FamilyHowToPlay.class));
 	}
 
 	protected void initiateItems() {
