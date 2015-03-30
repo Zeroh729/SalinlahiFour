@@ -47,12 +47,12 @@
    </Positive_Acknowledgement>
    <Negative_Acknowledgement>
 		<template>That seems to be incorrect!</template> 
-		<template>Oops, Sorry that is wrong</template> 
-		<template>That is wrong, you should try harder</template> 
+		<template>Oops, That is wrong</template> 
+		<template>That is wrong</template> 
 		<template>Mali.</template> 
 		<template>You missed it</template> 
-		<template>Oops! That is [UserInput]</template>
-		<template>Wrong! That is [UserInput]</template>
+		<template>Oops! You've made a mistake</template>
+		<template>Wrong!</template>
 		<template>The answer [UserInput] is wrong</template>
 	</Negative_Acknowledgement>
 	<Answer> 

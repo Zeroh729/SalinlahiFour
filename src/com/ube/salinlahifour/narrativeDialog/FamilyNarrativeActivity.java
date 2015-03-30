@@ -17,7 +17,7 @@ public class FamilyNarrativeActivity extends NarrativeDialog{
 			maincharacter = new Character(this, tv_dialog, iv_characters[0], R.drawable.pepay_handsonwaist);
 			maincharacter.addExpression(Expression.POINT, R.drawable.pepay_wave);
 			maincharacter.addExpression(Expression.QUESTION, R.drawable.pepay);
-			maincharacter.addExpression(Expression.SHOCKED, R.drawable.pepay_surprisedface);
+			maincharacter.addExpression(Expression.SHOCKED, R.drawable.pepai_surprisedface);
 			maincharacterName = "Pepai";
 		}
 		else{

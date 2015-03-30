@@ -113,6 +113,7 @@ public abstract class AbstractGameScreen extends Screen {
 			paint4.setColor(Color.BLACK);
 			
 			paint5 = new Paint();
+			
 			paint5.setTypeface(tf);
 			paint5.setTextSize(20);
 			paint5.setTextAlign(Paint.Align.CENTER);

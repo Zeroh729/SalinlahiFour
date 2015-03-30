@@ -23,29 +23,29 @@ public class EnemyList {
 		switch(ActivityLevel){
 		case "HARD":
 					sEnemy[8] = "Tunod";
-					question[8]="Arrow - We need something to that can shoot 3 at the same time";
+					question[8]="We need Tunod to that can shoot 3 at the same time";
 					sEnemy[9] = "Gasuklay";
-					question[9]="Cresent - They are too far, what can we do?";
+					question[9]="The gasuklay button can reach that";
 					sEnemy[10] = "Puso";
-					question[10]="Heart - Oh no! we're hit, lets heal up!";
+					question[10]="Push the puso button to hea!";
 		case "MEDIUM":
 					sEnemy[5] = "Krus";
-					question[5]="Cross - We need to shoot in a wide area";
+					question[5]="We need Krus to shoot in a wide area";
 					sEnemy[6] = "Diamante";
-					question[6]="Diamond - We need a barier its a laser";
+					question[6]="We need the Diamante button to shield ourselves";
 					sEnemy[7] = "Parihaba";
-					question[7]="Rectangle - We need something that shoots from the side";
+					question[7]="We need Parihaba that shoots from the side";
 		case "EASY":
 			sEnemy[0] = "Bilog";
-			question[0]="Circle - We need something to hit red enemies";
+			question[0]="We need Bilog to hit red enemies";
 			sEnemy[1] = "Bilog";
-			question[1]="Circle We need something to hit red enemies";
+			question[1]="We need Bilog to hit red enemies";
 			sEnemy[2] = "Parisukat";
-			question[2]="Square - We just need to shoot one bullet at him";
+			question[2]="We just need a Parisukat to shoot one bullet at him";
 			sEnemy[3] = "Bituin";
-			question[3]="Star - We need something to hit a lot of enemies";
+			question[3]="We need Bituin to hit a lot of enemies";
 			sEnemy[4] = "Tatsulok";
-			question[4]="Triangle - We need something that hits 3 enemies";
+			question[4]="We need Tatsulok that hits 3 enemies";
 		}
 	}
 	public String getEnemy(int index){
