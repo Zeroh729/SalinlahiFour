@@ -11,7 +11,7 @@ public class MapNextBtnStatesBuilder extends AbstractBtnStatesBuilder{
 
 	@Override
 	public void buildPressedState() {
-		setEnabledState(R.drawable.btn_map_next_pressed);
+		setPressedState(R.drawable.btn_map_next_pressed);
 	}
 
 	@Override

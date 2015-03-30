@@ -26,29 +26,12 @@
 		<ActivityName>Shape</ActivityName>
 		<Description>Defeat the aliens in your space ship!</Description>
 	</Lesson>
+	
 	<Lesson>
 		<Name>Zoo Cards</Name>
-		<Image>lesson1_icon</Image>
+		<Image>lesson5_icon</Image>
 		<ActivityName>Animals</ActivityName>
-		<Description></Description>
-	</Lesson>
-	<Lesson>
-		<Name>Zoo Cards</Name>
-		<Image>lesson1_icon</Image>
-		<ActivityName>Animals</ActivityName>
-		<Description></Description>
-	</Lesson>
-	<Lesson>
-		<Name>Zoo Cards</Name>
-		<Image>lesson1_icon</Image>
-		<ActivityName>Animals1</ActivityName>
-		<Description></Description>
-	</Lesson>
-	<Lesson>
-		<Name>Zoo Cards</Name>
-		<Image>lesson1_icon</Image>
-		<ActivityName>Animals2</ActivityName>
-		<Description></Description>
+		<Description>Identify Animals called in Filipino</Description>
 	</Lesson>
 
 </resources>

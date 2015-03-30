@@ -250,6 +250,30 @@
             android:name="com.ube.salinlahifour.ProgressTreeActivity"
             android:label="@string/title_activity_progress_tree" >
         </activity>
+        <activity
+            android:name="com.ube.salinlahifour.howtoplay.AbstractHowToPlay"
+            android:label="@string/title_activity_progress_tree" >
+        </activity>
+        <activity
+            android:name="com.ube.salinlahifour.howtoplay.FamilyHowToPlay"
+            android:label="@string/title_activity_progress_tree" >
+        </activity>
+        <activity
+            android:name="com.ube.salinlahifour.howtoplay.AnimalsHowToPlay"
+            android:label="@string/title_activity_progress_tree" >
+        </activity>
+        <activity
+            android:name="com.ube.salinlahifour.howtoplay.CookingHowToPlay"
+            android:label="@string/title_activity_progress_tree" >
+        </activity>
+        <activity
+            android:name="com.ube.salinlahifour.howtoplay.HouseHowToPlay"
+            android:label="@string/title_activity_progress_tree" >
+        </activity>
+        <activity
+            android:name="com.ube.salinlahifour.howtoplay.ShapeHowToPlay"
+            android:label="@string/title_activity_progress_tree" >
+        </activity>
     </application>
 
 </manifest>

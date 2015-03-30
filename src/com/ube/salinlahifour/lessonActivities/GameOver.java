@@ -34,10 +34,10 @@ public class GameOver extends Activity {
 		userID = beforeIntent.getIntExtra("userID", 0);
 		lessonNumber = beforeIntent.getIntExtra("LessonNum", 0);
 		lesson = beforeIntent.getParcelableExtra("lesson");
-		 ev = new Evaluation(this, ActName, ActLevel);
-			ev.setScore( beforeIntent.getIntExtra("e_score", 0));
-			ev.setTotScore(beforeIntent.getIntExtra("e_total", 0));
-		 ev.updateUserLessonProgress(lesson.getName(), ActLevel.toString(), userID);
+		ev = new Evaluation(this, ActName, ActLevel);
+		ev.setScore( beforeIntent.getIntExtra("e_score", 0));
+		ev.setTotScore(beforeIntent.getIntExtra("e_total", 0));
+		 ev.updateUserLessonProgress(lesson.getName(), ActLevel.toString(), SalinlahiFour.getLoggedInUser().getId());
 		  LTActLevel = null;
 			switch(ActLevel){
 			case "EASY": LTActLevel = LevelType.EASY; break;
@@ -59,7 +59,7 @@ public class GameOver extends Activity {
 		Log.d("Debug ReportCard", "Eval Total Score: " + ev.getTotalScore() );
 		Log.d("Debug ReportCard", "Info End" );
 		
-		reportCard = new ReportCard(this, lesson,LTActLevel, ev, feedback);
+		reportCard = new ReportCard(this, lesson,LTActLevel, ev, feedback, this.ActName);
 		new Handler().postDelayed(new Runnable() {
 		    public void run() {
 		    	

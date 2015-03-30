@@ -11,6 +11,7 @@ import com.kilobolt.framework.Screen;
 import com.kilobolt.framework.Graphics.ImageFormat;
 import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.Lesson;
+import com.ube.salinlahifour.lessonActivities.SpaceShape.Assets;
 
 public class LoadingScreen extends Screen {
 	private String activityLevel;
@@ -34,12 +35,26 @@ public class LoadingScreen extends Screen {
 	        //Assets.click = game.getAudio().createSound("explode.ogg");
 	       // Assets.splashbg = g.newImage("splashbg.png", ImageFormat.RGB565);
 	        Assets.enemyShapes = new ArrayList<Image>();
+	        Assets.lives = new ArrayList<Image>();
+	        Assets.bgBack = g.newImage("back/window.png", ImageFormat.RGB565);
+	        Assets.backbtn = g.newImage("back/backbtn.png", ImageFormat.RGB565);
+	        Assets.yesbtn = g.newImage("back/yesbtn.png", ImageFormat.RGB565);
+	        Assets.nobtn = g.newImage("back/nobtn.png", ImageFormat.RGB565);
 	        //Assets.menubg = g.newImage("menubg.png", ImageFormat.RGB565);
         	Assets.bg = g.newImage("shapes/bg.png", ImageFormat.RGB565);
         	Assets.nothingness = g.newImage("shapes/nothingness.png", ImageFormat.RGB565);
         	Assets.spaceship = g.newImage("shapes/spaceship.png", ImageFormat.RGB565);
         	Assets.wrong = g.newImage("shapes/wrong.png", ImageFormat.RGB565);
-        	
+        	Assets.feedboxBoy = g.newImage("charbox/popoibox.png", ImageFormat.RGB565);
+	        Assets.feedboxGirl = g.newImage("charbox/pepaybox.png", ImageFormat.RGB565);
+	        Assets.nextBtn = g.newImage("buttons/boost.png", ImageFormat.RGB565);
+        	Assets.nextBtn_pressed = g.newImage("buttons/boost-pressed.png", ImageFormat.RGB565);
+        	Assets.tooltip = g.newImage("shapes/tooltip.png", ImageFormat.RGB565);
+        	Assets.lives.add(g.newImage("shapes/lives/0.png", ImageFormat.RGB565));
+        	Assets.lives.add(g.newImage("shapes/lives/1.png", ImageFormat.RGB565));
+        	Assets.lives.add(g.newImage("shapes/lives/2.png", ImageFormat.RGB565));
+        	Assets.lives.add(g.newImage("shapes/lives/3.png", ImageFormat.RGB565));
+        	Assets.lives.add(g.newImage("shapes/lives/4.png", ImageFormat.RGB565));
         	//Assets.enemyShapes.add(0,g.newImage("shapes/Easy/em_circle.png", ImageFormat.RGB565));
         	switch(activityLevel){
         	case "EASY": Log.d("easy", "peasy");

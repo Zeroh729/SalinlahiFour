@@ -17,6 +17,8 @@
     
     <ImageView
         android:id="@+id/character1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
@@ -55,6 +57,16 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:onClick="next"
+        android:background="@null"
+        />
+    
+    <ImageButton
+        android:id="@+id/btn_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:onClick="skip"
         android:background="@null"
         />
 

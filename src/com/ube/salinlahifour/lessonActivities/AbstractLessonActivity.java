@@ -14,20 +14,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import org.jdom.Parent;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 
 import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.Lesson;
 import com.ube.salinlahifour.MapActivity;
+import com.ube.salinlahifour.R;
 import com.ube.salinlahifour.ReportCard;
 import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.database.UserRecordOperations;
@@ -36,8 +47,13 @@ import com.ube.salinlahifour.enumTypes.StatusType;
 import com.ube.salinlahifour.evaluationModule.Evaluation;
 import com.ube.salinlahifour.model.UserRecord;
 import com.ube.salinlahifour.tools.DateTimeConverter;
+import com.ube.salinlahifour.uibuilders.Button.BtnStatesDirector;
+import com.ube.salinlahifour.uibuilders.Button.NoBtnStatesBuilder;
+import com.ube.salinlahifour.uibuilders.Button.PauseBtnStatesDirector;
+import com.ube.salinlahifour.uibuilders.Button.YesBtnStatesBuilder;
 
 public abstract class AbstractLessonActivity extends Activity {
+	protected Context context;
 	protected Lesson lesson;
 	protected ArrayList<ImageView> backgrounds;
 	protected ArrayList<Item> items;
@@ -51,10 +67,13 @@ public abstract class AbstractLessonActivity extends Activity {
 	protected iFeedback NLG;
 	protected ReportCard reportCard;
 	protected Evaluation evaluation;
+	protected GamePausePopup gamePause;
+	private ImageButton pauseBtn;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		context = this;
 //		setContentView(R.layout.activity_lesson);
 		try{
 			setContentView(layoutID);		
@@ -78,10 +97,37 @@ public abstract class AbstractLessonActivity extends Activity {
 
 		evaluation =  new Evaluation(this, activityName, activityLevel.toString());
 		cnt_question = 0;
-		
+
+		initiateGamePauseUI();
 		initiateViews();
 		getQuestions();
 		run();
+	}
+	
+	private void initiateGamePauseUI(){
+		gamePause = new GamePausePopup(this);
+		
+		pauseBtn = new ImageButton(this);		
+		LayoutParams p = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+				ViewGroup.LayoutParams.WRAP_CONTENT);
+		p.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+		p.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+		
+		pauseBtn.setLayoutParams(p);
+		pauseBtn.setBackgroundDrawable(BtnStatesDirector.getImageDrawable(new PauseBtnStatesDirector()));
+		pauseBtn.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Log.d("CLICKING POPUP", "TEST");
+				gamePause = new GamePausePopup(context);
+				gamePause.showAsDropDown(gamePause.popupView);
+			}
+		});
+	}
+	
+	protected ImageButton getPauseButton(){
+		return pauseBtn;
 	}
 	
 	protected void getQuestions(){
@@ -202,7 +248,7 @@ public abstract class AbstractLessonActivity extends Activity {
 	}
 	
 	protected void showReportCard(Context context){
-		reportCard = new ReportCard(context, lesson, activityLevel, evaluation, evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber()));
+		reportCard = new ReportCard(context, lesson, activityLevel, evaluation, evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber()),activityName);
 		reportCard.reveal();
 	}
 
@@ -242,5 +288,48 @@ public abstract class AbstractLessonActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onPause();
 		SalinlahiFour.getBgm().pause();
+	}
+	
+	protected class GamePausePopup extends PopupWindow implements android.view.View.OnClickListener{
+		private Context context;
+		private ImageButton btn_yes;
+		private ImageButton btn_no;
+
+		private View popupView;
+		
+		public GamePausePopup(Context context){
+			super(context);
+			this.context = context;
+			LayoutInflater layoutInflater = (LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);  
+		    popupView = layoutInflater.inflate(R.layout.gamepause, null);        
+		    setOutsideTouchable(false);
+	        setBackgroundDrawable(new BitmapDrawable());
+		    
+	        setContentView(popupView);
+		    setHeight(LayoutParams.MATCH_PARENT);
+		    setWidth(LayoutParams.MATCH_PARENT);
+
+		    btn_yes = (ImageButton) popupView.findViewById(R.id.btn_yes);
+		    btn_no = (ImageButton) popupView.findViewById(R.id.btn_no);
+		    
+		    btn_yes.setImageDrawable(BtnStatesDirector.getImageDrawable(new YesBtnStatesBuilder()));
+		    btn_no.setImageDrawable(BtnStatesDirector.getImageDrawable(new NoBtnStatesBuilder()));
+		    
+		    btn_yes.setOnClickListener(this);
+		    btn_no.setOnClickListener(this);
+		}
+
+		@Override
+		public void onClick(View v) {
+				switch(v.getId()){
+					case R.id.btn_yes:
+						startActivity(new Intent(context, MapActivity.class));
+						break;
+					case R.id.btn_no:
+						dismiss();
+						break;
+				}
+		}
+		
 	}
 }

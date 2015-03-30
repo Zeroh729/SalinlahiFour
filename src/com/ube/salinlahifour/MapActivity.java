@@ -12,11 +12,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.XmlResourceParser;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -45,6 +47,7 @@ import com.ube.salinlahifour.uibuilders.Button.EasyBtnStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.HardBtnStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.LogoutBtnStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.MapNextBtnStatesBuilder;
+import com.ube.salinlahifour.uibuilders.Button.MapPrevBtnStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.MediumBtnStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.OkBtnStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.PopupcloseBtnStatesBuilder;
@@ -58,6 +61,7 @@ public class MapActivity extends Activity implements OnClickListener{
 	private ImageButton btn_progress;
 	private ImageButton btn_logout;
 	private ImageButton btn_account;
+	private TextView tv_friendTalk;
 	
 	private PopupWindow popupWindow;
 	private View popupView;
@@ -68,15 +72,23 @@ public class MapActivity extends Activity implements OnClickListener{
 	private ImageButton btn_medium;
 	private ImageButton btn_hard;
 	private ImageButton btn_nxtscene;
+	private ImageButton btn_prevscene;
 	private ImageView img_popupmap;
 	private RelativeLayout parentView;
 	
 	private int UserID;
+	private int sceneIndex;
 	private Intent intent = null;
+	
+	private String[] greetings;
+	private int greetingIndex = 0;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		Log.d("ONCREATING", "TESTTESTTESTEST");
+		
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
 		    UserID = extras.getInt("UserID");
@@ -84,10 +96,15 @@ public class MapActivity extends Activity implements OnClickListener{
 		
 		imgBtns = new ImageButton[5];
 		txtViews = new TextView[5];
+		greetings = new String[]{"<i>Magandang Araw</i> " + SalinlahiFour.getLoggedInUser().getName()+"!<br><font color=#8C8C8C>Good day " + SalinlahiFour.getLoggedInUser().getName() + "!</font>",
+				"<i>Kamusta na?</i><br><font color=#8C8C8C>How are you?</font>",
+				"Haha! That tickles!",
+				"I want to eat already!",
+				"Tara!<br><font color=#8C8C8C>Let's go!</font>"};
 
 		//setContentView(R.layout.activity_map);
 		
-		if(((SalinlahiFour)getApplication()).getLoggedInUser() == null){
+		if(SalinlahiFour.getLoggedInUser() == null){
     		Intent intent = new Intent();
     		intent.setClass(getApplicationContext(), RegistrationActivityName.class);
     		startActivity(intent);
@@ -96,7 +113,9 @@ public class MapActivity extends Activity implements OnClickListener{
 	        toast.show();
 			
 			try {
+				Log.d("parseXML()", "TESTTESTTESTEST");
 				parseXML();
+				Log.d("settingLevelStatuses", "TESTTESTTESTEST");
 				setLevelStatuses();
 				
 				
@@ -106,8 +125,8 @@ public class MapActivity extends Activity implements OnClickListener{
 				e.printStackTrace();
 			}
 			
-
-			scene = scenes.get(0);
+			sceneIndex = 0;
+			scene = scenes.get(sceneIndex);
 			setLayout();			
 		}
 	}
@@ -117,6 +136,8 @@ public class MapActivity extends Activity implements OnClickListener{
 		btn_logout = new ImageButton(this);
 		btn_progress = new ImageButton(this);
 		btn_nxtscene = new ImageButton(this);
+		btn_prevscene = new ImageButton(this);
+		tv_friendTalk = new TextView(this);
 
 		LayoutParams p_account = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
 		ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -130,6 +151,22 @@ public class MapActivity extends Activity implements OnClickListener{
 		btn_account.setLayoutParams(p_account);
 		btn_account.setBackgroundDrawable(null);
 		btn_account.setOnClickListener(this);
+		btn_account.setId(2);
+		
+
+		LayoutParams p_friendtalk = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+		ViewGroup.LayoutParams.WRAP_CONTENT);
+		
+		p_friendtalk.addRule(RelativeLayout.RIGHT_OF, btn_account.getId());
+		p_friendtalk.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+		p_friendtalk.setMargins(10, 10, 0, 0);
+		
+		
+		tv_friendTalk.setLayoutParams(p_friendtalk);
+		tv_friendTalk.setBackgroundResource(R.drawable.dialog);
+		tv_friendTalk.setTextColor(Color.argb(255, 37, 37, 37));
+		tv_friendTalk.setPadding(20, 20, 20, 20);
+		tv_friendTalk.setTextSize(19);
 	    
 		LayoutParams p_logout = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
 		ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -153,7 +190,7 @@ public class MapActivity extends Activity implements OnClickListener{
 		btn_progress.setLayoutParams(p_progress);
 		btn_progress.setBackgroundDrawable(null);
 		btn_progress.setOnClickListener(this);
-		
+
 		LayoutParams p_nxtscene = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
 		ViewGroup.LayoutParams.WRAP_CONTENT);
 			
@@ -163,29 +200,61 @@ public class MapActivity extends Activity implements OnClickListener{
 		btn_nxtscene.setLayoutParams(p_nxtscene);
 		btn_nxtscene.setBackgroundDrawable(null);
 		btn_nxtscene.setOnClickListener(this);
+		
+		LayoutParams p_prevscene = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+		ViewGroup.LayoutParams.WRAP_CONTENT);
+			
+		p_prevscene.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+		p_prevscene.addRule(RelativeLayout.CENTER_VERTICAL);
+		
+		btn_prevscene.setLayoutParams(p_prevscene);
+		btn_prevscene.setBackgroundDrawable(null);
+		btn_prevscene.setOnClickListener(this);		
+		
+		tv_friendTalk.setText(Html.fromHtml(greetings[greetingIndex]));
 
 		parentView.addView(btn_account);
 		parentView.addView(btn_logout);
 		parentView.addView(btn_progress);
 		parentView.addView(btn_nxtscene);
+		parentView.addView(btn_prevscene);
+		parentView.addView(tv_friendTalk);
+	}
+	
+	private int getLessonCount(){
+		int total = 0;
+		for(int i = 0; i < scenes.size(); i++){
+			for(int j = 0; j < scenes.get(i).getLessons().size(); j++){
+				total++;
+			}
+		}
+		return total;
 	}
 
 	private void setLevelStatuses() {
 		UserLessonProgressOperations userdb = new UserLessonProgressOperations(this);
 		userdb.open();
+		Log.d("scene count: " + scenes.size(), "FINAL CHECKING");
 		for(Scene scene : scenes){
 			for(int i = 0; i < scene.getLessons().size(); i++){
 				if(scene.getLessons().get(i).getLocked()){
 					UserLessonProgress progress = userdb.getUserLessonProgress(UserID, scene.getLessons().get(i).getName());
 					if(progress != null){
 						scene.getLessons().get(i).setLocked(false);
+						Log.d("THERE", "FINAL CHECK");
 						if(progress.getHardStar() != null){
-							if(progress.getHardStar().equals(StarType.SILVER.toString()) || progress.getHardStar().equals(StarType.GOLD.toString()))
-								if((i+1) < scene.getLessons().size())
-								scene.getLessons().get(i+1).setLocked(false);
+							Log.d("THEREEEE", "FINAL CHECK");
+							if(!progress.getHardStar().equals(StarType.BRONZE.toString())){
+								Log.d("ALMOST THEREEEE", "FINAL CHECK");
+								if((i+1) < scene.getLessons().size()){
+									scene.getLessons().get(i+1).setLocked(false);
+									Log.d("UNLOCKING: " + scene.getLessons().get(i+1).getName(), "FINAL CHECK");
+								}
+							}
 						}
-					}else{
-						//scene.getLessons().get(i).setLocked(true);
+					}
+					else{
+//						scene.getLessons().get(i).setLocked(true);
 						scene.getLessons().get(i).setLocked(false);
 					}
 					try{
@@ -194,9 +263,13 @@ public class MapActivity extends Activity implements OnClickListener{
 						
 					}
 				}
+
+				Log.d("Lesson no. : " + i + " ->" + scene.getLessons().get(i).getLocked(),"FINAL CHECKING");
+				
 //				scene.getLessons().get(i).setLocked(false);
 			}
 		}
+		
 		userdb.close();
 	}
 
@@ -205,6 +278,7 @@ public class MapActivity extends Activity implements OnClickListener{
 		btn_logout.setImageDrawable(BtnStatesDirector.getImageDrawable(new LogoutBtnStatesBuilder()));
 		btn_progress.setImageDrawable(BtnStatesDirector.getImageDrawable(new ProgressBtnStatesBuilder()));		
 		btn_nxtscene.setImageDrawable(BtnStatesDirector.getImageDrawable(new MapNextBtnStatesBuilder()));
+		btn_prevscene.setImageDrawable(BtnStatesDirector.getImageDrawable(new MapPrevBtnStatesBuilder()));
 	}
 	
 	private void errorPopup(String title, String error){
@@ -299,7 +373,7 @@ public class MapActivity extends Activity implements OnClickListener{
         		 activityName = "";
         		 value = "";
         		 lessonImgID = 0;
-        		 if(scene.getLessons().size() >= 5){
+        		 if(scene.getLessons().size() > 5){
         			 scene = makeNewScene();
         		 }
         	 }else if(parser.getName().equals("Name")){
@@ -394,6 +468,15 @@ public class MapActivity extends Activity implements OnClickListener{
 		}else{
 			btn_account.setBackgroundResource(R.drawable.map_hud_popoi_talking);
 		}
+
+		btn_prevscene.setVisibility(View.VISIBLE);
+		btn_nxtscene.setVisibility(View.VISIBLE);
+		Log.d("sceneIndex: " + sceneIndex, "TEST");
+		if(sceneIndex == 0){
+			btn_prevscene.setVisibility(View.INVISIBLE);
+		}else if(sceneIndex >= scenes.size()-1){
+			btn_nxtscene.setVisibility(View.INVISIBLE);
+		}
 	}
 
 	@Override
@@ -417,6 +500,12 @@ public class MapActivity extends Activity implements OnClickListener{
 //		
 //		
 		if(view == btn_account){
+			if((greetingIndex+1) >= greetings.length){
+				greetingIndex = 0;
+			}else{
+				greetingIndex++;
+			}
+			tv_friendTalk.setText(Html.fromHtml(greetings[greetingIndex]));
 			
 		}else if(view == btn_logout){
 			intent = new Intent(this, LoginActivity.class);
@@ -436,7 +525,12 @@ public class MapActivity extends Activity implements OnClickListener{
 			intent.putExtras(bundle);
 			startActivity(intent);
 		}else if(view == btn_nxtscene){
-			scene = scenes.get(1);
+			sceneIndex++;
+			scene = scenes.get(sceneIndex);
+			setLayout();
+		}else if(view == btn_prevscene){
+			sceneIndex--;
+			scene = scenes.get(sceneIndex);
 			setLayout();
 		}else {
 			
@@ -556,7 +650,7 @@ public class MapActivity extends Activity implements OnClickListener{
 						            	 		btn_hard.setEnabled(false);
 						            	 }
 						             }else{
-					            	 	((ImageView)popupView.findViewById(R.id.star1)).setImageResource(R.drawable.lvlselect_null);
+//					            	 	((ImageView)popupView.findViewById(R.id.star1)).setImageResource(R.drawable.lvlselect_null);
 				            	 		btn_medium.setEnabled(false);
 				            	 		btn_hard.setEnabled(false);
 						             }
@@ -576,7 +670,7 @@ public class MapActivity extends Activity implements OnClickListener{
 						            	 		lesson.setMediumStar(null);
 						            	 }
 						             }else{
-					            	 	((ImageView)popupView.findViewById(R.id.star2)).setImageResource(R.drawable.lvlselect_null);
+//					            	 	((ImageView)popupView.findViewById(R.id.star2)).setImageResource(R.drawable.lvlselect_null);
 				            	 		btn_hard.setEnabled(false);
 						             }
 						             if(lesson.getHardStar() != null){
@@ -594,9 +688,20 @@ public class MapActivity extends Activity implements OnClickListener{
 						            	 		lesson.setHardStar(null);
 						            	 }
 						             }else{
-					            	 	((ImageView)popupView.findViewById(R.id.star3)).setImageResource(R.drawable.lvlselect_null);
+//					            	 	((ImageView)popupView.findViewById(R.id.star3)).setImageResource(R.drawable.lvlselect_null);
 						             }
 					             
+						             if(!btn_medium.isEnabled()){
+						            	 ((ImageView)popupView.findViewById(R.id.star2)).setImageResource(R.drawable.lvlselect_null);
+						             }
+						             if(!btn_hard.isEnabled()){
+						            	 ((ImageView)popupView.findViewById(R.id.star3)).setImageResource(R.drawable.lvlselect_null);
+						             }
+						             
+						             //DELETE AT ONCE
+
+				            	 		btn_hard.setEnabled(true);
+						             
 					             userdb.close();
 					            popupWindow.showAsDropDown(popupView);
 				}	

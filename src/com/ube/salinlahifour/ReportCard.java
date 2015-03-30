@@ -31,7 +31,7 @@ public class ReportCard extends PopupWindow implements OnClickListener{
 	private Context context;
 	private Lesson lesson;
 	private LevelType level;
-	
+	private String activityName;
 	private static View popupView;
 	
 	private ImageView img_star;
@@ -47,10 +47,11 @@ public class ReportCard extends PopupWindow implements OnClickListener{
 	
 	private AnimatedButtonListener animBtnListener;
 	
-	public ReportCard(Context context, Lesson lesson, LevelType level, Evaluation evaluation, String nlg_evaluation){
+	public ReportCard(Context context, Lesson lesson, LevelType level, Evaluation evaluation, String nlg_evaluation,String ActivityName){
 		this.context = context;
 		this.lesson = lesson;
 		this.level = level;
+		this.activityName = ActivityName;
 		Log.d("Debug ReportCard", "Inside ReportCard Class");
 		LayoutInflater layoutInflater = (LayoutInflater)this.context.getSystemService(this.context.LAYOUT_INFLATER_SERVICE);  
 	    popupView = layoutInflater.inflate(R.layout.reportcard, null);
@@ -61,7 +62,7 @@ public class ReportCard extends PopupWindow implements OnClickListener{
 	    
 		setOutsideTouchable(false);
 		setBackgroundDrawable(new BitmapDrawable());
-
+		Log.d("Debug ReportCard", "Name: " + lesson.getActivity());
 		img_star = (ImageView)popupView.findViewById(R.id.img_star);
 		btn_replay = (ImageButton)popupView.findViewById(R.id.btn_replay);
 		btn_next = (ImageButton)popupView.findViewById(R.id.btn_next);
@@ -92,8 +93,8 @@ public class ReportCard extends PopupWindow implements OnClickListener{
 		
 		tv_title.setText(lesson.getName());
 		tv_level.setText("("+level.toString()+")");
-		tv_evaluation.setText(nlg_evaluation);
-		
+		tv_evaluation.setText(evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber()));
+		Log.d("EndFeedback Debug", "Feedback: " +evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber()) );
 		switch(evaluation.getStar()){
 			case GOLD:
 				img_star.setImageResource(R.drawable.report_card_gold);
@@ -107,7 +108,7 @@ public class ReportCard extends PopupWindow implements OnClickListener{
 				//CHANGE TO SILVER COLOR
 				//tv_score.setTextColor(Color.parseColor("#c4b723"));
 				Log.d("Debug ReportCard", "you get Silver");
-				subtv_replay.setText("retry to get\nGOLD!");
+				subtv_replay.setText("retry to get\n3 stars!");
 				break;
 			case BRONZE:
 				img_star.setImageResource(R.drawable.report_card_bronze);
@@ -119,7 +120,7 @@ public class ReportCard extends PopupWindow implements OnClickListener{
 				
 				subtv_next.setVisibility(View.INVISIBLE);
 				btn_next.setVisibility(View.INVISIBLE);
-				subtv_replay.setText("retry to get\nSILVER!");
+				subtv_replay.setText("retry to get\n2 stars!");
 				break;
 		}
 		
@@ -140,7 +141,16 @@ public class ReportCard extends PopupWindow implements OnClickListener{
 		switch(v.getId()){
 		case R.id.btn_replay:	
         	((Activity)context).finish();
-        	((Activity)context).startActivity(((Activity)context).getIntent());
+        	lesson.getActivity();
+        	Intent intent = new Intent(lesson.getActivity());
+        	intent.putExtra("activityName", this.activityName);
+			intent.putExtra("UserID", SalinlahiFour.getLoggedInUser().getId());
+			intent.putExtra("activityLevel", level.toString());
+			Bundle bundle = new Bundle();
+			bundle.putParcelable("lesson", lesson);
+			intent.putExtras(bundle);
+        	context.startActivity(intent);
+        	//((Activity)context).startActivity(((Activity)context).getIntent());
 			//goToLesson(level);
 			break;
 		case R.id.btn_next:
