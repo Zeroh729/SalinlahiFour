@@ -93,7 +93,7 @@ public class ReportCard extends PopupWindow implements OnClickListener{
 		tv_title.setText(lesson.getName());
 		tv_level.setText("("+level.toString()+")");
 		tv_evaluation.setText(evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber()));
-		
+		Log.d("EndFeedback Debug", "Feedback: " +evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber()) );
 		switch(evaluation.getStar()){
 			case GOLD:
 				img_star.setImageResource(R.drawable.report_card_gold);
@@ -140,7 +140,13 @@ public class ReportCard extends PopupWindow implements OnClickListener{
 		switch(v.getId()){
 		case R.id.btn_replay:	
         	((Activity)context).finish();
-        	((Activity)context).startActivity(((Activity)context).getIntent());
+        	lesson.getActivity();
+        	Intent intent = new Intent(lesson.getActivity());
+        	intent.putExtra("activityName", lesson.getName());
+			intent.putExtra("UserID", SalinlahiFour.getLoggedInUser().getId());
+			intent.putExtra("activityLevel", level);
+        	context.startActivity(intent);
+        	//((Activity)context).startActivity(((Activity)context).getIntent());
 			//goToLesson(level);
 			break;
 		case R.id.btn_next:

@@ -61,13 +61,13 @@
 		<template>The answer you are looking for is [Answer]</template>
 	</Answer>
    <NextLesson_F>
-    <template>Seems you need to study again.</template>
-    <template>You need more practice. Try again next time.</template>
-	<template>Try your luck next time.</template>
+    <template>But it seems you need to study again.</template>
+    <template>But you need more practice. Try again next time.</template>
+	<template>But you commited so may mistakes. Try again</template>
    </NextLesson_F>
    <NextLesson_P>
-    <template>You can proceed to the next lesson.</template>
-    <template>Off to the next lesson!</template>
+    <template>and You have mastered this lesson.</template>
+    <template>and You completed this lesson with flying colors! Off to the next lesson!</template>
    </NextLesson_P>
 </type>
 

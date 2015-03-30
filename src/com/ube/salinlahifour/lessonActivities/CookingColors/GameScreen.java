@@ -390,9 +390,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            				isMistake = false;
 	            				transition = true;
 	            				sFeedback = feedbacks[0];
-	            				   cor1 = 0; 
-		            			    cor2 = 0;
-		            			    cor3 = 0;
+	            				   
 		            			    ready = Assets.nothingness;
 		            				bread = Assets.nothingness;
 		            			    frosting = Assets.nothingness;
@@ -405,9 +403,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            				wrong = Assets.wrong;
 	            				Log.d("DING", "Wrong Order!");
 	            				transition = true;
-	            				cor1 = 0; 
-		            			cor2 = 0;
-		            			cor3 = 0;
+	            				
 		            			cake.resetFlags();
 		            			isMistake = true;
 	            			}
@@ -572,14 +568,14 @@ public class GameScreen extends AbstractGameScreen  {
 		            				cor2 = 1;
 		            				feedbacks[1] = eval.getImmediateFeedback(creamerButtons.getNumberColor()+1, cake.getAnswer(1), lessonNumber);
 		            			}else{
-		            				feedbacks[1] = eval.getImmediateFeedback(creamerButtons.getNumberColor()+1, cake.getAnswer(0), lessonNumber);
+		            				feedbacks[1] = eval.getImmediateFeedback(creamerButtons.getNumberColor()+1, cake.getAnswer(1), lessonNumber);
 			            			
 		            			}
 		            			if(eval.evaluateAnswer( sprinklerButtons.getQuestionColor(), cake.getAnswer(2), userID)){
 		            				cor3 = 1;
 		            				feedbacks[2] = eval.getImmediateFeedback(sprinklerButtons.getNumberColor()+1, cake.getAnswer(2), lessonNumber);
 		            			}else{
-		            				feedbacks[2] = eval.getImmediateFeedback(sprinklerButtons.getNumberColor()+1, cake.getAnswer(0), lessonNumber);
+		            				feedbacks[2] = eval.getImmediateFeedback(sprinklerButtons.getNumberColor()+1, cake.getAnswer(2), lessonNumber);
 			            			
 		            			}
 		            			if(cor1 == 1 && cor2 == 1 && cor3 == 1){

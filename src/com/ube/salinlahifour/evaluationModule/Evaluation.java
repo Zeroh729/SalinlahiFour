@@ -71,10 +71,11 @@ public class Evaluation {
 			easyStar = userLessonProgressOperator.getUserLessonProgress(UserID, lessonName).getEasyStar();
 			mediumStar = userLessonProgressOperator.getUserLessonProgress(UserID, lessonName).getMediumStar();
 			hardStar = userLessonProgressOperator.getUserLessonProgress(UserID, lessonName).getHardStar();
-			if(activityLevel == LevelType.EASY.toString()){
+			Log.d("Medal Debug", "Act Level: " + activityLevel);
+			if(activityLevel == LevelType.EASY.toString() || activityLevel.equals(LevelType.EASY.toString())){
 					userLessonProgressOperator.updateUserLessonProgress(UserID, lessonName, star.toString(), mediumStar, hardStar);
 			}
-			else if(activityLevel == LevelType.MEDIUM.toString()){
+			else if(activityLevel == LevelType.MEDIUM.toString()|| activityLevel.equals(LevelType.MEDIUM.toString())){
 				userLessonProgressOperator.updateUserLessonProgress(UserID, lessonName, easyStar, star.toString(), hardStar);
 			}
 			else{

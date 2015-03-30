@@ -284,11 +284,15 @@ public class GameScreen extends AbstractGameScreen  {
 		            			transition = true;
 		            			
 		            		}else{
-		            			
+		            			if(answer == items.get(rounds-1).getQ_num()){
+		            				sFeedback =  eval.getImmediateFeedback(1, sAnswer, lessonNumber);
+		            			}else{
+		            				sFeedback = "Sorry That is not what i'm asking";
+		            			}
 		            			Log.d("Debug Error", "Mali");
-		            			sFeedback =  eval.getImmediateFeedback(1, sAnswer, lessonNumber);
 		            			transition = true;
 		            			changeToError(sAnswer);
+		            			
 		            		}
 	            			userRecordOperator.close();
 	                		userLessonProgressOperator.close();
@@ -311,9 +315,11 @@ public class GameScreen extends AbstractGameScreen  {
 		            			pWindow.setPlaced(true);
 		            			transition = true;
 		            		}else{
-		            			Log.d("Debug Error", "Mali");
-		            		
-		            			sFeedback =  eval.getImmediateFeedback(4, sAnswer, lessonNumber);
+		            			if(answer == items.get(rounds-1).getQ_num()){
+		            				sFeedback =  eval.getImmediateFeedback(4, sAnswer, lessonNumber);
+		            			}else{
+		            				sFeedback = "Sorry That is not what i'm asking";
+		            			}
 		            			transition = true;
 		            			changeToError(sAnswer);
 		            		}
@@ -339,8 +345,12 @@ public class GameScreen extends AbstractGameScreen  {
 		            			pDoor.setPlaced(true);
 		            			transition = true;
 		            		}else{
-		            			Log.d("Wenks", "Mali");
-		            			sFeedback =  eval.getImmediateFeedback(3, sAnswer, lessonNumber);
+		            			if(answer == items.get(rounds-1).getQ_num()){
+		            				sFeedback =  eval.getImmediateFeedback(3, sAnswer, lessonNumber);
+		            			}else{
+		            				sFeedback = "Sorry That is not what i'm asking";
+		            			}
+		            			Log.d("Debug Error", "Mali");
 		            			transition = true;
 		            			changeToError(sAnswer);
 		            		}
@@ -369,9 +379,12 @@ public class GameScreen extends AbstractGameScreen  {
 		            			transition = true;
 		            			
 		            		}else{
-		            			Log.d("Wenks", "Mali");
-		            			
-		            			sFeedback =  eval.getImmediateFeedback(2, sAnswer, lessonNumber);
+		            			if(answer == items.get(rounds-1).getQ_num()){
+		            				sFeedback =  eval.getImmediateFeedback(2, sAnswer, lessonNumber);
+		            			}else{
+		            				sFeedback = "Sorry That is not what i'm asking";
+		            			}
+		            			Log.d("Debug Error", "Mali");
 		            			transition = true;
 		            			changeToError(sAnswer);
 		            		}
@@ -478,9 +491,12 @@ public class GameScreen extends AbstractGameScreen  {
 		            			pGarage.setPlaced(true);
 		            			transition = true;
 		            		}else{
-		            			Log.d("Wenks", "Mali");
-		            			Log.d("Debug Medium", "Mali");
-		            			sFeedback =  eval.getImmediateFeedback(5, sAnswer, lessonNumber);
+		            			if(answer == items.get(rounds-1).getQ_num()){
+		            				sFeedback =  eval.getImmediateFeedback(5, sAnswer, lessonNumber);
+		            			}else{
+		            				sFeedback = "Sorry That is not what i'm asking";
+		            			}
+		            			Log.d("Debug Error", "Mali");
 		            			transition = true;
 		            			changeToError(sAnswer);
 		            			
@@ -505,9 +521,12 @@ public class GameScreen extends AbstractGameScreen  {
 		            			pFence.setPlaced(true);
 		            			transition = true;
 		            		}else{
-		            			
-		            			Log.d("Wenks", "Mali");
-		            			sFeedback =  eval.getImmediateFeedback(6, sAnswer, lessonNumber);
+		            			if(answer == items.get(rounds-1).getQ_num()){
+		            				sFeedback =  eval.getImmediateFeedback(6, sAnswer, lessonNumber);
+		            			}else{
+		            				sFeedback = "Sorry That is not what i'm asking";
+		            			}
+		            			Log.d("Debug Error", "Mali");
 		            			transition = true;
 		            			changeToError(sAnswer);
 		            			
@@ -600,9 +619,12 @@ public class GameScreen extends AbstractGameScreen  {
 		            			Log.d("Debug GameScreen pChimney","X: " +pChimney.getX() + "Y: " + pChimney.getY());	
 		            			transition = true;
 		            		}else{
+		            			if(answer == items.get(rounds-1).getQ_num()){
+		            				sFeedback =  eval.getImmediateFeedback(7, sAnswer, lessonNumber);
+		            			}else{
+		            				sFeedback = "Sorry That is not what i'm asking";
+		            			}
 		            			Log.d("Debug Error", "Mali");
-		            			
-		            			sFeedback =  eval.getImmediateFeedback(7, sAnswer, lessonNumber);
 		            			transition = true;
 		            			changeToError(sAnswer);
 		            		}
@@ -629,8 +651,12 @@ public class GameScreen extends AbstractGameScreen  {
 		            			Log.d("Debug GameScreen pChimney","X: " +pStairs.getX() + "Y: " + pStairs.getY());	
 		            			transition = true;
 		            		}else{
+		            			if(answer == items.get(rounds-1).getQ_num()){
+		            				sFeedback =  eval.getImmediateFeedback(8, sAnswer, lessonNumber);
+		            			}else{
+		            				sFeedback = "Sorry That is not what i'm asking";
+		            			}
 		            			Log.d("Debug Error", "Mali");
-		            			sFeedback =  eval.getImmediateFeedback(8, sAnswer, lessonNumber);
 		            			transition = true;
 		            			changeToError(sAnswer);
 		            		}
@@ -784,7 +810,7 @@ public class GameScreen extends AbstractGameScreen  {
 				Log.d("Transition Debug", "Enters: Knock Knock");
 				  g.drawARGB(200, 0, 0, 0);
 				  g.drawImage(feedboxBoy, this.pDialog.getX(), pDialog.getY());
-				  g.drawString(sFeedback, 97, 63, paint);
+				  g.drawString(sFeedback, 165, 63, paint);
 				  g.drawImage(nextBtn, p_nextBtn.getX(), p_nextBtn.getY());
 				  switch(answer){
 				  case 1: g.drawImage(roof, pRoof.getX(), pRoof.getY());break;
