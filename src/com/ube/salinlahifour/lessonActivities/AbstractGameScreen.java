@@ -96,28 +96,28 @@ public abstract class AbstractGameScreen extends Screen {
 			paint2.setTextSize(15);
 			paint2.setTextAlign(Paint.Align.LEFT);
 			paint2.setAntiAlias(true);
-			paint2.setColor(Color.BLUE);
+			paint2.setColor(Color.BLACK);
 
 			paint3 = new Paint();
 			paint3.setTypeface(tf);
 			paint3.setTextSize(10);
 			paint3.setTextAlign(Paint.Align.LEFT);
 			paint3.setAntiAlias(true);
-			paint3.setColor(Color.BLUE);
+			paint3.setColor(Color.BLACK);
 			
 			paint4 = new Paint();
 			paint4.setTypeface(tf);
 			paint4.setTextSize(20);
 			paint4.setTextAlign(Paint.Align.CENTER);
 			paint4.setAntiAlias(true);
-			paint4.setColor(Color.BLUE);
+			paint4.setColor(Color.BLACK);
 			
 			paint5 = new Paint();
 			paint5.setTypeface(tf);
 			paint5.setTextSize(20);
 			paint5.setTextAlign(Paint.Align.CENTER);
 			paint5.setAntiAlias(true);
-			paint5.setColor(Color.RED);
+			paint5.setColor(Color.BLACK);
 			
 			Log.d("Abstract GamesScreen", "Initializing Paint Methods...done");
 	}

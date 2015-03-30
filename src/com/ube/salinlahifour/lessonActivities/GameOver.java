@@ -59,7 +59,7 @@ public class GameOver extends Activity {
 		Log.d("Debug ReportCard", "Eval Total Score: " + ev.getTotalScore() );
 		Log.d("Debug ReportCard", "Info End" );
 		
-		reportCard = new ReportCard(this, lesson,LTActLevel, ev, feedback);
+		reportCard = new ReportCard(this, lesson,LTActLevel, ev, feedback, this.ActName);
 		new Handler().postDelayed(new Runnable() {
 		    public void run() {
 		    	

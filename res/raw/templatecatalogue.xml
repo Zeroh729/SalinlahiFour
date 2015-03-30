@@ -20,15 +20,14 @@
     <Encouragement>
         <template>Keep on trying!</template> 
 		<template>You can do it!</template> 
-		<template>You are almost there!</template> 
-		<template>With a little more practice, you'll get this right.</template> 
+		<template>Malapit ka na.</template> 
 		<template>Try again next time!</template> 
-		<template>How about you try it again??</template>
+		<template>Kaya mo yan!</template>
     </Encouragement>
     <Praise>
         <template>Keep it up!</template>
         <template>You're doing great!</template>
-        <template>That's it! great work!</template>
+        <template>Magaling!</template>
     </Praise>
     <Trivia>
         <template>Did you know that the [Type] of [Word] is [Notes]</template>
@@ -40,17 +39,17 @@
         <template>Good, you got the right answer!</template>
         <template>Very good! Keep it up</template>
         <template>Excellent!</template>
-        <template>Brilliant! You're very smart</template>
-        <template>Fantastic! You're very good at this</template>
+        <template>Magaling</template>
+        <template>Mahusay!</template>
         <template>Amazing! keep it up</template>
         <template>Good Job!</template>
-        <template>You're doing great! Keep it up.</template>
+        <template>Tama!</template>
    </Positive_Acknowledgement>
    <Negative_Acknowledgement>
 		<template>That seems to be incorrect!</template> 
 		<template>Oops, Sorry that is wrong</template> 
 		<template>That is wrong, you should try harder</template> 
-		<template>Are you sure of your answer?</template> 
+		<template>Mali.</template> 
 		<template>You missed it</template> 
 		<template>Oops! That is [UserInput]</template>
 		<template>Wrong! That is [UserInput]</template>

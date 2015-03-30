@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+	<View 
+        android:id="@+id/view_blackoverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66000000"
+    ></View>
+    
+    <ImageView
+        android:id="@+id/popupwindow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/popupwindow"
+        />
+    
+    
+    <com.qwerjk.better_text.MagicTextView
+        xmlns:qwerjk="http://schemas.android.com/apk/res/com.qwerjk.better_text"
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@id/popupwindow"
+        android:layout_marginTop="3dp"
+        android:textColor="#FFFFFF"
+        android:text="How To Play"
+        android:textSize="48sp" 
+        android:padding="10dp"/>
+    
+    <ImageView
+        android:id="@+id/iv_screenshot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/samplehowtoplay"
+        android:layout_alignTop="@id/popupwindow"
+        android:layout_alignLeft="@id/popupwindow"
+        android:layout_alignRight="@id/popupwindow"
+        android:padding="60dp"
+        />
+    
+    <ImageButton
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/btn_nextarrow"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@null"
+        />
+    
+    <ImageButton
+        android:id="@+id/btn_prev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/btn_nextarrow"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:background="@null"
+        />
+    
+    <ImageButton
+        android:id="@+id/btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/btn_nextarrow"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@null"
+        android:onClick="start"
+        android:scaleX="0.6"
+        android:scaleY="0.6"
+        />
+    
+</RelativeLayout>

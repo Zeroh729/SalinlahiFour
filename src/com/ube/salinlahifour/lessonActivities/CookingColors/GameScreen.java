@@ -103,8 +103,8 @@ public class GameScreen extends AbstractGameScreen  {
 	        this.bgBack = Assets.bgBack;
 	        this.yesbtn = Assets.yesbtn;
 	        this.nobtn = Assets.nobtn;
-	        pNo = new Parts(220,300);
-	        pYes = new Parts(400,300);
+	        pYes = new Parts(220,300);
+	        pNo = new Parts(400,300);
 	        pBackg = new Parts(195, 100);
 		    Log.d("Aldrin ExtendedFramework", "Loading Assets...Done");
 		}

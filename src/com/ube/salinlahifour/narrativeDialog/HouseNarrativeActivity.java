@@ -38,16 +38,16 @@ public class HouseNarrativeActivity extends NarrativeDialog{
 
 	@Override
 	public void initiateScript() {
-		script.add(new ScriptLine("Hey " + SalinlahiFour.getLoggedInUser().getName() + "Halika! I want you to meet my cousin.", R.raw.narration_family_1));
-		script.add(new ScriptLine("Her name is Pichi-Pichi.",R.raw.narration_family_3));
-		script.add(new ScriptLine("Hi " + SalinlahiFour.getLoggedInUser().getName() + "! Pasok tayo, I'll show you something.",R.raw.narration_family_4));
-		script.add(new ScriptLine("You saw my house earlier right?",R.raw.narration_family_5));
-		script.add(new ScriptLine("Well I tried to make it by gluing things together...",R.raw.narration_family_6));
-		script.add(new ScriptLine("... and look!",R.raw.narration_family_7));
-		script.add(new ScriptLine("Hala! The pieces fell off!",R.raw.narration_family_8));
-		script.add(new ScriptLine(SalinlahiFour.getLoggedInUser().getName() + " Patulong",R.raw.narration_family_6));
-		script.add(new ScriptLine("Let’s help Pichi.",R.raw.narration_family_7));
-		script.add(new ScriptLine("Here I’ll give you the pieces.",R.raw.narration_family_8));
+		script.add(new ScriptLine("Hey " + SalinlahiFour.getLoggedInUser().getName() + "Halika! I want you to meet my cousin.", R.raw.narration_house_1));
+		script.add(new ScriptLine("Her name is Pichi-Pichi.",R.raw.narration_house_2));
+		script.add(new ScriptLine("Hi " + SalinlahiFour.getLoggedInUser().getName() + "! Pasok tayo, I'll show you something.",R.raw.narration_house_3));
+		script.add(new ScriptLine("You saw my house earlier right?",R.raw.narration_house_4));
+		script.add(new ScriptLine("Well I tried to make it by gluing things together...",R.raw.narration_house_5));
+		script.add(new ScriptLine("... and look!",R.raw.narration_house_6));
+		script.add(new ScriptLine("Hala! The pieces fell off!",R.raw.narration_house_7));
+		script.add(new ScriptLine(SalinlahiFour.getLoggedInUser().getName() + " Patulong",R.raw.narration_house_8));
+		script.add(new ScriptLine("Let’s help Pichi.",R.raw.narration_house_9));
+		script.add(new ScriptLine("Here I’ll give you the pieces.",R.raw.narration_house_10));
 	}
 
 	@Override

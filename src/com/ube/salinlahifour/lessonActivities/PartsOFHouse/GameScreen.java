@@ -117,8 +117,8 @@ public class GameScreen extends AbstractGameScreen  {
 		        v_pinto = Assets.pinto;
 		        nextBtn = Assets.nextBtn;
 		        p_nextBtn = new Parts(510,60);
-		        pNo = new Parts(220,300);
-		        pYes = new Parts(400,300);
+		        pYes = new Parts(220,300);
+		        pNo = new Parts(400,300);
 		        pBackg = new Parts(195, 100);
 		        
 		     
@@ -151,8 +151,8 @@ public class GameScreen extends AbstractGameScreen  {
 			Log.d("GameScreen", "Positioning Medium"); 
 			livesLeft = 6;
 			pDialog = new Parts(65,15);
-			pRoof = new Parts(59,60);	
-	        pBody = new Parts(480,110);
+			pRoof = new Parts(59,70);	
+	        pBody = new Parts(480,120);
 	        pDoor = new Parts(510,270);
 	        pWindow = new Parts(351,445);
 	        
@@ -183,8 +183,8 @@ public class GameScreen extends AbstractGameScreen  {
         	pGarage = new Parts(17,232);
         	pFence = new Parts(34,157);
         	
-        	pChimney = new Parts(0,0);
-        	pStairs = new Parts(0,0);
+        	pChimney = new Parts(390,125);
+        	pStairs = new Parts(202,470);
         	
         	pChimneyH = new Parts(282,145);
         	pStairsH = new Parts(200,330);
@@ -583,8 +583,10 @@ public class GameScreen extends AbstractGameScreen  {
 	            if (event.type == TouchEvent.TOUCH_DOWN) {
 	            	//super.transitionTouchEvent(event);
 	            	if(transition){
-	            		Log.d("Transition Debug", "Falseing");
-	   				  transition = false;
+	            		if(inBounds(event, p_nextBtn.getX() ,p_nextBtn.getY() , nextBtn.getWidth(), nextBtn.getHeight())){
+	            			Log.d("Transition Debug", "Falseing in medium");
+	   				  		transition = false;
+	            		}
 	            	}
 	            	Log.d("Touched Down", "X: " + event.x + "Y: " + event.y );
 	            	if(!pChimney.isPlaced()){
@@ -684,7 +686,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            			Log.d("Select", "Selected stairs");
 	            		}
 	            	}else{
-	            		if(activityLevel=="EASY"){
+	            		if(activityLevel=="HARD"){
 	            			answer = 0;
 	            		}
 	            	}	

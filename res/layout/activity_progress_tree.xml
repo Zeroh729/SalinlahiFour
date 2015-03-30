@@ -63,6 +63,7 @@
 		        android:src="@drawable/report_card_silver"
 		        android:layout_below="@id/img_gold"
 		        android:layout_marginBottom="20dp"
+		        android:visibility="invisible"
 		        />
 		    <TextView
 		        android:id="@+id/tv_silvercount"
@@ -76,13 +77,15 @@
 		        android:layout_marginLeft="10dp"
 		        android:textSize="42sp"
 		        android:textColor="#598309"
-		        android:text="-1"/>
+		        android:text="-1"
+		        android:visibility="invisible"/>
 		    <ImageView
 	            android:id="@+id/img_bronze"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
 		        android:src="@drawable/report_card_bronze"
 		        android:layout_below="@id/img_silver"
+		        android:visibility="invisible"
 		        />
 		    <TextView
 		        android:id="@+id/tv_bronzecount"
@@ -96,6 +99,7 @@
 		        android:layout_marginLeft="10dp"
 		        android:textSize="42sp"
 		        android:textColor="#598309"
+		        android:visibility="invisible"
 		        android:text="-1"/>
 	        </RelativeLayout>
     
