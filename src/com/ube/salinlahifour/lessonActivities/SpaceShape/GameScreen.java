@@ -694,23 +694,41 @@ public class GameScreen extends AbstractGameScreen  {
 			g.drawImage(backbtn, 1, 1);
 	       // g.drawString("sFeedback", 300, 400, paint2);//sFeedback 
 	       // g.drawString(sFeedback, 545, 40, paint3);//sQuestion
-	        g.drawString(sQuestion, 322, 63, paint4);//sQuestion
+	        g.drawString(sQuestion, 350, 63, paint4);//sQuestion
 	        showTransition();
 	        showExit();
 	       
 		}
-
+		String[] cuttedWord;
 		@Override
 		protected void showTransition() {
 			// TODO Auto-generated method stub
 			Graphics g = game.getGraphics();
 			if(super.transition){
 				Log.d("Transition Debug", "Enters: Knock Knock");
+				
 			 g.drawARGB(155, 0, 0, 0);
 			 g.drawImage(feedboxBoy, this.pDialog.getX(), pDialog.getY());
 			 g.drawImage(nextBtn, p_nextBtn.getX(), p_nextBtn.getY());
-			 g.drawString(sFeedback, 322, 63, paint4);
+			  String lineOne = "", lineTwo ="";
+			  cuttedWord = sentenceCutter(sFeedback);
+			  for(int s = 0; s<cuttedWord.length;s++){
+					if(s>8){
+						lineTwo += cuttedWord[s] + " ";
+					}else{
+						lineOne += cuttedWord[s]+ " ";
+					}
+				}
+			  g.drawString(lineOne, 350,63, paint4);
+			  g.drawString(lineTwo, 350,83, paint4);
+			 //g.drawString(sFeedback, 322, 63, paint4);
 			}
+		}
+		private String[] sentenceCutter(String sentence){
+			  String[] words;
+			  words = sentence.split(" ");
+			  
+			  return words;
 		}
 
 		@Override

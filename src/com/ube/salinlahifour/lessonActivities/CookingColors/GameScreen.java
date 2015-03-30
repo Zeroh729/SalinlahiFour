@@ -755,23 +755,68 @@ public class GameScreen extends AbstractGameScreen  {
 				  //g.drawString(feedbacks[0], 350,155, paint4);
 				  //g.drawString(feedbacks[1], 350,175, paint4);
 				  //g.drawString(feedbacks[2], 350,195, paint4);
-				  
+			
+				String[] cuttedWord;
+				
 				  if(isMistake){
 						if(cor1 == 0){
-							g.drawString(feedbacks[0], 350,155, paint5);
+							String lineOne = "", lineTwo ="";
+							//g.drawString("- ", 350,155, paint5);
+							//g.drawString(feedbacks[0], 350,155, paint5);
+							cuttedWord = sentenceCutter(feedbacks[0]);
+							for(int s = 0; s<cuttedWord.length;s++){
+								if(s>5){
+									lineTwo += cuttedWord[s] + " ";
+								}else{
+									lineOne += cuttedWord[s]+ " ";
+								}
+							}
+							g.drawString("1: " + lineOne, 352,155, paint5);
+							g.drawString(lineTwo, 352,175, paint5);
 						}
 						if(cor2 == 0){
-							g.drawString(feedbacks[1], 350,175, paint5);
+							String lineOne = "", lineTwo ="";
+							//g.drawString(feedbacks[1], 350,195, paint5);
+							//g.drawString("- ", 350,195, paint5);
+							cuttedWord = sentenceCutter(feedbacks[1]);
+							for(int s = 0; s<cuttedWord.length;s++){
+								if(s>5){
+									lineTwo += cuttedWord[s] + " ";
+								}else{
+									lineOne += cuttedWord[s]+ " ";
+								}
+							}
+							g.drawString("2: " + lineOne, 352,195, paint5);
+							g.drawString(lineTwo, 352,215, paint5);
 						}
 						if(cor3== 0){
-							g.drawString(feedbacks[2], 350,195, paint5);
+							String lineOne = "", lineTwo ="";
+							//g.drawString(feedbacks[2], 350,225, paint5);
+							//g.drawString("- ", 350,225, paint5);
+							cuttedWord = sentenceCutter(feedbacks[2]);
+							for(int s = 0; s<cuttedWord.length;s++){
+								if(s>5){
+									lineTwo += cuttedWord[s] + " ";
+								}else{
+									lineOne += cuttedWord[s]+ " ";
+								}
+							}
+							g.drawString("3: " + lineOne, 352,235, paint5);
+							g.drawString(lineTwo, 352,255, paint5);
 						}
 				  }else{
 						g.drawString(feedbacks[0], 350,155, paint4);
 					}
 			}
 		}
-
+		
+		private String[] sentenceCutter(String sentence){
+			  String[] words;
+			  words = sentence.split(" ");
+			  
+			  return words;
+		}
+		
 		@Override
 		protected void drawReadyUI() {
 			// TODO Auto-generated method stub
