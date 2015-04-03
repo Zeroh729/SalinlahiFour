@@ -474,7 +474,8 @@ public class MapActivity extends Activity implements OnClickListener{
 		Log.d("sceneIndex: " + sceneIndex, "TEST");
 		if(sceneIndex == 0){
 			btn_prevscene.setVisibility(View.INVISIBLE);
-		}else if(sceneIndex >= scenes.size()-1){
+		}
+		if(sceneIndex >= scenes.size()-1){
 			btn_nxtscene.setVisibility(View.INVISIBLE);
 		}
 	}

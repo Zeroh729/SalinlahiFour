@@ -24,7 +24,7 @@ import com.ube.salinlahifour.evaluationModule.*;
 import com.ube.salinlahifour.lessonActivities.AbstractGameScreen;
 import com.ube.salinlahifour.lessonActivities.GameOver;
 import com.ube.salinlahifour.lessonActivities.CookingColors.Assets;
-import com.ube.salinlahifour.lessonActivities.PartsOFHouse.Parts;
+import com.ube.salinlahifour.lessonActivities.CookingColors.Parts;
 import com.ube.salinlahifour.database.UserDetailOperations;
 import com.ube.salinlahifour.database.UserLessonProgressOperations;
 import com.ube.salinlahifour.database.UserRecordOperations;
@@ -38,7 +38,7 @@ public class GameScreen extends AbstractGameScreen  {
 	   
 	    //String activityLevel;
 	    
-	    private Image bg, wrong, ready,feedboxChef,nextBtn,recipe;
+	    private Image bg, wrong, ready,feedboxChef,recipe;
 	    private Parts pDialog, pRecipe;
 	    private Image[] buttons_sprinkles;
 	    private Image[] buttons_bread;
@@ -46,7 +46,7 @@ public class GameScreen extends AbstractGameScreen  {
 	    private Image bread, frosting, sprinkles;
 	    private Cake cake;
 	    private ButtonSet breaderButtons, creamerButtons, sprinklerButtons;
-	    private int answer = 0, userID, isSubmit = 1;
+	    private int  userID, isSubmit = 1;
 	    private Sound[] sounds; 
 	    // Edit lives left to the question size
 	    private String[] questions;
@@ -54,6 +54,7 @@ public class GameScreen extends AbstractGameScreen  {
 	    private Image backbtn, nobtn, yesbtn, bgBack;
 	    private Parts pNo,pYes,pBackg;
 	    private boolean isMistake = false;
+	    Assets as;
 	    private int cor1 = 0, cor2 = 0, cor3 = 0;
 	    public GameScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson) {
 	    	//Super Parameters Game, ActivityName, ActivityLevel, UserID
@@ -65,6 +66,7 @@ public class GameScreen extends AbstractGameScreen  {
 	       questions = new String[3];
 	       feedbacks = new String[3];
 	       rounds = 1;
+	       
 	       lessonNumber = 3;
 	       
 	       for(int i=0; i<feedbacks.length;i++){

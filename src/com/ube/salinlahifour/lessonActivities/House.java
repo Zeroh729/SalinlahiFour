@@ -30,7 +30,5 @@ public class House extends AbstractLAFramework  {
 	 public void onBackPressed() {
 		 getCurrentScreen().backButton();
 	 }
-	 public void showReportCard(String ActivityLevel, Evaluation evaluation,int score, int lessonnumber){
-		 super.showReportCard(this, ActivityLevel, evaluation, score, lessonnumber);
-	 }
+	
 }

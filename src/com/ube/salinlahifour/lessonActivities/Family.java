@@ -346,7 +346,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 							YoYo.with(Techniques.Shake).playOn(v);
 							ImageView img = (ImageButton)v;
 							img.setColorFilter(new LightingColorFilter(0xffcc0000, 0x000000));
-							questions.get(itemno).playFilipinoSound();
+							//questions.get(itemno).playFilipinoSound();
 							//v.getBackground().setColorFilter(new LightingColorFilter(0xff888888, 0x000000));
 						}
 						break;
