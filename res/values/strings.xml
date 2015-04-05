@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">SalinlahiFour</string>
+    <string name="app_name">Salinlahi 4</string>
     <string name="hello_world">Salinlahi 4</string>
     <string name="title_activity_select_user">SelectUserActivity</string>
     <string name="title_activity_map">MapActivity</string>

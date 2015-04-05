@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="public" author="true" classpath="libs/iFeedback.jar;libs/jdom.jar;libs/AndroidViewAnimations-1.1.3.jar;libs/NineOldAndroid-2.4.0.jar;libs/android-support-v4.jar;libs/simplenlg-3.8.jar;libs/AndroidEasingFunctions-1.0.0.jar" destdir="doc" doctitle="Salinlahi 4 Techinical Manual" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="com.ube.salinlahifour.database,com.kilobolt.framework.implementation,com.ube.salinlahifour.howtoplay,com.ube.salinlahifour.lessonActivities,com.ube.salinlahifour.tutorials,com.ube.salinlahifour,com.ube.salinlahifour.narrativeDialog,com.ube.salinlahifour.lessonActivities.PartsOFHouse,com.ube.salinlahifour.enumTypes,com.ube.salinlahifour.lessonActivities.CookingColors,com.ube.salinlahifour.debugclasses,com.qwerjk.better_text,com.ube.salinlahifour.tools,com.kilobolt.framework,com.ube.salinlahifour.evaluationModule,com.ube.salinlahifour.model,com.ube.salinlahifour.lessonActivities.SpaceShape,com.ube.salinlahifour.uibuilders.Button,com.ube.salinlahifour.uibuilders.RadioButton,com.ube.salinlahifour.animation" source="1.7" sourcepath="gen;src" splitindex="true" use="true" version="true">
+            <link href="file:/C:/eclipse/sdk/docs/reference"/>
+        </javadoc>
+    </target>
+</project>

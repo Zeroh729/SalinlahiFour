@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import android.content.Context;
 import android.media.MediaPlayer;
+import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -103,7 +104,7 @@ public class Character {
 	public void say(ScriptLine line){
 		MediaPlayer voice = MediaPlayer.create(context, line.voiceResID);
 		voice.start();
-		tv_dialog.setText(line.line);
+		tv_dialog.setText(Html.fromHtml(line.line));
 		
 	}
 }

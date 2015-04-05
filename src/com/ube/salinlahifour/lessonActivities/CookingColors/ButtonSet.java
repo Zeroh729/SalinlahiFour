@@ -12,7 +12,6 @@ public class ButtonSet {
 	private int margin = 5;
 	private int size;
 	private int[] X, Y;
-	private int width, height; 
 	private int[] chosenColors;
 	private ArrayList<String> fColors;
 	private int qColor;

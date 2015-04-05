@@ -45,7 +45,7 @@ public class SalinlahiFour extends Application{
 		bgm = MediaPlayer.create(this, R.raw.bgm_map);
 //		bgm.setLooping(true);
 		bgm.setVolume(0, 0);
-//		bgm.setVolume(0.4f, 0.4f);
+		bgm.setVolume(0.4f, 0.4f);
 		
 
 		

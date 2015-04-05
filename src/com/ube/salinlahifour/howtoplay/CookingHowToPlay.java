@@ -9,9 +9,6 @@ public class CookingHowToPlay extends AbstractHowToPlay {
 		imageRes.add(R.drawable.howtoplay_color_1);
 		imageRes.add(R.drawable.howtoplay_color_2);
 		imageRes.add(R.drawable.howtoplay_color_3);
-		
-		setUp();
-		setShot();
 	}
 
 }

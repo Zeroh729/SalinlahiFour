@@ -37,11 +37,11 @@ public class CookingNarrativeActivity extends NarrativeDialog{
 		script.add(new ScriptLine("Hey where are we?", R.raw.narration_colors_1));
 		script.add(new ScriptLine("You're in my kitchen!",R.raw.narration_colors_2));
 		script.add(new ScriptLine("What are you doing here?!",R.raw.narration_colors_3));
-		script.add(new ScriptLine("Di bale, I have better things to do.",R.raw.narration_colors_4));
-		script.add(new ScriptLine("Halika! Help me!",R.raw.narration_colors_5));
+		script.add(new ScriptLine("<i>Di bale</i> <font color=#8C8C8C>(No matter)</font>, I have better things to do.",R.raw.narration_colors_4));
+		script.add(new ScriptLine("<i>Halika!</i> <font color=#8C8C8C>(Come!)</font> Help me!",R.raw.narration_colors_5));
 		script.add(new ScriptLine("I don't think we have a choice here " +SalinlahiFour.getLoggedInUser().getName(),R.raw.narration_colors_6));
-		script.add(new ScriptLine("Tara!",R.raw.narration_colors_7));
-		script.add(new ScriptLine("Are you ready? Ok makinig! I'm only gonna do this once.",R.raw.narration_colors_8));
+		script.add(new ScriptLine("<i>Tara!</i> <font color=#8C8C8C>(Let's go!)</font>",R.raw.narration_colors_7));
+		script.add(new ScriptLine("Are you ready? Ok! I'm only gonna do this once.",R.raw.narration_colors_8));
 	}
 
 	@Override

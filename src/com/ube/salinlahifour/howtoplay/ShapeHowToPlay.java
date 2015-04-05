@@ -8,9 +8,6 @@ public class ShapeHowToPlay extends AbstractHowToPlay {
 	protected void setImageRes() {
 		imageRes.add(R.drawable.howtoplay_shape_1);
 		imageRes.add(R.drawable.howtoplay_shape_2);
-		
-		setUp();
-		setShot();
 	}
 
 }
