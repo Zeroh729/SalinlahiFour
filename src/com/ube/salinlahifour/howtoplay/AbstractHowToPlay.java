@@ -8,11 +8,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.qwerjk.better_text.MagicTextView;
 import com.ube.salinlahifour.R;
 import com.ube.salinlahifour.SalinlahiFour;
-import com.ube.salinlahifour.uibuilders.Button.BtnNextArrowStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.BtnStatesDirector;
 import com.ube.salinlahifour.uibuilders.Button.HowToPlayNextBtnStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.HowToPlayPrevBtnStatesBuilder;
@@ -25,6 +25,7 @@ public abstract class AbstractHowToPlay extends Activity implements OnClickListe
 	protected ImageView iv_screenshot;
 	protected ImageButton btn_prev;
 	protected ImageButton btn_start;
+	protected TextView tv_count;
 	protected int pageIndex; 
 	
 	@Override
@@ -53,10 +54,15 @@ public abstract class AbstractHowToPlay extends Activity implements OnClickListe
 
 	    tv_title = (MagicTextView)findViewById(R.id.tv_title);
 		for(int i = 0; i < 30; i++)
-			tv_title.addOuterShadow(5, 0, 0, 0xFF164366);
+			tv_title.addOuterShadow(5, 0, 0, 0xFF066868);
 		tv_title.setTypeface(SalinlahiFour.getFontKgsecondchances());
 		
+		tv_count = (TextView)findViewById(R.id.tv_count);
+		tv_count.setTypeface(SalinlahiFour.getFontPlaytime());
+		
 		setImageRes();
+		setUp();
+		setShot();
 	}
 	
 	protected abstract void setImageRes();
@@ -94,5 +100,7 @@ public abstract class AbstractHowToPlay extends Activity implements OnClickListe
 		if(pageIndex == 0){
 			btn_prev.setVisibility(View.INVISIBLE);
 		}
+		
+		tv_count.setText((pageIndex+1) + "/" + imageRes.size());
 	}
 }

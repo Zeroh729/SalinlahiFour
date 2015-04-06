@@ -54,6 +54,7 @@ import com.ube.salinlahifour.uibuilders.Button.PopupcloseBtnStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.ProgressBtnStatesBuilder;
 
 public class MapActivity extends Activity implements OnClickListener{
+
 	private ArrayList<Scene> scenes;
 	private ImageButton[] imgBtns;
 	private TextView[] txtViews;
@@ -92,6 +93,8 @@ public class MapActivity extends Activity implements OnClickListener{
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
 		    UserID = extras.getInt("UserID");
+		}else{
+			UserID = SalinlahiFour.getLoggedInUser().getId();
 		}
 		
 		imgBtns = new ImageButton[5];
@@ -129,6 +132,7 @@ public class MapActivity extends Activity implements OnClickListener{
 			scene = scenes.get(sceneIndex);
 			setLayout();			
 		}
+		
 	}
 	
 	private void setMapMenuButtons(){
@@ -237,7 +241,6 @@ public class MapActivity extends Activity implements OnClickListener{
 		Log.d("scene count: " + scenes.size(), "FINAL CHECKING");
 		for(Scene scene : scenes){
 			for(int i = 0; i < scene.getLessons().size(); i++){
-				if(scene.getLessons().get(i).getLocked()){
 					UserLessonProgress progress = userdb.getUserLessonProgress(UserID, scene.getLessons().get(i).getName());
 					if(progress != null){
 						scene.getLessons().get(i).setLocked(false);
@@ -252,22 +255,24 @@ public class MapActivity extends Activity implements OnClickListener{
 								}
 							}
 						}
-					}
-					else{
+
+//					if(!scene.getLessons().get(i).getLocked()){
 //						scene.getLessons().get(i).setLocked(true);
-						scene.getLessons().get(i).setLocked(false);
-					}
-					try{
-						scene.getLessons().get(0).setLocked(false);
-					}catch(Exception e){
-						
-					}
+////						scene.getLessons().get(i).setLocked(false);
+//					}
 				}
 
 				Log.d("Lesson no. : " + i + " ->" + scene.getLessons().get(i).getLocked(),"FINAL CHECKING");
 				
 //				scene.getLessons().get(i).setLocked(false);
 			}
+		}
+		
+
+		try{
+			scenes.get(0).getLessons().get(0).setLocked(false);
+		}catch(Exception e){
+			
 		}
 		
 		userdb.close();
@@ -699,10 +704,6 @@ public class MapActivity extends Activity implements OnClickListener{
 						            	 ((ImageView)popupView.findViewById(R.id.star3)).setImageResource(R.drawable.lvlselect_null);
 						             }
 						             
-						             //DELETE AT ONCE
-
-				            	 		btn_hard.setEnabled(true);
-						             
 					             userdb.close();
 					            popupWindow.showAsDropDown(popupView);
 				}	
@@ -731,8 +732,23 @@ public class MapActivity extends Activity implements OnClickListener{
 		// TODO Auto-generated method stub
 		super.onResume();
 		SalinlahiFour.getBgm().start();
+
+		Log.d("onResume","MapActivity TEST");
+
 	}
 
+
+	@Override
+	protected void onRestart() {
+		// TODO Auto-generated method stub
+		super.onRestart();
+		
+		Log.d("onRestart","MapActivity TEST");
+
+    	finish();
+    	Intent intent = new Intent(this, MapActivity.class);
+    	startActivity(intent);
+	}
 
 	@Override
 	protected void onPause() {

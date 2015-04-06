@@ -39,9 +39,9 @@ public class FamilyNarrativeActivity extends NarrativeDialog{
 			script.add(new ScriptLine("I am " + maincharacterName, R.raw.narration_family_2m));
 		script.add(new ScriptLine("Welcome to my house!",R.raw.narration_family_3));
 		script.add(new ScriptLine("Ready to start our adventure?",R.raw.narration_family_4));
-		script.add(new ScriptLine(maincharacterName + "! Kain na! You can't go out with an empty stomach!",R.raw.narration_family_5));
+		script.add(new ScriptLine(maincharacterName + "! <i>Kain na!</i> <font color=#8C8C8C>(Let's eat!)</font> You can't go out with an empty stomach!",R.raw.narration_family_5));
 		script.add(new ScriptLine("Oh ok nanay",R.raw.narration_family_6));
-		script.add(new ScriptLine("Well, just like nanay said, kain tayo, let's eat!",R.raw.narration_family_7));
+		script.add(new ScriptLine("Well, just like nanay said, let's eat!",R.raw.narration_family_7));
 		script.add(new ScriptLine("Come on. I'll introduce you to the others.",R.raw.narration_family_8));
 	}
 

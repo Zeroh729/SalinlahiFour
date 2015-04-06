@@ -58,9 +58,9 @@ public abstract class AbstractGameScreen extends Screen {
         Log.d("Aldrin ExtendedFramework", "Abstract game Screen loading");
         this.context = context;
 		// TODO Auto-generated constructor stub
-		 eval = new Evaluation(SalinlahiFour.getContext(), activtityName, activityLevel);
+		 eval = new Evaluation(SalinlahiFour.getContext(), lesson.getName(), activityLevel);
 		 this.userID = userID;
-		 this.activtityName = activityName;
+		 this.activtityName = lesson.getName();
 	     this.activityLevel = activityLevel;
 	     this.lesson = lesson;
 	     this.gameOverLock = false;

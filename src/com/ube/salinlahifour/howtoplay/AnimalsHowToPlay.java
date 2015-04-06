@@ -11,8 +11,6 @@ public class AnimalsHowToPlay extends AbstractHowToPlay {
 		imageRes.add(R.drawable.howtoplay_animals_2);
 		imageRes.add(R.drawable.howtoplay_animals_3);
 		
-		setUp();
-		setShot();
 	}
 
 }

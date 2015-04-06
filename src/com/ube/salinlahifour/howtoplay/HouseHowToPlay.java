@@ -10,9 +10,6 @@ public class HouseHowToPlay extends AbstractHowToPlay {
 		imageRes.add(R.drawable.howtoplay_house_2);
 		imageRes.add(R.drawable.howtoplay_house_3);
 		imageRes.add(R.drawable.howtoplay_house_4);
-		
-		setUp();
-		setShot();
 	}
 
 

@@ -8,9 +8,6 @@ public class FamilyHowToPlay extends AbstractHowToPlay{
 	protected void setImageRes() {
 		imageRes.add(R.drawable.howtoplay_family_1);
 		imageRes.add(R.drawable.howtoplay_family_2);
-		
-		setUp();
-		setShot();
 	}
 
 }
