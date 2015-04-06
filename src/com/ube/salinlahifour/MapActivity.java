@@ -241,7 +241,6 @@ public class MapActivity extends Activity implements OnClickListener{
 		Log.d("scene count: " + scenes.size(), "FINAL CHECKING");
 		for(Scene scene : scenes){
 			for(int i = 0; i < scene.getLessons().size(); i++){
-				if(scene.getLessons().get(i).getLocked()){
 					UserLessonProgress progress = userdb.getUserLessonProgress(UserID, scene.getLessons().get(i).getName());
 					if(progress != null){
 						scene.getLessons().get(i).setLocked(false);
@@ -256,11 +255,11 @@ public class MapActivity extends Activity implements OnClickListener{
 								}
 							}
 						}
-					}
-					else{
-						scene.getLessons().get(i).setLocked(true);
-//						scene.getLessons().get(i).setLocked(false);
-					}
+
+//					if(!scene.getLessons().get(i).getLocked()){
+//						scene.getLessons().get(i).setLocked(true);
+////						scene.getLessons().get(i).setLocked(false);
+//					}
 				}
 
 				Log.d("Lesson no. : " + i + " ->" + scene.getLessons().get(i).getLocked(),"FINAL CHECKING");
@@ -271,7 +270,7 @@ public class MapActivity extends Activity implements OnClickListener{
 		
 
 		try{
-			scene.getLessons().get(0).setLocked(false);
+			scenes.get(0).getLessons().get(0).setLocked(false);
 		}catch(Exception e){
 			
 		}

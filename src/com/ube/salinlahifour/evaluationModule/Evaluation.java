@@ -46,7 +46,7 @@ public class Evaluation {
 		Log.d("Recording: Lesson Name: " + LessonName, "TEST");
 		UserRecordOperations userRecordOperator = new UserRecordOperations(context);
 		userRecordOperator.open();
-		userRecordOperator.addUserRecord(UserID, LessonName, correctAnswer, Status);
+		userRecordOperator.addUserRecord(SalinlahiFour.getLoggedInUser().getId(), LessonName, correctAnswer, Status);
 		userRecordOperator.close();
 	}
 	
