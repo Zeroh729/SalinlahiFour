@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0eefef" >
+    
+	<View 
+        android:id="@+id/view_blackoverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66000000"
+    ></View>
+    
+    
+    
+    
+    <ImageView
+        android:id="@+id/popupwindow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tv_title"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/popupwindow"
+        android:scaleX="1.1"
+        android:scaleY="1.1"
+        />
+    
+    
+    <com.qwerjk.better_text.MagicTextView
+        xmlns:qwerjk="http://schemas.android.com/apk/res/com.qwerjk.better_text"
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#FFFFFF"
+        android:text="How To Play"
+        android:textSize="48sp"/>
+    
+    
+    <ImageView
+        android:id="@+id/iv_screenshot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/samplehowtoplay"
+        android:layout_alignTop="@id/popupwindow"
+        android:layout_alignLeft="@id/popupwindow"
+        android:layout_alignRight="@id/popupwindow"
+        android:layout_alignBottom="@id/popupwindow"
+        android:padding="20dp"
+        />
+    
+    <ImageButton
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/tut_arrow_right"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/popupwindow"
+        android:layout_marginLeft="10dp"
+        android:background="@null"
+        />
+    
+    <ImageButton
+        android:id="@+id/btn_prev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/tut_arrow_left"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/popupwindow"
+        android:background="@null"
+        />
+    
+    <ImageButton
+        android:id="@+id/btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/btn_nextarrow"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@null"
+        android:onClick="start"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        />
+    
+    <TextView
+        android:id="@+id/tv_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2/3"
+        android:textColor="#163c8b"
+        android:layout_alignBottom="@+id/popupwindow"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        />
+    
+</RelativeLayout>

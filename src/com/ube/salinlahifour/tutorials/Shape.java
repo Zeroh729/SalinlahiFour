@@ -10,12 +10,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ube.salinlahifour.R;
+import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.narrativeDialog.HouseNarrativeActivity;
 import com.ube.salinlahifour.narrativeDialog.ShapeNarrativeActivity;
+import com.ube.salinlahifour.uibuilders.Button.BtnNextArrowStatesBuilder;
+import com.ube.salinlahifour.uibuilders.Button.BtnStatesDirector;
 
 public class Shape extends AbstractTutorialActivity {
 	private TextView[] textviews;
 	private ImageView[] imgviews;
+	private ImageButton btn_next;
+	private boolean[] pressed;
+	private TextView tv_rule;
 	
 	public Shape(){
 		layoutID = R.layout.tutorial_shape;
@@ -44,6 +50,7 @@ public class Shape extends AbstractTutorialActivity {
 		       public void onClick(View v) {
 		    	   switch (v.getId()) {
 		           case R.id.imageView1:
+		        	   pressed[0] = true;
 		        	   if(!isBackVisibleimageView1){
 		        		   textviews[0].setVisibility(android.view.View.VISIBLE);
 							setRightOut.setTarget(imgviews[0]);
@@ -61,6 +68,7 @@ public class Shape extends AbstractTutorialActivity {
 						}
 		             break;
 		           case R.id.imageView2:
+		        	   pressed[1] = true;
 		        	   if(!isBackVisibleimageView2){
 		        		   textviews[1].setVisibility(android.view.View.VISIBLE);
 							setRightOut.setTarget(imgviews[1]);
@@ -78,6 +86,7 @@ public class Shape extends AbstractTutorialActivity {
 						} 
 		             break;
 		           case R.id.imageView3:
+		        	   pressed[2] = true;
 		        	   if(!isBackVisibleimageView3){
 		        		   textviews[2].setVisibility(android.view.View.VISIBLE);
 							setRightOut.setTarget(imgviews[2]);
@@ -95,6 +104,7 @@ public class Shape extends AbstractTutorialActivity {
 						}    
 		             break;		          
 		           case R.id.imageView4:
+		        	   pressed[3] = true;
 		        	   if(!isBackVisibleimageView4){
 		        		   textviews[3].setVisibility(android.view.View.VISIBLE);
 							setRightOut.setTarget(imgviews[3]);
@@ -112,6 +122,15 @@ public class Shape extends AbstractTutorialActivity {
 						}        
 		             break;
 		           }
+		    	   for(int i = 0; i < pressed.length-1; i++){
+		    		   if(pressed[i]){
+		    			   if((i+1) == pressed.length-1){
+		    				   btn_next.setVisibility(View.VISIBLE);
+		    			   }
+		    		   }else{
+		    			   break;
+		    		   }
+		    	   }
 		       }
 		     };
 		     imgviews[0].setOnClickListener(oclClick);
@@ -130,6 +149,9 @@ public class Shape extends AbstractTutorialActivity {
 				j++;
 			}
 		}
+
+		findViewById(R.id.frame_4).setVisibility(View.INVISIBLE);
+		
 		final AnimatorSet setRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(),
 				R.animator.flipout);
 	 
@@ -141,6 +163,7 @@ public class Shape extends AbstractTutorialActivity {
 		       public void onClick(View v) {
 		    	   switch (v.getId()) {
 		           case R.id.imageView1:
+		        	   pressed[0] = true;
 		        	   if(!isBackVisibleimageView1){
 		        		   textviews[0].setVisibility(android.view.View.VISIBLE);
 							setRightOut.setTarget(imgviews[0]);
@@ -158,6 +181,7 @@ public class Shape extends AbstractTutorialActivity {
 						}
 		             break;
 		           case R.id.imageView2:
+		        	   pressed[1] = true;
 		        	   if(!isBackVisibleimageView2){
 		        		   textviews[1].setVisibility(android.view.View.VISIBLE);
 							setRightOut.setTarget(imgviews[1]);
@@ -175,6 +199,7 @@ public class Shape extends AbstractTutorialActivity {
 						} 
 		             break;
 		           case R.id.imageView3:
+		        	   pressed[2] = true;
 		        	   if(!isBackVisibleimageView3){
 		        		   textviews[2].setVisibility(android.view.View.VISIBLE);
 							setRightOut.setTarget(imgviews[2]);
@@ -192,6 +217,7 @@ public class Shape extends AbstractTutorialActivity {
 						}    
 		             break;		          
 		           case R.id.imageView4:
+		        	   pressed[3] = true;
 		        	   if(!isBackVisibleimageView4){
 		        		   textviews[3].setVisibility(android.view.View.VISIBLE);
 							setRightOut.setTarget(imgviews[3]);
@@ -209,6 +235,15 @@ public class Shape extends AbstractTutorialActivity {
 						}        
 		             break;
 		           }
+		    	   for(int i = 0; i < pressed.length-1; i++){
+		    		   if(pressed[i]){
+		    			   if((i+1) == pressed.length-1){
+		    				   btn_next.setVisibility(View.VISIBLE);
+		    			   }
+		    		   }else{
+		    			   break;
+		    		   }
+		    	   }
 		       }
 		     };
 		     imgviews[0].setOnClickListener(oclClick);
@@ -238,6 +273,7 @@ public class Shape extends AbstractTutorialActivity {
 		       public void onClick(View v) {
 		    	   switch (v.getId()) {
 		           case R.id.imageView1:
+		        	   pressed[0] = true;
 		        	   if(!isBackVisibleimageView1){
 		        		   textviews[0].setVisibility(android.view.View.VISIBLE);
 							setRightOut.setTarget(imgviews[0]);
@@ -255,6 +291,7 @@ public class Shape extends AbstractTutorialActivity {
 						}
 		             break;
 		           case R.id.imageView2:
+		        	   pressed[1] = true;
 		        	   if(!isBackVisibleimageView2){
 		        		   textviews[1].setVisibility(android.view.View.VISIBLE);
 							setRightOut.setTarget(imgviews[1]);
@@ -272,6 +309,7 @@ public class Shape extends AbstractTutorialActivity {
 						} 
 		             break;
 		           case R.id.imageView3:
+		        	   pressed[2] = true;
 		        	   if(!isBackVisibleimageView3){
 		        		   textviews[2].setVisibility(android.view.View.VISIBLE);
 							setRightOut.setTarget(imgviews[2]);
@@ -289,6 +327,7 @@ public class Shape extends AbstractTutorialActivity {
 						}    
 		             break;		          
 		           case R.id.imageView4:
+		        	   pressed[3] = true;
 		        	   if(!isBackVisibleimageView4){
 		        		   textviews[3].setVisibility(android.view.View.VISIBLE);
 							setRightOut.setTarget(imgviews[3]);
@@ -306,6 +345,15 @@ public class Shape extends AbstractTutorialActivity {
 						}        
 		             break;
 		           }
+		    	   for(int i = 0; i < pressed.length-1; i++){
+		    		   if(pressed[i]){
+		    			   if((i+1) == pressed.length-1){
+		    				   btn_next.setVisibility(View.VISIBLE);
+		    			   }
+		    		   }else{
+		    			   break;
+		    		   }
+		    	   }
 		       }
 		     };
 		     imgviews[0].setOnClickListener(oclClick);
@@ -330,6 +378,19 @@ public class Shape extends AbstractTutorialActivity {
 		imgviews[1] = (ImageButton)findViewById(R.id.imageView2);
 		imgviews[2] = (ImageButton)findViewById(R.id.imageView3);
 		imgviews[3] = (ImageButton)findViewById(R.id.imageView4);
+
+		pressed = new boolean[4];
+		
+		tv_rule = (TextView)findViewById(R.id.tv_rule);
+		btn_next = (ImageButton)findViewById(R.id.button1);
+		btn_next.setImageDrawable(BtnStatesDirector.getImageDrawable(new BtnNextArrowStatesBuilder()));
+		
+		tv_rule.setTypeface(SalinlahiFour.getFontKgsecondchances());
+
+		pressed[0] = false;
+		pressed[1] = false;
+		pressed[2] = false;
+		pressed[3] = false;
 		
 	}
 }

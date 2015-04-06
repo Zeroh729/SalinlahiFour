@@ -46,7 +46,7 @@ public class Evaluation {
 		Log.d("Recording: Lesson Name: " + LessonName, "TEST");
 		UserRecordOperations userRecordOperator = new UserRecordOperations(context);
 		userRecordOperator.open();
-		userRecordOperator.addUserRecord(UserID, LessonName, correctAnswer, Status);
+		userRecordOperator.addUserRecord(SalinlahiFour.getLoggedInUser().getId(), LessonName, correctAnswer, Status);
 		userRecordOperator.close();
 	}
 	
@@ -71,10 +71,11 @@ public class Evaluation {
 			easyStar = userLessonProgressOperator.getUserLessonProgress(UserID, lessonName).getEasyStar();
 			mediumStar = userLessonProgressOperator.getUserLessonProgress(UserID, lessonName).getMediumStar();
 			hardStar = userLessonProgressOperator.getUserLessonProgress(UserID, lessonName).getHardStar();
-			if(activityLevel == LevelType.EASY.toString()){
+			Log.d("Medal Debug", "Act Level: " + activityLevel);
+			if(activityLevel == LevelType.EASY.toString() || activityLevel.equals(LevelType.EASY.toString())){
 					userLessonProgressOperator.updateUserLessonProgress(UserID, lessonName, star.toString(), mediumStar, hardStar);
 			}
-			else if(activityLevel == LevelType.MEDIUM.toString()){
+			else if(activityLevel == LevelType.MEDIUM.toString()|| activityLevel.equals(LevelType.MEDIUM.toString())){
 				userLessonProgressOperator.updateUserLessonProgress(UserID, lessonName, easyStar, star.toString(), hardStar);
 			}
 			else{
@@ -121,7 +122,7 @@ public class Evaluation {
 	public boolean evaluateAnswer(String CorrectAnswer, String UserAnswer, int UserID){
 		if(CorrectAnswer.equals(UserAnswer)){
 			score++;
-			totscore++;
+			totscore++; //FIX THIS: must be items.getSize()
 			status = "Correct";
 			Log.d("Evaluation","Updating User Record");
 			recordUserAnswer(LessonName, CorrectAnswer, status, UserID);
@@ -130,7 +131,7 @@ public class Evaluation {
 		}
 		else{
 			status = "Incorrect";
-			totscore++;
+			totscore++; //FIX THIS: must be items.getSize()
 			Log.d("Evaluation","Updating User Record");
 			recordUserAnswer(LessonName, CorrectAnswer, status, UserID);
 			Log.d("Evaluation","Updating User Record");
@@ -138,6 +139,13 @@ public class Evaluation {
 		}
 	}
 
+	public void setScore(int score){
+		this.score = score;
+	}
+	public void setTotScore(int total){
+		this.totscore = total;
+	}
+	
 	public int getScore()
 	{
 		return score;

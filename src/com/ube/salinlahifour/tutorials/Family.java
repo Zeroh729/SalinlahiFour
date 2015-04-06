@@ -48,7 +48,7 @@ public class Family extends AbstractTutorialActivity {
 		}
 		textviews[0].setText("Nanay! \n She is my mother. She usually cooks for the family");
 	    textviews[1].setText("Tatay! \n This is my father. He is the one that works for the family");
-	    textviews[2].setText("Kuya! \n My older brother. He likes to play basketball and all different kinfs of sports");
+	    textviews[2].setText("Kuya! \n My older brother. He likes to play basketball and all different kinds of sports");
 	    textviews[3].setText("Ate! \n She is my older sister. She like to spend her time with her phone");
 		final AnimatorSet setRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(),
 				R.animator.flipout);
@@ -293,7 +293,8 @@ public class Family extends AbstractTutorialActivity {
 				j++;
 			}
 		}
-		
+
+		findViewById(R.id.frame_3).setVisibility(View.INVISIBLE);
 		findViewById(R.id.frame_4).setVisibility(View.INVISIBLE);
 		
 		textviews[0].setText("Tito\nHe is the brother of my parent. I do not know which one though.");
@@ -386,9 +387,9 @@ public class Family extends AbstractTutorialActivity {
 						}        
 		             break;
 		           }
-		    	   for(int i = 0; i < pressed.length-1; i++){
+		    	   for(int i = 0; i < pressed.length-2; i++){
 		    		   if(pressed[i]){
-		    			   if((i+1) == pressed.length-1){
+		    			   if((i+1) == pressed.length-2){
 		    				   btn_next.setVisibility(View.VISIBLE);
 		    			   }
 		    		   }else{

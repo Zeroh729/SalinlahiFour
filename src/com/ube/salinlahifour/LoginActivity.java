@@ -77,7 +77,7 @@ public class LoginActivity extends Activity implements OnClickListener, OnChecke
 		
 
 		switch(userDetails.size()){
-			case 0: btn_login.setEnabled(false);
+			case 0: noCharacterSetup();
 					break;
 			case 4: btn_register.setVisibility(View.GONE);
 					rdo_char4.setVisibility(View.VISIBLE); 
@@ -220,13 +220,27 @@ public class LoginActivity extends Activity implements OnClickListener, OnChecke
 			selected = 3;
 			break;
 		}
-		UserDetail user = userDetails.get(selected);
-		UserLessonProgressOperations progressOperator = new UserLessonProgressOperations(this);
-		progressOperator.open();
-		int goldStars = progressOperator.getGoldStarsCount(user.getId());
-		progressOperator.close();
-		tv_userdetails.setText("Name: " + user.getName() + "\nGold Stars: " + goldStars);
+		if(userDetails.size() > 0){
+			UserDetail user = userDetails.get(selected);
+			UserLessonProgressOperations progressOperator = new UserLessonProgressOperations(this);
+			progressOperator.open();
+			int goldStars = progressOperator.getGoldStarsCount(user.getId());
+			int silverStars = progressOperator.getSilverStarsCount(user.getId());
+			int bronzeStars = progressOperator.getBronzeStarsCount(user.getId());
+			int totalStars = (goldStars*3) + (silverStars * 2) + bronzeStars;
+			progressOperator.close();
+			tv_userdetails.setText("Name: " + user.getName() + "\nGold Stars: " + totalStars);
+		}else{
+			noCharacterSetup();
+		}
 	}
+	
+	private void noCharacterSetup() {
+		btn_login.setEnabled(false);
+		btn_delete.setVisibility(View.INVISIBLE);
+		tv_userdetails.setText("Hi!\nCreate a character to play.");
+	}
+
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub

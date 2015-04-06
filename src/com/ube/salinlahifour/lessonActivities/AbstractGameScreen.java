@@ -1,10 +1,12 @@
 package com.ube.salinlahifour.lessonActivities;
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -12,8 +14,11 @@ import android.util.Log;
 
 import com.kilobolt.framework.Game;
 import com.kilobolt.framework.Graphics;
+import com.kilobolt.framework.Graphics.ImageFormat;
+import com.kilobolt.framework.Image;
 import com.kilobolt.framework.Input.TouchEvent;
 import com.kilobolt.framework.Screen;
+import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.Lesson;
 import com.ube.salinlahifour.ReportCard;
 import com.ube.salinlahifour.SalinlahiFour;
@@ -30,7 +35,7 @@ public abstract class AbstractGameScreen extends Screen {
 	  protected String activtityName;
 	  protected int lessonNumber;
 	  protected String activityLevel;
-	  protected Paint paint, paint2, paint3;
+	  protected Paint paint, paint2, paint3,paint4,paint5;
 	  protected String sFeedback = "",  sQuestion = "", sAnswer = "", cAnswer = "";
 	  protected int userID;
 	  protected UserRecordOperations userRecordOperator = new UserRecordOperations(SalinlahiFour.getContext());
@@ -38,9 +43,14 @@ public abstract class AbstractGameScreen extends Screen {
 	  protected int livesLeft;
 	  protected int rounds;
 	  protected ReportCard reportCard;
-	  private Context context;
-	  private Lesson lesson;
+	  protected Context context;
+	  protected Lesson lesson;
 	  private boolean gameOverLock;
+	  protected ArrayList<Item> items;
+	  protected boolean transition, exit;
+	  
+	
+	
 	  
 	public AbstractGameScreen(Game game, String activityName,String activityLevel ,int userID, Context context, Lesson lesson) {
 
@@ -48,15 +58,17 @@ public abstract class AbstractGameScreen extends Screen {
         Log.d("Aldrin ExtendedFramework", "Abstract game Screen loading");
         this.context = context;
 		// TODO Auto-generated constructor stub
-		 eval = new Evaluation(SalinlahiFour.getContext(), activtityName, activityLevel);
+		 eval = new Evaluation(SalinlahiFour.getContext(), lesson.getName(), activityLevel);
 		 this.userID = userID;
-		 this.activtityName = activityName;
+		 this.activtityName = lesson.getName();
 	     this.activityLevel = activityLevel;
 	     this.lesson = lesson;
 	     this.gameOverLock = false;
+	     this.context = context;
+	     this.loadAssets();
 		 Log.d("Abstract Game Screen", activityName + " " + activityLevel);
 		 Looper.prepare();
-	     
+		 
 	     	loadAssets();
 		 //Asset Positioning
 		 	switch(activityLevel){
@@ -67,28 +79,52 @@ public abstract class AbstractGameScreen extends Screen {
 		 	case "EASY":
 		 		assetPositionEasy();break;
 		 	}
+		 	
+		 	Typeface tf = Typeface.createFromAsset(context.getAssets(),"fonts/ANDYB.TTF");
+		 
 	        // Defining a paint object
 		 	Log.d("Abstract GamesScreen", "Initializing Paint Methods");
 	        paint = new Paint();
-	        paint.setTextSize(30);
-	        paint.setTextAlign(Paint.Align.CENTER);
+	        paint.setTextSize(20);
+	        paint.setTypeface(tf);
+	        paint.setTextAlign(Paint.Align.LEFT);
 	        paint.setAntiAlias(true);
 	        paint.setColor(Color.BLACK);
 	        
 	        paint2 = new Paint();
-			paint2.setTextSize(20);
-			paint2.setTextAlign(Paint.Align.CENTER);
+	        paint2.setTypeface(tf);
+			paint2.setTextSize(15);
+			paint2.setTextAlign(Paint.Align.LEFT);
 			paint2.setAntiAlias(true);
-			paint2.setColor(Color.BLUE);
+			paint2.setColor(Color.BLACK);
 
 			paint3 = new Paint();
+			paint3.setTypeface(tf);
 			paint3.setTextSize(10);
 			paint3.setTextAlign(Paint.Align.LEFT);
 			paint3.setAntiAlias(true);
-			paint3.setColor(Color.BLUE);
+			paint3.setColor(Color.BLACK);
+			
+			paint4 = new Paint();
+			paint4.setTypeface(tf);
+			paint4.setTextSize(20);
+			paint4.setTextAlign(Paint.Align.CENTER);
+			paint4.setAntiAlias(true);
+			paint4.setColor(Color.BLACK);
+			
+			paint5 = new Paint();
+			
+			paint5.setTypeface(tf);
+			paint5.setTextSize(20);
+			paint5.setTextAlign(Paint.Align.CENTER);
+			paint5.setAntiAlias(true);
+			paint5.setColor(Color.BLACK);
+			
 			Log.d("Abstract GamesScreen", "Initializing Paint Methods...done");
 	}
 	
+	
+
 
 	 @Override
 	    public void update(float deltaTime) {
@@ -110,20 +146,32 @@ public abstract class AbstractGameScreen extends Screen {
 	        	case "EASY":
 	        		updateRunningEasy(touchEvents, deltaTime);break;
 	        	}
+	        
 	        	  if (livesLeft == 0 || rounds == 0) {
 	  	            state = GameState.GameOver;
 	  	            Looper.myLooper().quit();
 	  		        if(!gameOverLock){
 	  		        	Log.d("SEMAPHORE", gameOverLock + "");
 	  					gameOverLock = true;
-	  					
+	  					eval.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), userID);
 	  					Intent intent = new Intent(context,GameOver.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);  
 	  					Bundle extras = new Bundle();
+	  					
+	  					Log.d("Debug ReportCard", "Activity Name: " + activtityName);
+	  					Log.d("Debug ReportCard", "Activity Level: " + activityLevel);
+	  					Log.d("Debug ReportCard", "Lesson Number: " + lessonNumber);
+	  					Log.d("Debug ReportCard", "userID: " + userID);
+	  					Log.d("Debug ReportCard", "Lesson: " + lesson.getName());
+	  					Log.d("Debug ReportCard", "Eval Score: " + eval.getScore() );
+	  					Log.d("Debug ReportCard", "Eval Total Score: " + eval.getTotalScore() );
+	  					Log.d("Debug ReportCard", "Throwing...");
 	  					
 	  					extras.putString("ActivityName",activtityName);
 	  					extras.putString("ActivityLevel", activityLevel);
 	  					extras.putInt("LessonNum", lessonNumber);
 	  					extras.putInt("userID", userID);
+	  					extras.putInt("e_score", eval.getScore());
+	  					extras.putInt("e_total", eval.getTotalScore());
 	  					Log.d("LessonNum", lessonNumber + "");
 	  					extras.putString("EOAFeedback", eval.getEndofActivityFeedback(eval.getScore(), lessonNumber));
 	  					extras.putParcelable("lesson", lesson);
@@ -159,7 +207,9 @@ public abstract class AbstractGameScreen extends Screen {
 	        if (state == GameState.GameOver)
 	            updateGameOver(touchEvents);
 	    }
-	 public void updateReady(List<TouchEvent> touchEvents) {
+
+
+	public void updateReady(List<TouchEvent> touchEvents) {
 	        
 	        // This example starts with a "Ready" screen.
 	        // When the user touches the screen, the game begins. 
@@ -181,6 +231,8 @@ public abstract class AbstractGameScreen extends Screen {
 	  @Override
 	    public void paint(float deltaTime) {
 	        Graphics g = game.getGraphics();
+	        //showTransition();
+	        
 	        switch(activityLevel){
 	        case "HARD":painterHard();break;
 	        case "MEDIUM":painterMedium();break;
@@ -196,13 +248,13 @@ public abstract class AbstractGameScreen extends Screen {
 	            drawGameOverUI();
 	        
 	  }
-	  protected void drawReadyUI() {
+	/*  protected void drawReadyUI() {
 	        Graphics g = game.getGraphics();
 
 	        g.drawARGB(155, 0, 0, 0);
-	        g.drawString("Tap to Start.", 400, 240, paint);
-
-	    }
+	        //g.drawString("Tap to Start.", 400, 240, paint);
+	        //showTransition();
+	    }*/
 
 	 /* protected void drawRunningUI() {
 	        Graphics g = game.getGraphics();
@@ -226,6 +278,16 @@ public abstract class AbstractGameScreen extends Screen {
 	        
 	        
 	    }
+	  
+	  /*protected void transitionTouchEvent(TouchEvent touchEvents){
+		  if(transition){
+			  if (inBounds(touchEvents, 0, 0, game.getGraphics().getWidth(), game.getGraphics().getHeight())){
+				  Log.d("Transition Debug", "Falseing");
+				  transition = false;
+			  }
+		  }
+	  }*/
+	  
 		abstract protected void loadAssets();
 		abstract protected void assetPositionEasy();
 		abstract protected void assetPositionMedium();
@@ -239,6 +301,9 @@ public abstract class AbstractGameScreen extends Screen {
 		abstract protected void painterEasy();
 		abstract protected void painterMedium();
 		abstract protected void painterHard();
+		abstract protected void showTransition();
+		abstract protected void drawReadyUI();
+		abstract protected void showExit();
 		abstract protected void nullify();
 		
 		

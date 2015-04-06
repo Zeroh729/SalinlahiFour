@@ -78,6 +78,7 @@ public class ProgressTreeActivity extends Activity implements OnCheckedChangeLis
 	}
 
 	private void populateData() {
+		int totalStars = 0;
 		userdata = SalinlahiFour.getLoggedInUser();
 		username = userdata.getName();
 		userprogressdb.open();
@@ -85,11 +86,14 @@ public class ProgressTreeActivity extends Activity implements OnCheckedChangeLis
 		stars_silver = userprogressdb.getSilverStarsCount(userdata.getId());
 		stars_bronze = userprogressdb.getBronzeStarsCount(userdata.getId());
 		
+		totalStars = (stars_gold * 3) + (stars_silver * 2) + stars_bronze;
+		
 		tv_username.setText(username + "'s");
-		tv_goldcount.setText(stars_gold+"");
-		tv_silvercount.setText(stars_silver+"");
-		tv_bronzecount.setText(stars_bronze+"");
-		tv_totalstarscount.setText(" /"+(lessons.size()*3));
+//		tv_goldcount.setText(stars_gold+"");
+//		tv_silvercount.setText(stars_silver+"");
+//		tv_bronzecount.setText(stars_bronze+"");
+		tv_goldcount.setText(totalStars+"");
+		tv_totalstarscount.setText(" /"+(lessons.size()*3*3));
 
 		if(stars_silver == 0){
 			tv_silvercount.setVisibility(View.INVISIBLE);

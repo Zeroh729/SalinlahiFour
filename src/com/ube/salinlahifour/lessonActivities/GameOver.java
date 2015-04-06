@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
 public class GameOver extends Activity {
 	private String ActName;
@@ -33,8 +34,10 @@ public class GameOver extends Activity {
 		userID = beforeIntent.getIntExtra("userID", 0);
 		lessonNumber = beforeIntent.getIntExtra("LessonNum", 0);
 		lesson = beforeIntent.getParcelableExtra("lesson");
-		 ev = new Evaluation(this, ActName, ActLevel);
-		 ev.updateUserLessonProgress(lesson.getName(), ActLevel.toString(), userID);
+		ev = new Evaluation(this, ActName, ActLevel);
+		ev.setScore( beforeIntent.getIntExtra("e_score", 0));
+		ev.setTotScore(beforeIntent.getIntExtra("e_total", 0));
+		 ev.updateUserLessonProgress(lesson.getName(), ActLevel.toString(), SalinlahiFour.getLoggedInUser().getId());
 		  LTActLevel = null;
 			switch(ActLevel){
 			case "EASY": LTActLevel = LevelType.EASY; break;
@@ -45,7 +48,18 @@ public class GameOver extends Activity {
 	}
 	protected void onStart(){
 		super.onStart();
-		reportCard = new ReportCard(this, lesson,LTActLevel, ev, feedback);
+		Log.d("Debug ReportCard", "On Game Over Screen" );
+		Log.d("Debug ReportCard", "Name: " + ActName );
+		Log.d("Debug ReportCard", "Level: " + ActLevel );
+		Log.d("Debug ReportCard", "feedback: " + feedback );
+		Log.d("Debug ReportCard", "user ID: " + userID );
+		Log.d("Debug ReportCard", "Lesson Number: " + lessonNumber );
+		Log.d("Debug ReportCard", "lesson: " + lesson.getName() );
+		Log.d("Debug ReportCard", "Eval Score: " + ev.getScore() );
+		Log.d("Debug ReportCard", "Eval Total Score: " + ev.getTotalScore() );
+		Log.d("Debug ReportCard", "Info End" );
+		
+		reportCard = new ReportCard(this, lesson,LTActLevel, ev, feedback, this.ActName);
 		new Handler().postDelayed(new Runnable() {
 		    public void run() {
 		    	

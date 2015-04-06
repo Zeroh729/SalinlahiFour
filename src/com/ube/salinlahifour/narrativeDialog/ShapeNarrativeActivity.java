@@ -13,7 +13,7 @@ public class ShapeNarrativeActivity extends NarrativeDialog{
 	
 	@Override
 	public void initiateCharacters() {
-		setBackground(R.drawable.shapes_tutt);
+		
 		if(SalinlahiFour.getLoggedInUser().getGender().equals("female")){
 			maincharacter = new Character(this, tv_dialog, iv_characters[0], R.drawable.pepay_handsonwaist);
 			maincharacter.addExpression(Expression.POINT, R.drawable.pepay_wave);
@@ -33,21 +33,22 @@ public class ShapeNarrativeActivity extends NarrativeDialog{
 
 	@Override
 	public void initiateScript() {
-		script.add(new ScriptLine("Wow we finally got away from that chef.", R.raw.narration_family_1));
-		script.add(new ScriptLine("Now we're in a rocket ship! Excited na ako!",R.raw.narration_family_3));
-		script.add(new ScriptLine("What's going on here?",R.raw.narration_family_4));
-		script.add(new ScriptLine("One of our actors for the show is sick! Can you help us with the show?",R.raw.narration_family_5));
-		script.add(new ScriptLine("I guess a little acting won't hurt.",R.raw.narration_family_6));
-		script.add(new ScriptLine("Tignan mo. Someone is on the screen " +SalinlahiFour.getLoggedInUser().getName(),R.raw.narration_family_7));
-		script.add(new ScriptLine("WORLD DOMINATION",R.raw.narration_family_8));
-		script.add(new ScriptLine("Naku! We have to defeat the alien quick!",R.raw.narration_family_6));
-		script.add(new ScriptLine("Let's figure out what these buttons do.",R.raw.narration_family_6));
+		script.add(new ScriptLine("Wow we finally got away from that chef.", R.raw.narration_shape_1));
+		script.add(new ScriptLine("Now we're in a rocket ship! Excited <i>na ako</i>! <font color=#8C8C8C>(I'm already excited!)</font>",R.raw.narration_shape_2));
+		script.add(new ScriptLine("What's going on here?",R.raw.narration_shape_3));
+		script.add(new ScriptLine("One of our actors for the show is sick! Can you help us with the show?",R.raw.narration_shape_4));
+		script.add(new ScriptLine("I guess a little acting won't hurt.",R.raw.narration_shape_5));
+		script.add(new ScriptLine("<i>Tignan mo.</i> <font color=#8C8C8C>(Look!)</font> Someone is on the screen " +SalinlahiFour.getLoggedInUser().getName(),R.raw.narration_shape_6));
+		script.add(new ScriptLine("WORLD DOMINATION",R.raw.narration_shape_7));
+		script.add(new ScriptLine("<i>Naku!</i> We have to defeat the aliens quickly!",R.raw.narration_shape_8));
+		script.add(new ScriptLine("Let's figure out what these buttons do.",R.raw.narration_shape_9));
 	}
 
 	@Override
 	public void runDialog() {
 		switch(dialogIndex){
 			case 0:
+				setBackground(R.drawable.shapes_tutt);
 				maincharacter.entranceFromLeft();
 				maincharacter.setExpression(Expression.POINT);
 				maincharacter.say(script.get(0));

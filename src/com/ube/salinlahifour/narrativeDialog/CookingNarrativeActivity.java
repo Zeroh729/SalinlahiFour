@@ -12,7 +12,7 @@ public class CookingNarrativeActivity extends NarrativeDialog{
 	
 	@Override
 	public void initiateCharacters() {
-		setBackground(R.drawable.colors_tutt);
+		
 		if(SalinlahiFour.getLoggedInUser().getGender().equals("female")){
 			maincharacter = new Character(this, tv_dialog, iv_characters[0], R.drawable.pepay_handsonwaist);
 			maincharacter.addExpression(Expression.POINT, R.drawable.pepay_wave);
@@ -34,20 +34,21 @@ public class CookingNarrativeActivity extends NarrativeDialog{
 
 	@Override
 	public void initiateScript() {
-		script.add(new ScriptLine("Hey where are we?", R.raw.narration_family_1));
-		script.add(new ScriptLine("You're in my kitchen!",R.raw.narration_family_3));
-		script.add(new ScriptLine("What are you doing here?!",R.raw.narration_family_4));
-		script.add(new ScriptLine("Di bale, I have better things to do.",R.raw.narration_family_5));
-		script.add(new ScriptLine("Halika! Help me!",R.raw.narration_family_6));
-		script.add(new ScriptLine("I don't think we have a choice here " +SalinlahiFour.getLoggedInUser().getName(),R.raw.narration_family_7));
-		script.add(new ScriptLine("Tara!",R.raw.narration_family_8));
-		script.add(new ScriptLine("Are you ready? Ok makinig! I'm only gonna do this once.",R.raw.narration_family_6));
+		script.add(new ScriptLine("Hey where are we?", R.raw.narration_colors_1));
+		script.add(new ScriptLine("You're in my kitchen!",R.raw.narration_colors_2));
+		script.add(new ScriptLine("What are you doing here?!",R.raw.narration_colors_3));
+		script.add(new ScriptLine("<i>Di bale</i> <font color=#8C8C8C>(No matter)</font>, I have better things to do.",R.raw.narration_colors_4));
+		script.add(new ScriptLine("<i>Halika!</i> <font color=#8C8C8C>(Come!)</font> Help me!",R.raw.narration_colors_5));
+		script.add(new ScriptLine("I don't think we have a choice here " +SalinlahiFour.getLoggedInUser().getName(),R.raw.narration_colors_6));
+		script.add(new ScriptLine("<i>Tara!</i> <font color=#8C8C8C>(Let's go!)</font>",R.raw.narration_colors_7));
+		script.add(new ScriptLine("Are you ready? Ok! I'm only gonna do this once.",R.raw.narration_colors_8));
 	}
 
 	@Override
 	public void runDialog() {
 		switch(dialogIndex){
 			case 0:
+				setBackground(R.drawable.colors_tutt);
 				maincharacter.entranceFromLeft();
 				maincharacter.setExpression(Expression.QUESTION);
 				maincharacter.say(script.get(0));
