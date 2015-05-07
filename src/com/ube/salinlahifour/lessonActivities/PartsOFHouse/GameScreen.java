@@ -56,7 +56,6 @@ public class GameScreen extends AbstractGameScreen  {
 	    // Edit lives left to the question size
 	    
 	   // private String sFeedback = "",  sQuestion = "", sAnswer = "";
-	    
 	    public GameScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson, ArrayList<Item> items) {
 	    	//Super Parameters Game, ActivityName, ActivityLevel, UserID
 	        super(game, activityName, activityLevel, userID, context, lesson);
@@ -205,6 +204,8 @@ public class GameScreen extends AbstractGameScreen  {
 			
 			// TODO Auto-generated method stub
 			sQuestion = items.get(rounds-1).getLabel();
+			
+			sQuestion = sQuestion.split(" ")[0];
 			correctAnswer = items.get(rounds-1).getWord();
 			//Log.d("rounds", rounds + "");
 			int len = touchEvents.size();

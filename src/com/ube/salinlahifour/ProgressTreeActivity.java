@@ -1,6 +1,7 @@
 package com.ube.salinlahifour;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 import android.app.Activity;
@@ -138,6 +139,7 @@ public class ProgressTreeActivity extends Activity implements OnCheckedChangeLis
 			totaldata.add(tempData);
 			
 			ArrayList<Item> items = LessonItemLoader.getLessonItems(lesson.getActivity(), LevelType.HARD.toString());
+			Collections.reverse(items);
 				ArrayList<UserRecord> userrecords = userrecorddb.getAllUserRecordsFromUserId(SalinlahiFour.getLoggedInUser().getId(), lesson.getName());
 				HashMap<String, ItemCounter> recentItemMap = new HashMap();				
 				HashMap<String, ItemCounter> totalItemMap = new HashMap();

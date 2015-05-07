@@ -50,6 +50,7 @@ public abstract class AbstractLAFramework extends AndroidGame {
 	protected String activityLevel;
 	protected int layoutID;
 	protected int UserID;	
+	protected int cnt_question;
 	protected iFeedback NLG;
 	protected ReportCard reportCard;
 	protected Evaluation evaluation;
@@ -68,6 +69,11 @@ public abstract class AbstractLAFramework extends AndroidGame {
 		items = ((SalinlahiFour)getApplication()).getLessonItems();
 		mContext = getBaseContext();
 		getQuestions();
+		
+		for(int i = 0; i < questions.size(); i++){
+			Log.d(questions.get(i).getWord(),"Tanga tanga aldrin");
+		}
+		
 		initiateNarrationModule();
 		super.onCreate(savedInstanceState);
 	}
@@ -84,12 +90,14 @@ public abstract class AbstractLAFramework extends AndroidGame {
 		Log.d("TESTINGLessonActivity", "Aldrin: getting Questions");
 		String lastDate = DateTimeConverter.getDateLastMonth();
 		UserRecordOperations userdb = new UserRecordOperations(this);
-		userdb.open();		ArrayList<UserRecord> records;
+		userdb.open();		
+		ArrayList<UserRecord> records;
 
 		try {
-			records = userdb.getRecentUserRecordsFromUserId(((SalinlahiFour)getApplication()).getLoggedInUser().getId(), activityName);
-
-			ArrayList<Item> items = ((SalinlahiFour)getApplication()).getLessonItems();
+			records = userdb.getRecentUserRecordsFromUserId(SalinlahiFour.getLoggedInUser().getId(), activityName);
+			int cnt_itemLevel = 0;
+			
+			ArrayList<Item> items = SalinlahiFour.getLessonItems();
 	//		ArrayList<String> itemNames = new ArrayList();
 	//		ArrayList<Integer> itemScores = new ArrayList();
 			HashMap<String, Integer> itemKeys = new HashMap();
@@ -97,33 +105,51 @@ public abstract class AbstractLAFramework extends AndroidGame {
 			for(int i = 0; i < items.size(); i++){
 	//			itemNames.add(items.get(i).getWord());
 	//			itemScores.add(0);
-				itemKeys.put(items.get(i).getWord(), 0);
+				if(!items.get(i).getLevel().equals(activityLevel)){
+					itemKeys.put(items.get(i).getWord(), 0);
+				}else{
+					cnt_itemLevel++;
+					questions.add(items.get(i));
+				}
 			}
 			
             Log.d("records size: " + records.size(), "TEST");
+            Log.d("itemKeys size: " + itemKeys.size(), "TEST");
 					
 			for(int i = 0; i < records.size(); i++){
 	//			int index = itemNames.indexOf(records.get(i).getCorrectAnswer());
-				int value = itemKeys.get(records.get(i).getCorrectAnswer());
-				if(records.get(i).getStatus().equals(StatusType.CORRECT.toString())){
-					value += 1;
-				}else{
-					value -= 1;
+				if(itemKeys.containsKey(records.get(i).getCorrectAnswer())){
+					int value = itemKeys.get(records.get(i).getCorrectAnswer());
+					if(records.get(i).getStatus().equals(StatusType.CORRECT.toString())){
+						value += 1;
+					}else{
+						value -= 1;
+					}
+					itemKeys.put(records.get(i).getCorrectAnswer(), value);
 				}
-				itemKeys.put(records.get(i).getCorrectAnswer(), value);
 			}		
 			
 			Map<String, Integer> sortedItemKeys = sortByComparator(itemKeys);
 			
+			int i = 0;
 			for(String key : sortedItemKeys.keySet()){
-				ArrayList<Item> lessonItems = ((SalinlahiFour)getApplication()).getLessonItems();
-				for(int i = 0; i < lessonItems.size(); i++)
-					if(lessonItems.get(i).getWord().equals(key)){
-						questions.add(lessonItems.get(i));
-						break;
-					}
-				Collections.shuffle(questions,  new Random(System.nanoTime()));
+				if(cnt_question == 0 || ((cnt_question - cnt_itemLevel) > i)){
+					ArrayList<Item> lessonItems = SalinlahiFour.getLessonItems();
+					for(int j = 0; j < lessonItems.size(); j++)
+						if(lessonItems.get(j).getWord().equals(key)){
+	//						if(lessonItems.get(j).getLevel().equals(activityLevel))
+								questions.add(lessonItems.get(j));
+	//						else if(cnt_question > 0 && cnt_question < j){
+	//							
+	//						}
+							break;
+						}
+				}else{
+					break;
+				}
+				i++;
 			}
+			Collections.shuffle(questions,  new Random(System.nanoTime()));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -186,6 +212,9 @@ public abstract class AbstractLAFramework extends AndroidGame {
 		reportCard.reveal();
 	}
 
+	protected void setCntQuestions(int x){
+		cnt_question = x;
+	}
 	
 	private void errorPopup(String title, String error){
 		final AlertDialog.Builder builder=new AlertDialog.Builder(this);

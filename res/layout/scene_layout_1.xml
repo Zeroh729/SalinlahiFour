@@ -76,6 +76,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:text="Debug User Module" 
+        android:visibility="gone"
         android:onClick="onClick"/>
    
 
@@ -87,6 +88,7 @@
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@id/btn_usermodule"
         android:text="Register User" 
+        android:visibility="gone"
         android:onClick="onClick"/>
     
 </RelativeLayout>

@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import com.ube.salinlahifour.database.DatabaseHandler;
 import com.ube.salinlahifour.database.UserDetailOperations;
 import com.ube.salinlahifour.model.UserDetail;
+import com.ube.salinlahifour.narrativeStory.NarrativeStory;
 
 public class MainActivity extends Activity {
 	private UserDetailOperations userDetailOperator;		
@@ -32,6 +33,12 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		SalinlahiFour.getBgm().start();
+		
+		parseLessons();
+		parseLexicon();
+		parseCharacters();
+		parseStories();
+		parseTutorials();
 		
 		
 		//Load File from res or assets
@@ -248,7 +255,7 @@ public class MainActivity extends Activity {
 		        		intent.putExtra("UserID", user.getId());		        		
 		        		if(lastUserID != -1){
 			        		((SalinlahiFour)getApplication()).setLoggedInUser(user);
-			        		intent.setClass(getApplicationContext(), MapActivity.class);
+			        		//intent.setClass(getApplicationContext(), MapActivity.class);
 		        		}else
 			        		intent.setClass(getApplicationContext(), RegistrationActivityName.class);
 		        			startActivity(intent);
@@ -259,6 +266,56 @@ public class MainActivity extends Activity {
 		    }, SPLASH_TIME);
 		   
 	}
+
+	
+	private void parseLexicon(){
+		
+		for(int i = 0; i < SalinlahiFour.getLessonsList().size(); i++){
+			ArrayList<Item> items = new ArrayList();
+			
+			//parse templatecatalogue.xml or lexicon.xml or watver
+			
+			SalinlahiFour.getLessonsList().get(i).setItems(items);
+			
+		}
+		
+		
+	}
+	
+	
+	private void parseLessons(){
+		ArrayList<Lesson> lessons = new ArrayList();
+
+		//parse raw/lessonlist.xml	(kung puede irename, gawin list_lesson.xml.... para lang consistent (arte))
+		
+		SalinlahiFour.setLessonsList(lessons);
+	}
+	
+	private void parseCharacters(){
+		ArrayList<Character> characters = new ArrayList();
+		
+		//parse raw/list_characters.xml
+		
+		SalinlahiFour.setCharactersList(characters);
+	}
+	
+	private void parseStories(){
+		ArrayList<NarrativeStory> stories = new ArrayList();
+		
+		//parse list_stories.xml
+		new NarrativeStory();
+		
+		SalinlahiFour.setStoriesList(stories);
+	}
+	
+	private void parseTutorials(){
+		ArrayList<Integer> tutorialResIds = new ArrayList();
+		
+		//parse list_tutorial.xml
+		
+		SalinlahiFour.setTutorialsList(tutorialResIds);
+	}
+	
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub

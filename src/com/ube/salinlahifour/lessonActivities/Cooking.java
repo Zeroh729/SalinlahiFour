@@ -5,7 +5,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
+
 
 
 
@@ -23,6 +25,11 @@ public class Cooking extends AbstractLAFramework  {
 
 	 
 	 @Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+	}
+	@Override
 	 public Screen getInitScreen() {
 		 Log.d("Debug Init", "Cooking");
 

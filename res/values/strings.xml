@@ -15,7 +15,6 @@
     <string name="title_activity_debug_user_lesson_progress">DebugUserLessonProgressActivity</string>
     <string name="hello">Hello World, MagicTextViewActivity!</string>
     <string name="title_activity_progress_tree">ProgressTree</string>
-
     <string name="title_gameover">Game Over</string>
 
     <string-array name="tutorial_family_easy">
@@ -31,5 +30,6 @@
     </string-array>
 
     <string name="title_activity_dev_main">DevMainActivity</string>
+    <string name="title_activity_fiesta">Fiesta</string>
 
 </resources>

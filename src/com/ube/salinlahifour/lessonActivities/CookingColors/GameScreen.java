@@ -68,7 +68,6 @@ public class GameScreen extends AbstractGameScreen  {
 	       rounds = 1;
 	       
 	       lessonNumber = 3;
-	       
 	       for(int i=0; i<feedbacks.length;i++){
 	    	   feedbacks[i] = "";
 	       }
@@ -155,7 +154,7 @@ public class GameScreen extends AbstractGameScreen  {
 	        
 	        sprinklerButtons = new ButtonSet(4, 510, 40);
 	        sprinklerButtons.calculateButtonPosition(buttons_sprinkles[0].getWidth(), buttons_sprinkles[0].getHeight(), 2, 3);
-	        livesLeft = 5;
+	        livesLeft = 4;
 	        cake = new Cake();
 			
 			breaderButtons.loadRandomColors(6);
@@ -176,7 +175,7 @@ public class GameScreen extends AbstractGameScreen  {
 		@Override
 		protected void assetPositionHard() {
 			// TODO Auto-generated method stub
-			 livesLeft = 10;
+			 livesLeft = 5;
 			breaderButtons = new ButtonSet(4, 70,40);
 	        Log.d("ButtonDebug", "Wdith: " + buttons_bread[0].getWidth() + " Height: " + buttons_bread[0].getHeight());
 	        breaderButtons.calculateButtonPosition(buttons_bread[0].getWidth(), buttons_bread[0].getHeight(), 2, 3);

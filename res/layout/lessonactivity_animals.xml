@@ -53,6 +53,7 @@
        			android:paddingTop="30dp"
 		        android:background="@null"
 		        />
+            
 			<ImageButton
 		        android:id="@+id/btn_englishcard"
 		        android:layout_width="wrap_content"
@@ -62,6 +63,17 @@
 		        android:layout_marginRight="40dp"
 		        android:layout_below="@id/btn_english_up"
 		        />
+			
+            <ImageView
+                android:id="@+id/sign1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_englishcard"
+                android:layout_alignParentLeft="true"
+                android:layout_alignRight="@+id/btn_english_up"
+                android:src="@drawable/animals_sign"
+                android:layout_marginTop="-20dp"
+                android:visibility="invisible"/>
 		    
 		    <TextView
 				android:layout_width="wrap_content"
@@ -115,6 +127,16 @@
 		        android:layout_marginRight="40dp"
 		        android:layout_below="@id/btn_sound_up"
 		        />
+            <ImageView
+                android:id="@+id/sign2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_soundcard"
+                android:layout_alignParentLeft="true"
+                android:layout_alignRight="@+id/btn_soundcard"
+                android:src="@drawable/animals_sign" 
+                android:layout_marginTop="-20dp"
+                android:visibility="invisible"/>
 		    <TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
@@ -169,6 +191,17 @@
 		        android:layout_marginRight="40dp"
 		        android:layout_below="@id/btn_picture_up"
 		        />
+			
+            <ImageView
+                android:id="@+id/sign3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_picturecard"
+                android:layout_alignParentLeft="true"
+                android:layout_alignRight="@+id/btn_picturecard"
+                android:src="@drawable/animals_sign"
+                android:layout_marginTop="-20dp"
+                android:visibility="invisible"/>
 		    
 		    <TextView
 				android:layout_width="wrap_content"
@@ -222,6 +255,17 @@
 		        android:layout_marginRight="40dp"
 		        android:layout_below="@id/btn_filipino_up"
 		        />
+            <ImageView
+                android:id="@+id/sign4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_filipinocard"
+                android:layout_alignParentLeft="true"
+                android:layout_alignRight="@+id/btn_filipinocard"
+                android:src="@drawable/animals_sign"
+                android:layout_marginTop="-20dp"
+                android:visibility="invisible"/>
+		    
 		    <TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"

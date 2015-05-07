@@ -28,6 +28,8 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 	private ImageButton[] btn_up;
 	private ImageButton[] btn_down;
 	private ImageButton[] btn_cards;
+	
+	private ImageView[] iv_signs;
 
 	private ArrayList<Card> englishCards;
 	private ArrayList<Card> soundCards;
@@ -54,6 +56,9 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 	
 	private AnimatedButtonListener touchListener;
 	private MediaPlayer sound;
+	private MediaPlayer soundEnglish;
+	private MediaPlayer soundFilipino;
+	private MediaPlayer soundAnimal;
 	
 	private enum functionState{
 		CHECK, NEXT
@@ -68,6 +73,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 		btn_up = new ImageButton[4];
 		btn_down = new ImageButton[4];
 		btn_cards = new ImageButton[4];
+		iv_signs = new ImageView[4];
 		
 		questionno = 0;
 		
@@ -85,6 +91,11 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 		btn_cards[1] = (ImageButton)findViewById(R.id.btn_soundcard);
 		btn_cards[2] = (ImageButton)findViewById(R.id.btn_picturecard);
 		btn_cards[3] = (ImageButton)findViewById(R.id.btn_filipinocard);
+
+		iv_signs[0] = (ImageView)findViewById(R.id.sign1);
+		iv_signs[1] = (ImageView)findViewById(R.id.sign2);
+		iv_signs[2] = (ImageView)findViewById(R.id.sign3);
+		iv_signs[3] = (ImageView)findViewById(R.id.sign4);
 		
 		btn_function = (ImageButton)findViewById(R.id.btn_function);
 		tv_feedback = (TextView)findViewById(R.id.tv_dialog);
@@ -113,6 +124,14 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 			((ImageView)findViewById(R.id.img_dialog)).setImageResource(R.drawable.animals_pepaitalking);
 		}else{
 			((ImageView)findViewById(R.id.img_dialog)).setImageResource(R.drawable.animals_popoitalking);
+		}
+		
+		if(activityLevel == LevelType.EASY){
+			setCntQuestions(4);
+		}else if(activityLevel == LevelType.MEDIUM){
+			setCntQuestions(6);
+		}else{
+			setCntQuestions(8);
 		}
 		
 		initiateCards();
@@ -186,8 +205,17 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 	}
 	
 	private void selectFixed(){
-		fixedIndex = new Random().nextInt(4);
+		fixedIndex = new Random().nextInt(8);
 
+		if(fixedIndex > 3)
+			fixedIndex = 3;
+		
+		for(int i = 0; i < iv_signs.length; i++){
+			iv_signs[i].setVisibility(View.INVISIBLE);
+		}
+		
+		iv_signs[fixedIndex].setVisibility(View.VISIBLE);
+		
 		btn_up[fixedIndex].setVisibility(View.INVISIBLE);
 		btn_down[fixedIndex].setVisibility(View.INVISIBLE);
 		
@@ -574,8 +602,8 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 					englishCardIndex += 1;
 				btn_cards[0].setImageResource(englishCardsOnHand.get(englishCardIndex).drawableResID);
 
-				MediaPlayer sound1 = MediaPlayer.create(this,englishCardsOnHand.get(englishCardIndex).soundResID);
-				sound1.start();
+				soundEnglish = MediaPlayer.create(this,englishCardsOnHand.get(englishCardIndex).soundResID);
+				soundEnglish.start();
 				break;
 			case R.id.btn_english_down:
 				if((englishCardIndex-1) < 0)
@@ -583,8 +611,8 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 				else
 					englishCardIndex -= 1;
 				btn_cards[0].setImageResource(englishCardsOnHand.get(englishCardIndex).drawableResID);
-				MediaPlayer sound2 = MediaPlayer.create(this,englishCardsOnHand.get(englishCardIndex).soundResID);
-				sound2.start();
+				soundEnglish = MediaPlayer.create(this,englishCardsOnHand.get(englishCardIndex).soundResID);
+				soundEnglish.start();
 				break;
 			case R.id.btn_filipino_up:
 				if((filipinoCardIndex+1) > filipinoCardsOnHand.size()-1)
@@ -592,8 +620,8 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 				else
 					filipinoCardIndex += 1;
 				btn_cards[3].setImageResource(filipinoCardsOnHand.get(filipinoCardIndex).drawableResID);
-				MediaPlayer sound3 = MediaPlayer.create(this,filipinoCardsOnHand.get(filipinoCardIndex).soundResID);
-				sound3.start();
+				soundFilipino = MediaPlayer.create(this,filipinoCardsOnHand.get(filipinoCardIndex).soundResID);
+				soundFilipino.start();
 				break;
 			case R.id.btn_filipino_down:
 				//
@@ -602,8 +630,8 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 				else
 					filipinoCardIndex -= 1;
 				btn_cards[3].setImageResource(filipinoCardsOnHand.get(filipinoCardIndex).drawableResID);
-				MediaPlayer sound4 = MediaPlayer.create(this,filipinoCardsOnHand.get(filipinoCardIndex).soundResID);
-				sound4.start();
+				soundFilipino = MediaPlayer.create(this,filipinoCardsOnHand.get(filipinoCardIndex).soundResID);
+				soundFilipino.start();
 				break;
 			case R.id.btn_sound_up:
 				if((soundCardIndex+1) > soundCardsOnHand.size()-1)
@@ -611,8 +639,8 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 				else
 					soundCardIndex += 1;
 				btn_cards[1].setImageResource(soundCardsOnHand.get(soundCardIndex).drawableResID);
-				MediaPlayer sound5 = MediaPlayer.create(this,soundCardsOnHand.get(soundCardIndex).soundResID);
-				sound5.start();
+				soundAnimal = MediaPlayer.create(this,soundCardsOnHand.get(soundCardIndex).soundResID);
+				soundAnimal.start();
 				break;
 			case R.id.btn_sound_down:
 				if((soundCardIndex-1) < 0)
@@ -620,8 +648,8 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 				else
 					soundCardIndex -= 1;
 				btn_cards[1].setImageResource(soundCardsOnHand.get(soundCardIndex).drawableResID);
-				MediaPlayer sound6 = MediaPlayer.create(this,soundCardsOnHand.get(soundCardIndex).soundResID);
-				sound6.start();
+				soundAnimal = MediaPlayer.create(this,soundCardsOnHand.get(soundCardIndex).soundResID);
+				soundAnimal.start();
 				break;
 			case R.id.btn_picture_up:
 				if((pictureCardIndex+1) > pictureCardsOnHand.size()-1)
@@ -640,20 +668,20 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 				
 			//PICTURE CARDS
 			case R.id.btn_englishcard:
-				MediaPlayer sound7 = MediaPlayer.create(this,englishCardsOnHand.get(englishCardIndex).soundResID);
-				sound7.start();
+				soundEnglish = MediaPlayer.create(this,englishCardsOnHand.get(englishCardIndex).soundResID);
+				soundEnglish.start();
 				break;
 			case R.id.btn_picturecard:
 //				sound = MediaPlayer.create(this,pictureCards.get(pictureCardIndex).soundResID);
 //				sound.start();
 				break;
 			case R.id.btn_filipinocard:
-				MediaPlayer sound8 = MediaPlayer.create(this,filipinoCardsOnHand.get(filipinoCardIndex).soundResID);
-				sound8.start();
+				soundFilipino = MediaPlayer.create(this,filipinoCardsOnHand.get(filipinoCardIndex).soundResID);
+				soundFilipino.start();
 				break;
 			case R.id.btn_soundcard:
-				MediaPlayer sound9 = MediaPlayer.create(this,soundCardsOnHand.get(soundCardIndex).soundResID);
-				sound9.start();
+				soundAnimal = MediaPlayer.create(this,soundCardsOnHand.get(soundCardIndex).soundResID);
+				soundAnimal.start();
 				break;
 			//BTN_FUNCTION
 			case R.id.btn_function:

@@ -166,10 +166,10 @@ public class Animals extends AbstractTutorialActivity {
 			}
 		}
 
-	    textviews[0].setText("Palaka\b They jump around lilly pads and eat insects with their long tongues.");
+	    textviews[0].setText("Palaka\n They jump around lilly pads and eat insects with their long tongues.");
 		textviews[1].setText("Unggoy\n They like to eat bananas and hang around in trees");
-	    textviews[2].setText("Ibon\b These animals fly around in the sky.");
-	    textviews[3].setText("Daga\b Little animals that like to eat cheese and run around the house");
+	    textviews[2].setText("Ibon\n These animals fly around in the sky.");
+	    textviews[3].setText("Daga\n Little animals that like to eat cheese and run around the house");
 
 		final AnimatorSet setRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(),
 				R.animator.flipout);
@@ -286,8 +286,13 @@ public class Animals extends AbstractTutorialActivity {
 				j++;
 			}
 		}
-		textviews[0].setText("Elepante /nThese are big animals with long trunks");
-		textviews[1].setText("Oso /nThey live in caves and have long claws");
+		textviews[0].setText("Elepante \nThese are big animals with long trunks");
+		textviews[1].setText("Oso \nThey live in caves and have long claws");
+		
+
+
+		findViewById(R.id.frame_3).setVisibility(View.INVISIBLE);
+		findViewById(R.id.frame_4).setVisibility(View.INVISIBLE);
 		
 	    final AnimatorSet setRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(),
 

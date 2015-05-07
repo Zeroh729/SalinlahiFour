@@ -1,0 +1,9 @@
+<resources>
+    <character
+        name="Popoi">
+        
+        <item
+            name="Someting">Burger</item>
+        
+    </character>
+</resources>

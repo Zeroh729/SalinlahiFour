@@ -1,11 +1,13 @@
 package com.ube.salinlahifour;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 
-public class Lesson implements Parcelable{	
+public class Lesson implements Parcelable{
 	private String name;
 	private String activity;
 	private String tutorial;
@@ -13,7 +15,7 @@ public class Lesson implements Parcelable{
 	private int image;
 	private boolean locked;
 	private int lessonNumber;
-	
+	private ArrayList<Item> items;
 
 	public Lesson(){}
 	
@@ -82,6 +84,14 @@ public class Lesson implements Parcelable{
 	public void setLessonNumber(int lessonNumber) {
 		this.lessonNumber = lessonNumber;
 	}
+
+	public ArrayList<Item> getItems() {
+		return items;
+	}
+
+	public void setItems(ArrayList<Item> items) {
+		this.items = items;
+	}	
 
 	public Lesson(Parcel in) {
 	    super();
