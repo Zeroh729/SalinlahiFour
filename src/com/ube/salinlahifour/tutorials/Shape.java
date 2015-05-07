@@ -50,6 +50,7 @@ public class Shape extends AbstractTutorialActivity {
 		       public void onClick(View v) {
 		    	   switch (v.getId()) {
 		           case R.id.imageView1:
+		        	   items.get(0).playFilipinoSound();
 		        	   pressed[0] = true;
 		        	   if(!isBackVisibleimageView1){
 		        		   textviews[0].setVisibility(android.view.View.VISIBLE);
@@ -69,6 +70,7 @@ public class Shape extends AbstractTutorialActivity {
 		             break;
 		           case R.id.imageView2:
 		        	   pressed[1] = true;
+		        	   items.get(1).playFilipinoSound();
 		        	   if(!isBackVisibleimageView2){
 		        		   textviews[1].setVisibility(android.view.View.VISIBLE);
 							setRightOut.setTarget(imgviews[1]);
@@ -87,6 +89,7 @@ public class Shape extends AbstractTutorialActivity {
 		             break;
 		           case R.id.imageView3:
 		        	   pressed[2] = true;
+		        	   items.get(2).playFilipinoSound();
 		        	   if(!isBackVisibleimageView3){
 		        		   textviews[2].setVisibility(android.view.View.VISIBLE);
 							setRightOut.setTarget(imgviews[2]);
@@ -104,6 +107,7 @@ public class Shape extends AbstractTutorialActivity {
 						}    
 		             break;		          
 		           case R.id.imageView4:
+		        	   items.get(3).playFilipinoSound();
 		        	   pressed[3] = true;
 		        	   if(!isBackVisibleimageView4){
 		        		   textviews[3].setVisibility(android.view.View.VISIBLE);
@@ -164,6 +168,7 @@ public class Shape extends AbstractTutorialActivity {
 		    	   switch (v.getId()) {
 		           case R.id.imageView1:
 		        	   pressed[0] = true;
+		        	   items.get(0).playFilipinoSound();
 		        	   if(!isBackVisibleimageView1){
 		        		   textviews[0].setVisibility(android.view.View.VISIBLE);
 							setRightOut.setTarget(imgviews[0]);
@@ -182,6 +187,7 @@ public class Shape extends AbstractTutorialActivity {
 		             break;
 		           case R.id.imageView2:
 		        	   pressed[1] = true;
+		        	   items.get(1).playFilipinoSound();
 		        	   if(!isBackVisibleimageView2){
 		        		   textviews[1].setVisibility(android.view.View.VISIBLE);
 							setRightOut.setTarget(imgviews[1]);
@@ -200,6 +206,7 @@ public class Shape extends AbstractTutorialActivity {
 		             break;
 		           case R.id.imageView3:
 		        	   pressed[2] = true;
+		        	   items.get(2).playFilipinoSound();
 		        	   if(!isBackVisibleimageView3){
 		        		   textviews[2].setVisibility(android.view.View.VISIBLE);
 							setRightOut.setTarget(imgviews[2]);
@@ -218,6 +225,7 @@ public class Shape extends AbstractTutorialActivity {
 		             break;		          
 		           case R.id.imageView4:
 		        	   pressed[3] = true;
+		        	   items.get(3).playFilipinoSound();
 		        	   if(!isBackVisibleimageView4){
 		        		   textviews[3].setVisibility(android.view.View.VISIBLE);
 							setRightOut.setTarget(imgviews[3]);
@@ -262,6 +270,8 @@ public class Shape extends AbstractTutorialActivity {
 				j++;
 			}
 		}
+		findViewById(R.id.frame_4).setVisibility(View.INVISIBLE);
+		
 		final AnimatorSet setRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(),
 				R.animator.flipout);
 	 
@@ -274,6 +284,7 @@ public class Shape extends AbstractTutorialActivity {
 		    	   switch (v.getId()) {
 		           case R.id.imageView1:
 		        	   pressed[0] = true;
+		        	   items.get(0).playFilipinoSound();
 		        	   if(!isBackVisibleimageView1){
 		        		   textviews[0].setVisibility(android.view.View.VISIBLE);
 							setRightOut.setTarget(imgviews[0]);
@@ -292,6 +303,7 @@ public class Shape extends AbstractTutorialActivity {
 		             break;
 		           case R.id.imageView2:
 		        	   pressed[1] = true;
+		        	   items.get(1).playFilipinoSound();
 		        	   if(!isBackVisibleimageView2){
 		        		   textviews[1].setVisibility(android.view.View.VISIBLE);
 							setRightOut.setTarget(imgviews[1]);
@@ -310,6 +322,7 @@ public class Shape extends AbstractTutorialActivity {
 		             break;
 		           case R.id.imageView3:
 		        	   pressed[2] = true;
+		        	   items.get(2).playFilipinoSound();
 		        	   if(!isBackVisibleimageView3){
 		        		   textviews[2].setVisibility(android.view.View.VISIBLE);
 							setRightOut.setTarget(imgviews[2]);

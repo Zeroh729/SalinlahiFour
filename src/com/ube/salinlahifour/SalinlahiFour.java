@@ -1,7 +1,6 @@
 package com.ube.salinlahifour;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import android.app.Application;
 import android.content.Context;
@@ -9,6 +8,7 @@ import android.graphics.Typeface;
 import android.media.MediaPlayer;
 
 import com.ube.salinlahifour.model.UserDetail;
+import com.ube.salinlahifour.narrativeStory.NarrativeStory;
 
 public class SalinlahiFour extends Application{
 	private static SalinlahiFour salinlahifour;
@@ -23,8 +23,12 @@ public class SalinlahiFour extends Application{
 
 	private static MediaPlayer bgm;
 
-	private static ArrayList<Item> lessonItems;
+	private static ArrayList<Item> lessonItems;	//Di ko alam ano ginagawa nito, wag nalang naten idelete =))
 	
+	private static ArrayList<Lesson> lessonsList;
+	private static ArrayList<NarrativeStory> storiesList;
+	private static ArrayList<Character> charactersList;
+	private static ArrayList<Integer> tutorialsList;
 	
 	
 	@Override
@@ -45,7 +49,7 @@ public class SalinlahiFour extends Application{
 		bgm = MediaPlayer.create(this, R.raw.bgm_map);
 //		bgm.setLooping(true);
 		bgm.setVolume(0, 0);
-		bgm.setVolume(0.4f, 0.4f);
+//		bgm.setVolume(0.4f, 0.4f);
 		
 
 		
@@ -111,4 +115,37 @@ public class SalinlahiFour extends Application{
 	public static MediaPlayer getBgm(){
 		return bgm;
 	}
+	
+	public static ArrayList<Lesson> getLessonsList() {
+		return lessonsList;
+	}
+
+	public static void setLessonsList(ArrayList<Lesson> lessonsList) {
+		SalinlahiFour.lessonsList = lessonsList;
+	}
+
+	public static ArrayList<NarrativeStory> getStoriesList() {
+		return storiesList;
+	}
+
+	public static void setStoriesList(ArrayList<NarrativeStory> storiesList) {
+		SalinlahiFour.storiesList = storiesList;
+	}
+
+	public static ArrayList<Character> getCharactersList() {
+		return charactersList;
+	}
+
+	public static void setCharactersList(ArrayList<Character> charactersList) {
+		SalinlahiFour.charactersList = charactersList;
+	}
+
+	public static ArrayList<Integer> getTutorialsList() {
+		return tutorialsList;
+	}
+
+	public static void setTutorialsList(ArrayList<Integer> tutorialsList) {
+		SalinlahiFour.tutorialsList = tutorialsList;
+	}
+
 }

@@ -21,7 +21,7 @@ public abstract class LessonItemLoader {
 			case "com.ube.salinlahifour.lessonActivities.Cooking":
 				switch(activityLevel){
 					case "HARD":
-						items.add(new Item(7, "Itim" , "Black", "Itim - This is BLACK. it is also the color fot he night sky", Color.BLACK, R.raw.color_itim, R.raw.color_black, LevelType.HARD));
+						items.add(new Item(7, "Itim" , "Black", "Itim - This is BLACK. it is also the color of the night sky", Color.BLACK, R.raw.color_itim, R.raw.color_black, LevelType.HARD));
 						items.add(new Item(8,"Puti" , "White", "Puti - This is WHITE. It is also the color of clouds", Color.WHITE , R.raw.color_puti, R.raw.color_white, LevelType.HARD));
 					case "MEDIUM":			
 						items.add(new Item(5,"Kayumanggi" , "Brown", "Kayumanggi - This is BROWN. It is the color of a trunk of a tree", Color.rgb(84, 44, 23), R.raw.color_kayumanggi, R.raw.color_brown, LevelType.MEDIUM));

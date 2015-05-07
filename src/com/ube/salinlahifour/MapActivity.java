@@ -239,19 +239,19 @@ public class MapActivity extends Activity implements OnClickListener{
 		UserLessonProgressOperations userdb = new UserLessonProgressOperations(this);
 		userdb.open();
 		Log.d("scene count: " + scenes.size(), "FINAL CHECKING");
-		for(Scene scene : scenes){
-			for(int i = 0; i < scene.getLessons().size(); i++){
-					UserLessonProgress progress = userdb.getUserLessonProgress(UserID, scene.getLessons().get(i).getName());
+		for(int k = 0; k < scenes.size(); k++){
+			for(int i = 0; i < scenes.get(k).getLessons().size(); i++){
+					UserLessonProgress progress = userdb.getUserLessonProgress(UserID, scenes.get(k).getLessons().get(i).getName());
 					if(progress != null){
-						scene.getLessons().get(i).setLocked(false);
+						scenes.get(k).getLessons().get(i).setLocked(false);
 						Log.d("THERE", "FINAL CHECK");
 						if(progress.getHardStar() != null){
 							Log.d("THEREEEE", "FINAL CHECK");
 							if(!progress.getHardStar().equals(StarType.BRONZE.toString())){
 								Log.d("ALMOST THEREEEE", "FINAL CHECK");
-								if((i+1) < scene.getLessons().size()){
-									scene.getLessons().get(i+1).setLocked(false);
-									Log.d("UNLOCKING: " + scene.getLessons().get(i+1).getName(), "FINAL CHECK");
+								if((i+1) < scenes.get(k).getLessons().size()){
+									scenes.get(k).getLessons().get(i+1).setLocked(false);
+									Log.d("UNLOCKING: " + scenes.get(k).getLessons().get(i+1).getName(), "FINAL CHECK");
 								}
 							}
 						}
@@ -262,10 +262,19 @@ public class MapActivity extends Activity implements OnClickListener{
 //					}
 				}
 
-				Log.d("Lesson no. : " + i + " ->" + scene.getLessons().get(i).getLocked(),"FINAL CHECKING");
+				Log.d("Lesson no. : " + i + " ->" + scenes.get(k).getLessons().get(i).getLocked(),"FINAL CHECKING");
 				
 //				scene.getLessons().get(i).setLocked(false);
+				if(k > 0 && i == 0){
+					UserLessonProgress prevCheck = userdb.getUserLessonProgress(UserID, scenes.get(k-1).getLessons().get(4).getName());
+					try{
+						if(!prevCheck.getHardStar().equals(StarType.BRONZE.toString())){
+							scenes.get(k).getLessons().get(i).setLocked(false);
+						}
+					}catch(NullPointerException e){}
+				}
 			}
+			
 		}
 		
 
@@ -358,28 +367,19 @@ public class MapActivity extends Activity implements OnClickListener{
 		
         int eventType = parser.getEventType();
         while (eventType != XmlPullParser.END_DOCUMENT) {
-         if(eventType == XmlPullParser.START_DOCUMENT) {
-        	 
-             Log.d("Start document", "TEST");
-         } else if(eventType == XmlPullParser.END_DOCUMENT) {
-        	 
-        	 Log.d("End document", "TEST");
-         } else if(eventType == XmlPullParser.START_TAG) {
-        	 
-        	 Log.d("Start tag "+parser.getName(), "TEST");
-         } else if(eventType == XmlPullParser.END_TAG) {
-        	 if(parser.getName().equals("Lesson")){
-        		 lessonNumber++;
-        		 Lesson lesson = new Lesson();
-        		 lesson.setLocked(true);
-        		 scene.addLesson(lesson.setValues(lessonName, lessonDesc, activityName, lessonImgID, lessonNumber));
-        		 lessonName = "";
-        		 lessonDesc = "";
-        		 activityName = "";
-        		 value = "";
-        		 lessonImgID = 0;
-        		 if(scene.getLessons().size() > 5){
-        			 scene = makeNewScene();
+        	if(eventType == XmlPullParser.END_TAG) {
+        		if(parser.getName().equals("Lesson")){
+	        		 lessonNumber++;
+	        		 Lesson lesson = new Lesson();
+	        		 lesson.setLocked(true);
+	        		 scene.addLesson(lesson.setValues(lessonName, lessonDesc, activityName, lessonImgID, lessonNumber));
+	        		 lessonName = "";
+	        		 lessonDesc = "";
+	        		 activityName = "";
+	        		 value = "";
+	        		 lessonImgID = 0;
+	        		 if(scene.getLessons().size() >= 5){
+	        			 scene = makeNewScene();
         		 }
         	 }else if(parser.getName().equals("Name")){
         		 lessonName = value;
@@ -392,7 +392,6 @@ public class MapActivity extends Activity implements OnClickListener{
         	 }
          } else if(eventType == XmlPullParser.TEXT) {
         	 value = parser.getText();
-        	 Log.d("Text "+parser.getText(), "TEST");
          }
          eventType = parser.next();
         }

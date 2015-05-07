@@ -34,4 +34,13 @@
 		<Description>Identify Animals called in Filipino</Description>
 	</Lesson>
 
+	
+    <Lesson>
+		<Name>Fiesta Everyday</Name>
+		<Image>lesson4_icon</Image>
+		<ActivityName>Fiesta</ActivityName>
+		<Description>Eat, cook, and dance with your favorite Filipino dishes!</Description>
+	</Lesson>
+	
+	
 </resources>

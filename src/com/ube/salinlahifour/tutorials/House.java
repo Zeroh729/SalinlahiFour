@@ -168,6 +168,9 @@ public class House extends AbstractTutorialActivity {
 
 		textviews[0].setText("Garahe\n is where tatay parks his car.");
 	    textviews[1].setText("Bakuran\b protects our house from strangers");
+	    
+		findViewById(R.id.frame_3).setVisibility(View.INVISIBLE);
+		findViewById(R.id.frame_4).setVisibility(View.INVISIBLE);
 
 		final AnimatorSet setRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(),
 				R.animator.flipout);
@@ -284,6 +287,9 @@ public class House extends AbstractTutorialActivity {
 				j++;
 			}
 		}
+
+		findViewById(R.id.frame_3).setVisibility(View.INVISIBLE);
+		findViewById(R.id.frame_4).setVisibility(View.INVISIBLE);
   
 	    final AnimatorSet setRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(),
 
