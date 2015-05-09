@@ -9,6 +9,10 @@
 		<notes>People believe that the black ones are unlucky</notes>
 		<hint>They are said to have 9 lives and always land on their feet.</hint>
 		<lesson>5</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>2</q_num>
@@ -17,6 +21,10 @@
 		<notes>These guys and cats usually fight.</notes>
 		<hint>They are usually made as pets. They bark at everything.</hint>
 		<lesson>5</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>3</q_num>
@@ -25,6 +33,10 @@
 		<notes>They also make for a pretty tasty meal.</notes>
 		<hint>This animal can't fly even though it's a bird. It also lays eggs.</hint>
 		<lesson>5</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>4</q_num>
@@ -33,6 +45,10 @@
 		<notes>Farmers also use them to go around faster.</notes>
 		<hint>Farmers use these guys to help them with farming. They also have horns like a bull</hint>
 		<lesson>5</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>5</q_num>
@@ -41,6 +57,10 @@
 		<notes>Some say we were once like that.</notes>
 		<hint>They like to eat bananas and hang around in trees</hint>
 		<lesson>5</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>6</q_num>
@@ -49,6 +69,10 @@
 		<notes>You might see them in windows and trees as well</notes>
 		<hint>These animals fly around in the sky.</hint>
 		<lesson>5</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>7</q_num>
@@ -57,6 +81,10 @@
 		<notes>They are chased by cats.</notes>
 		<hint>Little animals that like to eat cheese and run around the house</hint>
 		<lesson>5</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>8</q_num>
@@ -65,6 +93,10 @@
 		<notes>They are the largest land animal</notes>
 		<hint>These are big animals with long trunks</hint>
 		<lesson>5</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>9</q_num>
@@ -73,5 +105,9 @@
 		<notes>Teddy bear dolls are made to look like them too.</notes>
 		<hint>They live in caves and have long claws</hint>
 		<lesson>5</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 </type>

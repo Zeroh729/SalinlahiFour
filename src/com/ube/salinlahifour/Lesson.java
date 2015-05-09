@@ -11,6 +11,10 @@ public class Lesson implements Parcelable{
 	private String name;
 	private String activity;
 	private String tutorial;
+	private String narrative;
+	private String iconDir;
+	private String lexiconDir;
+	private int lessonPreReq;
 	private String description;
 	private int image;
 	private boolean locked;
@@ -49,10 +53,16 @@ public class Lesson implements Parcelable{
 		return activity;
 	}
 
+	public void setNarrative(String narrative) {
+		this.narrative = narrative;
+	}
+	public String getNarrative() {
+		return narrative;
+	}
+
 	public void setActivity(String activity) {
 		this.activity = activity;
 	}
-
 	public String getTutorial() {
 		return tutorial;
 	}
@@ -68,7 +78,26 @@ public class Lesson implements Parcelable{
 	public void setImage(int image) {
 		this.image = image;
 	}
-	
+	public String getIcon() {
+		return this.iconDir;
+	}
+
+	public void setIcon(String icon) {
+		this.iconDir = icon;
+	}
+	public String getLexicon(){
+		return this.lexiconDir;
+	}
+	public void setLexicon(String path){
+		lexiconDir = path;
+	}
+	public int getPreReq() {
+		return this.lessonPreReq;
+	}
+
+	public void setPreReq(int lessonNum) {
+		this.lessonPreReq = lessonNum;
+	}
 	public void setLocked(boolean locked){
 		this.locked = locked;
 	}

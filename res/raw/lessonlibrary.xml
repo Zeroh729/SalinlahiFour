@@ -25,6 +25,12 @@
     </Q_List>
     <Lesson_PreReq>0</Lesson_PreReq>
     <Summary></Summary>
+    <lexicon_name>lexicon_family.xml</lexicon_name>
+    <activity_name></activity_name>
+    <tutorial_name></tutorial_name>
+    <narrative_name></narrative_name>
+    <icon_image></icon_image>
+    
 </Lesson_Num>
 <Lesson_Num>
     <entry>2</entry>
@@ -39,6 +45,11 @@
      <qentry>6</qentry>
      </Q_List>
     <Summary></Summary>
+    <lexicon_name>lexicon_house.xml</lexicon_name>
+    <activity_name></activity_name>
+    <tutorial_name></tutorial_name>
+    <narrative_name></narrative_name>
+    <icon_image></icon_image>
 </Lesson_Num>
 <Lesson_Num>
     <entry>3</entry>
@@ -55,6 +66,11 @@
      <qentry>8</qentry>
      </Q_List>
     <Summary></Summary>
+    <lexicon_name>lexicon_cooking.xml</lexicon_name>
+    <activity_name></activity_name>
+    <tutorial_name></tutorial_name>
+    <narrative_name></narrative_name>
+    <icon_image></icon_image>
 </Lesson_Num>
 <Lesson_Num>
     <entry>4</entry>
@@ -73,6 +89,11 @@
      <qentry>10</qentry>
      </Q_List>
     <Summary></Summary>
+    <lexicon_name>lexicon_shape.xml</lexicon_name>
+    <activity_name></activity_name>
+    <tutorial_name></tutorial_name>
+    <narrative_name></narrative_name>
+    <icon_image></icon_image>
 </Lesson_Num>
 <Lesson_Num>
     <entry>5</entry>
@@ -91,6 +112,11 @@
      <qentry>10</qentry>
      </Q_List>
     <Summary></Summary>
+    <lexicon_name>lexicon_animals.xml</lexicon_name>
+    <activity_name></activity_name>
+    <tutorial_name></tutorial_name>
+    <narrative_name></narrative_name>
+    <icon_image></icon_image>
 </Lesson_Num>
 
 </type>

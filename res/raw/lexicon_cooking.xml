@@ -8,6 +8,10 @@
 		<notes>It's also the color of the sea</notes>
 		<hint>Asul - This is BLUE. It is the color of the sky</hint>
 		<lesson>3</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>2</q_num>
@@ -16,6 +20,10 @@
 		<notes>It's also the color of crocodiles and alligators</notes>
 		<hint>Berde - This is GREEN. It is the color of the grass and leaves</hint>
 		<lesson>3</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>3</q_num>
@@ -24,6 +32,10 @@
 		<notes>It is also the color of a firetruck</notes>
 		<hint>Pula - This is RED. It is the color of an apple</hint>
 		<lesson>3</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>4</q_num>
@@ -32,6 +44,10 @@
 		<notes>It is also the color of a rubber ducky</notes>
 		<hint>Dilaw - This is YELLOW. It is the color of the sun.</hint>
 		<lesson>3</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>5</q_num>
@@ -40,6 +56,10 @@
 		<notes>It is also the color of the skin</notes>
 		<hint>Kayumanggi - This is BROWN. It is the color of a trunk of a tree</hint>
 		<lesson>3</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>6</q_num>
@@ -56,6 +76,10 @@
 		<notes>It is also the color of car tires</notes>
 		<hint>Itim - This is BLACK. it is also the color fot he night sky</hint>
 		<lesson>3</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>8</q_num>
@@ -64,6 +88,10 @@
 		<notes>It is also the color of doves</notes>
 		<hint>Puti - This is WHITE. It is also the color of clouds</hint>
 		<lesson>3</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 	
 </type>
