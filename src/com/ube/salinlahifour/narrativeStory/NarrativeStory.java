@@ -16,53 +16,77 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xmlpull.v1.XmlPullParserException;
 
+import android.content.Context;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.ube.salinlahifour.R;
 import com.ube.salinlahifour.SalinlahiFour;
+import com.ube.salinlahifour.narrativeDialog.Character;
 
-public class NarrativeStory {
-	private static ArrayList<Character> characters;
-
+public class NarrativeStory implements Cloneable{
+	private Context context;
+	private String name;
+	private ArrayList<Character> characters;
+	private ArrayList<Action> actions;
+	private int background;
+	
+	private static ArrayList<Character> charactersFromLesson;
+	
 	public NarrativeStory(){
 		Log.d("TEST0", "Narrative Story");
-		try {
-			characterParseXML();
-		} catch (XmlPullParserException | IOException e) {
-			Log.d("TEST0", "Character Parse XML ERROR");
-			e.printStackTrace();
-		}
+		characters = new ArrayList();
+		actions = new ArrayList();
+		charactersFromLesson = new ArrayList<>();
 	}
 	
-	public void characterParseXML() throws XmlPullParserException, IOException{
-		characters = new ArrayList<Character>();
-		
-		Log.d("TEST0", "Character Parse XML");
-		
-		 InputStream in = SalinlahiFour.getContext().getResources().openRawResource(R.raw.narrativestory_character);//(R.xml.lesson);
-		 try{
-		    FileOutputStream out = new FileOutputStream("/sdcard/lesson.xml");
-		    byte[] buff = new byte[4096];
-		    int read = 0;
-		       while ((read = in.read(buff)) > 0) {
-		          out.write(buff, 0, read);
-		         in.close();
-		         out.close();
-		    }
-				 Log.d("TEST", "Success");
-		 }catch(Exception e){
-			 Log.d("TEST", "Failed: " + e.getMessage());
-		 }
+	public NarrativeStory clone(){  
+	    try{  
+	    	NarrativeStory story = (NarrativeStory) super.clone();
+	    	Log.d("TEST0", "PARSED STORIES: returning clone: " + story.getName());
+	        return story;
+	    }catch(Exception e){ 
+	    	Log.d("TEST0", "PARSED STORIES: returning clone: ERROR");
+	        return null; 
+	    }
+	}
+	
+	public String getName() {
+		return name;
+	}
 
-		 SAXParserFactory factory = SAXParserFactory.newInstance();
-		 try {
-			SAXParser saxParser = factory.newSAXParser();
-			saxParser.parse(new InputSource(new FileInputStream("/sdcard/lesson.xml")), new Handler());
-		} catch (ParserConfigurationException e) {
-			e.printStackTrace();
-		} catch (SAXException e) {
-			e.printStackTrace();
-		}
+	public void setName(String name2) {
+		name = name2;
+	}
+
+	public void setContext(Context context){
+		this.context = context;
+	}
+
+	public ArrayList<Character> getCharacters() {
+		return characters;
+	}
+
+	public void setCharacters(ArrayList<Character> character) {
+		characters = character;
+	}
+
+	public ArrayList<Action> getActions() {
+		return actions;
+	}
+
+	public void addActions(Action action) {
+		actions.add(action);
+	}	
+
+	public int getBackground() {
+		return background;
+	}
+
+
+	public void setBackground(int bg) {
+		background = bg;
 	}
 	
 	class Line{
@@ -70,42 +94,5 @@ public class NarrativeStory {
 		ArrayList<String> items = new ArrayList();
 		ArrayList<String> itemName = new ArrayList();
 	}
-
-	class Handler extends DefaultHandler{
-		Line tempStory;
-		boolean isItem;
-	 
-		public void startElement(String uri, String localName,String qName, 
-	                Attributes attributes) throws SAXException {
-			
-			isItem = false;
-	 
-			if (qName.equalsIgnoreCase("CHARACTER")) {
-				tempStory = new Line();
-				tempStory.name = attributes.getValue("name");
-				Log.d("TEST0", "Start tag <Character> name:" + tempStory.name);
-			}
-	 
-			else if (qName.equalsIgnoreCase("ITEM")) {
-				tempStory.items.add(attributes.getValue("name"));
-				isItem = true;
-				Log.d("TEST0", "Start tag <Item> name:" + tempStory.name);
-			}
-	 
-		}
-	 
-		public void endElement(String uri, String localName,
-			String qName) throws SAXException {
-		}
-	 
-		public void characters(char ch[], int start, int length) throws SAXException {
-	 
-			if(isItem)	{
-				tempStory.itemName.add(new String(ch, start, length));
-				Log.d("TEST0", "Text: " + new String(ch, start, length));
-			}
-		}
-	 
-	};
 	
 }

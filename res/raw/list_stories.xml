@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <Lesson
+        name="Animals">
+        <Scene>
+            <Background
+                src="livingroom"/>
+            <Character
+                name="main"
+                expression="default"
+                animate="entranceFromLeft"
+                say="This is quite the adventure right?"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="main"
+                say="Let's just rest for a while."/>
+        </Scene>
+        <Scene>
+            <Character
+                name="main"
+                expression="point"
+                say="(Alam ko na!/I got it!)"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="main"
+                expression="question"
+                say="Hi! Can we go inside?"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="guard"
+                animate="entraceFromRight"
+                say="Sure! It's 2000 pesos each."/>
+        </Scene>
+        <Scene>
+            <Character
+                name="main"
+                expression="shocked"
+                say="What? We don't have that much."/>
+        </Scene>
+        <Scene>
+            <Character
+                name="main"
+                say="(username), what do we do now?"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="guard"
+                expression="waisttalk"
+                say="If you can answer my quiz, I will let you in for free."/>
+        </Scene>
+        <Scene>
+            <Character
+                name="guard"
+                expression="wave"
+                say="Don't worry, (madali lang/it's easy)."/>
+        </Scene>
+        <Scene>
+            <Character
+                name="main"
+                expression="point"
+                say="(Talaga?/Really?)"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="main"
+                expression="question"
+                say="But, can we review first?"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="guard"
+                expression="wavetalk"
+                say="Ok!"/>
+        </Scene>
+    </Lesson>
+    
+    <Lesson
+        name="Cooking">
+        
+        <Scene>
+            <Background src="colors_tutt"/>
+            <Character
+                name="main"
+                animate="entranceFromLeft"
+                expression="question"
+                say="Hey where are we?"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="main"
+                expression="shocked"
+                />
+            <Character
+                name="chef"
+                animate="entraceFromLeft"
+                expression="crossarms"
+                say="You're in my kitchen!"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="chef"
+                say="What are you doing here?!"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="chef"
+                expression="talk"
+                say="(Di bale/No matter), I have better things to do."/>
+        </Scene>
+        <Scene>
+            <Character
+                name="chef"
+                say="(Halika!/Come!) Help me!"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="main"
+                expression="shocked"
+                say="I don't think we have a choice here (username)"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="main"
+                say="(Tara!/Let's go!)"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="chef"
+                expression="crossarms"
+                say="Are you ready? Ok! I'm only gonna do this once."
+                animate="exitToRight"/>
+        </Scene>
+	</Lesson>
+	
+    <Lesson
+        name="Family">
+        <Scene>
+            <Background src="family_tutt"/>
+	        <Character
+	            name="main"
+	            say="Hi (username)!"/>
+        </Scene>
+        <Scene>
+	        <Character
+	            name="main"
+	            animate="jump"
+	            say="I am (maincharacter)."/>
+	    </Scene>
+        <Scene>
+	        <Character
+	            name="main"
+	            expression="point"
+	            say="Welcome to my house!"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="main"
+                expression="default"
+                say="Ready to start our adventure?"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="main"
+                expression="shocked"/>
+            <Character
+                name="nanay"
+                animate="entranceFromRight"
+                say="(maincharacter)! (Kain na!/Let's eat!) You can't go out with an empty stomach!"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="main"
+                expression="default"
+                say="Oh ok nanay"/>
+            <Character
+                name="nanay"
+                animate="exitToRight"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="main"
+                expression="question"
+                say="Well, just like nanay said, let's eat!"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="main"
+                expression="point"
+                say="Come on. I'll introduce you to the others."/>
+        </Scene>
+    </Lesson>
+    
+    <Lesson
+        name="House">
+        <Scene>
+            <Background src="house_tutt"/>
+            <Character 
+                name="main"
+                animate="entranceFromLeft"
+                say="Hey (username). (Halika!/Come!) I want you to meet my cousin."/>
+        </Scene>
+        <Scene>
+            <Character
+                name="main"
+                expression="point"
+                say="Her name is Pichi-Pichi."/>
+        </Scene>
+        <Scene>
+            <Character
+                name="main"
+                expression="default"/>
+            <Character
+                name="pichi"
+                animate="entraceFromLeft"
+                say="Hi (username)! (Pasok tayo/Let's go inside), I'll show you something."/>
+        </Scene>
+        <Scene>
+            <Character
+                name="pichi"
+                expression="hold"
+                say="You saw my house earlier right?"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="pichi"
+                expression="holdtalk"
+                say="Well I tried to make it by gluing things together..."/>
+        </Scene>
+        <Scene>
+            <Character
+                name="pichi"
+                say="... and look!"/>
+            <Character
+                name="house"
+                animate="entranceFromAbove"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="pichi"
+                expression="shocked"/>
+            <Character
+                name="house"
+                animate="exitToBelow"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="main"
+                expression="shocked"
+                say="(Hala!/Oh no!)  The pieces fell off!"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="pichi"
+                animate="exitToRight"
+                say="(username) (Patulong/Help me!)"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="main"
+                expression="default"
+                say="Let’s help Pichi."/>
+        </Scene>
+        <Scene>
+            <Character
+                name="main"
+                say="Here I’ll give you the pieces."/>
+        </Scene>
+    </Lesson>
+    
+    <Lesson
+        name="Shape">
+    	<Scene>
+    	    <Background src="shapes_tutt"/>
+    	    <Character
+    	        name="main"
+    	        animate="entranceFromLeft"
+    	        expression="point"
+    	        say="Wow we finally got away from that chef."/>
+    	</Scene>
+    	<Scene>
+    	    <Character
+    	        name="main"
+    	        say="Now we're in a rocket ship! Excited (na ako!/I'm already excited!)"/>
+    	</Scene>
+    	<Scene>
+    	    <Character
+    	        name="main"
+    	        expression="question"
+    	        say="What's going on here?"/>
+    	</Scene>
+    	<Scene>
+    	    <Character
+    	        name="crew"
+				animate="entranceFromRight"
+				say="One of our actors for the show is sick! Can you help us with the show?"/>
+    	</Scene>
+    	<Scene>
+    	    <Character
+    	        name="main"
+    	        expression="default"
+    	        say="I guess a little acting won't hurt."/>
+    	    <Character
+    	        name="crew"
+    	        animate="exitToRight"/>
+    	</Scene>
+    	<Scene>
+    	    <Character
+    	        name="main"
+    	        expression="shocked"
+    	        say="(Tignan mo!/ Look!)  Someone is on the screen (username)"/>
+    	</Scene>
+    	<Scene>
+    	    <Background src="shapes_alien"/>
+    	    <Character 
+    	        name="crew"
+    	        say="WORLD DOMINATION"/>
+    	</Scene>
+    	<Scene>
+    	    <Character
+    	        name="main"
+    	        animate="panic"
+    	        say="(Naku!/Oh no!) We have to defeat the aliens quickly!"/>
+    	</Scene>
+    	<Scene>
+    	    <Character
+    	        name="main"
+    	        say="Let's figure out what these buttons do."/>
+    	</Scene>
+    </Lesson>
+</resources>

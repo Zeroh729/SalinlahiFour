@@ -24,11 +24,13 @@
         <qentry>9</qentry>
     </Q_List>
     <Lesson_PreReq>0</Lesson_PreReq>
+
     <Summary></Summary>
     <lexicon_name>lexicon_family</lexicon_name>
     <activity_name>Family</activity_name>
     <tutorial_name>Family</tutorial_name>
     <narrative_name>Family</narrative_name>
+
     <icon_image>lesson1_icon</icon_image>
     
 </Lesson_Num>
@@ -44,11 +46,13 @@
      <qentry>5</qentry>
      <qentry>6</qentry>
      </Q_List>
+
     <Summary></Summary>
     <lexicon_name>lexicon_house</lexicon_name>
     <activity_name>House</activity_name>
     <tutorial_name>House</tutorial_name>
     <narrative_name>House</narrative_name>
+
     <icon_image>lesson2_icon</icon_image>
 </Lesson_Num>
 <Lesson_Num>
@@ -65,11 +69,13 @@
      <qentry>7</qentry>
      <qentry>8</qentry>
      </Q_List>
+
     <Summary></Summary>
     <lexicon_name>lexicon_cooking</lexicon_name>
     <activity_name>Cooking</activity_name>
     <tutorial_name>Cooking</tutorial_name>
     <narrative_name>Cooking</narrative_name>
+
     <icon_image>lesson3_icon</icon_image>
 </Lesson_Num>
 <Lesson_Num>
@@ -88,16 +94,18 @@
      <qentry>9</qentry>
      <qentry>10</qentry>
      </Q_List>
+
     <Summary></Summary>
     <lexicon_name>lexicon_shape</lexicon_name>
     <activity_name>Shape</activity_name>
     <tutorial_name>Shape</tutorial_name>
     <narrative_name>Shape</narrative_name>
+
     <icon_image>lesson4_icon</icon_image>
 </Lesson_Num>
 <Lesson_Num>
     <entry>5</entry>
-    <Lesson_Name>Animals</Lesson_Name>
+    <Lesson_Name>Zoo Cards</Lesson_Name>
     <Lesson_PreReq>0</Lesson_PreReq>
      <Q_List>
      <qentry>1</qentry>
@@ -111,6 +119,7 @@
      <qentry>9</qentry>
      <qentry>10</qentry>
      </Q_List>
+
     <Summary></Summary>
     <lexicon_name>lexicon_animals</lexicon_name>
     <activity_name>Animals</activity_name>
@@ -137,6 +146,7 @@
     <tutorial_name>Greetings</tutorial_name>
     <narrative_name>Greetings</narrative_name>
     <icon_image>lesson1_icon</icon_image>
+
 </Lesson_Num>
 </type>
 

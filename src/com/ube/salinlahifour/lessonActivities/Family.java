@@ -31,7 +31,6 @@ import com.ube.salinlahifour.R;
 import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.animation.AnimatedButtonListener;
 import com.ube.salinlahifour.enumTypes.LevelType;
-import com.ube.salinlahifour.howtoplay.FamilyHowToPlay;
 import com.ube.salinlahifour.uibuilders.Button.BtnNextArrowStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.BtnStatesDirector;
 
@@ -171,8 +170,6 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		btn_nxt.setOnClickListener(this);
 		
 		((RelativeLayout)findViewById(R.id.parent_view)).addView(getPauseButton());
-
-		startActivity(new Intent(this, FamilyHowToPlay.class));
 	}
 
 	protected void initiateItems() {
