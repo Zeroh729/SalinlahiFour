@@ -5,6 +5,8 @@
 	<Word_Entry>
 		<q_num>1</q_num>
 		<word>Pusa</word>
+		<question></question>
+		<eng_word></eng_word>
 		<w_type>definition</w_type>
 		<notes>People believe that the black ones are unlucky</notes>
 		<hint>They are said to have 9 lives and always land on their feet.</hint>
@@ -17,6 +19,8 @@
 	<Word_Entry>
 		<q_num>2</q_num>
 		<word>Aso</word>
+		<question></question>
+		<eng_word></eng_word>
 		<w_type>definition</w_type>
 		<notes>These guys and cats usually fight.</notes>
 		<hint>They are usually made as pets. They bark at everything.</hint>
@@ -29,6 +33,8 @@
 	<Word_Entry>
 		<q_num>3</q_num>
 		<word>Manok</word>
+		<question></question>
+		<eng_word></eng_word>
 		<w_type>definition</w_type>
 		<notes>They also make for a pretty tasty meal.</notes>
 		<hint>This animal can't fly even though it's a bird. It also lays eggs.</hint>
@@ -41,6 +47,8 @@
 	<Word_Entry>
 		<q_num>4</q_num>
 		<word>Kalabaw</word>
+		<question></question>
+		<eng_word></eng_word>
 		<w_type>definition</w_type>
 		<notes>Farmers also use them to go around faster.</notes>
 		<hint>Farmers use these guys to help them with farming. They also have horns like a bull</hint>
@@ -53,6 +61,8 @@
 	<Word_Entry>
 		<q_num>5</q_num>
 		<word>Unggoy</word>
+		<question></question>
+		<eng_word></eng_word>
 		<w_type>definition</w_type>
 		<notes>Some say we were once like that.</notes>
 		<hint>They like to eat bananas and hang around in trees</hint>
@@ -65,6 +75,8 @@
 	<Word_Entry>
 		<q_num>6</q_num>
 		<word>Ibon</word>
+		<question></question>
+		<eng_word></eng_word>
 		<w_type>definition</w_type>
 		<notes>You might see them in windows and trees as well</notes>
 		<hint>These animals fly around in the sky.</hint>
@@ -77,6 +89,8 @@
 	<Word_Entry>
 		<q_num>7</q_num>
 		<word>Daga</word>
+		<question></question>
+		<eng_word></eng_word>
 		<w_type>definition</w_type>
 		<notes>They are chased by cats.</notes>
 		<hint>Little animals that like to eat cheese and run around the house</hint>
@@ -89,6 +103,8 @@
 	<Word_Entry>
 		<q_num>8</q_num>
 		<word>Elepante</word>
+		<question></question>
+		<eng_word></eng_word>
 		<w_type>definition</w_type>
 		<notes>They are the largest land animal</notes>
 		<hint>These are big animals with long trunks</hint>
@@ -101,6 +117,8 @@
 	<Word_Entry>
 		<q_num>9</q_num>
 		<word>Oso</word>
+		<question></question>
+		<eng_word></eng_word>
 		<w_type>definition</w_type>
 		<notes>Teddy bear dolls are made to look like them too.</notes>
 		<hint>They live in caves and have long claws</hint>

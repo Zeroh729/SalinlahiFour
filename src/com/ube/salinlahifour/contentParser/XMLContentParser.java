@@ -1,13 +1,16 @@
 package com.ube.salinlahifour.contentParser;
 
 import java.io.InputStream;
+
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.xml.parsers.SAXParserFactory;
 
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
+
 
 import android.content.Context;
 
