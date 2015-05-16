@@ -14,8 +14,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import org.jdom.Parent;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -45,6 +43,7 @@ import com.ube.salinlahifour.database.UserRecordOperations;
 import com.ube.salinlahifour.enumTypes.LevelType;
 import com.ube.salinlahifour.enumTypes.StatusType;
 import com.ube.salinlahifour.evaluationModule.Evaluation;
+import com.ube.salinlahifour.howtoplay.HowToPlay;
 import com.ube.salinlahifour.model.UserRecord;
 import com.ube.salinlahifour.tools.DateTimeConverter;
 import com.ube.salinlahifour.uibuilders.Button.BtnStatesDirector;
@@ -73,6 +72,9 @@ public abstract class AbstractLessonActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		
+		
 		context = this;
 //		setContentView(R.layout.activity_lesson);
 		try{
@@ -83,19 +85,34 @@ public abstract class AbstractLessonActivity extends Activity {
 					+ "2. layoutID has been set in Constructor");
 		}
 		
-		Bundle bundle = getIntent().getExtras();
-		activityName = bundle.getString("activityName");
-		activityLevel = LevelType.valueOf(bundle.getString("activityLevel"));
-		Log.d("activityLevel:", activityLevel.toString());
-		lesson = (Lesson) bundle.getParcelable("lesson");
 		
 		UserID = SalinlahiFour.getLoggedInUser().getId();
 		Log.d(activityName, "TEST ActivityName in lesson act");
 
-		items = ((SalinlahiFour)getApplication()).getLessonItems();
-		initiateNarrationModule();
+
+
+		Bundle bundle = getIntent().getExtras();
+		activityName = bundle.getString("activityName");
+		activityLevel = LevelType.valueOf(bundle.getString("activityLevel"));
+		Log.d("activityLevel:", activityLevel.toString());
+		Log.d("activityName:", activityName.toString());
+		
+		
+		lesson = SalinlahiFour.getLessonByClassName(activityName);
+		Log.d("lessonName: ", lesson.getName());
+		Log.d("image: ", lesson.getImage() + "");
+		Log.d("lexiconthang: ", lesson.getLexicon());
 
 		evaluation =  new Evaluation(this, activityName, activityLevel.toString());
+		
+		evaluation.setLexiconDir(lesson.getLexicon());
+		Intent intent = new Intent(this, HowToPlay.class);
+		intent.putExtra("lessonName", lesson.getName());
+		startActivity(intent);
+		
+		items = lesson.getItems();
+		initiateNarrationModule();
+
 		cnt_question = 0;
 
 		initiateGamePauseUI();

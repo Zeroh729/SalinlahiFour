@@ -24,7 +24,11 @@
         <qentry>9</qentry>
     </Q_List>
     <Lesson_PreReq>0</Lesson_PreReq>
-    <Summary></Summary>
+    <Summary>Meet Pepay's Brother, Sister, Parents, and more!</Summary>
+    <lexicon_name>lexicon_family.xml</lexicon_name>
+    <activity_name>Family</activity_name>
+    <icon_image>lesson1_icon</icon_image>
+    
 </Lesson_Num>
 <Lesson_Num>
     <entry>2</entry>
@@ -38,7 +42,10 @@
      <qentry>5</qentry>
      <qentry>6</qentry>
      </Q_List>
-    <Summary></Summary>
+    <Summary>Build a house from the broken pieces!</Summary>
+    <lexicon_name>lexicon_house.xml</lexicon_name>
+    <activity_name>House</activity_name>
+    <icon_image>lesson2_icon</icon_image>
 </Lesson_Num>
 <Lesson_Num>
     <entry>3</entry>
@@ -54,7 +61,10 @@
      <qentry>7</qentry>
      <qentry>8</qentry>
      </Q_List>
-    <Summary></Summary>
+    <Summary>Bake a colorful cake!</Summary>
+    <lexicon_name>lexicon_cooking.xml</lexicon_name>
+    <activity_name>Cooking</activity_name>
+    <icon_image>lesson3_icon</icon_image>
 </Lesson_Num>
 <Lesson_Num>
     <entry>4</entry>
@@ -72,11 +82,14 @@
      <qentry>9</qentry>
      <qentry>10</qentry>
      </Q_List>
-    <Summary></Summary>
+    <Summary>Defeat the aliens in your space ship!</Summary>
+    <lexicon_name>lexicon_shape.xml</lexicon_name>
+    <activity_name>Shape</activity_name>
+    <icon_image>lesson4_icon</icon_image>
 </Lesson_Num>
 <Lesson_Num>
     <entry>5</entry>
-    <Lesson_Name>Animals</Lesson_Name>
+    <Lesson_Name>Zoo Cards</Lesson_Name>
     <Lesson_PreReq>0</Lesson_PreReq>
      <Q_List>
      <qentry>1</qentry>
@@ -90,9 +103,11 @@
      <qentry>9</qentry>
      <qentry>10</qentry>
      </Q_List>
-    <Summary></Summary>
+    <Summary>Identify Animals called in Filipino</Summary>
+    <lexicon_name>lexicon_animals.xml</lexicon_name>
+    <activity_name>Animals</activity_name>
+    <icon_image>lesson5_icon</icon_image>
 </Lesson_Num>
-
 </type>
 
 <!--

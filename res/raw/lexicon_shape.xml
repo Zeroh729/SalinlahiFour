@@ -9,6 +9,10 @@
 		<notes>It looks like the shape of a ball right?</notes>
 		<hint>Bilog - Circle. It is round and has no edges. It also puts a shield around us. Cool!</hint>
 		<lesson>4</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>2</q_num>
@@ -17,6 +21,10 @@
 		<notes>It looks like a door too.</notes>
 		<hint>Parsukat - A rectangle! It looks like a long box. It releases a sword. Why does this ship have a sword?</hint>
 		<lesson>4</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>3</q_num>
@@ -25,6 +33,10 @@
 		<notes>I wonder if a star really looks like this.</notes>
 		<hint>Bituin - A star shape! Teachers gives us these when we do well. It fires fire. Hahaha!</hint>
 		<lesson>4</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>4</q_num>
@@ -33,6 +45,10 @@
 		<notes>MMM I'd like a slice of pizza right about now.</notes>
 		<hint>Tatsulok - A triangle. It has 3 sides. Oh and it shoots lasers/</hint>
 		<lesson>4</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>5</q_num>
@@ -41,6 +57,10 @@
 		<notes>MMM I'd like a slice of pizza right about now.</notes>
 		<hint>Krus - It looks like the letter t!/</hint>
 		<lesson>4</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>6</q_num>
@@ -49,6 +69,10 @@
 		<notes>I wonder if diamonds really looks like these</notes>
 		<hint>Diamante - It's like a square standing on its edge./</hint>
 		<lesson>4</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>7</q_num>
@@ -57,6 +81,10 @@
 		<notes>It’s like a door too</notes>
 		<hint>Parihaba - It looks like a long box./</hint>
 		<lesson>4</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>8</q_num>
@@ -65,6 +93,10 @@
 		<notes>It’s like a triangle and a rectangle put together.</notes>
 		<hint>Tunod - An arrow. It looks like it's pointing to something/</hint>
 		<lesson>4</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>9</q_num>
@@ -73,6 +105,10 @@
 		<notes>It looks like the moon sometimes too.</notes>
 		<hint>Gasuklay - Looks like a banana or a fingernail./</hint>
 		<lesson>4</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>10</q_num>
@@ -81,5 +117,9 @@
 		<notes>A common shape during Valentine’s Day</notes>
 		<hint>A heart - It's such a LOVELY shape./</hint>
 		<lesson>4</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty></difficulty>
 	</Word_Entry>
 </type>
