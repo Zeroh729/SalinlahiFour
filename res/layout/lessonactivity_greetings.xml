@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:id="@+id/parent_view"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal">
+	<TextView
+		android:id="@+id/tv_question"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:text="Question Here"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/feedbackbox"
+        android:textSize="29sp"
+	    android:textColor="#2c2c2c" />
+
+	<Button
+	    android:id="@+id/tv_choice1"
+	    android:layout_width="100dp"
+	    android:layout_height="100dp"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@+id/tv_question"
+	    android:layout_marginLeft="29dp"
+	    android:background="@null"
+	    android:contentDescription="..."
+	    android:onClick="onClick"
+	    android:text="Choice 1" />
+
+	<Button
+	    android:id="@+id/tv_choice2"
+	    android:layout_width="100dp"
+	    android:layout_height="100dp"
+	    android:layout_below="@+id/tv_question"
+	    android:layout_centerHorizontal="true"
+	    android:background="@null"
+	    android:contentDescription="..."
+	    android:onClick="onClick"
+	    android:text="Choice 2" />
+
+	<Button
+	    android:id="@+id/tv_choice3"
+	    android:layout_width="100dp"
+	    android:layout_height="100dp"
+	    android:layout_alignBaseline="@+id/tv_choice2"
+	    android:layout_alignBottom="@+id/tv_choice2"
+	    android:layout_alignRight="@+id/tv_question"
+	    android:background="@null"
+	    android:contentDescription="..."
+	    android:onClick="onClick"
+	    android:text="Choice 3" />
+
+</RelativeLayout>

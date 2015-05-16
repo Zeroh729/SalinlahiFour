@@ -4,6 +4,8 @@
 	<Word_Entry>
 		<q_num>1</q_num>
 		<word>Asul</word>
+		<question></question>
+		<eng_word></eng_word>
 		<w_type>definition</w_type>
 		<notes>It's also the color of the sea</notes>
 		<hint>Asul - This is BLUE. It is the color of the sky</hint>
@@ -16,6 +18,8 @@
 	<Word_Entry>
 		<q_num>2</q_num>
 		<word>Berde</word>
+		<question></question>
+		<eng_word></eng_word>
 		<w_type>definition</w_type>
 		<notes>It's also the color of crocodiles and alligators</notes>
 		<hint>Berde - This is GREEN. It is the color of the grass and leaves</hint>
@@ -28,6 +32,8 @@
 	<Word_Entry>
 		<q_num>3</q_num>
 		<word>Pula</word>
+		<question></question>
+		<eng_word></eng_word>
 		<w_type>definition</w_type>
 		<notes>It is also the color of a firetruck</notes>
 		<hint>Pula - This is RED. It is the color of an apple</hint>
@@ -40,6 +46,8 @@
 	<Word_Entry>
 		<q_num>4</q_num>
 		<word>Dilaw</word>
+		<question></question>
+		<eng_word></eng_word>
 		<w_type>definition</w_type>
 		<notes>It is also the color of a rubber ducky</notes>
 		<hint>Dilaw - This is YELLOW. It is the color of the sun.</hint>
@@ -52,6 +60,8 @@
 	<Word_Entry>
 		<q_num>5</q_num>
 		<word>Kayumanggi</word>
+		<question></question>
+		<eng_word></eng_word>
 		<w_type>definition</w_type>
 		<notes>It is also the color of the skin</notes>
 		<hint>Kayumanggi - This is BROWN. It is the color of a trunk of a tree</hint>
@@ -64,6 +74,8 @@
 	<Word_Entry>
 		<q_num>6</q_num>
 		<word>Lila</word>
+		<question></question>
+		<eng_word></eng_word>
 		<w_type>definition</w_type>
 		<notes>It is also the color of grapes</notes>
 		<hint>Lila - This is VIOLET. It is also the color of eggplants</hint>
@@ -72,6 +84,8 @@
 	<Word_Entry>
 		<q_num>7</q_num>
 		<word>Itim</word>
+		<question></question>
+		<eng_word></eng_word>
 		<w_type>definition</w_type>
 		<notes>It is also the color of car tires</notes>
 		<hint>Itim - This is BLACK. it is also the color fot he night sky</hint>
@@ -84,6 +98,8 @@
 	<Word_Entry>
 		<q_num>8</q_num>
 		<word>Puti</word>
+		<question></question>
+		<eng_word></eng_word>
 		<w_type>definition</w_type>
 		<notes>It is also the color of doves</notes>
 		<hint>Puti - This is WHITE. It is also the color of clouds</hint>

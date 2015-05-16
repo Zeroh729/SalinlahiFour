@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-    Document   : LessonLibrary.xml
+    Document   : LessonLibrary 
     Created on : July 11, 2011, 3:27 PM
     Author     : Ledian
     Description:
@@ -24,9 +24,13 @@
         <qentry>9</qentry>
     </Q_List>
     <Lesson_PreReq>0</Lesson_PreReq>
-    <Summary>Meet Pepay's Brother, Sister, Parents, and more!</Summary>
-    <lexicon_name>lexicon_family.xml</lexicon_name>
+
+    <Summary></Summary>
+    <lexicon_name>lexicon_family</lexicon_name>
     <activity_name>Family</activity_name>
+    <tutorial_name>Family</tutorial_name>
+    <narrative_name>Family</narrative_name>
+
     <icon_image>lesson1_icon</icon_image>
     
 </Lesson_Num>
@@ -42,9 +46,13 @@
      <qentry>5</qentry>
      <qentry>6</qentry>
      </Q_List>
-    <Summary>Build a house from the broken pieces!</Summary>
-    <lexicon_name>lexicon_house.xml</lexicon_name>
+
+    <Summary></Summary>
+    <lexicon_name>lexicon_house</lexicon_name>
     <activity_name>House</activity_name>
+    <tutorial_name>House</tutorial_name>
+    <narrative_name>House</narrative_name>
+
     <icon_image>lesson2_icon</icon_image>
 </Lesson_Num>
 <Lesson_Num>
@@ -61,9 +69,13 @@
      <qentry>7</qentry>
      <qentry>8</qentry>
      </Q_List>
-    <Summary>Bake a colorful cake!</Summary>
-    <lexicon_name>lexicon_cooking.xml</lexicon_name>
+
+    <Summary></Summary>
+    <lexicon_name>lexicon_cooking</lexicon_name>
     <activity_name>Cooking</activity_name>
+    <tutorial_name>Cooking</tutorial_name>
+    <narrative_name>Cooking</narrative_name>
+
     <icon_image>lesson3_icon</icon_image>
 </Lesson_Num>
 <Lesson_Num>
@@ -82,9 +94,13 @@
      <qentry>9</qentry>
      <qentry>10</qentry>
      </Q_List>
-    <Summary>Defeat the aliens in your space ship!</Summary>
-    <lexicon_name>lexicon_shape.xml</lexicon_name>
+
+    <Summary></Summary>
+    <lexicon_name>lexicon_shape</lexicon_name>
     <activity_name>Shape</activity_name>
+    <tutorial_name>Shape</tutorial_name>
+    <narrative_name>Shape</narrative_name>
+
     <icon_image>lesson4_icon</icon_image>
 </Lesson_Num>
 <Lesson_Num>
@@ -103,10 +119,34 @@
      <qentry>9</qentry>
      <qentry>10</qentry>
      </Q_List>
-    <Summary>Identify Animals called in Filipino</Summary>
-    <lexicon_name>lexicon_animals.xml</lexicon_name>
+
+    <Summary></Summary>
+    <lexicon_name>lexicon_animals</lexicon_name>
     <activity_name>Animals</activity_name>
+    <tutorial_name>Animals</tutorial_name>
+    <narrative_name>Animals</narrative_name>
     <icon_image>lesson5_icon</icon_image>
+</Lesson_Num>
+<Lesson_Num>
+    <entry>6</entry>
+    <Lesson_Name>Greetings</Lesson_Name>
+    <Lesson_PreReq>0</Lesson_PreReq>
+     <Q_List>
+     <qentry>1</qentry>
+     <qentry>2</qentry>
+     <qentry>3</qentry>
+     <qentry>4</qentry>
+     <qentry>5</qentry>
+     <qentry>6</qentry>
+     <qentry>7</qentry>
+     </Q_List>
+    <Summary></Summary>
+    <lexicon_name>lexicon_greetings</lexicon_name>
+    <activity_name>Greetings</activity_name>
+    <tutorial_name>Greetings</tutorial_name>
+    <narrative_name>Greetings</narrative_name>
+    <icon_image>lesson1_icon</icon_image>
+
 </Lesson_Num>
 </type>
 

@@ -12,15 +12,21 @@ import android.content.Context;
 import com.ube.salinlahifour.Lesson;
 import com.ube.salinlahifour.SalinlahiFour;
 
+
 public class LessonXMLHandler extends DefaultHandler {
 	private List<Lesson> lessons;
     private String tempVal;
     private Lesson tempLesson;
+
     private Context context;
     
     public LessonXMLHandler(Context context){
     	lessons = new ArrayList<Lesson>();
     	this.context = context;
+    }
+    
+    public LessonXMLHandler(){
+    	lessons = new ArrayList<Lesson>();
     }
     public List<Lesson> getLessons() {
         return lessons;
@@ -55,11 +61,17 @@ public class LessonXMLHandler extends DefaultHandler {
         	tempLesson.setLexicon(tempVal);
         }else if (qName.equalsIgnoreCase("activity_name")) {
         	tempLesson.setActivity(tempVal);
+
+        }else if (qName.equalsIgnoreCase("narrative_name")) {
+        	tempLesson.setNarrative(tempVal);
+        }else if (qName.equalsIgnoreCase("tutorial_name")) {
+        	tempLesson.setTutorial(tempVal);
         }else if (qName.equalsIgnoreCase("icon_image")) {
-        	int resID = SalinlahiFour.getContext().getResources().getIdentifier(tempVal, "drawable", SalinlahiFour.getContext().getPackageName());
-        	tempLesson.setImage(resID);
+        	tempLesson.setIcon(tempVal);
+
         }
         
     }
-    
+
 }
+

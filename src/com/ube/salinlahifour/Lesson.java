@@ -11,6 +11,11 @@ public class Lesson implements Parcelable{
 	private String name;
 	private String className;
 	private String activity;
+
+	private String tutorial;
+	private String narrative;
+	private String iconDir;
+
 	private String lexiconDir;
 	private int lessonPreReq;
 	private String description;
@@ -60,13 +65,29 @@ public class Lesson implements Parcelable{
 		return activity;
 	}
 
+	public void setNarrative(String narrative) {
+		this.narrative = narrative;
+	}
+	public String getNarrative() {
+		return narrative;
+	}
+
 	public void setActivity(String activity) {
 		className = activity;
 		this.activity = "com.ube.salinlahifour.lessonActivities." + activity;
 	}
-	
+
+
 	public String getTheRealName(){
 		return className;
+	}
+	public String getTutorial() {
+		return tutorial;
+	}
+
+	public void setTutorial(String tutorial) {
+		this.tutorial = tutorial;
+
 	}
 
 	public int getImage() {
@@ -76,6 +97,15 @@ public class Lesson implements Parcelable{
 	public void setImage(int image) {
 		this.image = image;
 	}
+
+	public String getIcon() {
+		return this.iconDir;
+	}
+
+	public void setIcon(String icon) {
+		this.iconDir = icon;
+	}
+
 	public String getLexicon(){
 		return this.lexiconDir;
 	}

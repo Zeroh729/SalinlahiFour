@@ -112,7 +112,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 			btn_down[i].setOnClickListener(this);
 			btn_cards[i].setOnClickListener(this);
 		}
-		evaluation.setLexiconDir("lexicon_animals.xml");
+		//evaluation.setLexiconDir("lexicon_animals.xml");
 
 		btn_function.setOnTouchListener(touchListener);
 		btn_function.setOnClickListener(this);

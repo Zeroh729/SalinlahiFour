@@ -103,14 +103,16 @@ public abstract class AbstractLessonActivity extends Activity {
 		Log.d("image: ", lesson.getImage() + "");
 		Log.d("lexiconthang: ", lesson.getLexicon());
 
+
 		evaluation =  new Evaluation(this, activityName, activityLevel.toString());
-		
+		Log.d("Jim Parse On Moving", "Game's Lexicon: " + lesson.getLexicon());
 		evaluation.setLexiconDir(lesson.getLexicon());
 		Intent intent = new Intent(this, HowToPlay.class);
 		intent.putExtra("lessonName", lesson.getName());
 		startActivity(intent);
 		
 		items = lesson.getItems();
+
 		initiateNarrationModule();
 
 		cnt_question = 0;
