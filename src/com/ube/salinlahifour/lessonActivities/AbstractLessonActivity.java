@@ -93,6 +93,8 @@ public abstract class AbstractLessonActivity extends Activity {
 		Log.d(activityName, "TEST ActivityName in lesson act");
 
 		items = ((SalinlahiFour)getApplication()).getLessonItems();
+		Log.d("Jim Parse On Moving", "Game's Lexicon: " + lesson.getLexicon());
+		evaluation.setLexiconDir(lesson.getLexicon());
 		initiateNarrationModule();
 
 		evaluation =  new Evaluation(this, activityName, activityLevel.toString());
