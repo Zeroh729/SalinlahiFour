@@ -14,7 +14,7 @@
 		<image_path></image_path>
 		<eng_sound></eng_sound>
 		<fil_sound></fil_sound>
-		<difficulty></difficulty>
+		<difficulty>EASY</difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>2</q_num>
@@ -28,7 +28,7 @@
 		<image_path></image_path>
 		<eng_sound></eng_sound>
 		<fil_sound></fil_sound>
-		<difficulty></difficulty>
+		<difficulty>EASY</difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>3</q_num>
@@ -42,7 +42,7 @@
 		<image_path></image_path>
 		<eng_sound></eng_sound>
 		<fil_sound></fil_sound>
-		<difficulty></difficulty>
+		<difficulty>EASY</difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>4</q_num>
@@ -56,7 +56,7 @@
 		<image_path></image_path>
 		<eng_sound></eng_sound>
 		<fil_sound></fil_sound>
-		<difficulty></difficulty>
+		<difficulty>EASY</difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>5</q_num>
@@ -70,7 +70,7 @@
 		<image_path></image_path>
 		<eng_sound></eng_sound>
 		<fil_sound></fil_sound>
-		<difficulty></difficulty>
+		<difficulty>MEDIUM</difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>6</q_num>
@@ -84,7 +84,7 @@
 		<image_path></image_path>
 		<eng_sound></eng_sound>
 		<fil_sound></fil_sound>
-		<difficulty></difficulty>
+		<difficulty>MEDIUM</difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>7</q_num>
@@ -98,7 +98,7 @@
 		<image_path></image_path>
 		<eng_sound></eng_sound>
 		<fil_sound></fil_sound>
-		<difficulty></difficulty>
+		<difficulty>HARD</difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>8</q_num>
@@ -112,7 +112,7 @@
 		<image_path></image_path>
 		<eng_sound></eng_sound>
 		<fil_sound></fil_sound>
-		<difficulty></difficulty>
+		<difficulty>HARD</difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>9</q_num>
@@ -126,6 +126,6 @@
 		<image_path></image_path>
 		<eng_sound></eng_sound>
 		<fil_sound></fil_sound>
-		<difficulty></difficulty>
+		<difficulty>HARD</difficulty>
 	</Word_Entry>
 </type>
