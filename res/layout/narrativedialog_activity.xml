@@ -22,7 +22,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:visibility="invisible"
      />
     
     <ImageView
@@ -31,7 +30,6 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/character1"
         android:layout_alignBottom="@id/character1"
-        android:visibility="invisible"
      />
     <ImageView
         android:id="@+id/character3"
@@ -39,7 +37,6 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/character2"
         android:layout_alignBottom="@id/character1"
-        android:visibility="invisible"
      />
     <ImageView
         android:id="@+id/character4"
@@ -47,7 +44,20 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/character3"
         android:layout_alignBottom="@id/character1"
-        android:visibility="invisible"
+     />
+    <ImageView
+        android:id="@+id/character5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/character4"
+        android:layout_alignBottom="@id/character1"
+     />
+    <ImageView
+        android:id="@+id/character6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/character5"
+        android:layout_alignBottom="@id/character1"
      />
     
     <ImageButton

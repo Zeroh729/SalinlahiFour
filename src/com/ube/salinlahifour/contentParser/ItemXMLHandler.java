@@ -7,6 +7,8 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import android.content.Context;
+
 import android.util.Log;
 
 import com.ube.salinlahifour.Item;
@@ -16,9 +18,13 @@ public class ItemXMLHandler extends DefaultHandler {
 	private List<Item> items;
     private String tempVal;
     private Item tempItem;
+
+    private Context context;
     
-    public ItemXMLHandler(){
+    public ItemXMLHandler(Context context){
     	items = new ArrayList<Item>();
+    	this.context = context;
+
     }
     public List<Item> getItems() {
         return items;
@@ -68,4 +74,6 @@ public class ItemXMLHandler extends DefaultHandler {
         } 
         
     }
+
 }
+

@@ -21,8 +21,6 @@ import com.ube.salinlahifour.R;
 import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.animation.AnimatedButtonListener;
 import com.ube.salinlahifour.enumTypes.LevelType;
-import com.ube.salinlahifour.howtoplay.AnimalsHowToPlay;
-import com.ube.salinlahifour.howtoplay.FamilyHowToPlay;
 
 public class Animals extends AbstractLessonActivity implements OnClickListener{
 	private ImageButton[] btn_up;
@@ -136,7 +134,6 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 		
 		initiateCards();
 
-		startActivity(new Intent(this, AnimalsHowToPlay.class));
 	}
 	
 	private void initiateCards(){

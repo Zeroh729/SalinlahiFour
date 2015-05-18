@@ -1,22 +1,14 @@
 package com.ube.salinlahifour;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.XmlResourceParser;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.media.SoundPool;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -32,8 +24,6 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 
 import com.qwerjk.better_text.MagicTextView;
 import com.ube.salinlahifour.database.UserLessonProgressOperations;
@@ -41,7 +31,7 @@ import com.ube.salinlahifour.debugclasses.DebugUserModuleActivity;
 import com.ube.salinlahifour.enumTypes.LevelType;
 import com.ube.salinlahifour.enumTypes.StarType;
 import com.ube.salinlahifour.model.UserLessonProgress;
-import com.ube.salinlahifour.uibuilders.Button.BtnNextArrowStatesBuilder;
+import com.ube.salinlahifour.tutorials.Tutorial;
 import com.ube.salinlahifour.uibuilders.Button.BtnStatesDirector;
 import com.ube.salinlahifour.uibuilders.Button.EasyBtnStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.HardBtnStatesBuilder;
@@ -49,11 +39,11 @@ import com.ube.salinlahifour.uibuilders.Button.LogoutBtnStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.MapNextBtnStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.MapPrevBtnStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.MediumBtnStatesBuilder;
-import com.ube.salinlahifour.uibuilders.Button.OkBtnStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.PopupcloseBtnStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.ProgressBtnStatesBuilder;
 
 public class MapActivity extends Activity implements OnClickListener{
+	private Context context;
 
 	private ArrayList<Scene> scenes;
 	private ImageButton[] imgBtns;
@@ -87,6 +77,7 @@ public class MapActivity extends Activity implements OnClickListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		context = this;
 		
 		Log.d("ONCREATING", "TESTTESTTESTEST");
 		
@@ -115,18 +106,20 @@ public class MapActivity extends Activity implements OnClickListener{
 	        Toast toast = Toast.makeText(getApplicationContext(), "Welcome " + ((SalinlahiFour)getApplication()).getLoggedInUser().getName() + "!!!", Toast.LENGTH_SHORT);
 	        toast.show();
 			
-			try {
-				Log.d("parseXML()", "TESTTESTTESTEST");
+	        
+
+//			try {
+//				Log.d("parseXML()", "TESTTESTTESTEST");
 				parseXML();
-				Log.d("settingLevelStatuses", "TESTTESTTESTEST");
+//				Log.d("settingLevelStatuses", "TESTTESTTESTEST");
 				setLevelStatuses();
-				
-				
-			} catch (XmlPullParserException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+//				
+//				
+//			} catch (XmlPullParserException e) {
+//				e.printStackTrace();
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
 			
 			sceneIndex = 0;
 			scene = scenes.get(sceneIndex);
@@ -264,7 +257,7 @@ public class MapActivity extends Activity implements OnClickListener{
 
 				Log.d("Lesson no. : " + i + " ->" + scenes.get(k).getLessons().get(i).getLocked(),"FINAL CHECKING");
 				
-//				scene.getLessons().get(i).setLocked(false);
+				//scene.getLessons().get(i).setLocked(false);
 				if(k > 0 && i == 0){
 					UserLessonProgress prevCheck = userdb.getUserLessonProgress(UserID, scenes.get(k-1).getLessons().get(4).getName());
 					try{
@@ -281,7 +274,7 @@ public class MapActivity extends Activity implements OnClickListener{
 		try{
 			scenes.get(0).getLessons().get(0).setLocked(false);
 		}catch(Exception e){
-			
+			Toast.makeText(this, "Can't unlock", Toast.LENGTH_SHORT).show();
 		}
 		
 		userdb.close();
@@ -353,48 +346,18 @@ public class MapActivity extends Activity implements OnClickListener{
 	}
 		
 	
-	public void parseXML() throws XmlPullParserException, IOException{
+	public void parseXML(){
 		scenes = new ArrayList();
 		scene = makeNewScene();
-		String lessonName = "";
-		String lessonDesc = "";
-		String activityName = "";
-		String value = "";
-		int lessonImgID = 0;
-		int lessonNumber = 0;
 		
-		XmlResourceParser parser = getResources().getXml(R.xml.lessonlist);
-		
-        int eventType = parser.getEventType();
-        while (eventType != XmlPullParser.END_DOCUMENT) {
-        	if(eventType == XmlPullParser.END_TAG) {
-        		if(parser.getName().equals("Lesson")){
-	        		 lessonNumber++;
-	        		 Lesson lesson = new Lesson();
-	        		 lesson.setLocked(true);
-	        		 scene.addLesson(lesson.setValues(lessonName, lessonDesc, activityName, lessonImgID, lessonNumber));
-	        		 lessonName = "";
-	        		 lessonDesc = "";
-	        		 activityName = "";
-	        		 value = "";
-	        		 lessonImgID = 0;
-	        		 if(scene.getLessons().size() >= 5){
-	        			 scene = makeNewScene();
-        		 }
-        	 }else if(parser.getName().equals("Name")){
-        		 lessonName = value;
-        	 }else if(parser.getName().equals("Image")){
-        		 lessonImgID = getResources().getIdentifier(value, "drawable", getPackageName());
-        	 }else if(parser.getName().equals("ActivityName")){
-        		 activityName = value;
-        	 }else if(parser.getName().equals("Description")){
-        		 lessonDesc = value;
-        	 }
-         } else if(eventType == XmlPullParser.TEXT) {
-        	 value = parser.getText();
-         }
-         eventType = parser.next();
-        }
+		for(int i = 0; i < SalinlahiFour.getLessonsList().size(); i++){
+			Lesson lesson = SalinlahiFour.getLessonsList().get(i);
+			lesson.setLocked(true);
+			scene.addLesson(lesson);
+			if(scene.getLessons().size() > 5){
+   			 scene = makeNewScene();
+			}
+		}
 		 
 	}
 	
@@ -591,12 +554,10 @@ public class MapActivity extends Activity implements OnClickListener{
 					             easy.setOnClickListener(new ImageButton.OnClickListener(){
 					        	     @Override
 					        	     public void onClick(View v) {
-					        	    	intent = new Intent(scene.getLessons().get(fIndex).getTutorial());
-					         			intent.putExtra("activityClass", scene.getLessons().get(fIndex).getActivity());
+					        	    	intent = new Intent(context, Tutorial.class);
+					         			intent.putExtra("lessonName", scene.getLessons().get(fIndex).getName());
 					         			intent.putExtra("activityLevel", LevelType.EASY.toString());
-					         			Bundle bundle = new Bundle();
-					         			bundle.putParcelable("lesson", lessonDetails);
-					         			intent.putExtras(bundle);
+
 					         			startActivity(intent);
 					        	     }});
 					             ImageButton medium = (ImageButton)popupView.findViewById(R.id.btn_med);
@@ -604,12 +565,9 @@ public class MapActivity extends Activity implements OnClickListener{
 	
 					        	     @Override
 					        	     public void onClick(View v) {
-					        	    	 intent = new Intent(scene.getLessons().get(fIndex).getTutorial());
-					         			intent.putExtra("activityClass", scene.getLessons().get(fIndex).getActivity());
+					        	    	intent = new Intent(context, Tutorial.class);
+					         			intent.putExtra("lessonName", scene.getLessons().get(fIndex).getName());
 					         			intent.putExtra("activityLevel", LevelType.MEDIUM.toString());
-					         			Bundle bundle = new Bundle();
-					         			bundle.putParcelable("lesson", lessonDetails);
-					         			intent.putExtras(bundle);
 					         			startActivity(intent);
 					        	     }});
 					             ImageButton hard = (ImageButton)popupView.findViewById(R.id.btn_hard);
@@ -618,12 +576,9 @@ public class MapActivity extends Activity implements OnClickListener{
 	
 					        	     @Override
 					        	     public void onClick(View v) {
-					        	    	 intent = new Intent(scene.getLessons().get(fIndex).getTutorial());
-					         			intent.putExtra("activityClass", scene.getLessons().get(fIndex).getActivity());
+					        	    	intent = new Intent(context, Tutorial.class);
+					         			intent.putExtra("lessonName", scene.getLessons().get(fIndex).getName());
 					         			intent.putExtra("activityLevel", LevelType.HARD.toString());
-					         			Bundle bundle = new Bundle();
-					         			bundle.putParcelable("lesson", lessonDetails);
-					         			intent.putExtras(bundle);
 					         			startActivity(intent);
 					        	     }});
 					             
@@ -713,7 +668,7 @@ public class MapActivity extends Activity implements OnClickListener{
 		final AlertDialog.Builder builder=new AlertDialog.Builder(this);
 		builder.setTitle("Exception");
 		builder.setMessage(e.toString() + "\nCheck if:\n"
-				+"1. " + scene.getLessons().get(index).getTutorial() + " exists\n"
+				+"1. " + scene.getLessons().get(index).getActivity() + " exists\n"
 				+"2. This <activity> has <intent-filter> tags in AndroidManifest.xml");
 		builder.setIcon(android.R.drawable.ic_dialog_alert);
 		builder.setNeutralButton("I'll debug it right away!", new DialogInterface.OnClickListener() {

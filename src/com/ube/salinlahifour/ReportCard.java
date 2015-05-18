@@ -7,12 +7,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
@@ -23,8 +19,8 @@ import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.ube.salinlahifour.animation.AnimatedButtonListener;
 import com.ube.salinlahifour.enumTypes.LevelType;
-import com.ube.salinlahifour.enumTypes.StarType;
 import com.ube.salinlahifour.evaluationModule.Evaluation;
+import com.ube.salinlahifour.tutorials.Tutorial;
 
 public class ReportCard extends PopupWindow implements OnClickListener{
 
@@ -166,7 +162,7 @@ public class ReportCard extends PopupWindow implements OnClickListener{
 	}
 	
 	private void goToLesson(LevelType level){
-		Intent intent = new Intent(lesson.getTutorial());            	
+		Intent intent = new Intent(context, Tutorial.class);            	
 		intent.putExtra("activityName", lesson.getName());    	
 		intent.putExtra("UserID", SalinlahiFour.getLoggedInUser().getId());
 		intent.putExtra("activityLevel", level.toString());

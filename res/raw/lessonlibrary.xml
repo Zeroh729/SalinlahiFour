@@ -30,7 +30,6 @@
     <tutorial_name>Family</tutorial_name>
     <narrative_name>Family</narrative_name>
     <icon_image>lesson1_icon</icon_image>
-    
 </Lesson_Num>
 <Lesson_Num>
     <entry>2</entry>
@@ -97,7 +96,7 @@
 </Lesson_Num>
 <Lesson_Num>
     <entry>5</entry>
-    <Lesson_Name>Animals</Lesson_Name>
+    <Lesson_Name>Zoo Cards</Lesson_Name>
     <Lesson_PreReq>0</Lesson_PreReq>
      <Q_List>
      <qentry>1</qentry>
@@ -137,6 +136,7 @@
     <tutorial_name>Greetings</tutorial_name>
     <narrative_name>Greetings</narrative_name>
     <icon_image>lesson1_icon</icon_image>
+
 </Lesson_Num>
 </type>
 

@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.xml.sax.InputSource;
@@ -25,12 +26,19 @@ import android.widget.ImageView;
 
 import com.ube.salinlahifour.database.DatabaseHandler;
 import com.ube.salinlahifour.database.UserDetailOperations;
+import com.ube.salinlahifour.howtoplay.HowToPlay;
+import com.ube.salinlahifour.howtoplay.HowToPlaySet;
 import com.ube.salinlahifour.model.UserDetail;
 import com.ube.salinlahifour.narrativeStory.NarrativeStory;
+
+import com.ube.salinlahifour.tutorials.Tutorial;
 import com.ube.salinlahifour.contentParser.*;
+import com.ube.salinlahifour.narrativeDialog.Character;
+
+
 public class MainActivity extends Activity {
 	private UserDetailOperations userDetailOperator;		
-	private int SPLASH_TIME = 1 * 1000;// 3 seconds //Now 4 secs
+	private int SPLASH_TIME = 10 * 1000;// 3 seconds //Now 4 secs
 //	private final Intent registationActivity = new Intent(this, RegistrationActivity.class);
 //	private final Intent mapActivity = new Intent(this, MapActivity.class);
 	
@@ -41,8 +49,9 @@ public class MainActivity extends Activity {
 		//Load File from res or assets
 		//InputStream ins = getResources().openRawResource( getResources().getIdentifier("raw/properties", "raw", getPackageName()));
 		
+
 		//Copy file from res/assets to file from SDCARD
-		
+
 		 initExternalFiles();
 		 populateImportantFiles();
 		 parseLessons();
@@ -256,6 +265,7 @@ public class MainActivity extends Activity {
 		    }
 		 }catch(Exception e){
 		 }
+
 	}
 	private void populateLexiconFiles(String lexicon_name){
 		
@@ -272,6 +282,7 @@ public class MainActivity extends Activity {
 		    }
 		 }catch(Exception e){
 		 }
+
 	}
 	private void parseLexicon(){
 		Log.d("Jim Parse On", "Item Parsing Starts");
@@ -280,27 +291,26 @@ public class MainActivity extends Activity {
 		//R.raw.lexicon_family
 		//R.raw.lexicon_house
 		//R.raw.lexicon_shape
-		
+		//Log.d("Jim Parse On", "getLesson(qentry) Size: " + SalinlahiFour.getL
 		for(int i = 0; i < SalinlahiFour.getLessonsList().size(); i++){
 			ArrayList<Item> items = new ArrayList();
-			
 			//parse lexicon.xml or watver
 			//Log.d("Lexicon Parsing", "In " + i);
 			try {
-				Log.d("Jim Parse On", "Parsing in: " + i);
-				items = (ArrayList<Item>) XMLContentParser.parseItem(new FileInputStream("/sdcard/"+ SalinlahiFour.getLessonsList().get(i).getLexicon()+ ".xml"));
+				items = (ArrayList<Item>) XMLContentParser.parseItem(this, new FileInputStream("/sdcard/"+ SalinlahiFour.getLessonsList().get(i).getLexicon()+".xml"));
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				Log.d("Jim Parse On", "Caught like a fly:" + e);
 				e.printStackTrace();
 				
 			}
+			//SalinlahiFour.getLesson((i)).setItems(items); //Dont use this... int i starts with 0 and qentry starts with 1, kaya nagkakaerror 
 			SalinlahiFour.getLessonsList().get(i).setItems(items);
-			
 		}
 		Log.d("Jim Parse On", "Item Parsing Ends");
-		Log.d("Jim Parse On", "Sample Item: " + SalinlahiFour.getLessonsList().get(5).getItems().get(0).getWord());
-		
+		Log.d("Jim Parse On", "NEWER: "+ SalinlahiFour.getLesson(1).getName());
+		//Log.d("Jim Parse On", "Sample Item: " + SalinlahiFour.getLessonsList().get(5).getItems().get(0).getWord());
+
 		
 	}
 	
@@ -309,7 +319,9 @@ public class MainActivity extends Activity {
 		ArrayList<Lesson> lessons = new ArrayList();
 		Log.d("Jim Parse On", "Lesson Starts");
 		//parse raw/lessonlist.xml	(kung puede irename, gawin list_lesson.xml.... para lang consistent (arte))
-		lessons = (ArrayList<Lesson>) XMLContentParser.parseLesson(this.getResources().openRawResource(R.raw.lessonlibrary));
+
+		lessons = (ArrayList<Lesson>) XMLContentParser.parseLesson(this, this.getResources().openRawResource(R.raw.lessonlibrary));
+
 		for(int x= 0; x<lessons.size(); x++){
 		Log.d("Jim Parse On", "Sample Output: "+ x +" " + lessons.get(x).getName());
 		}
@@ -320,26 +332,44 @@ public class MainActivity extends Activity {
 	private void parseCharacters(){
 		ArrayList<Character> characters = new ArrayList();
 		
+		characters = XMLContentParser.parseCharacter(this, this.getResources().openRawResource(R.raw.list_character));
+		
 		//parse raw/list_characters.xml
 		
 		SalinlahiFour.setCharactersList(characters);
+		for(int i = 0 ; i < SalinlahiFour.getCharactersList().size(); i++){
+			for(String state : SalinlahiFour.getCharactersList().get(i).getStates().keySet()){
+				Log.d("TEST0", "Parsed Characters: " + SalinlahiFour.getCharactersList().get(i).getName() + " State: " + state);
+			}
+		}
 	}
 	
 	private void parseStories(){
 		ArrayList<NarrativeStory> stories = new ArrayList();
 		
+		stories = XMLContentParser.parseNarrativeStory(this, this.getResources().openRawResource(R.raw.list_stories));
 		//parse list_stories.xml
-		new NarrativeStory();
 		
-		SalinlahiFour.setStoriesList(stories);
+		Log.d("TEST0", "Stories parsed: " + stories.size());
+		
+		for(int i = 0; i < stories.size(); i++){
+			SalinlahiFour.addStoriesList(stories.get(i).getName(), stories.get(i));
+			Log.d("TEST0", "Story name: " + stories.get(i).getName());
+		}
+		
+		
 	}
 	
 	private void parseTutorials(){
-		ArrayList<Integer> tutorialResIds = new ArrayList();
+		ArrayList<HowToPlaySet> tutorials = new ArrayList();
+		
+		tutorials = XMLContentParser.parseHowToPlay(this, this.getResources().openRawResource(R.raw.list_howtoplay));
 		
 		//parse list_tutorial.xml
-		
-		SalinlahiFour.setTutorialsList(tutorialResIds);
+
+		for(int i = 0; i < tutorials.size(); i++){
+			SalinlahiFour.addTutorialsList(tutorials.get(i).lessonName, tutorials.get(i));
+		}
 	}
 	
 	@Override
