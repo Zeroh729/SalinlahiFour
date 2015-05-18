@@ -256,7 +256,7 @@ public class MainActivity extends Activity {
 		 in = getResources().openRawResource(R.raw.lexicon);
 		 try{
 		    FileOutputStream out = new FileOutputStream("/sdcard/lexicon.xml");
-		    byte[] buff = new byte[4096];
+		    byte[] buff = new byte[8192];
 		    int read = 0;
 		       while ((read = in.read(buff)) > 0) {
 		          out.write(buff, 0, read);
@@ -273,7 +273,7 @@ public class MainActivity extends Activity {
 		InputStream in = getResources().openRawResource(rawID);
 		 try{
 		    FileOutputStream out = new FileOutputStream("/sdcard/" + lexicon_name + ".xml");
-		    byte[] buff = new byte[4096];
+		    byte[] buff = new byte[8192];
 		    int read = 0;
 		       while ((read = in.read(buff)) > 0) {
 		          out.write(buff, 0, read);
