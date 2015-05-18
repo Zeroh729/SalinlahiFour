@@ -138,7 +138,7 @@ public class ProgressTreeActivity extends Activity implements OnCheckedChangeLis
 			recentdata.add(tempData);
 			totaldata.add(tempData);
 			
-			ArrayList<Item> items = LessonItemLoader.getLessonItems(lesson.getActivity(), LevelType.HARD.toString());
+			ArrayList<Item> items = SalinlahiFour.getLesson(lesson.getTheRealName()).getItems();
 			Collections.reverse(items);
 				ArrayList<UserRecord> userrecords = userrecorddb.getAllUserRecordsFromUserId(SalinlahiFour.getLoggedInUser().getId(), lesson.getName());
 				HashMap<String, ItemCounter> recentItemMap = new HashMap();				

@@ -41,12 +41,14 @@ public class ItemXMLHandler extends DefaultHandler {
     public void characters(char[] ch, int start, int length)
             throws SAXException {
         tempVal = new String(ch, start, length);
+    	Log.d("Jim Parse On", "Inside ItemXMLHandler Value is actually: " + tempVal);
     }
     public void endElement(String uri, String localName, String qName)
             throws SAXException {
         if (qName.equalsIgnoreCase("Word_Entry")) {
             // add it to the list
-            items.add(tempItem);
+            items.add(tempItem.clone());
+        	Log.d("Jim Parse On", "ITEM PARSED successful storing: " + items.get(items.size()-1).getWord());
         } else if (qName.equalsIgnoreCase("q_num")) { //ID
         	tempItem.setID(Integer.parseInt(tempVal));
         } else if (qName.equalsIgnoreCase("word")) {
@@ -55,16 +57,20 @@ public class ItemXMLHandler extends DefaultHandler {
         	Log.d("Jim Parse On", "Inside ItemXMLHandler stored word: " + tempItem.getWord());
         } else if (qName.equalsIgnoreCase("question")) {
         	tempItem.setQuestion(tempVal);
+        	Log.d("Jim Parse On", "Inside ItemXMLHandler stored question: " + tempItem.getQuestion());
         } else if (qName.equalsIgnoreCase("eng_word")) {
         	tempItem.setEnglish(tempVal);
+        	Log.d("Jim Parse On", "Inside ItemXMLHandler stored english: " + tempItem.getEnglish());
         } else if (qName.equalsIgnoreCase("notes")) {
         	tempItem.setNote(tempVal);
+        	Log.d("Jim Parse On", "Inside ItemXMLHandler stored notes: " + tempItem.getNote());
         } else if (qName.equalsIgnoreCase("hint")) {
         	tempItem.setHint(tempVal);
+        	Log.d("Jim Parse On", "Inside ItemXMLHandler stored hints: " + tempItem.getHint());
         } else if (qName.equalsIgnoreCase("lesson")) {
         	tempItem.setLessonNum(Integer.parseInt(tempVal));
         } else if (qName.equalsIgnoreCase("image_path")) {
-        	tempItem.setImagePath(tempVal);
+        	tempItem.setImagePath(context, tempVal);
         } else if (qName.equalsIgnoreCase("eng_sound")) {
         	tempItem.setVoiceEngPath(tempVal);
         } else if (qName.equalsIgnoreCase("fil_sound")) {

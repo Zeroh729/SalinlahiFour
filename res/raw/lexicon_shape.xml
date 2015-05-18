@@ -51,7 +51,7 @@
 		<eng_word>Triangle</eng_word>
 		<w_type>definition</w_type>
 		<notes>MMM I'd like a slice of pizza right about now.</notes>
-		<hint>Tatsulok - A triangle. It has 3 sides. Oh and it shoots lasers/</hint>
+		<hint>Tatsulok - A triangle. It has 3 sides. Oh and it shoots lasers.</hint>
 		<lesson>4</lesson>
 		<image_path>shapes/Easy/triangle.png</image_path>
 		<eng_sound></eng_sound>
@@ -65,7 +65,7 @@
 		<eng_word>Cross</eng_word>
 		<w_type>definition</w_type>
 		<notes>MMM I'd like a slice of pizza right about now.</notes>
-		<hint>Krus - It looks like the letter t!/</hint>
+		<hint>Krus - It looks like the letter t!</hint>
 		<lesson>4</lesson>
 		<image_path>shapes/Medium/cross.png</image_path>
 		<eng_sound></eng_sound>
@@ -79,7 +79,7 @@
 		<eng_word>Diamond</eng_word>
 		<w_type>definition</w_type>
 		<notes>I wonder if diamonds really looks like these</notes>
-		<hint>Diamante - It's like a square standing on its edge./</hint>
+		<hint>Diamante - It's like a square standing on its edge.</hint>
 		<lesson>4</lesson>
 		<image_path>shapes/Medium/diamond.png</image_path>
 		<eng_sound></eng_sound>
@@ -93,7 +93,7 @@
 		<eng_word>Rectangle</eng_word>
 		<w_type>definition</w_type>
 		<notes>It’s like a door too</notes>
-		<hint>Parihaba - It looks like a long box./</hint>
+		<hint>Parihaba - It looks like a long box.</hint>
 		<lesson>4</lesson>
 		<image_path>shapes/Medium/rectangle.png</image_path>
 		<eng_sound></eng_sound>
@@ -107,7 +107,7 @@
 		<eng_word>Arrow</eng_word>
 		<w_type>definition</w_type>
 		<notes>It’s like a triangle and a rectangle put together.</notes>
-		<hint>Tunod - An arrow. It looks like it's pointing to something/</hint>
+		<hint>Tunod - An arrow. It looks like it's pointing to something.</hint>
 		<lesson>4</lesson>
 		<image_path>shapes/Hard/arrow.png</image_path>
 		<eng_sound></eng_sound>

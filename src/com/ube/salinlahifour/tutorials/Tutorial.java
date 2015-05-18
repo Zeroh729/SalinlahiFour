@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.Lesson;
-import com.ube.salinlahifour.LessonItemLoader;
 import com.ube.salinlahifour.R;
 import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.enumTypes.LevelType;
@@ -45,10 +44,10 @@ public class Tutorial extends Activity{
 		
 		
 		Log.d(activityClass, "TEST ActivityName");
-		items = LessonItemLoader.getLessonItems(activityClass, activityLevel);
+		items = SalinlahiFour.getLessonItems(activityName, activityLevel);
 		
 		if(items == null){
-			SalinlahiFour.errorPopup(this, "Lesson Items Insufficient", LessonItemLoader.getError());
+//			SalinlahiFour.errorPopup(this, "Lesson Items Insufficient", "Check in " + lesson.getLexicon() + " if:\nEASY items: have at least ");
 		}
 		else{
 			Log.d("items size: " + items.size(),"TESTESTEST");
@@ -100,7 +99,8 @@ public class Tutorial extends Activity{
 		startActivity(intent);
 		Log.d(items.size() + "","TEST");
 		for(int i = 0; i < items.size(); i++){
-			if(items.get(i).getLevel().toString().equals(activityLevel)){
+			if(items.get(i).getDifficulty().toString().equalsIgnoreCase(activityLevel)){
+				Log.d("TEST0", "Tutorial class : Setup... name " + items.get(i).getWord() + " & desc: " + items.get(i).getNote());
 				textviews[itemcnt].setText(items.get(i).getHint());
 				imgviews[itemcnt].setImageResource(items.get(i).getImageID());
 				itemcnt++;
@@ -214,7 +214,7 @@ public class Tutorial extends Activity{
 
 	private void setMediumTutorial() {
 		for(int i = 0; i < items.size(); i++){
-			if(items.get(i).getLevel().toString().equals(activityLevel)){
+			if(items.get(i).getDifficulty().toString().equalsIgnoreCase(activityLevel)){
 				textviews[itemcnt].setText(items.get(i).getHint());
 				imgviews[itemcnt].setImageResource(items.get(i).getImageID());
 				itemcnt++;
@@ -328,7 +328,7 @@ public class Tutorial extends Activity{
 
 	private void setHardTutorial() {
 		for(int i = 0; i < items.size(); i++){
-			if(items.get(i).getLevel().toString().equals(activityLevel)){
+			if(items.get(i).getDifficulty().toString().equalsIgnoreCase(activityLevel)){
 				textviews[itemcnt].setText(items.get(i).getHint());
 				imgviews[itemcnt].setImageResource(items.get(i).getImageID());
 				itemcnt++;
