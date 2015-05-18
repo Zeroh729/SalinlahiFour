@@ -291,23 +291,25 @@ public class MainActivity extends Activity {
 		//R.raw.lexicon_family
 		//R.raw.lexicon_house
 		//R.raw.lexicon_shape
-
+		//Log.d("Jim Parse On", "getLesson(qentry) Size: " + SalinlahiFour.getL
 		for(int i = 0; i < SalinlahiFour.getLessonsList().size(); i++){
 			ArrayList<Item> items = new ArrayList();
 			//parse lexicon.xml or watver
 			//Log.d("Lexicon Parsing", "In " + i);
 			try {
-				items = (ArrayList<Item>) XMLContentParser.parseItem(this, new FileInputStream("/sdcard/"+ SalinlahiFour.getLessonsList().get(i).getLexicon()));
+				items = (ArrayList<Item>) XMLContentParser.parseItem(this, new FileInputStream("/sdcard/"+ SalinlahiFour.getLessonsList().get(i).getLexicon()+".xml"));
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				Log.d("Jim Parse On", "Caught like a fly:" + e);
 				e.printStackTrace();
 				
 			}
-			SalinlahiFour.getLesson((i+1)).setItems(items);
+			//SalinlahiFour.getLesson((i)).setItems(items); //Dont use this... int i starts with 0 and qentry starts with 1, kaya nagkakaerror 
+			SalinlahiFour.getLessonsList().get(i).setItems(items);
 		}
 		Log.d("Jim Parse On", "Item Parsing Ends");
-		Log.d("Jim Parse On", "Sample Item: " + SalinlahiFour.getLessonsList().get(5).getItems().get(0).getWord());
+		Log.d("Jim Parse On", "NEWER: "+ SalinlahiFour.getLesson(1).getName());
+		//Log.d("Jim Parse On", "Sample Item: " + SalinlahiFour.getLessonsList().get(5).getItems().get(0).getWord());
 
 		
 	}
