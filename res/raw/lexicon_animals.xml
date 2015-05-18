@@ -11,9 +11,11 @@
 		<notes>People believe that the black ones are unlucky</notes>
 		<hint>They are said to have 9 lives and always land on their feet.</hint>
 		<lesson>5</lesson>
+
 		<image_path>animals_cat</image_path>
 		<eng_sound>animals_cat</eng_sound>
 		<fil_sound>animals_pusa</fil_sound>
+
 		<difficulty>EASY</difficulty>
 	</Word_Entry>
 	<Word_Entry>
@@ -28,7 +30,7 @@
 		<image_path></image_path>
 		<eng_sound></eng_sound>
 		<fil_sound></fil_sound>
-		<difficulty></difficulty>
+		<difficulty>EASY</difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>3</q_num>
@@ -42,7 +44,7 @@
 		<image_path></image_path>
 		<eng_sound></eng_sound>
 		<fil_sound></fil_sound>
-		<difficulty></difficulty>
+		<difficulty>EASY</difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>4</q_num>
@@ -56,7 +58,7 @@
 		<image_path></image_path>
 		<eng_sound></eng_sound>
 		<fil_sound></fil_sound>
-		<difficulty></difficulty>
+		<difficulty>EASY</difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>5</q_num>
@@ -70,7 +72,7 @@
 		<image_path></image_path>
 		<eng_sound></eng_sound>
 		<fil_sound></fil_sound>
-		<difficulty></difficulty>
+		<difficulty>MEDIUM</difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>6</q_num>
@@ -84,7 +86,7 @@
 		<image_path></image_path>
 		<eng_sound></eng_sound>
 		<fil_sound></fil_sound>
-		<difficulty></difficulty>
+		<difficulty>MEDIUM</difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>7</q_num>
@@ -98,7 +100,7 @@
 		<image_path></image_path>
 		<eng_sound></eng_sound>
 		<fil_sound></fil_sound>
-		<difficulty></difficulty>
+		<difficulty>HARD</difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>8</q_num>
@@ -112,7 +114,7 @@
 		<image_path></image_path>
 		<eng_sound></eng_sound>
 		<fil_sound></fil_sound>
-		<difficulty></difficulty>
+		<difficulty>HARD</difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>9</q_num>
@@ -126,6 +128,6 @@
 		<image_path></image_path>
 		<eng_sound></eng_sound>
 		<fil_sound></fil_sound>
-		<difficulty></difficulty>
+		<difficulty>HARD</difficulty>
 	</Word_Entry>
 </type>

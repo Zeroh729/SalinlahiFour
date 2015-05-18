@@ -257,7 +257,9 @@ public class MapActivity extends Activity implements OnClickListener{
 
 				Log.d("Lesson no. : " + i + " ->" + scenes.get(k).getLessons().get(i).getLocked(),"FINAL CHECKING");
 				
+
 				scenes.get(k).getLessons().get(i).setLocked(false);
+
 				if(k > 0 && i == 0){
 					UserLessonProgress prevCheck = userdb.getUserLessonProgress(UserID, scenes.get(k-1).getLessons().get(4).getName());
 					try{

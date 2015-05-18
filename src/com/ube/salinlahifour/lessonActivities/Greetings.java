@@ -22,9 +22,9 @@ public class Greetings extends AbstractLessonActivity {
 	private int itemno;
 	private String feedback = " ";
 	public Greetings(){
-		Log.d("Debug Family","Aldrin: Entered Greetings Class");
+		Log.d("Greetings","Aldrin: Entered Greetings Class");
 		layoutID = R.layout.lessonactivity_greetings;
-
+		Log.d("Greetings", "Lesson: " + lesson.getName());
 		
 	}
 	@Override
@@ -42,10 +42,13 @@ public class Greetings extends AbstractLessonActivity {
 	@Override
 	protected void run() {
 		// TODO Auto-generated method stub
-		Log.d("Debug Family","Aldrin: Running");
+		Log.d("Greetings","Aldrin: Running");
 		setChoices();
 		question = SalinlahiFour.getLessonsList().get(0).getItems().get(itemno).getQuestion();
 //		questions.get(itemno).playFilipinoSound();
+		Log.d("Greetings", itemno+". Question: "+ question );
+		Log.d("Greetings", itemno+". Feedback: "+ feedback );
+		
 		tv_question.setText(Html.fromHtml(question));
 //		timer.start();
 		Log.d("Debug Family","Aldrin: Running Done");

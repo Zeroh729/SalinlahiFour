@@ -290,11 +290,12 @@ public class MainActivity extends Activity {
 		//R.raw.lexicon_family
 		//R.raw.lexicon_house
 		//R.raw.lexicon_shape
-
+		//Log.d("Jim Parse On", "getLesson(qentry) Size: " + SalinlahiFour.getL
 		for(int i = 0; i < SalinlahiFour.getLessonsList().size(); i++){
 			ArrayList<Item> items = new ArrayList();
 			//parse lexicon.xml or watver
 			//Log.d("Lexicon Parsing", "In " + i);
+
 //			try {
 				items = (ArrayList<Item>) XMLContentParser.parseItem(this, SalinlahiFour.getLessonsList().get(i).getLexicon());
 //			} catch (FileNotFoundException e) {
@@ -309,6 +310,7 @@ public class MainActivity extends Activity {
 		}
 		Log.d("Jim Parse On", "Item Parsing Ends");
 //		Log.d("Jim Parse On", "Sample Item: " + SalinlahiFour.getLessonsList().get(5).getItems().get(0).getWord());
+
 
 		
 	}
