@@ -31,7 +31,7 @@
         <Scene>
             <Character
                 name="guard"
-                animate="entraceFromRight"
+                animate="entranceFromRight"
                 say="Sure! It's 2000 pesos each."/>
         </Scene>
         <Scene>
@@ -95,8 +95,8 @@
                 />
             <Character
                 name="chef"
-                animate="entraceFromLeft"
-                expression="crossarms"
+                animate="entranceFromLeft"
+                expression="armscross"
                 say="You're in my kitchen!"/>
         </Scene>
         <Scene>
@@ -129,7 +129,7 @@
         <Scene>
             <Character
                 name="chef"
-                expression="crossarms"
+                expression="armscross"
                 say="Are you ready? Ok! I'm only gonna do this once."
                 animate="exitToRight"/>
         </Scene>
@@ -214,7 +214,7 @@
                 expression="default"/>
             <Character
                 name="pichi"
-                animate="entraceFromLeft"
+                animate="entranceFromLeft"
                 say="Hi (username)! (Pasok tayo/Let's go inside), I'll show you something."/>
         </Scene>
         <Scene>

@@ -27,8 +27,10 @@
     <Summary></Summary>
     <lexicon_name>lexicon_family</lexicon_name>
     <activity_name>Family</activity_name>
+
     <tutorial_name>Family</tutorial_name>
     <narrative_name>Family</narrative_name>
+
     <icon_image>lesson1_icon</icon_image>
 </Lesson_Num>
 <Lesson_Num>
@@ -46,8 +48,10 @@
     <Summary></Summary>
     <lexicon_name>lexicon_house</lexicon_name>
     <activity_name>House</activity_name>
+
     <tutorial_name>House</tutorial_name>
     <narrative_name>House</narrative_name>
+
     <icon_image>lesson2_icon</icon_image>
 </Lesson_Num>
 <Lesson_Num>
@@ -67,8 +71,10 @@
     <Summary></Summary>
     <lexicon_name>lexicon_cooking</lexicon_name>
     <activity_name>Cooking</activity_name>
+
     <tutorial_name>Cooking</tutorial_name>
     <narrative_name>Cooking</narrative_name>
+
     <icon_image>lesson3_icon</icon_image>
 </Lesson_Num>
 <Lesson_Num>
@@ -90,8 +96,10 @@
     <Summary></Summary>
     <lexicon_name>lexicon_shape</lexicon_name>
     <activity_name>Shape</activity_name>
+
     <tutorial_name>Shape</tutorial_name>
     <narrative_name>Shape</narrative_name>
+
     <icon_image>lesson4_icon</icon_image>
 </Lesson_Num>
 <Lesson_Num>
@@ -113,8 +121,6 @@
     <Summary></Summary>
     <lexicon_name>lexicon_animals</lexicon_name>
     <activity_name>Animals</activity_name>
-    <tutorial_name>Animals</tutorial_name>
-    <narrative_name>Animals</narrative_name>
     <icon_image>lesson5_icon</icon_image>
 </Lesson_Num>
 <Lesson_Num>
@@ -133,8 +139,6 @@
     <Summary></Summary>
     <lexicon_name>lexicon_greetings</lexicon_name>
     <activity_name>Greetings</activity_name>
-    <tutorial_name>Greetings</tutorial_name>
-    <narrative_name>Greetings</narrative_name>
     <icon_image>lesson1_icon</icon_image>
 
 </Lesson_Num>

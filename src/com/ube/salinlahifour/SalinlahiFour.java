@@ -72,10 +72,6 @@ public class SalinlahiFour extends Application{
 	public static void setSalinlahifour(SalinlahiFour salinlahifour) {
 		SalinlahiFour.salinlahifour = salinlahifour;
 	}
-	
-	public static ArrayList<Item> getLessonItems() {
-		return lessonItems;
-	}
 
 	public static void setLessonItems(ArrayList<Item> items) {
 		SalinlahiFour.lessonItems = items;
@@ -128,7 +124,7 @@ public class SalinlahiFour extends Application{
 
 	public static Lesson getLesson(String name){
 		for(Lesson lesson : lessonsList){
-			if(name.equals(lesson.getName())){
+			if(name.equals(lesson.getTheRealName())){
 				return lesson;
 			}
 		}
@@ -162,8 +158,22 @@ public class SalinlahiFour extends Application{
 		SalinlahiFour.lessonsList = lessonsList;
 	}
 
+	public static ArrayList<Item> getLessonItems(String lessonname, String activityLevel){
+		Lesson lesson = getLesson(lessonname);
+		ArrayList<Item> item = new ArrayList();
+		for(Item val : lesson.getItems()){
+			if(val.getDifficulty().equalsIgnoreCase(activityLevel)){
+				item.add(val);
+			}
+		}
+		return item;
+	}
+	
 	public static NarrativeStory getStory(String lessonname) {
 		Log.d("TEST0", "Narrative Story: Getting Story.. Lessonname got:" + lessonname);
+		for(String  story : storiesList.keySet()){
+			Log.d("TEST0", "Narrative Story: Searching through " + story);
+		}
 		Log.d("TEST0", "Narrative Story: Retrieving.." + storiesList.get(lessonname).getName());
 		return storiesList.get(lessonname);
 	}
