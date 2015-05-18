@@ -61,14 +61,9 @@ public class LessonXMLHandler extends DefaultHandler {
         	tempLesson.setLexicon(tempVal);
         }else if (qName.equalsIgnoreCase("activity_name")) {
         	tempLesson.setActivity(tempVal);
-
-        }else if (qName.equalsIgnoreCase("narrative_name")) {
-        	tempLesson.setNarrative(tempVal);
-        }else if (qName.equalsIgnoreCase("tutorial_name")) {
-        	tempLesson.setTutorial(tempVal);
         }else if (qName.equalsIgnoreCase("icon_image")) {
-        	tempLesson.setIcon(tempVal);
-
+        	int resID = SalinlahiFour.getContext().getResources().getIdentifier(tempVal, "drawable", SalinlahiFour.getContext().getPackageName());
+        	tempLesson.setImage(resID);
         }
         
     }

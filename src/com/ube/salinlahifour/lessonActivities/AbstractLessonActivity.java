@@ -98,10 +98,11 @@ public abstract class AbstractLessonActivity extends Activity {
 		Log.d("activityName:", activityName.toString());
 		
 		
-		lesson = SalinlahiFour.getLessonByClassName(activityName);
+		lesson = SalinlahiFour.getLesson(activityName);
 		Log.d("lessonName: ", lesson.getName());
 		Log.d("image: ", lesson.getImage() + "");
 		Log.d("lexiconthang: ", lesson.getLexicon());
+		Log.d("item count: ", "" + lesson.getItems().size());
 
 
 		evaluation =  new Evaluation(this, activityName, activityLevel.toString());
@@ -161,7 +162,7 @@ public abstract class AbstractLessonActivity extends Activity {
 			records = userdb.getRecentUserRecordsFromUserId(SalinlahiFour.getLoggedInUser().getId(), activityName);
 			int cnt_itemLevel = 0;
 			
-			ArrayList<Item> items = SalinlahiFour.getLessonItems();
+			ArrayList<Item> items = SalinlahiFour.getLessonItems(lesson.getTheRealName(), activityLevel.toString());
 	//		ArrayList<String> itemNames = new ArrayList();
 	//		ArrayList<Integer> itemScores = new ArrayList();
 			HashMap<String, Integer> itemKeys = new HashMap();
@@ -198,7 +199,7 @@ public abstract class AbstractLessonActivity extends Activity {
 			int i = 0;
 			for(String key : sortedItemKeys.keySet()){
 				if(cnt_question == 0 || ((cnt_question - cnt_itemLevel) > i)){
-					ArrayList<Item> lessonItems = SalinlahiFour.getLessonItems();
+					ArrayList<Item> lessonItems = SalinlahiFour.getLessonItems(lesson.getTheRealName(), activityLevel.toString());
 					for(int j = 0; j < lessonItems.size(); j++)
 						if(lessonItems.get(j).getWord().equals(key)){
 	//						if(lessonItems.get(j).getLevel().equals(activityLevel))

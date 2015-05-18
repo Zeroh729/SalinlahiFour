@@ -157,7 +157,7 @@ public class NarrativeStoryXMLHandler extends DefaultHandler{
     	Log.d("TEST0", "Check if Animation exists: " + animation);
     	for(AnimationList anim : AnimationList.values()){
         	Log.d("TEST0", "checking... " + anim.toString());
-    		if(anim.toString().equalsIgnoreCase(animation)){
+    		if(animation.equalsIgnoreCase(anim.toString())){
             	Log.d("TEST0", "Animation exists");
     			return true;
     		}
