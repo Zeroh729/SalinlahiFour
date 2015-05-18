@@ -1,23 +1,23 @@
 package com.ube.salinlahifour;
 
-import com.ube.salinlahifour.enumTypes.LevelType;
-
+import android.content.Context;
 import android.media.MediaPlayer;
-import android.media.SoundPool;
 import android.view.View;
 
-public class Item {
+import com.ube.salinlahifour.enumTypes.LevelType;
+
+public class Item  implements Cloneable{
 	private int ID;
 	private int q_num;
-	private String word;
-	private String english;
-	private String question;
-	private String tutorial_note;
-	private String word_hint;
-	private String voiceEngPath;
-	private String voiceFilPath;
-	private String imagePath;
-	private String difficulty;
+	private String word = "";
+	private String english = "";
+	private String question = "";
+	private String tutorial_note = "";
+	private String word_hint = "";
+	private String voiceEngPath = "";
+	private String voiceFilPath = "";
+	private String imagePath = "";
+	private String difficulty = "";
 	private int lessonNum;
 	
 	private int voiceFilID;
@@ -29,6 +29,15 @@ public class Item {
 	
 	public Item(){
 		
+	}
+
+	public Item clone(){  
+	    try{  
+	    	Item item = (Item) super.clone();
+	        return item;
+	    }catch(Exception e){ 
+	    	return null; 
+	    }
 	}
 	
 	public Item(int q_num,String word, String english, String description, int imageID, int voiceFilID, int voiceEngID, LevelType level){
@@ -58,6 +67,7 @@ public class Item {
 	}
 	public void setQuestion(String question){
 		this.question = question;
+		this.label = question;
 	}
 	public String getNote(){
 		return this.tutorial_note;
@@ -86,8 +96,16 @@ public class Item {
 	public String getImagePath() {
 		return this.imagePath;
 	}
-	public void setImagePath(String path){
+	public void setImagePath(Context context, String path){
 		imagePath = path;
+		int resID = SalinlahiFour.getContext().getResources().getIdentifier(imagePath, "drawable", SalinlahiFour.getContext().getPackageName());
+		
+		if(resID == 0){
+			SalinlahiFour.errorPopup(context, "Parse error: ", "Add image '" + path + "' to the drawable resource folder.");
+		}else{
+			imageID = resID;
+		}
+		
 	}
 	public String getDifficulty() {
 		return this.difficulty;
@@ -104,11 +122,6 @@ public class Item {
 	public int getImageID() {
 		return imageID;
 	}
-
-	public void setImageID(int imageID) {
-		this.imageID = imageID;
-	}
-	
 
 	public String getWord() {
 		return word;
@@ -142,8 +155,8 @@ public class Item {
 		this.label = description;
 	}
 
-	public LevelType getLevel() {
-		return level;
+	public String getLevel() {
+		return difficulty;
 	}
 
 	public void setLevel(LevelType level) {

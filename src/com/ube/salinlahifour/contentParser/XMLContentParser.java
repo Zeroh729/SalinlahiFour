@@ -1,15 +1,17 @@
 package com.ube.salinlahifour.contentParser;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
-
 import java.util.ArrayList;
-
 import java.util.List;
 
 import javax.xml.parsers.SAXParserFactory;
 
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
+
+
 
 
 import android.content.Context;
@@ -40,19 +42,26 @@ public class XMLContentParser {
  
         return lessons;
     }
-	public static List<Item> parseItem(Context context, InputStream is) {
+	public static List<Item> parseItem(Context context,String lexiconpath) {
         List<Item> items = null;
-        try {
-            XMLReader xmlReader = SAXParserFactory.newInstance().newSAXParser()
-                    .getXMLReader();
-            ItemXMLHandler saxHandler = new ItemXMLHandler(context);
-            xmlReader.setContentHandler(saxHandler);
-            xmlReader.parse(new InputSource(is));
-            items = saxHandler.getItems();
- 
-        } catch (Exception ex) {
-            SalinlahiFour.errorPopup(context, "XML", "SAXXMLParser: parseItem() failed: " + ex.getMessage());
-        }
+        InputStream is;
+		try {
+			is = new FileInputStream("/sdcard/"+ lexiconpath + ".xml");
+	        try {
+	        	
+	            XMLReader xmlReader = SAXParserFactory.newInstance().newSAXParser()
+	                    .getXMLReader();
+	            ItemXMLHandler saxHandler = new ItemXMLHandler(context);
+	            xmlReader.setContentHandler(saxHandler);
+	            xmlReader.parse(new InputSource(is));
+	            items = saxHandler.getItems();
+	 
+	        } catch (Exception ex) {
+	            SalinlahiFour.errorPopup(context, "XML File: " + lexiconpath, "SAXXMLParser: parseItem() failed: " + ex.getMessage());
+	        }
+		} catch (FileNotFoundException e) {
+		    SalinlahiFour.errorPopup(context, "File not found: ", "Add " + lexiconpath + ".xml in res/raw folder");
+		}
  
         return items;
     }

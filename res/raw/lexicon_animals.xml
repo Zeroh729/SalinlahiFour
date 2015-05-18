@@ -11,10 +11,10 @@
 		<notes>People believe that the black ones are unlucky</notes>
 		<hint>They are said to have 9 lives and always land on their feet.</hint>
 		<lesson>5</lesson>
-		<image_path></image_path>
-		<eng_sound></eng_sound>
-		<fil_sound></fil_sound>
-		<difficulty></difficulty>
+		<image_path>animals_cat</image_path>
+		<eng_sound>animals_cat</eng_sound>
+		<fil_sound>animals_pusa</fil_sound>
+		<difficulty>EASY</difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>2</q_num>

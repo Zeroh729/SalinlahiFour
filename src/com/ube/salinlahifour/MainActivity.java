@@ -30,7 +30,6 @@ import com.ube.salinlahifour.howtoplay.HowToPlay;
 import com.ube.salinlahifour.howtoplay.HowToPlaySet;
 import com.ube.salinlahifour.model.UserDetail;
 import com.ube.salinlahifour.narrativeStory.NarrativeStory;
-
 import com.ube.salinlahifour.tutorials.Tutorial;
 import com.ube.salinlahifour.contentParser.*;
 import com.ube.salinlahifour.narrativeDialog.Character;
@@ -296,18 +295,20 @@ public class MainActivity extends Activity {
 			ArrayList<Item> items = new ArrayList();
 			//parse lexicon.xml or watver
 			//Log.d("Lexicon Parsing", "In " + i);
-			try {
-				items = (ArrayList<Item>) XMLContentParser.parseItem(this, new FileInputStream("/sdcard/"+ SalinlahiFour.getLessonsList().get(i).getLexicon()));
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				Log.d("Jim Parse On", "Caught like a fly:" + e);
-				e.printStackTrace();
+//			try {
+				items = (ArrayList<Item>) XMLContentParser.parseItem(this, SalinlahiFour.getLessonsList().get(i).getLexicon());
+//			} catch (FileNotFoundException e) {
+//				// TODO Auto-generated catch block
+//				Log.d("Jim Parse On", "Caught like a fly:" + e);
+//				e.printStackTrace();
+//				
+//			}
 				
-			}
-			SalinlahiFour.getLesson((i+1)).setItems(items);
+			SalinlahiFour.getLesson(items.get(0).getLessonNum()).setItems((ArrayList<Item>) items.clone());
+			Log.d("TEST0", "Setting the Parsed Items: lessonNum:" + items.get(0).getLessonNum() + " size: " + SalinlahiFour.getLesson(items.get(0).getLessonNum()).getItems().size());
 		}
 		Log.d("Jim Parse On", "Item Parsing Ends");
-		Log.d("Jim Parse On", "Sample Item: " + SalinlahiFour.getLessonsList().get(5).getItems().get(0).getWord());
+//		Log.d("Jim Parse On", "Sample Item: " + SalinlahiFour.getLessonsList().get(5).getItems().get(0).getWord());
 
 		
 	}

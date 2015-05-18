@@ -257,7 +257,7 @@ public class MapActivity extends Activity implements OnClickListener{
 
 				Log.d("Lesson no. : " + i + " ->" + scenes.get(k).getLessons().get(i).getLocked(),"FINAL CHECKING");
 				
-				scene.getLessons().get(i).setLocked(false);
+				scenes.get(k).getLessons().get(i).setLocked(false);
 				if(k > 0 && i == 0){
 					UserLessonProgress prevCheck = userdb.getUserLessonProgress(UserID, scenes.get(k-1).getLessons().get(4).getName());
 					try{
@@ -354,7 +354,7 @@ public class MapActivity extends Activity implements OnClickListener{
 			Lesson lesson = SalinlahiFour.getLessonsList().get(i);
 			lesson.setLocked(true);
 			scene.addLesson(lesson);
-			if(scene.getLessons().size() > 5){
+			if(scene.getLessons().size() >= 5){
    			 scene = makeNewScene();
 			}
 		}
@@ -402,6 +402,7 @@ public class MapActivity extends Activity implements OnClickListener{
 		for(int i = 0; i < scene.getLessons().size(); i++){
 			imgBtns[i].setVisibility(View.VISIBLE);
 			if(!scene.getLessons().get(i).getLocked()){
+				Log.d("TEST0", "Setting map icons for lesson: " + scene.getLessons().get(i).getTheRealName() + " -> " + scene.getLessons().get(i).getImage());
 				imgBtns[i].setImageResource(scene.getLessons().get(i).getImage());
 				imgBtns[i].setTag(i);
 				imgBtns[i].setOnClickListener(this);
@@ -555,7 +556,7 @@ public class MapActivity extends Activity implements OnClickListener{
 					        	     @Override
 					        	     public void onClick(View v) {
 					        	    	intent = new Intent(context, Tutorial.class);
-					         			intent.putExtra("lessonName", scene.getLessons().get(fIndex).getName());
+					         			intent.putExtra("lessonName", scene.getLessons().get(fIndex).getTheRealName());
 					         			intent.putExtra("activityLevel", LevelType.EASY.toString());
 
 					         			startActivity(intent);
@@ -566,7 +567,7 @@ public class MapActivity extends Activity implements OnClickListener{
 					        	     @Override
 					        	     public void onClick(View v) {
 					        	    	intent = new Intent(context, Tutorial.class);
-					         			intent.putExtra("lessonName", scene.getLessons().get(fIndex).getName());
+					         			intent.putExtra("lessonName", scene.getLessons().get(fIndex).getTheRealName());
 					         			intent.putExtra("activityLevel", LevelType.MEDIUM.toString());
 					         			startActivity(intent);
 					        	     }});
@@ -577,7 +578,7 @@ public class MapActivity extends Activity implements OnClickListener{
 					        	     @Override
 					        	     public void onClick(View v) {
 					        	    	intent = new Intent(context, Tutorial.class);
-					         			intent.putExtra("lessonName", scene.getLessons().get(fIndex).getName());
+					         			intent.putExtra("lessonName", scene.getLessons().get(fIndex).getTheRealName());
 					         			intent.putExtra("activityLevel", LevelType.HARD.toString());
 					         			startActivity(intent);
 					        	     }});
