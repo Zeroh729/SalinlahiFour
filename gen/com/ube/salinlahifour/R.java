@@ -644,7 +644,7 @@ containing a value of this type.
         public static final int tv_lessonname=0x7f090091;
         public static final int tv_level=0x7f090099;
         public static final int tv_nexttxt=0x7f09009e;
-        public static final int tv_question=0x7f09007f;
+        public static final int tv_questionbox=0x7f09007f;
         public static final int tv_questionno=0x7f090057;
         public static final int tv_replaytxt=0x7f09009b;
         public static final int tv_rule=0x7f0900a8;

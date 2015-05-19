@@ -98,7 +98,8 @@ public abstract class AbstractLessonActivity extends Activity {
 		Log.d("activityName:", activityName.toString());
 		
 		
-		lesson = SalinlahiFour.getLesson(activityName);
+		//lesson = SalinlahiFour.getLesson(activityName);
+		lesson = SalinlahiFour.getLessonByClassName(activityName);
 		Log.d("lessonName: ", lesson.getName());
 		Log.d("image: ", lesson.getImage() + "");
 		Log.d("lexiconthang: ", lesson.getLexicon());

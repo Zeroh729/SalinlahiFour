@@ -58,7 +58,6 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	public Family(){
 		Log.d("Debug Family","Aldrin: Entered Family Class");
 		layoutID = R.layout.lessonactivity_family;
-
 		
 	}
 	
