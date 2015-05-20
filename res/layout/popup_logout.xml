@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        
+    <View 
+        android:id="@+id/view_blackoverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66000000"
+        ></View>
+    
+    <ImageView 
+        android:id="@+id/popup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/popupwindow"/>
+    
+    <com.qwerjk.better_text.MagicTextView
+        xmlns:qwerjk="http://schemas.android.com/apk/res/com.qwerjk.better_text"
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/popup"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="Logging out"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp" 
+        android:padding="10dp"/>
+    
+    <TextView 
+        android:id="@+id/tv_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Are you sure?"
+        android:layout_alignTop="@id/popup"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="190dp"
+        android:textColor="#FFFFFF"
+        android:textSize="42sp"/>
+    
+    <ImageButton
+        android:id="@+id/logout_btn_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/popup"
+        android:layout_alignBottom="@id/popup"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="50dp"
+        android:background="@null"
+        android:onClick="onClick"
+        />
+    
+    <ImageButton
+        android:id="@+id/logout_btn_yes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/popup"
+        android:layout_alignBottom="@id/popup"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="50dp"
+        android:background="@null"
+        android:onClick="onClick"
+        />
+    
+    <ImageButton
+        android:id="@+id/logout_btn_popupclose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/popup"
+        android:layout_alignTop="@id/popup"
+        android:layout_marginRight="-20dp"
+        android:layout_marginTop="-20dp"
+        android:background="@null"
+        android:onClick="onClick"
+        />
+     
+ </RelativeLayout>
