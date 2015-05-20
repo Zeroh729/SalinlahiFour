@@ -124,6 +124,7 @@ public class SalinlahiFour extends Application{
 
 	public static Lesson getLesson(String name){
 		for(Lesson lesson : lessonsList){
+			Log.d("XDXD", "Comparing " + name + " & " + lesson.getTheRealName());
 			if(name.equals(lesson.getTheRealName())){
 				return lesson;
 			}
