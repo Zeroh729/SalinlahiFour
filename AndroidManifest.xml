@@ -102,6 +102,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.ube.salinlahifour.lessonActivities.Greetings"
+            android:label="@string/title_activity_lesson"
+            android:screenOrientation="landscape" >
+            <intent-filter>
+                <action android:name="com.ube.salinlahifour.lessonActivities.Greetings" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name="com.ube.salinlahifour.lessonActivities.House"
             android:label="@string/title_activity_lesson"
             android:screenOrientation="landscape" >
@@ -131,16 +141,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.ube.salinlahifour.lessonActivities.Greetings"
-            android:label="@string/title_activity_lesson"
-            android:screenOrientation="landscape" >
-            <intent-filter>
-                <action android:name="com.ube.salinlahifour.lessonActivities.Greetings" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+      
         <activity
             android:name="com.ube.salinlahifour.debugclasses.DebugUserModuleActivity"
             android:label="@string/title_activity_debug_user_module"

@@ -10,11 +10,9 @@
     <notes>She makes delicious adobo. Very tasty!</notes>
     <hint>Nanay Pepay's Mother. She's the one that cooks for the family</hint>
 	<lesson>1</lesson>
-
 	<image_path>family_nanay</image_path>
 	<eng_sound>family_mother</eng_sound>
 	<fil_sound>family_nanay</fil_sound>
-
 	<difficulty>EASY</difficulty>
 </Word_Entry>
 
@@ -27,11 +25,9 @@
     <notes>He was the one that made our treehouse in the backyard.</notes>
     <hint>This is my father. He is the one that works for the family</hint>
 	<lesson>1</lesson>
-
 	<image_path>family_tatay</image_path>
 	<eng_sound>family_father</eng_sound>
 	<fil_sound>family_tatay</fil_sound>
-
 	<difficulty>EASY</difficulty>
 </Word_Entry>
 
@@ -44,11 +40,9 @@
     <notes>He also teases me a lot.</notes>
     <hint>My older brother. He likes to play basketball and all different kinds of sports.</hint>
 	<lesson>1</lesson>
-
 	<image_path>family_kuya</image_path>
-	<eng_sound>family_kuya</eng_sound>
-	<fil_sound>family_olderbrother</fil_sound>
-
+	<eng_sound>family_olderbrother</eng_sound>
+	<fil_sound>family_kuya</fil_sound>
 	<difficulty>EASY</difficulty>
 </Word_Entry>
 <Word_Entry>
@@ -60,12 +54,9 @@
     <notes>She told me she really likes this boy once. i forgot his name.</notes>
     <hint>She is my older sister. She likes to spend her time with her phone.</hint>
     <lesson>1</lesson>
-
     <image_path>family_ate</image_path>
 	<eng_sound>family_oldersister</eng_sound>
 	<fil_sound>family_ate</fil_sound>
-
-
 	<difficulty>EASY</difficulty>
 
 </Word_Entry>
@@ -78,11 +69,9 @@
     <notes>We play board games a lot</notes>
     <hint>My father's father. He uses glasses to read the newspaper</hint>
 	<lesson>1</lesson>
-
 	<image_path>family_lolo</image_path>
 	<eng_sound>family_grandfather</eng_sound>
 	<fil_sound>family_lolo</fil_sound>
-
 	<difficulty>MEDIUM</difficulty>
 </Word_Entry>
 <Word_Entry>
@@ -94,11 +83,9 @@
     <notes>She also likes to tell us stories from her time.</notes>
     <hint>My father's mother. She walks around with a cane</hint>
 	<lesson>1</lesson>
-
 	<image_path>family_lola</image_path>
 	<eng_sound>family_grandmother</eng_sound>
 	<fil_sound>family_lola</fil_sound>
-
 	<difficulty>MEDIUM</difficulty>
 </Word_Entry>
 
@@ -111,11 +98,9 @@
     <notes>He is also very cute. </notes>
     <hint>My younger sibling. He likes to play toys</hint>
     <lesson>1</lesson>
-
     <image_path>family_bunso</image_path>
 	<eng_sound>family_youngestsibling</eng_sound>
 	<fil_sound>family_bunso</fil_sound>
-
 	<difficulty>MEDIUM</difficulty>
 </Word_Entry>
 <Word_Entry>
@@ -127,12 +112,23 @@
     <notes>He tells horrible jokes. </notes>
     <hint>He is my parent's brother. I don't know which one though</hint>
     <lesson>1</lesson>
-
     <image_path>family_tito</image_path>
-    <eng_sound>family_uncle</eng_sound>
-    <fil_sound>family_tito</fil_sound>
-
-    <difficulty>HARD</difficulty>
-
+	<eng_sound>family_uncle</eng_sound>
+	<fil_sound>family_tito</fil_sound>
+	<difficulty>HARD</difficulty>
+</Word_Entry>
+<Word_Entry>
+    <q_num>9</q_num>
+    <word>Tita</word>
+    <question>Can you find tita</question>
+    <eng_word>Auntie</eng_word>
+    <w_type>definition</w_type>
+    <notes>She likes to hang out with my mother.</notes>
+    <hint>My mothers sister. She is a great cook too</hint>
+    <lesson>1</lesson>
+    <image_path>family_tita</image_path>
+	<eng_sound>family_aunt</eng_sound>
+	<fil_sound>family_tita</fil_sound>
+	<difficulty>HARD</difficulty>
 </Word_Entry>
 </type>
