@@ -39,8 +39,10 @@ import com.ube.salinlahifour.uibuilders.Button.LogoutBtnStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.MapNextBtnStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.MapPrevBtnStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.MediumBtnStatesBuilder;
+import com.ube.salinlahifour.uibuilders.Button.NoBtnStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.PopupcloseBtnStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.ProgressBtnStatesBuilder;
+import com.ube.salinlahifour.uibuilders.Button.YesBtnStatesBuilder;
 
 public class MapActivity extends Activity implements OnClickListener{
 	private Context context;
@@ -66,6 +68,22 @@ public class MapActivity extends Activity implements OnClickListener{
 	private ImageButton btn_prevscene;
 	private ImageView img_popupmap;
 	private RelativeLayout parentView;
+
+	private PopupWindow notifWindow;
+	private View notifView;
+	private MagicTextView notif_tv_title;
+	private ImageButton notif_btn_popupclose;
+	private TextView notif_tv_desc;
+	private ImageButton notif_btn_ok;
+	private ImageButton notif_btn_no;
+
+	private PopupWindow logoutWindow;
+	private View logoutView;
+	private ImageButton logout_btn_popupclose;
+	private ImageButton logout_btn_ok;
+	private ImageButton logout_btn_no;
+	private MagicTextView logout_tv_title;
+	private TextView logout_tv_desc;
 	
 	private int UserID;
 	private int sceneIndex;
@@ -335,6 +353,58 @@ public class MapActivity extends Activity implements OnClickListener{
 	}
 	
 
+	public void instantiateNotifView(boolean isLesson){
+		LayoutInflater layoutInflater = (LayoutInflater)getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);  
+	    notifView = layoutInflater.inflate(R.layout.popup_notification, null);
+	    
+	    notif_btn_popupclose = (ImageButton)notifView.findViewById(R.id.notif_btn_popupclose);
+	    
+		notifWindow = new PopupWindow(notifView, LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);  
+		notifWindow.setOutsideTouchable(false);
+		notifWindow.setBackgroundDrawable(new BitmapDrawable());
+		
+	    notif_tv_desc = (TextView)notifView.findViewById(R.id.tv_description);
+	    notif_tv_desc.setTypeface(SalinlahiFour.getFontBpreplay());
+	    notif_tv_title = (MagicTextView)notifView.findViewById(R.id.tv_title);
+		for(int i = 0; i < 30; i++)
+			notif_tv_title.addOuterShadow(5, 0, 0, 0xFF164366);
+		notif_tv_title.setTypeface(SalinlahiFour.getFontKgsecondchances());		
+		
+		notif_btn_popupclose.setImageDrawable(BtnStatesDirector.getImageDrawable(new PopupcloseBtnStatesBuilder()));
+
+		if(isLesson){
+			notif_tv_desc.setText("Get at least 2 stars from the previous lesson in hard mode to unlock this lesson.");
+			notif_tv_title.setText("Lesson Locked");
+		}else{
+			notif_tv_desc.setText("New lesson unlocked.");
+			notif_tv_title.setText("Congratulations!");
+		}
+	}
+
+	public void instantiateLogoutView(){
+		LayoutInflater layoutInflater = (LayoutInflater)getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);  
+	    logoutView = layoutInflater.inflate(R.layout.popup_logout, null);
+	    
+	    logout_btn_popupclose = (ImageButton)logoutView.findViewById(R.id.logout_btn_popupclose);
+	    logout_btn_no = (ImageButton)logoutView.findViewById(R.id.logout_btn_no);
+	    logout_btn_ok = (ImageButton)logoutView.findViewById(R.id.logout_btn_yes);
+		    
+	    logoutWindow = new PopupWindow(logoutView, LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);  
+	    logoutWindow.setOutsideTouchable(false);
+	    logoutWindow.setBackgroundDrawable(new BitmapDrawable());
+		
+	    logout_tv_desc = (TextView)logoutView.findViewById(R.id.tv_description);
+	    logout_tv_desc.setTypeface(SalinlahiFour.getFontBpreplay());
+	    logout_tv_title = (MagicTextView)logoutView.findViewById(R.id.tv_title);
+		for(int i = 0; i < 30; i++)
+			logout_tv_title.addOuterShadow(5, 0, 0, 0xFF164366);
+		logout_tv_title.setTypeface(SalinlahiFour.getFontKgsecondchances());		
+		
+		logout_btn_popupclose.setImageDrawable(BtnStatesDirector.getImageDrawable(new PopupcloseBtnStatesBuilder()));
+		logout_btn_ok.setImageDrawable(BtnStatesDirector.getImageDrawable(new YesBtnStatesBuilder()));
+		logout_btn_no.setImageDrawable(BtnStatesDirector.getImageDrawable(new NoBtnStatesBuilder()));
+	}
+	
 	public void navigateWidget(int choice){
 		switch(choice){
 		case 1: Log.d("debug", "register intent go!");
@@ -428,6 +498,7 @@ public class MapActivity extends Activity implements OnClickListener{
 				parentView.addView(txtViews[i]);
 			}else{
 				imgBtns[i].setImageResource(R.drawable.lesson0_icon);
+				imgBtns[i].setOnClickListener(this);
 			}
 		}
 		setMapMenuButtons();
@@ -454,22 +525,6 @@ public class MapActivity extends Activity implements OnClickListener{
 	public void onClick(View view) {
 		int index = -1;
 		
-//		SoundPoolManager.CreateInstance();
-//		List<Integer> sounds = new ArrayList<Integer>();
-//		sounds.add(R.raw.family_ate);
-//		SoundPoolManager.getInstance().setSounds(sounds);
-//		try {
-//		    SoundPoolManager.getInstance().InitializeSoundPool(this, new ISoundPoolLoaded() {
-//		        @Override
-//		        public void onSuccess() {
-//		        	SoundPoolManager.getInstance().playSound(R.raw.family_ate);
-//		        }
-//		    });
-//		} catch (Exception e) {
-//		    e.printStackTrace();
-//		}
-//		
-//		
 		if(view == btn_account){
 			if((greetingIndex+1) >= greetings.length){
 				greetingIndex = 0;
@@ -479,8 +534,8 @@ public class MapActivity extends Activity implements OnClickListener{
 			tv_friendTalk.setText(Html.fromHtml(greetings[greetingIndex]));
 			
 		}else if(view == btn_logout){
-			intent = new Intent(this, LoginActivity.class);
-			startActivity(intent);
+			instantiateLogoutView();
+			logoutWindow.showAsDropDown(logoutView);
 		}else if(view == btn_progress){
 			int numLesson = 0;
 			for(Scene scene : scenes){
@@ -532,21 +587,34 @@ public class MapActivity extends Activity implements OnClickListener{
 				case R.id.btn_popupclose:
 					popupWindow.dismiss();
 					break;
+				case R.id.notif_btn_popupclose:
+					notifWindow.dismiss();
+					break;
+				case R.id.logout_btn_popupclose:
+				case R.id.logout_btn_no:
+					logoutWindow.dismiss();
+					break;
+				case R.id.logout_btn_yes:
+					intent = new Intent(this, LoginActivity.class);
+					startActivity(intent);
+					break;
 			}
 			
 			
 			final int fIndex = index;
 			
 			if(index != -1){ //If lesson is pressed, continue
+				final Lesson lessonDetails = scene.getLessons().get(Integer.parseInt(((ImageButton)view).getTag().toString()));				
+			    
 	//		//	selectLevelPopup(index);
 	//			imgBtns[index].setOnClickListener(new ImageButton.OnClickListener(){
 	//				
 	//				   @Override
 	//				   public void onClick(View view) {
 	
+				if(!lessonDetails.getLocked()){
 						instantiatePopupView();
 				
-					    final Lesson lessonDetails = scene.getLessons().get(Integer.parseInt(((ImageButton)view).getTag().toString()));				
 					    tv_title.setText(lessonDetails.getName());
 					    tv_desc.setText(lessonDetails.getDescription());
 					    img_popupmap.setImageResource(lessonDetails.getImage());
@@ -663,6 +731,10 @@ public class MapActivity extends Activity implements OnClickListener{
 						             
 					             userdb.close();
 					            popupWindow.showAsDropDown(popupView);
+					}else{
+						instantiateNotifView(true);
+			            notifWindow.showAsDropDown(popupView);
+					}
 				}	
 			}
 	}

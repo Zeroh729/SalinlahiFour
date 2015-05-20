@@ -192,6 +192,10 @@ public class SalinlahiFour extends Application{
 	}
 
 	public static HowToPlaySet getTutorial(String lessonname) {
+		for(String key : tutorialsList.keySet()){
+			Log.d("TEST0", "Looking for Tutorial: comparing..." + key + " & " + lessonname);
+		}
+		
 		return tutorialsList.get(lessonname);
 	}
 
