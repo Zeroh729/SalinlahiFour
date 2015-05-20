@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,8 +22,6 @@ import android.widget.TextView;
 
 import com.qwerjk.better_text.MagicTextView;
 import com.ube.salinlahifour.database.*;
-import com.ube.salinlahifour.database.UserDetailOperations;
-import com.ube.salinlahifour.database.UserLessonProgressOperations;
 import com.ube.salinlahifour.debugclasses.DebugUserModuleActivity;
 import com.ube.salinlahifour.model.UserDetail;
 import com.ube.salinlahifour.model.UserLessonProgress;
@@ -47,6 +46,10 @@ public class LoginActivity extends Activity implements OnClickListener, OnChecke
 	private RadioButton rdo_char2;
 	private RadioButton rdo_char3;
 	private RadioButton rdo_char4;
+	private RadioButton rdo_char5;
+	private RadioButton rdo_char6;
+	private RadioButton rdo_char7;
+	private RadioButton rdo_char8;
 	private ImageButton btn_register;
 	private ImageButton btn_login;
 	private ImageButton btn_delete;
@@ -79,8 +82,12 @@ public class LoginActivity extends Activity implements OnClickListener, OnChecke
 		switch(userDetails.size()){
 			case 0: noCharacterSetup();
 					break;
-			case 4: btn_register.setVisibility(View.GONE);
-					rdo_char4.setVisibility(View.VISIBLE); 
+			case 8: btn_register.setVisibility(View.GONE);
+					rdo_char8.setVisibility(View.VISIBLE); 
+			case 7: rdo_char7.setVisibility(View.VISIBLE);
+			case 6: rdo_char6.setVisibility(View.VISIBLE);
+			case 5: rdo_char5.setVisibility(View.VISIBLE);
+			case 4: rdo_char4.setVisibility(View.VISIBLE); 
 			case 3: rdo_char3.setVisibility(View.VISIBLE);
 			case 2: rdo_char2.setVisibility(View.VISIBLE);
 			case 1: rdo_char1.setVisibility(View.VISIBLE);
@@ -90,13 +97,18 @@ public class LoginActivity extends Activity implements OnClickListener, OnChecke
 	}
 
 	private void populateRadioButtons() {
-		rdoBtns = new RadioButton[]{rdo_char1, rdo_char2, rdo_char3, rdo_char4};
+		rdoBtns = new RadioButton[]{rdo_char1, rdo_char2, rdo_char3, rdo_char4, rdo_char5, rdo_char6, rdo_char7, rdo_char8};
 		for(int i = 0; i < userDetails.size(); i++){
 			if(userDetails.get(i).getGender().equals("male")){
+				Drawable drawable = RadioBtnStatesDirector.getImageDrawable(new MaleRadioBtnStatesBuilder());
 				rdoBtns[i].setBackgroundDrawable(RadioBtnStatesDirector.getImageDrawable(new MaleRadioBtnStatesBuilder()));
+//				rdoBtns[i].setCompoundDrawables(null, drawable, null, null);
 			}else{
+				Drawable drawable = RadioBtnStatesDirector.getImageDrawable(new FemaleRadioBtnStatesBuilder());
 				rdoBtns[i].setBackgroundDrawable(RadioBtnStatesDirector.getImageDrawable(new FemaleRadioBtnStatesBuilder()));
+//				rdoBtns[i].setCompoundDrawables(null, drawable, null, null);
 			}
+			rdoBtns[i].setText(userDetails.get(i).getName() + "");
 		}
 		
 		selected = 0;
@@ -120,6 +132,10 @@ public class LoginActivity extends Activity implements OnClickListener, OnChecke
 		rdo_char2 = (RadioButton)findViewById(R.id.rdo_char2);
 		rdo_char3 = (RadioButton)findViewById(R.id.rdo_char3);
 		rdo_char4 = (RadioButton)findViewById(R.id.rdo_char4);
+		rdo_char5 = (RadioButton)findViewById(R.id.rdo_char5);
+		rdo_char6 = (RadioButton)findViewById(R.id.rdo_char6);
+		rdo_char7 = (RadioButton)findViewById(R.id.rdo_char7);
+		rdo_char8 = (RadioButton)findViewById(R.id.rdo_char8);
 		btn_yes = (ImageButton)findViewById(R.id.btn_yes);
 		btn_no = (ImageButton)findViewById(R.id.btn_no);
 		btn_popupclose = (ImageButton)findViewById(R.id.btn_popupclose);
@@ -218,6 +234,18 @@ public class LoginActivity extends Activity implements OnClickListener, OnChecke
 			break;
 		case R.id.rdo_char4:
 			selected = 3;
+			break;
+		case R.id.rdo_char5:
+			selected = 4;
+			break;
+		case R.id.rdo_char6:
+			selected = 5;
+			break;
+		case R.id.rdo_char7:
+			selected = 6;
+			break;
+		case R.id.rdo_char8:
+			selected = 7;
 			break;
 		}
 		if(userDetails.size() > 0){

@@ -30,7 +30,8 @@ public class RegistrationActivityConfirm extends Activity {
 	private UserDetailOperations userDetailOperator;
 	private String name ;
 	private String gender;
-//	private TextView tv_name;
+	private TextView tv_name;
+	private ImageView iv_char;
 	private ImageButton btn_start;
 	private ImageButton btn_back;
 	
@@ -40,6 +41,9 @@ public class RegistrationActivityConfirm extends Activity {
 		setContentView(R.layout.activity_registration_confirmation);
 		
 		instantiateViews();
+
+		tv_name = (TextView)findViewById(R.id.tv_name);
+		iv_char = (ImageView)findViewById(R.id.iv_char);
 		
 		userDetailOperator = new UserDetailOperations(this);
 		userDetailOperator.open();	//DON'T FORGET
@@ -49,12 +53,15 @@ public class RegistrationActivityConfirm extends Activity {
 		name = bundle.getString("userName");
 		gender = bundle.getString("userGender");
 		
-		//tv_name.setText(name);
+		tv_name.setTypeface(SalinlahiFour.getFontBpreplay());
+		tv_name.setText("Let's go\n" + name + "!");
 
 		switch(gender){
-		case "male"://iv_character.setImageResource(R.drawable.confirm_boy);	
+		case "male":
+			iv_char.setImageResource(R.drawable.popoy);	
 					break;
-		case "female"://iv_character.setImageResource(R.drawable.confirm_girl);
+		case "female":
+			iv_char.setImageResource(R.drawable.pepay);
 						break;
 				
 		}

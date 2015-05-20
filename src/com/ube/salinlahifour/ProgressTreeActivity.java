@@ -66,7 +66,7 @@ public class ProgressTreeActivity extends Activity implements OnCheckedChangeLis
 //		numLesson*=3;
 
 		Bundle bundle = getIntent().getExtras();
-		lessons = (ArrayList) bundle.getParcelableArrayList("lessons");
+		lessons = SalinlahiFour.getLessonsList();
 		recentdata = new ArrayList();
 		totaldata = new ArrayList();
 		
