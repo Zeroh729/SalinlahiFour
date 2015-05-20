@@ -72,9 +72,9 @@ public class ItemXMLHandler extends DefaultHandler {
         } else if (qName.equalsIgnoreCase("image_path")) {
         	tempItem.setImagePath(context, tempVal);
         } else if (qName.equalsIgnoreCase("eng_sound")) {
-        	tempItem.setVoiceEngPath(tempVal);
+        	tempItem.setVoiceEngPath(context, tempVal);
         } else if (qName.equalsIgnoreCase("fil_sound")) {
-        	tempItem.setVoiceFilPath(tempVal);
+        	tempItem.setVoiceFilPath(context, tempVal);
         } else if (qName.equalsIgnoreCase("difficulty")) {
         	tempItem.setDifficulty(tempVal);
         } 

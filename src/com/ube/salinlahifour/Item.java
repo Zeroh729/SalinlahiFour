@@ -84,14 +84,22 @@ public class Item  implements Cloneable{
 	public String getVoiceFilPath() {
 		return this.voiceFilPath;
 	}
-	public void setVoiceFilPath(String path){
+	public void setVoiceFilPath(Context context, String path){
 		voiceFilPath = path;
+		voiceFilID = SalinlahiFour.getContext().getResources().getIdentifier(path, "raw", SalinlahiFour.getContext().getPackageName());		
+		if(voiceFilID == 0 && !path.equals("")){
+			SalinlahiFour.errorPopup(context, "File not found:", "Add " + path + " sound file in raw resource folder.");
+		}
 	}
 	public String getVoiceEngPath() {
 		return this.voiceEngPath;
 	}
-	public void setVoiceEngPath(String path){
-		voiceEngPath = path;
+	public void setVoiceEngPath(Context context, String path){
+		voiceEngPath = path;		
+		voiceEngID = SalinlahiFour.getContext().getResources().getIdentifier(path, "raw", SalinlahiFour.getContext().getPackageName());		
+		if(voiceEngID == 0 && !path.equals("")){
+			SalinlahiFour.errorPopup(context, "File not found:", "Add " + path + " sound file in raw resource folder.");
+		}
 	}
 	public String getImagePath() {
 		return this.imagePath;
@@ -100,7 +108,7 @@ public class Item  implements Cloneable{
 		imagePath = path;
 		int resID = SalinlahiFour.getContext().getResources().getIdentifier(imagePath, "drawable", SalinlahiFour.getContext().getPackageName());
 		
-		if(resID == 0){
+		if(resID == 0 && !path.equals("")){
 			SalinlahiFour.errorPopup(context, "Parse error: ", "Add image '" + path + "' to the drawable resource folder.");
 		}else{
 			imageID = resID;

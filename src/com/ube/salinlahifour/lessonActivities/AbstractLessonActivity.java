@@ -111,7 +111,7 @@ public abstract class AbstractLessonActivity extends Activity {
 		
 		evaluation.setLexiconDir(lesson.getLexicon());
 		Intent intent = new Intent(this, HowToPlay.class);
-		intent.putExtra("lessonName", lesson.getName());
+		intent.putExtra("lessonName", lesson.getTheRealName());
 		startActivity(intent);
 		
 		items = lesson.getItems();

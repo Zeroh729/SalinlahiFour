@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -42,6 +43,8 @@ public class HowToPlay extends Activity implements OnClickListener{
 		String lessonname = bundle.getString("lessonName");
 		data = SalinlahiFour.getTutorial(lessonname);
 		
+		Log.d("TEST0", "How To Play: data img size: " + data.imageRes.size());
+		
 		btn_next = (ImageButton)findViewById(R.id.btn_next);
 		btn_prev = (ImageButton)findViewById(R.id.btn_prev);
 		btn_start = (ImageButton)findViewById(R.id.btn_start);
@@ -65,6 +68,7 @@ public class HowToPlay extends Activity implements OnClickListener{
 		tv_count.setTypeface(SalinlahiFour.getFontPlaytime());
 		
 
+		doneAdding();
 	}
 
 	
