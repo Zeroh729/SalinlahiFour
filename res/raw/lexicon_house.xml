@@ -11,8 +11,8 @@
     <notes>It also protects us from rain</notes>
     <hint>Bubong - It covers the top part of the house</hint>
 	<lesson>2</lesson>
-	<image_path></image_path>
-	<eng_sound></eng_sound>
+	<image_path>roof</image_path>
+	<eng_sound>house_roof</eng_sound>
 	<fil_sound>house/Sounds/house_bubong.mp3</fil_sound>
 	<difficulty>EASY</difficulty>
 </Word_Entry>
@@ -25,8 +25,8 @@
     <notes>Tita hangs picture frames around here</notes>
     <hint>Dingding - Covers the front, side and back parts of the house</hint>
 	<lesson>2</lesson>
-	<image_path></image_path>
-	<eng_sound></eng_sound>
+	<image_path>body</image_path>
+	<eng_sound>house_body</eng_sound>
 	<fil_sound>house/Sounds/house_dingding.mp3</fil_sound>
 	<difficulty>EASY</difficulty>
 </Word_Entry>
@@ -39,8 +39,8 @@
     <notes>We use this to get to different parts of the house too</notes>
     <hint>Pinto - We open this one to get inside the house</hint>
 	<lesson>2</lesson>
-	<image_path></image_path>
-	<eng_sound></eng_sound>
+	<image_path>door</image_path>
+	<eng_sound>house_door</eng_sound>
 	<fil_sound>house/Sounds/house_pinto.mp3</fil_sound>
 	<difficulty>EASY</difficulty>
 </Word_Entry>
@@ -53,8 +53,8 @@
     <notes>Sometimes you see birds just outside here</notes>
     <hint>Bintana - They are made of glass so that you can look from the inside</hint>
 	<lesson>2</lesson>
-	<image_path></image_path>
-	<eng_sound></eng_sound>
+	<image_path>window</image_path>
+	<eng_sound>house_window</eng_sound>
 	<fil_sound>house/Sounds/house_bintana.mp3</fil_sound>
 	<difficulty>EASY</difficulty>
 
@@ -68,8 +68,8 @@
     <notes>Tito keeps his tools here as well</notes>
     <hint>Garahe - This is where tito parks his car.</hint>
 	<lesson>2</lesson>
-	<image_path></image_path>
-	<eng_sound></eng_sound>
+	<image_path>garage</image_path>
+	<eng_sound>house_garage</eng_sound>
 	<fil_sound>house/Sounds/house_garahe.mp3</fil_sound>
 
 	<difficulty>MEDIUM</difficulty>
@@ -84,12 +84,10 @@
     <notes>It looks like arrows pointing up</notes>
     <hint>Bakod - This protects our house from strangers</hint>
 	<lesson>2</lesson>
-	<image_path></image_path>
-	<eng_sound></eng_sound>
+	<image_path>fence</image_path>
+	<eng_sound>house_fence</eng_sound>
 	<fil_sound>house/Sounds/house_bakod.mp3</fil_sound>
-
 	<difficulty>MEDIUM</difficulty>
-
 </Word_Entry>
 	<Word_Entry>
     <q_num>7</q_num>
@@ -100,8 +98,8 @@
     <notes>It looks like arrows pointing up</notes>
     <hint>Tsimnea - Smoke comes out of here when tita cooks.</hint>
 	<lesson>2</lesson>
-	<image_path></image_path>
-	<eng_sound></eng_sound>
+	<image_path>chimney</image_path>
+	<eng_sound>house_chimney</eng_sound>
 	<fil_sound>house/Sounds/house_chimney.mp3</fil_sound>
 	<difficulty>HARD</difficulty>
 </Word_Entry>
@@ -114,8 +112,8 @@
     <notes>It looks like arrows pointing up</notes>
     <hint>Hagdan - Makes us go up</hint>
 	<lesson>2</lesson>
-	<image_path></image_path>
-	<eng_sound></eng_sound>
+	<image_path>stairs</image_path>
+	<eng_sound>house_stairs</eng_sound>
 	<fil_sound>house/Sounds/house_hagdan.mp3</fil_sound>
 	<difficulty>HARD</difficulty>
 </Word_Entry>

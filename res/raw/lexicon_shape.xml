@@ -11,8 +11,8 @@
 		<notes>It looks like the shape of a ball right?</notes>
 		<hint>Bilog - Circle. It is round and has no edges. It also puts a shield around us. Cool!</hint>
 		<lesson>4</lesson>
-		<image_path>shapes/Easy/circle.png</image_path>
-		<eng_sound></eng_sound>
+		<image_path>circle</image_path>
+		<eng_sound>shape_circle</eng_sound>
 		<fil_sound>shapes/Sounds/shape_bilog.mp3</fil_sound>
 		<difficulty>EASY</difficulty>
 	</Word_Entry>
@@ -25,8 +25,8 @@
 		<notes>It looks like a door too.</notes>
 		<hint>Parsukat - A rectangle! It looks like a long box. It releases a sword. Why does this ship have a sword?</hint>
 		<lesson>4</lesson>
-		<image_path>shapes/Easy/square.png</image_path>
-		<eng_sound></eng_sound>
+		<image_path>square</image_path>
+		<eng_sound>shape_square</eng_sound>
 		<fil_sound>shapes/Sounds/shape_parisukat.mp3</fil_sound>
 		<difficulty>EASY</difficulty>
 	</Word_Entry>
@@ -39,8 +39,8 @@
 		<notes>I wonder if a star really looks like this.</notes>
 		<hint>Bituin - A star shape! Teachers gives us these when we do well. It fires fire. Hahaha!</hint>
 		<lesson>4</lesson>
-		<image_path>shapes/Easy/star.png</image_path>
-		<eng_sound></eng_sound>
+		<image_path>star</image_path>
+		<eng_sound>shape_star</eng_sound>
 		<fil_sound>shapes/Sounds/shape_bituin.mp3</fil_sound>
 		<difficulty>EASY</difficulty>
 	</Word_Entry>
@@ -53,8 +53,8 @@
 		<notes>MMM I'd like a slice of pizza right about now.</notes>
 		<hint>Tatsulok - A triangle. It has 3 sides. Oh and it shoots lasers.</hint>
 		<lesson>4</lesson>
-		<image_path>shapes/Easy/triangle.png</image_path>
-		<eng_sound></eng_sound>
+		<image_path>triangle</image_path>
+		<eng_sound>shape_triangle</eng_sound>
 		<fil_sound>shapes/Sounds/shape_tatsulok.mp3</fil_sound>
 		<difficulty>EASY</difficulty>
 	</Word_Entry>
@@ -67,8 +67,8 @@
 		<notes>MMM I'd like a slice of pizza right about now.</notes>
 		<hint>Krus - It looks like the letter t!</hint>
 		<lesson>4</lesson>
-		<image_path>shapes/Medium/cross.png</image_path>
-		<eng_sound></eng_sound>
+		<image_path>cross</image_path>
+		<eng_sound>shape_cross</eng_sound>
 		<fil_sound>shapes/Sounds/shape_krus.mp3</fil_sound>
 		<difficulty>MEDIUM</difficulty>
 	</Word_Entry>
@@ -81,8 +81,8 @@
 		<notes>I wonder if diamonds really looks like these</notes>
 		<hint>Diamante - It's like a square standing on its edge.</hint>
 		<lesson>4</lesson>
-		<image_path>shapes/Medium/diamond.png</image_path>
-		<eng_sound></eng_sound>
+		<image_path>diamond</image_path>
+		<eng_sound>shape_diamond</eng_sound>
 		<fil_sound>shapes/Sounds/shape_diamante.mp3</fil_sound>
 		<difficulty>MEDIUM</difficulty>
 	</Word_Entry>
@@ -95,8 +95,8 @@
 		<notes>It’s like a door too</notes>
 		<hint>Parihaba - It looks like a long box.</hint>
 		<lesson>4</lesson>
-		<image_path>shapes/Medium/rectangle.png</image_path>
-		<eng_sound></eng_sound>
+		<image_path>rectangle</image_path>
+		<eng_sound>shape_rectangle</eng_sound>
 		<fil_sound>shapes/Sounds/shape_parihaba.mp3</fil_sound>
 		<difficulty>MEDIUM</difficulty>
 	</Word_Entry>
@@ -109,8 +109,8 @@
 		<notes>It’s like a triangle and a rectangle put together.</notes>
 		<hint>Tunod - An arrow. It looks like it's pointing to something.</hint>
 		<lesson>4</lesson>
-		<image_path>shapes/Hard/arrow.png</image_path>
-		<eng_sound></eng_sound>
+		<image_path>arrow</image_path>
+		<eng_sound>shape_arrow</eng_sound>
 		<fil_sound>shapes/Sounds/shape_tunod.mp3</fil_sound>
 		<difficulty>HARD</difficulty>
 	</Word_Entry>
@@ -123,8 +123,8 @@
 		<notes>It looks like the moon sometimes too.</notes>
 		<hint>Gasuklay - Looks like a banana or a fingernail./</hint>
 		<lesson>4</lesson>
-		<image_path>shapes/Hard/cresent.png</image_path>
-		<eng_sound></eng_sound>
+		<image_path>cresent</image_path>
+		<eng_sound>shape_cresent</eng_sound>
 		<fil_sound>shapes/Sounds/shape_gasuklay.mp3</fil_sound>
 		<difficulty>HARD</difficulty>
 	</Word_Entry>
@@ -137,8 +137,8 @@
 		<notes>A common shape during Valentines Day</notes>
 		<hint>A heart - It's such a LOVELY shape./</hint>
 		<lesson>4</lesson>
-		<image_path>shapes/Hard/heart.png</image_path>
-		<eng_sound></eng_sound>
+		<image_path>heart</image_path>
+		<eng_sound>shape_heart</eng_sound>
 		<fil_sound>shapes/Sounds/shape_puso.mp3</fil_sound>
 		<difficulty>HARD</difficulty>
 	</Word_Entry>
