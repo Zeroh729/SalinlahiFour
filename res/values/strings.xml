@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <string name="action_enterFromLeft">enterFromLeft</string>
-    <string name="action_enterFromRight">enterFromRight</string>
-    <string name="action_enterFromAbove">enterFromAbove</string>
-    <string name="action_enterFromBelow">enterFromBelow</string>
-    <string name="action_exitFromLeft">exitFromLeft</string>
-    <string name="action_exitFromRight">exitFromRight</string>
-    <string name="action_exitFromAbove">exitFromAbove</string>
-    <string name="action_exitFromBelow">exitFromBelow</string>
+    <string name="action_enterFromLeft">entranceFromLeft</string>
+    <string name="action_enterFromRight">entranceFromRight</string>
+    <string name="action_enterFromAbove">entranceFromAbove</string>
+    <string name="action_enterFromBelow">entranceFromBelow</string>
+    <string name="action_exitFromLeft">exitToLeft</string>
+    <string name="action_exitFromRight">exitToRight</string>
+    <string name="action_exitFromAbove">exitToAbove</string>
+    <string name="action_exitFromBelow">exitToBelow</string>
     <string name="action_shake">shake</string>
     <string name="action_rumble">rumble</string>
     <string name="action_jump">jump</string>

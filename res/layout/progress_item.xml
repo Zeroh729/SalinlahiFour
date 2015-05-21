@@ -63,18 +63,34 @@
             android:layout_weight="0.7"
             />
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:progressDrawable="@drawable/style_progressbar"
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignBottom="@id/tv_lessonitem"
-            android:layout_alignTop="@id/tv_lessonitem"
-            android:layout_marginLeft="15dp"
-            android:layout_toRightOf="@+id/tv_lessonitem"
-            android:progress="15"
-            android:layout_weight="0.3" />
+            android:layout_weight="0.3" >
+            
+	        <ProgressBar
+	            android:id="@+id/progressBar"
+	            style="?android:attr/progressBarStyleHorizontal"
+	            android:progressDrawable="@drawable/style_progressbar"
+	            android:layout_width="match_parent"
+	            android:layout_height="50dp"
+	            android:layout_marginLeft="15dp"
+	            android:progress="15"
+	            />
+	        
+	        <TextView
+	            android:id="@+id/progressBarLabel"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignRight="@id/progressBar"
+	            android:layout_marginRight="20dp"
+	            android:singleLine="true"
+	            android:textSize="20sp"
+	            android:textStyle="bold"
+	            android:text="4/20"
+	            />
+        
+        </RelativeLayout>
 
     </LinearLayout>
 
