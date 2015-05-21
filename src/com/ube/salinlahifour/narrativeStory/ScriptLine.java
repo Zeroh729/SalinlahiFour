@@ -58,7 +58,7 @@ public class ScriptLine{
 					
 
 					
-					if(tempLine.length() > index+1){
+					if(tempLine.length() >= index+1){
 
 						newLine += tempLine.substring(index+1);
 						

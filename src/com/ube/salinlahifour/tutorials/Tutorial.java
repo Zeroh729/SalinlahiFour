@@ -81,14 +81,13 @@ public class Tutorial extends Activity{
 	private boolean isBackVisibleimageView4 = false; // Boolean variable to check if the back image is vis
 	private TextView[] textviews;
 	private ImageButton[] imgviews;
+	private RelativeLayout[] frames;
 	private boolean[] pressed;
 	private TextView tv_rule;
 	private ImageButton btn_next;
 	private RelativeLayout parent_view;
 
 	private int itemcnt = 0;
-	
-	
 	
 	public Tutorial(){
 	}
@@ -103,6 +102,7 @@ public class Tutorial extends Activity{
 				Log.d("TEST0", "Tutorial class : Setup... name " + items.get(i).getWord() + " & desc: " + items.get(i).getNote());
 				textviews[itemcnt].setText(items.get(i).getHint());
 				imgviews[itemcnt].setImageResource(items.get(i).getImageID());
+				frames[itemcnt].setVisibility(View.VISIBLE);
 				itemcnt++;
 			}
 		}
@@ -217,6 +217,7 @@ public class Tutorial extends Activity{
 			if(items.get(i).getDifficulty().toString().equalsIgnoreCase(activityLevel)){
 				textviews[itemcnt].setText(items.get(i).getHint());
 				imgviews[itemcnt].setImageResource(items.get(i).getImageID());
+				frames[itemcnt].setVisibility(View.VISIBLE);
 				itemcnt++;
 			}
 		}
@@ -331,12 +332,10 @@ public class Tutorial extends Activity{
 			if(items.get(i).getDifficulty().toString().equalsIgnoreCase(activityLevel)){
 				textviews[itemcnt].setText(items.get(i).getHint());
 				imgviews[itemcnt].setImageResource(items.get(i).getImageID());
+				frames[itemcnt].setVisibility(View.VISIBLE);
 				itemcnt++;
 			}
 		}
-
-		findViewById(R.id.frame_3).setVisibility(View.INVISIBLE);
-		findViewById(R.id.frame_4).setVisibility(View.INVISIBLE);
 		
 	    final AnimatorSet setRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(),
 
@@ -447,6 +446,7 @@ public class Tutorial extends Activity{
 	private void initiateViews() {		
 		textviews = new TextView[9];
 		imgviews = new ImageButton[9];
+		frames = new RelativeLayout[4];
 		
 		pressed = new boolean[4];
 		
@@ -472,6 +472,14 @@ public class Tutorial extends Activity{
 		pressed[1] = false;
 		pressed[2] = false;
 		pressed[3] = false;
+		frames[0] = (RelativeLayout)findViewById(R.id.frame_1);
+		frames[1] = (RelativeLayout)findViewById(R.id.frame_2);
+		frames[2] = (RelativeLayout)findViewById(R.id.frame_3);
+		frames[3] = (RelativeLayout)findViewById(R.id.frame_4);
+		frames[0].setVisibility(View.INVISIBLE);
+		frames[1].setVisibility(View.INVISIBLE);
+		frames[2].setVisibility(View.INVISIBLE);
+		frames[3].setVisibility(View.INVISIBLE);
 		
 	}
 	

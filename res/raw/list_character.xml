@@ -26,7 +26,7 @@
 	
 	<Character
 	    name="chef"
-	    default="chef"
+	    default="chef_cross"
 	    armscross="chef_cross"
 	    talk="chef_talk"/>
 	

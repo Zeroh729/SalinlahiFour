@@ -70,11 +70,19 @@ public class StoryPlayer {
 				}
 			}
 			Log.d("TEST0", "Story Player: Moving character is " + movingcharacter.getRawName());
+			Log.d("TEST0", "Story Player: Shadow Character expresses " + character.getExpression());
 			if(!character.getExpression().equals("")){
-				movingcharacter.setExpression(character.getExpression());
+				movingcharacter.animateExpression(character.getExpression());
 			}
-			
+
+			Log.d("TEST0", "Story Player: Shadow Character movements " + character.getMovement());
 			if(!character.getMovement().equals("")){
+
+				Log.d("TEST0", "Story Player: Comparing it with " + SalinlahiFour.getContext().getResources().getString(R.string.action_enterFromAbove));
+				Log.d("TEST0", "Story Player: Comparing it with " + SalinlahiFour.getContext().getResources().getString(R.string.action_jump));
+				Log.d("TEST0", "Story Player: Comparing it with " + SalinlahiFour.getContext().getResources().getString(R.string.action_emphasize));
+				Log.d("TEST0", "Story Player: Comparing it with " + SalinlahiFour.getContext().getResources().getString(R.string.action_exitFromAbove));
+				
 				if(character.getMovement().equalsIgnoreCase(SalinlahiFour.getContext().getResources().getString(R.string.action_enterFromAbove))){
 					movingcharacter.entranceFromHeaven();
 				}else if(character.getMovement().equalsIgnoreCase(SalinlahiFour.getContext().getResources().getString(R.string.action_enterFromBelow))){
