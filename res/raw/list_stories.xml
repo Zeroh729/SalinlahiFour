@@ -334,6 +334,7 @@
     <Lesson
         name="Greetings">
         <Scene>
+
             <Character
                 name="main"
                 />

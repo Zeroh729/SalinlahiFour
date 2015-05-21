@@ -90,7 +90,7 @@ public abstract class AbstractLessonActivity extends Activity {
 		Log.d(activityName, "TEST ActivityName in lesson act");
 
 
-
+		
 		Bundle bundle = getIntent().getExtras();
 		activityName = bundle.getString("activityName");
 		activityLevel = LevelType.valueOf(bundle.getString("activityLevel"));
@@ -109,7 +109,8 @@ public abstract class AbstractLessonActivity extends Activity {
 		evaluation =  new Evaluation(this, activityName, activityLevel.toString());
 		Log.d("Jim Parse On Moving", "Game's Lexicon: " + lesson.getLexicon());
 		
-		evaluation.setLexiconDir(lesson.getLexicon());
+		
+		Log.d("Feedback Test", "Feedback: "+ evaluation.getImmediateFeedback(1, "Nanay", 1));
 		Intent intent = new Intent(this, HowToPlay.class);
 		intent.putExtra("lessonName", lesson.getTheRealName());
 		startActivity(intent);
@@ -123,6 +124,7 @@ public abstract class AbstractLessonActivity extends Activity {
 		initiateGamePauseUI();
 		initiateViews();
 		getQuestions();
+		evaluation.setTotScore(questions.size());
 		run();
 	}
 	
@@ -248,10 +250,23 @@ public abstract class AbstractLessonActivity extends Activity {
 	}
 	
 	protected void initiateNarrationModule(){
+		int passingScore = 0;
 		Log.d("TESTINGLessonActivity", "Aldrin: Initiating iFeedback..");
 		NLG = new iFeedback();
 		Log.d("TESTINGLessonActivity", "Aldrin: Reading iFeedback properties");
 		NLG.readProperties();
+		evaluation.setLexiconDir(lesson.getLexicon());
+		Log.d("Feedback", "Total score: " + lesson.getItems().size());
+		if(lesson.getItems().size() % 2 > 0){
+			Log.d("Feedback", "Total score is Odd");
+			passingScore = (int) (lesson.getItems().size()*0.5)+1;
+			Log.d("Feedback", "Passing score: " +  passingScore);
+		}else{
+			Log.d("Feedback", "Total score is Even");
+			passingScore = (int) (lesson.getItems().size()*0.5);
+			Log.d("Feedback", "Passing score: " +  passingScore);
+		}
+		evaluation.setPassingGrade(passingScore);
 		Log.d("TESTINGLessonActivity", "Aldrin: iFeedback Initiated");
 		Log.d("TESTINGLessonActivity", "Aldrin: iFeedback LOL");
 

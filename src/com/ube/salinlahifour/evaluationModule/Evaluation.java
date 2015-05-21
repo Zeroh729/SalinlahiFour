@@ -33,13 +33,16 @@ public class Evaluation {
 	private String status = "Incorrect";
 	private StarType star;
 	private UserLessonProgress userLessonProgressor = new UserLessonProgress();
-	
+	private boolean commitMistake = false;
+	private int allowableMistakes = 4, mistakesRemaining;
 	public Evaluation(Context context, String LessonName, String activityLevel){	
 		//this.NLG = NLG;
 		this.context = context;
 		NLG = new iFeedback();
 		NLG.readProperties();
 		this.LessonName = LessonName;
+		mistakesRemaining = allowableMistakes;
+		//totscore = totalScore;
 		
 	}
 	public void recordUserAnswer(String LessonName, String correctAnswer, String Status, int UserID){	
@@ -119,9 +122,40 @@ public class Evaluation {
 	}
 	
 	public void setLexiconDir(String filename){
+		Log.d("Feedback", "Setting Lexicon Directory to: " + filename);
 		NLG.setLexiconDirectory("/sdcard/"+filename);
+		Log.d("Feedback", "Done Setting!: " + filename);
 	}
-	
+	public void setPassingGrade(int grade){
+		Log.d("Feedback", "Setting Passing grade to: " + grade);
+		NLG.SetPassingGrade(grade);
+		Log.d("Feedback", "Setting Passing grade Done!: " + grade);
+	}
+	public void setNLGAllowableMistakes(int grade){
+		NLG.SetAllowableMistakes(grade);
+	}
+	public void setAllowableMistakes(int mistakes){ //4 is the default
+		this.allowableMistakes = mistakes;
+	}
+	public int getAllowableMistakes(){
+		return allowableMistakes;
+	}
+	public int getMistakesRemaining(){
+		return mistakesRemaining;
+	}
+	public void resetMistakesRemaining(){
+		mistakesRemaining = allowableMistakes;
+		Log.d("Check Answer", "Mistake Counter Reset to "+ mistakesRemaining);
+	}
+	public boolean isAlive(){
+		if(mistakesRemaining > 0){
+			Log.d("Check Answer", "Game Status: Still Alive!");
+			return true;
+		}else{
+			Log.d("Check Answer", "Game Status: Game Over!");
+			return false;
+		}
+	}
 	public String getImmediateFeedback(int index, String answer, int lessonNumber){
 		String Feedback = null;
 		try {
@@ -147,23 +181,62 @@ public class Evaluation {
 	}
 	
 	public boolean evaluateAnswer(String CorrectAnswer, String UserAnswer, int UserID){
+	if(commitMistake == false){
 		if(CorrectAnswer.equals(UserAnswer)){
 			score++;
-			totscore++; //FIX THIS: must be items.getSize()
+			//totscore++; //FIX THIS: must be items.getSize()
 			status = "Correct";
+			resetMistakesRemaining();
+			Log.d("Check Answer", status +": " +score);
+			Log.d("Check Answer", "CommitMistake? "+ commitMistake);
+			Log.d("Check Answer", "Mistakes Remaining: " + mistakesRemaining);
 			Log.d("Evaluation","Updating User Record");
 			recordUserAnswer(LessonName, CorrectAnswer, status, UserID);
 			Log.d("Evaluation","Updated User Record");
 			return true;
 		}
 		else{
+			commitMistake = true;
+			mistakesRemaining--;
 			status = "Incorrect";
-			totscore++; //FIX THIS: must be items.getSize()
+			Log.d("Check Answer", status +": " +score);
+			Log.d("Check Answer", "CommitMistake? "+ commitMistake);
+			Log.d("Check Answer", "Mistakes Remaining: " + mistakesRemaining);
+			//totscore++; //FIX THIS: must be items.getSize()
 			Log.d("Evaluation","Updating User Record");
 			recordUserAnswer(LessonName, CorrectAnswer, status, UserID);
 			Log.d("Evaluation","Updating User Record");
 			return false;
 		}
+	}else{
+		if(CorrectAnswer.equals(UserAnswer)){
+			commitMistake = false;
+			
+			//totscore++; //FIX THIS: must be items.getSize()
+			status = "Correct";
+			resetMistakesRemaining();
+			Log.d("Check Answer", status +": " +score);
+			Log.d("Check Answer", "CommitMistake? "+ commitMistake);
+			Log.d("Check Answer", "Mistakes Remaining: " + mistakesRemaining);
+			Log.d("Evaluation","Updating User Record");
+			recordUserAnswer(LessonName, CorrectAnswer, status, UserID);
+			Log.d("Evaluation","Updated User Record");
+			return true;
+		}
+		else{
+			commitMistake = true;
+			mistakesRemaining--;
+			status = "Incorrect";
+			Log.d("Check Answer", status +": " +score);
+			Log.d("Check Answer", "CommitMistake? "+ commitMistake);
+			Log.d("Check Answer", "Mistakes Remaining: " + mistakesRemaining);
+			//totscore++; //FIX THIS: must be items.getSize()
+			Log.d("Evaluation","Updating User Record");
+			recordUserAnswer(LessonName, CorrectAnswer, status, UserID);
+			Log.d("Evaluation","Updating User Record");
+			return false;
+		}
+	}
 	}
 
 	public void setScore(int score){
