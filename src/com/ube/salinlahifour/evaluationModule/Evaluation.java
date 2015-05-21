@@ -121,10 +121,10 @@ public class Evaluation {
 		return item;
 	}
 	
-	public void setLexiconDir(String filename){
-		Log.d("Feedback", "Setting Lexicon Directory to: " + filename);
-		NLG.setLexiconDirectory("/sdcard/"+filename);
-		Log.d("Feedback", "Done Setting!: " + filename);
+	public void setLexiconDir(String lexicon_name){
+		Log.d("Feedback", "Setting Lexicon Directory to: " + lexicon_name);
+		NLG.setLexiconDirectory("/sdcard/"+lexicon_name+".xml");
+		Log.d("Feedback", "Done Setting!: " + lexicon_name);
 	}
 	public void setPassingGrade(int grade){
 		Log.d("Feedback", "Setting Passing grade to: " + grade);
@@ -168,11 +168,15 @@ public class Evaluation {
 	}
 
 
-	public String getEndofActivityFeedback(int score, int lessonNumber){
+	public String getEndofActivityFeedback(int score, int lessonNumber, int lex_size){
 		String Feedback = null;
+		int ans = 0, reminder = 0;
 		try {
-			
-			Feedback = NLG.GenerateDelayedFeedback(score, lessonNumber);
+			if(score > 0){
+				reminder = lex_size % score;
+				ans = (lex_size / score)+reminder;
+			}
+			Feedback = NLG.GenerateDelayedFeedback(ans, lessonNumber);
 		} catch (JDOMException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

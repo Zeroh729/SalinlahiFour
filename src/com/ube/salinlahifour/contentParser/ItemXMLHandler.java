@@ -51,6 +51,7 @@ public class ItemXMLHandler extends DefaultHandler {
         	//Log.d("Jim Parse On", "ITEM PARSED successful storing: " + items.get(items.size()-1).getWord());
         } else if (qName.equalsIgnoreCase("q_num")) { //ID
         	tempItem.setID(Integer.parseInt(tempVal));
+        	
         } else if (qName.equalsIgnoreCase("word")) {
         	//Log.d("Jim Parse On", "Inside ItemXMLHandler tempval of word: " + tempVal);
         	tempItem.setWord(tempVal);

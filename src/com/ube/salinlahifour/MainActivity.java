@@ -303,7 +303,7 @@ public class MainActivity extends Activity {
 //				e.printStackTrace();
 //				
 //			}
-				
+			
 			SalinlahiFour.getLesson(items.get(0).getLessonNum()).setItems((ArrayList<Item>) items.clone());
 			Log.d("TEST0", "Setting the Parsed Items: lessonNum:" + items.get(0).getLessonNum() + " size: " + SalinlahiFour.getLesson(items.get(0).getLessonNum()).getItems().size());
 		}

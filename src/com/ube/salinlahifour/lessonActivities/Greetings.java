@@ -68,15 +68,17 @@ public class Greetings extends AbstractLessonActivity implements OnClickListener
 	@Override
 	protected boolean checkAnswer(String answer) {
 		// TODO Auto-generated method stub
-		Log.d("Greetings", itemno+". answered a question: "+ answer );
+		Log.d("Greetings","No." +itemno+": "+". answered a question: "+ answer );
 		if(evaluation.evaluateAnswer(lesson.getItems().get(itemno).getWord(), answer, UserID)){
-			feedback = evaluation.getImmediateFeedback(lesson.getItems().get(itemno).getQ_num(), answer, lesson.getLessonNumber());
+			Log.d("Greetings", "Lexicon q_num: "+ lesson.getItems().get(itemno).getID() );
+			Log.d("Greetings", "Lexicon lessonNumber: "+ lesson.getLessonNumber() );
+			feedback = evaluation.getImmediateFeedback(lesson.getItems().get(itemno).getID(), answer, lesson.getLessonNumber());
 			//tv_question.setText( Html.fromHtml(question));
 			if(itemno < questions.size()-1 && evaluation.isAlive() == true){
 				itemno++;
 			}else{
 				Log.d("Debug Family", "Aldrin: iFeedback says its finished (Delayed Feedback)");
-				feedback = evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber());
+				feedback = evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber(), lesson.getItems().size());
 				tv_question.setText(feedback);
 				evaluation.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), UserID);
 				//feedback = NLG.GenerateDelayedFeedback(score, LessonNum);
@@ -88,7 +90,7 @@ public class Greetings extends AbstractLessonActivity implements OnClickListener
 			//tv_question.setText( Html.fromHtml(question));]
 			if(evaluation.isAlive() == false){
 				Log.d("Debug Family", "Aldrin: iFeedback says its finished (Delayed Feedback)");
-				feedback = evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber());
+				feedback = evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber(),lesson.getItems().size());
 				tv_question.setText(feedback);
 				evaluation.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), UserID);
 				//feedback = NLG.GenerateDelayedFeedback(score, LessonNum);
@@ -96,7 +98,7 @@ public class Greetings extends AbstractLessonActivity implements OnClickListener
 //				timer.cancel();
 				showReportCard(this);
 			}else{
-				feedback = evaluation.getImmediateFeedback(lesson.getItems().get(itemno).getQ_num(), answer, lesson.getLessonNumber());
+				feedback = evaluation.getImmediateFeedback(lesson.getItems().get(itemno).getID(), answer, lesson.getLessonNumber());
 				
 			}
 		}
