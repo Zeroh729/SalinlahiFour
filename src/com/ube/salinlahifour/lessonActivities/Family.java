@@ -168,7 +168,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		btn_nxt.setImageDrawable(BtnStatesDirector.getImageDrawable(new BtnNextArrowStatesBuilder()));
 		btn_nxt.setOnClickListener(this);
 		
-		((RelativeLayout)findViewById(R.id.parent_view)).addView(getPauseButton());
+//		((RelativeLayout)findViewById(R.id.parent_view)).addView(getPauseButton());
 	}
 
 	protected void initiateItems() {
