@@ -60,14 +60,10 @@
 		<template>The answer you are looking for is [Answer]</template>
 	</Answer>
    <NextLesson_F>
-    <template>But it seems you need to study again.</template>
-    <template>But you need more practice. Try again next time.</template>
-	<template>But you commited so many mistakes. Try again</template>
+    <template>Sorry you need more practice. Try again next time.</template>
    </NextLesson_F>
    <NextLesson_P>
-    <template>Congratulations! You passed!</template>
     <template>You passed this lesson, you can proceed to the next lesson</template>
-    <template>and You completed this lesson with flying colors! Off to the next lesson!</template>
    </NextLesson_P>
 </type>
 

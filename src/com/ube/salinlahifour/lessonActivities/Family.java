@@ -261,7 +261,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 			}
 			else{
 				Log.d("Debug Family", "Aldrin: iFeedback says its finished (Delayed Feedback)");
-				feedback = evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber());
+				feedback = evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber(),lesson.getItems().size());
 				tv_feedback.setText(feedback);
 				evaluation.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), UserID);
 				//feedback = NLG.GenerateDelayedFeedback(score, LessonNum);

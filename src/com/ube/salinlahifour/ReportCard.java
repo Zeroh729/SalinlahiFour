@@ -89,8 +89,8 @@ public class ReportCard extends PopupWindow implements OnClickListener{
 		
 		tv_title.setText(lesson.getName());
 		tv_level.setText("("+level.toString()+")");
-		tv_evaluation.setText(evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber()));
-		Log.d("EndFeedback Debug", "Feedback: " +evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber()) );
+		tv_evaluation.setText(evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber(),lesson.getItems().size()));
+		Log.d("EndFeedback Debug", "Feedback: " +evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber(),lesson.getItems().size()) );
 		switch(evaluation.getStar()){
 			case GOLD:
 				img_star.setImageResource(R.drawable.report_card_gold);

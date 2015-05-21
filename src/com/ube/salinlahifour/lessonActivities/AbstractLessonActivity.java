@@ -110,20 +110,21 @@ public abstract class AbstractLessonActivity extends Activity {
 		Log.d("Jim Parse On Moving", "Game's Lexicon: " + lesson.getLexicon());
 		
 		
-		Log.d("Feedback Test", "Feedback: "+ evaluation.getImmediateFeedback(1, "Nanay", 1));
+		//Log.d("Feedback Test", "Feedback: "+ evaluation.getImmediateFeedback(1, "Nanay", 1));
 		Intent intent = new Intent(this, HowToPlay.class);
 		intent.putExtra("lessonName", lesson.getTheRealName());
 		startActivity(intent);
 		
 		items = lesson.getItems();
 
-		initiateNarrationModule();
+		
 
 		cnt_question = 0;
 
 		initiateGamePauseUI();
 		initiateViews();
 		getQuestions();
+		initiateNarrationModule();
 		evaluation.setTotScore(questions.size());
 		run();
 	}
@@ -254,14 +255,14 @@ public abstract class AbstractLessonActivity extends Activity {
 		Log.d("TESTINGLessonActivity", "Aldrin: Reading iFeedback properties");
 		NLG.readProperties();
 		evaluation.setLexiconDir(lesson.getLexicon());
-		Log.d("Feedback", "Total score: " + lesson.getItems().size());
-		if(lesson.getItems().size() % 2 > 0){
+		Log.d("Feedback", "Total score: " + questions.size());
+		if(questions.size() % 2 > 0){
 			Log.d("Feedback", "Total score is Odd");
-			passingScore = (int) (lesson.getItems().size()*0.5)+1;
+			passingScore = (int) (questions.size()*0.5)+1;
 			Log.d("Feedback", "Passing score: " +  passingScore);
 		}else{
 			Log.d("Feedback", "Total score is Even");
-			passingScore = (int) (lesson.getItems().size()*0.5);
+			passingScore = (int) (questions.size()*0.5);
 			Log.d("Feedback", "Passing score: " +  passingScore);
 		}
 		evaluation.setPassingGrade(passingScore);
@@ -285,7 +286,7 @@ public abstract class AbstractLessonActivity extends Activity {
 	}
 	
 	protected void showReportCard(Context context){
-		reportCard = new ReportCard(context, lesson, activityLevel, evaluation, evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber()),activityName);
+		reportCard = new ReportCard(context, lesson, activityLevel, evaluation, evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber(),lesson.getItems().size()),activityName);
 		reportCard.reveal();
 	}
 
