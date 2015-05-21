@@ -27,7 +27,6 @@
 	    android:layout_alignParentLeft="true"
 	    android:layout_below="@+id/tv_questionbox"
 	    android:layout_marginLeft="25dp"
-	    android:background="@null"
 	    android:contentDescription="..."
 	    android:onClick="onClick"
 	    android:text="Choice 1" />
@@ -40,7 +39,6 @@
 	    android:layout_alignBottom="@+id/tv_choice1"
 	    android:layout_marginLeft="77dp"
 	    android:layout_toRightOf="@+id/tv_choice1"
-	    android:background="@null"
 	    android:contentDescription="..."
 	    android:onClick="onClick"
 	    android:text="Choice 2" />
@@ -53,7 +51,6 @@
 	    android:layout_alignBottom="@+id/tv_choice2"
 	    android:layout_alignRight="@+id/tv_questionbox"
 	    android:layout_marginRight="21dp"
-	    android:background="@null"
 	    android:contentDescription="..."
 	    android:onClick="onClick"
 	    android:text="Choice 3" />

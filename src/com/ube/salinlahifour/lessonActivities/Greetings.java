@@ -72,10 +72,33 @@ public class Greetings extends AbstractLessonActivity implements OnClickListener
 		if(evaluation.evaluateAnswer(lesson.getItems().get(itemno).getWord(), answer, UserID)){
 			feedback = evaluation.getImmediateFeedback(lesson.getItems().get(itemno).getQ_num(), answer, lesson.getLessonNumber());
 			//tv_question.setText( Html.fromHtml(question));
-			itemno++;
+			if(itemno < questions.size()-1 && evaluation.isAlive() == true){
+				itemno++;
+			}else{
+				Log.d("Debug Family", "Aldrin: iFeedback says its finished (Delayed Feedback)");
+				feedback = evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber());
+				tv_question.setText(feedback);
+				evaluation.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), UserID);
+				//feedback = NLG.GenerateDelayedFeedback(score, LessonNum);
+				//feedback = "feedback placeholder";
+//				timer.cancel();
+				showReportCard(this);
+			}		
 		}else{
-			feedback = evaluation.getImmediateFeedback(lesson.getItems().get(itemno).getQ_num(), answer, lesson.getLessonNumber());
-			//tv_question.setText( Html.fromHtml(question));
+			//tv_question.setText( Html.fromHtml(question));]
+			if(evaluation.isAlive() == false){
+				Log.d("Debug Family", "Aldrin: iFeedback says its finished (Delayed Feedback)");
+				feedback = evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber());
+				tv_question.setText(feedback);
+				evaluation.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), UserID);
+				//feedback = NLG.GenerateDelayedFeedback(score, LessonNum);
+				//feedback = "feedback placeholder";
+//				timer.cancel();
+				showReportCard(this);
+			}else{
+				feedback = evaluation.getImmediateFeedback(lesson.getItems().get(itemno).getQ_num(), answer, lesson.getLessonNumber());
+				
+			}
 		}
 		run();
 		return false;

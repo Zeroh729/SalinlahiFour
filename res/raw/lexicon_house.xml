@@ -13,7 +13,7 @@
 	<lesson>2</lesson>
 	<image_path>roof</image_path>
 	<eng_sound>house_roof</eng_sound>
-	<fil_sound>house/Sounds/house_bubong.mp3</fil_sound>
+	<fil_sound>house_bubong</fil_sound>
 	<difficulty>EASY</difficulty>
 </Word_Entry>
 <Word_Entry>
@@ -27,7 +27,7 @@
 	<lesson>2</lesson>
 	<image_path>body</image_path>
 	<eng_sound>house_body</eng_sound>
-	<fil_sound>house/Sounds/house_dingding.mp3</fil_sound>
+	<fil_sound>house_dingding</fil_sound>
 	<difficulty>EASY</difficulty>
 </Word_Entry>
 <Word_Entry>
@@ -41,7 +41,7 @@
 	<lesson>2</lesson>
 	<image_path>door</image_path>
 	<eng_sound>house_door</eng_sound>
-	<fil_sound>house/Sounds/house_pinto.mp3</fil_sound>
+	<fil_sound>house_pinto</fil_sound>
 	<difficulty>EASY</difficulty>
 </Word_Entry>
 <Word_Entry>
@@ -54,8 +54,8 @@
     <hint>Bintana - They are made of glass so that you can look from the inside</hint>
 	<lesson>2</lesson>
 	<image_path>window</image_path>
-	<eng_sound>house_window</eng_sound>
-	<fil_sound>house/Sounds/house_bintana.mp3</fil_sound>
+	<eng_sound>house_windows</eng_sound>
+	<fil_sound>house_bintana</fil_sound>
 	<difficulty>EASY</difficulty>
 
 </Word_Entry>
@@ -70,7 +70,7 @@
 	<lesson>2</lesson>
 	<image_path>garage</image_path>
 	<eng_sound>house_garage</eng_sound>
-	<fil_sound>house/Sounds/house_garahe.mp3</fil_sound>
+	<fil_sound>house_garahe</fil_sound>
 
 	<difficulty>MEDIUM</difficulty>
 
@@ -86,7 +86,7 @@
 	<lesson>2</lesson>
 	<image_path>fence</image_path>
 	<eng_sound>house_fence</eng_sound>
-	<fil_sound>house/Sounds/house_bakod.mp3</fil_sound>
+	<fil_sound>house_bakod</fil_sound>
 	<difficulty>MEDIUM</difficulty>
 </Word_Entry>
 	<Word_Entry>
@@ -100,7 +100,7 @@
 	<lesson>2</lesson>
 	<image_path>chimney</image_path>
 	<eng_sound>house_chimney</eng_sound>
-	<fil_sound>house/Sounds/house_chimney.mp3</fil_sound>
+	<fil_sound>house_chimney</fil_sound>
 	<difficulty>HARD</difficulty>
 </Word_Entry>
 <Word_Entry>
@@ -114,7 +114,7 @@
 	<lesson>2</lesson>
 	<image_path>stairs</image_path>
 	<eng_sound>house_stairs</eng_sound>
-	<fil_sound>house/Sounds/house_hagdan.mp3</fil_sound>
+	<fil_sound>house_hagdan</fil_sound>
 	<difficulty>HARD</difficulty>
 </Word_Entry>
 </type>

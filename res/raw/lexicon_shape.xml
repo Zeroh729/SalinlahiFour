@@ -13,7 +13,7 @@
 		<lesson>4</lesson>
 		<image_path>circle</image_path>
 		<eng_sound>shape_circle</eng_sound>
-		<fil_sound>shapes/Sounds/shape_bilog.mp3</fil_sound>
+		<fil_sound>shape_bilog</fil_sound>
 		<difficulty>EASY</difficulty>
 	</Word_Entry>
 	<Word_Entry>
@@ -27,7 +27,7 @@
 		<lesson>4</lesson>
 		<image_path>square</image_path>
 		<eng_sound>shape_square</eng_sound>
-		<fil_sound>shapes/Sounds/shape_parisukat.mp3</fil_sound>
+		<fil_sound>shape_parisukat</fil_sound>
 		<difficulty>EASY</difficulty>
 	</Word_Entry>
 	<Word_Entry>
@@ -41,7 +41,7 @@
 		<lesson>4</lesson>
 		<image_path>star</image_path>
 		<eng_sound>shape_star</eng_sound>
-		<fil_sound>shapes/Sounds/shape_bituin.mp3</fil_sound>
+		<fil_sound>shape_bituin</fil_sound>
 		<difficulty>EASY</difficulty>
 	</Word_Entry>
 	<Word_Entry>
@@ -55,7 +55,7 @@
 		<lesson>4</lesson>
 		<image_path>triangle</image_path>
 		<eng_sound>shape_triangle</eng_sound>
-		<fil_sound>shapes/Sounds/shape_tatsulok.mp3</fil_sound>
+		<fil_sound>shape_tatsulok</fil_sound>
 		<difficulty>EASY</difficulty>
 	</Word_Entry>
 	<Word_Entry>
@@ -69,7 +69,7 @@
 		<lesson>4</lesson>
 		<image_path>cross</image_path>
 		<eng_sound>shape_cross</eng_sound>
-		<fil_sound>shapes/Sounds/shape_krus.mp3</fil_sound>
+		<fil_sound>shape_krus</fil_sound>
 		<difficulty>MEDIUM</difficulty>
 	</Word_Entry>
 	<Word_Entry>
@@ -83,7 +83,7 @@
 		<lesson>4</lesson>
 		<image_path>diamond</image_path>
 		<eng_sound>shape_diamond</eng_sound>
-		<fil_sound>shapes/Sounds/shape_diamante.mp3</fil_sound>
+		<fil_sound>shape_diamante</fil_sound>
 		<difficulty>MEDIUM</difficulty>
 	</Word_Entry>
 	<Word_Entry>
@@ -97,7 +97,7 @@
 		<lesson>4</lesson>
 		<image_path>rectangle</image_path>
 		<eng_sound>shape_rectangle</eng_sound>
-		<fil_sound>shapes/Sounds/shape_parihaba.mp3</fil_sound>
+		<fil_sound>shape_parihaba</fil_sound>
 		<difficulty>MEDIUM</difficulty>
 	</Word_Entry>
 	<Word_Entry>
@@ -111,7 +111,7 @@
 		<lesson>4</lesson>
 		<image_path>arrow</image_path>
 		<eng_sound>shape_arrow</eng_sound>
-		<fil_sound>shapes/Sounds/shape_tunod.mp3</fil_sound>
+		<fil_sound>shape_tunod</fil_sound>
 		<difficulty>HARD</difficulty>
 	</Word_Entry>
 	<Word_Entry>
@@ -124,8 +124,8 @@
 		<hint>Gasuklay - Looks like a banana or a fingernail./</hint>
 		<lesson>4</lesson>
 		<image_path>cresent</image_path>
-		<eng_sound>shape_cresent</eng_sound>
-		<fil_sound>shapes/Sounds/shape_gasuklay.mp3</fil_sound>
+		<eng_sound>shape_crescent</eng_sound>
+		<fil_sound>shape_gasuklay</fil_sound>
 		<difficulty>HARD</difficulty>
 	</Word_Entry>
 	<Word_Entry>
@@ -139,7 +139,7 @@
 		<lesson>4</lesson>
 		<image_path>heart</image_path>
 		<eng_sound>shape_heart</eng_sound>
-		<fil_sound>shapes/Sounds/shape_puso.mp3</fil_sound>
+		<fil_sound>shape_puso</fil_sound>
 		<difficulty>HARD</difficulty>
 	</Word_Entry>
 </type>

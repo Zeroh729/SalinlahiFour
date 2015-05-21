@@ -10,9 +10,9 @@
 		<notes>It's also the color of the sea</notes>
 		<hint>Asul - This is BLUE. It is the color of the sky</hint>
 		<lesson>3</lesson>
-		<image_path>cooking/Easy/buttons/blue.png</image_path>
+		<image_path>blue</image_path>
 		<eng_sound>color_blue</eng_sound>
-		<fil_sound>cooking/Sounds/color_asul.mp3</fil_sound>
+		<fil_sound>color_asul</fil_sound>
 		<difficulty>EASY</difficulty>
 	</Word_Entry>
 	<Word_Entry>
@@ -24,9 +24,9 @@
 		<notes>It's also the color of crocodiles and alligators</notes>
 		<hint>Berde - This is GREEN. It is the color of the grass and leaves</hint>
 		<lesson>3</lesson>
-		<image_path>cooking/Easy/buttons/green.png</image_path>
+		<image_path>green</image_path>
 		<eng_sound>color_green</eng_sound>
-		<fil_sound>cooking/Sounds/color_berde.mp3</fil_sound>
+		<fil_sound>color_berde</fil_sound>
 		<difficulty>EASY</difficulty>
 	</Word_Entry>
 	<Word_Entry>
@@ -38,9 +38,9 @@
 		<notes>It is also the color of a firetruck</notes>
 		<hint>Pula - This is RED. It is the color of an apple</hint>
 		<lesson>3</lesson>
-		<image_path>cooking/Easy/buttons/red.png</image_path>
+		<image_path>red</image_path>
 		<eng_sound>color_red</eng_sound>
-		<fil_sound>cooking/Sounds/color_pula.mp3</fil_sound>
+		<fil_sound>color_pula</fil_sound>
 		<difficulty>EASY</difficulty>
 	</Word_Entry>
 	<Word_Entry>
@@ -52,9 +52,9 @@
 		<notes>It is also the color of a rubber ducky</notes>
 		<hint>Dilaw - This is YELLOW. It is the color of the sun.</hint>
 		<lesson>3</lesson>
-		<image_path>cooking/Easy/buttons/yellow.png</image_path>
+		<image_path>yellow</image_path>
 		<eng_sound>color_yellow</eng_sound>
-		<fil_sound>cooking/Sounds/color_dilao.mp3</fil_sound>
+		<fil_sound>color_dilao</fil_sound>
 		<difficulty></difficulty>
 	</Word_Entry>
 	<Word_Entry>
@@ -66,9 +66,9 @@
 		<notes>It is also the color of the skin</notes>
 		<hint>Kayumanggi - This is BROWN. It is the color of a trunk of a tree</hint>
 		<lesson>3</lesson>
-		<image_path>cooking/Medium/buttons/brown.png</image_path>
+		<image_path>brown</image_path>
 		<eng_sound>color_brown</eng_sound>
-		<fil_sound>cooking/Sounds/color_kayumanggi.mp3</fil_sound>
+		<fil_sound>color_kayumanggi</fil_sound>
 		<difficulty>MEDIUM</difficulty>
 	</Word_Entry>
 	<Word_Entry>
@@ -80,9 +80,9 @@
 		<notes>It is also the color of grapes</notes>
 		<hint>Lila - This is VIOLET. It is also the color of eggplants</hint>
 		<lesson>3</lesson>
-		<image_path>cooking/Medium/buttons/violet.png</image_path>
-		<eng_sound>color_purple</eng_sound>
-		<fil_sound>cooking/Sounds/color_lila.mp3</fil_sound>
+		<image_path>violet</image_path>
+		<eng_sound>color_violet</eng_sound>
+		<fil_sound>color_lila</fil_sound>
 		<difficulty>MEDIUM</difficulty>
 	</Word_Entry>
 	<Word_Entry>
@@ -94,9 +94,9 @@
 		<notes>It is also the color of car tires</notes>
 		<hint>Itim - This is BLACK. it is also the color fot he night sky</hint>
 		<lesson>3</lesson>
-		<image_path>cooking/Hard/buttons/black.png</image_path>
+		<image_path>black</image_path>
 		<eng_sound>color_black</eng_sound>
-		<fil_sound>cooking/Sounds/color_itim.mp3</fil_sound>
+		<fil_sound>color_itim</fil_sound>
 		<difficulty>HARD</difficulty>
 	</Word_Entry>
 	<Word_Entry>
@@ -108,9 +108,9 @@
 		<notes>It is also the color of doves</notes>
 		<hint>Puti - This is WHITE. It is also the color of clouds</hint>
 		<lesson>3</lesson>
-		<image_path>cooking/Hard/buttons/white.png</image_path>
+		<image_path>white</image_path>
 		<eng_sound>color_white</eng_sound>
-		<fil_sound>cooking/Sounds/color_puti.mp3</fil_sound>
+		<fil_sound>color_puti</fil_sound>
 		<difficulty>HARD</difficulty>
 	</Word_Entry>
 	

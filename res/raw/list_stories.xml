@@ -336,74 +336,7 @@
             <Background src="house_tutt"/>
             <Character 
                 name="main"
-                animate="entranceFromLeft"
-                say="Hey (username). (Halika!/Come!) I want you to meet my cousin."/>
-        </Scene>
-        <Scene>
-            <Character
-                name="main"
-                expression="point"
-                say="Her name is Pichi-Pichi."/>
-        </Scene>
-        <Scene>
-            <Character
-                name="main"
-                expression="default"/>
-            <Character
-                name="pichi"
-                animate="entranceFromLeft"
-                say="Hi (username)! (Pasok tayo/Let's go inside), I'll show you something."/>
-        </Scene>
-        <Scene>
-            <Character
-                name="pichi"
-                expression="hold"
-                say="You saw my house earlier right?"/>
-        </Scene>
-        <Scene>
-            <Character
-                name="pichi"
-                expression="holdtalk"
-                say="Well I tried to make it by gluing things together..."/>
-        </Scene>
-        <Scene>
-            <Character
-                name="pichi"
-                say="... and look!"/>
-            <Character
-                name="house"
-                animate="entranceFromAbove"/>
-        </Scene>
-        <Scene>
-            <Character
-                name="pichi"
-                expression="shocked"/>
-            <Character
-                name="house"
-                animate="exitToBelow"/>
-        </Scene>
-        <Scene>
-            <Character
-                name="main"
-                expression="shocked"
-                say="(Hala!/Oh no!)  The pieces fell off!"/>
-        </Scene>
-        <Scene>
-            <Character
-                name="pichi"
-                animate="exitToRight"
-                say="(username) (Patulong/Help me!)"/>
-        </Scene>
-        <Scene>
-            <Character
-                name="main"
-                expression="default"
-                say="Let’s help Pichi."/>
-        </Scene>
-        <Scene>
-            <Character
-                name="main"
-                say="Here I’ll give you the pieces."/>
+                animate="entranceFromLeft"/>
         </Scene>
     </Lesson>
 </resources>
