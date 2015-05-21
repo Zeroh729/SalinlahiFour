@@ -4,7 +4,7 @@
         name="Animals">
         <Scene>
             <Background
-                src="livingroom"/>
+                src="animals_tutt"/>
             <Character
                 name="main"
                 expression="default"
@@ -141,6 +141,7 @@
             <Background src="family_tutt"/>
 	        <Character
 	            name="main"
+	            animate="entranceFromLeft"
 	            say="Hi (username)!"/>
         </Scene>
         <Scene>
@@ -333,10 +334,10 @@
     <Lesson
         name="Greetings">
         <Scene>
-            <Background src="house_tutt"/>
-            <Character 
+
+            <Character
                 name="main"
-                animate="entranceFromLeft"/>
+                />
         </Scene>
     </Lesson>
 </resources>

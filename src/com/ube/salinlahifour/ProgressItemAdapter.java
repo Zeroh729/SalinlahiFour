@@ -40,6 +40,7 @@ public class ProgressItemAdapter extends ArrayAdapter {
 		public ImageView hardstar;
 		public TextView lessonitem;
 		public ProgressBar progressbar;
+		public TextView progressbarlabel;
 	}
 
 	@Override
@@ -56,6 +57,7 @@ public class ProgressItemAdapter extends ArrayAdapter {
 			holder.hardstar = (ImageView)convertView.findViewById(R.id.lesson_hardstar);
 			holder.lessonitem = (TextView)convertView.findViewById(R.id.tv_lessonitem);
 			holder.progressbar = (ProgressBar)convertView.findViewById(R.id.progressBar);
+			holder.progressbarlabel = (TextView)convertView.findViewById(R.id.progressBarLabel);
 			convertView.setTag(holder);
 		}else{
 			holder = (ProgressItemHolder)convertView.getTag();
@@ -73,6 +75,7 @@ public class ProgressItemAdapter extends ArrayAdapter {
 			holder.medstar.setImageResource(item.getMedStarDrawableId());
 			holder.hardstar.setImageResource(item.getHardStarDrawableId());
 			holder.lessonname.setTypeface(SalinlahiFour.getFontBpreplay());
+			//TODO - Add if Lesson is not locked, set Visibility = invisible
 		}else{
 			convertView.findViewById(R.id.layout_lessonname).setVisibility(View.GONE);
 			convertView.findViewById(R.id.layout_lessonitems).setVisibility(View.VISIBLE);
@@ -80,6 +83,7 @@ public class ProgressItemAdapter extends ArrayAdapter {
 			holder.lessonitem.setText(item.getItemName());
 			holder.progressbar.setProgress(item.getProgress());
 			holder.lessonitem.setTypeface(SalinlahiFour.getFontBpreplay());
+			holder.progressbarlabel.setText(item.getProgressBarLabel());
 		}
 		
 		return convertView;

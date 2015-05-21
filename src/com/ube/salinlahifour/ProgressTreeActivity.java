@@ -168,6 +168,7 @@ public class ProgressTreeActivity extends Activity implements OnCheckedChangeLis
 						ProgressListItems tempRecent = new ProgressListItems();
 						tempRecent.setLessonCategory(false);
 						tempRecent.setItemName(item.getWord());
+						tempRecent.setProgressBarLabel(ctr.correctAnswers + "/" + ctr.totalAnswers);
 
 						recentdata.add(tempRecent);
 						recentdata.get(recentdata.size()-1).setProgress((int)ctr.getPercentage());

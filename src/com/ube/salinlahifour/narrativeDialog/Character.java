@@ -149,6 +149,11 @@ public class Character {
 	public String getExpression() {
 		return exp;
 	}
+	
+	public void animateExpression(String exp){
+		view.setImageResource(states.get(exp));
+	}
+	
 	public void setExpression(String exp) {
 		this.exp = exp;
 //		Log.d("TEST0", "Set Expression: " + exp);

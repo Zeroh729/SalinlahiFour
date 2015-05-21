@@ -148,6 +148,8 @@ public abstract class AbstractLessonActivity extends Activity {
 				gamePause.showAsDropDown(gamePause.popupView);
 			}
 		});
+		((ViewGroup)getWindow().getDecorView().getRootView()).addView(pauseBtn);
+		
 	}
 	
 	protected ImageButton getPauseButton(){
