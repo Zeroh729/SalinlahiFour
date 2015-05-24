@@ -69,6 +69,9 @@ public abstract class AbstractLessonActivity extends Activity {
 	protected GamePausePopup gamePause;
 	private ImageButton pauseBtn;
 	
+	protected int itemno;
+	protected String question;
+	protected String feedback = " ";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -120,13 +123,13 @@ public abstract class AbstractLessonActivity extends Activity {
 		
 
 		cnt_question = 0;
-
+		itemno = 0;
 		initiateGamePauseUI();
 		initiateViews();
 		getQuestions();
 		initiateNarrationModule();
 		evaluation.setTotScore(questions.size());
-		run();
+		update();
 	}
 	
 	private void initiateGamePauseUI(){
@@ -156,7 +159,50 @@ public abstract class AbstractLessonActivity extends Activity {
 	protected ImageButton getPauseButton(){
 		return pauseBtn;
 	}
-	
+	protected void loadQuestion(int itemNo){
+		Log.d("New Frame", "Loading Questions!");
+		question = lesson.getItems().get(itemNo).getQuestion();
+	}
+	protected boolean evaluate(String answer){
+		if(evaluation.evaluateAnswer(lesson.getItems().get(itemno).getWord(), answer, UserID)){
+			Log.d("New Frame", "Correct!");
+			feedback = evaluation.getImmediateFeedback(lesson.getItems().get(itemno).getID(), answer, lesson.getLessonNumber());
+			if(isGameOver()){
+				//Log.d("Debug Family", "Aldrin: iFeedback says its finished (Delayed Feedback)");
+				Log.d("New Frame", "GameOver!");
+				evaluation.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), UserID);
+				showReportCard(this);
+			}
+			return true;
+		}
+		else{
+			if(isGameOver()){
+				//Log.d("Debug Family", "Aldrin: iFeedback says its finished (Delayed Feedback)");
+				Log.d("New Frame", "GameOver!");
+				evaluation.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), UserID);
+				showReportCard(this);
+			}
+			Log.d("New Frame", "Wrong!");
+			feedback = evaluation.getImmediateFeedback(lesson.getItems().get(itemno).getID(), answer, lesson.getLessonNumber());
+			return false;
+		}
+	}
+	protected String[] loadSortedChoices(int nChoices){
+		String[] choices = new String[nChoices];
+		for(int i = 0; i<nChoices; i++){
+			choices[i] = lesson.getItems().get(i).getWord();
+		}
+		return choices;
+	}
+	protected boolean isGameOver(){
+		if(evaluation.isAlive() == true && itemno < questions.size()-1){
+			Log.d("New Frame", "GameOver Check: false!");
+			return false;
+		}else{
+			Log.d("New Frame", "GameOver Check: true!");
+			return true;
+		}	
+	}
 	protected void getQuestions(){
 		questions = new ArrayList<Item>();
 		Log.d("TESTINGLessonActivity", "Aldrin: getting Questions");
@@ -294,7 +340,7 @@ public abstract class AbstractLessonActivity extends Activity {
 
 	
 	abstract protected void initiateViews();
-	abstract protected void run();
+	abstract protected void update();
 	abstract protected boolean checkAnswer(String answer);
 	
 	private void errorPopup(String title, String error){
@@ -358,7 +404,7 @@ public abstract class AbstractLessonActivity extends Activity {
 		    btn_yes.setOnClickListener(this);
 		    btn_no.setOnClickListener(this);
 		}
-
+	
 		@Override
 		public void onClick(View v) {
 				switch(v.getId()){

@@ -19,7 +19,7 @@ public class Fiesta extends AbstractLessonActivity {
 	}
 
 	@Override
-	protected void run() {
+	protected void update() {
 		// TODO Auto-generated method stub
 		
 	}

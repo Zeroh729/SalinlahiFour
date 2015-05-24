@@ -20,7 +20,7 @@ public class Society  extends AbstractLessonActivity{
 	}
 
 	@Override
-	protected void run() {
+	protected void update() {
 		// TODO Auto-generated method stub
 		
 	}

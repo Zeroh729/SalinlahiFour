@@ -149,10 +149,10 @@ public class Evaluation {
 	}
 	public boolean isAlive(){
 		if(mistakesRemaining > 0){
-			Log.d("Check Answer", "Game Status: Still Alive!");
+			Log.d("Check Lives", "Game Status: Still Alive!");
 			return true;
 		}else{
-			Log.d("Check Answer", "Game Status: Game Over!");
+			Log.d("Check Lives", "Game Status: Game Over!");
 			return false;
 		}
 	}
