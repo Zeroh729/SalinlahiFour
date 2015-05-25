@@ -74,6 +74,7 @@ public class NarrativeStoryXMLHandler extends DefaultHandler{
         	String expression = attributes.getValue("expression");
         	String animate = attributes.getValue("animate");
         	String say = attributes.getValue("say");
+        	String soundFile = attributes.getValue("soundfile");
 
         	Log.d("TEST0", "Narrative Story: character element");
         	Log.d("TEST0", "Narrative Story: character name is " + name);
@@ -100,12 +101,40 @@ public class NarrativeStoryXMLHandler extends DefaultHandler{
         	}
         	if(say!=null){
             	Log.d("TEST0", "Narrative Story: Saying...");
-        		ScriptLine scriptLine = new ScriptLine(context, tempStory.getName(), say, tempAction.getScriptCnt());
+        		ScriptLine scriptLine = new ScriptLine(context, tempStory.getName(), say);
+        		
+        		if(soundFile!=null){
+        			boolean isExisting = false;
+        			int resID = SalinlahiFour.getContext().getResources().getIdentifier(soundFile, "raw", SalinlahiFour.getContext().getPackageName());
+        			if(resID != 0){
+        				isExisting = true;
+        			}else{
+        				 resID = SalinlahiFour.getContext().getResources().getIdentifier(soundFile+"f", "raw", SalinlahiFour.getContext().getPackageName());
+        				 if(resID != 0){
+        					 isExisting = true;
+        				 }else{
+        					 resID = SalinlahiFour.getContext().getResources().getIdentifier(soundFile+"m", "raw", SalinlahiFour.getContext().getPackageName());
+            				 if(resID != 0){
+            					 isExisting = true;
+            				 }
+        				 }
+        			}
 
-            	Log.d("TEST0", "Narrative Story: Setting Script Line to character");
-        		character.setScriptLine(scriptLine);
+   				 if(isExisting){
+   					 Log.d("TEST0", "Setting sound file: " + soundFile);
+   					 scriptLine.setSoundFile(soundFile);
+   				 }else{
+   					SalinlahiFour.errorPopup(context, errorTitle, "Add " + soundFile +" sound file in raw resource folder.");
+   				 }
+   				 Log.d("TEST0", "Narrative Story: soundFile is: " + resID);
+        	}
+
+            Log.d("TEST0", "Narrative Story: Setting Script Line to character");
+        	character.setScriptLine(scriptLine);
+        		
+        		
         	}else{
-        		ScriptLine scriptLine = new ScriptLine(context, tempStory.getName(), "", tempAction.getScriptCnt());
+        		ScriptLine scriptLine = new ScriptLine(context, tempStory.getName(), "");
         		character.setScriptLine(scriptLine);
         	}
         	

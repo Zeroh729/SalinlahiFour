@@ -18,7 +18,6 @@ public class StoryPlayer {
 	private Context context;
 	private RelativeLayout parentView;
 	private String lessonName;
-	private int voiceID = 1;
 	private ArrayList<Character> characters;
 	
 	public StoryPlayer(String lessonName, Context context){
@@ -113,10 +112,9 @@ public class StoryPlayer {
 					movingcharacter.surprise();
 				}
 			}
-			
+			Log.d("TEST0", "Character sound file :" + character.getSay().getSoundFile() + " for the phrase: " + character.getPhrase());
 			if(!character.getSay().getLine().equals("")){
-				movingcharacter.say(character.getSay(lessonName, voiceID), character.getPhrase());
-				voiceID++;
+				movingcharacter.say(character.getVoiceResId(), character.getPhrase());
 			}
 		}
 

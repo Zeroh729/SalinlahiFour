@@ -36,6 +36,7 @@ public class SalinlahiFour extends Application{
 	private static ArrayList<Character> charactersList;
 	private static HashMap<String, NarrativeStory> storiesList;
 	private static HashMap<String, HowToPlaySet> tutorialsList;
+	private static ArrayList<Integer> mappagesList;
 	
 	
 	@Override
@@ -62,6 +63,7 @@ public class SalinlahiFour extends Application{
 		charactersList = new ArrayList<Character>();
 		storiesList = new HashMap<String, NarrativeStory>();
 		tutorialsList = new HashMap<String, HowToPlaySet>();
+		mappagesList = new ArrayList<>();
 		
 		}
 	
@@ -120,6 +122,18 @@ public class SalinlahiFour extends Application{
 	
 	public static MediaPlayer getBgm(){
 		return bgm;
+	}
+	
+	public static void addMapPage(Integer layoutResId){
+		mappagesList.add(layoutResId);
+	}
+	
+	public static int getMapPage(int i){
+		if(i >= mappagesList.size()){
+			return mappagesList.get(0);
+		}else{
+			return mappagesList.get(i);
+		}
 	}
 
 	public static Lesson getLesson(String name){

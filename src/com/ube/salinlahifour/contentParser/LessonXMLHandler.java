@@ -61,6 +61,8 @@ public class LessonXMLHandler extends DefaultHandler {
         	tempLesson.setLexicon(tempVal);
         }else if (qName.equalsIgnoreCase("activity_name")) {
         	tempLesson.setActivity(tempVal);
+        }else if (qName.equalsIgnoreCase("tutorial_background")) {
+        	tempLesson.setTutBackground(context, tempVal);
         }else if (qName.equalsIgnoreCase("icon_image")) {
         	int resID = SalinlahiFour.getContext().getResources().getIdentifier(tempVal, "drawable", SalinlahiFour.getContext().getPackageName());
         	tempLesson.setImage(resID);

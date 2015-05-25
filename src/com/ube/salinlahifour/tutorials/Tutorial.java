@@ -62,6 +62,7 @@ public class Tutorial extends Activity{
 			}
 		}
 		parent_view = (RelativeLayout)findViewById(R.id.parent_view);
+		Log.d("TEST0", "Loaded Background Resources: " + lesson.getTutBackground());
 		parent_view.setBackgroundResource(lesson.getTutBackground());
 	}
 
@@ -95,7 +96,7 @@ public class Tutorial extends Activity{
 	private void setEasyTutorial() {
 		Intent intent = new Intent(this, NarrativeDialog.class);
 		intent.putExtra("lessonName", lesson.getTheRealName());
-		//startActivity(intent);
+		startActivity(intent);
 		Log.d(items.size() + "","TEST");
 		for(int i = 0; i < items.size(); i++){
 			if(items.get(i).getDifficulty().toString().equalsIgnoreCase(activityLevel)){
