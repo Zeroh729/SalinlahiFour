@@ -2,7 +2,7 @@ package com.ube.salinlahifour;
 
 import java.util.ArrayList;
 
-import android.app.Activity;
+import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
@@ -32,8 +32,20 @@ public class Lesson implements Parcelable{
 		return this;
 	}
 	
-	public void setTutBackground(int resID){
-		tutBackground = resID;
+	public void setTutBackground(Context context, String resName){
+		int resID = 0;
+		
+		Log.d("TEST0", "Lesson Tutorial Background: " + resName);
+		
+		resID = SalinlahiFour.getContext().getResources().getIdentifier(resName, "drawable", SalinlahiFour.getContext().getPackageName());
+	
+		if(resID != 0){
+			tutBackground = resID;
+			Log.d("TEST0", "Lesson Tutorial Background: " + resName + " FOUND!");
+		}else{
+			SalinlahiFour.errorPopup(context, "File not found:", "Add " + resName + " image file in a drawable resource folder.");
+		}
+		
 	}
 	
 	public int getTutBackground(){

@@ -9,71 +9,83 @@
                 name="main"
                 expression="default"
                 animate="entranceFromLeft"
-                say="This is quite the adventure right?"/>
+                say="This is quite the adventure right?"
+                soundfile="narration_animals_1"/>
         </Scene>
         <Scene>
             <Character
                 name="main"
-                say="Let's just rest for a while."/>
+                say="Let's just rest for a while."
+                soundfile="narration_animals_2"/>
         </Scene>
         <Scene>
             <Character
                 name="main"
                 expression="point"
-                say="(Alam ko na!/I got it!)"/>
+                say="(Alam ko na!/I got it!)"
+                soundfile="narration_animals_3"/>
         </Scene>
         <Scene>
             <Character
                 name="main"
                 expression="question"
-                say="Hi! Can we go inside?"/>
+                say="Hi! Can we go inside?"
+                soundfile="narration_animals_4"/>
         </Scene>
         <Scene>
             <Character
                 name="guard"
                 animate="entranceFromRight"
-                say="Sure! It's 2000 pesos each."/>
+                say="Sure! It's 2000 pesos each."
+                soundfile="narration_animals_5"/>
         </Scene>
         <Scene>
             <Character
                 name="main"
                 expression="shocked"
-                say="What? We don't have that much."/>
+                say="What? We don't have that much."
+                soundfile="narration_animals_6"/>
         </Scene>
         <Scene>
             <Character
                 name="main"
-                say="(username), what do we do now?"/>
+                say="(username), what do we do now?"
+                soundfile="narration_animals_7"/>
         </Scene>
         <Scene>
             <Character
                 name="guard"
                 expression="waisttalk"
-                say="If you can answer my quiz, I will let you in for free."/>
+                say="If you can answer my quiz, I will let you in for free."
+                soundfile="narration_animals_8"/>
         </Scene>
         <Scene>
             <Character
                 name="guard"
                 expression="wave"
-                say="Don't worry, (madali lang/it's easy)."/>
+                say="Don't worry, (madali lang/it's easy)."
+                soundfile="narration_animals_9"/>
         </Scene>
         <Scene>
             <Character
                 name="main"
                 expression="point"
-                say="(Talaga?/Really?)"/>
+                say="(Talaga?/Really?)"
+                soundfile="narration_animals_10"/>
         </Scene>
         <Scene>
             <Character
                 name="main"
                 expression="question"
-                say="But, can we review first?"/>
+                say="But, can we review first?"
+                soundfile="narration_animals_11"/>
         </Scene>
         <Scene>
             <Character
                 name="guard"
                 expression="wavetalk"
-                say="Ok!"/>
+                say="Ok!"
+                soundfile="narration_animals_12"/>
         </Scene>
     </Lesson>
     
@@ -86,7 +98,8 @@
                 name="main"
                 animate="entranceFromLeft"
                 expression="question"
-                say="Hey where are we?"/>
+                say="Hey where are we?"
+                soundfile="narration_cooking_1"/>
         </Scene>
         <Scene>
             <Character
@@ -97,40 +110,47 @@
                 name="chef"
                 animate="entranceFromLeft"
                 expression="armscross"
-                say="You're in my kitchen!"/>
+                say="You're in my kitchen!"
+                soundfile="narration_cooking_2"/>
         </Scene>
         <Scene>
             <Character
                 name="chef"
-                say="What are you doing here?!"/>
+                say="What are you doing here?!"
+                soundfile="narration_cooking_3"/>
         </Scene>
         <Scene>
             <Character
                 name="chef"
                 expression="talk"
-                say="(Di bale/No matter), I have better things to do."/>
+                say="(Di bale/No matter), I have better things to do."
+                soundfile="narration_cooking_4"/>
         </Scene>
         <Scene>
             <Character
                 name="chef"
-                say="(Halika!/Come!) Help me!"/>
+                say="(Halika!/Come!) Help me!"
+                soundfile="narration_cooking_5"/>
         </Scene>
         <Scene>
             <Character
                 name="main"
                 expression="shocked"
-                say="I don't think we have a choice here (username)"/>
+                say="I don't think we have a choice here (username)"
+                soundfile="narration_cooking_6"/>
         </Scene>
         <Scene>
             <Character
                 name="main"
-                say="(Tara!/Let's go!)"/>
+                say="(Tara!/Let's go!)"
+                soundfile="narration_cooking_7"/>
         </Scene>
         <Scene>
             <Character
                 name="chef"
                 expression="armscross"
                 say="Are you ready? Ok! I'm only gonna do this once."
+                soundfile="narration_cooking_8"
                 animate="exitToRight"/>
         </Scene>
 	</Lesson>
@@ -142,25 +162,29 @@
 	        <Character
 	            name="main"
 	            animate="entranceFromLeft"
-	            say="Hi (username)!"/>
+	            say="Hi (username)!"
+                soundfile="narration_family_1"/>
         </Scene>
         <Scene>
 	        <Character
 	            name="main"
 	            animate="jump"
-	            say="I am (maincharacter)."/>
+	            say="I am (maincharacter)."
+                soundfile="narration_family_2"/>
 	    </Scene>
         <Scene>
 	        <Character
 	            name="main"
 	            expression="point"
-	            say="Welcome to my house!"/>
+	            say="Welcome to my house!"
+                soundfile="narration_family_3"/>
         </Scene>
         <Scene>
             <Character
                 name="main"
                 expression="default"
-                say="Ready to start our adventure?"/>
+                say="Ready to start our adventure?"
+                soundfile="narration_family_4"/>
         </Scene>
         <Scene>
             <Character
@@ -169,13 +193,15 @@
             <Character
                 name="nanay"
                 animate="entranceFromRight"
-                say="(maincharacter)! (Kain na!/Let's eat!) You can't go out with an empty stomach!"/>
+                say="(maincharacter)! (Kain na!/Let's eat!) You can't go out with an empty stomach!"
+                soundfile="narration_family_5"/>
         </Scene>
         <Scene>
             <Character
                 name="main"
                 expression="default"
-                say="Oh ok nanay"/>
+                say="Oh ok nanay"
+                soundfile="narration_family_6"/>
             <Character
                 name="nanay"
                 animate="exitToRight"/>
@@ -184,13 +210,15 @@
             <Character
                 name="main"
                 expression="question"
-                say="Well, just like nanay said, let's eat!"/>
+                say="Well, just like nanay said, let's eat!"
+                soundfile="narration_family_7"/>
         </Scene>
         <Scene>
             <Character
                 name="main"
                 expression="point"
-                say="Come on. I'll introduce you to the others."/>
+                say="Come on. I'll introduce you to the others."
+                soundfile="narration_family_8"/>
         </Scene>
     </Lesson>
     
@@ -201,13 +229,15 @@
             <Character 
                 name="main"
                 animate="entranceFromLeft"
-                say="Hey (username). (Halika!/Come!) I want you to meet my cousin."/>
+                say="Hey (username). (Halika!/Come!) I want you to meet my cousin."
+                soundfile="narration_house_1"/>
         </Scene>
         <Scene>
             <Character
                 name="main"
                 expression="point"
-                say="Her name is Pichi-Pichi."/>
+                say="Her name is Pichi-Pichi."
+                soundfile="narration_house_2"/>
         </Scene>
         <Scene>
             <Character
@@ -216,24 +246,28 @@
             <Character
                 name="pichi"
                 animate="entranceFromLeft"
-                say="Hi (username)! (Pasok tayo/Let's go inside), I'll show you something."/>
+                say="Hi (username)! (Pasok tayo/Let's go inside), I'll show you something."
+                soundfile="narration_house_3"/>
         </Scene>
         <Scene>
             <Character
                 name="pichi"
                 expression="hold"
-                say="You saw my house earlier right?"/>
+                say="You saw my house earlier right?"
+                soundfile="narration_house_4"/>
         </Scene>
         <Scene>
             <Character
                 name="pichi"
                 expression="holdtalk"
-                say="Well I tried to make it by gluing things together..."/>
+                say="Well I tried to make it by gluing things together..."
+                soundfile="narration_house_5"/>
         </Scene>
         <Scene>
             <Character
                 name="pichi"
-                say="... and look!"/>
+                say="... and look!"
+                soundfile="narration_house_6"/>
             <Character
                 name="house"
                 animate="entranceFromAbove"/>
@@ -250,24 +284,28 @@
             <Character
                 name="main"
                 expression="shocked"
-                say="(Hala!/Oh no!)  The pieces fell off!"/>
+                say="(Hala!/Oh no!)  The pieces fell off!"
+                soundfile="narration_house_7"/>
         </Scene>
         <Scene>
             <Character
                 name="pichi"
                 animate="exitToRight"
-                say="(username) (Patulong/Help me!)"/>
+                say="(username) (Patulong/Help me!)"
+                soundfile="narration_house_8"/>
         </Scene>
         <Scene>
             <Character
                 name="main"
                 expression="default"
-                say="Let’s help Pichi."/>
+                say="Let’s help Pichi."
+                soundfile="narration_house_9"/>
         </Scene>
         <Scene>
             <Character
                 name="main"
-                say="Here I’ll give you the pieces."/>
+                say="Here I’ll give you the pieces."
+                soundfile="narration_house_10"/>
         </Scene>
     </Lesson>
     
@@ -279,30 +317,35 @@
     	        name="main"
     	        animate="entranceFromLeft"
     	        expression="point"
-    	        say="Wow we finally got away from that chef."/>
+    	        say="Wow we finally got away from that chef."
+                soundfile="narration_shape_1"/>
     	</Scene>
     	<Scene>
     	    <Character
     	        name="main"
-    	        say="Now we're in a rocket ship! Excited (na ako!/I'm already excited!)"/>
+    	        say="Now we're in a rocket ship! Excited (na ako!/I'm already excited!)"
+                soundfile="narration_shape_2"/>
     	</Scene>
     	<Scene>
     	    <Character
     	        name="main"
     	        expression="question"
-    	        say="What's going on here?"/>
+    	        say="What's going on here?"
+                soundfile="narration_shape_3"/>
     	</Scene>
     	<Scene>
     	    <Character
     	        name="crew"
 				animate="entranceFromRight"
-				say="One of our actors for the show is sick! Can you help us with the show?"/>
+				say="One of our actors for the show is sick! Can you help us with the show?"
+                soundfile="narration_shape_4"/>
     	</Scene>
     	<Scene>
     	    <Character
     	        name="main"
     	        expression="default"
-    	        say="I guess a little acting won't hurt."/>
+    	        say="I guess a little acting won't hurt."
+                soundfile="narration_shape_5"/>
     	    <Character
     	        name="crew"
     	        animate="exitToRight"/>
@@ -311,24 +354,28 @@
     	    <Character
     	        name="main"
     	        expression="shocked"
-    	        say="(Tignan mo!/ Look!)  Someone is on the screen (username)"/>
+    	        say="(Tignan mo!/ Look!)  Someone is on the screen (username)"
+                soundfile="narration_shape_6"/>
     	</Scene>
     	<Scene>
     	    <Background src="shapes_alien"/>
     	    <Character 
     	        name="crew"
-    	        say="WORLD DOMINATION"/>
+    	        say="WORLD DOMINATION"
+                soundfile="narration_shape_7"/>
     	</Scene>
     	<Scene>
     	    <Character
     	        name="main"
     	        animate="panic"
-    	        say="(Naku!/Oh no!) We have to defeat the aliens quickly!"/>
+    	        say="(Naku!/Oh no!) We have to defeat the aliens quickly!"
+                soundfile="narration_shape_8"/>
     	</Scene>
     	<Scene>
     	    <Character
     	        name="main"
-    	        say="Let's figure out what these buttons do."/>
+    	        say="Let's figure out what these buttons do."
+                soundfile="narration_shape_9"/>
     	</Scene>
     </Lesson>
     <Lesson

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <mappage layout="scene_layout_1"/>
+    <mappage layout="scene_layout_2"/>
+</resources>

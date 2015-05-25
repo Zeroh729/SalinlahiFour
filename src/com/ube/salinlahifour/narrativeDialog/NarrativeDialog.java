@@ -27,6 +27,7 @@ public class NarrativeDialog extends Activity{
 	private Context context;
 	
 	private TextView tv_dialog;
+	private ImageView img_talkbubble;
 	private ImageView[] iv_characters;
 	private ArrayList<Character> characters;
 	private int dialogIndex;
@@ -41,6 +42,7 @@ public class NarrativeDialog extends Activity{
 		
 		parentView = (RelativeLayout)findViewById(R.id.parent_view);
 		tv_dialog = (TextView)findViewById(R.id.tv_dialog);
+		img_talkbubble = (ImageView)findViewById(R.id.img_talkbubble);
 		iv_characters = new ImageView[4];
 		iv_characters[0] = (ImageView)findViewById(R.id.character1);
 		iv_characters[1] = (ImageView)findViewById(R.id.character2);
@@ -62,7 +64,7 @@ public class NarrativeDialog extends Activity{
 			for(int j = 0; j < tempcharacters.size(); j++){
 				if(player.getStory().getCharacters().get(i).getMainName().equals(tempcharacters.get(j).getMainName())){
 					characters.add(tempcharacters.get(j));
-					characters.get(characters.size()-1).setViews(tv_dialog, iv_characters[characters.size()-1]);
+					characters.get(characters.size()-1).setViews(tv_dialog, iv_characters[characters.size()-1], img_talkbubble);
 					characters.get(characters.size()-1).setContext(context);
 					break;
 				}
@@ -78,6 +80,8 @@ public class NarrativeDialog extends Activity{
 	}
 
 	public void next(View view){
+		img_talkbubble.setVisibility(View.INVISIBLE);
+		tv_dialog.setVisibility(View.INVISIBLE);
 		player.nextPage();
 	}
 	
