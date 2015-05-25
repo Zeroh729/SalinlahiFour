@@ -10,13 +10,12 @@ import com.ube.salinlahifour.SalinlahiFour;
 public class ScriptLine{
 	private String lessonname;
 	private String line;
-	private int id;
 	private Context context;
+	private String soundFile = "";
 	
-	public ScriptLine(Context context, String lessonname, String line, int i){
+	public ScriptLine(Context context, String lessonname, String line){
     	Log.d("TEST0", "Script Line: New Script Line");
 		this.line = line;
-		this.id = i;
 		this.context = context;
 
 		int index;
@@ -84,7 +83,15 @@ public class ScriptLine{
 		
 		this.line = tempLine;
 	}
+	
+	public void setSoundFile(String filename){
+		soundFile = filename;
+	}
 
+	public String getSoundFile() {
+		return soundFile;
+	}
+	
 	public String getLine(){
 		String tempLine = line;
 		if(tempLine.contains("(username)")){
@@ -106,40 +113,5 @@ public class ScriptLine{
 		this.context = context;
 	}
 	
-	public int getVoiceResId(String lessonname, int id, boolean isMain){
-		int voiceResID = 0;
-		String resourceName = "";
-		String filename = lessonname.toLowerCase();
 
-		Log.d("TEST0", "ScriptLine: Sound file " + "narration_"+filename+"_"+id);
-		if(!isMain){
-			Log.d("TEST0", "ScriptLine: Character speaking is not a main character: " + id);
-			resourceName = "narration_"+filename+"_"+id;
-			voiceResID = SalinlahiFour.getContext().getResources().getIdentifier(resourceName, "raw", SalinlahiFour.getContext().getPackageName());
-		} 
-		else{
-			Log.d("TEST0", "ScriptLine: Character speaking IS a main character: " + id);
-			if(SalinlahiFour.getLoggedInUser().getGender().equals("female")){
-				Log.d("TEST0", "ScriptLine: Main character is female: narration_"+filename+"_"+id+"f");
-				resourceName = "narration_"+filename+"_"+id+"f";
-				voiceResID = SalinlahiFour.getContext().getResources().getIdentifier(resourceName, "raw", SalinlahiFour.getContext().getPackageName());
-			}else{
-				Log.d("TEST0", "ScriptLine: Main character is male: narration_"+filename+"_"+id+"m");
-				resourceName = "narration_"+filename+"_"+id+"m";
-				voiceResID = SalinlahiFour.getContext().getResources().getIdentifier(resourceName, "raw", SalinlahiFour.getContext().getPackageName());
-			}
-			if(voiceResID == 0){
-				Log.d("TEST0", "ScriptLine: No f or m sound file: " + id);
-				resourceName = "narration_"+filename+"_"+id;
-				voiceResID = SalinlahiFour.getContext().getResources().getIdentifier(resourceName, "raw", SalinlahiFour.getContext().getPackageName());
-			}
-		}
-		if(voiceResID == 0){
-			SalinlahiFour.errorPopup(context, "No sound file found", "Add " + resourceName + "file to res/raw folder");
-		}
-		id++;
-		return voiceResID;
-	}
-	
-	
 }

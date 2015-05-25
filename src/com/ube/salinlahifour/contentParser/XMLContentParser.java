@@ -113,4 +113,20 @@ public class XMLContentParser {
  
         return stories;
     }
+	public static ArrayList<Integer> parseMapPages(Context context, InputStream is) {
+		ArrayList<Integer> mappages = null;
+        try {
+            XMLReader xmlReader = SAXParserFactory.newInstance().newSAXParser()
+                    .getXMLReader();
+            MapXMLHandler saxHandler = new MapXMLHandler(context);
+            xmlReader.setContentHandler(saxHandler);
+            xmlReader.parse(new InputSource(is));
+            mappages = saxHandler.getMapPages();
+ 
+        } catch (Exception ex) {
+            SalinlahiFour.errorPopup(context, "XML", "SAXXMLParser: parseMapParse() failed: " + ex.getMessage());
+        }
+ 
+        return mappages;
+    }
 }

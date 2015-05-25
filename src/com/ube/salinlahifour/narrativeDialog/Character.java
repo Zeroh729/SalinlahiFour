@@ -2,22 +2,27 @@ package com.ube.salinlahifour.narrativeDialog;
 
 import java.util.HashMap;
 
+import android.app.Activity;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.ube.salinlahifour.R;
 import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.narrativeStory.ScriptLine;
 
 public class Character {
 	private Context context;
 	private TextView tv_dialog;
+	private ImageView talkBubble;
 	private ImageView view;
 	private HashMap<String, Integer> states;
 	
@@ -38,9 +43,10 @@ public class Character {
 //		setExpression(Expression.DEFAULT.toString());
 	}
 	
-	public void setViews(TextView tv_dialog, ImageView view){
+	public void setViews(TextView tv_dialog, ImageView view, ImageView talkbubble){
 		this.tv_dialog = tv_dialog;
 		this.view = view;
+		this.talkBubble = talkbubble;
 		
 		view.setImageResource(states.get("default"));
 		Log.d("TEST0", "States size: " + states.size());
@@ -63,7 +69,6 @@ public class Character {
 //			view.setImageResource(state.get(ex));
 //	}
 
-	
 	public void setContext(Context context){
 		this.context = context;
 	}
@@ -128,18 +133,44 @@ public class Character {
 		YoYo.with(Techniques.Swing).playOn(view);
 	}
 	
-	public int getSay(String lessonName, int id){
-		return say.getVoiceResId(lessonName, id, isMainCharacter());
-	}
-	
 	public void say(int line, String phrase){
 		MediaPlayer voice = MediaPlayer.create(context, line);
 		voice.start();
 		tv_dialog.setText(Html.fromHtml(phrase));
+
+		RelativeLayout.LayoutParams relativeParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		relativeParams.addRule(RelativeLayout.ABOVE, view.getId());
+		relativeParams.addRule(RelativeLayout.ALIGN_LEFT, view.getId());
+		relativeParams.addRule(RelativeLayout.ALIGN_RIGHT, view.getId());
+
+		tv_dialog.setVisibility(View.VISIBLE);
+		talkBubble.setVisibility(View.VISIBLE);
+		talkBubble.setLayoutParams(relativeParams);
+		
 	}
 	
 	public String getPhrase(){
 		return say.getLine();
+	}
+	
+	public int getVoiceResId(){
+		int voiceResID = 0;
+		voiceResID = SalinlahiFour.getContext().getResources().getIdentifier(say.getSoundFile(), "raw", SalinlahiFour.getContext().getPackageName());
+		
+		if(isMainCharacter()){
+			Log.d("TEST0", "ScriptLine: Character speaking IS a main character: " + say.getSoundFile());
+			int temp = 0;
+			if(SalinlahiFour.getLoggedInUser().getGender().equals("female")){
+				temp = SalinlahiFour.getContext().getResources().getIdentifier(say.getSoundFile()+"f", "raw", SalinlahiFour.getContext().getPackageName());
+			}else{
+				temp = SalinlahiFour.getContext().getResources().getIdentifier(say.getSoundFile()+"m", "raw", SalinlahiFour.getContext().getPackageName());
+			}
+			if(temp != 0){
+				voiceResID = temp;
+			}
+		}
+		Log.d("TEST0", "ScriptLine: voiceResID of " + say.getSoundFile() + " EXISTS");
+		return voiceResID;
 	}
 	
 	public void setCotnext(Context context){

@@ -124,7 +124,6 @@ public class MapActivity extends Activity implements OnClickListener{
 	        Toast toast = Toast.makeText(getApplicationContext(), "Welcome " + ((SalinlahiFour)getApplication()).getLoggedInUser().getName() + "!!!", Toast.LENGTH_SHORT);
 	        toast.show();
 			
-	        
 
 //			try {
 //				Log.d("parseXML()", "TESTTESTTESTEST");
@@ -434,17 +433,8 @@ public class MapActivity extends Activity implements OnClickListener{
 	}
 	
 	private Scene makeNewScene(){
-		switch(scenes.size()){
-		case 0:
-			scenes.add(new Scene(null, R.layout.scene_layout_1));
-			break;
-		case 1:
-			scenes.add(new Scene(null, R.layout.scene_layout_2));
-			break;
-		default:
-			scenes.add(new Scene(null, R.layout.scene_layout_1));
-			break;
-		}
+		scenes.add(new Scene(null, SalinlahiFour.getMapPage(scenes.size())));
+		
 		return scenes.get(scenes.size()-1);
 	}
 	
@@ -458,8 +448,12 @@ public class MapActivity extends Activity implements OnClickListener{
 			imgBtns[3] = (ImageButton)findViewById(R.id.img_lesson4);
 			imgBtns[4] = (ImageButton)findViewById(R.id.img_lesson5);
 
-			for(ImageButton img : imgBtns)
+			for(ImageButton img : imgBtns){
 				img.setImageDrawable(null);
+				img.setScaleX(0.8f);
+				img.setScaleY(0.8f);
+				img.setBackgroundColor(Color.TRANSPARENT);
+			}
 			
 		}catch(NullPointerException e){
 			errorPopup("View not found", e.getMessage() + "\nCheck if each scene contains views with ids img_lesson1, img_lesson2, img_lesson3, img_lesson4, and img_lesson5.");

@@ -64,6 +64,7 @@ public class MainActivity extends Activity {
 		 parseCharacters();
 		 parseStories();
 		 parseTutorials();
+		 parseMapPages();
 		 
 		SharedPreferences prefs = getSharedPreferences("appData", MODE_PRIVATE);
 		final int lastUserID = prefs.getInt("lastUserID", -1);
@@ -369,6 +370,17 @@ public class MainActivity extends Activity {
 		for(int i = 0; i < tutorials.size(); i++){
 			Log.d("TEST0", "Tutorials parsed: " + tutorials.get(i).lessonName);
 			SalinlahiFour.addTutorialsList(tutorials.get(i).lessonName, tutorials.get(i));
+		}
+	}
+	
+	private void parseMapPages(){
+		ArrayList<Integer> mapPages = new ArrayList<>();
+		
+		mapPages = XMLContentParser.parseMapPages(this, this.getResources().openRawResource(R.raw.list_mappages));
+		
+		for(int i = 0; i < mapPages.size(); i++){
+			Log.d("TEST0", "MapPages parsed: " + mapPages.get(i));
+			SalinlahiFour.addMapPage(mapPages.get(i));
 		}
 	}
 	
