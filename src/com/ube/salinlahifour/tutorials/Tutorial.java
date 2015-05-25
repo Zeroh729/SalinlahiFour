@@ -62,6 +62,7 @@ public class Tutorial extends Activity{
 			}
 		}
 		parent_view = (RelativeLayout)findViewById(R.id.parent_view);
+		Log.d("TEST0", "Loaded Background Resources: " + lesson.getTutBackground());
 		parent_view.setBackgroundResource(lesson.getTutBackground());
 	}
 

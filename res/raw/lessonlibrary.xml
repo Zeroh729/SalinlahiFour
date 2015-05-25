@@ -30,6 +30,7 @@
     <tutorial_name>Family</tutorial_name>
     <narrative_name>Family</narrative_name>
     <icon_image>lesson1_icon</icon_image>
+    <tutorial_background>family_tutt</tutorial_background>
 </Lesson_Num>
 <Lesson_Num>
     <entry>2</entry>
@@ -49,6 +50,7 @@
     <tutorial_name>House</tutorial_name>
     <narrative_name>House</narrative_name>
     <icon_image>lesson2_icon</icon_image>
+    <tutorial_background>house_tutt</tutorial_background>
 </Lesson_Num>
 <Lesson_Num>
     <entry>3</entry>
@@ -70,6 +72,7 @@
     <tutorial_name>Cooking</tutorial_name>
     <narrative_name>Cooking</narrative_name>
     <icon_image>lesson3_icon</icon_image>
+    <tutorial_background>colors_tutt</tutorial_background>
 </Lesson_Num>
 <Lesson_Num>
     <entry>4</entry>
@@ -93,6 +96,7 @@
     <tutorial_name>Shape</tutorial_name>
     <narrative_name>Shape</narrative_name>
     <icon_image>lesson4_icon</icon_image>
+    <tutorial_background>shapes_tutt</tutorial_background>
 </Lesson_Num>
 <Lesson_Num>
     <entry>5</entry>
@@ -114,6 +118,7 @@
     <lexicon_name>lexicon_animals</lexicon_name>
     <activity_name>Animals</activity_name>
     <icon_image>lesson5_icon</icon_image>
+    <tutorial_background>animals_tutt</tutorial_background>
 </Lesson_Num>
 <Lesson_Num>
     <entry>6</entry>
