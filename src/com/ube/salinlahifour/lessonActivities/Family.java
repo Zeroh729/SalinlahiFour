@@ -180,7 +180,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	}
 
 	@Override
-	protected void run() {
+	protected void update() {
 		tv_questionno.setText((itemno + 1) + "");
 		((TextView)findViewById(R.id.tv_score)).setText(" / " + questions.size());
 		

@@ -157,7 +157,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 	}
 
 	@Override
-	protected void run() {
+	protected void update() {
 		englishCardIndex = 0;
 		filipinoCardIndex = 0;
 		soundCardIndex = 0;
@@ -693,7 +693,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 					}
 				}else{
 					if(questionno++ < questions.size()-1)
-						run();
+						update();
 					else{
 						evaluation.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), UserID);
 						showReportCard(this);

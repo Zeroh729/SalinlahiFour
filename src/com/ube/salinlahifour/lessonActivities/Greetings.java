@@ -21,9 +21,7 @@ public class Greetings extends AbstractLessonActivity implements OnClickListener
 	private TextView tv_question;
 	private Button[] choices;
 
-	private String question;
-	private int itemno;
-	private String feedback = " ";
+	
 	public Greetings(){
 		super();
 		Log.d("Greetings","Aldrin: Entered Greetings Class");
@@ -38,7 +36,7 @@ public class Greetings extends AbstractLessonActivity implements OnClickListener
 		Log.d("Greetings", "Sample: " + lesson.getItems().get(0).getWord());
 		
 		// TODO Auto-generated method stub
-		itemno = 0;
+		
 		tv_question = (TextView) findViewById(R.id.tv_questionbox);
 		tv_question.setTypeface(SalinlahiFour.getFontAndy());
 		tv_question.setText(" ");
@@ -52,14 +50,11 @@ public class Greetings extends AbstractLessonActivity implements OnClickListener
 	}
 
 	@Override
-	protected void run() {
+	protected void update() {//this is called update because it updates the screen by changing the question and the choices(if the user made it dynamic)
 		// TODO Auto-generated method stub
-		Log.d("Greetings","Aldrin: Running");
+		Log.d("Greetings","Aldrin: Updating");
 		setChoices();
-		//question = SalinlahiFour.getLessonsList().get(lesson.getLessonNumber()).getItems().get(itemno).getQuestion();
-		question = lesson.getItems().get(itemno).getQuestion();
-		Log.d("Greetings", itemno+". Question: "+ question );
-		Log.d("Greetings", itemno+". Feedback: "+ feedback );
+		loadQuestion(itemno);
 		tv_question.setText(Html.fromHtml(feedback+question) );
 		Log.d("Debug Family","Aldrin: Running Done");
 		
@@ -68,48 +63,19 @@ public class Greetings extends AbstractLessonActivity implements OnClickListener
 	@Override
 	protected boolean checkAnswer(String answer) {
 		// TODO Auto-generated method stub
-		Log.d("Greetings","No." +itemno+": "+". answered a question: "+ answer );
-		if(evaluation.evaluateAnswer(lesson.getItems().get(itemno).getWord(), answer, UserID)){
-			Log.d("Greetings", "Lexicon q_num: "+ lesson.getItems().get(itemno).getID() );
-			Log.d("Greetings", "Lexicon lessonNumber: "+ lesson.getLessonNumber() );
-			feedback = evaluation.getImmediateFeedback(lesson.getItems().get(itemno).getID(), answer, lesson.getLessonNumber());
-			//tv_question.setText( Html.fromHtml(question));
-			if(itemno < questions.size()-1 && evaluation.isAlive() == true){
-				itemno++;
-			}else{
-				Log.d("Debug Family", "Aldrin: iFeedback says its finished (Delayed Feedback)");
-				feedback = evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber(), lesson.getItems().size());
-				tv_question.setText(feedback);
-				evaluation.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), UserID);
-				//feedback = NLG.GenerateDelayedFeedback(score, LessonNum);
-				//feedback = "feedback placeholder";
-//				timer.cancel();
-				showReportCard(this);
-			}		
-		}else{
-			//tv_question.setText( Html.fromHtml(question));]
-			if(evaluation.isAlive() == false){
-				Log.d("Debug Family", "Aldrin: iFeedback says its finished (Delayed Feedback)");
-				feedback = evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber(),lesson.getItems().size());
-				tv_question.setText(feedback);
-				evaluation.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), UserID);
-				//feedback = NLG.GenerateDelayedFeedback(score, LessonNum);
-				//feedback = "feedback placeholder";
-//				timer.cancel();
-				showReportCard(this);
-			}else{
-				feedback = evaluation.getImmediateFeedback(lesson.getItems().get(itemno).getID(), answer, lesson.getLessonNumber());
-				
-			}
+		if(evaluate(answer)){//if correct function evaluate will check if the answer is correct and load the feedback in string feedback
+			itemno++; //developer can insert effects here 
+		}else{//if wrong the function evaluate will load a feedback
+			//if wrong insert effects here
 		}
-		run();
-		return false;
+		update();//updates the state of the game
+		return true;
 	}
 	private void setChoices(){
-		choices[0].setText(lesson.getItems().get(0).getWord());
-		choices[1].setText(lesson.getItems().get(1).getWord());
-		choices[2].setText(lesson.getItems().get(2).getWord());
-		//choices[3].setText(lesson.getItems().get(3).getWord());
+		String[] sChoices = loadSortedChoices(3);//this function loads the choices from the lexicon.xml using the order of index, the number 3 is the size of the items that it will load or the number of buttons in a game
+		for(int i=0; i<choices.length;i++){
+			choices[i].setText(sChoices[i]);//Assign the loaded Choices to a button array "choices"
+		}
 	}
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
