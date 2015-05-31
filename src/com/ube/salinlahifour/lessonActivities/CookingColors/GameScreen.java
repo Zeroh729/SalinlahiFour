@@ -35,9 +35,6 @@ public class GameScreen extends AbstractGameScreen  {
 	    // Variable Setup
 	    // You would create game objects here.
 	    static String activityName = "Colors";
-	   
-	    //String activityLevel;
-	    
 	    private Image bg, wrong, ready,feedboxChef,recipe;
 	    private Parts pDialog, pRecipe;
 	    private Image[] buttons_sprinkles;
@@ -56,9 +53,9 @@ public class GameScreen extends AbstractGameScreen  {
 	    private boolean isMistake = false;
 	    Assets as;
 	    private int cor1 = 0, cor2 = 0, cor3 = 0;
-	    public GameScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson) {
+	    public GameScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson,Evaluation eval) {
 	    	//Super Parameters Game, ActivityName, ActivityLevel, UserID
-	        super(game, activityName, activityLevel, userID, context, lesson);
+	        super(game, activityName, activityLevel, userID, context, lesson, eval);
 	        Log.d("Aldrin ExtendedFramework", "This should be after abstract Game");
 	        this.userID = userID;
 	        this.activityLevel = activityLevel;
@@ -77,7 +74,7 @@ public class GameScreen extends AbstractGameScreen  {
 		protected void loadAssets() {
 			// TODO Auto-generated method stub
 	        Log.d("Aldrin ExtendedFramework", "Loading Assets");
-	        eval.setLexiconDir("lexicon_cooking.xml");
+	        eval.setLexiconDir("lexicon_cooking");
 	        transition = false;
 	        exit = false;
 	        buttons_bread = new Image[Assets.buttons.size()];
@@ -115,17 +112,18 @@ public class GameScreen extends AbstractGameScreen  {
 			// TODO Auto-generated method stub
 	        Log.d("Aldrin ExtendedFramework", "Positioning Easy Assets");
 			
-	        breaderButtons = new ButtonSet(4, 70,40);
+	        breaderButtons = new ButtonSet(4, 70,40,lesson);
 	        Log.d("ButtonDebug", "Wdith: " + buttons_bread[0].getWidth() + " Height: " + buttons_bread[0].getHeight());
 	        breaderButtons.calculateButtonPosition(buttons_bread[0].getWidth(), buttons_bread[0].getHeight(), 2, 3);
 	        
-	        creamerButtons = new ButtonSet(4, 290, 40);
+	        creamerButtons = new ButtonSet(4, 290, 40,lesson);
 	        creamerButtons.calculateButtonPosition(buttons_frosting[0].getWidth(), buttons_frosting[0].getHeight(), 2, 3);
 	        
-	        sprinklerButtons = new ButtonSet(4, 510, 40);
+	        sprinklerButtons = new ButtonSet(4, 510, 40,lesson);
 	        sprinklerButtons.calculateButtonPosition(buttons_sprinkles[0].getWidth(), buttons_sprinkles[0].getHeight(), 2, 3);
 	        
 	        livesLeft = 3;
+	        rounds = 3;
 	        
 	        cake = new Cake();
 
@@ -138,6 +136,7 @@ public class GameScreen extends AbstractGameScreen  {
 			sprinklerButtons.loadQuestions();
 			
 	        Log.d("Aldrin ExtendedFramework", "Positioning Easy Assets...Done");
+	        eval.setTotScore(rounds*3);
 		}
 
 		@Override
@@ -145,16 +144,17 @@ public class GameScreen extends AbstractGameScreen  {
 			// TODO Auto-generated method stub
 		   Log.d("GameScreen", "Positioning Medium"); 
 			
-			breaderButtons = new ButtonSet(4, 70,40);
+			breaderButtons = new ButtonSet(4, 70,40,lesson);
 	        Log.d("ButtonDebug", "Wdith: " + buttons_bread[0].getWidth() + " Height: " + buttons_bread[0].getHeight());
 	        breaderButtons.calculateButtonPosition(buttons_bread[0].getWidth(), buttons_bread[0].getHeight(), 2, 3);
 	        
-	        creamerButtons = new ButtonSet(4, 290, 40);
+	        creamerButtons = new ButtonSet(4, 290, 40,lesson);
 	        creamerButtons.calculateButtonPosition(buttons_frosting[0].getWidth(), buttons_frosting[0].getHeight(), 2, 3);
 	        
-	        sprinklerButtons = new ButtonSet(4, 510, 40);
+	        sprinklerButtons = new ButtonSet(4, 510, 40,lesson);
 	        sprinklerButtons.calculateButtonPosition(buttons_sprinkles[0].getWidth(), buttons_sprinkles[0].getHeight(), 2, 3);
 	        livesLeft = 4;
+	        rounds = 4;
 	        cake = new Cake();
 			
 			breaderButtons.loadRandomColors(6);
@@ -170,20 +170,22 @@ public class GameScreen extends AbstractGameScreen  {
 			sprinklerButtons.loadQuestions();
 			
  	       Log.d("GameScreen", "Positioning Medium...Done"); 
+ 	      eval.setTotScore(rounds*3);
 		}
 		
 		@Override
 		protected void assetPositionHard() {
 			// TODO Auto-generated method stub
 			 livesLeft = 5;
-			breaderButtons = new ButtonSet(4, 70,40);
+			 rounds = 5;
+			breaderButtons = new ButtonSet(4, 70,40,lesson);
 	        Log.d("ButtonDebug", "Wdith: " + buttons_bread[0].getWidth() + " Height: " + buttons_bread[0].getHeight());
 	        breaderButtons.calculateButtonPosition(buttons_bread[0].getWidth(), buttons_bread[0].getHeight(), 2, 3);
 	        
-	        creamerButtons = new ButtonSet(4, 290, 40);
+	        creamerButtons = new ButtonSet(4, 290, 40,lesson);
 	        creamerButtons.calculateButtonPosition(buttons_frosting[0].getWidth(), buttons_frosting[0].getHeight(), 2, 3);
 	        
-	        sprinklerButtons = new ButtonSet(4, 510, 40);
+	        sprinklerButtons = new ButtonSet(4, 510, 40,lesson);
 	        sprinklerButtons.calculateButtonPosition(buttons_sprinkles[0].getWidth(), buttons_sprinkles[0].getHeight(), 2, 3);
 	        
 	        cake = new Cake();
@@ -199,6 +201,7 @@ public class GameScreen extends AbstractGameScreen  {
 			breaderButtons.loadQuestions();
 			creamerButtons.loadQuestions();
 			sprinklerButtons.loadQuestions();
+			eval.setTotScore(rounds*3);
 		}
 
 		@Override
@@ -688,7 +691,7 @@ public class GameScreen extends AbstractGameScreen  {
 				 g.drawImage(sprinkles, cake.getX(), cake.getY());
 			 }
 			
-			 for(int i = 0; i<buttons_bread.length;i++){
+			 for(int i = 0; i<4;i++){
 				// Log.d("Painter", "I: " + i + " X: "+ breaderButtons.getX(i) + " Y: " + breaderButtons.getY(i));
 				 g.drawImage(buttons_bread[i], breaderButtons.getX(i), breaderButtons.getY(i));
 				 g.drawImage(buttons_frosting[i], creamerButtons.getX(i), creamerButtons.getY(i));

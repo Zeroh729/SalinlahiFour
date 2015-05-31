@@ -1,4 +1,6 @@
 package com.ube.salinlahifour.lessonActivities;
+import iFeedback.iFeedback;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,20 +54,22 @@ public abstract class AbstractGameScreen extends Screen {
 	
 	
 	  
-	public AbstractGameScreen(Game game, String activityName,String activityLevel ,int userID, Context context, Lesson lesson) {
+	public AbstractGameScreen(Game game, String activityName,String activityLevel ,int userID, Context context, Lesson lesson, Evaluation evaluation) {
 
 		super(game);
+		eval = evaluation;
         Log.d("Aldrin ExtendedFramework", "Abstract game Screen loading");
         this.context = context;
 		// TODO Auto-generated constructor stub
-		 eval = new Evaluation(SalinlahiFour.getContext(), lesson.getName(), activityLevel);
 		 this.userID = userID;
 		 this.activtityName = lesson.getName();
 	     this.activityLevel = activityLevel;
 	     this.lesson = lesson;
+	     items = lesson.getItems();
 	     this.gameOverLock = false;
 	     this.context = context;
 	     this.loadAssets();
+	    
 		 Log.d("Abstract Game Screen", activityName + " " + activityLevel);
 		 Looper.prepare();
 		 
@@ -124,7 +128,7 @@ public abstract class AbstractGameScreen extends Screen {
 	}
 	
 	
-
+	
 
 	 @Override
 	    public void update(float deltaTime) {
@@ -147,7 +151,7 @@ public abstract class AbstractGameScreen extends Screen {
 	        		updateRunningEasy(touchEvents, deltaTime);break;
 	        	}
 	        
-	        	  if (livesLeft == 0 || rounds == 0) {
+	        	  if (livesLeft == 0 || rounds == 0 || eval.isAlive() == false) {
 	  	            state = GameState.GameOver;
 	  	            Looper.myLooper().quit();
 	  		        if(!gameOverLock){
@@ -172,8 +176,10 @@ public abstract class AbstractGameScreen extends Screen {
 	  					extras.putInt("userID", userID);
 	  					extras.putInt("e_score", eval.getScore());
 	  					extras.putInt("e_total", eval.getTotalScore());
+	  					extras.putInt("lex_size", eval.getLexiconSize());
+	  					
 	  					Log.d("LessonNum", lessonNumber + "");
-	  					extras.putString("EOAFeedback", eval.getEndofActivityFeedback(eval.getScore(), lessonNumber,lesson.getItems().size()));
+	  					extras.putString("EOAFeedback", eval.getEndofActivityFeedback(eval.getScore(), lessonNumber));
 	  					extras.putParcelable("lesson", lesson);
 	  					
 	  					intent.putExtras(extras);

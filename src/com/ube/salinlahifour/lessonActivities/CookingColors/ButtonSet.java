@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 
+import com.ube.salinlahifour.Lesson;
+
 import android.util.Log;
 
 public class ButtonSet {
@@ -18,7 +20,11 @@ public class ButtonSet {
 	private ArrayList<String> fQuestions;
 	
 	private Random rand;
-	public ButtonSet(int size, int initX,int initY){
+	private int sizeHard;
+	private int sizeMed;
+	private int sizeEasy;
+	private Lesson lesson;
+	public ButtonSet(int size, int initX,int initY, Lesson lesson){
 		Log.d("ButtonSet", "Initializing ButtonSet");
 		Log.d("ButtonSet", "Size: " + size +" initX: " + initX + " initY: " + initY );
 		this.size = size;
@@ -26,9 +32,22 @@ public class ButtonSet {
 		Y = new int[size];
 		X[0] = initX;
 		Y[0] = initY;
+		this.lesson = lesson;
 		Log.d("ButtonSet", "Initializing ButtonSet...Done");
 		rand = new Random();
-		
+		for(int i = 0; i < lesson.getItems().size(); i++){
+    		switch(lesson.getItems().get(i).getDifficulty()){
+	        case "HARD":
+	        	sizeHard++;
+	        	break;
+	        case "MEDIUM": 
+	        	sizeMed++;
+	        	break;
+	        case "EASY":
+	        	sizeEasy++;
+	        	break;
+	        }
+    	}
 	}
 	
 	public void calculateButtonPosition(int buttonWidth, int buttonHeight, int column, int margin){
@@ -133,18 +152,25 @@ public class ButtonSet {
 	}
 	
 	private void easyAns(){
-		fColors.add("Asul");
-		fColors.add("Berde");
-		fColors.add("Pula");
-		fColors.add("Dilaw");
+		for(int i =0; i<sizeEasy;i++ ){
+			fColors.add(lesson.getItems().get(i).getQuestion());
+		}
+		//fColors.add("Asul");
+		//fColors.add("Berde");
+		//fColors.add("Pula");
+		//fColors.add("Dilaw");
 	}
 	private void medAns(){
-		fColors.add("Kayumanggi");
-		fColors.add("Lila");
+		for(int i =0; i<sizeMed;i++ ){
+			fColors.add(lesson.getItems().get(i).getQuestion());
+		}
+		//fColors.add("Kayumanggi");
+		//fColors.add("Lila");
 	}
 	private void hardAns(){
-		fColors.add("Itim");
-		fColors.add("Puti");
+		for(int i =0; i<sizeHard;i++ ){
+			fColors.add(lesson.getItems().get(i).getQuestion());
+		}
 	}
 	public String getAnswer(int colorIndex){
 		return fColors.get(colorIndex);
