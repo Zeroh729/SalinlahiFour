@@ -161,17 +161,20 @@ public abstract class AbstractLessonActivity extends Activity {
 	}
 	protected void loadQuestion(int itemNo){
 		Log.d("New Frame", "Loading Questions!");
-		question = lesson.getItems().get(itemNo).getQuestion();
+		question = questions.get(itemNo).getQuestion();
 	}
 	protected boolean evaluate(String answer){
-		if(evaluation.evaluateAnswer(lesson.getItems().get(itemno).getWord(), answer, UserID)){
+		if(evaluation.evaluateAnswer(questions.get(itemno).getWord(), answer, UserID)){
 			Log.d("New Frame", "Correct!");
-			feedback = evaluation.getImmediateFeedback(lesson.getItems().get(itemno).getID(), answer, lesson.getLessonNumber());
+			feedback = evaluation.getImmediateFeedback(questions.get(itemno).getID(), answer, lesson.getLessonNumber());
 			if(isGameOver()){
 				//Log.d("Debug Family", "Aldrin: iFeedback says its finished (Delayed Feedback)");
 				Log.d("New Frame", "GameOver!");
 				evaluation.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), UserID);
 				showReportCard(this);
+			}else{
+				itemno++;
+				update();
 			}
 			return true;
 		}
@@ -181,9 +184,11 @@ public abstract class AbstractLessonActivity extends Activity {
 				Log.d("New Frame", "GameOver!");
 				evaluation.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), UserID);
 				showReportCard(this);
+			}else{
+				update();
 			}
 			Log.d("New Frame", "Wrong!");
-			feedback = evaluation.getImmediateFeedback(lesson.getItems().get(itemno).getID(), answer, lesson.getLessonNumber());
+			feedback = evaluation.getImmediateFeedback(questions.get(itemno).getID(), answer, lesson.getLessonNumber());
 			return false;
 		}
 	}
@@ -267,10 +272,10 @@ public abstract class AbstractLessonActivity extends Activity {
 				}
 				i++;
 			}
-			Collections.shuffle(questions,  new Random(System.nanoTime()));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		Collections.shuffle(questions,  new Random(System.nanoTime()));
 	}
 	
 	private static Map<String, Integer> sortByComparator(Map<String, Integer> unsortMap) {
@@ -356,9 +361,17 @@ public abstract class AbstractLessonActivity extends Activity {
 			});
 		builder.show();
 	}
+
+	protected void setLayoutID(int x){
+		layoutID = x;
+	}
 	
 	protected void setCntQuestions(int x){
 		cnt_question = x;
+	}
+	
+	protected int getCntQuestions(){
+		return cnt_question;
 	}
 
 	@Override

@@ -63,12 +63,11 @@ public class Greetings extends AbstractLessonActivity implements OnClickListener
 	@Override
 	protected boolean checkAnswer(String answer) {
 		// TODO Auto-generated method stub
-		if(evaluate(answer)){//if correct function evaluate will check if the answer is correct and load the feedback in string feedback
-			itemno++; //developer can insert effects here 
+		if(evaluate(answer)){//if correct function evaluate will check if the answer is correct and load the feedback in string feedback and will automatically call the update() function
+			 //developer can insert effects here 
 		}else{//if wrong the function evaluate will load a feedback
 			//if wrong insert effects here
 		}
-		update();//updates the state of the game
 		return true;
 	}
 	private void setChoices(){
