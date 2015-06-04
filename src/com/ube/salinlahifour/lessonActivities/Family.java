@@ -62,7 +62,19 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	}
 	
 
+	
+	@Override
+	protected void configureEasyLevel() {
+	}
 
+	@Override
+	protected void configureMediumLevel() {
+	}
+
+	@Override
+	protected void configureHardLevel() {
+	}
+	
 	@Override
 	protected void initiateViews() {
 		Log.d("Debug Family","Aldrin: Initiate Views");
@@ -376,6 +388,22 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		else {
 		    return false;
 		}
+	}
+
+
+
+	@Override
+	protected void ifAnswerIsCorrect() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	protected void ifAnswerIsWrong() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -13,6 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.logging.Level;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -62,7 +63,7 @@ public abstract class AbstractLessonActivity extends Activity {
 	protected LevelType activityLevel;
 	protected int layoutID;
 	protected int UserID;	
-	protected int cnt_question;
+	protected int cnt_question = 0;
 	protected iFeedback NLG;
 	protected ReportCard reportCard;
 	protected Evaluation evaluation;
@@ -120,16 +121,24 @@ public abstract class AbstractLessonActivity extends Activity {
 		
 		items = lesson.getItems();
 
-		
-
-		cnt_question = 0;
 		itemno = 0;
-		initiateGamePauseUI();
 		initiateViews();
+		initiateLevels();
+		initiateGamePauseUI();
 		getQuestions();
 		initiateNarrationModule();
 		evaluation.setTotScore(questions.size());
 		update();
+	}
+	
+	private void initiateLevels(){
+		if(activityLevel.equals(LevelType.EASY)){
+			configureEasyLevel();
+		}else if(activityLevel.equals(LevelType.MEDIUM)){
+			configureMediumLevel();
+		}else{
+			configureHardLevel();
+		}
 	}
 	
 	private void initiateGamePauseUI(){
@@ -156,6 +165,10 @@ public abstract class AbstractLessonActivity extends Activity {
 		
 	}
 	
+	protected Item getQuestionItem(){
+		return questions.get(itemno);
+	}
+	
 	protected ImageButton getPauseButton(){
 		return pauseBtn;
 	}
@@ -174,21 +187,22 @@ public abstract class AbstractLessonActivity extends Activity {
 				showReportCard(this);
 			}else{
 				itemno++;
-				update();
+				ifAnswerIsCorrect();
 			}
 			return true;
 		}
 		else{
+			Log.d("New Frame", "Wrong!");
+			feedback = evaluation.getImmediateFeedback(questions.get(itemno).getID(), answer, lesson.getLessonNumber());
+
 			if(isGameOver()){
 				//Log.d("Debug Family", "Aldrin: iFeedback says its finished (Delayed Feedback)");
 				Log.d("New Frame", "GameOver!");
 				evaluation.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), UserID);
 				showReportCard(this);
 			}else{
-				update();
+				ifAnswerIsWrong();
 			}
-			Log.d("New Frame", "Wrong!");
-			feedback = evaluation.getImmediateFeedback(questions.get(itemno).getID(), answer, lesson.getLessonNumber());
 			return false;
 		}
 	}
@@ -200,6 +214,7 @@ public abstract class AbstractLessonActivity extends Activity {
 		return choices;
 	}
 	protected boolean isGameOver(){
+		Log.d("TEST0", "Lives left: " + evaluation.getMistakesRemaining());
 		if(evaluation.isAlive() == true && itemno < questions.size()-1){
 			Log.d("New Frame", "GameOver Check: false!");
 			return false;
@@ -220,7 +235,8 @@ public abstract class AbstractLessonActivity extends Activity {
 			records = userdb.getRecentUserRecordsFromUserId(SalinlahiFour.getLoggedInUser().getId(), activityName);
 			int cnt_itemLevel = 0;
 			
-			ArrayList<Item> items = SalinlahiFour.getLessonItems(lesson.getTheRealName(), activityLevel.toString());
+			ArrayList<Item> items = (ArrayList<Item>) lesson.getItems().clone();
+		
 	//		ArrayList<String> itemNames = new ArrayList();
 	//		ArrayList<Integer> itemScores = new ArrayList();
 			HashMap<String, Integer> itemKeys = new HashMap();
@@ -228,7 +244,7 @@ public abstract class AbstractLessonActivity extends Activity {
 			for(int i = 0; i < items.size(); i++){
 	//			itemNames.add(items.get(i).getWord());
 	//			itemScores.add(0);
-				if(!items.get(i).getLevel().equals(activityLevel)){
+				if(!items.get(i).getLevel().equals(activityLevel.toString())){
 					itemKeys.put(items.get(i).getWord(), 0);
 				}else{
 					cnt_itemLevel++;
@@ -257,7 +273,8 @@ public abstract class AbstractLessonActivity extends Activity {
 			int i = 0;
 			for(String key : sortedItemKeys.keySet()){
 				if(cnt_question == 0 || ((cnt_question - cnt_itemLevel) > i)){
-					ArrayList<Item> lessonItems = SalinlahiFour.getLessonItems(lesson.getTheRealName(), activityLevel.toString());
+					ArrayList<Item> lessonItems = lesson.getItems();
+					Log.d("TEST0", "questions part 5 lessonItems size: " + lessonItems.size());
 					for(int j = 0; j < lessonItems.size(); j++)
 						if(lessonItems.get(j).getWord().equals(key)){
 	//						if(lessonItems.get(j).getLevel().equals(activityLevel))
@@ -275,6 +292,7 @@ public abstract class AbstractLessonActivity extends Activity {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		Log.d("TEST0", "questions size: " + questions.size());
 		Collections.shuffle(questions,  new Random(System.nanoTime()));
 	}
 	
@@ -343,10 +361,14 @@ public abstract class AbstractLessonActivity extends Activity {
 		reportCard.reveal();
 	}
 
-	
+
+	abstract protected void configureEasyLevel();
+	abstract protected void configureMediumLevel();
+	abstract protected void configureHardLevel();
 	abstract protected void initiateViews();
 	abstract protected void update();
-	abstract protected boolean checkAnswer(String answer);
+	abstract protected void ifAnswerIsCorrect();
+	abstract protected void ifAnswerIsWrong();
 	
 	private void errorPopup(String title, String error){
 		final AlertDialog.Builder builder=new AlertDialog.Builder(this);
@@ -372,6 +394,53 @@ public abstract class AbstractLessonActivity extends Activity {
 	
 	protected int getCntQuestions(){
 		return cnt_question;
+	}
+	
+	protected ArrayList<Item> loadShuffledChoices(int size){
+		ArrayList<Item> tempitems = new ArrayList();
+		
+		
+		tempitems.add(getQuestionItem());
+		Log.d("TEST0", "Adding Selected Item: " + getQuestionItem().getWord());
+		
+		for(int i = 1; i < size; i++){
+			boolean isEligibleItem = false;
+			int loops = 0;
+			do{
+				Item selectedItem = items.get(new Random().nextInt(items.size()));
+				Log.d("TEST0", "Selected Item: " + selectedItem.getWord());
+				if(activityLevel.equals(LevelType.EASY) && !tempitems.contains(selectedItem)){
+					if(selectedItem.getDifficulty().equals(LevelType.EASY.toString())){
+						Log.d("TEST0", "Selected Item: is easy and Eligible!");
+						isEligibleItem = true;
+					}
+				}else if(activityLevel.equals(LevelType.MEDIUM) && !tempitems.contains(selectedItem)){
+					if(!selectedItem.getDifficulty().equals(LevelType.HARD.toString())){
+						Log.d("TEST0", "Selected Item: is medium and Eligible!");
+						isEligibleItem = true;
+					}
+				}else if(!tempitems.contains(selectedItem)){
+					Log.d("TEST0", "Selected Item: is hard and Eligible!");
+					isEligibleItem = true;
+				}
+				if(isEligibleItem){
+					Log.d("TEST0", "Adding Selected Item: " + selectedItem.getWord());
+					if(!tempitems.contains(selectedItem))
+					tempitems.add(selectedItem);
+					Log.d("TEST0", "Temp Items size: " + tempitems.size());
+					break;
+				}else{
+					loops++;
+					if(loops >= items.size()){
+						tempitems.add(selectedItem);
+						break;
+					}
+				}
+			}while(!isEligibleItem);
+		}
+		Collections.shuffle(tempitems,new Random(System.nanoTime()));
+		Log.d("TEST0", "Shuffled Items: " + tempitems.size());
+		return (ArrayList<Item>) tempitems.clone();
 	}
 
 	@Override

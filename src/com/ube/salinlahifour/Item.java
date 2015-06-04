@@ -70,12 +70,18 @@ public class Item  implements Cloneable{
 		this.label = question;
 	}
 	public String getNote(){
-		return this.tutorial_note;
+		return this.word_hint;
+	}
+	public String getRealNote(){
+		return this.word_hint;
 	}
 	public void setNote(String note){
 		tutorial_note = note;
 	}
 	public String getHint(){
+		return this.tutorial_note;
+	}
+	public String getRealHint(){
 		return this.word_hint;
 	}
 	public void setHint(String hint){
