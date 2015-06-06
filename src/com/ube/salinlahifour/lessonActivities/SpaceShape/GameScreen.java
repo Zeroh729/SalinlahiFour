@@ -62,9 +62,9 @@ public class GameScreen extends AbstractGameScreen  {
 	    private Projectile ammo;
 	    private boolean isEnemyExist = false;
 	   int index = 0;
-	    public GameScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson, ArrayList<Item> items) {
+	    public GameScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson, ArrayList<Item> items, Evaluation evals) {
 	    	//Super Parameters Game, ActivityName, ActivityLevel, UserID
-	        super(game, activityName, activityLevel, userID, context,lesson);
+	        super(game, activityName, activityLevel, userID, context,lesson, evals);
 	        Log.d("Aldrin ExtendedFramework", "This should be after abstract Game");
 	        this.userID = userID;
 	        this.activityLevel = activityLevel;
@@ -77,7 +77,6 @@ public class GameScreen extends AbstractGameScreen  {
 		protected void loadAssets() {
 			// TODO Auto-generated method stub
 	        Log.d("Aldrin ExtendedFramework", "Loading Assets");
-	        eval.setLexiconDir("lexicon_shape.xml");
 	        this.backbtn = Assets.backbtn;
 	        this.bgBack = Assets.bgBack;
 	        this.yesbtn = Assets.yesbtn;
@@ -140,6 +139,7 @@ public class GameScreen extends AbstractGameScreen  {
 	        pEnemy = new Parts(200,100);
 	        livesLeft = 4;
 	        rounds = 10;
+	        eval.setTotScore(rounds);
 	        pWrong = new Parts(0,0);
 	        ammo.loadAmmos(pSpaceship.getX(), pSpaceship.getY());
 	        pLives = new Parts(130-30,480-30);
@@ -162,6 +162,8 @@ public class GameScreen extends AbstractGameScreen  {
 	        
 			livesLeft = 4;
 	        rounds  = 15;
+
+	        eval.setTotScore(rounds);
  	       Log.d("GameScreen", "Positioning Medium...Done"); 
 		}
 		
@@ -175,6 +177,7 @@ public class GameScreen extends AbstractGameScreen  {
 	        pHeart = new Parts(570-30, 180-30);
 			livesLeft = 4;
 	        rounds = 20;
+	        eval.setTotScore(rounds);
 		}
 		private void spawnEnemy(int size){
 			Random rand = new Random();
@@ -186,12 +189,12 @@ public class GameScreen extends AbstractGameScreen  {
 			if(index == 0){
 				index = 1;
 			}
-			sQuestion = enemies.getEnemyQuestion(index);
+			sQuestion = lesson.getItems().get(index-1).getQuestion();
 			//sQuestion = items.get(index).getLabel();
-			cAnswer = enemies.getEnemy(index);
-			//cAnswer = items.get(index).getWord();
+			//cAnswer = enemies.getEnemy(index);
+			cAnswer = lesson.getItems().get(index-1).getWord();
 			Log.d("Enemies Size", "Size: " + Assets.enemyShapes.size());
-			enemy = Assets.enemyShapes.get(index);
+			enemy = Assets.enemyShapes.get(index-1);
 			Log.d("Enemy Index: ", "i: " + index + " enemy formation: " + enemies.getEnemy(index)  );
 			}
 		}
@@ -209,7 +212,7 @@ public class GameScreen extends AbstractGameScreen  {
 				isEnemyExist = false;
 				projectile = Assets.nothingness;
 			}
-			switch(livesLeft){
+			switch(eval.getMistakesRemaining()){
 			case 4:lives = Assets.lives.get(4);;break;
 			case 3:lives = Assets.lives.get(3);;break;
 			case 2:lives = Assets.lives.get(2);;break;

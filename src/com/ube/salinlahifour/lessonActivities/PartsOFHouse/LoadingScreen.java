@@ -10,6 +10,7 @@ import com.kilobolt.framework.Screen;
 import com.kilobolt.framework.Graphics.ImageFormat;
 import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.Lesson;
+import com.ube.salinlahifour.evaluationModule.Evaluation;
 import com.ube.salinlahifour.lessonActivities.PartsOFHouse.Assets;
 
 public class LoadingScreen extends Screen {
@@ -18,7 +19,8 @@ public class LoadingScreen extends Screen {
 	private Context context;
 	private Lesson lesson;
 	private ArrayList items;
-	 public LoadingScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson, ArrayList<Item> items) {
+	private Evaluation evals;
+	 public LoadingScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson, ArrayList<Item> items, Evaluation eval) {
 	        super(game);
 	        this.activityLevel = activityLevel;
 	        this.userID = userID;
@@ -26,6 +28,7 @@ public class LoadingScreen extends Screen {
 			this.context = context;
 			this.lesson = lesson;
 			this.items = items;
+			evals = eval;
 	    }
 	 @Override
 	    public void update(float deltaTime) {
@@ -43,29 +46,29 @@ public class LoadingScreen extends Screen {
 	        switch(activityLevel){
 	        case "HARD":
 	        	Assets.gamebg = g.newImage("house/Hard/bg.png", ImageFormat.RGB565);
-	        	Assets.roof = g.newImage("house/Hard/roof.png", ImageFormat.RGB565);
-	   	        Assets.roofholder = g.newImage("house/Hard/roofholder.png", ImageFormat.RGB565);
-	   	        Assets.roof_selected = g.newImage("house/Hard/roof_selected.png", ImageFormat.RGB565);
-	   	        Assets.roof_error =  g.newImage("house/Hard/roof_error.png", ImageFormat.RGB565);
-	   	        Assets.roof_choice = g.newImage("house/Hard/roof_choice.png", ImageFormat.RGB565);
+	        	Assets.roof = g.newImage("house/Hard/"+lesson.getItems().get(0).getImagePath()+".png", ImageFormat.RGB565);
+	   	        Assets.roofholder = g.newImage("house/Hard/"+lesson.getItems().get(0).getImagePath()+"holder.png", ImageFormat.RGB565);
+	   	        Assets.roof_selected = g.newImage("house/Hard/"+lesson.getItems().get(0).getImagePath()+"_selected.png", ImageFormat.RGB565);
+	   	        Assets.roof_error =  g.newImage("house/Hard/"+lesson.getItems().get(0).getImagePath()+"_error.png", ImageFormat.RGB565);
+	   	        Assets.roof_choice = g.newImage("house/Hard/"+lesson.getItems().get(0).getImagePath()+"_choice.png", ImageFormat.RGB565);
 	   	        
-		        Assets.body = g.newImage("house/Hard/body.png", ImageFormat.RGB565);
-		        Assets.bodyholder = g.newImage("house/Hard/bodyholder.png", ImageFormat.RGB565);
-		        Assets.body_selected = g.newImage("house/Hard/body_selected.png", ImageFormat.RGB565);
-		        Assets.body_error =  g.newImage("house/Hard/body_error.png", ImageFormat.RGB565);
-	   	        Assets.body_choice = g.newImage("house/Hard/body_choice.png", ImageFormat.RGB565);
+		        Assets.body = g.newImage("house/Hard/"+lesson.getItems().get(1).getImagePath()+".png", ImageFormat.RGB565);
+		        Assets.bodyholder = g.newImage("house/Hard/"+lesson.getItems().get(1).getImagePath()+"holder.png", ImageFormat.RGB565);
+		        Assets.body_selected = g.newImage("house/Hard/"+lesson.getItems().get(1).getImagePath()+"_selected.png", ImageFormat.RGB565);
+		        Assets.body_error =  g.newImage("house/Hard/"+lesson.getItems().get(1).getImagePath()+"_error.png", ImageFormat.RGB565);
+	   	        Assets.body_choice = g.newImage("house/Hard/"+lesson.getItems().get(1).getImagePath()+"_choice.png", ImageFormat.RGB565);
 	   	        
-		        Assets.door = g.newImage("house/Hard/door.png", ImageFormat.RGB565);
-		        Assets.doorholder = g.newImage("house/Hard/doorholder.png", ImageFormat.RGB565);
-		        Assets.door_selected = g.newImage("house/Hard/door_selected.png", ImageFormat.RGB565);
-		        Assets.door_error =  g.newImage("house/Hard/door_error.png", ImageFormat.RGB565);
-	   	        Assets.door_choice = g.newImage("house/Hard/door_choice.png", ImageFormat.RGB565);
+		        Assets.door = g.newImage("house/Hard/"+lesson.getItems().get(2).getImagePath()+".png", ImageFormat.RGB565);
+		        Assets.doorholder = g.newImage("house/Hard/"+lesson.getItems().get(2).getImagePath()+"holder.png", ImageFormat.RGB565);
+		        Assets.door_selected = g.newImage("house/Hard/"+lesson.getItems().get(2).getImagePath()+"_selected.png", ImageFormat.RGB565);
+		        Assets.door_error =  g.newImage("house/Hard/"+lesson.getItems().get(2).getImagePath()+"_error.png", ImageFormat.RGB565);
+	   	        Assets.door_choice = g.newImage("house/Hard/"+lesson.getItems().get(2).getImagePath()+"_choice.png", ImageFormat.RGB565);
 	   	        
-		        Assets.window = g.newImage("house/Hard/window.png", ImageFormat.RGB565);
-		        Assets.windowholder = g.newImage("house/Hard/windowholder.png", ImageFormat.RGB565);
-		        Assets.window_selected = g.newImage("house/Hard/window_selected.png", ImageFormat.RGB565);
-		        Assets.window_error =  g.newImage("house/Hard/window_error.png", ImageFormat.RGB565);
-	   	        Assets.window_choice = g.newImage("house/Hard/window_choice.png", ImageFormat.RGB565);
+		        Assets.window = g.newImage("house/Hard/"+lesson.getItems().get(3).getImagePath()+".png", ImageFormat.RGB565);
+		        Assets.windowholder = g.newImage("house/Hard/"+lesson.getItems().get(3).getImagePath()+"holder.png", ImageFormat.RGB565);
+		        Assets.window_selected = g.newImage("house/Hard/"+lesson.getItems().get(3).getImagePath()+"_selected.png", ImageFormat.RGB565);
+		        Assets.window_error =  g.newImage("house/Hard/"+lesson.getItems().get(3).getImagePath()+"_error.png", ImageFormat.RGB565);
+	   	        Assets.window_choice = g.newImage("house/Hard/"+lesson.getItems().get(3).getImagePath()+"_choice.png", ImageFormat.RGB565);
 	   	        
 	        	Assets.garage = g.newImage("house/Hard/garage.png", ImageFormat.RGB565);
 	        	Assets.garageholder = g.newImage("house/Hard/garageholder.png", ImageFormat.RGB565);
@@ -199,7 +202,7 @@ public class LoadingScreen extends Screen {
 	        Assets.nothingness = g.newImage("house/nothingness.png", ImageFormat.RGB565);
 	        Assets.nextBtn = g.newImage("buttons/btn.png", ImageFormat.RGB565);
         	Assets.nextBtn_pressed = g.newImage("buttons/btn-pressed.png", ImageFormat.RGB565);
-	        game.setScreen(new GameScreen(game, activityLevel,userID,context,lesson, items ));
+	        game.setScreen(new GameScreen(game, activityLevel,userID,context,lesson, items, evals ));
 
 
 	    }

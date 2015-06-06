@@ -61,20 +61,20 @@ public abstract class AbstractLAFramework extends AndroidGame {
 		
 		Bundle bundle = getIntent().getExtras();
 		activityName = bundle.getString("activityName");
-		lesson = (Lesson) bundle.getParcelable("lesson");
+		lesson = SalinlahiFour.getLessonByClassName(activityName);
 		activityLevel = bundle.getString("activityLevel");
-		UserID = bundle.getInt("UserID");
+		UserID = SalinlahiFour.getLoggedInUser().getId();
+		evaluation =  new Evaluation(this, activityName, activityLevel.toString());
 		Log.d(activityName, "TEST ActivityName in lesson act");
 		Log.d(activityLevel, "TEST ActivityLevel in lesson act: " + activityLevel);
-		items = ((SalinlahiFour)getApplication()).getLessonItems(lesson.getTheRealName(), activityLevel);
+		//items = lesson.getItems();
 		mContext = getBaseContext();
 		getQuestions();
-		
-		for(int i = 0; i < questions.size(); i++){
-			Log.d(questions.get(i).getWord(),"Tanga tanga aldrin");
-		}
-		
 		initiateNarrationModule();
+		evaluation.setLexiconSize(evaluation.generateLexiconSize(lesson));//Set total score in evaluation module
+		Log.d("Clarity", "Lexicon Size: "+ evaluation.generateLexiconSize(lesson) );
+		Log.d("Clarity", "Question Size: " + questions.size());
+		evaluation.setTotScore(questions.size());
 		super.onCreate(savedInstanceState);
 	}
 	public static Context getContext() {
@@ -179,12 +179,26 @@ public abstract class AbstractLAFramework extends AndroidGame {
 	}
 	
 	protected void initiateNarrationModule(){
+		int passingScore = 0;
 		Log.d("TESTINGLessonActivity", "Aldrin: Initiating iFeedback..");
 		NLG = new iFeedback();
 		Log.d("TESTINGLessonActivity", "Aldrin: Reading iFeedback properties");
 		NLG.readProperties();
+		evaluation.setLexiconDir(lesson.getLexicon());
+		Log.d("Feedback", "Total score: " + questions.size());
+		if(questions.size() % 2 > 0){
+			Log.d("Feedback", "Total score is Odd");
+			passingScore = (int) (questions.size()*0.5)+1;
+			Log.d("Feedback", "Passing score: " +  passingScore);
+		}else{
+			Log.d("Feedback", "Total score is Even");
+			passingScore = (int) (questions.size()*0.5);
+			Log.d("Feedback", "Passing score: " +  passingScore);
+		}
+		evaluation.setPassingGrade(passingScore);
 		Log.d("TESTINGLessonActivity", "Aldrin: iFeedback Initiated");
 		Log.d("TESTINGLessonActivity", "Aldrin: iFeedback LOL");
+
 
 	}
 	protected void end_report(int choice){//THIS IS FOR TRANSFERRING TO OTHER ACTIVITIES
@@ -208,7 +222,7 @@ public abstract class AbstractLAFramework extends AndroidGame {
 		case "MEDIUM": LTActLevel = LevelType.MEDIUM; break;
 		case "HARD": LTActLevel = LevelType.HARD; break;
 		}
-		reportCard = new ReportCard(context, lesson, LTActLevel, eval, evaluation.getEndofActivityFeedback(score, lessonnumber,lesson.getItems().size()),activityName);
+		reportCard = new ReportCard(context, lesson, LTActLevel, eval, evaluation.getEndofActivityFeedback(score, lessonnumber),activityName);
 		reportCard.reveal();
 	}
 

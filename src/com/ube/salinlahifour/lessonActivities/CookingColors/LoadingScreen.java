@@ -10,7 +10,9 @@ import com.kilobolt.framework.Image;
 import com.kilobolt.framework.Screen;
 import com.kilobolt.framework.Graphics.ImageFormat;
 import com.kilobolt.framework.Sound;
+import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.Lesson;
+import com.ube.salinlahifour.evaluationModule.Evaluation;
 import com.ube.salinlahifour.lessonActivities.CookingColors.Assets;
 
 public class LoadingScreen extends Screen {
@@ -18,14 +20,19 @@ public class LoadingScreen extends Screen {
 	private int userID;
 	private Context context;
 	private Lesson lesson;
-	 public LoadingScreen(Game game, String activityLevel, int userID, Context cont, Lesson lesson) {
+	private Item[] items;
+	private int size;
+	private Evaluation eval;
+	 public LoadingScreen(Game game, String activityLevel, int userID, Context cont, Lesson lesson, Evaluation eval) {
 	        super(game);
 	        context = cont;
 	        this.activityLevel = activityLevel;
 	        this.userID = userID;
 	        this.lesson = lesson;
-			Log.d("Lodaing Screen", "TEST ActivityLevel in lesson act: " + activityLevel);
-
+	        this.eval = eval;
+	        
+			Log.d("Lodaing Screen", "TEST ActivityLevel in lesson act: " + activityLevel + eval.getLexiconSize());
+			
 	    }
 	 @Override
 	    public void update(float deltaTime) {
@@ -55,99 +62,35 @@ public class LoadingScreen extends Screen {
         	Assets.sound = new ArrayList<Sound>();
         	Assets.nextBtn = g.newImage("buttons/btn.png", ImageFormat.RGB565);
         	Assets.nextBtn_pressed = g.newImage("buttons/btn-pressed.png", ImageFormat.RGB565);
-	        switch(activityLevel){
-	        case "HARD":
-	        	loadEasy(g);
-	        	loadMed(g);
-	        	loadHard(g);
-	        	break;
-	        case "MEDIUM": 
-	        	loadEasy(g);
-	        	loadMed(g);
-	        	break;
-	        case "EASY":
-	        	loadEasy(g);
-	        	
-	        break;
-	        }
-	        game.setScreen(new GameScreen(game, activityLevel,userID, context, lesson));
+        	for(int i = 0; i < lesson.getItems().size(); i++){
+        		switch(lesson.getItems().get(i).getDifficulty()){
+    	        case "HARD":
+    	        	size++;
+    	        	break;
+    	        case "MEDIUM": 
+    	        	size++;
+    	        	break;
+    	        case "EASY":
+    	        	size++;
+    	        	break;
+    	        }
+        	}
+        	Log.d("New Gamescreen", "Easy Size: "+ size);
+        	for(int e = 0; e<size; e++){
+            	Assets.buttons.add(g.newImage("cooking/buttons/"+lesson.getItems().get(e).getImagePath()+".png", ImageFormat.RGB565));
+            	Assets.buttons_pressed.add(g.newImage("cooking/buttons/"+lesson.getItems().get(e).getImagePath()+"P.png", ImageFormat.RGB565));
+            	Assets.bread.add(g.newImage("cooking/bread/"+lesson.getItems().get(e).getImagePath()+".png", ImageFormat.RGB565)); 
+            	Assets.frosting.add(g.newImage("cooking/frosting/"+lesson.getItems().get(e).getImagePath()+".png", ImageFormat.RGB565)); 
+            	Assets.sprinkles.add(g.newImage("cooking/sprinkles/"+lesson.getItems().get(e).getImagePath()+".png", ImageFormat.RGB565)); 
+            	Assets.sound.add(game.getAudio().createSound("cooking/Sounds/"+lesson.getItems().get(e).getVoiceFilPath()+".mp3"));
+    	 	}
+	       
+	        game.setScreen(new GameScreen(game, activityLevel,userID, context, lesson,eval));
 
 
 	    }
 	 
-	 	private void loadEasy(Graphics g){
-
-        	Assets.buttons.add(g.newImage("cooking/Easy/buttons/blue.png", ImageFormat.RGB565)); 
-        	Assets.buttons.add(g.newImage("cooking/Easy/buttons/green.png", ImageFormat.RGB565)); 
-        	Assets.buttons.add(g.newImage("cooking/Easy/buttons/red.png", ImageFormat.RGB565)); 
-        	Assets.buttons.add(g.newImage("cooking/Easy/buttons/yellow.png", ImageFormat.RGB565));
-        	
-        	Assets.buttons_pressed.add(g.newImage("cooking/Easy/buttons/blueP.png", ImageFormat.RGB565)); 
-        	Assets.buttons_pressed.add(g.newImage("cooking/Easy/buttons/greenP.png", ImageFormat.RGB565)); 
-        	Assets.buttons_pressed.add(g.newImage("cooking/Easy/buttons/redP.png", ImageFormat.RGB565)); 
-        	Assets.buttons_pressed.add(g.newImage("cooking/Easy/buttons/yellowP.png", ImageFormat.RGB565));
-        	
-        	
-        	Assets.bread.add(g.newImage("cooking/Easy/bread/blue.png", ImageFormat.RGB565)); 
-        	Assets.bread.add(g.newImage("cooking/Easy/bread/green.png", ImageFormat.RGB565)); 
-        	Assets.bread.add(g.newImage("cooking/Easy/bread/red.png", ImageFormat.RGB565)); 
-        	Assets.bread.add(g.newImage("cooking/Easy/bread/yellow.png", ImageFormat.RGB565));
-        	
-        	Assets.frosting.add(g.newImage("cooking/Easy/frosting/blue.png", ImageFormat.RGB565)); 
-        	Assets.frosting.add(g.newImage("cooking/Easy/frosting/green.png", ImageFormat.RGB565)); 
-        	Assets.frosting.add(g.newImage("cooking/Easy/frosting/red.png", ImageFormat.RGB565)); 
-        	Assets.frosting.add(g.newImage("cooking/Easy/frosting/yellow.png", ImageFormat.RGB565));
-        	
-        	Assets.sprinkles.add(g.newImage("cooking/Easy/sprinkles/blue.png", ImageFormat.RGB565)); 
-        	Assets.sprinkles.add(g.newImage("cooking/Easy/sprinkles/green.png", ImageFormat.RGB565)); 
-        	Assets.sprinkles.add(g.newImage("cooking/Easy/sprinkles/red.png", ImageFormat.RGB565)); 
-        	Assets.sprinkles.add(g.newImage("cooking/Easy/sprinkles/yellow.png", ImageFormat.RGB565)); 
-        	
-        	//Assets.click = game.getAudio().createSound("explode.ogg");
-        	Assets.sound.add(game.getAudio().createSound("cooking/Sounds/color_asul.mp3"));
-        	Assets.sound.add(game.getAudio().createSound("cooking/Sounds/color_berde.mp3"));
-        	Assets.sound.add(game.getAudio().createSound("cooking/Sounds/color_pula.mp3"));
-        	Assets.sound.add(game.getAudio().createSound("cooking/Sounds/color_dilao.mp3"));
-        	
-	 	}
-	 	private void loadMed(Graphics g){
-	 		Assets.buttons.add(g.newImage("cooking/Medium/buttons/brown.png", ImageFormat.RGB565)); 
-        	Assets.buttons.add(g.newImage("cooking/Medium/buttons/violet.png", ImageFormat.RGB565)); 
-        	
-        	Assets.buttons_pressed.add(g.newImage("cooking/Medium/buttons/brownP.png", ImageFormat.RGB565)); 
-        	Assets.buttons_pressed.add(g.newImage("cooking/Medium/buttons/violetP.png", ImageFormat.RGB565)); 
-        	
-        	Assets.bread.add(g.newImage("cooking/Medium/bread/brown.png", ImageFormat.RGB565)); 
-        	Assets.bread.add(g.newImage("cooking/Medium/bread/violet.png", ImageFormat.RGB565)); 
-        	
-        	Assets.sprinkles.add(g.newImage("cooking/Medium/sprinkles/brown.png", ImageFormat.RGB565)); 
-        	Assets.sprinkles.add(g.newImage("cooking/Medium/sprinkles/violet.png", ImageFormat.RGB565)); 
-
-        	Assets.frosting.add(g.newImage("cooking/Medium/frosting/brown.png", ImageFormat.RGB565)); 
-        	Assets.frosting.add(g.newImage("cooking/Medium/frosting/violet.png", ImageFormat.RGB565)); 
-        	
-        	Assets.sound.add(game.getAudio().createSound("cooking/Sounds/color_kayumanggi.mp3"));
-        	Assets.sound.add(game.getAudio().createSound("cooking/Sounds/color_lila.mp3"));
-	 	}
-	 	private void loadHard(Graphics g){
-	 		Assets.buttons.add(g.newImage("cooking/Hard/buttons/black.png", ImageFormat.RGB565)); 
-        	Assets.buttons.add(g.newImage("cooking/Hard/buttons/white.png", ImageFormat.RGB565));
-        	
-        	Assets.buttons_pressed.add( g.newImage("cooking/Hard/buttons/blackP.png", ImageFormat.RGB565)); 
-        	Assets.buttons_pressed.add(g.newImage("cooking/Hard/buttons/whiteP.png", ImageFormat.RGB565));
-        	
-        	Assets.bread.add(g.newImage("cooking/Hard/bread/black.png", ImageFormat.RGB565)); 
-        	Assets.bread.add(g.newImage("cooking/Hard/bread/white.png", ImageFormat.RGB565)); 
-        	
-        	Assets.sprinkles.add(g.newImage("cooking/Hard/sprinkles/black.png", ImageFormat.RGB565)); 
-        	Assets.sprinkles.add(g.newImage("cooking/Hard/sprinkles/white.png", ImageFormat.RGB565)); 
-
-        	Assets.frosting.add( g.newImage("cooking/Hard/frosting/black.png", ImageFormat.RGB565)); 
-        	Assets.frosting.add( g.newImage("cooking/Hard/frosting/white.png", ImageFormat.RGB565)); 
-        	
-        	Assets.sound.add(game.getAudio().createSound("cooking/Sounds/color_itim.mp3"));
-        	Assets.sound.add(game.getAudio().createSound("cooking/Sounds/color_puti.mp3"));
-	 	}
+	 
 
 
 	    @Override

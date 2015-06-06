@@ -56,9 +56,9 @@ public class GameScreen extends AbstractGameScreen  {
 	    // Edit lives left to the question size
 	    
 	   // private String sFeedback = "",  sQuestion = "", sAnswer = "";
-	    public GameScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson, ArrayList<Item> items) {
+	    public GameScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson, ArrayList<Item> items, Evaluation evals) {
 	    	//Super Parameters Game, ActivityName, ActivityLevel, UserID
-	        super(game, activityName, activityLevel, userID, context, lesson);
+	        super(game, activityName, activityLevel, userID, context, lesson, evals);
 	        Log.d("Aldrin ExtendedFramework", "This should be after abstract Game");
 	        this.userID = userID;
 	        this.activityLevel = activityLevel;
@@ -85,7 +85,6 @@ public class GameScreen extends AbstractGameScreen  {
 	        this.nobtn = Assets.nobtn;
 	        	exit = false;
 	        	transition = false;
-	        	eval.setLexiconDir("lexicon_house.xml");
 	        	feedboxBoy = Assets.feedboxBoy;
 	        	feedboxGirl = Assets.feedboxGirl;
 				bg =  Assets.gamebg;
@@ -203,10 +202,10 @@ public class GameScreen extends AbstractGameScreen  {
 			//Log.d("Lives", Integer.toString(livesLeft));
 			
 			// TODO Auto-generated method stub
-			sQuestion = items.get(rounds-1).getLabel();
+			sQuestion = lesson.getItems().get(rounds-1).getQuestion();
 			
 			sQuestion = sQuestion.split(" ")[0];
-			correctAnswer = items.get(rounds-1).getWord();
+			correctAnswer = lesson.getItems().get(rounds-1).getWord();
 			//Log.d("rounds", rounds + "");
 			int len = touchEvents.size();
 	        for (int i = 0; i < len; i++) {
@@ -274,8 +273,8 @@ public class GameScreen extends AbstractGameScreen  {
 	            			if(eval.evaluateAnswer(correctAnswer, sAnswer, userID) && sAnswer == "Bubong" ){
 	            				roof = Assets.roof;
 		            			Log.d("Debug Error", "CORRECT THATS A Bubong");
-		            			Log.d("Debug Feedback", "getQ_Num" + items.get(rounds-1).getQ_num());
-		            			sFeedback =  eval.getImmediateFeedback(items.get(rounds-1).getQ_num(), sAnswer, lessonNumber);
+		            			Log.d("Debug Feedback", "getID" + lesson.getItems().get(rounds-1).getID());
+		            			sFeedback =  eval.getImmediateFeedback(lesson.getItems().get(rounds-1).getID(), sAnswer, lessonNumber);
 		            			livesLeft--;
 		            			rounds++;
 		            			pRoof.move(pRoofH.getX() , pRoofH.getY());
@@ -285,7 +284,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            			transition = true;
 		            			
 		            		}else{
-		            			if(answer == items.get(rounds-1).getQ_num()){
+		            			if(answer == lesson.getItems().get(rounds-1).getID()){
 		            				sFeedback =  eval.getImmediateFeedback(1, sAnswer, lessonNumber);
 		            			}else{
 		            				sFeedback = "Sorry That is not what i'm asking";
@@ -308,15 +307,15 @@ public class GameScreen extends AbstractGameScreen  {
 	            			if(eval.evaluateAnswer(correctAnswer, sAnswer, userID) && sAnswer == "Bintana"){
 	            				window = Assets.window;
 		            			Log.d("Debug Error", "CORRECT THATS A WINDOW");
-		            			Log.d("Debug Feedback", "getQ_Num" + items.get(rounds-1).getQ_num());
-		            			sFeedback =  eval.getImmediateFeedback(items.get(rounds-1).getQ_num(), sAnswer, lessonNumber);
+		            			Log.d("Debug Feedback", "getID" + lesson.getItems().get(rounds-1).getID());
+		            			sFeedback =  eval.getImmediateFeedback(lesson.getItems().get(rounds-1).getID(), sAnswer, lessonNumber);
 		            			livesLeft--;
 		            			rounds++;
 		            			pWindow.move(pWindowH.getX() , pWindowH.getY());
 		            			pWindow.setPlaced(true);
 		            			transition = true;
 		            		}else{
-		            			if(answer == items.get(rounds-1).getQ_num()){
+		            			if(answer == lesson.getItems().get(rounds-1).getID()){
 		            				sFeedback =  eval.getImmediateFeedback(4, sAnswer, lessonNumber);
 		            			}else{
 		            				sFeedback = "Sorry That is not what i'm asking";
@@ -338,15 +337,15 @@ public class GameScreen extends AbstractGameScreen  {
 	            			if(eval.evaluateAnswer(correctAnswer, sAnswer, userID)  && sAnswer == "Pinto"){
 	            				door = Assets.door;
 		            			Log.d("Debug GameScreen", "CORRECT THATS A door");
-		            			Log.d("Debug Feedback", "getQ_Num" + items.get(rounds-1).getQ_num());
-		            			sFeedback =  eval.getImmediateFeedback(items.get(rounds-1).getQ_num(), sAnswer, lessonNumber);
+		            			Log.d("Debug Feedback", "getID" + lesson.getItems().get(rounds-1).getID());
+		            			sFeedback =  eval.getImmediateFeedback(items.get(rounds-1).getID(), sAnswer, lessonNumber);
 		            			livesLeft--;
 		            			rounds++;
 		            			pDoor.move(pDoorH.getX() , pDoorH.getY());
 		            			pDoor.setPlaced(true);
 		            			transition = true;
 		            		}else{
-		            			if(answer == items.get(rounds-1).getQ_num()){
+		            			if(answer == lesson.getItems().get(rounds-1).getID()){
 		            				sFeedback =  eval.getImmediateFeedback(3, sAnswer, lessonNumber);
 		            			}else{
 		            				sFeedback = "Sorry That is not what i'm asking";
@@ -371,8 +370,8 @@ public class GameScreen extends AbstractGameScreen  {
 	            			if(eval.evaluateAnswer(correctAnswer, sAnswer, userID) && sAnswer == "Dingding"){
 	            				body = Assets.body;
 		            			Log.d("Debug GameScreen", "CORRECT THATS A BODY");
-		            			Log.d("Debug Feedback", "getQ_Num" + items.get(rounds-1).getQ_num());
-		            			sFeedback =  eval.getImmediateFeedback(items.get(rounds-1).getQ_num(), sAnswer, lessonNumber);
+		            			Log.d("Debug Feedback", "getID" + lesson.getItems().get(rounds-1).getID());
+		            			sFeedback =  eval.getImmediateFeedback(lesson.getItems().get(rounds-1).getID(), sAnswer, lessonNumber);
 		            			livesLeft--;
 		            			rounds++;
 		            			pBody.move(pBodyH.getX() , pBodyH.getY());
@@ -380,7 +379,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            			transition = true;
 		            			
 		            		}else{
-		            			if(answer == items.get(rounds-1).getQ_num()){
+		            			if(answer == lesson.getItems().get(rounds-1).getID()){
 		            				sFeedback =  eval.getImmediateFeedback(2, sAnswer, lessonNumber);
 		            			}else{
 		            				sFeedback = "Sorry That is not what i'm asking";
@@ -491,16 +490,16 @@ public class GameScreen extends AbstractGameScreen  {
 	                		userLessonProgressOperator.open();
 	            			if(eval.evaluateAnswer(correctAnswer, sAnswer, userID) && sAnswer == "Garahe"){
 		            			Log.d("Debug GameScreen", "CORRECT THATS A GARAGE");
-		            			Log.d("Debug Feedback", "getQ_Num" + items.get(rounds-1).getQ_num());
+		            			Log.d("Debug Feedback", "getID" + lesson.getItems().get(rounds-1).getID());
 		            			garage = Assets.garage;
-		            			sFeedback =  eval.getImmediateFeedback(items.get(rounds-1).getQ_num(), sAnswer, lessonNumber);
+		            			sFeedback =  eval.getImmediateFeedback(lesson.getItems().get(rounds-1).getID(), sAnswer, lessonNumber);
 		            			livesLeft--;
 		            			rounds++;
 		            			pGarage.move(pGarageH.getX() , pGarageH.getY());
 		            			pGarage.setPlaced(true);
 		            			transition = true;
 		            		}else{
-		            			if(answer == items.get(rounds-1).getQ_num()){
+		            			if(answer == lesson.getItems().get(rounds-1).getID()){
 		            				sFeedback =  eval.getImmediateFeedback(5, sAnswer, lessonNumber);
 		            			}else{
 		            				sFeedback = "Sorry That is not what i'm asking";
@@ -521,16 +520,16 @@ public class GameScreen extends AbstractGameScreen  {
 	                		userLessonProgressOperator.open();
 	            			if(eval.evaluateAnswer(correctAnswer, sAnswer, userID) && sAnswer == "Bakod"){
 		            			Log.d("Debug GameScreen", "CORRECT THATS A GARAGE");
-		            			Log.d("Debug Feedback", "getQ_Num" + items.get(rounds-1).getQ_num());
+		            			Log.d("Debug Feedback", "getID" + lesson.getItems().get(rounds-1).getID());
 		            			fence = Assets.fence;
-		            			sFeedback =  eval.getImmediateFeedback(items.get(rounds-1).getQ_num(), sAnswer, lessonNumber);
+		            			sFeedback =  eval.getImmediateFeedback(lesson.getItems().get(rounds-1).getID(), sAnswer, lessonNumber);
 		            			livesLeft--;
 		            			rounds++;
 		            			pFence.move(pFenceH.getX() , pFenceH.getY());
 		            			pFence.setPlaced(true);
 		            			transition = true;
 		            		}else{
-		            			if(answer == items.get(rounds-1).getQ_num()){
+		            			if(answer == lesson.getItems().get(rounds-1).getID()){
 		            				sFeedback =  eval.getImmediateFeedback(6, sAnswer, lessonNumber);
 		            			}else{
 		            				sFeedback = "Sorry That is not what i'm asking";
@@ -624,8 +623,8 @@ public class GameScreen extends AbstractGameScreen  {
 	            			if(eval.evaluateAnswer(correctAnswer, sAnswer, userID) && sAnswer == "Tsimenea" ){
 	            				chimney = Assets.chimney;
 		            			Log.d("Debug Error", "CORRECT THATS A Bubong");
-		            			Log.d("Debug Feedback", "getQ_Num" + items.get(rounds-1).getQ_num());
-		            			sFeedback =  eval.getImmediateFeedback(items.get(rounds-1).getQ_num(), sAnswer, lessonNumber);
+		            			Log.d("Debug Feedback", "getID" + lesson.getItems().get(rounds-1).getID());
+		            			sFeedback =  eval.getImmediateFeedback(lesson.getItems().get(rounds-1).getID(), sAnswer, lessonNumber);
 		            			livesLeft--;
 		            			rounds++;
 		            			pChimney.move(pChimneyH.getX() , pChimneyH.getY());
@@ -634,7 +633,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            			Log.d("Debug GameScreen pChimney","X: " +pChimney.getX() + "Y: " + pChimney.getY());	
 		            			transition = true;
 		            		}else{
-		            			if(answer == items.get(rounds-1).getQ_num()){
+		            			if(answer == lesson.getItems().get(rounds-1).getID()){
 		            				sFeedback =  eval.getImmediateFeedback(7, sAnswer, lessonNumber);
 		            			}else{
 		            				sFeedback = "Sorry That is not what i'm asking";
@@ -656,8 +655,8 @@ public class GameScreen extends AbstractGameScreen  {
 	            			if(eval.evaluateAnswer(correctAnswer, sAnswer, userID) && sAnswer == "Hagdan" ){
 	            				stairs = Assets.stairs;
 		            			Log.d("Debug Error", "CORRECT THATS A Bubong");
-		            			Log.d("Debug Feedback", "getQ_Num" + items.get(rounds-1).getQ_num());
-		            			sFeedback =  eval.getImmediateFeedback(items.get(rounds-1).getQ_num(), sAnswer, lessonNumber);
+		            			Log.d("Debug Feedback", "getID" + lesson.getItems().get(rounds-1).getID());
+		            			sFeedback =  eval.getImmediateFeedback(lesson.getItems().get(rounds-1).getID(), sAnswer, lessonNumber);
 		            			livesLeft--;
 		            			rounds++;
 		            			pStairs.move(pStairsH.getX() , pStairsH.getY());
@@ -666,7 +665,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            			Log.d("Debug GameScreen pChimney","X: " +pStairs.getX() + "Y: " + pStairs.getY());	
 		            			transition = true;
 		            		}else{
-		            			if(answer == items.get(rounds-1).getQ_num()){
+		            			if(answer == lesson.getItems().get(rounds-1).getID()){
 		            				sFeedback =  eval.getImmediateFeedback(8, sAnswer, lessonNumber);
 		            			}else{
 		            				sFeedback = "Sorry That is not what i'm asking";

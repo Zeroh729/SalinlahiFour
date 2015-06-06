@@ -121,16 +121,37 @@ public abstract class AbstractLessonActivity extends Activity {
 		
 		items = lesson.getItems();
 
+
 		itemno = 0;
 		initiateViews();
 		initiateLevels();
 		initiateGamePauseUI();
 		getQuestions();
 		initiateNarrationModule();
+
 		evaluation.setTotScore(questions.size());
-		update();
+		initiateLives();//Initiate lives
+		update(); //starts game by showing question and loading choices
+		
 	}
-	
+	private void initiateLives(){
+		ImageView[] life_iv = new ImageView[evaluation.getAllowableMistakes()];
+		for(int i= 0; i<life_iv.length;i++){
+			life_iv[i] = new ImageView(this);
+		}
+		LayoutParams p = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+				ViewGroup.LayoutParams.WRAP_CONTENT);
+		p.addRule(RelativeLayout.ALIGN_RIGHT);
+		p.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+		
+		for(int i= 0; i<life_iv.length;i++){
+			life_iv[i].setLayoutParams(p);
+			life_iv[i].setBackgroundResource(R.drawable.lives);
+			((ViewGroup)getWindow().getDecorView().getRootView()).addView(life_iv[i]);
+		}
+		
+	}
+
 	private void initiateLevels(){
 		if(activityLevel.equals(LevelType.EASY)){
 			configureEasyLevel();
@@ -140,7 +161,7 @@ public abstract class AbstractLessonActivity extends Activity {
 			configureHardLevel();
 		}
 	}
-	
+
 	private void initiateGamePauseUI(){
 		gamePause = new GamePausePopup(this);
 		
@@ -357,7 +378,7 @@ public abstract class AbstractLessonActivity extends Activity {
 	}
 	
 	protected void showReportCard(Context context){
-		reportCard = new ReportCard(context, lesson, activityLevel, evaluation, evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber(),lesson.getItems().size()),activityName);
+		reportCard = new ReportCard(context, lesson, activityLevel, evaluation, evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber()),activityName);
 		reportCard.reveal();
 	}
 

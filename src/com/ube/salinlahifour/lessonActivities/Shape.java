@@ -20,7 +20,7 @@ public class Shape extends AbstractLAFramework {
 	 public Screen getInitScreen() {
 		 Log.d("Debug Init", "Space");
 
-		 return new LoadingScreen(this, activityLevel, SalinlahiFour.getLoggedInUser().getId(), this, lesson, items); 
+		 return new LoadingScreen(this, activityLevel, SalinlahiFour.getLoggedInUser().getId(), this, lesson, items, evaluation); 
 	 }
 	 @Override
 	 public void onBackPressed() {

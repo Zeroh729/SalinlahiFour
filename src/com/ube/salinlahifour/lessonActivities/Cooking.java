@@ -30,8 +30,8 @@ public class Cooking extends AbstractLAFramework  {
 	@Override
 	 public Screen getInitScreen() {
 		 Log.d("Debug Init", "Cooking");
-
-		 return new LoadingScreen(this, activityLevel, SalinlahiFour.getLoggedInUser().getId(), this, lesson); 
+		 
+		 return new LoadingScreen(this, activityLevel, SalinlahiFour.getLoggedInUser().getId(), this, lesson, evaluation); 
 	 }
 	 @Override
 	 public void onBackPressed() {

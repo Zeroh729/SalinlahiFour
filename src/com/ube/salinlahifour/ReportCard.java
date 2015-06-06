@@ -58,7 +58,7 @@ public class ReportCard extends PopupWindow implements OnClickListener{
 	    
 		setOutsideTouchable(false);
 		setBackgroundDrawable(new BitmapDrawable());
-		Log.d("Debug ReportCard", "Name: " + lesson.getActivity());
+		
 		img_star = (ImageView)popupView.findViewById(R.id.img_star);
 		btn_replay = (ImageButton)popupView.findViewById(R.id.btn_replay);
 		btn_next = (ImageButton)popupView.findViewById(R.id.btn_next);
@@ -89,8 +89,13 @@ public class ReportCard extends PopupWindow implements OnClickListener{
 		
 		tv_title.setText(lesson.getName());
 		tv_level.setText("("+level.toString()+")");
-		tv_evaluation.setText(evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber(),lesson.getItems().size()));
-		Log.d("EndFeedback Debug", "Feedback: " +evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber(),lesson.getItems().size()) );
+		Log.d("UGH","Score:"+ evaluation.getScore());
+		Log.d("UGH","LessonNum:"+ lesson.getLessonNumber());
+		Log.d("UGH","ItmSize:"+ evaluation.getTotalScore());
+		tv_evaluation.setText("Hello");
+		Log.d("EndFeedback Debug", "Feedback: " +evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber()) );
+		tv_evaluation.setText(evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber()));
+		
 		switch(evaluation.getStar()){
 			case GOLD:
 				img_star.setImageResource(R.drawable.report_card_gold);

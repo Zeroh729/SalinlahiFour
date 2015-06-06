@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.ube.salinlahifour.Item;
+import com.ube.salinlahifour.Lesson;
 import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.database.*;
 import com.ube.salinlahifour.model.UserDetail;
@@ -35,6 +36,8 @@ public class Evaluation {
 	private UserLessonProgress userLessonProgressor = new UserLessonProgress();
 	private boolean commitMistake = false;
 	private int allowableMistakes = 4, mistakesRemaining;
+
+	private int lex_size = 0;
 	public Evaluation(Context context, String LessonName, String activityLevel){	
 		//this.NLG = NLG;
 		this.context = context;
@@ -143,6 +146,29 @@ public class Evaluation {
 	public int getMistakesRemaining(){
 		return mistakesRemaining;
 	}
+	public void setLexiconSize(int size){
+		lex_size = size;
+	}
+	public int getLexiconSize(){
+		return lex_size;
+	}
+	public int generateLexiconSize(Lesson lesson){
+		int size = 0;
+		for(int i = 0; i < lesson.getItems().size(); i++){
+    		switch(lesson.getItems().get(i).getDifficulty()){
+	        case "HARD":
+	        	size++;
+	        	break;
+	        case "MEDIUM": 
+	        	size++;
+	        	break;
+	        case "EASY":
+	        	size++;
+	        	break;
+	        }
+    	}
+		return size;
+	}
 	public void resetMistakesRemaining(){
 		mistakesRemaining = allowableMistakes;
 		Log.d("Check Answer", "Mistake Counter Reset to "+ mistakesRemaining);
@@ -168,13 +194,18 @@ public class Evaluation {
 	}
 
 
-	public String getEndofActivityFeedback(int score, int lessonNumber, int lex_size){
+	public String getEndofActivityFeedback(int score, int lessonNumber){
 		String Feedback = null;
 		int ans = 0, reminder = 0;
 		try {
 			if(score > 0){
-				reminder = lex_size % score;
-				ans = (lex_size / score)+reminder;
+				//reminder = lex_size % score;
+				//ans = (lex_size / score)+reminder;
+				Log.d("Scoring Debug", "User Score: " +score);
+				Log.d("Scoring Debug", "Lexicon Size: " +lex_size);
+				Log.d("Scoring Debug", "Total Score: " +totscore);
+				ans = (score * lex_size) / totscore;
+				Log.d("Scoring Debug", "Real Score:"+ ans);
 			}
 			Feedback = NLG.GenerateDelayedFeedback(ans, lessonNumber);
 		} catch (JDOMException | IOException e) {
