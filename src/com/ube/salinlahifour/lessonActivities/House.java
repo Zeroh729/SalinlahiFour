@@ -21,7 +21,7 @@ public class House extends AbstractLAFramework  {
 	 
 	 @Override
 	 public Screen getInitScreen() {
-		 return new LoadingScreen(this, activityLevel, SalinlahiFour.getLoggedInUser().getId(), this, lesson, items); 
+		 return new LoadingScreen(this, activityLevel, SalinlahiFour.getLoggedInUser().getId(), this, lesson, items,evaluation); 
 	 }
 	 @Override
 	 public void onBackPressed() {

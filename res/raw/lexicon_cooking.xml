@@ -55,7 +55,7 @@
 		<image_path>yellow</image_path>
 		<eng_sound>color_yellow</eng_sound>
 		<fil_sound>color_dilao</fil_sound>
-		<difficulty></difficulty>
+		<difficulty>EASY</difficulty>
 	</Word_Entry>
 	<Word_Entry>
 		<q_num>5</q_num>
