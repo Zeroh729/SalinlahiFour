@@ -29,6 +29,20 @@ public class Greetings extends AbstractLessonActivity implements OnClickListener
 		
 		
 	}
+	
+	
+	@Override
+	protected void configureEasyLevel() {
+	}
+
+	@Override
+	protected void configureMediumLevel() {
+	}
+
+	@Override
+	protected void configureHardLevel() {
+	}
+	
 	@Override
 	protected void initiateViews() {
 		Log.d("Greetings", "LessonNumber: " + lesson.getLessonNumber());
@@ -60,15 +74,14 @@ public class Greetings extends AbstractLessonActivity implements OnClickListener
 		
 	}
 
-	@Override
 	protected boolean checkAnswer(String answer) {
 		// TODO Auto-generated method stub
-		if(evaluate(answer)){//if correct function evaluate will check if the answer is correct and load the feedback in string feedback
-			itemno++; //developer can insert effects here 
+		if(evaluate(answer)){//if correct function evaluate will check if the answer is correct and load the feedback in string feedback and will automatically call the update() function
+			 //developer can insert effects here 
 		}else{//if wrong the function evaluate will load a feedback
 			//if wrong insert effects here
 		}
-		update();//updates the state of the game
+		update(); //this function makes the game update
 		return true;
 	}
 	private void setChoices(){
@@ -90,6 +103,16 @@ public class Greetings extends AbstractLessonActivity implements OnClickListener
 		case R.id.tv_choice2:	checkAnswer(choices[1].getText().toString());	break;	
 		case R.id.tv_choice3:	checkAnswer(choices[2].getText().toString());	break;
 		}
+	}
+	@Override
+	protected void ifAnswerIsCorrect() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	protected void ifAnswerIsWrong() {
+		// TODO Auto-generated method stub
+		
 	}
 }
 

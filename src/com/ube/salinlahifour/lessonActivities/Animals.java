@@ -67,6 +67,18 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 	}
 	
 	@Override
+	protected void configureEasyLevel() {
+	}
+
+	@Override
+	protected void configureMediumLevel() {
+	}
+
+	@Override
+	protected void configureHardLevel() {
+	}
+	
+	@Override
 	protected void initiateViews() {		
 		btn_up = new ImageButton[4];
 		btn_down = new ImageButton[4];
@@ -308,7 +320,6 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 		}
 	}
 
-	@Override
 	protected boolean checkAnswer(String answer) {
 		int cnt_wrong = 0;
 		String encouragement = "";
@@ -701,6 +712,18 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 				}
 				break;
 		}
+	}
+
+	@Override
+	protected void ifAnswerIsCorrect() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void ifAnswerIsWrong() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
