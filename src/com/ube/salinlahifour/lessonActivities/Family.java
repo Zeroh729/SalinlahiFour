@@ -44,7 +44,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 	private SoundPool sfx_correct;
 	private SoundPool sfx_wrong;
 	private TextView itemLabel;
-	private TextView tv_questionno;
+	//private TextView tv_questionno;
 	private ImageView img_itemLabel;
 	private ImageButton btn_nxt;
 
@@ -95,9 +95,9 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		tv_feedback.setTypeface(SalinlahiFour.getFontAndy());
 		tv_feedback.setText(" ");
 		tv_feedback.setOnClickListener(this);
-		tv_questionno = (TextView)findViewById(R.id.tv_questionno);
-		tv_questionno.setTypeface(SalinlahiFour.getFontPlaytime());
-		((TextView)findViewById(R.id.tv_score)).setTypeface(SalinlahiFour.getFontPlaytime());
+		//tv_questionno = (TextView)findViewById(R.id.tv_questionno);
+		//tv_questionno.setTypeface(SalinlahiFour.getFontPlaytime());
+		//((TextView)findViewById(R.id.tv_score)).setTypeface(SalinlahiFour.getFontPlaytime());
 		
 		//RelativeLayout.LayoutParams feedback_params =  new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
 		//feedback_params.leftMargin=100; //X
@@ -193,8 +193,8 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 
 	@Override
 	protected void update() {
-		tv_questionno.setText((itemno + 1) + "");
-		((TextView)findViewById(R.id.tv_score)).setText(" / " + questions.size());
+		//tv_questionno.setText((itemno + 1) + "");
+		//((TextView)findViewById(R.id.tv_score)).setText(" / " + questions.size());
 		
 		Log.d("Debug Family","Aldrin: Running");
 		setChoices();
@@ -209,8 +209,8 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		btn_nxt.setVisibility(View.INVISIBLE);
 	}
 	protected void rerun() {
-		tv_questionno.setText((itemno + 1) + "");
-		((TextView)findViewById(R.id.tv_score)).setText(" / " + questions.size());
+		//tv_questionno.setText((itemno + 1) + "");
+		//((TextView)findViewById(R.id.tv_score)).setText(" / " + questions.size());
 		
 		Log.d("Debug Family","Aldrin: Running");
 		question = questions.get(itemno).getLabel();

@@ -21,6 +21,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.SoundPool;
 import android.os.Bundle;
@@ -28,11 +29,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 
 import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.Lesson;
@@ -54,7 +57,7 @@ import com.ube.salinlahifour.uibuilders.Button.YesBtnStatesBuilder;
 
 public abstract class AbstractLessonActivity extends Activity {
 	protected Context context;
-	protected Lesson lesson;
+	protected Lesson lesson; 
 	protected ArrayList<ImageView> backgrounds;
 	protected ArrayList<Item> items;
 	protected ArrayList<Item> questions;
@@ -73,13 +76,16 @@ public abstract class AbstractLessonActivity extends Activity {
 	protected int itemno;
 	protected String question;
 	protected String feedback = " ";
+	protected RelativeLayout layout;
+	private TextView life_tv;
+	private TextView questionNo_tv;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		
+		Log.d("START", "START");
 		
-		context = this;
+	
 //		setContentView(R.layout.activity_lesson);
 		try{
 			setContentView(layoutID);		
@@ -90,9 +96,11 @@ public abstract class AbstractLessonActivity extends Activity {
 		}
 		
 		
+		
+		
 		UserID = SalinlahiFour.getLoggedInUser().getId();
 		Log.d(activityName, "TEST ActivityName in lesson act");
-
+		layout = (RelativeLayout) findViewById(R.id.parent_view);
 
 		
 		Bundle bundle = getIntent().getExtras();
@@ -128,28 +136,51 @@ public abstract class AbstractLessonActivity extends Activity {
 		initiateGamePauseUI();
 		getQuestions();
 		initiateNarrationModule();
-
-		evaluation.setTotScore(questions.size());
+		evaluation.setLexiconSize(evaluation.generateLexiconSize(lesson));//Set the number of wrods in lexicon
+		evaluation.setTotScore(questions.size()); //Set Total Score of game.
+		Log.d("End of Feedback", "Lexicon Size: " + evaluation.generateLexiconSize(lesson) );
+		Log.d("End Of Feedback", "Total Score" + questions.size());
 		initiateLives();//Initiate lives
 		update(); //starts game by showing question and loading choices
 		
 	}
 	private void initiateLives(){
-		ImageView[] life_iv = new ImageView[evaluation.getAllowableMistakes()];
-		for(int i= 0; i<life_iv.length;i++){
-			life_iv[i] = new ImageView(this);
-		}
+		//ImageView[] life_iv = new ImageView[evaluation.getAllowableMistakes()];
+		//for(int i= 0; i<life_iv.length;i++){
+		//	life_iv[i] = new ImageView(this);
+		//}
+		 life_tv = new TextView(this);
+		 questionNo_tv = new TextView(this);
+		
 		LayoutParams p = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
 				ViewGroup.LayoutParams.WRAP_CONTENT);
-		p.addRule(RelativeLayout.ALIGN_RIGHT);
-		p.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+		p.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,  RelativeLayout.TRUE);
+		p.addRule(RelativeLayout.ALIGN_PARENT_TOP,  RelativeLayout.TRUE);
+		p.setMargins(20, 10, 100, 10);
+		life_tv.setId(1);
+		life_tv.setTextSize(30);
+		life_tv.setTypeface(SalinlahiFour.getFontAndy());
+		life_tv.setTextColor(Color.GRAY);
+		//life_tv.setTextColor(Color.WHITE);
+		//life_tv.setShadowLayer(5f, -1, 1, Color.BLACK);
+		LayoutParams q = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+				ViewGroup.LayoutParams.WRAP_CONTENT);
+		q.addRule(RelativeLayout.LEFT_OF,  life_tv.getId());
+		q.addRule(RelativeLayout.ALIGN_PARENT_TOP,  RelativeLayout.TRUE);
+		q.setMargins(20, 10, 20, 10);
+		questionNo_tv.setTextSize(30);
+		questionNo_tv.setTypeface(SalinlahiFour.getFontAndy());
+		questionNo_tv.setTextColor(Color.GRAY);
+
+		life_tv.setLayoutParams(p);
+		life_tv.setText("Tries Left:"+evaluation.getMistakesRemaining() + "/" + evaluation.getAllowableMistakes());
+		questionNo_tv.setLayoutParams(q);
+		questionNo_tv.setText("Question No:"+ (itemno+1) + "/" + evaluation.getTotalScore());
 		
-		for(int i= 0; i<life_iv.length;i++){
-			life_iv[i].setLayoutParams(p);
-			life_iv[i].setBackgroundResource(R.drawable.lives);
-			((ViewGroup)getWindow().getDecorView().getRootView()).addView(life_iv[i]);
-		}
-		
+		//((ViewGroup)getWindow().getDecorView().getRootView()).addView(life_tv,p);
+		layout.addView(life_tv);
+		layout.addView(questionNo_tv);
+		//((ViewGroup)getWindow().getCurrentFocus().getRootView()).addView(questionNo_tv);
 	}
 
 	private void initiateLevels(){
@@ -210,6 +241,9 @@ public abstract class AbstractLessonActivity extends Activity {
 				itemno++;
 				ifAnswerIsCorrect();
 			}
+			life_tv.setText("Tries Left:"+evaluation.getMistakesRemaining() + "/" + evaluation.getAllowableMistakes());
+			questionNo_tv.setText("Question No:"+ (itemno+1) + "/" + evaluation.getTotalScore());
+			
 			return true;
 		}
 		else{
@@ -224,6 +258,9 @@ public abstract class AbstractLessonActivity extends Activity {
 			}else{
 				ifAnswerIsWrong();
 			}
+			life_tv.setText("Tries Left:"+evaluation.getMistakesRemaining() + "/" + evaluation.getAllowableMistakes());
+			questionNo_tv.setText("Question No:"+ (itemno+1) + "/" + evaluation.getTotalScore());
+
 			return false;
 		}
 	}
@@ -347,15 +384,15 @@ public abstract class AbstractLessonActivity extends Activity {
 		Log.d("TESTINGLessonActivity", "Aldrin: Reading iFeedback properties");
 		NLG.readProperties();
 		evaluation.setLexiconDir(lesson.getLexicon());
-		Log.d("Feedback", "Total score: " + questions.size());
+		Log.d("End Of Feedback", "Total score: " + questions.size());
 		if(questions.size() % 2 > 0){
-			Log.d("Feedback", "Total score is Odd");
+			Log.d("End Of Feedback", "Total score is Odd");
 			passingScore = (int) (questions.size()*0.5)+1;
-			Log.d("Feedback", "Passing score: " +  passingScore);
+			Log.d("End Of Feedback", "Passing score: " +  passingScore);
 		}else{
-			Log.d("Feedback", "Total score is Even");
+			Log.d("End Of Feedback", "Total score is Even");
 			passingScore = (int) (questions.size()*0.5);
-			Log.d("Feedback", "Passing score: " +  passingScore);
+			Log.d("End Of Feedback", "Passing score: " +  passingScore);
 		}
 		evaluation.setPassingGrade(passingScore);
 		Log.d("TESTINGLessonActivity", "Aldrin: iFeedback Initiated");

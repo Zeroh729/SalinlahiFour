@@ -50,7 +50,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 	
 	private ImageButton btn_function;
 	private TextView tv_feedback;
-	private TextView tv_questionno;
+	//private TextView tv_questionno;
 	
 	private AnimatedButtonListener touchListener;
 	private MediaPlayer sound;
@@ -109,10 +109,10 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 		
 		btn_function = (ImageButton)findViewById(R.id.btn_function);
 		tv_feedback = (TextView)findViewById(R.id.tv_dialog);
-		tv_questionno = (TextView)findViewById(R.id.tv_questionno);
+		//tv_questionno = (TextView)findViewById(R.id.tv_questionno);
 		
-		tv_questionno.setTypeface(SalinlahiFour.getFontPlaytime());
-		((TextView)findViewById(R.id.tv_score)).setTypeface(SalinlahiFour.getFontPlaytime());
+		//tv_questionno.setTypeface(SalinlahiFour.getFontPlaytime());
+		//((TextView)findViewById(R.id.tv_score)).setTypeface(SalinlahiFour.getFontPlaytime());
 		tv_feedback.setTypeface(SalinlahiFour.getFontAndy());
 		
 		touchListener = new AnimatedButtonListener();
@@ -129,7 +129,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 		btn_function.setOnTouchListener(touchListener);
 		btn_function.setOnClickListener(this);
 		
-		((RelativeLayout)findViewById(R.id.parent_view)).addView(getPauseButton());
+		//((RelativeLayout)findViewById(R.id.parent_view)).addView(getPauseButton());
 		if(SalinlahiFour.getLoggedInUser().getGender() == "female"){
 			((ImageView)findViewById(R.id.img_dialog)).setImageResource(R.drawable.animals_pepaitalking);
 		}else{
@@ -194,8 +194,8 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 	}
 	
 	private void updateQuestionNo(){
-		tv_questionno.setText((questionno + 1) + "");
-		((TextView)findViewById(R.id.tv_score)).setText(" / " + questions.size());
+		//tv_questionno.setText((questionno + 1) + "");
+		//((TextView)findViewById(R.id.tv_score)).setText(" / " + questions.size());
 		
 		//UPDATE THIS
 		tv_feedback.setText("Can you match this? yah?");
