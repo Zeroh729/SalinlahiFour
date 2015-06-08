@@ -31,7 +31,6 @@ import com.ube.salinlahifour.database.UserRecordOperations;
 
 
 public class GameScreen extends AbstractGameScreen  {
-	
 	    // Variable Setup
 	    // You would create game objects here.
 	    static String activityName = "Colors";
@@ -51,15 +50,14 @@ public class GameScreen extends AbstractGameScreen  {
 	    private Image backbtn, nobtn, yesbtn, bgBack;
 	    private Parts pNo,pYes,pBackg;
 	    private boolean isMistake = false;
-	    Assets as;
 	    private int cor1 = 0, cor2 = 0, cor3 = 0;
 	    public GameScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson,Evaluation eval) {
-	    	//Super Parameters Game, ActivityName, ActivityLevel, UserID
-	        super(game, activityName, activityLevel, userID, context, lesson, eval);
-	        Log.d("Aldrin ExtendedFramework", "This should be after abstract Game");
-	        this.userID = userID;
-	        this.activityLevel = activityLevel;
-	        Log.d("Aldrin ExtendedFramework", "Gamescreen constructor...");
+	       //Super Parameters Game, ActivityName, ActivityLevel, UserID
+	       super(game, activityName, activityLevel, userID, context, lesson, eval);
+	       Log.d("Aldrin ExtendedFramework", "This should be after abstract Game");
+	       this.userID = userID;
+	       this.activityLevel = activityLevel;
+	       Log.d("Aldrin ExtendedFramework", "Gamescreen constructor...");
 	       questions = new String[3];
 	       feedbacks = new String[3];
 	       rounds = 1;
@@ -122,7 +120,7 @@ public class GameScreen extends AbstractGameScreen  {
 	        sprinklerButtons = new ButtonSet(4, 510, 40,lesson);
 	        sprinklerButtons.calculateButtonPosition(buttons_sprinkles[0].getWidth(), buttons_sprinkles[0].getHeight(), 2, 3);
 	        
-	        livesLeft = 3;
+	        nItemsRemaining = 3;
 	        rounds = 3;
 	        
 	        cake = new Cake();
@@ -153,7 +151,7 @@ public class GameScreen extends AbstractGameScreen  {
 	        
 	        sprinklerButtons = new ButtonSet(4, 510, 40,lesson);
 	        sprinklerButtons.calculateButtonPosition(buttons_sprinkles[0].getWidth(), buttons_sprinkles[0].getHeight(), 2, 3);
-	        livesLeft = 4;
+	        nItemsRemaining = 4;
 	        rounds = 4;
 	        cake = new Cake();
 			
@@ -176,7 +174,7 @@ public class GameScreen extends AbstractGameScreen  {
 		@Override
 		protected void assetPositionHard() {
 			// TODO Auto-generated method stub
-			 livesLeft = 5;
+			 nItemsRemaining = 5;
 			 rounds = 5;
 			breaderButtons = new ButtonSet(4, 70,40,lesson);
 	        Log.d("ButtonDebug", "Wdith: " + buttons_bread[0].getWidth() + " Height: " + buttons_bread[0].getHeight());
@@ -257,6 +255,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            	if(inBounds(event, breaderButtons.getInitX() ,breaderButtons.getInitY() , buttons_bread[0].getWidth() * 2, buttons_bread[0].getHeight() * 2)){//if bread
 	            		cake.move(50, 250);
 	            		Log.d("GameScreen", "Thats a breader");
+	            		
 	            		if(inBounds(event, breaderButtons.getX(0) ,breaderButtons.getY(0) , buttons_bread[0].getWidth(), buttons_bread[0].getHeight())){//if blue
 	            			Log.d("GameScreen", "Thats a breader and blue button");	
 	            			bread = Assets.bread.get(0);
@@ -390,7 +389,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            			}
 	            			if(cor1 == 1 && cor2 == 1 && cor3 == 1){
 	            				isSubmit = 1;
-	            				livesLeft--;
+	            				nItemsRemaining--;
 	            				isMistake = false;
 	            				transition = true;
 	            				sFeedback = feedbacks[0];
@@ -586,7 +585,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            				isMistake = false;
 		            				transition = true;
 		            				isSubmit = 1;
-		            				livesLeft--;
+		            				nItemsRemaining--;
 		            				Log.d("DING", "Its done");
 		            				
 		            				
@@ -730,22 +729,6 @@ public class GameScreen extends AbstractGameScreen  {
 		}
 
 		@Override
-		protected void drawRunningUI() {
-			// TODO Auto-generated method stub
-			Graphics g = game.getGraphics();
-			g.drawImage(backbtn, 1, 1);
-			//g.drawString(feedbacks[0], 300, 425, paint3);//sFeedback 
-			//g.drawString(feedbacks[1], 300, 450, paint3);//sFeedback 
-	        //g.drawString(feedbacks[2], 300, 475, paint3);//sFeedback 
-	        g.drawString(questions[0], 305, 425, paint2);//sQuestion
-	        g.drawString(questions[1], 305, 450, paint2);//sQuestion
-	        g.drawString(questions[2], 305, 475, paint2);//sQuestion
-	        showTransition();
-	        showExit();
-	       
-		}
-
-		@Override
 		protected void showTransition() {
 			// TODO Auto-generated method stub
 			Graphics g = game.getGraphics();
@@ -765,8 +748,8 @@ public class GameScreen extends AbstractGameScreen  {
 				  if(isMistake){
 						if(cor1 == 0){
 							String lineOne = "", lineTwo ="";
-							//g.drawString("- ", 350,155, paint5);
-							//g.drawString(feedbacks[0], 350,155, paint5);
+							//g.drawString("- ", 350,155, paint4);
+							//g.drawString(feedbacks[0], 350,155, paint4);
 							cuttedWord = sentenceCutter(feedbacks[0]);
 							for(int s = 0; s<cuttedWord.length;s++){
 								if(s>5){
@@ -775,13 +758,13 @@ public class GameScreen extends AbstractGameScreen  {
 									lineOne += cuttedWord[s]+ " ";
 								}
 							}
-							g.drawString("1: " + lineOne, 352,155, paint5);
-							g.drawString(lineTwo, 352,175, paint5);
+							g.drawString("Bread: " + lineOne, 352,155, paint4);
+							g.drawString(lineTwo, 352,175, paint4);
 						}
 						if(cor2 == 0){
 							String lineOne = "", lineTwo ="";
-							//g.drawString(feedbacks[1], 350,195, paint5);
-							//g.drawString("- ", 350,195, paint5);
+							//g.drawString(feedbacks[1], 350,195, paint4);
+							//g.drawString("- ", 350,195, paint4);
 							cuttedWord = sentenceCutter(feedbacks[1]);
 							for(int s = 0; s<cuttedWord.length;s++){
 								if(s>5){
@@ -790,13 +773,13 @@ public class GameScreen extends AbstractGameScreen  {
 									lineOne += cuttedWord[s]+ " ";
 								}
 							}
-							g.drawString("2: " + lineOne, 352,195, paint5);
-							g.drawString(lineTwo, 352,215, paint5);
+							g.drawString("Frosting: " + lineOne, 352,195, paint4);
+							g.drawString(lineTwo, 352,215, paint4);
 						}
 						if(cor3== 0){
 							String lineOne = "", lineTwo ="";
-							//g.drawString(feedbacks[2], 350,225, paint5);
-							//g.drawString("- ", 350,225, paint5);
+							//g.drawString(feedbacks[2], 350,225, paint4);
+							//g.drawString("- ", 350,225, paint4);
 							cuttedWord = sentenceCutter(feedbacks[2]);
 							for(int s = 0; s<cuttedWord.length;s++){
 								if(s>5){
@@ -805,8 +788,8 @@ public class GameScreen extends AbstractGameScreen  {
 									lineOne += cuttedWord[s]+ " ";
 								}
 							}
-							g.drawString("3: " + lineOne, 352,235, paint5);
-							g.drawString(lineTwo, 352,255, paint5);
+							g.drawString("Sprinkles: " + lineOne, 352,235, paint4);
+							g.drawString(lineTwo, 352,255, paint4);
 						}
 				  }else{
 						g.drawString(feedbacks[0], 350,155, paint4);
@@ -845,6 +828,21 @@ public class GameScreen extends AbstractGameScreen  {
 				 g.drawImage(nobtn, this.pNo.getX(), pNo.getY());
 				 g.drawImage(yesbtn, pYes.getX(), pYes.getY());
 			}
+		}
+
+		@Override
+		protected void drawCustomUI() {
+			// TODO Auto-generated method stub
+						Graphics g = game.getGraphics();
+						g.drawImage(backbtn, 1, 1);
+						//g.drawString(feedbacks[0], 300, 425, paint3);//sFeedback 
+						//g.drawString(feedbacks[1], 300, 450, paint3);//sFeedback 
+				        //g.drawString(feedbacks[2], 300, 475, paint3);//sFeedback 
+				        g.drawString(questions[0], 305, 425, paint2);//sQuestion
+				        g.drawString(questions[1], 305, 450, paint2);//sQuestion
+				        g.drawString(questions[2], 305, 475, paint2);//sQuestion
+				        showTransition();
+				        showExit();
 		}
 
 	   

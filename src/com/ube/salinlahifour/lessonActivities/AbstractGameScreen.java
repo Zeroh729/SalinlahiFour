@@ -42,16 +42,15 @@ public abstract class AbstractGameScreen extends Screen {
 	  protected int userID;
 	  protected UserRecordOperations userRecordOperator = new UserRecordOperations(SalinlahiFour.getContext());
 	  protected UserLessonProgressOperations userLessonProgressOperator = new UserLessonProgressOperations(SalinlahiFour.getContext());
-	  protected int livesLeft;
+	  protected int nItemsRemaining;
 	  protected int rounds;
+	  
 	  protected ReportCard reportCard;
 	  protected Context context;
 	  protected Lesson lesson;
 	  private boolean gameOverLock;
 	  protected ArrayList<Item> items;
 	  protected boolean transition, exit;
-	  
-	
 	
 	  
 	public AbstractGameScreen(Game game, String activityName,String activityLevel ,int userID, Context context, Lesson lesson, Evaluation evaluation) {
@@ -89,7 +88,7 @@ public abstract class AbstractGameScreen extends Screen {
 	        // Defining a paint object
 		 	Log.d("Abstract GamesScreen", "Initializing Paint Methods");
 	        paint = new Paint();
-	        paint.setTextSize(20);
+	        paint.setTextSize(25);
 	        paint.setTypeface(tf);
 	        paint.setTextAlign(Paint.Align.LEFT);
 	        paint.setAntiAlias(true);
@@ -97,21 +96,21 @@ public abstract class AbstractGameScreen extends Screen {
 	        
 	        paint2 = new Paint();
 	        paint2.setTypeface(tf);
-			paint2.setTextSize(15);
+			paint2.setTextSize(20);
 			paint2.setTextAlign(Paint.Align.LEFT);
 			paint2.setAntiAlias(true);
 			paint2.setColor(Color.BLACK);
 
 			paint3 = new Paint();
 			paint3.setTypeface(tf);
-			paint3.setTextSize(10);
+			paint3.setTextSize(15);
 			paint3.setTextAlign(Paint.Align.LEFT);
 			paint3.setAntiAlias(true);
 			paint3.setColor(Color.BLACK);
 			
 			paint4 = new Paint();
 			paint4.setTypeface(tf);
-			paint4.setTextSize(20);
+			paint4.setTextSize(25);
 			paint4.setTextAlign(Paint.Align.CENTER);
 			paint4.setAntiAlias(true);
 			paint4.setColor(Color.BLACK);
@@ -119,10 +118,10 @@ public abstract class AbstractGameScreen extends Screen {
 			paint5 = new Paint();
 			
 			paint5.setTypeface(tf);
-			paint5.setTextSize(20);
-			paint5.setTextAlign(Paint.Align.CENTER);
+			paint5.setTextSize(25);
+			paint5.setTextAlign(Paint.Align.RIGHT);
 			paint5.setAntiAlias(true);
-			paint5.setColor(Color.BLACK);
+			paint5.setColor(Color.GRAY);
 			
 			Log.d("Abstract GamesScreen", "Initializing Paint Methods...done");
 	}
@@ -151,7 +150,7 @@ public abstract class AbstractGameScreen extends Screen {
 	        		updateRunningEasy(touchEvents, deltaTime);break;
 	        	}
 	        
-	        	  if (livesLeft == 0 || rounds == 0 || eval.isAlive() == false) {
+	        	  if (nItemsRemaining == 0 || rounds == 0 || eval.isAlive() == false) {
 	  	            state = GameState.GameOver;
 	  	            Looper.myLooper().quit();
 	  		        if(!gameOverLock){
@@ -168,6 +167,9 @@ public abstract class AbstractGameScreen extends Screen {
 	  					Log.d("Debug ReportCard", "Lesson: " + lesson.getName());
 	  					Log.d("Debug ReportCard", "Eval Score: " + eval.getScore() );
 	  					Log.d("Debug ReportCard", "Eval Total Score: " + eval.getTotalScore() );
+	  					Log.d("Debug ReportCard", "Eval Lexicon Size: " + eval.getLexiconSize() );
+	  					Log.d("Debug ReportCard", "Eval Max Tries: " + eval.getAllowableMistakes() );
+	  					Log.d("Debug ReportCard", "Eval Remaining Tries: " + eval.getMistakesRemaining() );
 	  					Log.d("Debug ReportCard", "Throwing...");
 	  					
 	  					extras.putString("ActivityName",activtityName);
@@ -234,6 +236,9 @@ public abstract class AbstractGameScreen extends Screen {
 			else
 				return false;
 		}
+		
+		
+		
 	  @Override
 	    public void paint(float deltaTime) {
 	        Graphics g = game.getGraphics();
@@ -261,12 +266,13 @@ public abstract class AbstractGameScreen extends Screen {
 	        //g.drawString("Tap to Start.", 400, 240, paint);
 	        //showTransition();
 	    }*/
-
-	 /* protected void drawRunningUI() {
+	  protected abstract void drawCustomUI();
+	  protected void drawRunningUI() {
+		  	drawCustomUI();
 	        Graphics g = game.getGraphics();
-	        g.drawString(sFeedback, 400, 500, paint2);
-	        g.drawString(sQuestion, 430, 50, paint2);
-	    }*/
+	        g.drawString("Tries Left:"+eval.getMistakesRemaining() + "/" + eval.getAllowableMistakes()+" "+"Question No:"+ (rounds) + "/" + eval.getTotalScore(), 670, 25, paint5);
+	        //g.drawString(sQuestion, 430, 50, paint2);
+	    }
 
 	  protected void drawPausedUI() {
 	        Graphics g = game.getGraphics();
@@ -303,7 +309,6 @@ public abstract class AbstractGameScreen extends Screen {
 		abstract protected void updateRunningHard(List<TouchEvent> touchEvents, float deltaTime);
 		abstract protected void updatePaused(List<TouchEvent> touchEvents);
 		abstract protected void updateGameOver(List<TouchEvent> touchEvents);
-		abstract protected void drawRunningUI();
 		abstract protected void painterEasy();
 		abstract protected void painterMedium();
 		abstract protected void painterHard();
