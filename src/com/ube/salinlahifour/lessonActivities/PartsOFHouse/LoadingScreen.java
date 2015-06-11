@@ -88,11 +88,11 @@ public class LoadingScreen extends Screen {
 	        	Assets.chimney_error =  g.newImage("house/Hard/"+lesson.getItems().get(6).getImagePath()+"_error.png", ImageFormat.RGB565);
 	   	        Assets.chimney_choice = g.newImage("house/Hard/"+lesson.getItems().get(6).getImagePath()+"_choice.png", ImageFormat.RGB565);  
 	   	        
-	   	        Assets.stairs = g.newImage("house/Hard/"+lesson.getItems().get(8).getImagePath()+".png", ImageFormat.RGB565);
-	        	Assets.stairsholder = g.newImage("house/Hard/"+lesson.getItems().get(8).getImagePath()+"sholder.png", ImageFormat.RGB565);
-	        	Assets.stairs_selected = g.newImage("house/Hard/"+lesson.getItems().get(8).getImagePath()+"_selected.png", ImageFormat.RGB565);
-	        	Assets.stairs_error =  g.newImage("house/Hard/"+lesson.getItems().get(8).getImagePath()+"_error.png", ImageFormat.RGB565);
-	   	        Assets.stairs_choice = g.newImage("house/Hard/"+lesson.getItems().get(8).getImagePath()+"_choice.png", ImageFormat.RGB565);  
+	   	        Assets.stairs = g.newImage("house/Hard/"+lesson.getItems().get(7).getImagePath()+".png", ImageFormat.RGB565);
+	        	Assets.stairsholder = g.newImage("house/Hard/"+lesson.getItems().get(7).getImagePath()+"holder.png", ImageFormat.RGB565);
+	        	Assets.stairs_selected = g.newImage("house/Hard/"+lesson.getItems().get(7).getImagePath()+"_selected.png", ImageFormat.RGB565);
+	        	Assets.stairs_error =  g.newImage("house/Hard/"+lesson.getItems().get(7).getImagePath()+"_error.png", ImageFormat.RGB565);
+	   	        Assets.stairs_choice = g.newImage("house/Hard/"+lesson.getItems().get(7).getImagePath()+"_choice.png", ImageFormat.RGB565);  
 		        //Assets.sound.add(game.getAudio().createSound("cooking/Sounds/color_puti.mp3"));
 	        	
 	        	Assets.dingding = game.getAudio().createSound("house/Sounds/"+lesson.getItems().get(1).getVoiceFilPath()+".mp3");

@@ -489,6 +489,7 @@ public class GameScreen extends AbstractGameScreen  {
 			            	Log.d("Exit Debug", "Continue");
 			            }
 		            }
+		            
 	            	if(transition){
 	            		if(inBounds(event, pRecipe.getX() ,pRecipe.getY() , recipe.getWidth(), recipe.getHeight())){
 	            		Log.d("Transition Debug", "Falseing in easy");

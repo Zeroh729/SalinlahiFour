@@ -339,7 +339,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            				door = Assets.door;
 		            			Log.d("Debug GameScreen", "CORRECT THATS A door");
 		            			Log.d("Debug Feedback", "getID" + lesson.getItems().get(rounds-1).getID());
-		            			sFeedback =  eval.getImmediateFeedback(items.get(rounds-1).getID(), sAnswer, lessonNumber);
+		            			sFeedback =  eval.getImmediateFeedback(lesson.getItems().get(rounds-1).getID(), sAnswer, lessonNumber);
 		            			nItemsRemaining--;
 		            			rounds++;
 		            			pDoor.move(pDoorH.getX() , pDoorH.getY());
@@ -577,8 +577,6 @@ public class GameScreen extends AbstractGameScreen  {
             			answer = 0;
             		}
             	}
-	            
-	            
 	        }
 	            }//Touch down
 	        }//event for loop
