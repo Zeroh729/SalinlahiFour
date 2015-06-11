@@ -171,9 +171,9 @@ public class ReportCard extends PopupWindow implements OnClickListener{
 	
 	private void goToLesson(LevelType level){
 		Intent intent = new Intent(context, Tutorial.class);            	
-		intent.putExtra("activityName", lesson.getName());    	
+		intent.putExtra("activityLevel", level.toString());    	
 		intent.putExtra("UserID", SalinlahiFour.getLoggedInUser().getId());
-		intent.putExtra("activityLevel", level.toString());
+		intent.putExtra("lessonName", lesson.getTheRealName());
 		Bundle bundle = new Bundle();
 		bundle.putParcelable("lesson", lesson);
 		intent.putExtras(bundle);

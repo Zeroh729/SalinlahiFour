@@ -159,6 +159,7 @@ public class Lesson implements Parcelable{
 		dest.writeString(description);
 		dest.writeString(image+"");
 		dest.writeString(lessonNumber+"");
+		dest.writeString(className);
 	}
 	
 
@@ -168,6 +169,7 @@ public class Lesson implements Parcelable{
 	    this.description = in.readString();
 	    this.image = Integer.parseInt(in.readString());
 	    this.lessonNumber = Integer.parseInt(in.readString());
+	    this.className = in.readString();
 	}
 
 }

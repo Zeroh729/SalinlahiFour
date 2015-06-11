@@ -142,8 +142,9 @@ public abstract class AbstractLessonActivity extends Activity {
 		Log.d("End Of Feedback", "Total Score" + questions.size());
 		initiateLives();//Initiate lives
 		update(); //starts game by showing question and loading choices
-		
+		context = getBaseContext();
 	}
+	
 	private void initiateLives(){
 		//ImageView[] life_iv = new ImageView[evaluation.getAllowableMistakes()];
 		//for(int i= 0; i<life_iv.length;i++){
@@ -214,7 +215,6 @@ public abstract class AbstractLessonActivity extends Activity {
 			}
 		});
 		((ViewGroup)getWindow().getDecorView().getRootView()).addView(pauseBtn);
-		
 	}
 	
 	protected Item getQuestionItem(){
@@ -237,7 +237,7 @@ public abstract class AbstractLessonActivity extends Activity {
 				Log.d("New Frame", "GameOver!");
 				evaluation.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), UserID);
 				showReportCard(this);
-			}else{
+			}else {
 				itemno++;
 				ifAnswerIsCorrect();
 			}
@@ -284,7 +284,6 @@ public abstract class AbstractLessonActivity extends Activity {
 	protected void getQuestions(){
 		questions = new ArrayList<Item>();
 		Log.d("TESTINGLessonActivity", "Aldrin: getting Questions");
-		String lastDate = DateTimeConverter.getDateLastMonth();
 		UserRecordOperations userdb = new UserRecordOperations(this);
 		userdb.open();		
 		ArrayList<UserRecord> records;
@@ -294,14 +293,9 @@ public abstract class AbstractLessonActivity extends Activity {
 			int cnt_itemLevel = 0;
 			
 			ArrayList<Item> items = (ArrayList<Item>) lesson.getItems().clone();
-		
-	//		ArrayList<String> itemNames = new ArrayList();
-	//		ArrayList<Integer> itemScores = new ArrayList();
 			HashMap<String, Integer> itemKeys = new HashMap();
 			
 			for(int i = 0; i < items.size(); i++){
-	//			itemNames.add(items.get(i).getWord());
-	//			itemScores.add(0);
 				if(!items.get(i).getLevel().equals(activityLevel.toString())){
 					itemKeys.put(items.get(i).getWord(), 0);
 				}else{
@@ -329,9 +323,10 @@ public abstract class AbstractLessonActivity extends Activity {
 			Map<String, Integer> sortedItemKeys = sortByComparator(itemKeys);
 			
 			int i = 0;
+			ArrayList<Item> lessonItems = lesson.getItems();
+			
 			for(String key : sortedItemKeys.keySet()){
-				if(cnt_question == 0 || ((cnt_question - cnt_itemLevel) > i)){
-					ArrayList<Item> lessonItems = lesson.getItems();
+				if((cnt_question - cnt_itemLevel) > i){
 					Log.d("TEST0", "questions part 5 lessonItems size: " + lessonItems.size());
 					for(int j = 0; j < lessonItems.size(); j++)
 						if(lessonItems.get(j).getWord().equals(key)){
@@ -352,6 +347,10 @@ public abstract class AbstractLessonActivity extends Activity {
 		}
 		Log.d("TEST0", "questions size: " + questions.size());
 		Collections.shuffle(questions,  new Random(System.nanoTime()));
+		
+		for (Item item : questions) {
+            Log.d("QUESTIONS LOADED: ", item.getQuestion() + " " + item.getDifficulty());
+        }
 	}
 	
 	private static Map<String, Integer> sortByComparator(Map<String, Integer> unsortMap) {
@@ -517,15 +516,12 @@ public abstract class AbstractLessonActivity extends Activity {
 	}
 	
 	protected class GamePausePopup extends PopupWindow implements android.view.View.OnClickListener{
-		private Context context;
 		private ImageButton btn_yes;
 		private ImageButton btn_no;
 
 		private View popupView;
 		
 		public GamePausePopup(Context context){
-			super(context);
-			this.context = context;
 			LayoutInflater layoutInflater = (LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);  
 		    popupView = layoutInflater.inflate(R.layout.gamepause, null);        
 		    setOutsideTouchable(false);
