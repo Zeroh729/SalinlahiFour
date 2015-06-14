@@ -584,7 +584,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno));
 			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_daga, item.getVoiceFilID(),itemno));
 			break;
-		case "Elefante":
+		case "Elepante":
 			itemno = 8;
 			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_elephant, item.getVoiceEngID(), itemno));
 			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_elephant, R.raw.animals_sound_elephant, itemno));
