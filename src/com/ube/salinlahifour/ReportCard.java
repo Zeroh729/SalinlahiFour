@@ -145,7 +145,6 @@ public class ReportCard extends PopupWindow implements OnClickListener{
 		switch(v.getId()){
 		case R.id.btn_replay:	
         	((Activity)context).finish();
-        	lesson.getActivity();
         	Intent intent = new Intent(lesson.getActivity());
         	intent.putExtra("activityName", this.activityName);
 			intent.putExtra("UserID", SalinlahiFour.getLoggedInUser().getId());

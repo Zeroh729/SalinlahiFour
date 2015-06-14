@@ -55,7 +55,7 @@ public abstract class AbstractGameScreen extends Screen {
 		this.context = context;
 		// TODO Auto-generated constructor stub
 		this.userID = userID;
-		this.activtityName = lesson.getName();
+		this.activtityName = activityName;
 		this.activityLevel = activityLevel;
 		this.lesson = lesson;
 		items = lesson.getItems();

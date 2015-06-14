@@ -95,13 +95,8 @@ public abstract class AbstractLessonActivity extends Activity {
 					+ "2. layoutID has been set in Constructor");
 		}
 		
-		
-		
-		
 		UserID = SalinlahiFour.getLoggedInUser().getId();
-		Log.d(activityName, "TEST ActivityName in lesson act");
 		layout = (RelativeLayout) findViewById(R.id.parent_view);
-
 		
 		Bundle bundle = getIntent().getExtras();
 		activityName = bundle.getString("activityName");
