@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.ube.salinlahifour.enumTypes.LevelType;
 
-public class Item  implements Cloneable{
+public class Item implements Cloneable {
 	private int ID;
 	private int q_num;
 	private String word = "";
@@ -19,28 +19,28 @@ public class Item  implements Cloneable{
 	private String imagePath = "";
 	private String difficulty = "";
 	private int lessonNum;
-	
+
 	private int voiceFilID;
 	private int voiceEngID;
 	private String label;
 	private LevelType level;
 	private int imageID;
 	private View view;
-	
-	public Item(){
-		
+
+	public Item() {
+
 	}
 
-	public Item clone(){  
-	    try{  
-	    	Item item = (Item) super.clone();
-	        return item;
-	    }catch(Exception e){ 
-	    	return null; 
-	    }
+	public Item clone() {
+		try {
+			Item item = (Item) super.clone();
+			return item;
+		} catch (Exception e) {
+			return null;
+		}
 	}
-	
-	public Item(int q_num,String word, String english, String description, int imageID, int voiceFilID, int voiceEngID, LevelType level){
+
+	public Item(int q_num, String word, String english, String description, int imageID, int voiceFilID, int voiceEngID, LevelType level) {
 		this.q_num = q_num;
 		this.word = word;
 		this.english = english;
@@ -50,89 +50,112 @@ public class Item  implements Cloneable{
 		this.level = level;
 		this.imageID = imageID;
 	}
-	public void setID(int num){
+
+	public void setID(int num) {
 		this.ID = num;
 	}
-	public int getID(){
+
+	public int getID() {
 		return ID;
 	}
-	public int getQ_num(){
+
+	public int getQ_num() {
 		return q_num;
 	}
-	public void setQ_num(int num){
+
+	public void setQ_num(int num) {
 		this.q_num = num;
 	}
-	public String getQuestion(){
+
+	public String getQuestion() {
 		return this.question;
 	}
-	public void setQuestion(String question){
+
+	public void setQuestion(String question) {
 		this.question = question;
 		this.label = question;
 	}
-	public String getNote(){
+
+	public String getNote() {
 		return this.word_hint;
 	}
-	public String getRealNote(){
+
+	public String getRealNote() {
 		return this.word_hint;
 	}
-	public void setNote(String note){
+
+	public void setNote(String note) {
 		tutorial_note = note;
 	}
-	public String getHint(){
+
+	public String getHint() {
 		return this.tutorial_note;
 	}
-	public String getRealHint(){
+
+	public String getRealHint() {
 		return this.word_hint;
 	}
-	public void setHint(String hint){
+
+	public void setHint(String hint) {
 		word_hint = hint;
 	}
+
 	public String getVoiceFilPath() {
 		return this.voiceFilPath;
 	}
-	public void setVoiceFilPath(Context context, String path){
+
+	public void setVoiceFilPath(Context context, String path) {
 		voiceFilPath = path;
-		voiceFilID = SalinlahiFour.getContext().getResources().getIdentifier(path, "raw", SalinlahiFour.getContext().getPackageName());		
-		if(voiceFilID == 0 && !path.equals("")){
+		voiceFilID = SalinlahiFour.getContext().getResources().getIdentifier(path, "raw", SalinlahiFour.getContext().getPackageName());
+		if (voiceFilID == 0 && !path.equals("")) {
 			SalinlahiFour.errorPopup(context, "File not found:", "Add " + path + " sound file in raw resource folder.");
 		}
 	}
+
 	public String getVoiceEngPath() {
 		return this.voiceEngPath;
 	}
-	public void setVoiceEngPath(Context context, String path){
-		voiceEngPath = path;		
-		voiceEngID = SalinlahiFour.getContext().getResources().getIdentifier(path, "raw", SalinlahiFour.getContext().getPackageName());		
-		if(voiceEngID == 0 && !path.equals("")){
+
+	public void setVoiceEngPath(Context context, String path) {
+		voiceEngPath = path;
+		voiceEngID = SalinlahiFour.getContext().getResources().getIdentifier(path, "raw", SalinlahiFour.getContext().getPackageName());
+		if (voiceEngID == 0 && !path.equals("")) {
 			SalinlahiFour.errorPopup(context, "File not found:", "Add " + path + " sound file in raw resource folder.");
 		}
 	}
+
 	public String getImagePath() {
 		return this.imagePath;
 	}
-	public void setImagePath(Context context, String path){
+
+	public void setImagePath(Context context, String path) {
 		imagePath = path;
 		int resID = SalinlahiFour.getContext().getResources().getIdentifier(imagePath, "drawable", SalinlahiFour.getContext().getPackageName());
-		
-		if(resID == 0 && !path.equals("")){
+
+		if (resID == 0 && !path.equals("")) {
 			SalinlahiFour.errorPopup(context, "Parse error: ", "Add image '" + path + "' to the drawable resource folder.");
-		}else{
+		} else {
 			imageID = resID;
 		}
-		
+
 	}
+
 	public String getDifficulty() {
 		return this.difficulty;
 	}
-	public void setDifficulty(String level){
+
+	public void setDifficulty(String level) {
 		difficulty = level;
 	}
+
 	public int getLessonNum() {
 		return this.lessonNum;
 	}
-	public void setLessonNum(int id){
+
+	public void setLessonNum(int id) {
 		lessonNum = id;
 	}
+
 	public int getImageID() {
 		return imageID;
 	}
@@ -156,7 +179,7 @@ public class Item  implements Cloneable{
 	public int getVoiceFilID() {
 		return voiceFilID;
 	}
-	
+
 	public int getVoiceEngID() {
 		return voiceEngID;
 	}
@@ -176,17 +199,17 @@ public class Item  implements Cloneable{
 	public void setLevel(LevelType level) {
 		this.level = level;
 	}
-	
-	public void playFilipinoSound(){
-		if(voiceFilID != 0){
+
+	public void playFilipinoSound() {
+		if (voiceFilID != 0) {
 			MediaPlayer mPlayer = MediaPlayer.create(SalinlahiFour.getContext(), voiceFilID);
 			mPlayer.setVolume(1, 1);
 			mPlayer.start();
 		}
 	}
-	
-	public void playEnglishSound(){
-		if(voiceEngID != 0){
+
+	public void playEnglishSound() {
+		if (voiceEngID != 0) {
 			MediaPlayer mPlayer = MediaPlayer.create(SalinlahiFour.getContext(), voiceEngID);
 			mPlayer.setVolume(1, 1);
 			mPlayer.start();
