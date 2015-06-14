@@ -1,7 +1,6 @@
 package com.ube.salinlahifour.tutorials;
 
 import java.util.ArrayList;
-
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.app.Activity;

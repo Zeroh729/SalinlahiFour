@@ -16,7 +16,6 @@ public class ButtonSet {
 	private ArrayList<String> fColors;
 	private int qColor;
 	private ArrayList<String> fQuestions;
-
 	private Random rand;
 	private int sizeHard;
 	private int sizeMed;
