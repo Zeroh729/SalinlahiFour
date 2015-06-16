@@ -387,4 +387,13 @@
                 />
         </Scene>
     </Lesson>
+    <Lesson
+        name="Feelings">
+        <Scene>
+            <Character
+                name="main"
+              	say="Hi"
+                />
+        </Scene>
+    </Lesson>
 </resources>
