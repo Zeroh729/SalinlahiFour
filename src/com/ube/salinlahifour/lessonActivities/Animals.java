@@ -46,11 +46,10 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 	
 	private int fixedIndex;
 	private Card answerCard;
-	private int questionno;
 	
 	private ImageButton btn_function;
 	private TextView tv_feedback;
-	private TextView tv_questionno;
+	//private TextView tv_questionno;
 	
 	private AnimatedButtonListener touchListener;
 	private MediaPlayer sound;
@@ -85,7 +84,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 		btn_cards = new ImageButton[4];
 		iv_signs = new ImageView[4];
 		
-		questionno = 0;
+		itemno = 0;
 		
 		btn_up[0] = (ImageButton)findViewById(R.id.btn_english_up);
 		btn_up[1] = (ImageButton)findViewById(R.id.btn_sound_up);
@@ -109,10 +108,10 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 		
 		btn_function = (ImageButton)findViewById(R.id.btn_function);
 		tv_feedback = (TextView)findViewById(R.id.tv_dialog);
-		tv_questionno = (TextView)findViewById(R.id.tv_questionno);
+		//tv_questionno = (TextView)findViewById(R.id.tv_questionno);
 		
-		tv_questionno.setTypeface(SalinlahiFour.getFontPlaytime());
-		((TextView)findViewById(R.id.tv_score)).setTypeface(SalinlahiFour.getFontPlaytime());
+		//tv_questionno.setTypeface(SalinlahiFour.getFontPlaytime());
+		//((TextView)findViewById(R.id.tv_score)).setTypeface(SalinlahiFour.getFontPlaytime());
 		tv_feedback.setTypeface(SalinlahiFour.getFontAndy());
 		
 		touchListener = new AnimatedButtonListener();
@@ -129,7 +128,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 		btn_function.setOnTouchListener(touchListener);
 		btn_function.setOnClickListener(this);
 		
-		((RelativeLayout)findViewById(R.id.parent_view)).addView(getPauseButton());
+		//((RelativeLayout)findViewById(R.id.parent_view)).addView(getPauseButton());
 		if(SalinlahiFour.getLoggedInUser().getGender() == "female"){
 			((ImageView)findViewById(R.id.img_dialog)).setImageResource(R.drawable.animals_pepaitalking);
 		}else{
@@ -181,6 +180,8 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 			btn_up[i].setVisibility(View.VISIBLE);
 			btn_down[i].setVisibility(View.VISIBLE);
 		}
+		
+		setQuestionTVText("Question No:"+ (itemno + 1) + "/" + evaluation.getTotalScore());
 
 		btn_up[0].setImageResource(R.drawable.animal_btn_yellow);
 		btn_up[1].setImageResource(R.drawable.animal_btn_green);
@@ -194,8 +195,8 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 	}
 	
 	private void updateQuestionNo(){
-		tv_questionno.setText((questionno + 1) + "");
-		((TextView)findViewById(R.id.tv_score)).setText(" / " + questions.size());
+		//tv_questionno.setText((questionno + 1) + "");
+		//((TextView)findViewById(R.id.tv_score)).setText(" / " + questions.size());
 		
 		//UPDATE THIS
 		tv_feedback.setText("Can you match this? yah?");
@@ -228,7 +229,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 		btn_up[fixedIndex].setVisibility(View.INVISIBLE);
 		btn_down[fixedIndex].setVisibility(View.INVISIBLE);
 		
-		answerCard = findAnswerCard(questions.get(questionno).getWord());		
+		answerCard = findAnswerCard(questions.get(itemno).getWord());		
 	}
 	
 	private Card findAnswerCard(String word){
@@ -262,7 +263,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 		for(int i = 1; i < answerIndexes.length; i++){
 			int random;
 			do{
-				random = new Random().nextInt(englishCards.size()+1);
+				random = new Random().nextInt(englishCards.size());
 				random %= items.size();
 			}while(doesContain(random, answerIndexes, i));
 			Log.d("ANIMALS: index " + i +": got: " + random, "TEST");
@@ -466,17 +467,17 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 			if(cnt_wrong == 0){
 				evaluation.evaluateAnswer(filipinoCardsOnHand.get(filipinoCardIndex).answer, filipinoCardsOnHand.get(filipinoCardIndex).answer, UserID);
 //				feedback = "MAGALING! HABA NG HERR";
-				feedback = evaluation.getImmediateFeedback(questions.get(questionno).getQ_num(), questions.get(questionno).getWord(), lesson.getLessonNumber());
+				feedback = evaluation.getImmediateFeedback(questions.get(itemno).getID(), questions.get(itemno).getWord(), lesson.getLessonNumber());
 				tv_feedback.setText(encouragement + feedback);
 				return true;
 			}else{
 				evaluation.evaluateAnswer(filipinoCardsOnHand.get(filipinoCardIndex).answer, "", UserID);
 				if(feedback.contains("English word")){
-					feedback = evaluation.getImmediateFeedback(questions.get(questionno).getQ_num(), englishCardsOnHand.get(englishCardIndex).answer, lesson.getLessonNumber());
+					feedback = evaluation.getImmediateFeedback(questions.get(itemno).getID(), englishCardsOnHand.get(englishCardIndex).answer, lesson.getLessonNumber());
 				}else if(feedback.contains("picture")){
-					feedback = evaluation.getImmediateFeedback(questions.get(questionno).getQ_num(), pictureCardsOnHand.get(pictureCardIndex).answer, lesson.getLessonNumber());
+					feedback = evaluation.getImmediateFeedback(questions.get(itemno).getID(), pictureCardsOnHand.get(pictureCardIndex).answer, lesson.getLessonNumber());
 				}else{
-					feedback = evaluation.getImmediateFeedback(questions.get(questionno).getQ_num(), soundCardsOnHand.get(soundCardIndex).answer, lesson.getLessonNumber());
+					feedback = evaluation.getImmediateFeedback(questions.get(itemno).getID(), soundCardsOnHand.get(soundCardIndex).answer, lesson.getLessonNumber());
 				}
 //				feedback = "BOBSKI!!";
 				tv_feedback.setText(encouragement + feedback);
@@ -546,7 +547,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_chicken, item.getVoiceEngID(), itemno));
 			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_chicken, R.raw.animals_sound_chicken, itemno));
 			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno));
-			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_manok, item.getVoiceFilID(),itemno));
+			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_manok, item.getVoiceFilID(), itemno));
 			break;
 		case "Kalabaw":
 			itemno = 3;
@@ -583,7 +584,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno));
 			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_daga, item.getVoiceFilID(),itemno));
 			break;
-		case "Elefante":
+		case "Elepante":
 			itemno = 8;
 			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_elephant, item.getVoiceEngID(), itemno));
 			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_elephant, R.raw.animals_sound_elephant, itemno));
@@ -703,7 +704,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 						
 					}
 				}else{
-					if(questionno++ < questions.size()-1)
+					if(++itemno < questions.size())
 						update();
 					else{
 						evaluation.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), UserID);

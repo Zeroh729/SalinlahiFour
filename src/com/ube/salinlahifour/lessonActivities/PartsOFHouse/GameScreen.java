@@ -128,8 +128,8 @@ public class GameScreen extends AbstractGameScreen  {
 		protected void assetPositionEasy() {
 			// TODO Auto-generated method stub
 	        Log.d("Aldrin ExtendedFramework", "Positioning Easy Assets");
-	        	livesLeft = 4;
-	        	pDialog = new Parts(65,15);
+	        	nItemsRemaining = 4;
+	        	pDialog = new Parts(65,40);
 	        	pRoof = new Parts(27,185);	
 		        pBody = new Parts(480,150);
 		        pDoor = new Parts(490,355);
@@ -147,9 +147,9 @@ public class GameScreen extends AbstractGameScreen  {
 		protected void assetPositionMedium() {
 			// TODO Auto-generated method stub
 			Log.d("GameScreen", "Positioning Medium"); 
-			livesLeft = 6;
-			pDialog = new Parts(65,15);
-			pRoof = new Parts(59,70);	
+			nItemsRemaining = 6;
+			pDialog = new Parts(65,40);
+			pRoof = new Parts(230,130);	
 	        pBody = new Parts(480,150);
 	        pDoor = new Parts(510,270);
 	        pWindow = new Parts(351,445);
@@ -171,8 +171,8 @@ public class GameScreen extends AbstractGameScreen  {
 		protected void assetPositionHard() {
 			// TODO Auto-generated method stub
 			Log.d("GameScreen", "Positioning Hard"); 
-			livesLeft = 8;
-			pDialog = new Parts(65,15);
+			nItemsRemaining = 8;
+			pDialog = new Parts(65,40);
 			pRoof = new Parts(383,425);	
 	        pBody = new Parts(480,150);
 	        pDoor = new Parts(498,270);
@@ -199,7 +199,7 @@ public class GameScreen extends AbstractGameScreen  {
 
 		@Override
 		protected void updateRunningEasy(List<TouchEvent> touchEvents,float deltaTime) {
-			//Log.d("Lives", Integer.toString(livesLeft));
+			//Log.d("Lives", Integer.toString(nItemsRemaining));
 			
 			// TODO Auto-generated method stub
 			sQuestion = lesson.getItems().get(rounds-1).getQuestion();
@@ -270,12 +270,13 @@ public class GameScreen extends AbstractGameScreen  {
 	            			userRecordOperator.open();
 	                		userLessonProgressOperator.open();
 	                		Log.d("Debug Error", "answer: " + answer + "sAnswer: " + sAnswer );
+	                		Log.d("Debug Error", "Correct Answer: "+ correctAnswer );
 	            			if(eval.evaluateAnswer(correctAnswer, sAnswer, userID) && sAnswer == "Bubong" ){
 	            				roof = Assets.roof;
 		            			Log.d("Debug Error", "CORRECT THATS A Bubong");
 		            			Log.d("Debug Feedback", "getID" + lesson.getItems().get(rounds-1).getID());
 		            			sFeedback =  eval.getImmediateFeedback(lesson.getItems().get(rounds-1).getID(), sAnswer, lessonNumber);
-		            			livesLeft--;
+		            			nItemsRemaining--;
 		            			rounds++;
 		            			pRoof.move(pRoofH.getX() , pRoofH.getY());
 		            			pRoof.setPlaced(true);
@@ -309,7 +310,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            			Log.d("Debug Error", "CORRECT THATS A WINDOW");
 		            			Log.d("Debug Feedback", "getID" + lesson.getItems().get(rounds-1).getID());
 		            			sFeedback =  eval.getImmediateFeedback(lesson.getItems().get(rounds-1).getID(), sAnswer, lessonNumber);
-		            			livesLeft--;
+		            			nItemsRemaining--;
 		            			rounds++;
 		            			pWindow.move(pWindowH.getX() , pWindowH.getY());
 		            			pWindow.setPlaced(true);
@@ -338,8 +339,8 @@ public class GameScreen extends AbstractGameScreen  {
 	            				door = Assets.door;
 		            			Log.d("Debug GameScreen", "CORRECT THATS A door");
 		            			Log.d("Debug Feedback", "getID" + lesson.getItems().get(rounds-1).getID());
-		            			sFeedback =  eval.getImmediateFeedback(items.get(rounds-1).getID(), sAnswer, lessonNumber);
-		            			livesLeft--;
+		            			sFeedback =  eval.getImmediateFeedback(lesson.getItems().get(rounds-1).getID(), sAnswer, lessonNumber);
+		            			nItemsRemaining--;
 		            			rounds++;
 		            			pDoor.move(pDoorH.getX() , pDoorH.getY());
 		            			pDoor.setPlaced(true);
@@ -372,7 +373,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            			Log.d("Debug GameScreen", "CORRECT THATS A BODY");
 		            			Log.d("Debug Feedback", "getID" + lesson.getItems().get(rounds-1).getID());
 		            			sFeedback =  eval.getImmediateFeedback(lesson.getItems().get(rounds-1).getID(), sAnswer, lessonNumber);
-		            			livesLeft--;
+		            			nItemsRemaining--;
 		            			rounds++;
 		            			pBody.move(pBodyH.getX() , pBodyH.getY());
 		            			pBody.setPlaced(true);
@@ -493,7 +494,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            			Log.d("Debug Feedback", "getID" + lesson.getItems().get(rounds-1).getID());
 		            			garage = Assets.garage;
 		            			sFeedback =  eval.getImmediateFeedback(lesson.getItems().get(rounds-1).getID(), sAnswer, lessonNumber);
-		            			livesLeft--;
+		            			nItemsRemaining--;
 		            			rounds++;
 		            			pGarage.move(pGarageH.getX() , pGarageH.getY());
 		            			pGarage.setPlaced(true);
@@ -523,7 +524,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            			Log.d("Debug Feedback", "getID" + lesson.getItems().get(rounds-1).getID());
 		            			fence = Assets.fence;
 		            			sFeedback =  eval.getImmediateFeedback(lesson.getItems().get(rounds-1).getID(), sAnswer, lessonNumber);
-		            			livesLeft--;
+		            			nItemsRemaining--;
 		            			rounds++;
 		            			pFence.move(pFenceH.getX() , pFenceH.getY());
 		            			pFence.setPlaced(true);
@@ -576,8 +577,6 @@ public class GameScreen extends AbstractGameScreen  {
             			answer = 0;
             		}
             	}
-	            
-	            
 	        }
 	            }//Touch down
 	        }//event for loop
@@ -625,7 +624,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            			Log.d("Debug Error", "CORRECT THATS A Bubong");
 		            			Log.d("Debug Feedback", "getID" + lesson.getItems().get(rounds-1).getID());
 		            			sFeedback =  eval.getImmediateFeedback(lesson.getItems().get(rounds-1).getID(), sAnswer, lessonNumber);
-		            			livesLeft--;
+		            			nItemsRemaining--;
 		            			rounds++;
 		            			pChimney.move(pChimneyH.getX() , pChimneyH.getY());
 		            			pChimney.setPlaced(true);
@@ -657,7 +656,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            			Log.d("Debug Error", "CORRECT THATS A Bubong");
 		            			Log.d("Debug Feedback", "getID" + lesson.getItems().get(rounds-1).getID());
 		            			sFeedback =  eval.getImmediateFeedback(lesson.getItems().get(rounds-1).getID(), sAnswer, lessonNumber);
-		            			livesLeft--;
+		            			nItemsRemaining--;
 		            			rounds++;
 		            			pStairs.move(pStairsH.getX() , pStairsH.getY());
 		            			pStairs.setPlaced(true);
@@ -809,15 +808,7 @@ public class GameScreen extends AbstractGameScreen  {
 		     g.drawImage(chimney, pChimney.getX(), pChimney.getY());
 		}
 
-		@Override
-		protected void drawRunningUI() {
-			// TODO Auto-generated method stub
-			  Graphics g = game.getGraphics();
-			  g.drawImage(backbtn, 1, 1);
-		        g.drawString(sQuestion, 97, 63, paint);
-		        showTransition();
-		        showExit();
-		}
+		
 		String[] cuttedWord;
 		@Override
 		protected void showTransition() {
@@ -883,6 +874,16 @@ public class GameScreen extends AbstractGameScreen  {
 			 g.drawImage(nobtn, this.pNo.getX(), pNo.getY());
 			 g.drawImage(yesbtn, pYes.getX(), pYes.getY());
 			}
+		}
+
+		@Override
+		protected void drawCustomUI() {
+			// TODO Auto-generated method stub
+			  Graphics g = game.getGraphics();
+			  g.drawImage(backbtn, 1, 1);
+		        g.drawString(sQuestion, 97,90, paint);
+		        showTransition();
+		        showExit();
 		}
 
 	   
