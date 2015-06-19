@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:id="@+id/parent_view"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal" >
+    
+	<TextView
+		android:id="@+id/feelings_questionbox"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:text="Question Here"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/feedbackbox"
+        android:textSize="29sp"
+	    android:textColor="#2c2c2c" />
+	
+	<ImageView
+	    android:id="@+id/feelings_imageview" 
+	    android:layout_width="100dp"
+	    android:layout_height="100dp"
+	    android:layout_alignParentTop="true"
+	    android:layout_centerHorizontal="true"
+	    android:gravity="center"
+	    android:contentDescription="image"
+	 />
+	
+	<Button
+	    android:id="@+id/feelings1"
+	    android:layout_width="100dp"
+	    android:layout_height="100dp"
+	    android:layout_alignParentLeft="true"
+	   	android:layout_below="@+id/feelings_imageview"
+	    android:layout_marginLeft="25dp"
+	    android:contentDescription="..."
+	    android:onClick="onClick"
+	    android:text="Choice 1" />
+
+	<Button
+	    android:id="@+id/feelings2"
+	    android:layout_width="100dp"
+	    android:layout_height="100dp"
+	    android:layout_alignBaseline="@+id/feelings1"
+	    android:layout_alignBottom="@+id/feelings1"
+	    android:layout_marginLeft="77dp"
+	    android:layout_toRightOf="@+id/feelings1"
+	    android:contentDescription="..."
+	    android:onClick="onClick"
+	    android:text="Choice 2" />
+
+	<Button
+	    android:id="@+id/feelings3"
+	    android:layout_width="100dp"
+	    android:layout_height="100dp"
+	    android:layout_alignBaseline="@+id/feelings2"
+	    android:layout_alignBottom="@+id/feelings2"
+	    android:layout_marginLeft="77dp"
+	    android:layout_toRightOf="@+id/feelings2"
+	    android:contentDescription="..."
+	    android:onClick="onClick"
+	    android:text="Choice 3" />
+	
+	<Button
+	    android:id="@+id/feelings4"
+	    android:layout_width="100dp"
+	    android:layout_height="100dp"
+	    android:layout_alignBaseline="@+id/feelings3"
+	    android:layout_alignBottom="@+id/feelings3"
+	    android:layout_marginLeft="77dp"
+	    android:layout_toRightOf="@+id/feelings3"
+	    android:contentDescription="..."
+	    android:onClick="onClick"
+	    android:text="Choice 4" />
+	
+	<Button
+	    android:id="@+id/feelings5"
+	    android:layout_width="100dp"
+	    android:layout_height="100dp"
+	    android:layout_alignBaseline="@+id/feelings4"
+	    android:layout_alignBottom="@+id/feelings4"
+	    android:layout_marginLeft="77dp"
+	    android:layout_toRightOf="@+id/feelings4"
+	    android:contentDescription="..."
+	    android:onClick="onClick"
+	    android:text="Choice 5" />
+	
+	<Button
+	    android:id="@+id/feelings_next"
+	    android:layout_width="100dp"
+	    android:layout_height="100dp"
+	    android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+	    android:layout_marginRight="21dp"
+	    android:contentDescription="..."
+	    android:onClick="onClick"
+	    android:text="Next" />
+
+</RelativeLayout>

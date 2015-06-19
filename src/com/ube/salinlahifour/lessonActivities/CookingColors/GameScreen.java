@@ -788,12 +788,15 @@ public class GameScreen extends AbstractGameScreen {
 
 			if (isMistake) {
 				if (cor1 == 0) {
-					String lineOne = "", lineTwo = "";
+					String lineOne = "", lineTwo = "", lineTri = "";
 					// g.drawString("- ", 350,155, paint4);
 					// g.drawString(feedbacks[0], 350,155, paint4);
 					cuttedWord = sentenceCutter(feedbacks[0]);
 					for (int s = 0; s < cuttedWord.length; s++) {
-						if (s > 5) {
+						if(s>11){
+							lineTri += cuttedWord[s] + " ";
+						}
+						else if (s > 5) {
 							lineTwo += cuttedWord[s] + " ";
 						} else {
 							lineOne += cuttedWord[s] + " ";
@@ -801,36 +804,45 @@ public class GameScreen extends AbstractGameScreen {
 					}
 					g.drawString("Bread: " + lineOne, 352, 155, paint4);
 					g.drawString(lineTwo, 352, 175, paint4);
+					g.drawString(lineTri, 352, 195, paint4);
 				}
 				if (cor2 == 0) {
-					String lineOne = "", lineTwo = "";
+					String lineOne = "", lineTwo = "", lineTri = "";
 					// g.drawString(feedbacks[1], 350,195, paint4);
 					// g.drawString("- ", 350,195, paint4);
 					cuttedWord = sentenceCutter(feedbacks[1]);
 					for (int s = 0; s < cuttedWord.length; s++) {
-						if (s > 5) {
+						if(s>11){
+							lineTri += cuttedWord[s] + " ";
+						}
+						else if (s > 5) {
 							lineTwo += cuttedWord[s] + " ";
 						} else {
 							lineOne += cuttedWord[s] + " ";
 						}
 					}
-					g.drawString("Frosting: " + lineOne, 352, 195, paint4);
-					g.drawString(lineTwo, 352, 215, paint4);
+					g.drawString("Frosting: " + lineOne, 352, 215, paint4);
+					g.drawString(lineTwo, 352, 235, paint4);
+					g.drawString(lineTri, 352, 255, paint4);
 				}
 				if (cor3 == 0) {
-					String lineOne = "", lineTwo = "";
+					String lineOne = "", lineTwo = "", lineTri = "";
 					// g.drawString(feedbacks[2], 350,225, paint4);
 					// g.drawString("- ", 350,225, paint4);
 					cuttedWord = sentenceCutter(feedbacks[2]);
 					for (int s = 0; s < cuttedWord.length; s++) {
-						if (s > 5) {
+						if(s>11){
+							lineTri += cuttedWord[s] + " ";
+						}
+						else if (s > 5) {
 							lineTwo += cuttedWord[s] + " ";
 						} else {
 							lineOne += cuttedWord[s] + " ";
 						}
 					}
-					g.drawString("Sprinkles: " + lineOne, 352, 235, paint4);
-					g.drawString(lineTwo, 352, 255, paint4);
+					g.drawString("Sprinkles: " + lineOne, 352, 275, paint4);
+					g.drawString(lineTwo, 352, 295, paint4);
+					g.drawString(lineTri, 352, 315, paint4);
 				}
 			} else {
 				g.drawString(feedbacks[0], 350, 155, paint4);

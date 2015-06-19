@@ -185,6 +185,14 @@
 		         <category android:name="android.intent.category.DEFAULT" />  
 		     </intent-filter>   
         </activity>
+	<activity
+            android:name="com.ube.salinlahifour.lessonActivities.Feelings"
+            android:screenOrientation="landscape" >
+             <intent-filter> 
+		       <action android:name="com.ube.salinlahifour.lessonActivities.Feelings" />  
+		         <category android:name="android.intent.category.DEFAULT" />  
+		     </intent-filter>   
+        </activity>
     </application>
 
 </manifest>
