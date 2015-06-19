@@ -27,7 +27,7 @@ public class Tutorial extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.tutorial_animals);
+		//setContentView(R.layout.tutorial_animals);
 
 		Bundle bundle = getIntent().getExtras();
 
