@@ -147,7 +147,7 @@ public abstract class AbstractGameScreen extends Screen {
 				break;
 			}
 
-			if (nItemsRemaining == 0 || rounds == 0 || eval.isAlive() == false) {
+			if (nItemsRemaining == 0 ||  eval.isAlive() == false) {
 				state = GameState.GameOver;
 				Looper.myLooper().quit();
 				if (!gameOverLock) {

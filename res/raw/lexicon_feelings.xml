@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<type>
+    <Word_Entry>
+	    <q_num>1</q_num>
+		<word>Galit</word>
+		<question>What do you feel when you fight your enemies?</question>
+		<eng_word>Angry</eng_word>
+	    <w_type>definition</w_type>
+	    <notes>The feelings makes your face red.</notes>
+	    <hint>You should be angry!</hint>
+		<lesson>7</lesson>
+		<image_path>feelings_angry</image_path>
+		<eng_sound>feelings_angry</eng_sound> 
+		<fil_sound>feelings_galit</fil_sound>
+		<difficulty>EASY</difficulty>
+    </Word_Entry>
+
+    <Word_Entry>
+	    <q_num>2</q_num>
+		<word>Masaya</word>
+		<question>What do you feel on your birthday?</question>
+		<eng_word>Happy</eng_word>
+	    <w_type>definition</w_type>
+	    <notes>The feelings makes you feel good.</notes>
+	    <hint>You should be happy!</hint>
+		<lesson>7</lesson>
+		<image_path>feelings_happy</image_path>
+		<eng_sound>feelings_happy</eng_sound>
+		<fil_sound>feelings_masaya</fil_sound>
+		<difficulty>EASY</difficulty>
+    </Word_Entry>
+
+    <Word_Entry>
+	    <q_num>3</q_num>
+		<word>Takot</word>
+		<question>What do you feel when you see ghosts?</question>
+		<eng_word>Scared</eng_word>
+	    <w_type>definition</w_type>
+	    <notes>The feelings makes you want to run away.</notes>
+	    <hint>You should be scared!</hint>
+		<lesson>7</lesson>
+		<image_path>feelings_scared</image_path>
+		<eng_sound>feelings_scared</eng_sound>
+		<fil_sound>feelings_takot</fil_sound>
+		<difficulty>EASY</difficulty>
+    </Word_Entry>
+
+    <Word_Entry>
+	    <q_num>4</q_num>
+		<word>Gutom</word>
+		<question>What do you feel when you haven't eaten?</question>
+		<eng_word>Hungry</eng_word>
+	    <w_type>definition</w_type>
+	    <notes>The feelings makes you want to eat.</notes>
+	    <hint>You should be hungry</hint>
+		<lesson>7</lesson>
+		<image_path>feelings_hungry</image_path>
+		<eng_sound>feelings_hungry</eng_sound>
+		<fil_sound>feelings_gutom</fil_sound>
+		<difficulty>MEDIUM</difficulty>
+    </Word_Entry>
+
+    <Word_Entry>
+	    <q_num>5</q_num>
+		<word>Kaba</word>
+		<question>What do you feel when you sing on stage?</question>
+		<eng_word>Nervous</eng_word>
+	    <w_type>definition</w_type>
+	    <notes>The feelings makes you sweat a lot.</notes>
+	    <hint>You should be nervous!</hint>
+		<lesson>7</lesson>
+		<image_path>feelings_sweat</image_path>
+		<eng_sound>feelings_sweat</eng_sound>
+		<fil_sound>feelings_pawis</fil_sound>
+		<difficulty>MEDIUM</difficulty>
+    </Word_Entry>
+
+    <Word_Entry>
+	    <q_num>6</q_num>
+		<word>Kilig</word>
+		<question>What do you feel when you see your crush?</question>
+		<eng_word>In love</eng_word>
+	    <w_type>definition</w_type>
+	    <notes>The feelings makes your heart race.</notes>
+	    <hint>You should be in love!</hint>
+		<lesson>7</lesson>
+		<image_path>feelings_inlove</image_path>
+		<eng_sound>feelings_inlove</eng_sound>
+		<fil_sound>feelings_kilig</fil_sound>
+		<difficulty>HARD</difficulty>
+    </Word_Entry>
+
+    <Word_Entry>
+	    <q_num>7</q_num>
+		<word>Lunkot</word>
+		<question>What do you feel when your dog died?</question>
+		<eng_word>Sad</eng_word>
+	    <w_type>definition</w_type>
+	    <notes>The feelings makes you want to cry.</notes>
+	    <hint>You should be sad!</hint>
+		<lesson>7</lesson>
+		<image_path>feelings_tears</image_path>
+		<eng_sound>feelings_sweat</eng_sound>
+		<fil_sound>feelings_iyak</fil_sound>
+		<difficulty>HARD</difficulty>
+    </Word_Entry>
+</type>

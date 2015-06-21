@@ -35,4 +35,14 @@
         <Screenshot src="howtoplay_shape_1"/>
         <Screenshot src="howtoplay_shape_2"/>
     </Lesson>
+    <Lesson
+        name="Feelings">
+        <Screenshot src="howtoplay_feelings_1"/>
+        <Screenshot src="howtoplay_feelings_2"/>
+    </Lesson>
+    <Lesson
+        name="Feelings2">
+        <Screenshot src="howtoplay_feelings_1"/>
+        <Screenshot src="howtoplay_feelings_2"/>
+    </Lesson>
 </resources>

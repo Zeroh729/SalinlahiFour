@@ -8,7 +8,7 @@
 	<eng_word>Mother</eng_word>
     <w_type>definition</w_type>
     <notes>She makes delicious adobo. Very tasty!</notes>
-    <hint>Nanay Pepay's Mother. She's the one that cooks for the family</hint>
+    <hint>She is my mother. She usually cooks for the family.</hint>
 	<lesson>1</lesson>
 	<image_path>family_nanay</image_path>
 	<eng_sound>family_mother</eng_sound>
@@ -23,7 +23,7 @@
 	<eng_word>Father</eng_word>
     <w_type>definition</w_type>
     <notes>He was the one that made our treehouse in the backyard.</notes>
-    <hint>This is my father. He is the one that works for the family</hint>
+    <hint>He is my father. He works for the family.</hint>
 	<lesson>1</lesson>
 	<image_path>family_tatay</image_path>
 	<eng_sound>family_father</eng_sound>
@@ -38,7 +38,7 @@
 	<eng_word>Brother</eng_word>
     <w_type>definition</w_type>
     <notes>He also teases me a lot.</notes>
-    <hint>My older brother. He likes to play basketball and all different kinds of sports.</hint>
+    <hint>He is my older brother. He likes to play basketball.</hint>
 	<lesson>1</lesson>
 	<image_path>family_kuya</image_path>
 	<eng_sound>family_olderbrother</eng_sound>
@@ -52,7 +52,7 @@
     <eng_word>Sister</eng_word>
     <w_type>definition</w_type>
     <notes>She told me she really likes this boy once. i forgot his name.</notes>
-    <hint>She is my older sister. She likes to spend her time with her phone.</hint>
+    <hint>She is my older sister. She spends a lot of her time talking with her friends.</hint>
     <lesson>1</lesson>
     <image_path>family_ate</image_path>
 	<eng_sound>family_oldersister</eng_sound>
@@ -67,7 +67,7 @@
     <eng_word>Grandfather</eng_word>
     <w_type>definition</w_type>
     <notes>We play board games a lot</notes>
-    <hint>My father's father. He uses glasses to read the newspaper</hint>
+    <hint>He is Tatay's father. He uses glasses to read the newspaper.</hint>
 	<lesson>1</lesson>
 	<image_path>family_lolo</image_path>
 	<eng_sound>family_grandfather</eng_sound>
@@ -81,7 +81,7 @@
 	<eng_word>Grandmother</eng_word>
     <w_type>definition</w_type>
     <notes>She also likes to tell us stories from her time.</notes>
-    <hint>My father's mother. She walks around with a cane</hint>
+    <hint>She is Tatay's mother. She walks around with a cane.</hint>
 	<lesson>1</lesson>
 	<image_path>family_lola</image_path>
 	<eng_sound>family_grandmother</eng_sound>
@@ -96,7 +96,7 @@
     <eng_word>Youngest</eng_word>
     <w_type>definition</w_type>
     <notes>He is also very cute. </notes>
-    <hint>My younger sibling. He likes to play toys</hint>
+    <hint>My younger sibling. He likes to play with toys.</hint>
     <lesson>1</lesson>
     <image_path>family_bunso</image_path>
 	<eng_sound>family_youngestsibling</eng_sound>
@@ -110,7 +110,7 @@
     <eng_word>Uncle</eng_word>
     <w_type>definition</w_type>
     <notes>He tells horrible jokes. </notes>
-    <hint>He is my parent's brother. I don't know which one though</hint>
+    <hint>He is Tatay’s brother. He likes to drink a lot.</hint>
     <lesson>1</lesson>
     <image_path>family_tito</image_path>
 	<eng_sound>family_uncle</eng_sound>
@@ -124,7 +124,7 @@
     <eng_word>Auntie</eng_word>
     <w_type>definition</w_type>
     <notes>She likes to hang out with my mother.</notes>
-    <hint>My mothers sister. She is a great cook too</hint>
+    <hint>She is Nanay's sister. She is a great cook too.</hint>
     <lesson>1</lesson>
     <image_path>family_tita</image_path>
 	<eng_sound>family_aunt</eng_sound>
