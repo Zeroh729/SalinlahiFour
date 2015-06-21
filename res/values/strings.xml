@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    
     <string name="action_enterFromLeft">entranceFromLeft</string>
     <string name="action_enterFromRight">entranceFromRight</string>
     <string name="action_enterFromAbove">entranceFromAbove</string>
@@ -15,6 +15,9 @@
     <string name="action_emphasize">emphasize</string>
     <string name="action_surprise">surprise</string>
     <string name="action_panic">panic</string>
+    
+    
+    
     <string name="expression_default">exp0_default</string>
     <string name="expression_shocked">exp0_shocked</string>
     <string name="expression_scared">exp0_scared</string>
@@ -36,6 +39,8 @@
     <string name="expression_special3">exp0_special3</string>
     <string name="expression_special4">exp0_special4</string>
     <string name="expression_special5">exp0_special5</string>
+    
+    
     <string name="app_name">Salinlahi 4</string>
     <string name="hello_world">Salinlahi 4</string>
     <string name="title_activity_select_user">SelectUserActivity</string>
@@ -66,6 +71,5 @@
 
     <string name="title_activity_dev_main">DevMainActivity</string>
     <string name="title_activity_fiesta">Fiesta</string>
-    <string name="title_activity_feelings">Feelings</string>
 
 </resources>

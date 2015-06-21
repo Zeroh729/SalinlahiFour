@@ -5,11 +5,11 @@
 <Word_Entry>
     <q_num>1</q_num>
 	<word>Bubong</word>
-	<question>Bubong</question>
+	<question>NULL</question>
 	<eng_word>Roof</eng_word>
     <w_type>definition</w_type>
-    <notes>It also protects us from rain.</notes>
-    <hint>It covers the top part of the house.</hint>
+    <notes>It also protects us from rain</notes>
+    <hint>Bubong - It covers the top part of the house</hint>
 	<lesson>2</lesson>
 	<image_path>roof</image_path>
 	<eng_sound>house_roof</eng_sound>
@@ -19,11 +19,11 @@
 <Word_Entry>
     <q_num>2</q_num>
 	<word>Dingding</word>
-	<question>Dingding</question>
+	<question>NULL</question>
 	<eng_word>Wall</eng_word>
     <w_type>definition</w_type>
-    <notes>Tita hangs picture frames around here.</notes>
-    <hint>It covers the front, side and back parts of the house.</hint>
+    <notes>Tita hangs picture frames around here</notes>
+    <hint>Dingding - Covers the front, side and back parts of the house</hint>
 	<lesson>2</lesson>
 	<image_path>body</image_path>
 	<eng_sound>house_body</eng_sound>
@@ -33,11 +33,11 @@
 <Word_Entry>
     <q_num>3</q_num>
 	<word>Pinto</word>
-	<question>Pinto</question>
+	<question>NULL</question>
 	<eng_word>Door</eng_word>
     <w_type>definition</w_type>
-    <notes>We use this to get to different parts of the house too.</notes>
-    <hint>We open this one to get inside the house.</hint>
+    <notes>We use this to get to different parts of the house too</notes>
+    <hint>Pinto - We open this one to get inside the house</hint>
 	<lesson>2</lesson>
 	<image_path>door</image_path>
 	<eng_sound>house_door</eng_sound>
@@ -47,11 +47,11 @@
 <Word_Entry>
     <q_num>4</q_num>
 	<word>Bintana</word>
-	<question>Bintana</question>
+	<question>NULL</question>
 	<eng_word>Window</eng_word>
     <w_type>definition</w_type>
-    <notes>Sometimes you see birds just outside here.</notes>
-    <hint>They are made of glass so that you can look from the inside.</hint>
+    <notes>Sometimes you see birds just outside here</notes>
+    <hint>Bintana - They are made of glass so that you can look from the inside</hint>
 	<lesson>2</lesson>
 	<image_path>window</image_path>
 	<eng_sound>house_windows</eng_sound>
@@ -62,11 +62,11 @@
 <Word_Entry>
     <q_num>5</q_num>
 	<word>Garahe</word>
-	<question>Garahe</question>
+	<question>NULL</question>
 	<eng_word>Garage</eng_word>
     <w_type>definition</w_type>
-    <notes>Tito keeps his tools here as well.</notes>
-    <hint>This is where tito parks his car.</hint>
+    <notes>Tito keeps his tools here as well</notes>
+    <hint>Garahe - This is where tito parks his car.</hint>
 	<lesson>2</lesson>
 	<image_path>garage</image_path>
 	<eng_sound>house_garage</eng_sound>
@@ -78,11 +78,11 @@
 <Word_Entry>
     <q_num>6</q_num>
 	<word>Bakod</word>
-	<question>Bakod</question>
+	<question>NULL</question>
 	<eng_word>Fence</eng_word>
     <w_type>definition</w_type>
-    <notes>Did you know, Santa uses this to give us presents.</notes>
-    <hint>This protects our house from strangers.</hint>
+    <notes>It looks like arrows pointing up</notes>
+    <hint>Bakod - This protects our house from strangers</hint>
 	<lesson>2</lesson>
 	<image_path>fence</image_path>
 	<eng_sound>house_fence</eng_sound>
@@ -92,11 +92,11 @@
 	<Word_Entry>
     <q_num>7</q_num>
 	<word>Tsimenea</word>
-	<question>Tsimenea</question>
+	<question>NULL</question>
 	<eng_word>Chimney</eng_word>
     <w_type>definition</w_type>
-    <notes>It looks like arrows pointing up.</notes>
-    <hint>Smoke comes out of here when tita cooks.</hint>
+    <notes>It looks like arrows pointing up</notes>
+    <hint>Tsimnea - Smoke comes out of here when tita cooks.</hint>
 	<lesson>2</lesson>
 	<image_path>chimney</image_path>
 	<eng_sound>house_chimney</eng_sound>
@@ -106,11 +106,11 @@
 <Word_Entry>
     <q_num>8</q_num>
 	<word>Hagdan</word>
-	<question>Hagdan</question>
+	<question>NULL</question>
 	<eng_word>Stairs</eng_word>
     <w_type>definition</w_type>
-    <notes>We used this earlier to get inside the house.</notes>
-    <hint>Makes us go up.</hint>
+    <notes>It looks like arrows pointing up</notes>
+    <hint>Hagdan - Makes us go up</hint>
 	<lesson>2</lesson>
 	<image_path>stairs</image_path>
 	<eng_sound>house_stairs</eng_sound>

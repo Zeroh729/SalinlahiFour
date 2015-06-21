@@ -126,9 +126,8 @@ public abstract class AbstractLessonActivity extends Activity {
 
 
 		itemno = 0;
-		initiateLevels();
 		initiateViews();
-		//initiateLevels();
+		initiateLevels();
 		initiateGamePauseUI();
 		getQuestions();
 		initiateNarrationModule();
@@ -175,8 +174,8 @@ public abstract class AbstractLessonActivity extends Activity {
 		questionNo_tv.setText("Question No:"+ (itemno+1) + "/" + evaluation.getTotalScore());
 		
 		//((ViewGroup)getWindow().getDecorView().getRootView()).addView(life_tv,p);
-		//layout.addView(life_tv);
-		//layout.addView(questionNo_tv);
+		layout.addView(life_tv);
+		layout.addView(questionNo_tv);
 		//((ViewGroup)getWindow().getCurrentFocus().getRootView()).addView(questionNo_tv);
 	}
 

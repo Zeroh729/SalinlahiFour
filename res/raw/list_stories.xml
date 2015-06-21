@@ -387,26 +387,4 @@
                 />
         </Scene>
     </Lesson>
-    <Lesson name="Feelings">
-    	<Scene>
-    	    <Background src="tutorial_feelings"></Background>
-    	    <Character
-    	        name="main"
-    	        animate="entranceFromBelow"
-    	        say="Hi! :D"
-    	        soundfile="narratio_feelings_1"/>
-    	    
-    	</Scene>
-    </Lesson>
-    <Lesson name="Feelings2">
-    	<Scene>
-    	    <Background src="tutorial_feelings2"></Background>
-    	    <Character
-    	        name="main"
-    	        animate="entranceFromBelow"
-    	        say="Hi! :D"
-    	        soundfile="narratio_feelings_1"/>
-    	    
-    	</Scene>
-    </Lesson>
 </resources>

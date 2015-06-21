@@ -138,24 +138,6 @@
     <activity_name>Greetings</activity_name>
     <icon_image>lesson1_icon</icon_image>
 </Lesson_Num>
-<Lesson_Num>
-    <entry>7</entry>
-    <Lesson_Name>Feelings</Lesson_Name>
-    <Q_List>
-    <qentry>1</qentry>  
-    <qentry>2</qentry>
-    <qentry>3</qentry>
-    <qentry>4</qentry>  
-    <qentry>5</qentry>
-    <qentry>6</qentry>
-    <qentry>7</qentry>
-    </Q_List>
-    <Lesson_PreReq>0</Lesson_PreReq>
-    <Summary>Feelings wooo</Summary>
-    <lexicon_name>lexicon_feelings</lexicon_name>
-    <activity_name>Feelings</activity_name>
-    <icon_image>lesson1_icon</icon_image>
-</Lesson_Num>
 </type>
 
 <!--
