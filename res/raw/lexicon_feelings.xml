@@ -11,7 +11,7 @@
 	    <hint>You should be angry!</hint>
 		<lesson>7</lesson>
 		<image_path>feelings_angry</image_path>
-		<eng_sound>feelings_angry</eng_sound>
+		<eng_sound>feelings_angry</eng_sound> 
 		<fil_sound>feelings_galit</fil_sound>
 		<difficulty>EASY</difficulty>
     </Word_Entry>

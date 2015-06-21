@@ -1,158 +1,95 @@
 package com.ube.salinlahifour.lessonActivities;
 
-import java.util.ArrayList;
+import com.ube.salinlahifour.R;
+import com.ube.salinlahifour.R.layout;
 
-import android.text.Html;
-import android.util.Log;
-import android.view.MotionEvent;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.ube.salinlahifour.Item;
-import com.ube.salinlahifour.R;
-import com.ube.salinlahifour.enumTypes.LevelType;
+public class Feelings extends AbstractLessonActivity implements OnClickListener{
 
-public class Feelings extends AbstractLessonActivity implements OnClickListener, OnTouchListener{
-	private final int EASY = 3;
-	private final int MEDIUM = 5;
-	private int totalQuestions;
-	private TextView feedbackView;
-	private ImageView questionView;
-	private Button[] choices;
-	private Button nextButton;
+	private TextView txtBox_Box;
+	private Button[] btn_choices;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.lessonactivity_feelings);
+	}
 
-	public Feelings() {
+	public Feelings()
+	{
 		layoutID = R.layout.lessonactivity_feelings;
 	}
 	
 	@Override
 	protected void configureEasyLevel() {
-		totalQuestions = EASY;
-		
-		//instantiate buttons as an array
-		choices = new Button[totalQuestions];
-		choices[0] = (Button) findViewById(R.id.feelings1);
-		choices[1] = (Button) findViewById(R.id.feelings2);
-		choices[2] = (Button) findViewById(R.id.feelings3);
+		// TODO Auto-generated method stub
+		setCntQuestions(3);
 	}
 
 	@Override
 	protected void configureMediumLevel() {
-		totalQuestions = MEDIUM;
+		// TODO Auto-generated method stub
 		
-		//instantiate buttons as an array
-		choices = new Button[totalQuestions];
-		choices[0] = (Button) findViewById(R.id.feelings1);
-		choices[1] = (Button) findViewById(R.id.feelings2);
-		choices[2] = (Button) findViewById(R.id.feelings3);
-		choices[3] = (Button) findViewById(R.id.feelings4);
-		choices[4] = (Button) findViewById(R.id.feelings5);
 	}
 
 	@Override
 	protected void configureHardLevel() {
-		//Unsupported
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	protected void initiateViews() {
-		//assign UI Elements
-		feedbackView = (TextView) findViewById(R.id.feelings_questionbox);
-		questionView = (ImageView) findViewById(R.id.feelings_imageview);
-		nextButton = (Button) findViewById(R.id.feelings_next);
+		// TODO Auto-generated method stub
+		txtBox_Box = (TextView) findViewById(R.id.txtBox_box);
 		
-		//add button listener to the view
-		feedbackView.setOnClickListener(this);
-		//Set total number of questions
-		setCntQuestions(totalQuestions);
+		btn_choices = new Button[3];
+		
+		btn_choices[0] = (Button)findViewById(R.id.btn_choice1);
+		btn_choices[1] = (Button)findViewById(R.id.btn_choice2);
+		btn_choices[2] = (Button)findViewById(R.id.btn_choice3);
 	}
 
 	@Override
 	protected void update() {
-		//Set the choices
-		int i = 0;
+		// TODO Auto-generated method stub
+		String[] userChoices = loadSortedChoices(getCntQuestions());
 		
-		if(!activityLevel.equals(LevelType.HARD)) {
-			for(String s : loadSortedChoices(totalQuestions)) {
-				Log.d("Dev", "Q: "+ s);
-				choices[i].setText(s);
-				++i;
-			}
-		} else {
-			for(Item item : loadShuffledChoices(totalQuestions)) {
-				choices[i].setText(item.getWord());
-				++i;
-			}
+		for(int i = 0; i < btn_choices.length; i++)
+		{
+			btn_choices[i].setText(userChoices[i]);
 		}
-		
-		//Load the next question
-		loadQuestion(itemno);
-		questions.get(itemno).playEnglishSound();
-		questionView.setImageResource(questions.get(itemno).getImageID());
-		feedbackView.setText(Html.fromHtml(feedback));
+		txtBox_Box.setText(feedback + "\n" + getQuestionItem().getQuestion());
 	}
 
 	@Override
 	protected void ifAnswerIsCorrect() {
-		toggleButtons(false);
-		questions.get(itemno).playFilipinoSound();
-		nextButton.setVisibility(Button.VISIBLE);
-	}
-	
-	private void toggleButtons(boolean toggle) {
-		int val;
-		if(toggle) {
-			val = Button.VISIBLE;
-		} else {
-			val = Button.INVISIBLE;
-		}
-		
-		for(int i = 0; i < totalQuestions; i++) {
-			choices[i].setVisibility(val);
-		}
+		// TODO Auto-generated method stub
+		update();
 	}
 
 	@Override
 	protected void ifAnswerIsWrong() {
-		ifAnswerIsCorrect();
-	}
-
-	@Override
-	public boolean onTouch(View v, MotionEvent event) {
-		//Unsupported
-		return false;
+		// TODO Auto-generated method stub
+		update();
 	}
 
 	@Override
 	public void onClick(View v) {
-		//Get the chosen button
-		switch(v.getId()) {
-		case R.id.feelings1: 
-			evaluate(choices[0].getText().toString());
-			break;
-		case R.id.feelings2: 
-			evaluate(choices[1].getText().toString());
-			break;
-		case R.id.feelings3: 
-			evaluate(choices[2].getText().toString());
-			break;
-		case R.id.feelings4:
-			evaluate(choices[3].getText().toString());
-			break;
-		case R.id.feelings5:
-			evaluate(choices[4].getText().toString());
-			break;
-		case R.id.feelings_next:
-			nextButton.setVisibility(Button.INVISIBLE);
-			update();
+		// TODO Auto-generated method stub
+		switch(v.getId())
+		{
+			case R.id.btn_choice1: evaluate(btn_choices[0].getText().toString()); break;
+			case R.id.btn_choice2: evaluate(btn_choices[1].getText().toString()); break;
+			case R.id.btn_choice3: evaluate(btn_choices[2].getText().toString()); break;
 		}
-		update();
 	}
-	
-	
-
 }
