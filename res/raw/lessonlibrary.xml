@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-    Document   : LessonLibrary.xml
+    Document   : LessonLibrary 
     Created on : July 11, 2011, 3:27 PM
     Author     : Ledian
     Description:
@@ -24,7 +24,13 @@
         <qentry>9</qentry>
     </Q_List>
     <Lesson_PreReq>0</Lesson_PreReq>
-    <Summary>Get To know how you call your parents in Filipino</Summary>
+    <Summary></Summary>
+    <lexicon_name>lexicon_family</lexicon_name>
+    <activity_name>Family</activity_name>
+    <tutorial_name>Family</tutorial_name>
+    <narrative_name>Family</narrative_name>
+    <icon_image>lesson1_icon</icon_image>
+    <tutorial_background>family_tutt</tutorial_background>
 </Lesson_Num>
 <Lesson_Num>
     <entry>2</entry>
@@ -38,7 +44,13 @@
      <qentry>5</qentry>
      <qentry>6</qentry>
      </Q_List>
-    <Summary>Know what you call the parts of your house in Filipino</Summary>
+    <Summary></Summary>
+    <lexicon_name>lexicon_house</lexicon_name>
+    <activity_name>House</activity_name>
+    <tutorial_name>House</tutorial_name>
+    <narrative_name>House</narrative_name>
+    <icon_image>lesson2_icon</icon_image>
+    <tutorial_background>house_tutt</tutorial_background>
 </Lesson_Num>
 <Lesson_Num>
     <entry>3</entry>
@@ -54,7 +66,13 @@
      <qentry>7</qentry>
      <qentry>8</qentry>
      </Q_List>
-    <Summary>Know the colors used in filipino</Summary>
+    <Summary></Summary>
+    <lexicon_name>lexicon_cooking</lexicon_name>
+    <activity_name>Cooking</activity_name>
+    <tutorial_name>Cooking</tutorial_name>
+    <narrative_name>Cooking</narrative_name>
+    <icon_image>lesson3_icon</icon_image>
+    <tutorial_background>colors_tutt</tutorial_background>
 </Lesson_Num>
 <Lesson_Num>
     <entry>4</entry>
@@ -72,7 +90,53 @@
      <qentry>9</qentry>
      <qentry>10</qentry>
      </Q_List>
-    <Summary>Battle aliens using the correct shape together with your friend</Summary>
+    <Summary></Summary>
+    <lexicon_name>lexicon_shape</lexicon_name>
+    <activity_name>Shape</activity_name>
+    <tutorial_name>Shape</tutorial_name>
+    <narrative_name>Shape</narrative_name>
+    <icon_image>lesson4_icon</icon_image>
+    <tutorial_background>shapes_tutt</tutorial_background>
+</Lesson_Num>
+<Lesson_Num>
+    <entry>5</entry>
+    <Lesson_Name>Zoo Cards</Lesson_Name>
+    <Lesson_PreReq>0</Lesson_PreReq>
+     <Q_List>
+     <qentry>1</qentry>
+     <qentry>2</qentry>
+     <qentry>3</qentry>
+     <qentry>4</qentry>
+     <qentry>5</qentry>
+     <qentry>6</qentry>
+     <qentry>7</qentry>
+     <qentry>8</qentry>
+     <qentry>9</qentry>
+     <qentry>10</qentry>
+     </Q_List>
+    <Summary></Summary>
+    <lexicon_name>lexicon_animals</lexicon_name>
+    <activity_name>Animals</activity_name>
+    <icon_image>lesson5_icon</icon_image>
+    <tutorial_background>animals_tutt</tutorial_background>
+</Lesson_Num>
+<Lesson_Num>
+    <entry>6</entry>
+    <Lesson_Name>Greetings</Lesson_Name>
+    <Lesson_PreReq>0</Lesson_PreReq>
+     <Q_List>
+     <qentry>1</qentry>
+     <qentry>2</qentry>
+     <qentry>3</qentry>
+     <qentry>4</qentry>
+     <qentry>5</qentry>
+     <qentry>6</qentry>
+     <qentry>7</qentry>
+     </Q_List>
+    <Summary></Summary>
+    <lexicon_name>lexicon_greetings</lexicon_name>
+    <activity_name>Greetings</activity_name>
+    <icon_image>lesson1_icon</icon_image>
 </Lesson_Num>
 </type>
 

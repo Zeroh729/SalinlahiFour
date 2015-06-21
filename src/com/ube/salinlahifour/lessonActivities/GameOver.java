@@ -22,7 +22,8 @@ public class GameOver extends Activity {
 	private ReportCard reportCard;
 	private int lessonNumber;
 	private int userID;
-	private  LevelType LTActLevel;
+	private LevelType LTActLevel;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -34,57 +35,65 @@ public class GameOver extends Activity {
 		userID = beforeIntent.getIntExtra("userID", 0);
 		lessonNumber = beforeIntent.getIntExtra("LessonNum", 0);
 		lesson = beforeIntent.getParcelableExtra("lesson");
-		 ev = new Evaluation(this, ActName, ActLevel);
-			ev.setScore( beforeIntent.getIntExtra("e_score", 0));
-			ev.setTotScore(beforeIntent.getIntExtra("e_total", 0));
-		 ev.updateUserLessonProgress(lesson.getName(), ActLevel.toString(), userID);
-		  LTActLevel = null;
-			switch(ActLevel){
-			case "EASY": LTActLevel = LevelType.EASY; break;
-			case "MEDIUM": LTActLevel = LevelType.MEDIUM; break;
-			case "HARD": LTActLevel = LevelType.HARD; break;
-			}
-		    
+		Log.d("UGH", ActName);
+		Log.d("UGH", ActLevel);
+		ev = new Evaluation(this, ActName, ActLevel);
+		ev.setScore(beforeIntent.getIntExtra("e_score", 0));
+		ev.setTotScore(beforeIntent.getIntExtra("e_total", 0));
+		ev.setLexiconSize(beforeIntent.getIntExtra("lex_size", 0));
+		ev.updateUserLessonProgress(lesson.getName(), ActLevel.toString(), SalinlahiFour.getLoggedInUser().getId());
+		LTActLevel = null;
+		switch (ActLevel) {
+		case "EASY":
+			LTActLevel = LevelType.EASY;
+			break;
+		case "MEDIUM":
+			LTActLevel = LevelType.MEDIUM;
+			break;
+		case "HARD":
+			LTActLevel = LevelType.HARD;
+			break;
+		}
+
 	}
-	protected void onStart(){
+
+	protected void onStart() {
 		super.onStart();
-		Log.d("Debug ReportCard", "On Game Over Screen" );
-		Log.d("Debug ReportCard", "Name: " + ActName );
-		Log.d("Debug ReportCard", "Level: " + ActLevel );
-		Log.d("Debug ReportCard", "feedback: " + feedback );
-		Log.d("Debug ReportCard", "user ID: " + userID );
-		Log.d("Debug ReportCard", "Lesson Number: " + lessonNumber );
-		Log.d("Debug ReportCard", "lesson: " + lesson.getName() );
-		Log.d("Debug ReportCard", "Eval Score: " + ev.getScore() );
-		Log.d("Debug ReportCard", "Eval Total Score: " + ev.getTotalScore() );
-		Log.d("Debug ReportCard", "Info End" );
-		
-		reportCard = new ReportCard(this, lesson,LTActLevel, ev, feedback);
+		Log.d("Debug ReportCard", "On Game Over Screen");
+		Log.d("Debug ReportCard", "Name: " + ActName);
+		Log.d("Debug ReportCard", "Level: " + ActLevel);
+		Log.d("Debug ReportCard", "feedback: " + feedback);
+		Log.d("Debug ReportCard", "user ID: " + userID);
+		Log.d("Debug ReportCard", "Lesson Number: " + lessonNumber);
+		Log.d("Debug ReportCard", "lesson: " + lesson.getName());
+		Log.d("Debug ReportCard", "Eval Score: " + ev.getScore());
+		Log.d("Debug ReportCard", "Eval Total Score: " + ev.getTotalScore());
+		Log.d("Debug ReportCard", "Info End");
+
+		reportCard = new ReportCard(this, lesson, LTActLevel, ev, feedback, ActName);
 		new Handler().postDelayed(new Runnable() {
-		    public void run() {
-		    	
-				//reportCard.setHeight(100);
-				//reportCard.setWidth(100);
-				//reportCard.setFocusable(true);
-			    reportCard.reveal();
-		    }
+			public void run() {
+
+				// reportCard.setHeight(100);
+				// reportCard.setWidth(100);
+				// reportCard.setFocusable(true);
+				reportCard.reveal();
+			}
 		}, 100);
 	}
-	
+
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		
-	    
-	}
 
+	}
 
 	@Override
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		
+
 	}
-	
+
 }

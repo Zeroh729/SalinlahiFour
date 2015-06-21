@@ -50,6 +50,7 @@ public abstract class AbstractLAFramework extends AndroidGame {
 	protected String activityLevel;
 	protected int layoutID;
 	protected int UserID;	
+	protected int cnt_question;
 	protected iFeedback NLG;
 	protected ReportCard reportCard;
 	protected Evaluation evaluation;
@@ -59,16 +60,21 @@ public abstract class AbstractLAFramework extends AndroidGame {
 		// TODO Auto-generated method stub
 		
 		Bundle bundle = getIntent().getExtras();
-		lesson = (Lesson) bundle.getParcelable("lesson");
 		activityName = bundle.getString("activityName");
+		lesson = SalinlahiFour.getLessonByClassName(activityName);
 		activityLevel = bundle.getString("activityLevel");
-		UserID = bundle.getInt("UserID");
+		UserID = SalinlahiFour.getLoggedInUser().getId();
+		evaluation =  new Evaluation(this, activityName, activityLevel.toString());
 		Log.d(activityName, "TEST ActivityName in lesson act");
 		Log.d(activityLevel, "TEST ActivityLevel in lesson act: " + activityLevel);
-		items = ((SalinlahiFour)getApplication()).getLessonItems();
+		//items = lesson.getItems();
 		mContext = getBaseContext();
 		getQuestions();
 		initiateNarrationModule();
+		evaluation.setLexiconSize(evaluation.generateLexiconSize(lesson));//Set total score in evaluation module
+		Log.d("Clarity", "Lexicon Size: "+ evaluation.generateLexiconSize(lesson) );
+		Log.d("Clarity", "Question Size: " + questions.size());
+		evaluation.setTotScore(questions.size());
 		super.onCreate(savedInstanceState);
 	}
 	public static Context getContext() {
@@ -84,12 +90,14 @@ public abstract class AbstractLAFramework extends AndroidGame {
 		Log.d("TESTINGLessonActivity", "Aldrin: getting Questions");
 		String lastDate = DateTimeConverter.getDateLastMonth();
 		UserRecordOperations userdb = new UserRecordOperations(this);
-		userdb.open();		ArrayList<UserRecord> records;
+		userdb.open();		
+		ArrayList<UserRecord> records;
 
 		try {
-			records = userdb.getRecentUserRecordsFromUserId(((SalinlahiFour)getApplication()).getLoggedInUser().getId(), activityName);
-
-			ArrayList<Item> items = ((SalinlahiFour)getApplication()).getLessonItems();
+			records = userdb.getRecentUserRecordsFromUserId(SalinlahiFour.getLoggedInUser().getId(), activityName);
+			int cnt_itemLevel = 0;
+			
+			ArrayList<Item> items = SalinlahiFour.getLessonItems(lesson.getTheRealName(), activityLevel);
 	//		ArrayList<String> itemNames = new ArrayList();
 	//		ArrayList<Integer> itemScores = new ArrayList();
 			HashMap<String, Integer> itemKeys = new HashMap();
@@ -97,33 +105,51 @@ public abstract class AbstractLAFramework extends AndroidGame {
 			for(int i = 0; i < items.size(); i++){
 	//			itemNames.add(items.get(i).getWord());
 	//			itemScores.add(0);
-				itemKeys.put(items.get(i).getWord(), 0);
+				if(!items.get(i).getLevel().equals(activityLevel)){
+					itemKeys.put(items.get(i).getWord(), 0);
+				}else{
+					cnt_itemLevel++;
+					questions.add(items.get(i));
+				}
 			}
 			
             Log.d("records size: " + records.size(), "TEST");
+            Log.d("itemKeys size: " + itemKeys.size(), "TEST");
 					
 			for(int i = 0; i < records.size(); i++){
 	//			int index = itemNames.indexOf(records.get(i).getCorrectAnswer());
-				int value = itemKeys.get(records.get(i).getCorrectAnswer());
-				if(records.get(i).getStatus().equals(StatusType.CORRECT.toString())){
-					value += 1;
-				}else{
-					value -= 1;
+				if(itemKeys.containsKey(records.get(i).getCorrectAnswer())){
+					int value = itemKeys.get(records.get(i).getCorrectAnswer());
+					if(records.get(i).getStatus().equals(StatusType.CORRECT.toString())){
+						value += 1;
+					}else{
+						value -= 1;
+					}
+					itemKeys.put(records.get(i).getCorrectAnswer(), value);
 				}
-				itemKeys.put(records.get(i).getCorrectAnswer(), value);
 			}		
 			
 			Map<String, Integer> sortedItemKeys = sortByComparator(itemKeys);
 			
+			int i = 0;
 			for(String key : sortedItemKeys.keySet()){
-				ArrayList<Item> lessonItems = ((SalinlahiFour)getApplication()).getLessonItems();
-				for(int i = 0; i < lessonItems.size(); i++)
-					if(lessonItems.get(i).getWord().equals(key)){
-						questions.add(lessonItems.get(i));
-						break;
-					}
-				Collections.shuffle(questions,  new Random(System.nanoTime()));
+				if(cnt_question == 0 || ((cnt_question - cnt_itemLevel) > i)){
+					ArrayList<Item> lessonItems =  SalinlahiFour.getLessonItems(lesson.getTheRealName(), activityLevel);
+					for(int j = 0; j < lessonItems.size(); j++)
+						if(lessonItems.get(j).getWord().equals(key)){
+	//						if(lessonItems.get(j).getLevel().equals(activityLevel))
+								questions.add(lessonItems.get(j));
+	//						else if(cnt_question > 0 && cnt_question < j){
+	//							
+	//						}
+							break;
+						}
+				}else{
+					break;
+				}
+				i++;
 			}
+			Collections.shuffle(questions,  new Random(System.nanoTime()));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -153,12 +179,26 @@ public abstract class AbstractLAFramework extends AndroidGame {
 	}
 	
 	protected void initiateNarrationModule(){
+		int passingScore = 0;
 		Log.d("TESTINGLessonActivity", "Aldrin: Initiating iFeedback..");
 		NLG = new iFeedback();
 		Log.d("TESTINGLessonActivity", "Aldrin: Reading iFeedback properties");
 		NLG.readProperties();
+		evaluation.setLexiconDir(lesson.getLexicon());
+		Log.d("Feedback", "Total score: " + questions.size());
+		if(questions.size() % 2 > 0){
+			Log.d("Feedback", "Total score is Odd");
+			passingScore = (int) (questions.size()*0.5)+1;
+			Log.d("Feedback", "Passing score: " +  passingScore);
+		}else{
+			Log.d("Feedback", "Total score is Even");
+			passingScore = (int) (questions.size()*0.5);
+			Log.d("Feedback", "Passing score: " +  passingScore);
+		}
+		evaluation.setPassingGrade(passingScore);
 		Log.d("TESTINGLessonActivity", "Aldrin: iFeedback Initiated");
 		Log.d("TESTINGLessonActivity", "Aldrin: iFeedback LOL");
+
 
 	}
 	protected void end_report(int choice){//THIS IS FOR TRANSFERRING TO OTHER ACTIVITIES
@@ -182,10 +222,13 @@ public abstract class AbstractLAFramework extends AndroidGame {
 		case "MEDIUM": LTActLevel = LevelType.MEDIUM; break;
 		case "HARD": LTActLevel = LevelType.HARD; break;
 		}
-		reportCard = new ReportCard(context, lesson, LTActLevel, eval, evaluation.getEndofActivityFeedback(score, lessonnumber));
+		reportCard = new ReportCard(context, lesson, LTActLevel, eval, evaluation.getEndofActivityFeedback(score, lessonnumber),activityName);
 		reportCard.reveal();
 	}
 
+	protected void setCntQuestions(int x){
+		cnt_question = x;
+	}
 	
 	private void errorPopup(String title, String error){
 		final AlertDialog.Builder builder=new AlertDialog.Builder(this);

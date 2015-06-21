@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type>
+	<Word_Entry>
+		<q_num>1</q_num>
+		<word>Pusa</word>
+		<question>NULL</question>
+		<eng_word>Cat</eng_word>
+		<w_type>definition</w_type>
+		<notes>People believe that the black ones are unlucky</notes>
+		<hint>They are said to have 9 lives and always land on their feet.</hint>
+		<lesson>5</lesson>
+		<image_path>animals_cat</image_path>
+		<eng_sound>animals_cat</eng_sound>
+		<fil_sound>animals_pusa</fil_sound>
+		<difficulty>EASY</difficulty>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>2</q_num>
+		<word>Aso</word>
+		<question>NULL</question>
+		<eng_word>Dog</eng_word>
+		<w_type>definition</w_type>
+		<notes>These guys and cats usually fight.</notes>
+		<hint>They are usually made as pets. They bark at everything.</hint>
+		<lesson>5</lesson>
+		<image_path>animals_dog</image_path>
+		<eng_sound>animals_dog</eng_sound>
+		<fil_sound>animals_asp</fil_sound>
+		<difficulty>EASY</difficulty>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>3</q_num>
+		<word>Manok</word>
+		<question>NULL</question>
+		<eng_word>Chicken</eng_word>
+		<w_type>definition</w_type>
+		<notes>They also make for a pretty tasty meal.</notes>
+		<hint>This animal can't fly even though it's a bird. It also lays eggs.</hint>
+		<lesson>5</lesson>
+		<image_path>animals_chicken</image_path>
+		<eng_sound>animals_chicken</eng_sound>
+		<fil_sound>animals_manok</fil_sound>
+		<difficulty>EASY</difficulty>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>4</q_num>
+		<word>Kalabaw</word>
+		<question>NULL</question>
+		<eng_word>Carabao</eng_word>
+		<w_type>definition</w_type>
+		<notes>Farmers also use them to go around faster.</notes>
+		<hint>Farmers use these guys to help them with farming. They also have horns like a bull</hint>
+		<lesson>5</lesson>
+		<image_path>animals_carabao</image_path>
+		<eng_sound>animals_carabao</eng_sound>
+		<fil_sound>animals_kalabao</fil_sound>
+		<difficulty>EASY</difficulty>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>5</q_num>
+		<word>Palaka</word>
+		<question>NULL</question>
+		<eng_word>Frog</eng_word>
+		<w_type>definition</w_type>
+		<notes>Small Creatures that jumps around your pond</notes>
+		<hint>They eat insects like mosquito or fly for food</hint>
+		<lesson>5</lesson>
+		<image_path>animals_frog</image_path>
+		<eng_sound>animals_frog</eng_sound>
+		<fil_sound>animals_palaka</fil_sound>
+		<difficulty>MEDIUM</difficulty>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>6</q_num>
+		<word>Unggoy</word>
+		<question></question>
+		<eng_word></eng_word>
+		<w_type>definition</w_type>
+		<notes>Some say we were once like that.</notes>
+		<hint>They like to eat bananas and hang around in trees</hint>
+		<lesson>5</lesson>
+		<image_path>animals_monkey</image_path>
+		<eng_sound>animals_monkey</eng_sound>
+		<fil_sound>animals_unggoy</fil_sound>
+		<difficulty>MEDIUM</difficulty>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>7</q_num>
+		<word>Ibon</word>
+		<question>NULL</question>
+		<eng_word>Bird</eng_word>
+		<w_type>definition</w_type>
+		<notes>You might see them in windows and trees as well</notes>
+		<hint>These animals fly around in the sky.</hint>
+		<lesson>5</lesson>
+		<image_path>animals_birl</image_path>
+		<eng_sound>animals_bird</eng_sound>
+		<fil_sound>animals_ibon</fil_sound>
+		<difficulty>MEDIUM</difficulty>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>8</q_num>
+		<word>Daga</word>
+		<question>NULL</question>
+		<eng_word>Mouse</eng_word>
+		<w_type>definition</w_type>
+		<notes>They are chased by cats.</notes>
+		<hint>Little animals that like to eat cheese and run around the house</hint>
+		<lesson>5</lesson>
+		<image_path>animals_mouse</image_path>
+		<eng_sound>animals_mouse</eng_sound>
+		<fil_sound>animals_daga</fil_sound>
+		<difficulty>MEDIUM</difficulty>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>9</q_num>
+		<word>Elepante</word>
+		<question>NULL</question>
+		<eng_word>Elephant</eng_word>
+		<w_type>definition</w_type>
+		<notes>They are the largest land animal</notes>
+		<hint>These are big animals with long trunks</hint>
+		<lesson>5</lesson>
+		<image_path>animals_elephant</image_path>
+		<eng_sound>animals_elephant</eng_sound>
+		<fil_sound>animals_elefante</fil_sound>
+		<difficulty>HARD</difficulty>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>10</q_num>
+		<word>Oso</word>
+		<question>NULL</question>
+		<eng_word>Bear</eng_word>
+		<w_type>definition</w_type>
+		<notes>Teddy bear dolls are made to look like them too.</notes>
+		<hint>They live in caves and have long claws</hint>
+		<lesson>5</lesson>
+		<image_path>animals_bear</image_path>
+		<eng_sound>animals_bear</eng_sound>
+		<fil_sound>animals_oso</fil_sound>
+		<difficulty>HARD</difficulty>
+	</Word_Entry>
+</type>

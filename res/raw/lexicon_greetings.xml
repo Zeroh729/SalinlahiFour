@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<type>
+	<Word_Entry>
+		<q_num>1</q_num>
+		<word>Magandang Umaga</word>
+		<question>This is used to greet a person every morning</question>
+		<eng_word>Good Morning</eng_word>
+		<w_type>definition</w_type>
+		<notes></notes>
+		<hint>Morning means Umaga</hint>
+		<lesson>6</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty>EASY</difficulty>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>2</q_num>
+		<word>Magandang Tanghali</word>
+		<question>This is used to greet a person every Afternoon</question>
+		<eng_word>Good Afternoon</eng_word>
+		<w_type>definition</w_type>
+		<notes></notes>
+		<hint>Afternoon means tanghali</hint>
+		<lesson>6</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty>EASY</difficulty>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>3</q_num>
+		<word>Magandang Hapon</word>
+		<question>This is used to greet a person every Dusk</question>
+		<eng_word>Good Evening</eng_word>
+		<w_type>definition</w_type>
+		<notes></notes>
+		<hint>Dusk means Hapon in filipino</hint>
+		<lesson>6</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty>EASY</difficulty>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>4</q_num>
+		<word>Magandang Gabi</word>
+		<question>This is used to greet a person every Night</question>
+		<eng_word>Good Night</eng_word>
+		<w_type>definition</w_type>
+		<notes></notes>
+		<hint>Night means Gabi in filipino</hint>
+		<lesson>6</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty>MEDIUM</difficulty>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>5</q_num>
+		<word>Maligayang Kaarawan</word>
+		<question>This is used to greet a person in his birthday</question>
+		<eng_word>Happy Birthday</eng_word>
+		<w_type>definition</w_type>
+		<notes></notes>
+		<hint>Maligaya means Happy in filipino</hint>
+		<lesson>6</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty>MEDIUM</difficulty>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>6</q_num>
+		<word>Maligayang Pasko</word>
+		<question>This is used to greet a person during christmas seasons</question>
+		<eng_word>Merry Christmas</eng_word>
+		<w_type>definition</w_type>
+		<notes></notes>
+		<hint>Christmas means Pasko in filipino</hint>
+		<lesson>6</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty>HARD</difficulty>
+	</Word_Entry>
+	<Word_Entry>
+		<q_num>7</q_num>
+		<word>Mabuhay</word>
+		<question>A greeting used by filipinoes to welcome foreigners</question>
+		<eng_word>Long Live</eng_word>
+		<w_type>definition</w_type>
+		<notes></notes>
+		<hint>Life means Buhay in filipino</hint>
+		<lesson>6</lesson>
+		<image_path></image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty>HARD</difficulty>
+	</Word_Entry>
+	
+</type>

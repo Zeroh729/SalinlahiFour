@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<Character
+	    name="pepay"
+	    default="pepay_handsonwaist"
+		point="pepay_wave"
+		question="pepay"
+		shocked="pepai_surprisedface"
+	/>
+	
+	<Character
+	    name="popoi"
+	    default="popoy_handsonwaist"
+		point="popoy_wave"
+		question="popoy"
+		shocked="popoy_surprisedface"
+	/>
+	
+	<Character
+	    name="guard"
+	    default="police_waist"
+	    wave="police_wave"
+	    waisttalk="police_waisttalk"
+	    wavetalk="police_wavetalk"
+	    />
+	
+	<Character
+	    name="chef"
+	    default="chef_cross"
+	    armscross="chef_cross"
+	    talk="chef_talk"/>
+	
+	<Character
+	    name="nanay"
+	    default="family_nanay"/>
+	
+	<Character
+	    name="pichi"
+	    default="pichi"
+	    hold="pichi_hands"
+	    holdtalk="pichi_handstalk"
+	    shocked="pichi_surprisedface"/>
+	
+	<Character
+	    name="house"
+	    default="house_tutthouse"/>
+	    
+	<Character
+	    name="crew"
+	    default="crew_handstalk"/>
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+</resources>

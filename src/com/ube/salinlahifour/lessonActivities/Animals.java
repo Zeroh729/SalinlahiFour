@@ -3,11 +3,15 @@ package com.ube.salinlahifour.lessonActivities;
 import java.util.ArrayList;
 import java.util.Random;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.daimajia.androidanimations.library.Techniques;
@@ -22,6 +26,8 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 	private ImageButton[] btn_up;
 	private ImageButton[] btn_down;
 	private ImageButton[] btn_cards;
+	
+	private ImageView[] iv_signs;
 
 	private ArrayList<Card> englishCards;
 	private ArrayList<Card> soundCards;
@@ -40,14 +46,16 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 	
 	private int fixedIndex;
 	private Card answerCard;
-	private int questionno;
 	
 	private ImageButton btn_function;
 	private TextView tv_feedback;
-	private TextView tv_questionno;
+	//private TextView tv_questionno;
 	
 	private AnimatedButtonListener touchListener;
 	private MediaPlayer sound;
+	private MediaPlayer soundEnglish;
+	private MediaPlayer soundFilipino;
+	private MediaPlayer soundAnimal;
 	
 	private enum functionState{
 		CHECK, NEXT
@@ -58,13 +66,26 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 	}
 	
 	@Override
+	protected void configureEasyLevel() {
+	}
+
+	@Override
+	protected void configureMediumLevel() {
+	}
+
+	@Override
+	protected void configureHardLevel() {
+	}
+	
+	@Override
 	protected void initiateViews() {		
 		btn_up = new ImageButton[4];
 		btn_down = new ImageButton[4];
 		btn_cards = new ImageButton[4];
+		iv_signs = new ImageView[4];
 		
-		questionno = 0;
-	
+		itemno = 0;
+		
 		btn_up[0] = (ImageButton)findViewById(R.id.btn_english_up);
 		btn_up[1] = (ImageButton)findViewById(R.id.btn_sound_up);
 		btn_up[2] = (ImageButton)findViewById(R.id.btn_picture_up);
@@ -79,13 +100,19 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 		btn_cards[1] = (ImageButton)findViewById(R.id.btn_soundcard);
 		btn_cards[2] = (ImageButton)findViewById(R.id.btn_picturecard);
 		btn_cards[3] = (ImageButton)findViewById(R.id.btn_filipinocard);
+
+		iv_signs[0] = (ImageView)findViewById(R.id.sign1);
+		iv_signs[1] = (ImageView)findViewById(R.id.sign2);
+		iv_signs[2] = (ImageView)findViewById(R.id.sign3);
+		iv_signs[3] = (ImageView)findViewById(R.id.sign4);
 		
 		btn_function = (ImageButton)findViewById(R.id.btn_function);
 		tv_feedback = (TextView)findViewById(R.id.tv_dialog);
-		tv_questionno = (TextView)findViewById(R.id.tv_questionno);
+		//tv_questionno = (TextView)findViewById(R.id.tv_questionno);
 		
-		tv_questionno.setTypeface(SalinlahiFour.getFontPlaytime());
-		((TextView)findViewById(R.id.tv_score)).setTypeface(SalinlahiFour.getFontPlaytime());
+		//tv_questionno.setTypeface(SalinlahiFour.getFontPlaytime());
+		//((TextView)findViewById(R.id.tv_score)).setTypeface(SalinlahiFour.getFontPlaytime());
+		tv_feedback.setTypeface(SalinlahiFour.getFontAndy());
 		
 		touchListener = new AnimatedButtonListener();
 		
@@ -96,12 +123,28 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 			btn_down[i].setOnClickListener(this);
 			btn_cards[i].setOnClickListener(this);
 		}
-		
+		//evaluation.setLexiconDir("lexicon_animals.xml");
 
 		btn_function.setOnTouchListener(touchListener);
 		btn_function.setOnClickListener(this);
 		
+		//((RelativeLayout)findViewById(R.id.parent_view)).addView(getPauseButton());
+		if(SalinlahiFour.getLoggedInUser().getGender() == "female"){
+			((ImageView)findViewById(R.id.img_dialog)).setImageResource(R.drawable.animals_pepaitalking);
+		}else{
+			((ImageView)findViewById(R.id.img_dialog)).setImageResource(R.drawable.animals_popoitalking);
+		}
+		
+		if(activityLevel == LevelType.EASY){
+			setCntQuestions(4);
+		}else if(activityLevel == LevelType.MEDIUM){
+			setCntQuestions(6);
+		}else{
+			setCntQuestions(8);
+		}
+		
 		initiateCards();
+
 	}
 	
 	private void initiateCards(){
@@ -125,7 +168,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 	}
 
 	@Override
-	protected void run() {
+	protected void update() {
 		englishCardIndex = 0;
 		filipinoCardIndex = 0;
 		soundCardIndex = 0;
@@ -137,6 +180,8 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 			btn_up[i].setVisibility(View.VISIBLE);
 			btn_down[i].setVisibility(View.VISIBLE);
 		}
+		
+		setQuestionTVText("Question No:"+ (itemno + 1) + "/" + evaluation.getTotalScore());
 
 		btn_up[0].setImageResource(R.drawable.animal_btn_yellow);
 		btn_up[1].setImageResource(R.drawable.animal_btn_green);
@@ -144,26 +189,47 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 		btn_up[3].setImageResource(R.drawable.animal_btn_blue);
 
 		selectFixed();
-		updateQuestionNo();
 		setGame();
+		updateQuestionNo();
 		setCardOrder();
 	}
 	
 	private void updateQuestionNo(){
-		tv_questionno.setText((questionno + 1) + "");
-		((TextView)findViewById(R.id.tv_score)).setText(" / " + questions.size());
+		//tv_questionno.setText((questionno + 1) + "");
+		//((TextView)findViewById(R.id.tv_score)).setText(" / " + questions.size());
 		
 		//UPDATE THIS
-		tv_feedback.setText("Can you match this? yah?");;
+		tv_feedback.setText("Can you match this? yah?");
+		
+		String question = "";
+		if(fixedIndex == 0){
+			question = "What is the animal sound, picture, and the Filipino word of\n" + englishCardsOnHand.get(0).answer + "?";
+		}else if(fixedIndex == 1){
+			question = "What is the English word, picture, and the Filipino word of\n that animal sound?";	
+		}else if(fixedIndex == 2){
+			question = "What is the English word, animal sound, and the Filipino word of\n the animal in the picture?";	
+		}else if(fixedIndex == 3){
+			question = "What is the English word, animal sound, and the picture of\n" + filipinoCardsOnHand.get(0).answer + "?";	
+		}
+		tv_feedback.setText(question);
 	}
 	
 	private void selectFixed(){
-		fixedIndex = new Random().nextInt(3);
+		fixedIndex = new Random().nextInt(8);
 
+		if(fixedIndex > 3)
+			fixedIndex = 3;
+		
+		for(int i = 0; i < iv_signs.length; i++){
+			iv_signs[i].setVisibility(View.INVISIBLE);
+		}
+		
+		iv_signs[fixedIndex].setVisibility(View.VISIBLE);
+		
 		btn_up[fixedIndex].setVisibility(View.INVISIBLE);
 		btn_down[fixedIndex].setVisibility(View.INVISIBLE);
 		
-		answerCard = findAnswerCard(questions.get(questionno).getWord());		
+		answerCard = findAnswerCard(questions.get(itemno).getWord());		
 	}
 	
 	private Card findAnswerCard(String word){
@@ -197,7 +263,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 		for(int i = 1; i < answerIndexes.length; i++){
 			int random;
 			do{
-				random = new Random().nextInt(englishCards.size()+1);
+				random = new Random().nextInt(englishCards.size());
 				random %= items.size();
 			}while(doesContain(random, answerIndexes, i));
 			Log.d("ANIMALS: index " + i +": got: " + random, "TEST");
@@ -255,28 +321,40 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 		}
 	}
 
-	@Override
 	protected boolean checkAnswer(String answer) {
-		boolean correct = true;
-		String feedback = "";
+		int cnt_wrong = 0;
+		String encouragement = "";
+		String feedback = "Try to match the ";
+		
+		if(cnt_wrong < 3){
+			encouragement = "Almost there!\n";
+		}else{
+			encouragement = "Oops. Try again!\n";
+		}
 		
 		Log.d("English: " + englishCards.get(englishCardIndex).itemno 
 				+ " Sound: " + soundCards.get(soundCardIndex).itemno
 				+ " Picture: " + pictureCards.get(pictureCardIndex).itemno
-				+ " Filipino: " + filipinoCards.get(filipinoCardIndex).itemno, "TEST");
+				+ " Filipino: " + filipinoCards.get(filipinoCardIndex).itemno, "TEST");		
 		
 		if(fixedIndex == 0){
 			if(soundCardsOnHand.get(soundCardIndex).itemno == answerCard.itemno)
 				markCorrect(1);
 			else{
-				correct = false;
 				YoYo.with(Techniques.Swing).playOn(btn_cards[1]);
+				if(cnt_wrong > 0)
+					feedback += ", ";
+				cnt_wrong++;
+				feedback += "animal sound";
 			}
 			if(pictureCardsOnHand.get(pictureCardIndex).itemno == answerCard.itemno)
 				markCorrect(2);
 			else{
-				correct = false;
 				YoYo.with(Techniques.Swing).playOn(btn_cards[2]);
+				if(cnt_wrong > 0)
+					feedback += ", ";
+				cnt_wrong++;
+				feedback += "picture";
 			}
 			if(btn_down[3].getVisibility() == View.VISIBLE){ //Evaluate only if it is not yet checked
 				if(filipinoCardsOnHand.get(filipinoCardIndex).itemno == answerCard.itemno){
@@ -284,8 +362,11 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 					evaluation.evaluateAnswer(filipinoCardsOnHand.get(filipinoCardIndex).answer, filipinoCardsOnHand.get(filipinoCardIndex).answer, UserID);
 				}
 				else{
-					correct = false;
 					YoYo.with(Techniques.Swing).playOn(btn_cards[3]);
+					if(cnt_wrong > 0)
+						feedback += ", ";
+					cnt_wrong++;
+					feedback += "Filipino word";
 					evaluation.evaluateAnswer(filipinoCardsOnHand.get(filipinoCardIndex).answer, "", UserID);
 				}
 			}
@@ -293,14 +374,20 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 			if(englishCardsOnHand.get(englishCardIndex).itemno == answerCard.itemno)
 				markCorrect(0);
 			else{
-				correct = false;
 				YoYo.with(Techniques.Swing).playOn(btn_cards[0]);
+				if(cnt_wrong > 0)
+					feedback += ", ";
+				cnt_wrong++;
+				feedback += "English word";
 			}
 			if(pictureCardsOnHand.get(pictureCardIndex).itemno == answerCard.itemno)
 				markCorrect(2);
 			else{
-				correct = false;
 				YoYo.with(Techniques.Swing).playOn(btn_cards[2]);
+				if(cnt_wrong > 0)
+					feedback += ", ";
+				cnt_wrong++;
+				feedback += "picture";
 			}
 			if(btn_down[3].getVisibility() == View.VISIBLE){	//Evaluate only if it is not yet checked
 				if(filipinoCardsOnHand.get(filipinoCardIndex).itemno == answerCard.itemno){
@@ -308,8 +395,11 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 					evaluation.evaluateAnswer(filipinoCardsOnHand.get(filipinoCardIndex).answer, filipinoCardsOnHand.get(filipinoCardIndex).answer, UserID);
 				}
 				else{
-					correct = false;
 					YoYo.with(Techniques.Swing).playOn(btn_cards[3]);
+					if(cnt_wrong > 0)
+						feedback += ", ";
+					cnt_wrong++;
+					feedback += "Filipino Word";
 					evaluation.evaluateAnswer(filipinoCardsOnHand.get(filipinoCardIndex).answer, "", UserID);
 				}
 			}
@@ -317,14 +407,20 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 			if(englishCardsOnHand.get(englishCardIndex).itemno == answerCard.itemno)
 				markCorrect(0);
 			else{
-				correct = false;
 				YoYo.with(Techniques.Swing).playOn(btn_cards[0]);
+				if(cnt_wrong > 0)
+					feedback += ", ";
+				cnt_wrong++;
+				feedback += "English word";
 			}
 			if(soundCardsOnHand.get(soundCardIndex).itemno == answerCard.itemno)
 				markCorrect(1);
 			else{
-				correct = false;
 				YoYo.with(Techniques.Swing).playOn(btn_cards[1]);
+				if(cnt_wrong > 0)
+					feedback += ", ";
+				cnt_wrong++;
+				feedback += "animal sound";
 			}
 			if(btn_down[3].getVisibility() == View.VISIBLE){	//Evaluate only if it is not yet checked
 				if(filipinoCardsOnHand.get(filipinoCardIndex).itemno == answerCard.itemno){
@@ -332,8 +428,11 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 					evaluation.evaluateAnswer(filipinoCardsOnHand.get(filipinoCardIndex).answer, filipinoCardsOnHand.get(filipinoCardIndex).answer, UserID);
 				}
 				else{
-					correct = false;
 					YoYo.with(Techniques.Swing).playOn(btn_cards[3]);
+					if(cnt_wrong > 0)
+						feedback += ", ";
+					cnt_wrong++;
+					feedback += "Filipino word";
 					evaluation.evaluateAnswer(filipinoCardsOnHand.get(filipinoCardIndex).answer, "", UserID);
 				}
 			}
@@ -341,41 +440,70 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 			if(englishCardsOnHand.get(englishCardIndex).itemno == answerCard.itemno)
 				markCorrect(0);
 			else{
-				correct = false;
 				YoYo.with(Techniques.Swing).playOn(btn_cards[0]);
+				if(cnt_wrong > 0)
+					feedback += ", ";
+				cnt_wrong++;
+				feedback += "English word";
 			}
 			if(soundCardsOnHand.get(soundCardIndex).itemno == answerCard.itemno)
 				markCorrect(1);
 			else{
-				correct = false;
 				YoYo.with(Techniques.Swing).playOn(btn_cards[1]);
+				if(cnt_wrong > 0)
+					feedback += ", ";
+				cnt_wrong++;
+				feedback += "animal sound";
 			}
 			if(pictureCardsOnHand.get(pictureCardIndex).itemno == answerCard.itemno)
 				markCorrect(2);
 			else{
-				correct = false;
 				YoYo.with(Techniques.Swing).playOn(btn_cards[2]);
+				if(cnt_wrong > 0)
+					feedback += ", ";
+				cnt_wrong++;
+				feedback += "picture";
 			}
-			if(correct){
+			if(cnt_wrong == 0){
 				evaluation.evaluateAnswer(filipinoCardsOnHand.get(filipinoCardIndex).answer, filipinoCardsOnHand.get(filipinoCardIndex).answer, UserID);
-				feedback = "MAGALING! HABA NG HERR";
+//				feedback = "MAGALING! HABA NG HERR";
+				feedback = evaluation.getImmediateFeedback(questions.get(itemno).getID(), questions.get(itemno).getWord(), lesson.getLessonNumber());
+				tv_feedback.setText(encouragement + feedback);
+				return true;
 			}else{
 				evaluation.evaluateAnswer(filipinoCardsOnHand.get(filipinoCardIndex).answer, "", UserID);
-				feedback = "BOBSKI!!";
+				if(feedback.contains("English word")){
+					feedback = evaluation.getImmediateFeedback(questions.get(itemno).getID(), englishCardsOnHand.get(englishCardIndex).answer, lesson.getLessonNumber());
+				}else if(feedback.contains("picture")){
+					feedback = evaluation.getImmediateFeedback(questions.get(itemno).getID(), pictureCardsOnHand.get(pictureCardIndex).answer, lesson.getLessonNumber());
+				}else{
+					feedback = evaluation.getImmediateFeedback(questions.get(itemno).getID(), soundCardsOnHand.get(soundCardIndex).answer, lesson.getLessonNumber());
+				}
+//				feedback = "BOBSKI!!";
+				tv_feedback.setText(encouragement + feedback);
+				return false;
 			}
 			//UPDATE THIS
 //			feedback = evaluation.getImmediateFeedback(questions.get(itemno).getQ_num(), answer, lesson.getLessonNumber());			
 		}			
-	
-		//UPDATE THIS
-		if(correct){
-			feedback = "MAGALING! HABA NG HERR";
-		}else{
-			feedback = "BOBSKI!!";
-		}
 		
-		tv_feedback.setText(feedback);
-		return correct;
+		if(fixedIndex != 3){
+			feedback += " again.";
+			feedback = "Try to match the other cards again!";
+			
+			//UPDATE THIS
+			if(cnt_wrong == 0){
+	//			feedback = "MAGALING! HABA NG HERR";
+				feedback = "You got it right!";
+				tv_feedback.setText(feedback);
+				return true;
+			}else{
+	//			feedback = "BOBSKI!!";
+				tv_feedback.setText(encouragement + feedback);
+				return false;
+			}	
+		}
+		return false;
 	}
 	
 	private void markCorrect(int index){
@@ -419,7 +547,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_chicken, item.getVoiceEngID(), itemno));
 			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_chicken, R.raw.animals_sound_chicken, itemno));
 			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno));
-			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_manok, item.getVoiceFilID(),itemno));
+			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_manok, item.getVoiceFilID(), itemno));
 			break;
 		case "Kalabaw":
 			itemno = 3;
@@ -452,11 +580,11 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 		case "Daga":
 			itemno = 7;
 			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_mouse, item.getVoiceEngID(), itemno));
-			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_rat, R.raw.animals_sound_frog, itemno));
+			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_rat, R.raw.animals_sound_mouse, itemno));
 			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno));
 			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_daga, item.getVoiceFilID(),itemno));
 			break;
-		case "Elefante":
+		case "Elepante":
 			itemno = 8;
 			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_elephant, item.getVoiceEngID(), itemno));
 			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_elephant, R.raw.animals_sound_elephant, itemno));
@@ -483,8 +611,8 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 					englishCardIndex += 1;
 				btn_cards[0].setImageResource(englishCardsOnHand.get(englishCardIndex).drawableResID);
 
-				sound = MediaPlayer.create(this,englishCardsOnHand.get(englishCardIndex).soundResID);
-				sound.start();
+				soundEnglish = MediaPlayer.create(this,englishCardsOnHand.get(englishCardIndex).soundResID);
+				soundEnglish.start();
 				break;
 			case R.id.btn_english_down:
 				if((englishCardIndex-1) < 0)
@@ -492,8 +620,8 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 				else
 					englishCardIndex -= 1;
 				btn_cards[0].setImageResource(englishCardsOnHand.get(englishCardIndex).drawableResID);
-				sound = MediaPlayer.create(this,englishCardsOnHand.get(englishCardIndex).soundResID);
-				sound.start();
+				soundEnglish = MediaPlayer.create(this,englishCardsOnHand.get(englishCardIndex).soundResID);
+				soundEnglish.start();
 				break;
 			case R.id.btn_filipino_up:
 				if((filipinoCardIndex+1) > filipinoCardsOnHand.size()-1)
@@ -501,8 +629,8 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 				else
 					filipinoCardIndex += 1;
 				btn_cards[3].setImageResource(filipinoCardsOnHand.get(filipinoCardIndex).drawableResID);
-				sound = MediaPlayer.create(this,filipinoCardsOnHand.get(filipinoCardIndex).soundResID);
-				sound.start();
+				soundFilipino = MediaPlayer.create(this,filipinoCardsOnHand.get(filipinoCardIndex).soundResID);
+				soundFilipino.start();
 				break;
 			case R.id.btn_filipino_down:
 				//
@@ -511,8 +639,8 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 				else
 					filipinoCardIndex -= 1;
 				btn_cards[3].setImageResource(filipinoCardsOnHand.get(filipinoCardIndex).drawableResID);
-				sound = MediaPlayer.create(this,filipinoCardsOnHand.get(filipinoCardIndex).soundResID);
-				sound.start();
+				soundFilipino = MediaPlayer.create(this,filipinoCardsOnHand.get(filipinoCardIndex).soundResID);
+				soundFilipino.start();
 				break;
 			case R.id.btn_sound_up:
 				if((soundCardIndex+1) > soundCardsOnHand.size()-1)
@@ -520,8 +648,8 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 				else
 					soundCardIndex += 1;
 				btn_cards[1].setImageResource(soundCardsOnHand.get(soundCardIndex).drawableResID);
-				sound = MediaPlayer.create(this,soundCardsOnHand.get(soundCardIndex).soundResID);
-				sound.start();
+				soundAnimal = MediaPlayer.create(this,soundCardsOnHand.get(soundCardIndex).soundResID);
+				soundAnimal.start();
 				break;
 			case R.id.btn_sound_down:
 				if((soundCardIndex-1) < 0)
@@ -529,8 +657,8 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 				else
 					soundCardIndex -= 1;
 				btn_cards[1].setImageResource(soundCardsOnHand.get(soundCardIndex).drawableResID);
-				sound = MediaPlayer.create(this,soundCardsOnHand.get(soundCardIndex).soundResID);
-				sound.start();
+				soundAnimal = MediaPlayer.create(this,soundCardsOnHand.get(soundCardIndex).soundResID);
+				soundAnimal.start();
 				break;
 			case R.id.btn_picture_up:
 				if((pictureCardIndex+1) > pictureCardsOnHand.size()-1)
@@ -549,20 +677,20 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 				
 			//PICTURE CARDS
 			case R.id.btn_englishcard:
-				sound = MediaPlayer.create(this,englishCardsOnHand.get(englishCardIndex).soundResID);
-				sound.start();
+				soundEnglish = MediaPlayer.create(this,englishCardsOnHand.get(englishCardIndex).soundResID);
+				soundEnglish.start();
 				break;
 			case R.id.btn_picturecard:
 //				sound = MediaPlayer.create(this,pictureCards.get(pictureCardIndex).soundResID);
 //				sound.start();
 				break;
 			case R.id.btn_filipinocard:
-				sound = MediaPlayer.create(this,filipinoCardsOnHand.get(filipinoCardIndex).soundResID);
-				sound.start();
+				soundFilipino = MediaPlayer.create(this,filipinoCardsOnHand.get(filipinoCardIndex).soundResID);
+				soundFilipino.start();
 				break;
 			case R.id.btn_soundcard:
-				sound = MediaPlayer.create(this,soundCardsOnHand.get(soundCardIndex).soundResID);
-				sound.start();
+				soundAnimal = MediaPlayer.create(this,soundCardsOnHand.get(soundCardIndex).soundResID);
+				soundAnimal.start();
 				break;
 			//BTN_FUNCTION
 			case R.id.btn_function:
@@ -573,10 +701,11 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 						sound = MediaPlayer.create(this, R.raw.sfx_correct);
 						sound.start();
 					}else{
+						
 					}
 				}else{
-					if(questionno++ < questions.size()-1)
-						run();
+					if(++itemno < questions.size())
+						update();
 					else{
 						evaluation.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), UserID);
 						showReportCard(this);
@@ -584,6 +713,18 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 				}
 				break;
 		}
+	}
+
+	@Override
+	protected void ifAnswerIsCorrect() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void ifAnswerIsWrong() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

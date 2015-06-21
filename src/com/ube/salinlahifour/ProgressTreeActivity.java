@@ -1,6 +1,7 @@
 package com.ube.salinlahifour;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 import android.app.Activity;
@@ -65,7 +66,7 @@ public class ProgressTreeActivity extends Activity implements OnCheckedChangeLis
 //		numLesson*=3;
 
 		Bundle bundle = getIntent().getExtras();
-		lessons = (ArrayList) bundle.getParcelableArrayList("lessons");
+		lessons = SalinlahiFour.getLessonsList();
 		recentdata = new ArrayList();
 		totaldata = new ArrayList();
 		
@@ -78,6 +79,7 @@ public class ProgressTreeActivity extends Activity implements OnCheckedChangeLis
 	}
 
 	private void populateData() {
+		int totalStars = 0;
 		userdata = SalinlahiFour.getLoggedInUser();
 		username = userdata.getName();
 		userprogressdb.open();
@@ -85,11 +87,14 @@ public class ProgressTreeActivity extends Activity implements OnCheckedChangeLis
 		stars_silver = userprogressdb.getSilverStarsCount(userdata.getId());
 		stars_bronze = userprogressdb.getBronzeStarsCount(userdata.getId());
 		
+		totalStars = (stars_gold * 3) + (stars_silver * 2) + stars_bronze;
+		
 		tv_username.setText(username + "'s");
-		tv_goldcount.setText(stars_gold+"");
-		tv_silvercount.setText(stars_silver+"");
-		tv_bronzecount.setText(stars_bronze+"");
-		tv_totalstarscount.setText(" /"+(lessons.size()*3));
+//		tv_goldcount.setText(stars_gold+"");
+//		tv_silvercount.setText(stars_silver+"");
+//		tv_bronzecount.setText(stars_bronze+"");
+		tv_goldcount.setText(totalStars+"");
+		tv_totalstarscount.setText(" /"+(lessons.size()*3*3));
 
 		if(stars_silver == 0){
 			tv_silvercount.setVisibility(View.INVISIBLE);
@@ -133,7 +138,8 @@ public class ProgressTreeActivity extends Activity implements OnCheckedChangeLis
 			recentdata.add(tempData);
 			totaldata.add(tempData);
 			
-			ArrayList<Item> items = LessonItemLoader.getLessonItems(lesson.getActivity(), LevelType.HARD.toString());
+			ArrayList<Item> items = SalinlahiFour.getLesson(lesson.getTheRealName()).getItems();
+			Collections.reverse(items);
 				ArrayList<UserRecord> userrecords = userrecorddb.getAllUserRecordsFromUserId(SalinlahiFour.getLoggedInUser().getId(), lesson.getName());
 				HashMap<String, ItemCounter> recentItemMap = new HashMap();				
 				HashMap<String, ItemCounter> totalItemMap = new HashMap();
@@ -162,6 +168,7 @@ public class ProgressTreeActivity extends Activity implements OnCheckedChangeLis
 						ProgressListItems tempRecent = new ProgressListItems();
 						tempRecent.setLessonCategory(false);
 						tempRecent.setItemName(item.getWord());
+						tempRecent.setProgressBarLabel(ctr.correctAnswers + "/" + ctr.totalAnswers);
 
 						recentdata.add(tempRecent);
 						recentdata.get(recentdata.size()-1).setProgress((int)ctr.getPercentage());

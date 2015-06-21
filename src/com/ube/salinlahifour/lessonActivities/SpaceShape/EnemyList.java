@@ -23,29 +23,29 @@ public class EnemyList {
 		switch(ActivityLevel){
 		case "HARD":
 					sEnemy[8] = "Tunod";
-					question[8]="Its a Arrow Formation!";
+					question[8]="We need Tunod to that can shoot 3 at the same time";
 					sEnemy[9] = "Gasuklay";
-					question[9]="Its a Crecent Formation!";
+					question[9]="The gasuklay button can reach that";
 					sEnemy[10] = "Puso";
-					question[10]="Its a Heart Formation!";
+					question[10]="Push the puso button to hea!";
 		case "MEDIUM":
 					sEnemy[5] = "Krus";
-					question[5]="Its a Cross Formation!";
+					question[5]="We need Krus to shoot in a wide area";
 					sEnemy[6] = "Diamante";
-					question[6]="Its a Diamond Formation!";
+					question[6]="We need the Diamante button to shield ourselves";
 					sEnemy[7] = "Parihaba";
-					question[7]="Its a Rectangle Formation!";
+					question[7]="We need Parihaba that shoots from the side";
 		case "EASY":
 			sEnemy[0] = "Bilog";
-			question[0]="Its a Circle Formation!";
+			question[0]="We need Bilog to hit red enemies";
 			sEnemy[1] = "Bilog";
-			question[1]="Its a Circle Formation!";
+			question[1]="We need Bilog to hit red enemies";
 			sEnemy[2] = "Parisukat";
-			question[2]="Its a Square Formation!";
+			question[2]="We just need a Parisukat to shoot one bullet at him";
 			sEnemy[3] = "Bituin";
-			question[3]="Its a Star Formation!";
+			question[3]="We need Bituin to hit a lot of enemies";
 			sEnemy[4] = "Tatsulok";
-			question[4]="Its a Triangle Formation!";
+			question[4]="We need Tatsulok that hits 3 enemies";
 		}
 	}
 	public String getEnemy(int index){
