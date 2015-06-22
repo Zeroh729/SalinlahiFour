@@ -151,7 +151,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="Tap every animal!"
+        android:text="Tap them all!"
         android:textColor="#fff71c"
         android:textSize="32dp"
         />

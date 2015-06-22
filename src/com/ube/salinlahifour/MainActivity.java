@@ -298,7 +298,7 @@ public class MainActivity extends Activity {
 			// }
 
 			SalinlahiFour.getLesson(items.get(0).getLessonNum()).setItems((ArrayList<Item>) items.clone());
-			Log.d("TEST0", "Setting the Parsed Items: lessonNum:" + items.get(0).getLessonNum() + " size: " + SalinlahiFour.getLesson(items.get(0).getLessonNum()).getItems().size());
+			//Log.d("TEST0", "Setting the Parsed Items: lessonNum:" + items.get(0).getLessonNum() + " size: " + SalinlahiFour.getLesson(items.get(0).getLessonNum()).getItems().size());
 		}
 		Log.d("Jim Parse On", "Item Parsing Ends");
 		// Log.d("Jim Parse On", "Sample Item: " +
@@ -331,7 +331,7 @@ public class MainActivity extends Activity {
 		SalinlahiFour.setCharactersList(characters);
 		for (int i = 0; i < SalinlahiFour.getCharactersList().size(); i++) {
 			for (String state : SalinlahiFour.getCharactersList().get(i).getStates().keySet()) {
-				Log.d("TEST0", "Parsed Characters: " + SalinlahiFour.getCharactersList().get(i).getName() + " State: " + state);
+				//Log.d("TEST0", "Parsed Characters: " + SalinlahiFour.getCharactersList().get(i).getName() + " State: " + state);
 			}
 		}
 	}
@@ -342,11 +342,11 @@ public class MainActivity extends Activity {
 		stories = XMLContentParser.parseNarrativeStory(this, this.getResources().openRawResource(R.raw.list_stories));
 		// parse list_stories.xml
 
-		Log.d("TEST0", "Stories parsed: " + stories.size());
+		//Log.d("TEST0", "Stories parsed: " + stories.size());
 
 		for (int i = 0; i < stories.size(); i++) {
 			SalinlahiFour.addStoriesList(stories.get(i).getName(), stories.get(i));
-			Log.d("TEST0", "Story name: " + stories.get(i).getName());
+			//Log.d("TEST0", "Story name: " + stories.get(i).getName());
 		}
 
 	}
@@ -359,7 +359,7 @@ public class MainActivity extends Activity {
 		// parse list_tutorial.xml
 
 		for (int i = 0; i < tutorials.size(); i++) {
-			Log.d("TEST0", "Tutorials parsed: " + tutorials.get(i).lessonName);
+			//Log.d("TEST0", "Tutorials parsed: " + tutorials.get(i).lessonName);
 			SalinlahiFour.addTutorialsList(tutorials.get(i).lessonName, tutorials.get(i));
 		}
 	}

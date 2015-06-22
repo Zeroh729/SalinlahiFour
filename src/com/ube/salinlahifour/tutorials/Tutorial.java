@@ -1,6 +1,7 @@
 package com.ube.salinlahifour.tutorials;
 
 import java.util.ArrayList;
+
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.app.Activity;
@@ -10,8 +11,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.Lesson;
 import com.ube.salinlahifour.R;
@@ -27,7 +30,7 @@ public class Tutorial extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 
-		//setContentView(R.layout.tutorial_animals);
+		setContentView(R.layout.tutorial_animals);
 
 		Bundle bundle = getIntent().getExtras();
 
@@ -436,7 +439,7 @@ public class Tutorial extends Activity {
 		textviews = new TextView[9];
 		imgviews = new ImageButton[9];
 		frames = new RelativeLayout[4];
-
+		
 		pressed = new boolean[4];
 
 		tv_rule = (TextView) findViewById(R.id.tv_rule);
@@ -469,7 +472,10 @@ public class Tutorial extends Activity {
 		frames[1].setVisibility(View.INVISIBLE);
 		frames[2].setVisibility(View.INVISIBLE);
 		frames[3].setVisibility(View.INVISIBLE);
-
+		
+		//int rawID = SalinlahiFour.getContext().getResources().getIdentifier(lesson.get, "raw", SalinlahiFour.getContext().getPackageName());
+		LinearLayout mainLayout = (LinearLayout) findViewById(R.id.mainLayout);
+		mainLayout.setBackgroundResource(lesson.getTutBackground());
 	}
 
 	public void btn_play(View view) {
