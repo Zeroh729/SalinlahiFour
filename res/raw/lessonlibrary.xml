@@ -138,9 +138,10 @@
     <activity_name>Greetings</activity_name>
     <icon_image>lesson1_icon</icon_image>
 </Lesson_Num>
-<Lessin_Num>
+
+<Lesson_Num>
     <entry>7</entry>
-    <Lesson_Name>Feeling</Lesson_Name>
+    <Lesson_Name>Feelings</Lesson_Name>
     <Lesson_PreReq>0</Lesson_PreReq>
      <Q_List>
      <qentry>1</qentry>
@@ -155,7 +156,8 @@
     <lexicon_name>lexicon_feelings</lexicon_name>
     <activity_name>Feelings</activity_name>
     <icon_image>lesson1_icon</icon_image>
-</Lessin_Num>
+</Lesson_Num>
+
 </type>
 
 <!--

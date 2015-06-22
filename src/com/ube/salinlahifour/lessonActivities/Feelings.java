@@ -1,158 +1,116 @@
 package com.ube.salinlahifour.lessonActivities;
 
-import java.util.ArrayList;
-
-import android.text.Html;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.R;
 import com.ube.salinlahifour.enumTypes.LevelType;
 
-public class Feelings extends AbstractLessonActivity implements OnClickListener, OnTouchListener{
-	private final int EASY = 3;
-	private final int MEDIUM = 5;
-	private int totalQuestions;
-	private TextView feedbackView;
-	private ImageView questionView;
-	private Button[] choices;
-	private Button nextButton;
-
-	public Feelings() {
+public class Feelings extends AbstractLessonActivity implements OnClickListener {
+	
+	private TextView textview;
+	private Button[] buttons;
+	private Button nxtbtn;
+	private ImageView imgVw;
+	
+	public Feelings(){
 		layoutID = R.layout.lessonactivity_feelings;
 	}
-	
+
 	@Override
 	protected void configureEasyLevel() {
-		totalQuestions = EASY;
+		// TODO Auto-generated method stub
+		setCntQuestions(3);
 		
-		//instantiate buttons as an array
-		choices = new Button[totalQuestions];
-		choices[0] = (Button) findViewById(R.id.feelings1);
-		choices[1] = (Button) findViewById(R.id.feelings2);
-		choices[2] = (Button) findViewById(R.id.feelings3);
 	}
 
 	@Override
 	protected void configureMediumLevel() {
-		totalQuestions = MEDIUM;
-		
-		//instantiate buttons as an array
-		choices = new Button[totalQuestions];
-		choices[0] = (Button) findViewById(R.id.feelings1);
-		choices[1] = (Button) findViewById(R.id.feelings2);
-		choices[2] = (Button) findViewById(R.id.feelings3);
-		choices[3] = (Button) findViewById(R.id.feelings4);
-		choices[4] = (Button) findViewById(R.id.feelings5);
+		// TODO Auto-generated method stub
+		setCntQuestions(5);
 	}
 
 	@Override
 	protected void configureHardLevel() {
-		//Unsupported
+		// TODO Auto-generated method stub
+		setCntQuestions(5);
 	}
 
 	@Override
 	protected void initiateViews() {
-		//assign UI Elements
-		feedbackView = (TextView) findViewById(R.id.feelings_questionbox);
-		questionView = (ImageView) findViewById(R.id.feelings_imageview);
-		nextButton = (Button) findViewById(R.id.feelings_next);
+		// TODO Auto-generated method stub
+		textview = (TextView)findViewById(R.id.tv_questionbox);
 		
-		//add button listener to the view
-		feedbackView.setOnClickListener(this);
-		//Set total number of questions
-		setCntQuestions(totalQuestions);
+		buttons = new Button[5];
+		buttons[0] = (Button)findViewById(R.id.tv_choice1);
+		buttons[1] = (Button)findViewById(R.id.tv_choice2);
+		buttons[2] = (Button)findViewById(R.id.tv_choice3);
+		buttons[3] = (Button)findViewById(R.id.tv_choice4);
+		buttons[4] = (Button)findViewById(R.id.tv_choice5);
+		
+		nxtbtn = (Button)findViewById(R.id.btn_next);
+		
+		if(activityLevel == LevelType.EASY){
+			buttons[3].setVisibility(View.GONE);
+			buttons[4].setVisibility(View.GONE);
+		}
+		
+		imgVw = (ImageView)findViewById(R.id.image_view);
+		
+		for(int i = 0; i < buttons.length; i++){
+			buttons[i].setOnClickListener(this);
+		}
+		imgVw.setOnClickListener(this);
+		nxtbtn.setOnClickListener(this);
 	}
 
 	@Override
 	protected void update() {
-		//Set the choices
-		int i = 0;
+		// TODO Auto-generated method stub
+		String[] choices = loadSortedChoices(getCntQuestions());
 		
-		if(!activityLevel.equals(LevelType.HARD)) {
-			for(String s : loadSortedChoices(totalQuestions)) {
-				Log.d("Dev", "Q: "+ s);
-				choices[i].setText(s);
-				++i;
-			}
-		} else {
-			for(Item item : loadShuffledChoices(totalQuestions)) {
-				choices[i].setText(item.getWord());
-				++i;
-			}
+		for(int i = 0; i < choices.length; i++){
+			buttons[i].setText(choices[i]);
 		}
-		
-		//Load the next question
 		loadQuestion(itemno);
-		questions.get(itemno).playEnglishSound();
-		questionView.setImageResource(questions.get(itemno).getImageID());
-		feedbackView.setText(Html.fromHtml(feedback));
+
+		textview.setText(question);
+		imgVw.setImageResource(getQuestionItem().getImageID());
 	}
 
 	@Override
 	protected void ifAnswerIsCorrect() {
-		toggleButtons(false);
-		questions.get(itemno).playFilipinoSound();
-		nextButton.setVisibility(Button.VISIBLE);
-	}
-	
-	private void toggleButtons(boolean toggle) {
-		int val;
-		if(toggle) {
-			val = Button.VISIBLE;
-		} else {
-			val = Button.INVISIBLE;
-		}
-		
-		for(int i = 0; i < totalQuestions; i++) {
-			choices[i].setVisibility(val);
-		}
+		// TODO Auto-generated method stub
+		textview.setText(feedback);
+		nxtbtn.setVisibility(View.VISIBLE);
 	}
 
 	@Override
 	protected void ifAnswerIsWrong() {
-		ifAnswerIsCorrect();
-	}
-
-	@Override
-	public boolean onTouch(View v, MotionEvent event) {
-		//Unsupported
-		return false;
+		// TODO Auto-generated method stub
+		textview.setText(feedback +"\n" + question);
 	}
 
 	@Override
 	public void onClick(View v) {
-		//Get the chosen button
-		switch(v.getId()) {
-		case R.id.feelings1: 
-			evaluate(choices[0].getText().toString());
-			break;
-		case R.id.feelings2: 
-			evaluate(choices[1].getText().toString());
-			break;
-		case R.id.feelings3: 
-			evaluate(choices[2].getText().toString());
-			break;
-		case R.id.feelings4:
-			evaluate(choices[3].getText().toString());
-			break;
-		case R.id.feelings5:
-			evaluate(choices[4].getText().toString());
-			break;
-		case R.id.feelings_next:
-			nextButton.setVisibility(Button.INVISIBLE);
-			update();
-		}
-		update();
+		switch(v.getId()){
+		case R.id.tv_choice1: evaluate(buttons[0].getText().toString());
+		items.get(0).playFilipinoSound();
+		;break;
+		case R.id.tv_choice2: evaluate(buttons[1].getText().toString()); items.get(1).playFilipinoSound();
+		;break;
+		case R.id.tv_choice3: evaluate(buttons[2].getText().toString()); items.get(2).playFilipinoSound();
+		;break;
+		case R.id.tv_choice4: evaluate(buttons[3].getText().toString()); items.get(3).playFilipinoSound();
+		;break;
+		case R.id.tv_choice5: evaluate(buttons[4].getText().toString()); items.get(4).playFilipinoSound();
+		;break;
+		
+		case R.id.btn_next: update(); break;
+		case R.id.image_view: getQuestionItem().playEnglishSound();	}		
 	}
-	
-	
 
 }
