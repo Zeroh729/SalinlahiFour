@@ -456,6 +456,7 @@ public class MapActivity extends Activity implements OnClickListener {
 				imgBtns[i].setTag(i);
 				imgBtns[i].setOnClickListener(this);
 
+				RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 				RelativeLayout.LayoutParams p2 = (RelativeLayout.LayoutParams) imgBtns[i].getLayoutParams();
 
 				p.addRule(RelativeLayout.BELOW, imgBtns[i].getId());
