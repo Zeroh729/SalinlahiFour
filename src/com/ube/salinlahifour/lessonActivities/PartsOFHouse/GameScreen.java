@@ -176,7 +176,7 @@ public class GameScreen extends AbstractGameScreen  {
 			pRoof = new Parts(383,425);	
 	        pBody = new Parts(480,150);
 	        pDoor = new Parts(498,270);
-	        pWindow = new Parts(351,445);
+	        pWindow = new Parts(310,445);
 	        
         	pGarage = new Parts(17,232);
         	pFence = new Parts(34,157);

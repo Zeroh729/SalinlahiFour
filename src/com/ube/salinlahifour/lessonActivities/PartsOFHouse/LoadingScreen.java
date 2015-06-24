@@ -103,8 +103,8 @@ public class LoadingScreen extends Screen {
 	        	Assets.garahe = game.getAudio().createSound("house/Sounds/"+lesson.getItems().get(4).getVoiceFilPath()+".mp3");
 	        	Assets.bakod = game.getAudio().createSound("house/Sounds/"+lesson.getItems().get(5).getVoiceFilPath()+".mp3");
 
-	        	Assets.hagdan = game.getAudio().createSound("house/Sounds/"+lesson.getItems().get(6).getVoiceFilPath()+".mp3");
-	        	Assets.chimnea = game.getAudio().createSound("house/Sounds/"+lesson.getItems().get(7).getVoiceFilPath()+".mp3");
+	        	Assets.hagdan = game.getAudio().createSound("house/Sounds/"+lesson.getItems().get(7).getVoiceFilPath()+".mp3");
+	        	Assets.chimnea = game.getAudio().createSound("house/Sounds/"+lesson.getItems().get(6).getVoiceFilPath()+".mp3");
 	        	//Assets.hardin = game.getAudio().createSound("house/Sounds/house_hardin.mp3"); 
 	        	break;
 	        case "MEDIUM": 

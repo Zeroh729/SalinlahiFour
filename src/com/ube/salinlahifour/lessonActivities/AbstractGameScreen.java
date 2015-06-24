@@ -65,7 +65,7 @@ public abstract class AbstractGameScreen extends Screen {
 
 		Log.d("Abstract Game Screen", activityName + " " + activityLevel);
 		Looper.prepare();
-
+		eval.setAllowableMistakes(4);
 		loadAssets();
 		// Asset Positioning
 		switch (activityLevel) {

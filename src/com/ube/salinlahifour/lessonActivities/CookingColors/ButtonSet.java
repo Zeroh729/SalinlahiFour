@@ -137,20 +137,29 @@ public class ButtonSet {
 		fColors = new ArrayList<String>();
 		switch (ActivityLevel) {
 		case "HARD":
-			easyAns();
-			medAns();
-			hardAns();
+			for (int i = 0; i < sizeHard+sizeMed+sizeEasy; i++) {
+				fColors.add(lesson.getItems().get(i).getQuestion());
+				Log.d("Loading Medium Answers", "color: " + fColors.get(i));
+
+			}
 		case "MEDIUM":
-			easyAns();
-			medAns();
+			for (int i = 0; i < sizeMed+sizeEasy; i++) {
+				fColors.add(lesson.getItems().get(i).getQuestion());
+				Log.d("Loading Medium Answers", "color: " + fColors.get(i));
+
+			}
 		case "EASY":
-			easyAns();
+			for (int i = 0; i < sizeEasy; i++) {
+				fColors.add(lesson.getItems().get(i).getQuestion());
+				Log.d("Loading Easy Answers", "color: " + fColors.get(i));
+			}
 		}
 	}
 
 	private void easyAns() {
 		for (int i = 0; i < sizeEasy; i++) {
 			fColors.add(lesson.getItems().get(i).getQuestion());
+			Log.d("Loading Easy Answers", "color: " + fColors.get(i));
 		}
 		// fColors.add("Asul");
 		// fColors.add("Berde");
@@ -161,6 +170,8 @@ public class ButtonSet {
 	private void medAns() {
 		for (int i = 0; i < sizeMed; i++) {
 			fColors.add(lesson.getItems().get(i).getQuestion());
+			Log.d("Loading Medium Answers", "color: " + fColors.get(i));
+
 		}
 		// fColors.add("Kayumanggi");
 		// fColors.add("Lila");
@@ -169,6 +180,8 @@ public class ButtonSet {
 	private void hardAns() {
 		for (int i = 0; i < sizeHard; i++) {
 			fColors.add(lesson.getItems().get(i).getQuestion());
+			Log.d("Loading Hard Answers", "color: " + fColors.get(i));
+
 		}
 	}
 
