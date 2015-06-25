@@ -175,8 +175,8 @@ public abstract class AbstractLessonActivity extends Activity {
 		questionNo_tv.setText("Question No:"+ (itemno+1) + "/" + evaluation.getTotalScore());
 		
 		//((ViewGroup)getWindow().getDecorView().getRootView()).addView(life_tv,p);
-		//layout.addView(life_tv);
-		//layout.addView(questionNo_tv);
+		layout.addView(life_tv);
+		layout.addView(questionNo_tv);
 		//((ViewGroup)getWindow().getCurrentFocus().getRootView()).addView(questionNo_tv);
 	}
 
@@ -390,6 +390,7 @@ public abstract class AbstractLessonActivity extends Activity {
 			Log.d("End Of Feedback", "Passing score: " +  passingScore);
 		}
 		evaluation.setPassingGrade(passingScore);
+		evaluation.setAllowableMistakes(4);
 		Log.d("TESTINGLessonActivity", "Aldrin: iFeedback Initiated");
 		Log.d("TESTINGLessonActivity", "Aldrin: iFeedback LOL");
 

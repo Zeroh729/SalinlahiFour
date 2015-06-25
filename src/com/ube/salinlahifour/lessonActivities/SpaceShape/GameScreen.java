@@ -290,6 +290,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			isEnemyExist = false;
 	            			nItemsRemaining--;
+	            			rounds++;
 	            			transition = true;
 	            		}else{
 	            			Log.d("Feedback debug", "Evaluation false");
@@ -311,6 +312,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			isEnemyExist = false;
 	            			nItemsRemaining--;
+	            			rounds++;
 	            			transition = true;
 	            		}else{
 	            			Log.d("Feedback debug", "Evaluation false");
@@ -333,6 +335,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			isEnemyExist = false;
 	            			nItemsRemaining--;
+	            			rounds++;
 	            			transition = true;
 	            		}else{
 	            			Log.d("Feedback debug", "Evaluation false");
@@ -354,6 +357,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			isEnemyExist = false;
 	            			nItemsRemaining--;
+	            			rounds++;
 	            			transition = true;
 	            		}else{
 	            			Log.d("Feedback debug", "Evaluation false");
@@ -431,6 +435,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			isEnemyExist = false;
 	            			nItemsRemaining--;
+	            			rounds++;
 	            			transition = true;
 	            		}else{
 	            			Log.d("Feedback debug", "Evaluation false");
@@ -452,6 +457,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			isEnemyExist = false;
 	            			nItemsRemaining--;
+	            			rounds++;
 	            			transition = true;
 	            		}else{
 	            			Log.d("Feedback debug", "Evaluation false");
@@ -474,6 +480,7 @@ public class GameScreen extends AbstractGameScreen  {
 	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			isEnemyExist = false;
 	            			nItemsRemaining--;
+	            			rounds++;
 	            			transition = true;
 	            		}else{
 	            			Log.d("Feedback debug", "Evaluation false");
@@ -545,6 +552,7 @@ public class GameScreen extends AbstractGameScreen  {
 				            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 				            			isEnemyExist = false;
 				            			nItemsRemaining--;
+				            			rounds++;
 				            			transition = true;
 				            		}else{
 				            			Log.d("Feedback debug", "Evaluation false");
@@ -566,6 +574,7 @@ public class GameScreen extends AbstractGameScreen  {
 				            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 				            			isEnemyExist = false;
 				            			nItemsRemaining--;
+				            			rounds++;
 				            			transition = true;
 				            		}else{
 				            			Log.d("Feedback debug", "Evaluation false");
