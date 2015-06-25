@@ -8,7 +8,7 @@
 		<eng_word>Blue</eng_word>
 		<w_type>definition</w_type>
 		<notes>It's also the color of the sea</notes>
-		<hint>Asul - This is BLUE. It is the color of the sky</hint>
+		<hint>Asul - It is like the color of the sky</hint>
 		<lesson>3</lesson>
 		<image_path>blue</image_path>
 		<eng_sound>color_blue</eng_sound>
@@ -22,7 +22,7 @@
 		<eng_word>Green</eng_word>
 		<w_type>definition</w_type>
 		<notes>It's also the color of crocodiles and alligators</notes>
-		<hint>Berde - This is GREEN. It is the color of the grass and leaves</hint>
+		<hint>Berde - It is like the color of the grass and leaves</hint>
 		<lesson>3</lesson>
 		<image_path>green</image_path>
 		<eng_sound>color_green</eng_sound>
@@ -36,7 +36,7 @@
 		<eng_word>Red</eng_word>
 		<w_type>definition</w_type>
 		<notes>It is also the color of a firetruck</notes>
-		<hint>Pula - This is RED. It is the color of an apple</hint>
+		<hint>Pula - It is like the color of apples</hint>
 		<lesson>3</lesson>
 		<image_path>red</image_path>
 		<eng_sound>color_red</eng_sound>
@@ -50,7 +50,7 @@
 		<eng_word>Yellow</eng_word>
 		<w_type>definition</w_type>
 		<notes>It is also the color of a rubber ducky</notes>
-		<hint>Dilaw - This is YELLOW. It is the color of the sun.</hint>
+		<hint>Dilaw - It is like the color of the sun.</hint>
 		<lesson>3</lesson>
 		<image_path>yellow</image_path>
 		<eng_sound>color_yellow</eng_sound>
@@ -64,7 +64,7 @@
 		<eng_word>Brown</eng_word>
 		<w_type>definition</w_type>
 		<notes>It is also the color of the skin</notes>
-		<hint>Kayumanggi - This is BROWN. It is the color of a trunk of a tree</hint>
+		<hint>Kayumanggi - It is like the color of the trunk of a tree</hint>
 		<lesson>3</lesson>
 		<image_path>brown</image_path>
 		<eng_sound>color_brown</eng_sound>
@@ -78,7 +78,7 @@
 		<eng_word>Violet</eng_word>
 		<w_type>definition</w_type>
 		<notes>It is also the color of grapes</notes>
-		<hint>Lila - This is VIOLET. It is also the color of eggplants</hint>
+		<hint>Lila - It is like the color of eggplants</hint>
 		<lesson>3</lesson>
 		<image_path>violet</image_path>
 		<eng_sound>color_violet</eng_sound>
@@ -92,7 +92,7 @@
 		<eng_word>Black</eng_word>
 		<w_type>definition</w_type>
 		<notes>It is also the color of car tires</notes>
-		<hint>Itim - This is BLACK. it is also the color fot he night sky</hint>
+		<hint>Itim - It is like the color of the night sky</hint>
 		<lesson>3</lesson>
 		<image_path>black</image_path>
 		<eng_sound>color_black</eng_sound>
@@ -106,7 +106,7 @@
 		<eng_word>White</eng_word>
 		<w_type>definition</w_type>
 		<notes>It is also the color of doves</notes>
-		<hint>Puti - This is WHITE. It is also the color of clouds</hint>
+		<hint>Puti - It is like the color of the clouds</hint>
 		<lesson>3</lesson>
 		<image_path>white</image_path>
 		<eng_sound>color_white</eng_sound>
