@@ -387,26 +387,35 @@
                 />
         </Scene>
     </Lesson>
-    <Lesson name="Feelings">
-    	<Scene>
-    	    <Background src="tutorial_feelings"></Background>
-    	    <Character
-    	        name="main"
-    	        animate="entranceFromBelow"
-    	        say="Hi! :D"
-    	        soundfile="narratio_feelings_1"/>
-    	    
-    	</Scene>
-    </Lesson>
-    <Lesson name="Feelings2">
-    	<Scene>
-    	    <Background src="tutorial_feelings2"></Background>
-    	    <Character
-    	        name="main"
-    	        animate="entranceFromBelow"
-    	        say="Hi! :D"
-    	        soundfile="narratio_feelings_1"/>
-    	    
-    	</Scene>
+
+    <Lesson
+        name="Feelings">
+        <Scene>
+            <Character
+                name="main"
+                animate="entranceFromLeft"
+              	say="Hi"
+              	soundfile="narration_feelings_1"/>
+            <Background
+                src="tutorial_feelings"/>
+        </Scene>
+         <Scene>
+            <Character
+                name="main"
+              	animate="jump"
+              	soundfile="narration_feelings_1"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="main"
+              	expression="blush"/>
+            
+            <Character
+                name="buster"
+                animate="entranceFromRight"
+              	say="I'm so (Gutom/Hungry)! (maincharacter)"
+              	soundfile = "narration_feelings_2"/>
+        </Scene>
+
     </Lesson>
 </resources>

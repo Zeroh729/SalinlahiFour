@@ -148,7 +148,7 @@ public class SalinlahiFour extends Application{
 	
 	public static Lesson getLessonByClassName(String name){
 		for(Lesson lesson : lessonsList){
-			Log.d("TEST0", "Checking lesson : " + lesson.getTheRealName() + " & " + name);
+			//Log.d("TEST0", "Checking lesson : " + lesson.getTheRealName() + " & " + name);
 			if(name.equals(lesson.getTheRealName())){
 				return lesson;
 			}
@@ -185,11 +185,11 @@ public class SalinlahiFour extends Application{
 	}
 	
 	public static NarrativeStory getStory(String lessonname) {
-		Log.d("TEST0", "Narrative Story: Getting Story.. Lessonname got:" + lessonname);
+		//Log.d("TEST0", "Narrative Story: Getting Story.. Lessonname got:" + lessonname);
 		for(String  story : storiesList.keySet()){
-			Log.d("TEST0", "Narrative Story: Searching through " + story);
+		//	Log.d("TEST0", "Narrative Story: Searching through " + story);
 		}
-		Log.d("TEST0", "Narrative Story: Retrieving.." + storiesList.get(lessonname).getName());
+		//Log.d("TEST0", "Narrative Story: Retrieving.." + storiesList.get(lessonname).getName());
 		return storiesList.get(lessonname);
 	}
 
@@ -207,7 +207,7 @@ public class SalinlahiFour extends Application{
 
 	public static HowToPlaySet getTutorial(String lessonname) {
 		for(String key : tutorialsList.keySet()){
-			Log.d("TEST0", "Looking for Tutorial: comparing..." + key + " & " + lessonname);
+		//	Log.d("TEST0", "Looking for Tutorial: comparing..." + key + " & " + lessonname);
 		}
 		
 		return tutorialsList.get(lessonname);
@@ -218,11 +218,11 @@ public class SalinlahiFour extends Application{
 	}
 	
 	public static Character getCharacter(String name){
-		Log.d("TEST0", "Getting States : " + name);
+	//	Log.d("TEST0", "Getting States : " + name);
 		for(Character character : charactersList){
-			Log.d("TEST0", "comparing... " + name + " & " + character.getMainName());
+			//Log.d("TEST0", "comparing... " + name + " & " + character.getMainName());
 			if(character.getMainName().equalsIgnoreCase(name)){
-				Log.d("TEST0", "states count... " + character.getStates().size());
+				//Log.d("TEST0", "states count... " + character.getStates().size());
 				return character;
 			}
 		}

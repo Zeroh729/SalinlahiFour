@@ -204,7 +204,7 @@ public class GameScreen extends AbstractGameScreen  {
 			// TODO Auto-generated method stub
 			sQuestion = lesson.getItems().get(rounds-1).getQuestion();
 			
-			sQuestion = sQuestion.split(" ")[0];
+			//sQuestion = sQuestion.split(" ")[0];
 			correctAnswer = lesson.getItems().get(rounds-1).getWord();
 			//Log.d("rounds", rounds + "");
 			int len = touchEvents.size();
