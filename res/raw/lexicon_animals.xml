@@ -6,7 +6,7 @@
 		<question>NULL</question>
 		<eng_word>Cat</eng_word>
 		<w_type>definition</w_type>
-		<notes>People believe that the black ones are unlucky</notes>
+		<notes>People believe that the black ones are unlucky.</notes>
 		<hint>They are said to have 9 lives and always land on their feet.</hint>
 		<lesson>5</lesson>
 		<image_path>animals_cat</image_path>
@@ -20,7 +20,7 @@
 		<question>NULL</question>
 		<eng_word>Dog</eng_word>
 		<w_type>definition</w_type>
-		<notes>These guys and cats usually fight.</notes>
+		<notes>They usually fight with cats.</notes>
 		<hint>They are usually made as pets. They bark at everything.</hint>
 		<lesson>5</lesson>
 		<image_path>animals_dog</image_path>
@@ -62,8 +62,8 @@
 		<question>NULL</question>
 		<eng_word>Frog</eng_word>
 		<w_type>definition</w_type>
-		<notes>Small Creatures that jumps around your pond</notes>
-		<hint>They eat insects like mosquito or fly for food</hint>
+		<notes>Small Creatures that jumps around your pond.</notes>
+		<hint>They eat insects like mosquito or fly for food.</hint>
 		<lesson>5</lesson>
 		<image_path>animals_frog</image_path>
 		<eng_sound>animals_frog</eng_sound>
@@ -76,8 +76,8 @@
 		<question></question>
 		<eng_word></eng_word>
 		<w_type>definition</w_type>
-		<notes>Some say we were once like that.</notes>
-		<hint>They like to eat bananas and hang around in trees</hint>
+		<notes>They hang around in trees.</notes>
+		<hint>They like to eat bananas.</hint>
 		<lesson>5</lesson>
 		<image_path>animals_monkey</image_path>
 		<eng_sound>animals_monkey</eng_sound>
