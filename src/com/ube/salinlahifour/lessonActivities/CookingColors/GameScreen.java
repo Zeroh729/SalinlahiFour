@@ -19,7 +19,7 @@ import com.ube.salinlahifour.lessonActivities.AbstractGameScreen;
 public class GameScreen extends AbstractGameScreen {
 	// Variable Setup
 	// You would create game objects here.
-	static String activityName = "Colors";
+	static String activityName = "Cooking";
 	private Image bg, wrong, ready, feedboxChef, recipe;
 	private Parts pDialog, pRecipe;
 	private Image[] buttons_sprinkles;
