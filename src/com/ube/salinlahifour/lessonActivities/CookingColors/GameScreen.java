@@ -116,8 +116,7 @@ public class GameScreen extends AbstractGameScreen {
 		sprinklerButtons = new ButtonSet(4, 510, 40, lesson);
 		sprinklerButtons.calculateButtonPosition(buttons_sprinkles[0].getWidth(), buttons_sprinkles[0].getHeight(), 2, 3);
 
-		nItemsRemaining = 3;
-		rounds = 3;
+		nItemsRemaining = totalItems = rounds = 3;
 
 		cake = new Cake();
 
@@ -147,8 +146,7 @@ public class GameScreen extends AbstractGameScreen {
 
 		sprinklerButtons = new ButtonSet(4, 510, 40, lesson);
 		sprinklerButtons.calculateButtonPosition(buttons_sprinkles[0].getWidth(), buttons_sprinkles[0].getHeight(), 2, 3);
-		nItemsRemaining = 4;
-		rounds = 4;
+		nItemsRemaining = totalItems = rounds = 4;
 		cake = new Cake();
 
 		breaderButtons.loadRandomColors(6);
@@ -170,8 +168,7 @@ public class GameScreen extends AbstractGameScreen {
 	@Override
 	protected void assetPositionHard() {
 		// TODO Auto-generated method stub
-		nItemsRemaining = 5;
-		rounds = 5;
+		nItemsRemaining = totalItems = rounds = 5;
 		breaderButtons = new ButtonSet(4, 70, 40, lesson);
 		Log.d("ButtonDebug", "Wdith: " + buttons_bread[0].getWidth() + " Height: " + buttons_bread[0].getHeight());
 		breaderButtons.calculateButtonPosition(buttons_bread[0].getWidth(), buttons_bread[0].getHeight(), 2, 3);

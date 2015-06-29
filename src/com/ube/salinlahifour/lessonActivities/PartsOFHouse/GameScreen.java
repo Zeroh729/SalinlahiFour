@@ -128,7 +128,8 @@ public class GameScreen extends AbstractGameScreen  {
 		protected void assetPositionEasy() {
 			// TODO Auto-generated method stub
 	        Log.d("Aldrin ExtendedFramework", "Positioning Easy Assets");
-	        	nItemsRemaining = 4;
+	        	eval.setTotScore(4);
+	        	nItemsRemaining = totalItems = 4;
 	        	pDialog = new Parts(65,40);
 	        	pRoof = new Parts(27,185);	
 		        pBody = new Parts(480,150);
@@ -147,7 +148,8 @@ public class GameScreen extends AbstractGameScreen  {
 		protected void assetPositionMedium() {
 			// TODO Auto-generated method stub
 			Log.d("GameScreen", "Positioning Medium"); 
-			nItemsRemaining = 6;
+			eval.setTotScore(6);
+			nItemsRemaining = totalItems = 6;
 			pDialog = new Parts(65,40);
 			pRoof = new Parts(230,130);	
 	        pBody = new Parts(480,150);
@@ -171,7 +173,8 @@ public class GameScreen extends AbstractGameScreen  {
 		protected void assetPositionHard() {
 			// TODO Auto-generated method stub
 			Log.d("GameScreen", "Positioning Hard"); 
-			nItemsRemaining = 8;
+			nItemsRemaining = totalItems = 8;
+			eval.setTotScore(8);
 			pDialog = new Parts(65,40);
 			pRoof = new Parts(383,425);	
 	        pBody = new Parts(480,150);
