@@ -139,7 +139,7 @@ public class GameScreen extends AbstractGameScreen  {
 	        
 	        pSpaceship = new Parts(310,290);
 	        pEnemy = new Parts(200,120);
-	        nItemsRemaining = totalItems = 10;
+	        nItemsRemaining = 10;
 	        eval.setTotScore(nItemsRemaining);
 	        pWrong = new Parts(0,0);
 	        ammo.loadAmmos(pSpaceship.getX(), pSpaceship.getY());
@@ -161,7 +161,7 @@ public class GameScreen extends AbstractGameScreen  {
 	        pDiamond = new Parts(75 - 30,260-30);
 	        pRectangle = new Parts(5,185-30);
 	        
-	        nItemsRemaining  = totalItems = 15;
+	        nItemsRemaining  = 15;
 
 	        eval.setTotScore(nItemsRemaining);
  	       Log.d("GameScreen", "Positioning Medium...Done"); 
@@ -175,7 +175,7 @@ public class GameScreen extends AbstractGameScreen  {
 			pArrow = new Parts(570-30, 340-30);
 	        pCresent = new Parts(570-30,260-30);
 	        pHeart = new Parts(570-30, 180-30);
-	        nItemsRemaining = totalItems = 20;
+	        nItemsRemaining = 20;
 	        eval.setTotScore(nItemsRemaining);
 		}
 		private void spawnEnemy(int size){

@@ -116,7 +116,7 @@ public class GameScreen extends AbstractGameScreen {
 		sprinklerButtons = new ButtonSet(4, 510, 40, lesson);
 		sprinklerButtons.calculateButtonPosition(buttons_sprinkles[0].getWidth(), buttons_sprinkles[0].getHeight(), 2, 3);
 
-		nItemsRemaining = totalItems = rounds = 3;
+		nItemsRemaining = 3;
 
 		cake = new Cake();
 
@@ -129,7 +129,7 @@ public class GameScreen extends AbstractGameScreen {
 		sprinklerButtons.loadQuestions();
 
 		Log.d("Aldrin ExtendedFramework", "Positioning Easy Assets...Done");
-		eval.setTotScore(rounds * 3);
+		eval.setTotScore(nItemsRemaining);
 	}
 
 	@Override
@@ -146,7 +146,7 @@ public class GameScreen extends AbstractGameScreen {
 
 		sprinklerButtons = new ButtonSet(4, 510, 40, lesson);
 		sprinklerButtons.calculateButtonPosition(buttons_sprinkles[0].getWidth(), buttons_sprinkles[0].getHeight(), 2, 3);
-		nItemsRemaining = totalItems = rounds = 4;
+		nItemsRemaining = 4;
 		cake = new Cake();
 
 		breaderButtons.loadRandomColors(6);
@@ -162,13 +162,13 @@ public class GameScreen extends AbstractGameScreen {
 		sprinklerButtons.loadQuestions();
 
 		Log.d("GameScreen", "Positioning Medium...Done");
-		eval.setTotScore(rounds * 3);
+		eval.setTotScore(nItemsRemaining);
 	}
 
 	@Override
 	protected void assetPositionHard() {
 		// TODO Auto-generated method stub
-		nItemsRemaining = totalItems = rounds = 5;
+		nItemsRemaining = 5;
 		breaderButtons = new ButtonSet(4, 70, 40, lesson);
 		Log.d("ButtonDebug", "Wdith: " + buttons_bread[0].getWidth() + " Height: " + buttons_bread[0].getHeight());
 		breaderButtons.calculateButtonPosition(buttons_bread[0].getWidth(), buttons_bread[0].getHeight(), 2, 3);
@@ -192,7 +192,7 @@ public class GameScreen extends AbstractGameScreen {
 		breaderButtons.loadQuestions();
 		creamerButtons.loadQuestions();
 		sprinklerButtons.loadQuestions();
-		eval.setTotScore(rounds * 3);
+		eval.setTotScore(nItemsRemaining);
 	}
 
 	@Override

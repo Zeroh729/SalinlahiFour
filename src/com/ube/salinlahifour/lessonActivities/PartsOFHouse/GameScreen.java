@@ -129,7 +129,7 @@ public class GameScreen extends AbstractGameScreen  {
 			// TODO Auto-generated method stub
 	        Log.d("Aldrin ExtendedFramework", "Positioning Easy Assets");
 	        	eval.setTotScore(4);
-	        	nItemsRemaining = totalItems = 4;
+	        	nItemsRemaining = 4;
 	        	pDialog = new Parts(65,40);
 	        	pRoof = new Parts(27,185);	
 		        pBody = new Parts(480,150);
@@ -149,7 +149,7 @@ public class GameScreen extends AbstractGameScreen  {
 			// TODO Auto-generated method stub
 			Log.d("GameScreen", "Positioning Medium"); 
 			eval.setTotScore(6);
-			nItemsRemaining = totalItems = 6;
+			nItemsRemaining = 6;
 			pDialog = new Parts(65,40);
 			pRoof = new Parts(230,130);	
 	        pBody = new Parts(480,150);
@@ -173,7 +173,7 @@ public class GameScreen extends AbstractGameScreen  {
 		protected void assetPositionHard() {
 			// TODO Auto-generated method stub
 			Log.d("GameScreen", "Positioning Hard"); 
-			nItemsRemaining = totalItems = 8;
+			nItemsRemaining = 8;
 			eval.setTotScore(8);
 			pDialog = new Parts(65,40);
 			pRoof = new Parts(383,425);	
@@ -185,10 +185,10 @@ public class GameScreen extends AbstractGameScreen  {
         	pFence = new Parts(34,157);
         	
         	pChimney = new Parts(390,125);
-        	pStairs = new Parts(590,265);
+        	pStairs = new Parts(590,280);
         	
         	pChimneyH = new Parts(270,143);
-        	pStairsH = new Parts(205,330);
+        	pStairsH = new Parts(205,350);
         	
         	pGarageH = new Parts(345,265);
         	pFenceH = new Parts(0,385);
