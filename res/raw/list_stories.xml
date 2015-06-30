@@ -387,6 +387,7 @@
                 />
         </Scene>
     </Lesson>
+
     <Lesson
         name="Feelings">
         <Scene>
@@ -415,5 +416,6 @@
               	say="I'm so (Gutom/Hungry)! (maincharacter)"
               	soundfile = "narration_feelings_2"/>
         </Scene>
+
     </Lesson>
 </resources>

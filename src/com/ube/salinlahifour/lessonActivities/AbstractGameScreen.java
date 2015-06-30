@@ -2,6 +2,7 @@ package com.ube.salinlahifour.lessonActivities;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,8 +11,10 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
+
 import com.kilobolt.framework.Game;
 import com.kilobolt.framework.Graphics;
+import com.kilobolt.framework.Graphics.ImageFormat;
 import com.kilobolt.framework.Input.TouchEvent;
 import com.kilobolt.framework.Screen;
 import com.ube.salinlahifour.Item;
@@ -65,7 +68,7 @@ public abstract class AbstractGameScreen extends Screen {
 
 		Log.d("Abstract Game Screen", activityName + " " + activityLevel);
 		Looper.prepare();
-
+		eval.setAllowableMistakes(4);
 		loadAssets();
 		// Asset Positioning
 		switch (activityLevel) {
@@ -118,7 +121,7 @@ public abstract class AbstractGameScreen extends Screen {
 		paint5.setTextSize(25);
 		paint5.setTextAlign(Paint.Align.RIGHT);
 		paint5.setAntiAlias(true);
-		paint5.setColor(Color.GRAY);
+		paint5.setColor(Color.WHITE);
 
 		Log.d("Abstract GamesScreen", "Initializing Paint Methods...done");
 	}
@@ -270,7 +273,9 @@ public abstract class AbstractGameScreen extends Screen {
 	protected void drawRunningUI() {
 		drawCustomUI();
 		Graphics g = game.getGraphics();
+		g.drawImage(g.newImage("charbox/utilitybar.png", ImageFormat.RGB565), 375, 0);
 		g.drawString("Tries Left:" + eval.getMistakesRemaining() + "/" + eval.getAllowableMistakes() + " " + "Question No:" + (rounds) + "/" + eval.getTotalScore(), 670, 25, paint5);
+		
 		// g.drawString(sQuestion, 430, 50, paint2);
 	}
 

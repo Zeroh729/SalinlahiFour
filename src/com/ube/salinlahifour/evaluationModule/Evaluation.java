@@ -136,6 +136,7 @@ public class Evaluation {
 
 	public void setAllowableMistakes(int mistakes) { // 4 is the default
 		this.allowableMistakes = mistakes;
+		this.mistakesRemaining = mistakes;
 	}
 
 	public int getAllowableMistakes() {

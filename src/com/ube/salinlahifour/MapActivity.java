@@ -456,11 +456,14 @@ public class MapActivity extends Activity implements OnClickListener {
 				imgBtns[i].setTag(i);
 				imgBtns[i].setOnClickListener(this);
 
-				LayoutParams p = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+				RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+				int margin = ((RelativeLayout.LayoutParams) imgBtns[i].getLayoutParams()).bottomMargin;
+				margin = (margin < 0) ? Math.abs(margin) : 0;
 
 				p.addRule(RelativeLayout.BELOW, imgBtns[i].getId());
 				p.addRule(RelativeLayout.ALIGN_LEFT, imgBtns[i].getId());
 				p.addRule(RelativeLayout.ALIGN_RIGHT, imgBtns[i].getId());
+				p.setMargins(0, margin, 0, 0);
 
 				txtViews[i] = new TextView(this);
 				txtViews[i].setText(scene.getLessons().get(i).getName());
