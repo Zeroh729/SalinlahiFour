@@ -196,6 +196,7 @@ public abstract class AbstractLAFramework extends AndroidGame {
 			Log.d("Feedback", "Passing score: " +  passingScore);
 		}
 		evaluation.setPassingGrade(passingScore);
+		evaluation.setAllowableMistakes(4);
 		Log.d("TESTINGLessonActivity", "Aldrin: iFeedback Initiated");
 		Log.d("TESTINGLessonActivity", "Aldrin: iFeedback LOL");
 

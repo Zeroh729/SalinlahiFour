@@ -136,6 +136,7 @@ public class Evaluation {
 
 	public void setAllowableMistakes(int mistakes) { // 4 is the default
 		this.allowableMistakes = mistakes;
+		this.mistakesRemaining = mistakes;
 	}
 
 	public int getAllowableMistakes() {
@@ -179,7 +180,7 @@ public class Evaluation {
 
 	public boolean isAlive() {
 		if (mistakesRemaining > 0) {
-			Log.d("Check Lives", "Game Status: Still Alive!");
+			//Log.d("Check Lives", "Game Status: Still Alive!");
 			return true;
 		} else {
 			Log.d("Check Lives", "Game Status: Game Over!");

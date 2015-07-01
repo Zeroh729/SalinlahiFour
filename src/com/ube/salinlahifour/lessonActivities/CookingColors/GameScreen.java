@@ -19,7 +19,7 @@ import com.ube.salinlahifour.lessonActivities.AbstractGameScreen;
 public class GameScreen extends AbstractGameScreen {
 	// Variable Setup
 	// You would create game objects here.
-	static String activityName = "Colors";
+	static String activityName = "Cooking";
 	private Image bg, wrong, ready, feedboxChef, recipe;
 	private Parts pDialog, pRecipe;
 	private Image[] buttons_sprinkles;
@@ -97,7 +97,7 @@ public class GameScreen extends AbstractGameScreen {
 		pYes = new Parts(220, 300);
 		pNo = new Parts(400, 300);
 		pBackg = new Parts(195, 100);
-
+		eval.setAllowableMistakes(12);
 		Log.d("Aldrin ExtendedFramework", "Loading Assets...Done");
 	}
 
@@ -117,7 +117,6 @@ public class GameScreen extends AbstractGameScreen {
 		sprinklerButtons.calculateButtonPosition(buttons_sprinkles[0].getWidth(), buttons_sprinkles[0].getHeight(), 2, 3);
 
 		nItemsRemaining = 3;
-		rounds = 3;
 
 		cake = new Cake();
 
@@ -130,7 +129,7 @@ public class GameScreen extends AbstractGameScreen {
 		sprinklerButtons.loadQuestions();
 
 		Log.d("Aldrin ExtendedFramework", "Positioning Easy Assets...Done");
-		eval.setTotScore(rounds * 3);
+		eval.setTotScore(nItemsRemaining);
 	}
 
 	@Override
@@ -148,7 +147,6 @@ public class GameScreen extends AbstractGameScreen {
 		sprinklerButtons = new ButtonSet(4, 510, 40, lesson);
 		sprinklerButtons.calculateButtonPosition(buttons_sprinkles[0].getWidth(), buttons_sprinkles[0].getHeight(), 2, 3);
 		nItemsRemaining = 4;
-		rounds = 4;
 		cake = new Cake();
 
 		breaderButtons.loadRandomColors(6);
@@ -164,14 +162,13 @@ public class GameScreen extends AbstractGameScreen {
 		sprinklerButtons.loadQuestions();
 
 		Log.d("GameScreen", "Positioning Medium...Done");
-		eval.setTotScore(rounds * 3);
+		eval.setTotScore(nItemsRemaining);
 	}
 
 	@Override
 	protected void assetPositionHard() {
 		// TODO Auto-generated method stub
 		nItemsRemaining = 5;
-		rounds = 5;
 		breaderButtons = new ButtonSet(4, 70, 40, lesson);
 		Log.d("ButtonDebug", "Wdith: " + buttons_bread[0].getWidth() + " Height: " + buttons_bread[0].getHeight());
 		breaderButtons.calculateButtonPosition(buttons_bread[0].getWidth(), buttons_bread[0].getHeight(), 2, 3);
@@ -195,7 +192,7 @@ public class GameScreen extends AbstractGameScreen {
 		breaderButtons.loadQuestions();
 		creamerButtons.loadQuestions();
 		sprinklerButtons.loadQuestions();
-		eval.setTotScore(rounds * 3);
+		eval.setTotScore(nItemsRemaining);
 	}
 
 	@Override
@@ -401,6 +398,7 @@ public class GameScreen extends AbstractGameScreen {
 							if (cor1 == 1 && cor2 == 1 && cor3 == 1) {
 								isSubmit = 1;
 								nItemsRemaining--;
+								rounds++;
 								isMistake = false;
 								transition = true;
 								sFeedback = feedbacks[0];
@@ -622,6 +620,7 @@ public class GameScreen extends AbstractGameScreen {
 								transition = true;
 								isSubmit = 1;
 								nItemsRemaining--;
+								rounds++;
 								Log.d("DING", "Its done");
 
 								ready = Assets.nothingness;
@@ -788,64 +787,90 @@ public class GameScreen extends AbstractGameScreen {
 
 			if (isMistake) {
 				if (cor1 == 0) {
-					String lineOne = "", lineTwo = "", lineTri = "";
+					String lineOne = "", lineTwo = "", lineTri = "", lineFor = "";
 					// g.drawString("- ", 350,155, paint4);
 					// g.drawString(feedbacks[0], 350,155, paint4);
 					cuttedWord = sentenceCutter(feedbacks[0]);
 					for (int s = 0; s < cuttedWord.length; s++) {
-						if(s>11){
+						if(s>14){
+							lineFor += cuttedWord[s] + " ";
+						}
+						else if(s>9){
 							lineTri += cuttedWord[s] + " ";
 						}
-						else if (s > 5) {
+						else if (s > 4) {
 							lineTwo += cuttedWord[s] + " ";
 						} else {
 							lineOne += cuttedWord[s] + " ";
 						}
 					}
-					g.drawString("Bread: " + lineOne, 352, 155, paint4);
-					g.drawString(lineTwo, 352, 175, paint4);
-					g.drawString(lineTri, 352, 195, paint4);
+					g.drawString("Bread: " + lineOne, 360, 125, paint4);
+					g.drawString(lineTwo, 360, 145, paint4);
+					g.drawString(lineTri, 360, 165, paint4);
+					g.drawString(lineFor, 360, 185, paint4);
 				}
 				if (cor2 == 0) {
-					String lineOne = "", lineTwo = "", lineTri = "";
+					String lineOne = "", lineTwo = "", lineTri = "", lineFor = "";
 					// g.drawString(feedbacks[1], 350,195, paint4);
 					// g.drawString("- ", 350,195, paint4);
 					cuttedWord = sentenceCutter(feedbacks[1]);
 					for (int s = 0; s < cuttedWord.length; s++) {
-						if(s>11){
+						if(s>14){
+							lineFor += cuttedWord[s] + " ";
+						}
+						else if(s>9){
 							lineTri += cuttedWord[s] + " ";
 						}
-						else if (s > 5) {
+						else if (s > 4) {
 							lineTwo += cuttedWord[s] + " ";
 						} else {
 							lineOne += cuttedWord[s] + " ";
 						}
 					}
-					g.drawString("Frosting: " + lineOne, 352, 215, paint4);
-					g.drawString(lineTwo, 352, 235, paint4);
-					g.drawString(lineTri, 352, 255, paint4);
+					g.drawString("Frosting: " + lineOne, 360, 205, paint4);
+					g.drawString(lineTwo, 360, 225, paint4);
+					g.drawString(lineTri, 360, 245, paint4);
+					g.drawString(lineFor, 360, 265, paint4);
 				}
 				if (cor3 == 0) {
-					String lineOne = "", lineTwo = "", lineTri = "";
+					String lineOne = "", lineTwo = "", lineTri = "", lineFor = "";
 					// g.drawString(feedbacks[2], 350,225, paint4);
 					// g.drawString("- ", 350,225, paint4);
 					cuttedWord = sentenceCutter(feedbacks[2]);
 					for (int s = 0; s < cuttedWord.length; s++) {
-						if(s>11){
+						if(s>14){
+							lineFor += cuttedWord[s] + " ";
+						}
+						else if(s>8){
 							lineTri += cuttedWord[s] + " ";
 						}
-						else if (s > 5) {
+						else if (s > 3) {
 							lineTwo += cuttedWord[s] + " ";
 						} else {
 							lineOne += cuttedWord[s] + " ";
 						}
 					}
-					g.drawString("Sprinkles: " + lineOne, 352, 275, paint4);
-					g.drawString(lineTwo, 352, 295, paint4);
-					g.drawString(lineTri, 352, 315, paint4);
+					g.drawString("Sprinkles: " + lineOne, 360, 285, paint4);
+					g.drawString(lineTwo, 360, 305, paint4);
+					g.drawString(lineTri, 360, 325, paint4);
+					g.drawString(lineFor, 360, 345, paint4);
+					
 				}
 			} else {
-				g.drawString(feedbacks[0], 350, 155, paint4);
+				String lineOne = "", lineTwo = "";
+				cuttedWord = sentenceCutter(feedbacks[0]);
+				for (int s = 0; s < cuttedWord.length; s++) {
+					if(s>5){
+						lineTwo += cuttedWord[s] + " ";
+
+					}else{
+						lineOne += cuttedWord[s] + " ";
+
+					}
+				}
+//				g.drawString(feedbacks[0], 360, 155, paint4);
+				g.drawString(lineOne, 360, 155, paint4);
+				g.drawString(lineTwo, 360, 175, paint4);
 			}
 		}
 	}

@@ -504,14 +504,15 @@ containing a value of this type.
         public static final int tut_arrow_right_pressed=0x7f020143;
         public static final int tut_start=0x7f020144;
         public static final int tutorial_feelings=0x7f020145;
-        public static final int violet=0x7f020146;
-        public static final int wall=0x7f020147;
-        public static final int white=0x7f020148;
-        public static final int window=0x7f020149;
-        public static final int window_selected=0x7f02014a;
-        public static final int windowpopup=0x7f02014b;
-        public static final int yellow=0x7f02014c;
-        public static final int yes=0x7f02014d;
+        public static final int utilitybar=0x7f020146;
+        public static final int violet=0x7f020147;
+        public static final int wall=0x7f020148;
+        public static final int white=0x7f020149;
+        public static final int window=0x7f02014a;
+        public static final int window_selected=0x7f02014b;
+        public static final int windowpopup=0x7f02014c;
+        public static final int yellow=0x7f02014d;
+        public static final int yes=0x7f02014e;
     }
     public static final class id {
         public static final int Splash_BG=0x7f0e0036;
