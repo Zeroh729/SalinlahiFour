@@ -70,6 +70,7 @@ public class GameScreen extends AbstractGameScreen  {
 	        this.activityLevel = activityLevel;
 	        Log.d("Aldrin ExtendedFramework", "Gamescreen constructor...");
 	        lessonNumber = 4;
+	        rounds = 1;
 	        super.items = items;
 	    }
 
@@ -139,7 +140,7 @@ public class GameScreen extends AbstractGameScreen  {
 	        pSpaceship = new Parts(310,290);
 	        pEnemy = new Parts(200,120);
 	        nItemsRemaining = 10;
-	        //eval.setTotScore(nItemsRemaining);
+	        eval.setTotScore(nItemsRemaining);
 	        pWrong = new Parts(0,0);
 	        ammo.loadAmmos(pSpaceship.getX(), pSpaceship.getY());
 	        pLives = new Parts(130-30,480-30);
@@ -162,7 +163,7 @@ public class GameScreen extends AbstractGameScreen  {
 	        
 	        nItemsRemaining  = 15;
 
-	        //eval.setTotScore(nItemsRemaining);
+	        eval.setTotScore(nItemsRemaining);
  	       Log.d("GameScreen", "Positioning Medium...Done"); 
 		}
 		
@@ -175,7 +176,7 @@ public class GameScreen extends AbstractGameScreen  {
 	        pCresent = new Parts(570-30,260-30);
 	        pHeart = new Parts(570-30, 180-30);
 	        nItemsRemaining = 20;
-	        //eval.setTotScore(nItemsRemaining);
+	        eval.setTotScore(nItemsRemaining);
 		}
 		private void spawnEnemy(int size){
 			Random rand = new Random();
@@ -184,16 +185,14 @@ public class GameScreen extends AbstractGameScreen  {
 			if(index <size){
 			this.resetButtonStates();
 			//enemyInfo = enemies.getEnemy(index);
-			if(index == 0){
-				index = 1;
-			}
-			sQuestion = lesson.getItems().get(index-1).getQuestion();
+			sQuestion = lesson.getItems().get(index).getQuestion();
 			//sQuestion = items.get(index).getLabel();
 			//cAnswer = enemies.getEnemy(index);
-			cAnswer = lesson.getItems().get(index-1).getWord();
+			cAnswer = lesson.getItems().get(index).getWord();
 			Log.d("Enemies Size", "Size: " + Assets.enemyShapes.size());
-			enemy = Assets.enemyShapes.get(index-1);
+			enemy = Assets.enemyShapes.get(index);
 			Log.d("Enemy Index: ", "i: " + index + " enemy formation: " + enemies.getEnemy(index)  );
+			index++;
 			}
 		}
 		
@@ -284,9 +283,6 @@ public class GameScreen extends AbstractGameScreen  {
 	            		
 	            		if(eval.evaluateAnswer(cAnswer, sAnswer, userID)){
 	            			Log.d("Feedback debug", "Evaluation true");
-	            			if(index == 0){
-	            				index=1;
-	            			}
 	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			isEnemyExist = false;
 	            			nItemsRemaining--;
@@ -429,9 +425,6 @@ public class GameScreen extends AbstractGameScreen  {
 	            		
 	            		if(eval.evaluateAnswer(cAnswer, sAnswer, userID)){
 	            			Log.d("Feedback debug", "Evaluation true");
-	            			if(index == 0){
-	            				index=1;
-	            			}
 	            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 	            			isEnemyExist = false;
 	            			nItemsRemaining--;
@@ -546,9 +539,6 @@ public class GameScreen extends AbstractGameScreen  {
 				            		
 				            		if(eval.evaluateAnswer(cAnswer, sAnswer, userID)){
 				            			Log.d("Feedback debug", "Evaluation true");
-				            			if(index == 0){
-				            				index=1;
-				            			}
 				            			sFeedback =  eval.getImmediateFeedback(index, sAnswer, lessonNumber);
 				            			isEnemyExist = false;
 				            			nItemsRemaining--;

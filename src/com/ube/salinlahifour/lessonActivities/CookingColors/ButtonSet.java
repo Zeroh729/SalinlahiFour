@@ -141,18 +141,18 @@ public class ButtonSet {
 				fColors.add(lesson.getItems().get(i).getQuestion());
 				Log.d("Loading Medium Answers", "color: " + fColors.get(i));
 
-			}
+			}break;
 		case "MEDIUM":
 			for (int i = 0; i < sizeMed+sizeEasy; i++) {
 				fColors.add(lesson.getItems().get(i).getQuestion());
 				Log.d("Loading Medium Answers", "color: " + fColors.get(i));
 
-			}
+			}break;
 		case "EASY":
 			for (int i = 0; i < sizeEasy; i++) {
 				fColors.add(lesson.getItems().get(i).getQuestion());
 				Log.d("Loading Easy Answers", "color: " + fColors.get(i));
-			}
+			}break;
 		}
 	}
 

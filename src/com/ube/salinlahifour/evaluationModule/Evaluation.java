@@ -180,7 +180,7 @@ public class Evaluation {
 
 	public boolean isAlive() {
 		if (mistakesRemaining > 0) {
-			Log.d("Check Lives", "Game Status: Still Alive!");
+			//Log.d("Check Lives", "Game Status: Still Alive!");
 			return true;
 		} else {
 			Log.d("Check Lives", "Game Status: Game Over!");
