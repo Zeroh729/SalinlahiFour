@@ -150,44 +150,41 @@ public abstract class AbstractLessonActivity extends Activity {
 		 life_tv = new TextView(this);
 		 questionNo_tv = new TextView(this);
 		 utilBar = new RelativeLayout(this);
-		LayoutParams p = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-				ViewGroup.LayoutParams.WRAP_CONTENT);
+		RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
+				RelativeLayout.LayoutParams.WRAP_CONTENT);
 		p.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,  RelativeLayout.TRUE);
-		//p.addRule(RelativeLayout.ALIGN_PARENT_TOP,  RelativeLayout.TRUE);
-		p.setMargins(20, 5, 100, 10);
+		p.setMargins(10, 5, 10, 10);
 		life_tv.setId(1);
-		life_tv.setTextSize(30);
+		life_tv.setTextSize(25);
 		life_tv.setTypeface(SalinlahiFour.getFontAndy());
 		life_tv.setTextColor(Color.WHITE);
 		//life_tv.setTextColor(Color.WHITE);
 		//life_tv.setShadowLayer(5f, -1, 1, Color.BLACK);
-		LayoutParams q = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-				ViewGroup.LayoutParams.WRAP_CONTENT);
+		RelativeLayout.LayoutParams q = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
+				RelativeLayout.LayoutParams.WRAP_CONTENT);
 		q.addRule(RelativeLayout.LEFT_OF,  life_tv.getId());
 		//q.addRule(RelativeLayout.ALIGN_PARENT_TOP,  RelativeLayout.TRUE);
-		q.setMargins(20, 5, 20, 10);
-		questionNo_tv.setTextSize(30);
+		q.setMargins(20, 5, 10, 10);
+		questionNo_tv.setTextSize(25);
 		questionNo_tv.setTypeface(SalinlahiFour.getFontAndy());
 		questionNo_tv.setTextColor(Color.WHITE);
 		
-		
-		
 		life_tv.setLayoutParams(p);
-		life_tv.setText("Tries Left:"+evaluation.getMistakesRemaining() + "/" + evaluation.getAllowableMistakes());
+		life_tv.setText("Tries Left: "+evaluation.getMistakesRemaining() + "/" + evaluation.getAllowableMistakes());
 		questionNo_tv.setLayoutParams(q);
-		questionNo_tv.setText("Question No:"+ (itemno+1) + "/" + evaluation.getTotalScore());
+		questionNo_tv.setText("Question No: "+ (itemno+1) + "/" + evaluation.getTotalScore());
 		
-		LayoutParams u = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-				ViewGroup.LayoutParams.WRAP_CONTENT);
-		u.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,  RelativeLayout.TRUE);
-		u.addRule(RelativeLayout.ALIGN_PARENT_TOP,  RelativeLayout.TRUE);
+		RelativeLayout.LayoutParams u = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
+				RelativeLayout.LayoutParams.WRAP_CONTENT);
+		u.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+		u.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
 		
 		utilBar.setLayoutParams(u);
 		utilBar.setBackgroundResource(R.drawable.utilitybar);
-		utilBar.addView(life_tv);
-		utilBar.addView(questionNo_tv);
 		
 		layout.addView(utilBar);
+		layout.addView(life_tv);
+		layout.addView(questionNo_tv);
 		//layout.addView(life_tv);
 		//layout.addView(questionNo_tv);
 	}
