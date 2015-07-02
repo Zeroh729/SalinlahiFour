@@ -703,7 +703,10 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 						sound = MediaPlayer.create(this, R.raw.sfx_correct);
 						sound.start();
 					}else{
-						
+						if(!evaluation.isAlive()) {
+							evaluation.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), UserID);
+							showReportCard(this);
+						}
 					}
 				}else{
 					if(++itemno < questions.size())
@@ -713,6 +716,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 						showReportCard(this);
 					}
 				}
+				setLifeTVText("Tries Left: "+evaluation.getMistakesRemaining() + "/" + evaluation.getAllowableMistakes());
 				break;
 		}
 	}
