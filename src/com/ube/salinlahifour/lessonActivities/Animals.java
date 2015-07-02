@@ -3,15 +3,12 @@ package com.ube.salinlahifour.lessonActivities;
 import java.util.ArrayList;
 import java.util.Random;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.media.MediaPlayer;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.daimajia.androidanimations.library.Techniques;
@@ -703,7 +700,10 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 						sound = MediaPlayer.create(this, R.raw.sfx_correct);
 						sound.start();
 					}else{
-						
+						if(!evaluation.isAlive()) {
+							evaluation.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), UserID);
+							showReportCard(this);
+						}
 					}
 				}else{
 					if(++itemno < questions.size())
@@ -713,6 +713,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 						showReportCard(this);
 					}
 				}
+				setLifeTVText("Tries Left: "+evaluation.getMistakesRemaining() + "/" + evaluation.getAllowableMistakes());
 				break;
 		}
 	}

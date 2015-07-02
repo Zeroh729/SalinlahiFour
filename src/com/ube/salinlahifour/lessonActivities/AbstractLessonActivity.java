@@ -564,4 +564,8 @@ public abstract class AbstractLessonActivity extends Activity {
 	protected void setQuestionTVText(String text) {
 		questionNo_tv.setText(text);
 	}
+	
+	protected void setLifeTVText(String text) {
+		life_tv.setText(text);
+	}
 }

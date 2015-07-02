@@ -22,14 +22,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:layout_gravity="center"
-                    android:background="@drawable/family_bg"
-                    />
+                    android:background="@drawable/family_bg" />
                   	<RelativeLayout
                   	android:id="@+id/view_container" 
     				android:layout_width="wrap_content"
     				android:layout_height="match_parent"
     				android:layout_alignTop="@id/inside_imageview">
-		
+
 						<ImageButton
                 			android:id="@+id/img_choicec"
                 			android:layout_width="100dp"
@@ -82,75 +81,71 @@
                 			android:src="@drawable/boy" 
                 			android:onClick="onClick"
                 			android:background="@null"/>
-							
             			<ImageButton
             			    android:id="@+id/img_choicea"
-            			   android:layout_width="100dp"
+            			    android:layout_width="100dp"
         					android:layout_height="100dp"
             				android:layout_alignParentBottom="true"
             			    android:layout_marginBottom="75dp"
             			    android:layout_marginLeft="13dp"
-            			    android:layout_toRightOf="@+id/img_choicee"
             			    android:background="@null"
             			    android:contentDescription="..."
             			    android:visibility="invisible"
             			    android:onClick="onClick"
-            			    android:src="@drawable/bola" />
+            			    android:src="@drawable/boy" />
             			<ImageButton
             			    android:id="@+id/img_choicef"
-            			   android:layout_width="100dp"
+            			    android:layout_width="100dp"
         					android:layout_height="100dp"
-            				android:layout_alignParentBottom="true"
+                			android:layout_alignParentBottom="true"
             			    android:layout_marginBottom="75dp"
             			    android:layout_marginLeft="13dp"
             			    android:layout_toRightOf="@+id/img_choicee"
-            			    android:background="@null"
-            			    android:contentDescription="..."
-            			    android:visibility="invisible"
-            			    android:onClick="onClick"
-            			    android:src="@drawable/bola" />
+                			android:contentDescription="..."
+                			android:visibility="invisible"
+                			android:src="@drawable/boy" 
+                			android:onClick="onClick"
+                			android:background="@null"/>
             			<ImageButton
             			    android:id="@+id/img_choiceg"
-            			   android:layout_width="100dp"
+            			    android:layout_width="100dp"
         					android:layout_height="100dp"
-            				android:layout_alignParentBottom="true"
+                			android:layout_alignParentBottom="true"
             			    android:layout_marginBottom="75dp"
             			    android:layout_marginLeft="13dp"
-            			    android:layout_toRightOf="@+id/img_choicee"
-            			    android:background="@null"
-            			    android:contentDescription="..."
-            			    android:visibility="invisible"
-            			    android:onClick="onClick"
-            			    android:src="@drawable/bola" />
+            			    android:layout_toRightOf="@+id/img_choicef"
+                			android:contentDescription="..."
+                			android:visibility="invisible"
+                			android:src="@drawable/boy" 
+                			android:onClick="onClick"
+                			android:background="@null"/>
             			<ImageButton
             			    android:id="@+id/img_choiceh"
-            			   android:layout_width="100dp"
+            			    android:layout_width="100dp"
         					android:layout_height="100dp"
-            				android:layout_alignParentBottom="true"
+                			android:layout_alignParentBottom="true"
             			    android:layout_marginBottom="75dp"
             			    android:layout_marginLeft="13dp"
-            			    android:layout_toRightOf="@+id/img_choicee"
-            			    android:background="@null"
-            			    android:contentDescription="..."
-            			    android:visibility="invisible"
-            			    android:onClick="onClick"
-            			    android:src="@drawable/bola" />
+            			    android:layout_toRightOf="@+id/img_choiceg"
+                			android:contentDescription="..."
+                			android:visibility="invisible"
+                			android:src="@drawable/boy" 
+                			android:onClick="onClick"
+                			android:background="@null"/>
             			<ImageButton
             			    android:id="@+id/img_choicei"
-            			   android:layout_width="100dp"
+            			    android:layout_width="100dp"
         					android:layout_height="100dp"
-            				android:layout_alignParentBottom="true"
+                			android:layout_alignParentBottom="true"
             			    android:layout_marginBottom="75dp"
             			    android:layout_marginLeft="13dp"
-            			    android:layout_toRightOf="@+id/img_choicee"
-            			    android:background="@null"
-            			    android:contentDescription="..."
-            			    android:visibility="invisible"
-            			    android:onClick="onClick"
-            			    android:src="@drawable/bola" />
+            			    android:layout_toRightOf="@+id/img_choiceh"
+                			android:contentDescription="..."
+                			android:visibility="invisible"
+                			android:src="@drawable/boy" 
+                			android:onClick="onClick"
+                			android:background="@null"/>
              			</RelativeLayout>
-                
-             	
 	     </RelativeLayout>
 	     
 	    </HorizontalScrollView>
