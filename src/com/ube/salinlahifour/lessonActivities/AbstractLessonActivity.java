@@ -72,7 +72,7 @@ public abstract class AbstractLessonActivity extends Activity {
 	protected Evaluation evaluation;
 	protected GamePausePopup gamePause;
 	private ImageButton pauseBtn;
-	
+
 	protected int itemno;
 	protected String question;
 	protected String feedback = " ";
@@ -83,11 +83,10 @@ public abstract class AbstractLessonActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		Log.d("START", "START");
-		
-	
-//		setContentView(R.layout.activity_lesson);
+
+		//		setContentView(R.layout.activity_lesson);
 		try{
 			setContentView(layoutID);		
 		}catch(Exception e){
@@ -95,17 +94,16 @@ public abstract class AbstractLessonActivity extends Activity {
 					+ "1. XML layout for this activity exists.\n"
 					+ "2. layoutID has been set in Constructor");
 		}
-		
+
 		UserID = SalinlahiFour.getLoggedInUser().getId();
 		layout = (RelativeLayout) findViewById(R.id.parent_view);
-		
+
 		Bundle bundle = getIntent().getExtras();
 		activityName = bundle.getString("activityName");
 		activityLevel = LevelType.valueOf(bundle.getString("activityLevel"));
 		Log.d("activityLevel:", activityLevel.toString());
 		Log.d("activityName:", activityName.toString());
-		
-		
+
 		//lesson = SalinlahiFour.getLesson(activityName);
 		lesson = SalinlahiFour.getLessonByClassName(activityName);
 		Log.d("lessonName: ", lesson.getName());
@@ -113,18 +111,15 @@ public abstract class AbstractLessonActivity extends Activity {
 		Log.d("lexiconthang: ", lesson.getLexicon());
 		Log.d("item count: ", "" + lesson.getItems().size());
 
-
-		evaluation =  new Evaluation(this, activityName, activityLevel.toString());
+		evaluation =  new Evaluation(this, lesson.getName(), activityLevel.toString());
 		Log.d("Jim Parse On Moving", "Game's Lexicon: " + lesson.getLexicon());
-		
-		
+
 		//Log.d("Feedback Test", "Feedback: "+ evaluation.getImmediateFeedback(1, "Nanay", 1));
 		Intent intent = new Intent(this, HowToPlay.class);
 		intent.putExtra("lessonName", lesson.getTheRealName());
 		startActivity(intent);
-		
-		items = lesson.getItems();
 
+		items = lesson.getItems();
 
 		itemno = 0;
 		initiateLevels();
@@ -141,17 +136,16 @@ public abstract class AbstractLessonActivity extends Activity {
 		update(); //starts game by showing question and loading choices
 		context = getBaseContext();
 	}
-	
+
 	private void initiateLives(){
 		//ImageView[] life_iv = new ImageView[evaluation.getAllowableMistakes()];
 		//for(int i= 0; i<life_iv.length;i++){
 		//	life_iv[i] = new ImageView(this);
 		//}
-		 life_tv = new TextView(this);
-		 questionNo_tv = new TextView(this);
-		 utilBar = new RelativeLayout(this);
-		RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
-				RelativeLayout.LayoutParams.WRAP_CONTENT);
+		life_tv = new TextView(this);
+		questionNo_tv = new TextView(this);
+		utilBar = new RelativeLayout(this);
+		RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 		p.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,  RelativeLayout.TRUE);
 		p.setMargins(10, 5, 10, 10);
 		life_tv.setId(1);
@@ -160,28 +154,26 @@ public abstract class AbstractLessonActivity extends Activity {
 		life_tv.setTextColor(Color.WHITE);
 		//life_tv.setTextColor(Color.WHITE);
 		//life_tv.setShadowLayer(5f, -1, 1, Color.BLACK);
-		RelativeLayout.LayoutParams q = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
-				RelativeLayout.LayoutParams.WRAP_CONTENT);
+		RelativeLayout.LayoutParams q = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 		q.addRule(RelativeLayout.LEFT_OF,  life_tv.getId());
 		//q.addRule(RelativeLayout.ALIGN_PARENT_TOP,  RelativeLayout.TRUE);
 		q.setMargins(20, 5, 10, 10);
 		questionNo_tv.setTextSize(25);
 		questionNo_tv.setTypeface(SalinlahiFour.getFontAndy());
 		questionNo_tv.setTextColor(Color.WHITE);
-		
+
 		life_tv.setLayoutParams(p);
 		life_tv.setText("Tries Left: "+evaluation.getMistakesRemaining() + "/" + evaluation.getAllowableMistakes());
 		questionNo_tv.setLayoutParams(q);
 		questionNo_tv.setText("Question No: "+ (itemno+1) + "/" + evaluation.getTotalScore());
-		
-		RelativeLayout.LayoutParams u = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
-				RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+		RelativeLayout.LayoutParams u = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 		u.addRule(RelativeLayout.ALIGN_PARENT_TOP);
 		u.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-		
+
 		utilBar.setLayoutParams(u);
 		utilBar.setBackgroundResource(R.drawable.utilitybar);
-		
+
 		layout.addView(utilBar);
 		layout.addView(life_tv);
 		layout.addView(questionNo_tv);
@@ -201,17 +193,16 @@ public abstract class AbstractLessonActivity extends Activity {
 
 	private void initiateGamePauseUI(){
 		gamePause = new GamePausePopup(this);
-		
+
 		pauseBtn = new ImageButton(this);		
-		LayoutParams p = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-				ViewGroup.LayoutParams.WRAP_CONTENT);
+		LayoutParams p = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 		p.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
 		p.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-		
+
 		pauseBtn.setLayoutParams(p);
 		pauseBtn.setBackgroundDrawable(BtnStatesDirector.getImageDrawable(new PauseBtnStatesDirector()));
+		
 		pauseBtn.setOnClickListener(new View.OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 				Log.d("CLICKING POPUP", "TEST");
@@ -219,13 +210,14 @@ public abstract class AbstractLessonActivity extends Activity {
 				gamePause.showAsDropDown(gamePause.popupView);
 			}
 		});
+		
 		((ViewGroup)getWindow().getDecorView().getRootView()).addView(pauseBtn);
 	}
-	
+
 	protected Item getQuestionItem(){
 		return questions.get(itemno);
 	}
-	
+
 	protected ImageButton getPauseButton(){
 		return pauseBtn;
 	}
@@ -248,7 +240,7 @@ public abstract class AbstractLessonActivity extends Activity {
 			}
 			life_tv.setText("Tries Left:"+evaluation.getMistakesRemaining() + "/" + evaluation.getAllowableMistakes());
 			questionNo_tv.setText("Question No:"+ (itemno+1) + "/" + evaluation.getTotalScore());
-			
+
 			return true;
 		}
 		else{
@@ -278,7 +270,7 @@ public abstract class AbstractLessonActivity extends Activity {
 	}
 	protected boolean isGameOver(){
 		Log.d("TEST0", "Lives left: " + evaluation.getMistakesRemaining());
-		if(evaluation.isAlive() == true && itemno < questions.size()-1){
+		if(evaluation.isAlive() == true && itemno < questions.size() - 1){
 			Log.d("New Frame", "GameOver Check: false!");
 			return false;
 		}else{
@@ -296,10 +288,10 @@ public abstract class AbstractLessonActivity extends Activity {
 		try {
 			records = userdb.getRecentUserRecordsFromUserId(SalinlahiFour.getLoggedInUser().getId(), activityName);
 			int cnt_itemLevel = 0;
-			
+
 			ArrayList<Item> items = (ArrayList<Item>) lesson.getItems().clone();
 			HashMap<String, Integer> itemKeys = new HashMap();
-			
+
 			for(int i = 0; i < items.size(); i++){
 				if(!items.get(i).getLevel().equals(activityLevel.toString())){
 					itemKeys.put(items.get(i).getWord(), 0);
@@ -308,12 +300,12 @@ public abstract class AbstractLessonActivity extends Activity {
 					questions.add(items.get(i));
 				}
 			}
-			
-            Log.d("records size: " + records.size(), "TEST");
-            Log.d("itemKeys size: " + itemKeys.size(), "TEST");
-					
+
+			Log.d("records size: " + records.size(), "TEST");
+			Log.d("itemKeys size: " + itemKeys.size(), "TEST");
+
 			for(int i = 0; i < records.size(); i++){
-	//			int index = itemNames.indexOf(records.get(i).getCorrectAnswer());
+				//int index = itemNames.indexOf(records.get(i).getCorrectAnswer());
 				if(itemKeys.containsKey(records.get(i).getCorrectAnswer())){
 					int value = itemKeys.get(records.get(i).getCorrectAnswer());
 					if(records.get(i).getStatus().equals(StatusType.CORRECT.toString())){
@@ -324,25 +316,24 @@ public abstract class AbstractLessonActivity extends Activity {
 					itemKeys.put(records.get(i).getCorrectAnswer(), value);
 				}
 			}		
-			
+
 			Map<String, Integer> sortedItemKeys = sortByComparator(itemKeys);
-			
+
 			int i = 0;
 			ArrayList<Item> lessonItems = lesson.getItems();
-			
-			for(String key : sortedItemKeys.keySet()){
-				if((cnt_question - cnt_itemLevel) > i){
+
+			for(String key : sortedItemKeys.keySet()) {
+				if((cnt_question - cnt_itemLevel) > i) {
 					Log.d("TEST0", "questions part 5 lessonItems size: " + lessonItems.size());
 					for(int j = 0; j < lessonItems.size(); j++)
 						if(lessonItems.get(j).getWord().equals(key)){
-	//						if(lessonItems.get(j).getLevel().equals(activityLevel))
-								questions.add(lessonItems.get(j));
-	//						else if(cnt_question > 0 && cnt_question < j){
-	//							
-	//						}
+							//if(lessonItems.get(j).getLevel().equals(activityLevel))
+							questions.add(lessonItems.get(j));
+							//else if(cnt_question > 0 && cnt_question < j){			
+							//}
 							break;
 						}
-				}else{
+				} else {
 					break;
 				}
 				i++;
@@ -352,26 +343,25 @@ public abstract class AbstractLessonActivity extends Activity {
 		}
 		Log.d("TEST0", "questions size: " + questions.size());
 		Collections.shuffle(questions,  new Random(System.nanoTime()));
-		
+
 		for (Item item : questions) {
-            Log.d("QUESTIONS LOADED: ", item.getQuestion() + " " + item.getDifficulty());
-        }
+			Log.d("QUESTIONS LOADED: ", item.getQuestion() + " " + item.getDifficulty());
+		}
 	}
-	
+
 	private static Map<String, Integer> sortByComparator(Map<String, Integer> unsortMap) {
-		 
+
 		// Convert Map to List
 		List<Map.Entry<String, Integer>> list = 
-			new LinkedList<Map.Entry<String, Integer>>(unsortMap.entrySet());
- 
+				new LinkedList<Map.Entry<String, Integer>>(unsortMap.entrySet());
+
 		// Sort list with comparator, to compare the Map values
 		Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
-			public int compare(Map.Entry<String, Integer> o1,
-                                           Map.Entry<String, Integer> o2) {
+			public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
 				return (o1.getValue()).compareTo(o2.getValue());
 			}
 		});
- 
+
 		// Convert sorted map back to a Map
 		Map<String, Integer> sortedMap = new LinkedHashMap<String, Integer>();
 		for (Iterator<Map.Entry<String, Integer>> it = list.iterator(); it.hasNext();) {
@@ -380,7 +370,7 @@ public abstract class AbstractLessonActivity extends Activity {
 		}
 		return sortedMap;
 	}
-	
+
 	protected void initiateNarrationModule(){
 		int passingScore = 0;
 		Log.d("TESTINGLessonActivity", "Aldrin: Initiating iFeedback..");
@@ -405,25 +395,24 @@ public abstract class AbstractLessonActivity extends Activity {
 
 	}
 	protected void end_report(int choice){//THIS IS FOR TRANSFERRING TO OTHER ACTIVITIES
-	    	
-	    	switch(choice){
-	    	case 1:
-	    		Intent intent = new Intent(this, MapActivity.class);
+
+		switch(choice){
+		case 1:
+			Intent intent = new Intent(this, MapActivity.class);
 			startActivity(intent); break;
-	    	case 2:
-	    		Intent intent1 = new Intent(activityName);
-	    		intent1.putExtra("activityClass", activityName);
-	    		intent1.putExtra("activityLevel", activityLevel);
-				startActivity(intent1);break;
-	    	}
-	    	
+		case 2:
+			Intent intent1 = new Intent(activityName);
+			intent1.putExtra("activityClass", activityName);
+			intent1.putExtra("activityLevel", activityLevel);
+			startActivity(intent1);break;
+		}
+
 	}
-	
+
 	protected void showReportCard(Context context){
 		reportCard = new ReportCard(context, lesson, activityLevel, evaluation, evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber()),activityName);
 		reportCard.reveal();
 	}
-
 
 	abstract protected void configureEasyLevel();
 	abstract protected void configureMediumLevel();
@@ -432,7 +421,7 @@ public abstract class AbstractLessonActivity extends Activity {
 	abstract protected void update();
 	abstract protected void ifAnswerIsCorrect();
 	abstract protected void ifAnswerIsWrong();
-	
+
 	private void errorPopup(String title, String error){
 		final AlertDialog.Builder builder=new AlertDialog.Builder(this);
 		builder.setTitle(title);
@@ -443,29 +432,28 @@ public abstract class AbstractLessonActivity extends Activity {
 			public void onClick(DialogInterface dialog, int which) {
 				System.exit(0);
 			}
-			});
+		});
 		builder.show();
 	}
 
 	protected void setLayoutID(int x){
 		layoutID = x;
 	}
-	
+
 	protected void setCntQuestions(int x){
 		cnt_question = x;
 	}
-	
+
 	protected int getCntQuestions(){
 		return cnt_question;
 	}
-	
+
 	protected ArrayList<Item> loadShuffledChoices(int size){
 		ArrayList<Item> tempitems = new ArrayList();
-		
-		
+
 		tempitems.add(getQuestionItem());
 		Log.d("TEST0", "Adding Selected Item: " + getQuestionItem().getWord());
-		
+
 		for(int i = 1; i < size; i++){
 			boolean isEligibleItem = false;
 			int loops = 0;
@@ -489,7 +477,7 @@ public abstract class AbstractLessonActivity extends Activity {
 				if(isEligibleItem){
 					Log.d("TEST0", "Adding Selected Item: " + selectedItem.getWord());
 					if(!tempitems.contains(selectedItem))
-					tempitems.add(selectedItem);
+						tempitems.add(selectedItem);
 					Log.d("TEST0", "Temp Items size: " + tempitems.size());
 					break;
 				}else{
@@ -520,51 +508,51 @@ public abstract class AbstractLessonActivity extends Activity {
 		super.onPause();
 		SalinlahiFour.getBgm().pause();
 	}
-	
+
 	protected class GamePausePopup extends PopupWindow implements android.view.View.OnClickListener{
 		private ImageButton btn_yes;
 		private ImageButton btn_no;
 
 		private View popupView;
-		
+
 		public GamePausePopup(Context context){
 			LayoutInflater layoutInflater = (LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);  
-		    popupView = layoutInflater.inflate(R.layout.gamepause, null);        
-		    setOutsideTouchable(false);
-	        setBackgroundDrawable(new BitmapDrawable());
-		    
-	        setContentView(popupView);
-		    setHeight(LayoutParams.MATCH_PARENT);
-		    setWidth(LayoutParams.MATCH_PARENT);
+			popupView = layoutInflater.inflate(R.layout.gamepause, null);        
+			setOutsideTouchable(false);
+			setBackgroundDrawable(new BitmapDrawable());
 
-		    btn_yes = (ImageButton) popupView.findViewById(R.id.btn_yes);
-		    btn_no = (ImageButton) popupView.findViewById(R.id.btn_no);
-		    
-		    btn_yes.setImageDrawable(BtnStatesDirector.getImageDrawable(new YesBtnStatesBuilder()));
-		    btn_no.setImageDrawable(BtnStatesDirector.getImageDrawable(new NoBtnStatesBuilder()));
-		    
-		    btn_yes.setOnClickListener(this);
-		    btn_no.setOnClickListener(this);
+			setContentView(popupView);
+			setHeight(LayoutParams.MATCH_PARENT);
+			setWidth(LayoutParams.MATCH_PARENT);
+
+			btn_yes = (ImageButton) popupView.findViewById(R.id.btn_yes);
+			btn_no = (ImageButton) popupView.findViewById(R.id.btn_no);
+
+			btn_yes.setImageDrawable(BtnStatesDirector.getImageDrawable(new YesBtnStatesBuilder()));
+			btn_no.setImageDrawable(BtnStatesDirector.getImageDrawable(new NoBtnStatesBuilder()));
+
+			btn_yes.setOnClickListener(this);
+			btn_no.setOnClickListener(this);
 		}
-	
+
 		@Override
 		public void onClick(View v) {
-				switch(v.getId()){
-					case R.id.btn_yes:
-						startActivity(new Intent(context, MapActivity.class));
-						break;
-					case R.id.btn_no:
-						dismiss();
-						break;
-				}
+			switch(v.getId()){
+			case R.id.btn_yes:
+				startActivity(new Intent(context, MapActivity.class));
+				break;
+			case R.id.btn_no:
+				dismiss();
+				break;
+			}
 		}
-		
+
 	}
-	
+
 	protected void setQuestionTVText(String text) {
 		questionNo_tv.setText(text);
 	}
-	
+
 	protected void setLifeTVText(String text) {
 		life_tv.setText(text);
 	}
