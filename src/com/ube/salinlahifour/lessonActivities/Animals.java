@@ -3,15 +3,12 @@ package com.ube.salinlahifour.lessonActivities;
 import java.util.ArrayList;
 import java.util.Random;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.media.MediaPlayer;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.daimajia.androidanimations.library.Techniques;
@@ -203,7 +200,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 		
 		String question = "";
 		if(fixedIndex == 0){
-			question = "What is the animal sound, picture, and the Filipino word of\n" + englishCardsOnHand.get(0).answer + "?";
+			question = "What is the animal sound, picture, and the Filipino word of\n" + englishCardsOnHand.get(0).englishWord + "?";
 		}else if(fixedIndex == 1){
 			question = "What is the English word, picture, and the Filipino word of\n that animal sound?";	
 		}else if(fixedIndex == 2){
@@ -516,13 +513,15 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 		public int drawableResID;
 		public int soundResID;
 		public int itemno;
+		private String englishWord;
 		
-		public Card(String answer, int drawableResID, int soundResID, int itemno){
+		public Card(String answer, int drawableResID, int soundResID, int itemno, String englishWord){
 			this.answer = answer;
 			this.drawableResID = drawableResID;
 			this.soundResID = soundResID;
 			this.itemno = itemno;
-		}		
+			this.englishWord = englishWord;
+		}
 	}
 	
 	private void setCard(Item item){
@@ -530,73 +529,73 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 		switch(item.getWord()){
 		case "Aso":
 			itemno = 0;
-			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_dog, item.getVoiceEngID(), itemno));
-			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_dog, R.raw.animals_sound_dog, itemno));
-			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno));
-			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_aso, item.getVoiceFilID(), itemno));
+			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_dog, item.getVoiceEngID(), itemno, item.getEnglish()));
+			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_dog, R.raw.animals_sound_dog, itemno, item.getEnglish()));
+			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno, item.getEnglish()));
+			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_aso, item.getVoiceFilID(), itemno, item.getEnglish()));
 			break;
 		case "Pusa":
 			itemno = 1;
-			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_cat, item.getVoiceEngID(), itemno));
-			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_cat, R.raw.animals_sound_meow, itemno));
-			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno));
-			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_pusa, item.getVoiceFilID(),itemno));
+			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_cat, item.getVoiceEngID(), itemno, item.getEnglish()));
+			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_cat, R.raw.animals_sound_meow, itemno, item.getEnglish()));
+			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno, item.getEnglish()));
+			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_pusa, item.getVoiceFilID(),itemno, item.getEnglish()));
 			break;
 		case "Manok":
 			itemno = 2;
-			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_chicken, item.getVoiceEngID(), itemno));
-			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_chicken, R.raw.animals_sound_chicken, itemno));
-			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno));
-			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_manok, item.getVoiceFilID(), itemno));
+			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_chicken, item.getVoiceEngID(), itemno, item.getEnglish()));
+			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_chicken, R.raw.animals_sound_chicken, itemno, item.getEnglish()));
+			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno, item.getEnglish()));
+			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_manok, item.getVoiceFilID(), itemno, item.getEnglish()));
 			break;
 		case "Kalabaw":
 			itemno = 3;
-			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_carabao, item.getVoiceEngID(), itemno));
-			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_carabao, R.raw.animals_sound_carabao, itemno));
-			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno));
-			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_kalabaw, item.getVoiceFilID(),itemno));
+			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_carabao, item.getVoiceEngID(), itemno, item.getEnglish()));
+			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_carabao, R.raw.animals_sound_carabao, itemno, item.getEnglish()));
+			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno, item.getEnglish()));
+			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_kalabaw, item.getVoiceFilID(),itemno, item.getEnglish()));
 			break;
 		case "Palaka":
 			itemno = 4;
-			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_frog, item.getVoiceEngID(), itemno));
-			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_frog, R.raw.animals_sound_frog, itemno));
-			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno));
-			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_palka, item.getVoiceFilID(),itemno));
+			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_frog, item.getVoiceEngID(), itemno, item.getEnglish()));
+			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_frog, R.raw.animals_sound_frog, itemno, item.getEnglish()));
+			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno, item.getEnglish()));
+			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_palka, item.getVoiceFilID(),itemno, item.getEnglish()));
 			break;
 		case "Unggoy":
 			itemno = 5;
-			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_monkey, item.getVoiceEngID(), itemno));
-			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_monkey, R.raw.animals_sound_monkey, itemno));
-			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno));
-			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_unggoy, item.getVoiceFilID(),itemno));
+			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_monkey, item.getVoiceEngID(), itemno, item.getEnglish()));
+			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_monkey, R.raw.animals_sound_monkey, itemno, item.getEnglish()));
+			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno, item.getEnglish()));
+			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_unggoy, item.getVoiceFilID(), itemno, item.getEnglish()));
 			break;
 		case "Ibon":
 			itemno = 6;
-			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_bird, item.getVoiceEngID(), itemno));
-			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_bird, R.raw.animals_sound_bird, itemno));
-			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno));
-			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_ibon, item.getVoiceFilID(),itemno));
+			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_bird, item.getVoiceEngID(), itemno, item.getEnglish()));
+			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_bird, R.raw.animals_sound_bird, itemno, item.getEnglish()));
+			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno, item.getEnglish()));
+			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_ibon, item.getVoiceFilID(),itemno, item.getEnglish()));
 			break;
 		case "Daga":
 			itemno = 7;
-			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_mouse, item.getVoiceEngID(), itemno));
-			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_rat, R.raw.animals_sound_mouse, itemno));
-			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno));
-			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_daga, item.getVoiceFilID(),itemno));
+			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_mouse, item.getVoiceEngID(), itemno, item.getEnglish()));
+			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_rat, R.raw.animals_sound_mouse, itemno, item.getEnglish()));
+			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno, item.getEnglish()));
+			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_daga, item.getVoiceFilID(),itemno, item.getEnglish()));
 			break;
 		case "Elepante":
 			itemno = 8;
-			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_elephant, item.getVoiceEngID(), itemno));
-			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_elephant, R.raw.animals_sound_elephant, itemno));
-			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno));
-			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_elefante, item.getVoiceFilID(),itemno));
+			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_elephant, item.getVoiceEngID(), itemno, item.getEnglish()));
+			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_elephant, R.raw.animals_sound_elephant, itemno, item.getEnglish()));
+			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno, item.getEnglish()));
+			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_elefante, item.getVoiceFilID(),itemno, item.getEnglish()));
 			break;
 		case "Oso":
 			itemno = 9;
-			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_bear, item.getVoiceEngID(), itemno));
-			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_bear, R.raw.animals_sound_bear, itemno));
-			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno));
-			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_oso, item.getVoiceFilID(),itemno));
+			englishCards.add(new Card(item.getWord(), R.drawable.animals_eng_bear, item.getVoiceEngID(), itemno, item.getEnglish()));
+			soundCards.add(new Card(item.getWord(), R.drawable.animals_sound_bear, R.raw.animals_sound_bear, itemno, item.getEnglish()));
+			pictureCards.add(new Card(item.getWord(), item.getImageID(), 0, itemno, item.getEnglish()));
+			filipinoCards.add(new Card(item.getWord(), R.drawable.animals_fil_oso, item.getVoiceFilID(),itemno, item.getEnglish()));
 			break;
 		}
 	}
@@ -701,7 +700,10 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 						sound = MediaPlayer.create(this, R.raw.sfx_correct);
 						sound.start();
 					}else{
-						
+						if(!evaluation.isAlive()) {
+							evaluation.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), UserID);
+							showReportCard(this);
+						}
 					}
 				}else{
 					if(++itemno < questions.size())
@@ -711,6 +713,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 						showReportCard(this);
 					}
 				}
+				setLifeTVText("Tries Left: "+evaluation.getMistakesRemaining() + "/" + evaluation.getAllowableMistakes());
 				break;
 		}
 	}
