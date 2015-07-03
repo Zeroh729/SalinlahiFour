@@ -144,7 +144,7 @@ public class Tutorial extends Activity {
 					pressed[3] = true;
 					items.get(3).playFilipinoSound();	
 					textviews[3].setVisibility(android.view.View.VISIBLE);
-					imgviews[0].setVisibility(android.view.View.INVISIBLE);
+					imgviews[3].setVisibility(android.view.View.INVISIBLE);
 					break;
 				case R.id.textView4:
 					textviews[3].setVisibility(android.view.View.INVISIBLE);
@@ -221,7 +221,7 @@ public class Tutorial extends Activity {
 					pressed[3] = true;
 					items.get(3).playFilipinoSound();	
 					textviews[3].setVisibility(android.view.View.VISIBLE);
-					imgviews[0].setVisibility(android.view.View.INVISIBLE);
+					imgviews[3].setVisibility(android.view.View.INVISIBLE);
 					break;
 				case R.id.textView4:
 					textviews[3].setVisibility(android.view.View.INVISIBLE);
@@ -298,7 +298,7 @@ public class Tutorial extends Activity {
 					pressed[3] = true;
 					items.get(3).playFilipinoSound();	
 					textviews[3].setVisibility(android.view.View.VISIBLE);
-					imgviews[0].setVisibility(android.view.View.INVISIBLE);
+					imgviews[3].setVisibility(android.view.View.INVISIBLE);
 					break;
 				case R.id.textView4:
 					textviews[3].setVisibility(android.view.View.INVISIBLE);
