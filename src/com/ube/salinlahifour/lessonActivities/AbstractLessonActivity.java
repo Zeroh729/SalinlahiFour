@@ -242,12 +242,11 @@ public abstract class AbstractLessonActivity extends Activity {
 			questionNo_tv.setText("Question No:"+ (itemno+1) + "/" + evaluation.getTotalScore());
 
 			return true;
-		}
-		else{
+		} else {
 			Log.d("New Frame", "Wrong!");
 			feedback = evaluation.getImmediateFeedback(questions.get(itemno).getID(), answer, lesson.getLessonNumber());
 
-			if(isGameOver()){
+			if(!evaluation.isAlive()){
 				//Log.d("Debug Family", "Aldrin: iFeedback says its finished (Delayed Feedback)");
 				Log.d("New Frame", "GameOver!");
 				evaluation.updateUserLessonProgress(lesson.getName(), activityLevel.toString(), UserID);
