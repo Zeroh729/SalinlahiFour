@@ -141,7 +141,6 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 		}
 		
 		initiateCards();
-
 	}
 	
 	private void initiateCards(){
@@ -157,7 +156,21 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 		
 		Log.d("ANIMALS: size: " + items.size(), "TEST");
 		
-		for(int i = 0; i < items.size(); i++){
+		int totalItems = 0;
+		
+		switch(activityLevel) {
+			case EASY:
+				totalItems = 4;
+				break;
+			case MEDIUM:
+				totalItems = 8;
+				break;
+			case HARD:
+				totalItems = 10;
+				break;
+		}
+		
+		for(int i = 0; i < totalItems; i++){
 			setCard(items.get(i));
 		}
 		
@@ -273,8 +286,6 @@ public class Animals extends AbstractLessonActivity implements OnClickListener{
 			soundCardsOnHand.add(soundCards.get(answerIndexes[i]));
 			pictureCardsOnHand.add(pictureCards.get(answerIndexes[i]));
 		}
-		
-		
 	}
 	
 	private boolean doesContain(int x, int[] arrays, int limit){
