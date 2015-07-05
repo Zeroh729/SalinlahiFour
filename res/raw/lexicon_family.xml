@@ -19,7 +19,7 @@
 <Word_Entry>
     <q_num>2</q_num>
 	<word>Tatay</word>
-	<question>Can you find tatay</question>
+	<question>Can you find Tatay?</question>
 	<eng_word>Father</eng_word>
     <w_type>definition</w_type>
     <notes>He was the one that made our treehouse in the backyard.</notes>
@@ -34,7 +34,7 @@
 <Word_Entry>
     <q_num>3</q_num>
 	<word>Kuya</word>
-	<question>Can you find kuya?</question>
+	<question>Can you find Kuya?</question>
 	<eng_word>Brother</eng_word>
     <w_type>definition</w_type>
     <notes>He also teases me a lot.</notes>
@@ -48,10 +48,10 @@
 <Word_Entry>
     <q_num>4</q_num>
     <word>Ate</word>
-    <question>Can you find Ate</question>
+    <question>Can you find Ate?</question>
     <eng_word>Sister</eng_word>
     <w_type>definition</w_type>
-    <notes>She told me she really likes this boy once. i forgot his name.</notes>
+    <notes>She told me she really likes this boy once. I forgot his name.</notes>
     <hint>She is my older sister. She spends a lot of her time talking with her friends.</hint>
     <lesson>1</lesson>
     <image_path>family_ate</image_path>
@@ -63,10 +63,10 @@
 <Word_Entry>
 	<q_num>5</q_num>
     <word>Lolo</word>
-    <question>Can you find lolo</question>
+    <question>Can you find Lolo?</question>
     <eng_word>Grandfather</eng_word>
     <w_type>definition</w_type>
-    <notes>We play board games a lot</notes>
+    <notes>We play board games a lot.</notes>
     <hint>He is Tatay's father. He uses glasses to read the newspaper.</hint>
 	<lesson>1</lesson>
 	<image_path>family_lolo</image_path>
@@ -77,7 +77,7 @@
 <Word_Entry>
     <q_num>6</q_num>
 	<word>Lola</word>
-	<question>Can you find lola</question>
+	<question>Can you find Lola?</question>
 	<eng_word>Grandmother</eng_word>
     <w_type>definition</w_type>
     <notes>She also likes to tell us stories from her time.</notes>
@@ -92,7 +92,7 @@
 <Word_Entry>
     <q_num>7</q_num>
     <word>Bunso</word>
-    <question>Can you find bunso?</question>
+    <question>Can you find Bunso?</question>
     <eng_word>Youngest</eng_word>
     <w_type>definition</w_type>
     <notes>He is also very cute. </notes>
@@ -106,7 +106,7 @@
 <Word_Entry>
     <q_num>8</q_num>
     <word>Tito</word>
-    <question>Can you find tito?</question>
+    <question>Can you find Tito?</question>
     <eng_word>Uncle</eng_word>
     <w_type>definition</w_type>
     <notes>He tells horrible jokes. </notes>
@@ -120,7 +120,7 @@
 <Word_Entry>
     <q_num>9</q_num>
     <word>Tita</word>
-    <question>Can you find tita</question>
+    <question>Can you find Tita?</question>
     <eng_word>Auntie</eng_word>
     <w_type>definition</w_type>
     <notes>She likes to hang out with my mother.</notes>
