@@ -593,9 +593,9 @@ containing a value of this type.
         public static final int imageView4=0x7f0e000b;
         public static final int image_view=0x7f0e008b;
         public static final int img_bronze=0x7f0e0044;
-        public static final int img_choicea=0x7f0e007b;
+        public static final int img_choicea=0x7f0e0079;
         public static final int img_choiceb=0x7f0e007a;
-        public static final int img_choicec=0x7f0e0079;
+        public static final int img_choicec=0x7f0e007b;
         public static final int img_choiced=0x7f0e007c;
         public static final int img_choicee=0x7f0e007d;
         public static final int img_choicef=0x7f0e007e;
