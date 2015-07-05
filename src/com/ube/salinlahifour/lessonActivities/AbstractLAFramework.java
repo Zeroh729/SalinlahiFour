@@ -64,7 +64,7 @@ public abstract class AbstractLAFramework extends AndroidGame {
 		lesson = SalinlahiFour.getLessonByClassName(activityName);
 		activityLevel = bundle.getString("activityLevel");
 		UserID = SalinlahiFour.getLoggedInUser().getId();
-		evaluation =  new Evaluation(this, activityName, activityLevel.toString());
+		evaluation =  new Evaluation(this, lesson.getName(), activityLevel.toString());
 		Log.d(activityName, "TEST ActivityName in lesson act");
 		Log.d(activityLevel, "TEST ActivityLevel in lesson act: " + activityLevel);
 		//items = lesson.getItems();
