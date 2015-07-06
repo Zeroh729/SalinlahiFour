@@ -2,16 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15dp"
     android:background="@drawable/animals_bg"
-    
+    android:id="@+id/parent_view"
     >
     
     <TextView 
         android:id="@+id/tv_questionno"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="5"
         android:textSize="45sp"
         android:layout_toLeftOf="@+id/tv_score"
         android:layout_alignTop="@+id/tv_score"
@@ -23,7 +21,6 @@
         android:id="@+id/tv_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" / 10"
         android:textSize="30sp"
         android:layout_alignParentRight="true"
         android:textColor="#163c8b"
@@ -53,6 +50,7 @@
        			android:paddingTop="30dp"
 		        android:background="@null"
 		        />
+            
 			<ImageButton
 		        android:id="@+id/btn_englishcard"
 		        android:layout_width="wrap_content"
@@ -62,7 +60,30 @@
 		        android:layout_marginRight="40dp"
 		        android:layout_below="@id/btn_english_up"
 		        />
+			
+            <ImageView
+                android:id="@+id/sign1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_englishcard"
+                android:layout_alignParentLeft="true"
+                android:layout_alignRight="@+id/btn_english_up"
+                android:src="@drawable/animals_sign"
+                android:layout_marginTop="-20dp"
+                android:visibility="invisible"/>
 		    
+		    <TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="English word"
+				android:textColor="#2b2b2b"
+				android:textSize="20sp"
+				android:layout_alignTop="@id/btn_englishcard"
+				android:layout_alignLeft="@id/btn_englishcard"
+				android:layout_alignRight="@id/btn_englishcard"
+				android:gravity="center_horizontal"
+				android:layout_marginTop="-20dp"
+				/>
 		    <ImageButton 
 		        android:id="@+id/btn_english_down"
 		        android:layout_width="wrap_content"
@@ -103,6 +124,28 @@
 		        android:layout_marginRight="40dp"
 		        android:layout_below="@id/btn_sound_up"
 		        />
+            <ImageView
+                android:id="@+id/sign2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_soundcard"
+                android:layout_alignParentLeft="true"
+                android:layout_alignRight="@+id/btn_soundcard"
+                android:src="@drawable/animals_sign" 
+                android:layout_marginTop="-20dp"
+                android:visibility="invisible"/>
+		    <TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Animal sound"
+				android:textColor="#2b2b2b"
+				android:textSize="20sp"
+				android:layout_alignTop="@id/btn_soundcard"
+				android:layout_alignLeft="@id/btn_soundcard"
+				android:layout_alignRight="@id/btn_soundcard"
+				android:gravity="center_horizontal"
+				android:layout_marginTop="-20dp"
+				/>
 		    
 		    <ImageButton 
 		        android:id="@+id/btn_sound_down"
@@ -145,7 +188,30 @@
 		        android:layout_marginRight="40dp"
 		        android:layout_below="@id/btn_picture_up"
 		        />
+			
+            <ImageView
+                android:id="@+id/sign3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_picturecard"
+                android:layout_alignParentLeft="true"
+                android:layout_alignRight="@+id/btn_picturecard"
+                android:src="@drawable/animals_sign"
+                android:layout_marginTop="-20dp"
+                android:visibility="invisible"/>
 		    
+		    <TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Picture"
+				android:textColor="#2b2b2b"
+				android:textSize="20sp"
+				android:layout_alignTop="@id/btn_picturecard"
+				android:layout_alignLeft="@id/btn_picturecard"
+				android:layout_alignRight="@id/btn_picturecard"
+				android:gravity="center_horizontal"
+				android:layout_marginTop="-20dp"
+				/>
 		    <ImageButton 
 		        android:id="@+id/btn_picture_down"
 		        android:layout_width="wrap_content"
@@ -186,6 +252,29 @@
 		        android:layout_marginRight="40dp"
 		        android:layout_below="@id/btn_filipino_up"
 		        />
+            <ImageView
+                android:id="@+id/sign4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_filipinocard"
+                android:layout_alignParentLeft="true"
+                android:layout_alignRight="@+id/btn_filipinocard"
+                android:src="@drawable/animals_sign"
+                android:layout_marginTop="-20dp"
+                android:visibility="invisible"/>
+		    
+		    <TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Filipino Word"
+				android:textColor="#2b2b2b"
+				android:textSize="20sp"
+				android:layout_alignTop="@id/btn_filipinocard"
+				android:layout_alignLeft="@id/btn_filipinocard"
+				android:layout_alignRight="@id/btn_filipinocard"
+				android:gravity="center_horizontal"
+				android:layout_marginTop="-20dp"
+				/>
 		    
 		    <ImageButton 
 		        android:id="@+id/btn_filipino_down"
@@ -221,7 +310,7 @@
 	        android:paddingTop="30dp"
 	        android:paddingBottom="30dp"
 	        android:textColor="#2c2c2c"
-	        android:textSize="22sp"
+	  		android:textSize="25sp"
 	        android:layout_alignRight="@id/img_dialog"
 	        android:layout_alignLeft="@id/img_dialog"
 	        android:layout_alignBottom="@id/img_dialog"
@@ -239,6 +328,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="10dp"
         android:paddingBottom="10dp"
+        android:paddingRight="10dp"
         android:background="@null"
         />
     

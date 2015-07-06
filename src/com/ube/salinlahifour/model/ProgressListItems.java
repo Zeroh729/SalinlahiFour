@@ -11,6 +11,7 @@ public class ProgressListItems {
 
 	private String itemName = "";
 	private int progress = -1;
+	private String progressBarLabel = "";
 	
 	private boolean isLessonCategory;
 	
@@ -71,5 +72,11 @@ public class ProgressListItems {
 	}
 	public void setProgress(int progress) {
 		this.progress = progress;
+	}
+	public String getProgressBarLabel(){
+		return progressBarLabel;
+	}
+	public void setProgressBarLabel(String label){
+		progressBarLabel = label;
 	}
 }
