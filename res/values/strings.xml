@@ -1,7 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">SalinlahiFour</string>
+    <string name="action_enterFromLeft">entranceFromLeft</string>
+    <string name="action_enterFromRight">entranceFromRight</string>
+    <string name="action_enterFromAbove">entranceFromAbove</string>
+    <string name="action_enterFromBelow">entranceFromBelow</string>
+    <string name="action_exitFromLeft">exitToLeft</string>
+    <string name="action_exitFromRight">exitToRight</string>
+    <string name="action_exitFromAbove">exitToAbove</string>
+    <string name="action_exitFromBelow">exitToBelow</string>
+    <string name="action_shake">shake</string>
+    <string name="action_rumble">rumble</string>
+    <string name="action_jump">jump</string>
+    <string name="action_emphasize">emphasize</string>
+    <string name="action_surprise">surprise</string>
+    <string name="action_panic">panic</string>
+    <string name="expression_default">exp0_default</string>
+    <string name="expression_shocked">exp0_shocked</string>
+    <string name="expression_scared">exp0_scared</string>
+    <string name="expression_happy">exp0_happy</string>
+    <string name="expression_sad">exp0_sad</string>
+    <string name="expression_wave">exp0_wave</string>
+    <string name="expression_question">exp0_question</string>
+    <string name="expression_point">exp0_point</string>
+    <string name="expression_worried">exp0_worried</string>
+    <string name="expression_laugh">exp0_laugh</string>
+    <string name="expression_angry">exp0_angry</string>
+    <string name="expression_cry">exp0_cry</string>
+    <string name="expression_silly">exp0_silly</string>
+    <string name="expression_wink">exp0_wave</string>
+    <string name="expression_grin">exp0_grin</string>
+    <string name="expression_sick">exp0_sick</string>
+    <string name="expression_special1">exp0_special1</string>
+    <string name="expression_special2">exp0_special2</string>
+    <string name="expression_special3">exp0_special3</string>
+    <string name="expression_special4">exp0_special4</string>
+    <string name="expression_special5">exp0_special5</string>
+    <string name="app_name">Salinlahi 4</string>
     <string name="hello_world">Salinlahi 4</string>
     <string name="title_activity_select_user">SelectUserActivity</string>
     <string name="title_activity_map">MapActivity</string>
@@ -9,22 +44,28 @@
     <string name="title_activity_abstract_tutorial">AbstractTutorialActivity</string>
     <string name="title_activity_shape">Shape</string>
     <string name="title_activity_debug_user_module">DebugUserModuleActivity</string>
-    <string name="action_settings">Settings</string>
+    <string name="settings">Settings</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_debug_user_record">DebugUserRecordActivity</string>
     <string name="title_activity_debug_user_lesson_progress">DebugUserLessonProgressActivity</string>
     <string name="hello">Hello World, MagicTextViewActivity!</string>
     <string name="title_activity_progress_tree">ProgressTree</string>
+    <string name="title_gameover">Game Over</string>
+
     <string-array name="tutorial_family_easy">
-        <item >Nanay - She is my mother. She usually cooks for the family</item>
-        <item >Tatay - This is my father. He is the one that works for the family</item>
-        <item >Kuya - My older brother. He likes to play basketball and all different kinfs of sports</item>
-        <item >Ate - She is my older sister. She like to spend her time with her phone</item>
-        <item >Lolo - My grandfather. He uses glasses to read the newspaper</item>
-        <item >Lola - My grandmother. She walks around with a cane</item>
-        <item >Bunso - My younger sibling. He likes to play toys.</item>
-        <item >Tito - He is the brother of my parent. I do not know which one though.</item>
-        <item >Tita - The sister of my mother. She is a great cook too.</item>
+        <item>Nanay - She is my mother. She usually cooks for the family</item>
+        <item>Tatay - This is my father. He is the one that works for the family</item>
+        <item>Kuya - My older brother. He likes to play basketball and all different kinfs of sports</item>
+        <item>Ate - She is my older sister. She like to spend her time with her phone</item>
+        <item>Lolo - My grandfather. He uses glasses to read the newspaper</item>
+        <item>Lola - My grandmother. She walks around with a cane</item>
+        <item>Bunso - My younger sibling. He likes to play toys.</item>
+        <item>Tito - He is the brother of my parent. I do not know which one though.</item>
+        <item>Tita - The sister of my mother. She is a great cook too.</item>
     </string-array>
+
+    <string name="title_activity_dev_main">DevMainActivity</string>
+    <string name="title_activity_fiesta">Fiesta</string>
+    <string name="title_activity_feelings">Feelings</string>
 
 </resources>

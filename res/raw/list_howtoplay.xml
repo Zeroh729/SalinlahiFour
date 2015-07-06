@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <Lesson
+        name="Animals">
+        <Screenshot src="howtoplay_animals_0"/>
+        <Screenshot src="howtoplay_animals_1"/>
+        <Screenshot src="howtoplay_animals_2"/>
+        <Screenshot src="howtoplay_animals_3"/>
+    </Lesson>
+    <Lesson
+        name="Cooking">
+        <Screenshot src="howtoplay_color_1"/>
+        <Screenshot src="howtoplay_color_2"/>
+        <Screenshot src="howtoplay_color_3"/>
+    </Lesson>
+    <Lesson
+        name="Family">
+        <Screenshot src="howtoplay_family_1"/>
+        <Screenshot src="howtoplay_family_2"/>
+    </Lesson>
+    <Lesson
+        name="House">
+        <Screenshot src="howtoplay_house_1"/>
+        <Screenshot src="howtoplay_house_2"/>
+        <Screenshot src="howtoplay_house_3"/>
+        <Screenshot src="howtoplay_house_4"/>
+    </Lesson>
+    <Lesson
+        name="Shape">
+        <Screenshot src="howtoplay_shape_1"/>
+        <Screenshot src="howtoplay_shape_2"/>
+    </Lesson>
+    <Lesson
+        name="Greetings">
+        <Screenshot src="howtoplay_shape_1"/>
+        <Screenshot src="howtoplay_shape_2"/>
+    </Lesson>
+    <Lesson
+        name="Feelings">
+        <Screenshot src="howtoplay_feelings_1"/>
+        <Screenshot src="howtoplay_feelings_2"/>
+    </Lesson>
+    <Lesson
+        name="Feelings2">
+        <Screenshot src="howtoplay_feelings_1"/>
+        <Screenshot src="howtoplay_feelings_2"/>
+    </Lesson>
+</resources>
