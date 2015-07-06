@@ -42,6 +42,7 @@ public abstract class AbstractGameScreen extends Screen {
 	protected UserLessonProgressOperations userLessonProgressOperator = new UserLessonProgressOperations(SalinlahiFour.getContext());
 	protected int nItemsRemaining;
 	protected int rounds;
+	protected int totalItems;
 
 	protected ReportCard reportCard;
 	protected Context context;
@@ -274,7 +275,7 @@ public abstract class AbstractGameScreen extends Screen {
 		drawCustomUI();
 		Graphics g = game.getGraphics();
 		g.drawImage(g.newImage("charbox/utilitybar.png", ImageFormat.RGB565), 355, 0);
-		g.drawString("Question No:" + (rounds) + "/" + eval.getTotalScore() + " " + "Tries Left:" + eval.getMistakesRemaining() + "/" + eval.getAllowableMistakes(), 670, 25, paint5);
+		g.drawString("Question No:" + (rounds) + "/" + totalItems + " " + "Tries Left:" + eval.getMistakesRemaining() + "/" + eval.getAllowableMistakes(), 670, 25, paint5);
 		
 		// g.drawString(sQuestion, 430, 50, paint2);
 	}

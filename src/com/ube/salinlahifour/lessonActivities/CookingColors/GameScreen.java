@@ -116,7 +116,7 @@ public class GameScreen extends AbstractGameScreen {
 		sprinklerButtons = new ButtonSet(4, 510, 40, lesson);
 		sprinklerButtons.calculateButtonPosition(buttons_sprinkles[0].getWidth(), buttons_sprinkles[0].getHeight(), 2, 3);
 
-		nItemsRemaining = 3;
+		nItemsRemaining = totalItems = 3;
 
 		cake = new Cake();
 
@@ -129,7 +129,7 @@ public class GameScreen extends AbstractGameScreen {
 		sprinklerButtons.loadQuestions();
 
 		Log.d("Aldrin ExtendedFramework", "Positioning Easy Assets...Done");
-		eval.setTotScore(nItemsRemaining);
+		eval.setTotScore(nItemsRemaining * 3);
 	}
 
 	@Override
@@ -146,7 +146,7 @@ public class GameScreen extends AbstractGameScreen {
 
 		sprinklerButtons = new ButtonSet(4, 510, 40, lesson);
 		sprinklerButtons.calculateButtonPosition(buttons_sprinkles[0].getWidth(), buttons_sprinkles[0].getHeight(), 2, 3);
-		nItemsRemaining = 4;
+		nItemsRemaining = totalItems = 4;
 		cake = new Cake();
 
 		breaderButtons.loadRandomColors(6);
@@ -162,13 +162,13 @@ public class GameScreen extends AbstractGameScreen {
 		sprinklerButtons.loadQuestions();
 
 		Log.d("GameScreen", "Positioning Medium...Done");
-		eval.setTotScore(nItemsRemaining);
+		eval.setTotScore(nItemsRemaining * 3);
 	}
 
 	@Override
 	protected void assetPositionHard() {
 		// TODO Auto-generated method stub
-		nItemsRemaining = 5;
+		nItemsRemaining = totalItems = 5;
 		breaderButtons = new ButtonSet(4, 70, 40, lesson);
 		Log.d("ButtonDebug", "Wdith: " + buttons_bread[0].getWidth() + " Height: " + buttons_bread[0].getHeight());
 		breaderButtons.calculateButtonPosition(buttons_bread[0].getWidth(), buttons_bread[0].getHeight(), 2, 3);
@@ -192,7 +192,7 @@ public class GameScreen extends AbstractGameScreen {
 		breaderButtons.loadQuestions();
 		creamerButtons.loadQuestions();
 		sprinklerButtons.loadQuestions();
-		eval.setTotScore(nItemsRemaining);
+		eval.setTotScore(nItemsRemaining * 3);
 	}
 
 	@Override
@@ -245,12 +245,12 @@ public class GameScreen extends AbstractGameScreen {
 					}
 				} else {
 					if (inBounds(event, breaderButtons.getInitX(), breaderButtons.getInitY(), buttons_bread[0].getWidth() * 2, buttons_bread[0].getHeight() * 2)) {// if
-																																									// bread
+						// bread
 						cake.move(50, 250);
 						Log.d("GameScreen", "Thats a breader");
 
 						if (inBounds(event, breaderButtons.getX(0), breaderButtons.getY(0), buttons_bread[0].getWidth(), buttons_bread[0].getHeight())) {// if
-																																							// blue
+							// blue
 							Log.d("GameScreen", "Thats a breader and blue button");
 							bread = Assets.bread.get(0);
 							cake.addBead("Asul");
@@ -258,7 +258,7 @@ public class GameScreen extends AbstractGameScreen {
 							wrong = Assets.nothingness;
 							buttons_bread[0] = Assets.buttons_pressed.get(0);
 						} else if (inBounds(event, breaderButtons.getX(1), breaderButtons.getY(1), buttons_bread[1].getWidth(), buttons_bread[1].getHeight())) {// if
-																																								// green
+							// green
 							Log.d("GameScreen", "Thats a breader and green button");
 							bread = Assets.bread.get(1);
 							cake.addBead("Berde");
@@ -266,7 +266,7 @@ public class GameScreen extends AbstractGameScreen {
 							wrong = Assets.nothingness;
 							buttons_bread[1] = Assets.buttons_pressed.get(1);
 						} else if (inBounds(event, breaderButtons.getX(2), breaderButtons.getY(2), buttons_bread[2].getWidth(), buttons_bread[2].getHeight())) {// if
-																																								// red
+							// red
 							Log.d("GameScreen", "Thats a breader and red button");
 							bread = Assets.bread.get(2);
 							cake.addBead("Pula");
@@ -274,7 +274,7 @@ public class GameScreen extends AbstractGameScreen {
 							wrong = Assets.nothingness;
 							buttons_bread[2] = Assets.buttons_pressed.get(2);
 						} else if (inBounds(event, breaderButtons.getX(3), breaderButtons.getY(3), buttons_bread[3].getWidth(), buttons_bread[3].getHeight())) {// if
-																																								// yellow
+							// yellow
 							Log.d("GameScreen", "Thats a breader and yellow button");
 							bread = Assets.bread.get(3);
 							cake.addBead("Dilaw");
@@ -283,11 +283,11 @@ public class GameScreen extends AbstractGameScreen {
 							buttons_bread[3] = Assets.buttons_pressed.get(3);
 						}
 					} else if (inBounds(event, creamerButtons.getInitX(), creamerButtons.getInitY(), buttons_bread[0].getWidth() * 2, buttons_bread[0].getHeight() * 2)) {// if
-																																											// frosting
+						// frosting
 						cake.move(270, 250);
 						Log.d("GameScreen", "Thats a creamer");
 						if (inBounds(event, creamerButtons.getX(0), creamerButtons.getY(0), buttons_frosting[0].getWidth(), buttons_frosting[0].getHeight())) {// if
-																																								// blue
+							// blue
 							Log.d("GameScreen", "Thats a creamer and blue button");
 							frosting = Assets.frosting.get(0);
 							cake.addCream("Asul");
@@ -295,7 +295,7 @@ public class GameScreen extends AbstractGameScreen {
 							wrong = Assets.nothingness;
 							buttons_frosting[0] = Assets.buttons_pressed.get(0);
 						} else if (inBounds(event, creamerButtons.getX(1), creamerButtons.getY(1), buttons_frosting[1].getWidth(), buttons_frosting[1].getHeight())) {// if
-																																										// green
+							// green
 							Log.d("GameScreen", "Thats a creamer and green button");
 							frosting = Assets.frosting.get(1);
 							cake.addCream("Berde");
@@ -303,7 +303,7 @@ public class GameScreen extends AbstractGameScreen {
 							wrong = Assets.nothingness;
 							buttons_frosting[1] = Assets.buttons_pressed.get(1);
 						} else if (inBounds(event, creamerButtons.getX(2), creamerButtons.getY(2), buttons_frosting[2].getWidth(), buttons_frosting[2].getHeight())) {// if
-																																										// red
+							// red
 							Log.d("GameScreen", "Thats a creamer and red button");
 							frosting = Assets.frosting.get(2);
 							cake.addCream("Pula");
@@ -311,7 +311,7 @@ public class GameScreen extends AbstractGameScreen {
 							wrong = Assets.nothingness;
 							buttons_frosting[2] = Assets.buttons_pressed.get(2);
 						} else if (inBounds(event, creamerButtons.getX(3), creamerButtons.getY(3), buttons_frosting[3].getWidth(), buttons_frosting[3].getHeight())) {// if
-																																										// yellow
+							// yellow
 							Log.d("GameScreen", "Thats a creamer and yellow button");
 							frosting = Assets.frosting.get(3);
 							cake.addCream("Dilaw");
@@ -320,10 +320,10 @@ public class GameScreen extends AbstractGameScreen {
 							buttons_frosting[3] = Assets.buttons_pressed.get(3);
 						}
 					} else if (inBounds(event, sprinklerButtons.getInitX(), sprinklerButtons.getInitY(), buttons_sprinkles[0].getWidth() * 2, buttons_sprinkles[0].getHeight() * 2)) {// if
-																																														// sprikinle
+						// sprikinle
 						cake.move(485, 250);
 						if (inBounds(event, sprinklerButtons.getX(0), sprinklerButtons.getY(0), buttons_sprinkles[0].getWidth(), buttons_sprinkles[0].getHeight())) {// if
-																																										// blue
+							// blue
 							sprinkles = Assets.sprinkles.get(0);
 							cake.addSprinkles("Asul");
 							Log.d("GameScreen", "Thats a sprinkle and Blue button");
@@ -331,7 +331,7 @@ public class GameScreen extends AbstractGameScreen {
 							wrong = Assets.nothingness;
 							buttons_sprinkles[0] = Assets.buttons_pressed.get(0);
 						} else if (inBounds(event, sprinklerButtons.getX(1), sprinklerButtons.getY(1), buttons_sprinkles[1].getWidth(), buttons_sprinkles[1].getHeight())) {// if
-																																											// green
+							// green
 							sprinkles = Assets.sprinkles.get(1);
 							cake.addSprinkles("Berde");
 							wrong = Assets.nothingness;
@@ -339,7 +339,7 @@ public class GameScreen extends AbstractGameScreen {
 							Log.d("GameScreen", "Thats a sprinkle and Green button");
 							sounds[1].play(0.85f);
 						} else if (inBounds(event, sprinklerButtons.getX(2), sprinklerButtons.getY(2), buttons_sprinkles[2].getWidth(), buttons_sprinkles[2].getHeight())) {// if
-																																											// red
+							// red
 							sprinkles = Assets.sprinkles.get(2);
 							cake.addSprinkles("Pula");
 							wrong = Assets.nothingness;
@@ -347,7 +347,7 @@ public class GameScreen extends AbstractGameScreen {
 							sounds[2].play(0.85f);
 							buttons_sprinkles[2] = Assets.buttons_pressed.get(2);
 						} else if (inBounds(event, sprinklerButtons.getX(3), sprinklerButtons.getY(3), buttons_sprinkles[3].getWidth(), buttons_sprinkles[3].getHeight())) {// if
-																																											// yellow
+							// yellow
 							sprinkles = Assets.sprinkles.get(3);
 							cake.addSprinkles("Dilaw");
 							wrong = Assets.nothingness;
@@ -428,51 +428,51 @@ public class GameScreen extends AbstractGameScreen {
 			}
 			if (event.type == TouchEvent.TOUCH_UP) {
 				if (inBounds(event, breaderButtons.getInitX(), breaderButtons.getInitY(), buttons_bread[0].getWidth() * 2, buttons_bread[0].getHeight() * 2)) {// if
-																																								// bread
+					// bread
 					if (inBounds(event, breaderButtons.getX(0), breaderButtons.getY(0), buttons_bread[0].getWidth(), buttons_bread[0].getHeight())) {// if
-																																						// blue
+						// blue
 						buttons_bread[0] = Assets.buttons.get(0);
 					} else if (inBounds(event, breaderButtons.getX(1), breaderButtons.getY(1), buttons_bread[1].getWidth(), buttons_bread[1].getHeight())) {// if
-																																							// blue
+						// blue
 						buttons_bread[1] = Assets.buttons.get(1);
 					} else if (inBounds(event, breaderButtons.getX(2), breaderButtons.getY(2), buttons_bread[2].getWidth(), buttons_bread[2].getHeight())) {// if
-																																							// blue
+						// blue
 						buttons_bread[2] = Assets.buttons.get(2);
 					} else if (inBounds(event, breaderButtons.getX(3), breaderButtons.getY(3), buttons_bread[3].getWidth(), buttons_bread[3].getHeight())) {// if
-																																							// blue
+						// blue
 						buttons_bread[3] = Assets.buttons.get(3);
 					}
 				} else if (inBounds(event, creamerButtons.getInitX(), creamerButtons.getInitY(), buttons_frosting[0].getWidth() * 2, buttons_frosting[0].getHeight() * 2)) {// if
-																																											// frostying
+					// frostying
 					if (inBounds(event, creamerButtons.getX(0), creamerButtons.getY(0), buttons_frosting[0].getWidth(), buttons_frosting[0].getHeight())) {// if
-																																							// blue
+						// blue
 						buttons_frosting[0] = Assets.buttons.get(0);
 					} else if (inBounds(event, creamerButtons.getX(1), creamerButtons.getY(1), buttons_frosting[1].getWidth(), buttons_frosting[1].getHeight())) {// if
-																																									// blue
+						// blue
 						buttons_frosting[1] = Assets.buttons.get(1);
 					} else if (inBounds(event, creamerButtons.getX(2), creamerButtons.getY(2), buttons_frosting[2].getWidth(), buttons_frosting[2].getHeight())) {// if
-																																									// blue
+						// blue
 						buttons_frosting[2] = Assets.buttons.get(2);
 					} else if (inBounds(event, creamerButtons.getX(3), creamerButtons.getY(3), buttons_frosting[3].getWidth(), buttons_frosting[3].getHeight())) {// if
-																																									// blue
+						// blue
 						buttons_frosting[3] = Assets.buttons.get(3);
 					}
 				} else if (inBounds(event, sprinklerButtons.getInitX(), sprinklerButtons.getInitY(), buttons_sprinkles[0].getWidth() * 2, buttons_sprinkles[0].getHeight() * 2)) {// if
-																																													// sprinkle
+					// sprinkle
 					if (inBounds(event, sprinklerButtons.getX(0), sprinklerButtons.getY(0), buttons_sprinkles[0].getWidth(), buttons_sprinkles[0].getHeight())) {// if
-																																									// blue
+						// blue
 						buttons_sprinkles[0] = Assets.buttons.get(0);
 
 					} else if (inBounds(event, sprinklerButtons.getX(1), breaderButtons.getY(1), buttons_sprinkles[1].getWidth(), buttons_sprinkles[1].getHeight())) {// if
-																																										// blue
+						// blue
 						buttons_sprinkles[1] = Assets.buttons.get(1);
 
 					} else if (inBounds(event, sprinklerButtons.getX(2), sprinklerButtons.getY(2), buttons_sprinkles[2].getWidth(), buttons_sprinkles[2].getHeight())) {// if
-																																										// blue
+						// blue
 						buttons_sprinkles[2] = Assets.buttons.get(2);
 
 					} else if (inBounds(event, sprinklerButtons.getX(3), sprinklerButtons.getY(3), buttons_sprinkles[3].getWidth(), buttons_sprinkles[3].getHeight())) {// if
-																																										// blue
+						// blue
 						buttons_sprinkles[3] = Assets.buttons.get(3);
 					}
 				}
@@ -526,12 +526,12 @@ public class GameScreen extends AbstractGameScreen {
 				} else {
 					wrong = Assets.nothingness;
 					if (inBounds(event, breaderButtons.getInitX(), breaderButtons.getInitY(), buttons_bread[0].getWidth() * 2, buttons_bread[0].getHeight() * 2)) {// if
-																																									// bread
+						// bread
 						cake.move(50, 250);
 						Log.d("GameScreen", "Thats a breader");
 						for (int bread_i = 0; bread_i < 4; bread_i++) {
 							if (inBounds(event, breaderButtons.getX(bread_i), breaderButtons.getY(bread_i), buttons_bread[bread_i].getWidth(), buttons_bread[bread_i].getHeight())) {// if
-																																														// blue
+								// blue
 								Log.d("GameScreen", "Thats a breader and" + breaderButtons.getAnswer(breaderButtons.getChosenColors(bread_i)));
 								bread = Assets.bread.get(breaderButtons.getChosenColors(bread_i));// correct
 								cake.addBead(breaderButtons.getAnswer(breaderButtons.getChosenColors(bread_i))); // correct
@@ -543,12 +543,12 @@ public class GameScreen extends AbstractGameScreen {
 							}
 						}
 					} else if (inBounds(event, creamerButtons.getInitX(), creamerButtons.getInitY(), buttons_frosting[0].getWidth() * 2, buttons_frosting[0].getHeight() * 2)) {// if
-																																												// frosting
+						// frosting
 						cake.move(270, 250);
 						Log.d("GameScreen", "Thats a creamerButtons");
 						for (int cream_i = 0; cream_i < 4; cream_i++) {
 							if (inBounds(event, creamerButtons.getX(cream_i), creamerButtons.getY(cream_i), buttons_frosting[cream_i].getWidth(), buttons_frosting[cream_i].getHeight())) {// if
-																																															// blue
+								// blue
 								Log.d("GameScreen", "Thats a creamerButtons and" + creamerButtons.getAnswer(creamerButtons.getChosenColors(cream_i)));
 								frosting = Assets.frosting.get(creamerButtons.getChosenColors(cream_i));// correct
 								cake.addCream(creamerButtons.getAnswer(creamerButtons.getChosenColors(cream_i))); // correct
@@ -560,12 +560,12 @@ public class GameScreen extends AbstractGameScreen {
 							}
 						}
 					} else if (inBounds(event, sprinklerButtons.getInitX(), sprinklerButtons.getInitY(), buttons_sprinkles[0].getWidth() * 2, buttons_sprinkles[0].getHeight() * 2)) {// if
-																																														// bread
+						// bread
 						cake.move(485, 250);
 						Log.d("GameScreen", "Thats a sprinklerButtons");
 						for (int sprinkle_i = 0; sprinkle_i < 4; sprinkle_i++) {
 							if (inBounds(event, sprinklerButtons.getX(sprinkle_i), sprinklerButtons.getY(sprinkle_i), buttons_sprinkles[sprinkle_i].getWidth(), buttons_sprinkles[sprinkle_i].getHeight())) {// if
-																																																				// blue
+								// blue
 								Log.d("GameScreen", "Thats a sprinklerButtons and" + sprinklerButtons.getAnswer(sprinklerButtons.getChosenColors(sprinkle_i)));
 								sprinkles = Assets.sprinkles.get(sprinklerButtons.getChosenColors(sprinkle_i));// correct
 								cake.addSprinkles(sprinklerButtons.getAnswer(sprinklerButtons.getChosenColors(sprinkle_i))); // correct
@@ -646,26 +646,26 @@ public class GameScreen extends AbstractGameScreen {
 
 			if (event.type == TouchEvent.TOUCH_UP) {
 				if (inBounds(event, breaderButtons.getInitX(), breaderButtons.getInitY(), buttons_bread[0].getWidth() * 2, buttons_bread[0].getHeight() * 2)) {// if
-																																								// bread
+					// bread
 					for (int bread_i = 0; bread_i < 4; bread_i++) {
 						if (inBounds(event, breaderButtons.getX(bread_i), breaderButtons.getY(bread_i), buttons_bread[bread_i].getWidth(), buttons_bread[bread_i].getHeight())) {// if
-																																													// blue
+							// blue
 							buttons_bread[breaderButtons.getChosenColors(bread_i)] = Assets.buttons.get(breaderButtons.getChosenColors(bread_i));
 						}
 					}
 				} else if (inBounds(event, creamerButtons.getInitX(), creamerButtons.getInitY(), buttons_frosting[0].getWidth() * 2, buttons_frosting[0].getHeight() * 2)) {// if
-																																											// frostying
+					// frostying
 					for (int cream_i = 0; cream_i < 4; cream_i++) {
 						if (inBounds(event, creamerButtons.getX(cream_i), creamerButtons.getY(cream_i), buttons_frosting[cream_i].getWidth(), buttons_frosting[cream_i].getHeight())) {// if
-																																														// blue
+							// blue
 							buttons_frosting[creamerButtons.getChosenColors(cream_i)] = Assets.buttons.get(creamerButtons.getChosenColors(cream_i));
 						}
 					}
 				} else if (inBounds(event, sprinklerButtons.getInitX(), sprinklerButtons.getInitY(), buttons_sprinkles[0].getWidth() * 2, buttons_sprinkles[0].getHeight() * 2)) {// if
-																																													// sprinkle
+					// sprinkle
 					for (int sprinkle_i = 0; sprinkle_i < 4; sprinkle_i++) {
 						if (inBounds(event, sprinklerButtons.getX(sprinkle_i), sprinklerButtons.getY(sprinkle_i), buttons_sprinkles[sprinkle_i].getWidth(), buttons_sprinkles[sprinkle_i].getHeight())) {// if
-																																																			// blue
+							// blue
 							buttons_sprinkles[sprinklerButtons.getChosenColors(sprinkle_i)] = Assets.buttons.get(sprinklerButtons.getChosenColors(sprinkle_i));
 
 						}
@@ -854,7 +854,7 @@ public class GameScreen extends AbstractGameScreen {
 					g.drawString(lineTwo, 360, 305, paint4);
 					g.drawString(lineTri, 360, 325, paint4);
 					g.drawString(lineFor, 360, 345, paint4);
-					
+
 				}
 			} else {
 				String lineOne = "", lineTwo = "";
@@ -868,7 +868,7 @@ public class GameScreen extends AbstractGameScreen {
 
 					}
 				}
-//				g.drawString(feedbacks[0], 360, 155, paint4);
+				//				g.drawString(feedbacks[0], 360, 155, paint4);
 				g.drawString(lineOne, 360, 155, paint4);
 				g.drawString(lineTwo, 360, 175, paint4);
 			}

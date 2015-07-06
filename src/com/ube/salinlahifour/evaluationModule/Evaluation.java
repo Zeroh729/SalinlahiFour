@@ -69,27 +69,22 @@ public class Evaluation {
 		if (userLessonProgressOperator.getUserLessonProgress(UserID, lessonName) == null) {
 			userLessonProgressOperator.addUserLessonProgress(UserID, lessonName, star.toString(), null, null);
 		} else {
-			easyStar = userLessonProgressOperator.getUserLessonProgress(UserID, lessonName).getEasyStar();
-			mediumStar = userLessonProgressOperator.getUserLessonProgress(UserID, lessonName).getMediumStar();
-			hardStar = userLessonProgressOperator.getUserLessonProgress(UserID, lessonName).getHardStar();
+			UserLessonProgress lessonProgress = userLessonProgressOperator.getUserLessonProgress(UserID, lessonName);
+			easyStar = lessonProgress.getEasyStar();
+			mediumStar = lessonProgress.getMediumStar();
+			hardStar = lessonProgress.getHardStar();
 			Log.d("Medal Debug", "Act Level: " + activityLevel);
-			if (activityLevel == LevelType.EASY.toString() || activityLevel.equals(LevelType.EASY.toString())) {
+			if (activityLevel.equals(LevelType.EASY.toString())) {
 				boolean mustUpdate = true;
-				if (easyStar.equals(StarType.SILVER.toString()) && star.toString().equals(StarType.BRONZE.toString())) {
-					mustUpdate = false;
-				}
-				if (easyStar.equals(StarType.GOLD.toString())) {
+				if (StarType.getStar(easyStar).getValue() >= star.getValue()) {
 					mustUpdate = false;
 				}
 				if (mustUpdate)
 					userLessonProgressOperator.updateUserLessonProgress(UserID, lessonName, star.toString(), mediumStar, hardStar);
-			} else if (activityLevel == LevelType.MEDIUM.toString() || activityLevel.equals(LevelType.MEDIUM.toString())) {
+			} else if (activityLevel.equals(LevelType.MEDIUM.toString())) {
 				boolean mustUpdate = true;
 				if (mediumStar != null) {
-					if (mediumStar.equals(StarType.SILVER.toString()) && star.toString().equals(StarType.BRONZE.toString())) {
-						mustUpdate = false;
-					}
-					if (mediumStar.equals(StarType.GOLD.toString())) {
+					if (StarType.getStar(mediumStar).getValue() >= star.getValue()) {
 						mustUpdate = false;
 					}
 				}
@@ -98,10 +93,7 @@ public class Evaluation {
 			} else {
 				boolean mustUpdate = true;
 				if (hardStar != null) {
-					if (hardStar.equals(StarType.SILVER.toString()) && star.toString().equals(StarType.BRONZE.toString())) {
-						mustUpdate = false;
-					}
-					if (hardStar.equals(StarType.GOLD.toString())) {
+					if (StarType.getStar(hardStar).getValue() >= star.getValue()) {
 						mustUpdate = false;
 					}
 				}
