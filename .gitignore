@@ -36,9 +36,9 @@ Icon
 .Spotlight-V100
 .Trashes
 
-*.class
 SalinlahiFour.apk
 classes.dex
+resources.ap_
 
 # built application files
 *.apk
