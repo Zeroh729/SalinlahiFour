@@ -685,10 +685,12 @@ public class GameScreen extends AbstractGameScreen  {
 			 g.drawARGB(155, 0, 0, 0);
 			 g.drawImage(feedboxBoy, this.pDialog.getX(), pDialog.getY());
 			 g.drawImage(nextBtn, p_nextBtn.getX(), p_nextBtn.getY());
-			  String lineOne = "", lineTwo ="";
+			  String lineOne = "", lineTwo ="", lineTri = "";
 			  cuttedWord = sentenceCutter(sFeedback);
 			  for(int s = 0; s<cuttedWord.length;s++){
-					if(s>8){
+				  if(s>13){
+					  lineTri += cuttedWord[s] + " ";
+					}else if(s>6){
 						lineTwo += cuttedWord[s] + " ";
 					}else{
 						lineOne += cuttedWord[s]+ " ";
@@ -696,6 +698,7 @@ public class GameScreen extends AbstractGameScreen  {
 				}
 			  g.drawString(lineOne, 350,63, paint4);
 			  g.drawString(lineTwo, 350,83, paint4);
+			  g.drawString(lineTri, 350,103, paint4);
 			 //g.drawString(sFeedback, 322, 63, paint4);
 			}
 		}
@@ -741,7 +744,19 @@ public class GameScreen extends AbstractGameScreen  {
 			g.drawImage(backbtn, 1, 1);
 			// g.drawString("sFeedback", 300, 400, paint2);//sFeedback 
 			// g.drawString(sFeedback, 545, 40, paint3);//sQuestion
-			g.drawString(sQuestion, 350, 78, paint4);//sQuestion
+			//g.drawString(sQuestion, 350, 78, paint4);//sQuestion
+			cuttedWord = sentenceCutter(sQuestion);
+			 String lineOne = "", lineTwo ="", lineTri = "";
+			  for(int s = 0; s<cuttedWord.length;s++){
+				 if(s>6){
+						lineTwo += cuttedWord[s] + " ";
+					}else{
+						lineOne += cuttedWord[s]+ " ";
+					}
+				}
+			  g.drawString(lineOne, 350,63, paint4);
+			  g.drawString(lineTwo, 350,83, paint4);
+			 // g.drawString(lineTri, 350,103, paint4);
 			showTransition();
 			showExit();
 			

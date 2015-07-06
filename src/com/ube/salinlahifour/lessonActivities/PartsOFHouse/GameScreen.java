@@ -823,17 +823,20 @@ public class GameScreen extends AbstractGameScreen  {
 				  g.drawARGB(200, 0, 0, 0);
 				  g.drawImage(feedboxBoy, this.pDialog.getX(), pDialog.getY());
 				  
-				  String lineOne = "", lineTwo ="";
+				  String lineOne = "", lineTwo ="", lineTri = "";
 				  cuttedWord = sentenceCutter(sFeedback);
 				  for(int s = 0; s<cuttedWord.length;s++){
-						if(s>8){
+					  if(s>11){
+						  lineTri += cuttedWord[s] + " ";
+						}else if(s>6){
 							lineTwo += cuttedWord[s] + " ";
 						}else{
 							lineOne += cuttedWord[s]+ " ";
 						}
 					}
-				  g.drawString(lineOne, 165,63, paint);
-				  g.drawString(lineTwo, 165,83, paint);
+				  g.drawString(lineOne, 150,80, paint);
+				  g.drawString(lineTwo, 150,100, paint);
+				  g.drawString(lineTri, 150,120, paint);
 				  //g.drawString(sFeedback, 165, 63, paint);
 				  g.drawImage(nextBtn, p_nextBtn.getX(), p_nextBtn.getY());
 				  switch(answer){
