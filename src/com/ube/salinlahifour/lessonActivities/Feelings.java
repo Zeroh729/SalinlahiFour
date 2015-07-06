@@ -1,130 +1,168 @@
 package com.ube.salinlahifour.lessonActivities;
+
+import java.util.ArrayList;
+
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
+import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.R;
 import com.ube.salinlahifour.enumTypes.LevelType;
 
 public class Feelings extends AbstractLessonActivity implements OnClickListener {
-	
-	private TextView textview;
-	private Button[] buttons;
-	private Button nxtbtn;
-	private ImageView imgVw;
-	
-	public Feelings(){
 
+	private static final int EASY = 3;
+	private static final int MEDIUM = 5;
+	private ImageView imageView;
+	private TextView textView;
+	private Button[] buttonArray;
+	private Button nextButton;
+	private ArrayList<Item> shuffledChoices;
+
+	//CONSTRUCTOR
+	public Feelings() {
 		layoutID = R.layout.lessonactivity_feelings;
 	}
 
 	@Override
+	//SETS THE PARAMETERS OF THE EASY LEVEL OF THE GAME
 	protected void configureEasyLevel() {
-		// TODO Auto-generated method stub
-		setCntQuestions(3);
-
+		// SET THE NUMBER OF QUESTIONS TO 3 (EASY)
+		setCntQuestions(EASY);
 	}
 
 	@Override
+	//SETS THE PARAMETERS OF THE MEDIUM LEVEL OF THE GAME
 	protected void configureMediumLevel() {
-		// TODO Auto-generated method stub
-
-		setCntQuestions(5);
-
+		// SET THE NUMBER OF QUESTIONS TO 5 (MEDIUM)
+		setCntQuestions(MEDIUM);
 	}
 
 	@Override
+	//SETS THE PARAMETERS OF THE HARD LEVEL OF THE GAME
 	protected void configureHardLevel() {
-		// TODO Auto-generated method stub
-
-		setCntQuestions(5);
-
+		// SET THE NUMBER OF QUESTIONS TO 5 (SAME AS MEDIUM)
+		configureMediumLevel();
 	}
 
 	@Override
+	//INSTANTIATES ALL THE UI ELEMENTS OF THE GAME
 	protected void initiateViews() {
-		// TODO Auto-generated method stub
+		// INSTANTIATE TEXT AND IMAGE VIEW
+		textView = (TextView) findViewById(R.id.questionView);
+		imageView = (ImageView) findViewById(R.id.questionImageView);
 
-		textview = (TextView)findViewById(R.id.tv_questionbox);
+		// INSTANTIATE BUTTONS
+		buttonArray = new Button[5];
+		buttonArray[0] = (Button) findViewById(R.id.answerButton1);
+		buttonArray[1] = (Button) findViewById(R.id.answerButton2);
+		buttonArray[2] = (Button) findViewById(R.id.answerButton3);
+		buttonArray[3] = (Button) findViewById(R.id.answerButton4);
+		buttonArray[4] = (Button) findViewById(R.id.answerButton5);
 		
-		buttons = new Button[5];
-		buttons[0] = (Button)findViewById(R.id.tv_choice1);
-		buttons[1] = (Button)findViewById(R.id.tv_choice2);
-		buttons[2] = (Button)findViewById(R.id.tv_choice3);
-		buttons[3] = (Button)findViewById(R.id.tv_choice4);
-		buttons[4] = (Button)findViewById(R.id.tv_choice5);
-		
-		nxtbtn = (Button)findViewById(R.id.btn_next);
-		
-		if(activityLevel == LevelType.EASY){
-			buttons[3].setVisibility(View.GONE);
-			buttons[4].setVisibility(View.GONE);
+		if(activityLevel == LevelType.EASY) {
+			buttonArray[3].setVisibility(View.GONE);
+			buttonArray[4].setVisibility(View.GONE);
 		}
-		
-		imgVw = (ImageView)findViewById(R.id.image_view);
-		
-		for(int i = 0; i < buttons.length; i++){
-			buttons[i].setOnClickListener(this);
-		}
-		imgVw.setOnClickListener(this);
-		nxtbtn.setOnClickListener(this);
 
+		nextButton = (Button) findViewById(R.id.nextButton);
 	}
 
 	@Override
+	//UPDATES THE GAME
 	protected void update() {
-		// TODO Auto-generated method stub
+		nextButton.setVisibility(View.INVISIBLE);
+		toggleButtonArrayVisibility(View.VISIBLE);
 
-		String[] choices = loadSortedChoices(getCntQuestions());
-		
-		for(int i = 0; i < choices.length; i++){
-			buttons[i].setText(choices[i]);
+		// IF LEVEL IS HARD SHUFFLE CHOICES
+		if (activityLevel == LevelType.HARD) {
+			shuffledChoices = loadShuffledChoices(MEDIUM);
+
+			for (int i = 0; i < shuffledChoices.size(); i++) {
+				buttonArray[i].setText(shuffledChoices.get(i).getWord());
+			}
+		} else { //ELSE LOAD CHOICES IN ORDER
+			String[] choices = loadSortedChoices(getCntQuestions());
+
+			for (int i = 0; i < choices.length; i++) {
+				buttonArray[i].setText(choices[i]);
+			}
 		}
+
+		//GET THE NEXT QUESTION
 		loadQuestion(itemno);
 
-		textview.setText(question);
-		imgVw.setImageResource(getQuestionItem().getImageID());
-
+		//SET THE TEXT TO THE QUESTION
+		textView.setText(question);
+		//SET THE IMAGE TO THE QUESTION
+		imageView.setImageResource(getQuestionItem().getImageID());
 	}
 
 	@Override
+	//GENERATES A CORRECT FEEDBACK WHEN THE ANSWER IS CORRECT AND
+	//HIDES THE ANSWER BUTTONS AND SHOWS THE NEXT BUTTON
 	protected void ifAnswerIsCorrect() {
-		// TODO Auto-generated method stub
-
-		textview.setText(feedback);
-		nxtbtn.setVisibility(View.VISIBLE);
-
-	}
-
-	@Override
-	protected void ifAnswerIsWrong() {
-		// TODO Auto-generated method stub
-
-		textview.setText(feedback +"\n" + question);
-
-	}
-
-	@Override
-	public void onClick(View v) {
-
-		switch(v.getId()){
-		case R.id.tv_choice1: evaluate(buttons[0].getText().toString());
-		items.get(0).playFilipinoSound();
-		;break;
-		case R.id.tv_choice2: evaluate(buttons[1].getText().toString()); items.get(1).playFilipinoSound();
-		;break;
-		case R.id.tv_choice3: evaluate(buttons[2].getText().toString()); items.get(2).playFilipinoSound();
-		;break;
-		case R.id.tv_choice4: evaluate(buttons[3].getText().toString()); items.get(3).playFilipinoSound();
-		;break;
-		case R.id.tv_choice5: evaluate(buttons[4].getText().toString()); items.get(4).playFilipinoSound();
-		;break;
+		textView.setText(feedback);
 		
-		case R.id.btn_next: update(); break;
-		case R.id.image_view: getQuestionItem().playEnglishSound();	}		
+		nextButton.setVisibility(View.VISIBLE);
+		toggleButtonArrayVisibility(View.INVISIBLE);
 	}
 
+	@Override
+	//GENERATES A WRONG ANSWEER FEEDBACK WHEN THE ANSWER IS WRONG
+	protected void ifAnswerIsWrong() {
+		textView.setText(feedback + "\n" + question);
+	}
+
+	@Override
+	//ACTION LISTENER WHEN A BUTTON IS PRESSED
+	public void onClick(View v) {
+		int index = -1;
+		
+		//GET THE BUTTON THAT WAS PRESSED
+		switch (v.getId()) {
+			case R.id.answerButton1:
+				index = 0;
+				break;
+			case R.id.answerButton2:
+				index = 1;
+				break;
+			case R.id.answerButton3:
+				index = 2;
+				break;
+			case R.id.answerButton4:
+				index = 3;
+				break;
+			case R.id.answerButton5:
+				index = 4;
+				break;
+			case R.id.nextButton:
+				update();
+				break;
+			case R.id.questionImageView:
+				getQuestionItem().playEnglishSound();
+				break;
+		}
+		
+		//IF THE BUTTON WAS AN ANSWER, EVALUATE ANSWER AND PLAY THE FILIPINO SOUND
+		if(index != -1) {
+			evaluate(buttonArray[index].getText().toString());
+			
+			if(activityLevel == LevelType.HARD) {
+				shuffledChoices.get(index).playFilipinoSound();
+			} else {
+				items.get(index).playFilipinoSound();
+			}
+		}
+	}
+	
+	//TOGGLES THE VISIBILITY OF THE ANSWERS
+	private void toggleButtonArrayVisibility(int visibility) {
+		for (int i = 0; i < cnt_question; i++) {
+			buttonArray[i].setVisibility(visibility);
+		}
+	}
 }

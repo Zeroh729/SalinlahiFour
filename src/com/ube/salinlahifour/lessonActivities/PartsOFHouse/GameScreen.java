@@ -291,7 +291,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            			if(answer == lesson.getItems().get(rounds-1).getID()){
 		            				sFeedback =  eval.getImmediateFeedback(1, sAnswer, lessonNumber);
 		            			}else{
-		            				sFeedback = "Sorry That is not what i'm asking";
+		            				sFeedback = "Sorry, that is not what I'm asking for.";
 		            			}
 		            			Log.d("Debug Error", "Mali");
 		            			transition = true;
@@ -322,7 +322,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            			if(answer == lesson.getItems().get(rounds-1).getID()){
 		            				sFeedback =  eval.getImmediateFeedback(4, sAnswer, lessonNumber);
 		            			}else{
-		            				sFeedback = "Sorry That is not what i'm asking";
+		            				sFeedback = "Sorry, that is not what I'm asking for.";
 		            			}
 		            			transition = true;
 		            			changeToError(sAnswer);
@@ -352,7 +352,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            			if(answer == lesson.getItems().get(rounds-1).getID()){
 		            				sFeedback =  eval.getImmediateFeedback(3, sAnswer, lessonNumber);
 		            			}else{
-		            				sFeedback = "Sorry That is not what i'm asking";
+		            				sFeedback = "Sorry, that is not what I'm asking for.";
 		            			}
 		            			Log.d("Debug Error", "Mali");
 		            			transition = true;
@@ -386,7 +386,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            			if(answer == lesson.getItems().get(rounds-1).getID()){
 		            				sFeedback =  eval.getImmediateFeedback(2, sAnswer, lessonNumber);
 		            			}else{
-		            				sFeedback = "Sorry That is not what i'm asking";
+		            				sFeedback = "Sorry, that is not what I'm asking for.";
 		            			}
 		            			Log.d("Debug Error", "Mali");
 		            			transition = true;
@@ -506,7 +506,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            			if(answer == lesson.getItems().get(rounds-1).getID()){
 		            				sFeedback =  eval.getImmediateFeedback(5, sAnswer, lessonNumber);
 		            			}else{
-		            				sFeedback = "Sorry That is not what i'm asking";
+		            				sFeedback = "Sorry, that is not what I'm asking for.";
 		            			}
 		            			Log.d("Debug Error", "Mali");
 		            			transition = true;
@@ -536,7 +536,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            			if(answer == lesson.getItems().get(rounds-1).getID()){
 		            				sFeedback =  eval.getImmediateFeedback(6, sAnswer, lessonNumber);
 		            			}else{
-		            				sFeedback = "Sorry That is not what i'm asking";
+		            				sFeedback = "Sorry, that is not what I'm asking for.";
 		            			}
 		            			Log.d("Debug Error", "Mali");
 		            			transition = true;
@@ -638,7 +638,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            			if(answer == lesson.getItems().get(rounds-1).getID()){
 		            				sFeedback =  eval.getImmediateFeedback(7, sAnswer, lessonNumber);
 		            			}else{
-		            				sFeedback = "Sorry That is not what i'm asking";
+		            				sFeedback = "Sorry, that is not what I'm asking for.";
 		            			}
 		            			Log.d("Debug Error", "Mali");
 		            			transition = true;
@@ -670,7 +670,7 @@ public class GameScreen extends AbstractGameScreen  {
 		            			if(answer == lesson.getItems().get(rounds-1).getID()){
 		            				sFeedback =  eval.getImmediateFeedback(8, sAnswer, lessonNumber);
 		            			}else{
-		            				sFeedback = "Sorry That is not what i'm asking";
+		            				sFeedback = "Sorry, that is not what I'm asking for.";
 		            			}
 		            			Log.d("Debug Error", "Mali");
 		            			transition = true;
