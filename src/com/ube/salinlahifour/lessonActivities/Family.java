@@ -118,6 +118,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 			choices[1] = (ImageButton) findViewById(R.id.img_choicec);
 			choices[2] = (ImageButton) findViewById(R.id.img_choiced);
 			choices[3] = (ImageButton) findViewById(R.id.img_choicef);
+			setCntQuestions(4);
 		} else if (activityLevel.equals(LevelType.MEDIUM)) {
 			Log.d("Debug Family", "Aldrin: Initiate Choices");
 			choices[0] = (ImageButton) findViewById(R.id.img_choicea);
