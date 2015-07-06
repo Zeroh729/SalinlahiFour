@@ -54,12 +54,21 @@ public class Tutorial extends Activity {
 			initiateViews();
 
 			if (activityLevel.equals(LevelType.EASY.toString())) {
-				setEasyTutorial();
-			} else if (activityLevel.equals(LevelType.MEDIUM.toString())) {
-				setMediumTutorial();
-			} else if (activityLevel.equals(LevelType.HARD.toString())) {
-				setHardTutorial();
+				Intent intent = new Intent(this, NarrativeDialog.class);
+				intent.putExtra("lessonName", lesson.getTheRealName());
+				startActivity(intent);
 			}
+
+			for (int i = 0; i < items.size(); i++) {
+				if (items.get(i).getDifficulty().toString().equalsIgnoreCase(activityLevel)) {
+					textviews[itemcnt].setText(items.get(i).getWord() + " - " + items.get(i).getHint());
+					imgviews[itemcnt].setImageResource(items.get(i).getImageID());
+					frames[itemcnt].setVisibility(View.VISIBLE);
+					itemcnt++;
+				}
+			}
+
+			setClickListeners();
 		}
 		parent_view = (RelativeLayout) findViewById(R.id.parent_view);
 		Log.d("TEST0", "Loaded Background Resources: " + lesson.getTutBackground());
@@ -86,249 +95,19 @@ public class Tutorial extends Activity {
 	private RelativeLayout parent_view;
 
 	private int itemcnt = 0;
-
+	
 	public Tutorial() {
 	}
-
-	private void setEasyTutorial() {
-		Intent intent = new Intent(this, NarrativeDialog.class);
-		intent.putExtra("lessonName", lesson.getTheRealName());
-		startActivity(intent);
-		Log.d(items.size() + "", "TEST");
-		for (int i = 0; i < items.size(); i++) {
-			if (items.get(i).getDifficulty().toString().equalsIgnoreCase(activityLevel)) {
-				Log.d("TEST0", "Tutorial class : Setup... name " + items.get(i).getWord() + " & desc: " + items.get(i).getNote());
-				textviews[itemcnt].setText(items.get(i).getWord() + " - " + items.get(i).getHint());
-				imgviews[itemcnt].setImageResource(items.get(i).getImageID());
-				frames[itemcnt].setVisibility(View.VISIBLE);
-				itemcnt++;
-			}
+	
+	private void setClickListeners() {
+		for(int i = 0; i < 4; i++) {
+			imgviews[i].setOnClickListener(new imageListener(i));
 		}
-
-		View.OnClickListener oclClick = new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				tv_rule.setVisibility(View.INVISIBLE);
-				switch (v.getId()) {
-				case R.id.imageView1:
-					pressed[0] = true;
-					items.get(0).playFilipinoSound();
-					textviews[0].setVisibility(android.view.View.VISIBLE);
-					imgviews[0].setVisibility(android.view.View.INVISIBLE);
-					break;
-				case R.id.textView1:
-					textviews[0].setVisibility(android.view.View.INVISIBLE);
-					imgviews[0].setVisibility(android.view.View.VISIBLE);
-					break;
-				case R.id.imageView2:
-					pressed[1] = true;
-					items.get(1).playFilipinoSound();
-					textviews[1].setVisibility(android.view.View.VISIBLE);
-					imgviews[1].setVisibility(android.view.View.INVISIBLE);	
-					break;
-				case R.id.textView2:
-					textviews[1].setVisibility(android.view.View.INVISIBLE);
-					imgviews[1].setVisibility(android.view.View.VISIBLE);
-					break;
-				case R.id.imageView3:
-					pressed[2] = true;
-					items.get(2).playFilipinoSound();
-					textviews[2].setVisibility(android.view.View.VISIBLE);
-					imgviews[2].setVisibility(android.view.View.INVISIBLE);	
-					break;
-				case R.id.textView3:
-					textviews[2].setVisibility(android.view.View.INVISIBLE);
-					imgviews[2].setVisibility(android.view.View.VISIBLE);
-					break;
-				case R.id.imageView4:
-					pressed[3] = true;
-					items.get(3).playFilipinoSound();	
-					textviews[3].setVisibility(android.view.View.VISIBLE);
-					imgviews[0].setVisibility(android.view.View.INVISIBLE);
-					break;
-				case R.id.textView4:
-					textviews[3].setVisibility(android.view.View.INVISIBLE);
-					imgviews[3].setVisibility(android.view.View.VISIBLE);
-					break;
-				}
-				for (int i = 0; i < itemcnt; i++) {
-					if (pressed[i]) {
-						if ((i + 1) == itemcnt) {
-							btn_next.setVisibility(View.VISIBLE);
-						}
-					} else {
-						break;
-					}
-				}
-			}
-		};
-		imgviews[0].setOnClickListener(oclClick);
-		imgviews[1].setOnClickListener(oclClick);
-		imgviews[2].setOnClickListener(oclClick);
-		imgviews[3].setOnClickListener(oclClick);
-		textviews[0].setOnClickListener(oclClick);
-		textviews[1].setOnClickListener(oclClick);
-		textviews[2].setOnClickListener(oclClick);
-		textviews[3].setOnClickListener(oclClick);
-	}
-
-	private void setMediumTutorial() {
-		for (int i = 0; i < items.size(); i++) {
-			if (items.get(i).getDifficulty().toString().equalsIgnoreCase(activityLevel)) {
-				textviews[itemcnt].setText(items.get(i).getWord() + " - " + items.get(i).getHint());
-				imgviews[itemcnt].setImageResource(items.get(i).getImageID());
-				frames[itemcnt].setVisibility(View.VISIBLE);
-				itemcnt++;
-			}
-		}
-
-		View.OnClickListener oclClick = new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				tv_rule.setVisibility(View.INVISIBLE);
-				switch (v.getId()) {
-				case R.id.imageView1:
-					pressed[0] = true;
-					items.get(0).playFilipinoSound();
-					textviews[0].setVisibility(android.view.View.VISIBLE);
-					imgviews[0].setVisibility(android.view.View.INVISIBLE);
-					break;
-				case R.id.textView1:
-					textviews[0].setVisibility(android.view.View.INVISIBLE);
-					imgviews[0].setVisibility(android.view.View.VISIBLE);
-					break;
-				case R.id.imageView2:
-					pressed[1] = true;
-					items.get(1).playFilipinoSound();
-					textviews[1].setVisibility(android.view.View.VISIBLE);
-					imgviews[1].setVisibility(android.view.View.INVISIBLE);	
-					break;
-				case R.id.textView2:
-					textviews[1].setVisibility(android.view.View.INVISIBLE);
-					imgviews[1].setVisibility(android.view.View.VISIBLE);
-					break;
-				case R.id.imageView3:
-					pressed[2] = true;
-					items.get(2).playFilipinoSound();
-					textviews[2].setVisibility(android.view.View.VISIBLE);
-					imgviews[2].setVisibility(android.view.View.INVISIBLE);	
-					break;
-				case R.id.textView3:
-					textviews[2].setVisibility(android.view.View.INVISIBLE);
-					imgviews[2].setVisibility(android.view.View.VISIBLE);
-					break;
-				case R.id.imageView4:
-					pressed[3] = true;
-					items.get(3).playFilipinoSound();	
-					textviews[3].setVisibility(android.view.View.VISIBLE);
-					imgviews[0].setVisibility(android.view.View.INVISIBLE);
-					break;
-				case R.id.textView4:
-					textviews[3].setVisibility(android.view.View.INVISIBLE);
-					imgviews[3].setVisibility(android.view.View.VISIBLE);
-					break;
-				}
-				for (int i = 0; i < itemcnt; i++) {
-					if (pressed[i]) {
-						if ((i + 1) == itemcnt) {
-							btn_next.setVisibility(View.VISIBLE);
-						}
-					} else {
-						break;
-					}
-				}
-			}
-		};
-		imgviews[0].setOnClickListener(oclClick);
-		imgviews[1].setOnClickListener(oclClick);
-		imgviews[2].setOnClickListener(oclClick);
-		imgviews[3].setOnClickListener(oclClick);
-		textviews[0].setOnClickListener(oclClick);
-		textviews[1].setOnClickListener(oclClick);
-		textviews[2].setOnClickListener(oclClick);
-		textviews[3].setOnClickListener(oclClick);
-	}
-
-	private void setHardTutorial() {
-		for (int i = 0; i < items.size(); i++) {
-			if (items.get(i).getDifficulty().toString().equalsIgnoreCase(activityLevel)) {
-				textviews[itemcnt].setText(items.get(i).getWord() + " - " + items.get(i).getHint());
-				imgviews[itemcnt].setImageResource(items.get(i).getImageID());
-				frames[itemcnt].setVisibility(View.VISIBLE);
-				itemcnt++;
-			}
-		}
-
-		View.OnClickListener oclClick = new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				tv_rule.setVisibility(View.INVISIBLE);
-				switch (v.getId()) {
-				case R.id.imageView1:
-					pressed[0] = true;
-					items.get(0).playFilipinoSound();
-					textviews[0].setVisibility(android.view.View.VISIBLE);
-					imgviews[0].setVisibility(android.view.View.INVISIBLE);
-					break;
-				case R.id.textView1:
-					textviews[0].setVisibility(android.view.View.INVISIBLE);
-					imgviews[0].setVisibility(android.view.View.VISIBLE);
-					break;
-				case R.id.imageView2:
-					pressed[1] = true;
-					items.get(1).playFilipinoSound();
-					textviews[1].setVisibility(android.view.View.VISIBLE);
-					imgviews[1].setVisibility(android.view.View.INVISIBLE);	
-					break;
-				case R.id.textView2:
-					textviews[1].setVisibility(android.view.View.INVISIBLE);
-					imgviews[1].setVisibility(android.view.View.VISIBLE);
-					break;
-				case R.id.imageView3:
-					pressed[2] = true;
-					items.get(2).playFilipinoSound();
-					textviews[2].setVisibility(android.view.View.VISIBLE);
-					imgviews[2].setVisibility(android.view.View.INVISIBLE);	
-					break;
-				case R.id.textView3:
-					textviews[2].setVisibility(android.view.View.INVISIBLE);
-					imgviews[2].setVisibility(android.view.View.VISIBLE);
-					break;
-				case R.id.imageView4:
-					pressed[3] = true;
-					items.get(3).playFilipinoSound();	
-					textviews[3].setVisibility(android.view.View.VISIBLE);
-					imgviews[0].setVisibility(android.view.View.INVISIBLE);
-					break;
-				case R.id.textView4:
-					textviews[3].setVisibility(android.view.View.INVISIBLE);
-					imgviews[3].setVisibility(android.view.View.VISIBLE);
-					break;
-				}
-				for (int i = 0; i < itemcnt; i++) {
-					if (pressed[i]) {
-						if ((i + 1) == itemcnt) {
-							btn_next.setVisibility(View.VISIBLE);
-						}
-					} else {
-						break;
-					}
-				}
-			}
-		};
-		imgviews[0].setOnClickListener(oclClick);
-		imgviews[1].setOnClickListener(oclClick);
-		imgviews[2].setOnClickListener(oclClick);
-		imgviews[3].setOnClickListener(oclClick);
-		textviews[0].setOnClickListener(oclClick);
-		textviews[1].setOnClickListener(oclClick);
-		textviews[2].setOnClickListener(oclClick);
-		textviews[3].setOnClickListener(oclClick);
 	}
 
 	private void initiateViews() {
-		textviews = new TextView[9];
-		imgviews = new ImageButton[9];
+		textviews = new TextView[4];
+		imgviews = new ImageButton[4];
 		frames = new RelativeLayout[4];
 		
 		pressed = new boolean[4];
@@ -340,31 +119,24 @@ public class Tutorial extends Activity {
 		tv_rule.setTypeface(SalinlahiFour.getFontKgsecondchances());
 
 		textviews[0] = (TextView) findViewById(R.id.textView1);
-		textviews[0].setVisibility(android.view.View.GONE);
 		textviews[1] = (TextView) findViewById(R.id.textView2);
-		textviews[1].setVisibility(android.view.View.GONE);
 		textviews[2] = (TextView) findViewById(R.id.textView3);
-		textviews[2].setVisibility(android.view.View.GONE);
 		textviews[3] = (TextView) findViewById(R.id.textView4);
-		textviews[3].setVisibility(android.view.View.GONE);
 		imgviews[0] = (ImageButton) findViewById(R.id.imageView1);
 		imgviews[1] = (ImageButton) findViewById(R.id.imageView2);
 		imgviews[2] = (ImageButton) findViewById(R.id.imageView3);
 		imgviews[3] = (ImageButton) findViewById(R.id.imageView4);
-		pressed[0] = false;
-		pressed[1] = false;
-		pressed[2] = false;
-		pressed[3] = false;
 		frames[0] = (RelativeLayout) findViewById(R.id.frame_1);
 		frames[1] = (RelativeLayout) findViewById(R.id.frame_2);
 		frames[2] = (RelativeLayout) findViewById(R.id.frame_3);
 		frames[3] = (RelativeLayout) findViewById(R.id.frame_4);
-		frames[0].setVisibility(View.INVISIBLE);
-		frames[1].setVisibility(View.INVISIBLE);
-		frames[2].setVisibility(View.INVISIBLE);
-		frames[3].setVisibility(View.INVISIBLE);
 		
-		//int rawID = SalinlahiFour.getContext().getResources().getIdentifier(lesson.get, "raw", SalinlahiFour.getContext().getPackageName());
+		for(int i = 0; i < 4; i++) {
+			pressed[i] = false;
+			frames[i].setVisibility(View.INVISIBLE);
+			textviews[i].setVisibility(android.view.View.GONE);
+		}
+		
 		LinearLayout mainLayout = (LinearLayout) findViewById(R.id.mainLayout);
 		mainLayout.setBackgroundResource(lesson.getTutBackground());
 	}
@@ -375,7 +147,6 @@ public class Tutorial extends Activity {
 	}
 
 	private void goToActivity() {
-
 		try {
 			Intent intent = new Intent(activityClass);
 			intent.putExtra("activityName", lesson.getTheRealName());
@@ -404,5 +175,47 @@ public class Tutorial extends Activity {
 
 	public String getLessonName() {
 		return lesson.getName();
+	}
+	
+	class imageListener implements View.OnClickListener {
+		private int index;
+		private boolean toggle;
+		final AnimatorSet setRightOut = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.flipout);
+		final AnimatorSet setLeftIn = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.flipleft);
+
+		public imageListener(int index) {
+			this.index = index;
+			toggle = true;
+		}
+
+		@Override
+		public void onClick(View v) {
+			if(toggle) {
+				pressed[index] = true;
+				items.get(index).playFilipinoSound();	
+				textviews[index].setVisibility(android.view.View.VISIBLE);
+				setRightOut.setTarget(imgviews[index]);
+				setLeftIn.setTarget(textviews[index]);
+				setRightOut.start();
+				setLeftIn.start();
+			} else {
+				setRightOut.setTarget(textviews[index]);
+				setLeftIn.setTarget(imgviews[index]);
+				setRightOut.start();
+				setLeftIn.start();
+			}
+			
+			toggle = !toggle;
+
+			for (int i = 0; i < itemcnt; i++) {
+				if (pressed[i]) {
+					if ((i + 1) == itemcnt) {
+						btn_next.setVisibility(View.VISIBLE);
+					}
+				} else {
+					break;
+				}
+			}
+		}
 	}
 }

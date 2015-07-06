@@ -28,7 +28,6 @@ public class Evaluation {
 	private String status = "Incorrect";
 	private StarType star;
 	private UserLessonProgress userLessonProgressor = new UserLessonProgress();
-	private boolean commitMistake = false;
 	private int allowableMistakes = 4, mistakesRemaining;
 
 	private int lex_size = 0;
@@ -221,60 +220,26 @@ public class Evaluation {
 	}
 
 	public boolean evaluateAnswer(String CorrectAnswer, String UserAnswer, int UserID) {
-		if (commitMistake == false) {
-			if (CorrectAnswer.equals(UserAnswer)) {
-				score++;
-				// totscore++; //FIX THIS: must be items.getSize()
-				status = "Correct";
-				resetMistakesRemaining();
-				Log.d("Check Answer", status + ": " + score);
-				Log.d("Check Answer", "CommitMistake? " + commitMistake);
-				Log.d("Check Answer", "Mistakes Remaining: " + mistakesRemaining);
-				Log.d("Evaluation", "Updating User Record");
-				recordUserAnswer(LessonName, CorrectAnswer, status, UserID);
-				Log.d("Evaluation", "Updated User Record");
-				return true;
-			} else {
-				commitMistake = true;
-				mistakesRemaining--;
-				status = "Incorrect";
-				Log.d("Check Answer", status + ": " + score);
-				Log.d("Check Answer", "CommitMistake? " + commitMistake);
-				Log.d("Check Answer", "Mistakes Remaining: " + mistakesRemaining);
-				// totscore++; //FIX THIS: must be items.getSize()
-				Log.d("Evaluation", "Updating User Record");
-				recordUserAnswer(LessonName, CorrectAnswer, status, UserID);
-				Log.d("Evaluation", "Updating User Record");
-				return false;
-			}
+		boolean evaluation = CorrectAnswer.equals(UserAnswer);
+		
+		if (evaluation) {
+			score++;
+			// totscore++; //FIX THIS: must be items.getSize()
+			status = "Correct";
+			resetMistakesRemaining();
 		} else {
-			if (CorrectAnswer.equals(UserAnswer)) {
-				commitMistake = false;
-
-				// totscore++; //FIX THIS: must be items.getSize()
-				status = "Correct";
-				resetMistakesRemaining();
-				Log.d("Check Answer", status + ": " + score);
-				Log.d("Check Answer", "CommitMistake? " + commitMistake);
-				Log.d("Check Answer", "Mistakes Remaining: " + mistakesRemaining);
-				Log.d("Evaluation", "Updating User Record");
-				recordUserAnswer(LessonName, CorrectAnswer, status, UserID);
-				Log.d("Evaluation", "Updated User Record");
-				return true;
-			} else {
-				commitMistake = true;
-				mistakesRemaining--;
-				status = "Incorrect";
-				Log.d("Check Answer", status + ": " + score);
-				Log.d("Check Answer", "CommitMistake? " + commitMistake);
-				Log.d("Check Answer", "Mistakes Remaining: " + mistakesRemaining);
-				// totscore++; //FIX THIS: must be items.getSize()
-				Log.d("Evaluation", "Updating User Record");
-				recordUserAnswer(LessonName, CorrectAnswer, status, UserID);
-				Log.d("Evaluation", "Updating User Record");
-				return false;
-			}
+			mistakesRemaining--;
+			status = "Incorrect";
 		}
+		
+		Log.d("Check Answer", status + ": " + score);
+		Log.d("Check Answer", "Mistakes Remaining: " + mistakesRemaining);
+		// totscore++; //FIX THIS: must be items.getSize()
+		Log.d("Evaluation", "Updating User Record");
+		recordUserAnswer(LessonName, CorrectAnswer, status, UserID);
+		Log.d("Evaluation", "Updating User Record");
+		
+		return evaluation;
 	}
 
 	public void setScore(int score) {

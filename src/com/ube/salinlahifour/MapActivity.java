@@ -516,18 +516,7 @@ public class MapActivity extends Activity implements OnClickListener {
 			instantiateLogoutView();
 			logoutWindow.showAsDropDown(logoutView);
 		} else if (view == btn_progress) {
-			int numLesson = 0;
-			for (Scene scene : scenes) {
-				numLesson += scene.getLessons().size();
-			}
 			intent = new Intent(this, ProgressTreeActivity.class);
-			Bundle bundle = new Bundle();
-			ArrayList<Lesson> lessons = new ArrayList();
-			for (Scene scene : scenes)
-				for (Lesson lesson : scene.getLessons())
-					lessons.add(lesson);
-			bundle.putParcelableArrayList("lessons", lessons);
-			intent.putExtras(bundle);
 			startActivity(intent);
 		} else if (view == btn_nxtscene) {
 			sceneIndex++;

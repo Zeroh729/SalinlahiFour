@@ -22,6 +22,7 @@ import com.ube.salinlahifour.enumTypes.LevelType;
 import com.ube.salinlahifour.enumTypes.StatusType;
 import com.ube.salinlahifour.model.ProgressListItems;
 import com.ube.salinlahifour.model.UserDetail;
+import com.ube.salinlahifour.model.UserLessonProgress;
 import com.ube.salinlahifour.model.UserRecord;
 import com.ube.salinlahifour.uibuilders.Button.BackBtnStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.BtnStatesDirector;
@@ -31,15 +32,13 @@ import com.ube.salinlahifour.uibuilders.RadioButton.RecentRadioBtnStatesBuilder;
 
 public class ProgressTreeActivity extends Activity implements OnCheckedChangeListener{
 	private String username;
+	private int USERID;
 	private int stars_gold;
 	private int stars_silver;
 	private int stars_bronze;
-	private int stars_total;
 	private ArrayList<Lesson> lessons;
 	private ArrayList<ProgressListItems> recentdata;
 	private ArrayList<ProgressListItems> totaldata;
-	private ArrayList<ItemCounter> itemCounter;
-	
 	private MagicTextView tv_username;
 	private TextView tv_goldcount;
 	private TextView tv_silvercount;
@@ -50,30 +49,24 @@ public class ProgressTreeActivity extends Activity implements OnCheckedChangeLis
 	private RadioButton rdo_all;
 	private ListView listView;
 	private ImageButton btn_back;
-	
 
 	private UserLessonProgressOperations userprogressdb;
 	private UserRecordOperations userrecorddb;
 	private UserDetail userdata;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_progress_tree);
-		
-		Bundle bundles = getIntent().getExtras();
-//		numLesson = bundles.getInt("numLessons");
-//		numLesson*=3;
 
-		Bundle bundle = getIntent().getExtras();
 		lessons = SalinlahiFour.getLessonsList();
 		recentdata = new ArrayList();
 		totaldata = new ArrayList();
-		
+
 		userprogressdb = new UserLessonProgressOperations(this);
 		userrecorddb = new UserRecordOperations(this);
+		USERID = SalinlahiFour.getLoggedInUser().getId();
 
-		
 		instantiateViews();
 		populateData();
 	}
@@ -83,16 +76,16 @@ public class ProgressTreeActivity extends Activity implements OnCheckedChangeLis
 		userdata = SalinlahiFour.getLoggedInUser();
 		username = userdata.getName();
 		userprogressdb.open();
-		stars_gold = userprogressdb.getGoldStarsCount(userdata.getId());
-		stars_silver = userprogressdb.getSilverStarsCount(userdata.getId());
-		stars_bronze = userprogressdb.getBronzeStarsCount(userdata.getId());
-		
+		stars_gold = userprogressdb.getGoldStarsCount(USERID);
+		stars_silver = userprogressdb.getSilverStarsCount(USERID);
+		stars_bronze = userprogressdb.getBronzeStarsCount(USERID);
+
 		totalStars = (stars_gold * 3) + (stars_silver * 2) + stars_bronze;
-		
+
 		tv_username.setText(username + "'s");
-//		tv_goldcount.setText(stars_gold+"");
-//		tv_silvercount.setText(stars_silver+"");
-//		tv_bronzecount.setText(stars_bronze+"");
+		//tv_goldcount.setText(stars_gold+"");
+		//tv_silvercount.setText(stars_silver+"");
+		//tv_bronzecount.setText(stars_bronze+"");
 		tv_goldcount.setText(totalStars+"");
 		tv_totalstarscount.setText(" /"+(lessons.size()*3*3));
 
@@ -104,87 +97,88 @@ public class ProgressTreeActivity extends Activity implements OnCheckedChangeLis
 			tv_bronzecount.setVisibility(View.INVISIBLE);
 			findViewById(R.id.img_bronze).setVisibility(View.INVISIBLE);
 		}
-		
+
 		rdo_recent.setChecked(true);
-		
+
 		userrecorddb.open();
 		for(Lesson lesson : lessons){
 			ProgressListItems tempData = new ProgressListItems();
-//			recentdata.add(lesson.getName());
-//			totaldata.add(lesson.getName());
+			String lessonName = lesson.getName();
 			tempData.setLessonCategory(true);
-			tempData.setLessonName(lesson.getName());
+			tempData.setLessonName(lessonName);
 
 			userprogressdb.open();
+			UserLessonProgress progress = userprogressdb.getUserLessonProgress(USERID, lessonName);
 			try{	
-				tempData.setEasyStar(userprogressdb.getUserLessonProgress(SalinlahiFour.getLoggedInUser().getId(), lesson.getName()).getEasyStar());
+				tempData.setEasyStar(progress.getEasyStar());
 			}catch(Exception e){
 				tempData.setEasyStar("");
 			}
-			
+
 			try{	
-				tempData.setMedStar(userprogressdb.getUserLessonProgress(SalinlahiFour.getLoggedInUser().getId(), lesson.getName()).getMediumStar());
+				tempData.setMedStar(progress.getMediumStar());
 			}catch(Exception e){
 				tempData.setMedStar("");
 			}
 
 			try{
-				tempData.setHardStar(userprogressdb.getUserLessonProgress(SalinlahiFour.getLoggedInUser().getId(), lesson.getName()).getHardStar());
+				tempData.setHardStar(progress.getHardStar());
 			}catch(Exception e){
 				tempData.setHardStar("");
 			}
 			userprogressdb.close();
-			
+
 			recentdata.add(tempData);
 			totaldata.add(tempData);
-			
-			ArrayList<Item> items = SalinlahiFour.getLesson(lesson.getTheRealName()).getItems();
-			Collections.reverse(items);
-				ArrayList<UserRecord> userrecords = userrecorddb.getAllUserRecordsFromUserId(SalinlahiFour.getLoggedInUser().getId(), lesson.getName());
-				HashMap<String, ItemCounter> recentItemMap = new HashMap();				
-				HashMap<String, ItemCounter> totalItemMap = new HashMap();
+
+			ArrayList<Item> items = lesson.getItems();
+			ArrayList<UserRecord> userrecords = userrecorddb.getAllUserRecordsFromUserId(USERID, lessonName);
+			HashMap<String, ItemCounter> recentItemMap = new HashMap();				
+			HashMap<String, ItemCounter> totalItemMap = new HashMap();
+
+			if(items != null) {
+				for(Item item: items){
+					recentItemMap.put(item.getWord(), new ItemCounter(item.getWord()));
+					totalItemMap.put(item.getWord(), new ItemCounter(item.getWord()));
+				}
 				
-				if(items != null){					
-					for(int i = 0; i < items.size(); i++){
-						recentItemMap.put(items.get(i).getWord(), new ItemCounter(items.get(i).getWord()));
-						totalItemMap.put(items.get(i).getWord(), new ItemCounter(items.get(i).getWord()));
-
-					}
-					for(int i = 0; i < userrecords.size(); i++){
-							if(userrecords.get(i).getStatus().equalsIgnoreCase(StatusType.CORRECT.toString())){
-								recentItemMap.get(userrecords.get(i).getCorrectAnswer()).correctAnswers++;
-								if(totalItemMap.get(userrecords.get(i).getCorrectAnswer()).getTotal() < 20){
-									totalItemMap.get(userrecords.get(i).getCorrectAnswer()).correctAnswers++;
-								}
-							}else{
-								recentItemMap.get(userrecords.get(i).getCorrectAnswer()).wrongAnswers++;
-								if(totalItemMap.get(userrecords.get(i).getCorrectAnswer()).getTotal() < 20){
-									totalItemMap.get(userrecords.get(i).getCorrectAnswer()).wrongAnswers++;
-								}
-							}
-					}
-					for(Item item : items){
-						ItemCounter ctr = recentItemMap.get(item.getWord());
-						ProgressListItems tempRecent = new ProgressListItems();
-						tempRecent.setLessonCategory(false);
-						tempRecent.setItemName(item.getWord());
-						tempRecent.setProgressBarLabel(ctr.correctAnswers + "/" + ctr.totalAnswers);
-
-						recentdata.add(tempRecent);
-						recentdata.get(recentdata.size()-1).setProgress((int)ctr.getPercentage());
-						//recentdata.add("\t" + item.getWord() + " " + ctr.correctAnswers + "/" + ctr.getTotal() + " :" + String.format("%.2f", ctr.getPercentage()));
-
-						totaldata.add(tempRecent);
-						totaldata.get(recentdata.size()-1).setProgress((int)ctr.getPercentage());
-						ctr = totalItemMap.get(item.getWord());
-						//totaldata.add("\t" + item.getWord() + " " + ctr.correctAnswers + "/" + ctr.getTotal() + " :" + String.format("%.2f", ctr.getPercentage()));
+				for(UserRecord record: userrecords) {
+					String correctAnswer = record.getCorrectAnswer();
+					if(record.getStatus().equalsIgnoreCase(StatusType.CORRECT.toString())){
+						totalItemMap.get(correctAnswer).correctAnswers++;
+						if(recentItemMap.get(correctAnswer).getTotal() < 20){
+							recentItemMap.get(correctAnswer).correctAnswers++;
+						}
+					} else {
+						totalItemMap.get(correctAnswer).wrongAnswers++;
+						if(recentItemMap.get(correctAnswer).getTotal() < 20){
+							recentItemMap.get(correctAnswer).wrongAnswers++;
+						}
 					}
 				}
-			
+				
+				for(Item item : items){
+					ItemCounter ctr = recentItemMap.get(item.getWord());
+					ProgressListItems tempRecent = new ProgressListItems();
+					tempRecent.setLessonCategory(false);
+					tempRecent.setItemName(item.getWord());
+					tempRecent.setProgressBarLabel(ctr.correctAnswers + "/" + ctr.getTotal());
+
+					recentdata.add(tempRecent);
+					recentdata.get(recentdata.size() - 1).setProgress((int) ctr.getPercentage());
+					//recentdata.add("\t" + item.getWord() + " " + ctr.correctAnswers + "/" + ctr.getTotal() + " :" + String.format("%.2f", ctr.getPercentage()));
+
+					totaldata.add(tempRecent);
+					totaldata.get(recentdata.size() - 1).setProgress((int) ctr.getPercentage());
+					ctr = totalItemMap.get(item.getWord());
+					//totaldata.add("\t" + item.getWord() + " " + ctr.correctAnswers + "/" + ctr.getTotal() + " :" + String.format("%.2f", ctr.getPercentage()));
+				}
+			}
+
 		}
 
 		userrecorddb.close();
-		
+
 		ProgressItemAdapter adapter = new ProgressItemAdapter(this, R.layout.progress_item, recentdata);
 		listView.setAdapter(adapter);
 	}
@@ -206,7 +200,7 @@ public class ProgressTreeActivity extends Activity implements OnCheckedChangeLis
 		btn_back.setImageDrawable(BtnStatesDirector.getImageDrawable(new BackBtnStatesBuilder()));
 
 		radiog_data.setOnCheckedChangeListener(this);
-		
+
 		for(int i = 0; i < 30; i++)
 			tv_username.addOuterShadow(5, 0, 0, 0xFF54460e);
 
@@ -218,41 +212,25 @@ public class ProgressTreeActivity extends Activity implements OnCheckedChangeLis
 	}
 
 	private class ItemCounter{
-		public String item;
 		public int correctAnswers;
 		public int wrongAnswers;
 		public int totalAnswers;
 		public float percentage;
-		
+
 		public ItemCounter(String itemName){
-			item = itemName;
 		}
-		
+
 		public int getTotal(){
 			totalAnswers = correctAnswers + wrongAnswers;
 			return totalAnswers;
 		}
-		
+
 		public float getPercentage(){
 			getTotal();
 			if(totalAnswers == 0)
 				return 0;
 			percentage = ((float)correctAnswers/totalAnswers)*100;
 			return percentage;
-		}
-	}
-	
-	private class LessonData{
-		private Item item;
-		private boolean recent;
-		
-		public LessonData(Item item, boolean recent){
-			this.item = item;
-			this.recent = recent;
-		}
-		
-		public String toString(){
-			return "\t" + item.getWord() + " ";
 		}
 	}
 
@@ -289,5 +267,5 @@ public class ProgressTreeActivity extends Activity implements OnCheckedChangeLis
 		super.onPause();
 		SalinlahiFour.getBgm().pause();
 	}
-	
+
 }
