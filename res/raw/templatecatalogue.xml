@@ -35,35 +35,35 @@
     </Trivia>
    <Positive_Acknowledgement>
         <template>Correct!</template>
-        <template>You're answer is Correct!</template>
+        <template>You're answer is correct!</template>
         <template>Good, you got the right answer!</template>
-        <template>Very good! Keep it up</template>
+        <template>Very good! Keep it up!</template>
         <template>Excellent!</template>
         <template>Magaling</template>
         <template>Mahusay!</template>
-        <template>Amazing! keep it up</template>
-        <template>Good Job!</template>
+        <template>Amazing! Keep it up!</template>
+        <template>Good job!</template>
         <template>Tama!</template>
    </Positive_Acknowledgement>
    <Negative_Acknowledgement>
 		<template>That seems to be incorrect!</template> 
-		<template>Oops, That is wrong</template> 
-		<template>That is wrong</template> 
+		<template>Oops, That is wrong.</template> 
+		<template>That is wrong.</template> 
 		<template>Mali.</template> 
-		<template>You missed it</template> 
-		<template>Oops! You've made a mistake</template>
+		<template>You missed it.</template> 
+		<template>Oops! You've made a mistake.</template>
 		<template>Wrong!</template>
-		<template>The answer [UserInput] is wrong</template>
+		<template>The answer [UserInput] is wrong.</template>
 	</Negative_Acknowledgement>
 	<Answer> 
-		<template>That is not [Answer]</template> 
-		<template>The answer you are looking for is [Answer]</template>
+		<template>That is not [Answer] .</template> 
+		<template>The answer you are looking for is [Answer] .</template>
 	</Answer>
    <NextLesson_F>
     <template>Sorry you need more practice. Try again next time.</template>
    </NextLesson_F>
    <NextLesson_P>
-    <template>You passed this lesson, you can proceed to the next lesson</template>
+    <template>Congratulations! You passed this lesson!</template>
    </NextLesson_P>
 </type>
 

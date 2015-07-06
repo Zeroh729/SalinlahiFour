@@ -277,75 +277,40 @@ public abstract class AbstractLessonActivity extends Activity {
 			return true;
 		}	
 	}
+	
 	protected void getQuestions(){
 		questions = new ArrayList<Item>();
-		Log.d("TESTINGLessonActivity", "Aldrin: getting Questions");
-		UserRecordOperations userdb = new UserRecordOperations(this);
-		userdb.open();		
-		ArrayList<UserRecord> records;
+		Random rand = new Random();
 
-		try {
-			records = userdb.getRecentUserRecordsFromUserId(SalinlahiFour.getLoggedInUser().getId(), activityName);
-			int cnt_itemLevel = 0;
-
-			ArrayList<Item> items = (ArrayList<Item>) lesson.getItems().clone();
-			HashMap<String, Integer> itemKeys = new HashMap();
-
-			for(int i = 0; i < items.size(); i++){
-				if(!items.get(i).getLevel().equals(activityLevel.toString())){
-					itemKeys.put(items.get(i).getWord(), 0);
-				}else{
-					cnt_itemLevel++;
-					questions.add(items.get(i));
+		if(activityLevel == LevelType.HARD) {
+			for(Item item : items) {
+				questions.add(item);
+			}
+		}
+		else if(activityLevel == LevelType.MEDIUM) {
+			for(Item item : items) {
+				if(!item.getDifficulty().equals("HARD")) {
+					questions.add(item);
 				}
 			}
-
-			Log.d("records size: " + records.size(), "TEST");
-			Log.d("itemKeys size: " + itemKeys.size(), "TEST");
-
-			for(int i = 0; i < records.size(); i++){
-				//int index = itemNames.indexOf(records.get(i).getCorrectAnswer());
-				if(itemKeys.containsKey(records.get(i).getCorrectAnswer())){
-					int value = itemKeys.get(records.get(i).getCorrectAnswer());
-					if(records.get(i).getStatus().equals(StatusType.CORRECT.toString())){
-						value += 1;
-					}else{
-						value -= 1;
-					}
-					itemKeys.put(records.get(i).getCorrectAnswer(), value);
+		}
+		else if(activityLevel == LevelType.EASY) {
+			for(Item item : items) {
+				if(item.getDifficulty().equals("EASY")) {
+					questions.add(item);
 				}
-			}		
-
-			Map<String, Integer> sortedItemKeys = sortByComparator(itemKeys);
-
-			int i = 0;
-			ArrayList<Item> lessonItems = lesson.getItems();
-
-			for(String key : sortedItemKeys.keySet()) {
-				if((cnt_question - cnt_itemLevel) > i) {
-					Log.d("TEST0", "questions part 5 lessonItems size: " + lessonItems.size());
-					for(int j = 0; j < lessonItems.size(); j++)
-						if(lessonItems.get(j).getWord().equals(key)){
-							//if(lessonItems.get(j).getLevel().equals(activityLevel))
-							questions.add(lessonItems.get(j));
-							//else if(cnt_question > 0 && cnt_question < j){			
-							//}
-							break;
-						}
-				} else {
-					break;
-				}
-				i++;
 			}
-		} catch (ParseException e) {
-			e.printStackTrace();
 		}
-		Log.d("TEST0", "questions size: " + questions.size());
-		Collections.shuffle(questions,  new Random(System.nanoTime()));
-
-		for (Item item : questions) {
-			Log.d("QUESTIONS LOADED: ", item.getQuestion() + " " + item.getDifficulty());
+		
+		int ctr = questions.size() - cnt_question;
+		ctr = ctr > 0 ? ctr : 0;
+		Log.d("COUNTER", ctr + "");
+		
+		for(int i = 0; i < ctr; i++) {
+			questions.remove(rand.nextInt(questions.size() - 1));
 		}
+		
+		Collections.shuffle(questions);
 	}
 
 	private static Map<String, Integer> sortByComparator(Map<String, Integer> unsortMap) {

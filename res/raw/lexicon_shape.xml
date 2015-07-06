@@ -5,7 +5,7 @@
 	<Word_Entry>
 		<q_num>1</q_num>
 		<word>Bilog</word>
-		<question>We need Bilog to hit red enemies</question>
+		<question>We need Bilog to hit red enemies.</question>
 		<eng_word>Circle</eng_word>
 		<w_type>definition</w_type>
 		<notes>It looks like the shape of a ball right?</notes>
@@ -19,7 +19,7 @@
 	<Word_Entry>
 		<q_num>2</q_num>
 		<word>Parisukat</word>
-		<question>We just need a Parisukat to shoot one bullet at him</question>
+		<question>We just need a Parisukat to shoot one bullet at him.</question>
 		<eng_word>Square</eng_word>
 		<w_type>definition</w_type>
 		<notes>It looks like a door too.</notes>
@@ -33,7 +33,7 @@
 	<Word_Entry>
 		<q_num>3</q_num>
 		<word>Bituin</word>
-		<question>We need Bituin to hit a lot of enemies</question>
+		<question>We need Bituin to hit a lot of enemies.</question>
 		<eng_word>Star</eng_word>
 		<w_type>definition</w_type>
 		<notes>I wonder if a star really looks like this.</notes>
@@ -47,10 +47,10 @@
 	<Word_Entry>
 		<q_num>4</q_num>
 		<word>Tatsulok</word>
-		<question>We need Tatsulok that hits 3 enemies</question>
+		<question>We need Tatsulok that hits 3 enemies.</question>
 		<eng_word>Triangle</eng_word>
 		<w_type>definition</w_type>
-		<notes>MMM I'd like a slice of pizza right about now.</notes>
+		<notes>MMM, I'd like a slice of pizza right about now.</notes>
 		<hint>It has 3 sides. Oh and it shoots lasers.</hint>
 		<lesson>4</lesson>
 		<image_path>triangle</image_path>
@@ -61,10 +61,10 @@
 	<Word_Entry>
 		<q_num>5</q_num>
 		<word>Krus</word>
-		<question>We need Krus to shoot in a wide area</question>
+		<question>We need Krus to shoot in a wide area.</question>
 		<eng_word>Cross</eng_word>
 		<w_type>definition</w_type>
-		<notes>MMM I'd like a slice of pizza right about now.</notes>
+		<notes>You see these around hospitals.</notes>
 		<hint>It looks like the letter t!</hint>
 		<lesson>4</lesson>
 		<image_path>cross</image_path>
@@ -75,10 +75,10 @@
 	<Word_Entry>
 		<q_num>6</q_num>
 		<word>Diamante</word>
-		<question>We need the Diamante button to shield ourselves</question>
+		<question>We need the Diamante button to shield ourselves.</question>
 		<eng_word>Diamond</eng_word>
 		<w_type>definition</w_type>
-		<notes>I wonder if diamonds really looks like these</notes>
+		<notes>I wonder if diamonds really looks like these.</notes>
 		<hint>It's like a square standing on its edge.</hint>
 		<lesson>4</lesson>
 		<image_path>diamond</image_path>
@@ -89,10 +89,10 @@
 	<Word_Entry>
 		<q_num>7</q_num>
 		<word>Parihaba</word>
-		<question>We need Parihaba that shoots from the side</question>
+		<question>We need Parihaba that shoots from the side.</question>
 		<eng_word>Rectangle</eng_word>
 		<w_type>definition</w_type>
-		<notes>It’s like a door too</notes>
+		<notes>It’s like a door too.</notes>
 		<hint>It looks like a long box.</hint>
 		<lesson>4</lesson>
 		<image_path>rectangle</image_path>
@@ -103,7 +103,7 @@
 	<Word_Entry>
 		<q_num>8</q_num>
 		<word>Tunod</word>
-		<question>We need Tunod to that can shoot 3 at the same time</question>
+		<question>We need Tunod to that can shoot 3 at the same time.</question>
 		<eng_word>Arrow</eng_word>
 		<w_type>definition</w_type>
 		<notes>It’s like a triangle and a rectangle put together.</notes>
@@ -117,11 +117,11 @@
 	<Word_Entry>
 		<q_num>9</q_num>
 		<word>Gasuklay</word>
-		<question>The Gasuklay button can reach that</question>
+		<question>The Gasuklay button can reach that.</question>
 		<eng_word>Cresent</eng_word>
 		<w_type>definition</w_type>
 		<notes>It looks like the moon sometimes too.</notes>
-		<hint>Looks like a banana or a fingernail./</hint>
+		<hint>Looks like a banana or a fingernail.</hint>
 		<lesson>4</lesson>
 		<image_path>cresent</image_path>
 		<eng_sound>shape_crescent</eng_sound>
@@ -134,7 +134,7 @@
 		<question>Push the Puso button to heal!</question>
 		<eng_word>Heart</eng_word>
 		<w_type>definition</w_type>
-		<notes>A common shape during Valentines Day</notes>
+		<notes>A common shape during Valentines Day.</notes>
 		<hint>It's such a LOVELY shape./</hint>
 		<lesson>4</lesson>
 		<image_path>heart</image_path>

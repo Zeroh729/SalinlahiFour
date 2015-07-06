@@ -49,7 +49,7 @@
 		<eng_word>Carabao</eng_word>
 		<w_type>definition</w_type>
 		<notes>Farmers also use them to go around faster.</notes>
-		<hint>Farmers use these guys to help them with farming. They also have horns like a bull</hint>
+		<hint>Farmers use these guys to help them with farming. They also have horns like a bull.</hint>
 		<lesson>5</lesson>
 		<image_path>animals_carabao</image_path>
 		<eng_sound>animals_carabao</eng_sound>
@@ -62,7 +62,7 @@
 		<question>NULL</question>
 		<eng_word>Frog</eng_word>
 		<w_type>definition</w_type>
-		<notes>Small Creatures that jumps around your pond.</notes>
+		<notes>Small creatures that jumps around your pond.</notes>
 		<hint>They eat insects like mosquito or fly for food.</hint>
 		<lesson>5</lesson>
 		<image_path>animals_frog</image_path>
@@ -76,7 +76,7 @@
 		<question></question>
 		<eng_word></eng_word>
 		<w_type>definition</w_type>
-		<notes>They hang around in trees.</notes>
+		<notes>They hang around on trees.</notes>
 		<hint>They like to eat bananas.</hint>
 		<lesson>5</lesson>
 		<image_path>animals_monkey</image_path>
@@ -90,7 +90,7 @@
 		<question>NULL</question>
 		<eng_word>Bird</eng_word>
 		<w_type>definition</w_type>
-		<notes>You might see them in windows and trees as well</notes>
+		<notes>You might see them in windows and trees as well.</notes>
 		<hint>These animals fly around in the sky.</hint>
 		<lesson>5</lesson>
 		<image_path>animals_birl</image_path>
@@ -105,7 +105,7 @@
 		<eng_word>Mouse</eng_word>
 		<w_type>definition</w_type>
 		<notes>They are chased by cats.</notes>
-		<hint>Little animals that like to eat cheese and run around the house</hint>
+		<hint>Little animals that like to eat cheese and run around the house.</hint>
 		<lesson>5</lesson>
 		<image_path>animals_mouse</image_path>
 		<eng_sound>animals_mouse</eng_sound>
@@ -118,8 +118,8 @@
 		<question>NULL</question>
 		<eng_word>Elephant</eng_word>
 		<w_type>definition</w_type>
-		<notes>They are the largest land animal</notes>
-		<hint>These are big animals with long trunks</hint>
+		<notes>They are the largest land animal.</notes>
+		<hint>These are big animals with long trunks.</hint>
 		<lesson>5</lesson>
 		<image_path>animals_elephant</image_path>
 		<eng_sound>animals_elephant</eng_sound>
@@ -133,7 +133,7 @@
 		<eng_word>Bear</eng_word>
 		<w_type>definition</w_type>
 		<notes>Teddy bear dolls are made to look like them too.</notes>
-		<hint>They live in caves and have long claws</hint>
+		<hint>They live in caves and have long claws.</hint>
 		<lesson>5</lesson>
 		<image_path>animals_bear</image_path>
 		<eng_sound>animals_bear</eng_sound>
