@@ -1,10 +1,10 @@
 package com.ube.salinlahifour.lessonActivities;
+
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 
 import com.ube.salinlahifour.R;
 import com.ube.salinlahifour.enumTypes.LevelType;
@@ -17,7 +17,6 @@ public class Feelings extends AbstractLessonActivity implements OnClickListener 
 	private ImageView imgVw;
 	
 	public Feelings(){
-
 		layoutID = R.layout.lessonactivity_feelings;
 	}
 
@@ -25,29 +24,24 @@ public class Feelings extends AbstractLessonActivity implements OnClickListener 
 	protected void configureEasyLevel() {
 		// TODO Auto-generated method stub
 		setCntQuestions(3);
-
+		
 	}
 
 	@Override
 	protected void configureMediumLevel() {
 		// TODO Auto-generated method stub
-
 		setCntQuestions(5);
-
 	}
 
 	@Override
 	protected void configureHardLevel() {
 		// TODO Auto-generated method stub
-
 		setCntQuestions(5);
-
 	}
 
 	@Override
 	protected void initiateViews() {
 		// TODO Auto-generated method stub
-
 		textview = (TextView)findViewById(R.id.tv_questionbox);
 		
 		buttons = new Button[5];
@@ -71,13 +65,11 @@ public class Feelings extends AbstractLessonActivity implements OnClickListener 
 		}
 		imgVw.setOnClickListener(this);
 		nxtbtn.setOnClickListener(this);
-
 	}
 
 	@Override
 	protected void update() {
 		// TODO Auto-generated method stub
-
 		String[] choices = loadSortedChoices(getCntQuestions());
 		
 		for(int i = 0; i < choices.length; i++){
@@ -87,29 +79,23 @@ public class Feelings extends AbstractLessonActivity implements OnClickListener 
 
 		textview.setText(question);
 		imgVw.setImageResource(getQuestionItem().getImageID());
-
 	}
 
 	@Override
 	protected void ifAnswerIsCorrect() {
 		// TODO Auto-generated method stub
-
 		textview.setText(feedback);
 		nxtbtn.setVisibility(View.VISIBLE);
-
 	}
 
 	@Override
 	protected void ifAnswerIsWrong() {
 		// TODO Auto-generated method stub
-
 		textview.setText(feedback +"\n" + question);
-
 	}
 
 	@Override
 	public void onClick(View v) {
-
 		switch(v.getId()){
 		case R.id.tv_choice1: evaluate(buttons[0].getText().toString());
 		items.get(0).playFilipinoSound();
