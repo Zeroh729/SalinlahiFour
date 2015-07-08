@@ -9,7 +9,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.Looper;
 import android.util.Log;
 
 import com.kilobolt.framework.Game;
@@ -24,6 +23,7 @@ import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.database.UserLessonProgressOperations;
 import com.ube.salinlahifour.database.UserRecordOperations;
 import com.ube.salinlahifour.evaluationModule.Evaluation;
+import com.ube.salinlahifour.howtoplay.HowToPlay;
 
 public abstract class AbstractGameScreen extends Screen {
 	enum GameState {
@@ -65,10 +65,11 @@ public abstract class AbstractGameScreen extends Screen {
 		items = lesson.getItems();
 		this.gameOverLock = false;
 		this.context = context;
-		this.loadAssets();
-
-		Log.d("Abstract Game Screen", activityName + " " + activityLevel);
-		Looper.prepare();
+		
+		Intent intent = new Intent(context, HowToPlay.class);
+		intent.putExtra("lessonName", lesson.getTheRealName());
+		context.startActivity(intent);
+		
 		eval.setAllowableMistakes(4);
 		loadAssets();
 		// Asset Positioning
@@ -153,7 +154,6 @@ public abstract class AbstractGameScreen extends Screen {
 
 			if (nItemsRemaining == 0 ||  eval.isAlive() == false) {
 				state = GameState.GameOver;
-				Looper.myLooper().quit();
 				if (!gameOverLock) {
 					Log.d("SEMAPHORE", gameOverLock + "");
 					gameOverLock = true;

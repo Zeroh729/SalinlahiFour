@@ -161,14 +161,12 @@ public class Tutorial extends Activity {
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
 		super.onResume();
 		SalinlahiFour.getBgm().start();
 	}
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
 		super.onPause();
 		SalinlahiFour.getBgm().pause();
 	}

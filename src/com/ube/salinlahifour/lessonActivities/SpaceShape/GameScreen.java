@@ -7,28 +7,20 @@ import java.util.Random;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.os.Looper;
 import android.util.Log;
 
 import com.kilobolt.framework.Game;
 import com.kilobolt.framework.Graphics;
 import com.kilobolt.framework.Image;
-import com.kilobolt.framework.Screen;
 import com.kilobolt.framework.Sound;
 import com.kilobolt.framework.Input.TouchEvent;
 import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.Lesson;
 import com.ube.salinlahifour.MapActivity;
-import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.evaluationModule.*;
 import com.ube.salinlahifour.lessonActivities.AbstractGameScreen;
 import com.ube.salinlahifour.lessonActivities.SpaceShape.Parts;
 import com.ube.salinlahifour.lessonActivities.SpaceShape.Assets;
-import com.ube.salinlahifour.database.UserDetailOperations;
-import com.ube.salinlahifour.database.UserLessonProgressOperations;
-import com.ube.salinlahifour.database.UserRecordOperations;
 
 
 public class GameScreen extends AbstractGameScreen  {
@@ -231,7 +223,6 @@ public class GameScreen extends AbstractGameScreen  {
 						exit = false;
 					}else if (inBounds(event, pYes.getX() ,pYes.getY() ,this.yesbtn.getWidth(), this.yesbtn.getWidth())){
 						Log.d("Exit Debug", "Quit");
-						Looper.myLooper().quit();
 						Intent intent = new Intent(context,MapActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);  
 						context.startActivity(intent); 
 					}else if(inBounds(event, pNo.getX() ,pNo.getY() ,this.nobtn.getWidth(), this.nobtn.getWidth())){

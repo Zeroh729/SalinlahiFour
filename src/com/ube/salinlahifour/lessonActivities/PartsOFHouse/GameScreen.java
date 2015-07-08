@@ -5,7 +5,6 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Looper;
 import android.util.Log;
 
 import com.kilobolt.framework.Game;
@@ -16,6 +15,7 @@ import com.kilobolt.framework.Input.TouchEvent;
 import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.Lesson;
 import com.ube.salinlahifour.MapActivity;
+import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.evaluationModule.*;
 import com.ube.salinlahifour.lessonActivities.AbstractGameScreen;
 import com.ube.salinlahifour.lessonActivities.PartsOFHouse.Parts;
@@ -56,12 +56,6 @@ public class GameScreen extends AbstractGameScreen {
 		rounds = 1;
 
 		super.items = items;
-		// main_control = new House();
-		Log.d("Aldrin ExtendedFramework", "Gamescreen constructor...");
-		Log.d("Lesson Class Debug", "Activity: " + lesson.getActivity());
-		Log.d("Lesson Class Debug", "Description: " + lesson.getDescription());
-		Log.d("Lesson Class Debug", "LessonNumber: " + lesson.getLessonNumber());
-		Log.d("Lesson Class Debug", "getName: " + lesson.getName());
 	}
 
 	@Override
@@ -211,7 +205,6 @@ public class GameScreen extends AbstractGameScreen {
 						exit = false;
 					} else if(inBounds(event, pYes.getX(), pYes.getY(), this.yesbtn.getWidth(), this.yesbtn.getWidth())) {
 						Log.d("Exit Debug", "Quit");
-						Looper.myLooper().quit();
 						Intent intent = new Intent(context, MapActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 						context.startActivity(intent);
 					} else if(inBounds(event, pNo.getX(), pNo.getY(), this.nobtn.getWidth(), this.nobtn.getWidth())) {
@@ -647,7 +640,11 @@ public class GameScreen extends AbstractGameScreen {
 
 		if(super.transition) {
 			g.drawARGB(200, 0, 0, 0);
-			g.drawImage(feedboxBoy, this.pDialog.getX(), pDialog.getY());
+			if(SalinlahiFour.getLoggedInUser().getGender().equals("male")) {
+				g.drawImage(feedboxBoy, this.pDialog.getX(), pDialog.getY());
+			} else {
+				g.drawImage(feedboxGirl, this.pDialog.getX(), pDialog.getY());
+			}
 
 			String lineOne = "", lineTwo = "";
 			cuttedWord = sentenceCutter(sFeedback);
@@ -731,7 +728,11 @@ public class GameScreen extends AbstractGameScreen {
 		// TODO Auto-generated method stub
 		Graphics g = game.getGraphics();
 		g.drawARGB(200, 0, 0, 0);
-		g.drawImage(feedboxBoy, this.pDialog.getX(), pDialog.getY());
+		if(SalinlahiFour.getLoggedInUser().getGender().equals("male")) {
+			g.drawImage(feedboxBoy, this.pDialog.getX(), pDialog.getY());
+		} else {
+			g.drawImage(feedboxGirl, this.pDialog.getX(), pDialog.getY());
+		}
 		g.drawString("Tap the pieces asked and place it", 322, 63, paint4);
 		g.drawString("on its proper position", 322, 78, paint4);
 		g.drawImage(nextBtn, p_nextBtn.getX(), p_nextBtn.getY());

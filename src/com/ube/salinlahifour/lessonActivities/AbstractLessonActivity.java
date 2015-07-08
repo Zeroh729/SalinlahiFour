@@ -104,7 +104,6 @@ public abstract class AbstractLessonActivity extends Activity {
 		Log.d("activityLevel:", activityLevel.toString());
 		Log.d("activityName:", activityName.toString());
 
-		//lesson = SalinlahiFour.getLesson(activityName);
 		lesson = SalinlahiFour.getLessonByClassName(activityName);
 		Log.d("lessonName: ", lesson.getName());
 		Log.d("image: ", lesson.getImage() + "");
@@ -114,7 +113,6 @@ public abstract class AbstractLessonActivity extends Activity {
 		evaluation =  new Evaluation(this, lesson.getName(), activityLevel.toString());
 		Log.d("Jim Parse On Moving", "Game's Lexicon: " + lesson.getLexicon());
 
-		//Log.d("Feedback Test", "Feedback: "+ evaluation.getImmediateFeedback(1, "Nanay", 1));
 		Intent intent = new Intent(this, HowToPlay.class);
 		intent.putExtra("lessonName", lesson.getTheRealName());
 		startActivity(intent);
