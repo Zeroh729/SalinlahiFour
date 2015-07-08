@@ -61,6 +61,8 @@
 	</Answer>
    <NextLesson_F>
     <template>Sorry you need more practice. Try again next time.</template>
+    <template>Seems you need to study again.</template>
+    <template>You need more practice. Try again next time.</template>
    </NextLesson_F>
    <NextLesson_P>
     <template>Congratulations! You passed this lesson!</template>

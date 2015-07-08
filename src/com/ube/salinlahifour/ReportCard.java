@@ -97,44 +97,44 @@ public class ReportCard extends PopupWindow implements OnClickListener {
 		tv_evaluation.setText(evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber()));
 
 		switch (evaluation.getStar()) {
-		case GOLD:
-			img_star.setImageResource(R.drawable.report_card_gold);
-			// tv_score.setText("PERFECT!");
-			Log.d("ReportCard", "PERFECT");
-			Log.d("Debug ReportCard", "You get Gold");
-			subtv_replay.setText("");
-			break;
-		case SILVER:
-			img_star.setImageResource(R.drawable.report_card_silver);
-			// tv_score.setText(evaluation.getScore() + "/" +
-			// evaluation.getTotalScore());
-			Log.d("ReportCard", evaluation.getScore() + "/" + evaluation.getTotalScore());
-			// CHANGE TO SILVER COLOR
-			// tv_score.setTextColor(Color.parseColor("#c4b723"));
-			Log.d("Debug ReportCard", "you get Silver");
-			subtv_replay.setText("retry to get\n3 stars!");
-			break;
-		case BRONZE:
-			img_star.setImageResource(R.drawable.report_card_bronze);
-			// tv_score.setText(evaluation.getScore() + "/" +
-			// evaluation.getTotalScore());
-			Log.d("ReportCard", evaluation.getScore() + "/" + evaluation.getTotalScore());
-			// CHANGE TO BRONZE COLOR
+			case GOLD:
+				img_star.setImageResource(R.drawable.report_card_gold);
+				// tv_score.setText("PERFECT!");
+				Log.d("ReportCard", "PERFECT");
+				Log.d("Debug ReportCard", "You get Gold");
+				subtv_replay.setText("");
+				break;
+			case SILVER:
+				img_star.setImageResource(R.drawable.report_card_silver);
+				// tv_score.setText(evaluation.getScore() + "/" +
+				// evaluation.getTotalScore());
+				Log.d("ReportCard", evaluation.getScore() + "/" + evaluation.getTotalScore());
+				// CHANGE TO SILVER COLOR
+				// tv_score.setTextColor(Color.parseColor("#c4b723"));
+				Log.d("Debug ReportCard", "you get Silver");
+				subtv_replay.setText("retry to get\n3 stars!");
+				break;
+			case BRONZE:
+				img_star.setImageResource(R.drawable.report_card_bronze);
+				// tv_score.setText(evaluation.getScore() + "/" +
+				// evaluation.getTotalScore());
+				Log.d("ReportCard", evaluation.getScore() + "/" + evaluation.getTotalScore());
+				// CHANGE TO BRONZE COLOR
 
-			Log.d("Debug ReportCard", "you get Bronze");
-			// tv_score.setTextColor(Color.parseColor("#c4b723"));
+				Log.d("Debug ReportCard", "you get Bronze");
+				// tv_score.setTextColor(Color.parseColor("#c4b723"));
 
-			subtv_next.setVisibility(View.INVISIBLE);
-			btn_next.setVisibility(View.INVISIBLE);
-			subtv_replay.setText("retry to get\n2 stars!");
-			break;
+				subtv_next.setVisibility(View.INVISIBLE);
+				btn_next.setVisibility(View.INVISIBLE);
+				subtv_replay.setText("retry to get\n2 stars!");
+				break;
 		}
 
-		if (level.equals(LevelType.EASY)) {
+		if(level.equals(LevelType.EASY)) {
 			subtv_next.setText("play MEDIUM");
-		} else if (level.equals(LevelType.MEDIUM)) {
+		} else if(level.equals(LevelType.MEDIUM)) {
 			subtv_next.setText("play HARD");
-		} else if (level.equals(LevelType.HARD)) {
+		} else if(level.equals(LevelType.HARD)) {
 			subtv_next.setText("");
 			btn_next.setVisibility(View.INVISIBLE);
 		} else {
@@ -145,28 +145,28 @@ public class ReportCard extends PopupWindow implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.btn_replay:
-			((Activity) context).finish();
-			Intent intent = new Intent(lesson.getActivity());
-			intent.putExtra("activityName", this.activityName);
-			intent.putExtra("UserID", SalinlahiFour.getLoggedInUser().getId());
-			intent.putExtra("activityLevel", level.toString());
-			Bundle bundle = new Bundle();
-			bundle.putParcelable("lesson", lesson);
-			intent.putExtras(bundle);
-			context.startActivity(intent);
-			// ((Activity)context).startActivity(((Activity)context).getIntent());
-			// goToLesson(level);
-			break;
-		case R.id.btn_next:
-			if (level.equals(LevelType.EASY))
-				goToLesson(LevelType.MEDIUM);
-			else if (level.equals(LevelType.MEDIUM))
-				goToLesson(LevelType.HARD);
-			break;
-		case R.id.btn_home:
-			goToMap();
-			break;
+			case R.id.btn_replay:
+				((Activity) context).finish();
+				Intent intent = new Intent(lesson.getActivity());
+				intent.putExtra("activityName", this.activityName);
+				intent.putExtra("UserID", SalinlahiFour.getLoggedInUser().getId());
+				intent.putExtra("activityLevel", level.toString());
+				Bundle bundle = new Bundle();
+				bundle.putParcelable("lesson", lesson);
+				intent.putExtras(bundle);
+				context.startActivity(intent);
+				// ((Activity)context).startActivity(((Activity)context).getIntent());
+				// goToLesson(level);
+				break;
+			case R.id.btn_next:
+				if(level.equals(LevelType.EASY))
+					goToLesson(LevelType.MEDIUM);
+				else if(level.equals(LevelType.MEDIUM))
+					goToLesson(LevelType.HARD);
+				break;
+			case R.id.btn_home:
+				goToMap();
+				break;
 		}
 	}
 

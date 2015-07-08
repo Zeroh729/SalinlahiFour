@@ -5,7 +5,6 @@ import org.jdom.JDOMException;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
-import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.Lesson;
 import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.database.*;
@@ -19,27 +18,24 @@ public class Evaluation {
 	protected iFeedback NLG;
 
 	SharedPreferences prefs;
-	// private Narration narration = new Narration();
 	private int score = 0;
 	private int totscore = 0;
 	private Context context;
-	private Item item;
 	private String LessonName;
 	private String status = "Incorrect";
 	private StarType star;
-	private UserLessonProgress userLessonProgressor = new UserLessonProgress();
 	private int allowableMistakes = 4, mistakesRemaining;
+	private boolean flag;
 
 	private int lex_size = 0;
 
 	public Evaluation(Context context, String LessonName, String activityLevel) {
-		// this.NLG = NLG;
 		this.context = context;
 		NLG = new iFeedback();
 		NLG.readProperties();
 		this.LessonName = LessonName;
 		mistakesRemaining = allowableMistakes;
-		// totscore = totalScore;
+		flag = true;
 
 	}
 
@@ -56,9 +52,9 @@ public class Evaluation {
 		String mediumStar;
 		String hardStar;
 
-		if (score <= totscore / 2)
+		if (score < totscore / 2)
 			star = StarType.BRONZE;
-		else if (score >= totscore / 2 && score != totscore)
+		else if ((score >= totscore / 2 && score != totscore) || !flag)
 			star = StarType.SILVER;
 		else
 			star = StarType.GOLD;
@@ -102,11 +98,6 @@ public class Evaluation {
 			}
 		}
 		userLessonProgressOperator.close();
-	}
-
-	private Item getMostImprovedItem() {
-		Item item = null;
-		return item;
 	}
 
 	public void setLexiconDir(String lexicon_name) {
@@ -171,7 +162,6 @@ public class Evaluation {
 
 	public boolean isAlive() {
 		if (mistakesRemaining > 0) {
-			//Log.d("Check Lives", "Game Status: Still Alive!");
 			return true;
 		} else {
 			Log.d("Check Lives", "Game Status: Game Over!");
@@ -184,7 +174,6 @@ public class Evaluation {
 		try {
 			Feedback = NLG.GenerateImmediateFeedback(answer, index, lessonNumber);
 		} catch (JDOMException | IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return Feedback;
@@ -192,11 +181,9 @@ public class Evaluation {
 
 	public String getEndofActivityFeedback(int score, int lessonNumber) {
 		String Feedback = null;
-		int ans = 0, reminder = 0;
+		int ans = 0;
 		try {
 			if (score > 0) {
-				// reminder = lex_size % score;
-				// ans = (lex_size / score)+reminder;
 				Log.d("Scoring Debug", "User Score: " + score);
 				Log.d("Scoring Debug", "Lexicon Size: " + lex_size);
 				Log.d("Scoring Debug", "Total Score: " + totscore);
@@ -205,7 +192,6 @@ public class Evaluation {
 			}
 			Feedback = NLG.GenerateDelayedFeedback(ans, lessonNumber);
 		} catch (JDOMException | IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return Feedback;
@@ -216,10 +202,10 @@ public class Evaluation {
 		
 		if (evaluation) {
 			score++;
-			// totscore++; //FIX THIS: must be items.getSize()
 			status = "Correct";
 			resetMistakesRemaining();
 		} else {
+			flag = false;
 			mistakesRemaining--;
 			status = "Incorrect";
 		}
