@@ -99,34 +99,27 @@ public class ReportCard extends PopupWindow implements OnClickListener {
 		switch (evaluation.getStar()) {
 			case GOLD:
 				img_star.setImageResource(R.drawable.report_card_gold);
-				// tv_score.setText("PERFECT!");
-				Log.d("ReportCard", "PERFECT");
-				Log.d("Debug ReportCard", "You get Gold");
+
 				subtv_replay.setText("");
 				break;
 			case SILVER:
 				img_star.setImageResource(R.drawable.report_card_silver);
-				// tv_score.setText(evaluation.getScore() + "/" +
-				// evaluation.getTotalScore());
-				Log.d("ReportCard", evaluation.getScore() + "/" + evaluation.getTotalScore());
-				// CHANGE TO SILVER COLOR
-				// tv_score.setTextColor(Color.parseColor("#c4b723"));
-				Log.d("Debug ReportCard", "you get Silver");
+
 				subtv_replay.setText("retry to get\n3 stars!");
 				break;
 			case BRONZE:
 				img_star.setImageResource(R.drawable.report_card_bronze);
-				// tv_score.setText(evaluation.getScore() + "/" +
-				// evaluation.getTotalScore());
-				Log.d("ReportCard", evaluation.getScore() + "/" + evaluation.getTotalScore());
-				// CHANGE TO BRONZE COLOR
-
-				Log.d("Debug ReportCard", "you get Bronze");
-				// tv_score.setTextColor(Color.parseColor("#c4b723"));
 
 				subtv_next.setVisibility(View.INVISIBLE);
 				btn_next.setVisibility(View.INVISIBLE);
 				subtv_replay.setText("retry to get\n2 stars!");
+				break;
+			case NONE:
+				img_star.setImageResource(R.drawable.report_card_none);
+
+				subtv_next.setVisibility(View.INVISIBLE);
+				btn_next.setVisibility(View.INVISIBLE);
+				subtv_replay.setText("retry to get\n1 star!");
 				break;
 		}
 

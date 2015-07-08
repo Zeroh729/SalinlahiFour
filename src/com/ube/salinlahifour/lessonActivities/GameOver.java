@@ -29,18 +29,19 @@ public class GameOver extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game_over);
 		Intent beforeIntent = getIntent();
+		
 		ActName = beforeIntent.getStringExtra("ActivityName");
 		ActLevel = beforeIntent.getStringExtra("ActivityLevel");
 		feedback = beforeIntent.getStringExtra("EOAFeedback");
 		userID = beforeIntent.getIntExtra("userID", 0);
 		lessonNumber = beforeIntent.getIntExtra("LessonNum", 0);
 		lesson = beforeIntent.getParcelableExtra("lesson");
-		Log.d("UGH", ActName);
-		Log.d("UGH", ActLevel);
+		
 		ev = new Evaluation(this, ActName, ActLevel);
 		ev.setScore(beforeIntent.getIntExtra("e_score", 0));
 		ev.setTotScore(beforeIntent.getIntExtra("e_total", 0));
 		ev.setLexiconSize(beforeIntent.getIntExtra("lex_size", 0));
+		ev.setFlag(beforeIntent.getBooleanExtra("flag", true));
 		ev.updateUserLessonProgress(lesson.getName(), ActLevel.toString(), SalinlahiFour.getLoggedInUser().getId());
 		LTActLevel = null;
 		switch (ActLevel) {
@@ -73,10 +74,6 @@ public class GameOver extends Activity {
 		reportCard = new ReportCard(this, lesson, LTActLevel, ev, feedback, ActName);
 		new Handler().postDelayed(new Runnable() {
 			public void run() {
-
-				// reportCard.setHeight(100);
-				// reportCard.setWidth(100);
-				// reportCard.setFocusable(true);
 				reportCard.reveal();
 			}
 		}, 100);
@@ -84,14 +81,12 @@ public class GameOver extends Activity {
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
 		super.onResume();
 
 	}
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
 		super.onPause();
 
 	}

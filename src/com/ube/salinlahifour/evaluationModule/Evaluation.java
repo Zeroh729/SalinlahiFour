@@ -52,48 +52,53 @@ public class Evaluation {
 		String mediumStar;
 		String hardStar;
 
-		if (score < totscore / 2)
-			star = StarType.BRONZE;
-		else if ((score >= totscore / 2 && score != totscore) || !flag)
-			star = StarType.SILVER;
-		else
+		if(score == totscore && flag) {
 			star = StarType.GOLD;
-
+		} else if(score >= ((totscore) * 2 / 3)) {
+			star = StarType.SILVER;
+		} else if(score >= totscore / 2) {
+			star = StarType.BRONZE;
+		} else {
+			star = StarType.NONE;
+		}
+		
+		Log.d("STAR:", star.toString() + " " + flag);
+		
 		UserLessonProgressOperations userLessonProgressOperator = new UserLessonProgressOperations(context);
 		userLessonProgressOperator.open();
 
-		if (userLessonProgressOperator.getUserLessonProgress(UserID, lessonName) == null) {
+		if(userLessonProgressOperator.getUserLessonProgress(UserID, lessonName) == null) {
 			userLessonProgressOperator.addUserLessonProgress(UserID, lessonName, star.toString(), null, null);
 		} else {
 			UserLessonProgress lessonProgress = userLessonProgressOperator.getUserLessonProgress(UserID, lessonName);
 			easyStar = lessonProgress.getEasyStar();
 			mediumStar = lessonProgress.getMediumStar();
 			hardStar = lessonProgress.getHardStar();
-			Log.d("Medal Debug", "Act Level: " + activityLevel);
-			if (activityLevel.equals(LevelType.EASY.toString())) {
+			
+			if(activityLevel.equals(LevelType.EASY.toString())) {
 				boolean mustUpdate = true;
-				if (StarType.getStar(easyStar).getValue() >= star.getValue()) {
+				if(StarType.getStar(easyStar).getValue() >= star.getValue()) {
 					mustUpdate = false;
 				}
-				if (mustUpdate)
+				if(mustUpdate)
 					userLessonProgressOperator.updateUserLessonProgress(UserID, lessonName, star.toString(), mediumStar, hardStar);
-			} else if (activityLevel.equals(LevelType.MEDIUM.toString())) {
+			} else if(activityLevel.equals(LevelType.MEDIUM.toString())) {
 				boolean mustUpdate = true;
-				if (mediumStar != null) {
-					if (StarType.getStar(mediumStar).getValue() >= star.getValue()) {
+				if(mediumStar != null) {
+					if(StarType.getStar(mediumStar).getValue() >= star.getValue()) {
 						mustUpdate = false;
 					}
 				}
-				if (mustUpdate)
+				if(mustUpdate)
 					userLessonProgressOperator.updateUserLessonProgress(UserID, lessonName, easyStar, star.toString(), hardStar);
 			} else {
 				boolean mustUpdate = true;
-				if (hardStar != null) {
-					if (StarType.getStar(hardStar).getValue() >= star.getValue()) {
+				if(hardStar != null) {
+					if(StarType.getStar(hardStar).getValue() >= star.getValue()) {
 						mustUpdate = false;
 					}
 				}
-				if (mustUpdate)
+				if(mustUpdate)
 					userLessonProgressOperator.updateUserLessonProgress(UserID, lessonName, easyStar, mediumStar, star.toString());
 			}
 		}
@@ -101,15 +106,11 @@ public class Evaluation {
 	}
 
 	public void setLexiconDir(String lexicon_name) {
-		Log.d("Feedback", "Setting Lexicon Directory to: " + lexicon_name);
 		NLG.setLexiconDirectory("/sdcard/" + lexicon_name + ".xml");
-		Log.d("Feedback", "Done Setting!: " + lexicon_name);
 	}
 
 	public void setPassingGrade(int grade) {
-		Log.d("Feedback", "Setting Passing grade to: " + grade);
 		NLG.SetPassingGrade(grade);
-		Log.d("Feedback", "Setting Passing grade Done!: " + grade);
 	}
 
 	public void setNLGAllowableMistakes(int grade) {
@@ -139,17 +140,17 @@ public class Evaluation {
 
 	public int generateLexiconSize(Lesson lesson) {
 		int size = 0;
-		for (int i = 0; i < lesson.getItems().size(); i++) {
+		for(int i = 0; i < lesson.getItems().size(); i++) {
 			switch (lesson.getItems().get(i).getDifficulty()) {
-			case "HARD":
-				size++;
-				break;
-			case "MEDIUM":
-				size++;
-				break;
-			case "EASY":
-				size++;
-				break;
+				case "HARD":
+					size++;
+					break;
+				case "MEDIUM":
+					size++;
+					break;
+				case "EASY":
+					size++;
+					break;
 			}
 		}
 		return size;
@@ -157,11 +158,10 @@ public class Evaluation {
 
 	public void resetMistakesRemaining() {
 		mistakesRemaining = allowableMistakes;
-		Log.d("Check Answer", "Mistake Counter Reset to " + mistakesRemaining);
 	}
 
 	public boolean isAlive() {
-		if (mistakesRemaining > 0) {
+		if(mistakesRemaining > 0) {
 			return true;
 		} else {
 			Log.d("Check Lives", "Game Status: Game Over!");
@@ -173,7 +173,7 @@ public class Evaluation {
 		String Feedback = null;
 		try {
 			Feedback = NLG.GenerateImmediateFeedback(answer, index, lessonNumber);
-		} catch (JDOMException | IOException e) {
+		} catch(JDOMException | IOException e) {
 			e.printStackTrace();
 		}
 		return Feedback;
@@ -183,15 +183,11 @@ public class Evaluation {
 		String Feedback = null;
 		int ans = 0;
 		try {
-			if (score > 0) {
-				Log.d("Scoring Debug", "User Score: " + score);
-				Log.d("Scoring Debug", "Lexicon Size: " + lex_size);
-				Log.d("Scoring Debug", "Total Score: " + totscore);
+			if(score > 0) {
 				ans = (score * lex_size) / totscore;
-				Log.d("Scoring Debug", "Real Score:" + ans);
 			}
 			Feedback = NLG.GenerateDelayedFeedback(ans, lessonNumber);
-		} catch (JDOMException | IOException e) {
+		} catch(JDOMException | IOException e) {
 			e.printStackTrace();
 		}
 		return Feedback;
@@ -199,8 +195,8 @@ public class Evaluation {
 
 	public boolean evaluateAnswer(String CorrectAnswer, String UserAnswer, int UserID) {
 		boolean evaluation = CorrectAnswer.equals(UserAnswer);
-		
-		if (evaluation) {
+
+		if(evaluation) {
 			score++;
 			status = "Correct";
 			resetMistakesRemaining();
@@ -210,13 +206,9 @@ public class Evaluation {
 			status = "Incorrect";
 		}
 		
-		Log.d("Check Answer", status + ": " + score);
-		Log.d("Check Answer", "Mistakes Remaining: " + mistakesRemaining);
-		// totscore++; //FIX THIS: must be items.getSize()
-		Log.d("Evaluation", "Updating User Record");
-		recordUserAnswer(LessonName, CorrectAnswer, status, UserID);
-		Log.d("Evaluation", "Updating User Record");
+		Log.d("EVALUATION:", status + " " + flag);
 		
+		recordUserAnswer(LessonName, CorrectAnswer, status, UserID);
 		return evaluation;
 	}
 
@@ -227,9 +219,17 @@ public class Evaluation {
 	public void setTotScore(int total) {
 		this.totscore = total;
 	}
+	
+	public void setFlag(boolean flag) {
+		this.flag = flag;
+	}
 
 	public int getScore() {
 		return score;
+	}
+	
+	public boolean getFlag() {
+		return flag;
 	}
 
 	public int getTotalScore() {
