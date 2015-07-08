@@ -287,7 +287,7 @@ public class Character {
 	}
 	
 	public boolean isMainCharacter(){
-		if(name.equalsIgnoreCase("main")){
+		if(name.equalsIgnoreCase(getMainName())){
 			return true;
 		}
 		return false;

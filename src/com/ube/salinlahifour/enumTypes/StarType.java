@@ -1,6 +1,7 @@
 package com.ube.salinlahifour.enumTypes;
 
 public enum StarType {
+	NONE (0),
 	BRONZE (1),
 	SILVER (2),
 	GOLD (3);
@@ -19,8 +20,10 @@ public enum StarType {
 			return StarType.BRONZE;
 		} else if (s.equals(StarType.SILVER.toString())) {
 			return StarType.SILVER;
-		}else {
+		}else if(s.equals(StarType.GOLD.toString())){
 			return StarType.GOLD;
+		} else {
+			return StarType.NONE;
 		}
 	}
 }

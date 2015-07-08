@@ -710,10 +710,10 @@ public class GameScreen extends AbstractGameScreen {
 	}
 
 	private void wrongAnswer(int index) {
-		if(answer == lesson.getItems().get(rounds - 1).getID()) {
-			sFeedback = eval.getImmediateFeedback(index, sAnswer, lessonNumber);
+		if(answer != lesson.getItems().get(rounds - 1).getID()) {
+			sFeedback = eval.getImmediateFeedback(lesson.getItems().get(rounds - 1).getID(), "", lessonNumber);
 		} else {
-			sFeedback = "Sorry That is not what i'm asking";
+			sFeedback = "Sorry, that does not go there.";
 		}
 		transition = true;
 		changeToError(sAnswer);

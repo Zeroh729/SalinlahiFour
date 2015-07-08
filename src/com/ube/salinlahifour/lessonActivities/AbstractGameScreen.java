@@ -161,18 +161,6 @@ public abstract class AbstractGameScreen extends Screen {
 					Intent intent = new Intent(context, GameOver.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					Bundle extras = new Bundle();
 
-					Log.d("Debug ReportCard", "Activity Name: " + activtityName);
-					Log.d("Debug ReportCard", "Activity Level: " + activityLevel);
-					Log.d("Debug ReportCard", "Lesson Number: " + lessonNumber);
-					Log.d("Debug ReportCard", "userID: " + userID);
-					Log.d("Debug ReportCard", "Lesson: " + lesson.getName());
-					Log.d("Debug ReportCard", "Eval Score: " + eval.getScore());
-					Log.d("Debug ReportCard", "Eval Total Score: " + eval.getTotalScore());
-					Log.d("Debug ReportCard", "Eval Lexicon Size: " + eval.getLexiconSize());
-					Log.d("Debug ReportCard", "Eval Max Tries: " + eval.getAllowableMistakes());
-					Log.d("Debug ReportCard", "Eval Remaining Tries: " + eval.getMistakesRemaining());
-					Log.d("Debug ReportCard", "Throwing...");
-
 					extras.putString("ActivityName", activtityName);
 					extras.putString("ActivityLevel", activityLevel);
 					extras.putInt("LessonNum", lessonNumber);
@@ -180,6 +168,7 @@ public abstract class AbstractGameScreen extends Screen {
 					extras.putInt("e_score", eval.getScore());
 					extras.putInt("e_total", eval.getTotalScore());
 					extras.putInt("lex_size", eval.getLexiconSize());
+					extras.putBoolean("flag", eval.getFlag());
 
 					Log.d("LessonNum", lessonNumber + "");
 					extras.putString("EOAFeedback", eval.getEndofActivityFeedback(eval.getScore(), lessonNumber));

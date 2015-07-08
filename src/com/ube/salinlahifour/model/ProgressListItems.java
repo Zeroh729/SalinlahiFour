@@ -55,6 +55,8 @@ public class ProgressListItems {
 					return R.drawable.map_star_silver;
 				case "BRONZE":
 					return R.drawable.map_star_bronze;
+				case "NONE":
+					return R.drawable.map_star_none;
 			}
 		}
 		return R.drawable.map_star_null;
