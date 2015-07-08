@@ -62,7 +62,13 @@ public class NarrativeDialog extends Activity{
 		Log.d("TEST0", "Size of characters " + player.getStory().getCharacters().size());
 		for(int i = 0; i < player.getStory().getCharacters().size(); i++){
 			for(int j = 0; j < tempcharacters.size(); j++){
-				if(player.getStory().getCharacters().get(i).getMainName().equals(tempcharacters.get(j).getMainName())){
+				if(player.getStory().getCharacters().get(i).getMainName().equals(tempcharacters.get(j).getMainName())) {
+					if(tempcharacters.get(j).getMainName().equals("main"))
+						if(SalinlahiFour.getLoggedInUser().getGender().equals("female") && tempcharacters.get(j).getRawName().equals("popoi")) {
+							continue;
+						} else if(SalinlahiFour.getLoggedInUser().getGender().equals("male") && tempcharacters.get(j).getRawName().equals("pepay")) {
+							continue;
+						}
 					characters.add(tempcharacters.get(j));
 					characters.get(characters.size()-1).setViews(tv_dialog, iv_characters[characters.size()-1], img_talkbubble);
 					characters.get(characters.size()-1).setContext(context);
