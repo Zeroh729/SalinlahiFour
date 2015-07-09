@@ -716,7 +716,7 @@ public class GameScreen extends AbstractGameScreen {
 
 	private String[] sentenceCutter(String sentence) {
 		String[] words;
-		words = sentence.split(" ");
+		words = sentence.split("\\s");
 
 		return words;
 	}

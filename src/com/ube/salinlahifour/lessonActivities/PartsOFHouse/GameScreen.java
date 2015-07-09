@@ -251,7 +251,7 @@ public class GameScreen extends AbstractGameScreen {
 									correctAnswer(pRoof, pRoofH);
 								} else {
 									sAnswer = "";
-									wrongAnswer(1);
+									wrongAnswer();
 								}
 								evaluateAnswer();
 							}
@@ -262,7 +262,7 @@ public class GameScreen extends AbstractGameScreen {
 									correctAnswer(pWindow, pWindowH);
 								} else {
 									sAnswer = "";
-									wrongAnswer(4);
+									wrongAnswer();
 								}
 								evaluateAnswer();
 							}
@@ -273,7 +273,7 @@ public class GameScreen extends AbstractGameScreen {
 									correctAnswer(pDoor, pDoorH);
 								} else {
 									sAnswer = "";
-									wrongAnswer(3);
+									wrongAnswer();
 								}
 								evaluateAnswer();
 							}
@@ -284,7 +284,7 @@ public class GameScreen extends AbstractGameScreen {
 									correctAnswer(pBody, pBodyH);
 								} else {
 									sAnswer = "";
-									wrongAnswer(2);
+									wrongAnswer();
 								}
 								evaluateAnswer();
 							}
@@ -336,7 +336,7 @@ public class GameScreen extends AbstractGameScreen {
 							answer = 0;
 						}
 					} else {
-						if(activityLevel == "EASY") {
+						if(activityLevel.equals("EASY")) {
 							answer = 0;
 						}
 					}
@@ -384,7 +384,7 @@ public class GameScreen extends AbstractGameScreen {
 									correctAnswer(pGarage, pGarageH);
 								} else {
 									sAnswer = "";
-									wrongAnswer(5);
+									wrongAnswer();
 								}
 								evaluateAnswer();
 							}
@@ -395,7 +395,7 @@ public class GameScreen extends AbstractGameScreen {
 									correctAnswer(pFence, pFenceH);
 								} else {
 									sAnswer = "";
-									wrongAnswer(6);
+									wrongAnswer();
 								}
 								evaluateAnswer();
 							}
@@ -424,7 +424,7 @@ public class GameScreen extends AbstractGameScreen {
 							answer = 0;
 						}
 					} else {
-						if(activityLevel == "MEDIUM") {
+						if(activityLevel.equals("MEDIUM")) {
 							answer = 0;
 						}
 					}
@@ -471,7 +471,7 @@ public class GameScreen extends AbstractGameScreen {
 								correctAnswer(pChimney, pChimneyH);
 							} else {
 								sAnswer = "";
-								wrongAnswer(7);
+								wrongAnswer();
 							}
 							evaluateAnswer();
 						}
@@ -482,7 +482,7 @@ public class GameScreen extends AbstractGameScreen {
 								correctAnswer(pStairs, pStairsH);
 							} else {
 								sAnswer = "";
-								wrongAnswer(8);
+								wrongAnswer();
 							}
 							evaluateAnswer();
 						}
@@ -511,7 +511,7 @@ public class GameScreen extends AbstractGameScreen {
 						answer = 0;
 					}
 				} else {
-					if(activityLevel == "HARD") {
+					if(activityLevel.equals("HARD")) {
 						answer = 0;
 					}
 				}
@@ -657,10 +657,13 @@ public class GameScreen extends AbstractGameScreen {
 					lineOne += cuttedWord[s] + " ";
 				}
 			}
+			
 			g.drawString(lineOne, 150, 80, paint);
 			g.drawString(lineTwo, 150, 100, paint);
 			g.drawString(lineTri, 150, 120, paint);
-			// g.drawString(sFeedback, 165, 63, paint);
+
+			answer = 0;
+			
 			g.drawImage(nextBtn, p_nextBtn.getX(), p_nextBtn.getY());
 			switch (answer) {
 				case 1:
@@ -687,7 +690,6 @@ public class GameScreen extends AbstractGameScreen {
 				case 8:
 					g.drawImage(stairs, pStairs.getX(), pStairs.getY());
 					break;
-
 			}
 		}
 	}
@@ -709,7 +711,7 @@ public class GameScreen extends AbstractGameScreen {
 		transition = true;
 	}
 
-	private void wrongAnswer(int index) {
+	private void wrongAnswer() {
 		if(answer != lesson.getItems().get(rounds - 1).getID()) {
 			sFeedback = eval.getImmediateFeedback(lesson.getItems().get(rounds - 1).getID(), "", lessonNumber);
 		} else {
@@ -721,7 +723,7 @@ public class GameScreen extends AbstractGameScreen {
 
 	private String[] sentenceCutter(String sentence) {
 		String[] words;
-		words = sentence.split(" ");
+		words = sentence.split("\\s");
 
 		return words;
 	}
