@@ -754,12 +754,24 @@ public class GameScreen extends AbstractGameScreen {
 		// TODO Auto-generated method stub
 		Graphics g = game.getGraphics();
 		g.drawImage(backbtn, 1, 1);
-		// g.drawString("sFeedback", 300, 400, paint2);//sFeedback
+		// g.drawString("sFeedback", 300, 400, paint2);//sFeedback 
 		// g.drawString(sFeedback, 545, 40, paint3);//sQuestion
-		g.drawString(sQuestion, 350, 78, paint4);// sQuestion
+		//g.drawString(sQuestion, 350, 78, paint4);//sQuestion
+		cuttedWord = sentenceCutter(sQuestion);
+		 String lineOne = "", lineTwo ="", lineTri = "";
+		  for(int s = 0; s<cuttedWord.length;s++){
+			 if(s>6){
+					lineTwo += cuttedWord[s] + " ";
+				}else{
+					lineOne += cuttedWord[s]+ " ";
+				}
+			}
+		  g.drawString(lineOne, 350,63, paint4);
+		  g.drawString(lineTwo, 350,83, paint4);
+		 // g.drawString(lineTri, 350,103, paint4);
 		showTransition();
 		showExit();
-
+				
 	}
 
 }
