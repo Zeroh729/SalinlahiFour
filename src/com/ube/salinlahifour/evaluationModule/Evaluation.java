@@ -54,7 +54,7 @@ public class Evaluation {
 
 		if(score == totscore && flag) {
 			star = StarType.GOLD;
-		} else if(score >= ((totscore) * 2 / 3)) {
+		} else if(score >= ((totscore) * 3 / 4)) {
 			star = StarType.SILVER;
 		} else if(score >= totscore / 2) {
 			star = StarType.BRONZE;
