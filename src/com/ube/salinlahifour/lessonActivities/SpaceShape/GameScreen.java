@@ -771,7 +771,7 @@ public class GameScreen extends AbstractGameScreen {
 		 // g.drawString(lineTri, 350,103, paint4);
 		showTransition();
 		showExit();
-		
+
 	}
 
 }
