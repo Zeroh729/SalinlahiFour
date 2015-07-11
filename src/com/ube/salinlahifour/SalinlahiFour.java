@@ -185,11 +185,6 @@ public class SalinlahiFour extends Application{
 	}
 	
 	public static NarrativeStory getStory(String lessonname) {
-		//Log.d("TEST0", "Narrative Story: Getting Story.. Lessonname got:" + lessonname);
-		for(String  story : storiesList.keySet()){
-		//	Log.d("TEST0", "Narrative Story: Searching through " + story);
-		}
-		//Log.d("TEST0", "Narrative Story: Retrieving.." + storiesList.get(lessonname).getName());
 		return storiesList.get(lessonname);
 	}
 
@@ -206,10 +201,6 @@ public class SalinlahiFour extends Application{
 	}
 
 	public static HowToPlaySet getTutorial(String lessonname) {
-		for(String key : tutorialsList.keySet()){
-		//	Log.d("TEST0", "Looking for Tutorial: comparing..." + key + " & " + lessonname);
-		}
-		
 		return tutorialsList.get(lessonname);
 	}
 

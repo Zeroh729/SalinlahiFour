@@ -55,9 +55,8 @@ public abstract class AbstractGameScreen extends Screen {
 
 		super(game);
 		eval = evaluation;
-		Log.d("Aldrin ExtendedFramework", "Abstract game Screen loading");
+		Log.d("Aldrin ExtendedFramework", "Starting Game " + activityName);
 		this.context = context;
-		// TODO Auto-generated constructor stub
 		this.userID = userID;
 		this.activtityName = activityName;
 		this.activityLevel = activityLevel;
@@ -70,8 +69,10 @@ public abstract class AbstractGameScreen extends Screen {
 		intent.putExtra("lessonName", lesson.getTheRealName());
 		context.startActivity(intent);
 		
+		Log.d("Aldrin ExtendedFramework", "Start Assets");
 		eval.setAllowableMistakes(4);
 		loadAssets();
+		Log.d("Aldrin ExtendedFramework", "Done Assets");
 		// Asset Positioning
 		switch (activityLevel) {
 		case "HARD":
