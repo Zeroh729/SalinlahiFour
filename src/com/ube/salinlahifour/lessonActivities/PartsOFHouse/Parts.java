@@ -29,6 +29,12 @@ public class Parts {
 		state = choice;
 	}
 
+	public Parts(Image state, int x, int y) {
+		this.state = state;
+		this.x = x;
+		this.y = y;
+	}
+
 	public void setHolderCoord(int x, int y) {
 		holderX = x;
 		holderY = y;
@@ -79,31 +85,31 @@ public class Parts {
 		x = newX;
 		y = newY;
 	}
-	
+
 	public Image getHolder() {
 		return holder;
 	}
-	
+
 	public Image getImage() {
 		return state;
 	}
-	
+
 	public int getWidth() {
 		return state.getWidth();
 	}
-	
+
 	public int getHeight() {
 		return state.getHeight();
 	}
-	
+
 	public int getHolderWidth() {
 		return holder.getWidth();
 	}
-	
+
 	public int getHolderHeight() {
 		return holder.getHeight();
 	}
-	
+
 	public String getWord() {
 		return word;
 	}
