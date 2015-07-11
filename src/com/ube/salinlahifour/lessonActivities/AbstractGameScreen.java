@@ -30,7 +30,7 @@ public abstract class AbstractGameScreen extends Screen {
 		Ready, Running, Paused, GameOver
 	}
 
-	GameState state = GameState.Ready;
+	private GameState state = GameState.Ready;
 	protected Evaluation eval;
 	protected String activtityName;
 	protected int lessonNumber;
@@ -344,5 +344,9 @@ public abstract class AbstractGameScreen extends Screen {
 	@Override
 	public void backButton() {
 		pause();
+	}
+	
+	protected void returnToGame() {
+		state = GameState.Running;
 	}
 }
