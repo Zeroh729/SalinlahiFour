@@ -1,12 +1,6 @@
 package com.ube.salinlahifour.lessonActivities;
 
-import java.util.ArrayList;
-
-import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.R;
-import com.ube.salinlahifour.enumTypes.LevelType;
-
-import android.view.View;
 
 public class Society  extends AbstractLessonActivity{
 

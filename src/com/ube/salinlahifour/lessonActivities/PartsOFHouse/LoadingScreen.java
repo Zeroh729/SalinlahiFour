@@ -1,7 +1,5 @@
 package com.ube.salinlahifour.lessonActivities.PartsOFHouse;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.util.Log;
 
@@ -9,7 +7,6 @@ import com.kilobolt.framework.Game;
 import com.kilobolt.framework.Graphics;
 import com.kilobolt.framework.Screen;
 import com.kilobolt.framework.Graphics.ImageFormat;
-import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.Lesson;
 import com.ube.salinlahifour.evaluationModule.Evaluation;
 import com.ube.salinlahifour.lessonActivities.PartsOFHouse.Assets;
@@ -19,17 +16,15 @@ public class LoadingScreen extends Screen {
 	private int userID;
 	private Context context;
 	private Lesson lesson;
-	private ArrayList items;
 	private Evaluation evals;
 
-	public LoadingScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson, ArrayList<Item> items, Evaluation eval) {
+	public LoadingScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson, Evaluation eval) {
 		super(game);
 		this.activityLevel = activityLevel;
 		this.userID = userID;
 		Log.d("Lodaing Screen", "TEST ActivityLevel in lesson act: " + activityLevel);
 		this.context = context;
 		this.lesson = lesson;
-		this.items = items;
 		evals = eval;
 	}
 
@@ -205,7 +200,7 @@ public class LoadingScreen extends Screen {
 		Assets.nothingness = g.newImage("house/nothingness.png", ImageFormat.RGB565);
 		Assets.nextBtn = g.newImage("buttons/btn.png", ImageFormat.RGB565);
 		Assets.nextBtn_pressed = g.newImage("buttons/btn-pressed.png", ImageFormat.RGB565);
-		game.setScreen(new GameScreen(game, activityLevel, userID, context, lesson, items, evals));
+		game.setScreen(new GameScreen(game, activityLevel, userID, context, lesson, evals));
 
 	}
 

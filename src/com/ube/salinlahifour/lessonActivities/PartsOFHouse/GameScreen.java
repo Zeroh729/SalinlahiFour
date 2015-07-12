@@ -11,7 +11,6 @@ import com.kilobolt.framework.Game;
 import com.kilobolt.framework.Graphics;
 import com.kilobolt.framework.Image;
 import com.kilobolt.framework.Input.TouchEvent;
-import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.Lesson;
 import com.ube.salinlahifour.MapActivity;
 import com.ube.salinlahifour.SalinlahiFour;
@@ -53,7 +52,7 @@ public class GameScreen extends AbstractGameScreen {
 	 * @param evals
 	 *            the evaluation object
 	 */
-	public GameScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson, ArrayList<Item> items, Evaluation evals) {
+	public GameScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson, Evaluation evals) {
 		// Super Parameters Game, ActivityName, ActivityLevel, UserID
 		super(game, activityName, activityLevel, userID, context, lesson, evals);
 		this.userID = userID;

@@ -27,11 +27,9 @@ public class GameScreen extends AbstractGameScreen {
 	// You would create game objects here.
 	static String activityName = "Shape";
 
-	// String activityLevel;
 	private Image backbtn, nobtn, yesbtn, bgBack;
 	private Image bg, feedboxBoy, feedboxGirl, nextBtn, tooltip;
 	private Parts pDialog, p_nextBtn, pTooltip;
-	// Edit lives left to the question size
 	private Image spaceship, enemy, projectile, wrong;
 	private Parts pSpaceship, pEnemy, pWrong;
 	private Image lives;
@@ -53,7 +51,7 @@ public class GameScreen extends AbstractGameScreen {
 	private boolean isEnemyExist = false;
 	int index = 0;
 
-	public GameScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson, ArrayList<Item> items, Evaluation evals) {
+	public GameScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson, Evaluation evals) {
 		// Super Parameters Game, ActivityName, ActivityLevel, UserID
 		super(game, activityName, activityLevel, userID, context, lesson, evals);
 		Log.d("Aldrin ExtendedFramework", "This should be after abstract Game");

@@ -39,7 +39,6 @@ public class GameScreen extends AbstractGameScreen {
 	private boolean flag1, flag2, flag3;
 
 	public GameScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson, Evaluation eval) {
-		// Super Parameters Game, ActivityName, ActivityLevel, UserID
 		super(game, activityName, activityLevel, userID, context, lesson, eval);
 		Log.d("Aldrin ExtendedFramework", "This should be after abstract Game");
 		this.userID = userID;

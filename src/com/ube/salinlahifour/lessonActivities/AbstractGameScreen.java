@@ -132,12 +132,6 @@ public abstract class AbstractGameScreen extends Screen {
 	@Override
 	public void update(float deltaTime) {
 		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
-
-		// We have four separate update methods in this example.
-		// Depending on the state of the game, we call different update methods.
-		// Refer to Unit 3's code. We did a similar thing without separating the
-		// update methods.
-
 		if (state == GameState.Ready)
 			updateReady(touchEvents);
 		if (state == GameState.Running) {
@@ -177,28 +171,6 @@ public abstract class AbstractGameScreen extends Screen {
 
 					intent.putExtras(extras);
 					context.startActivity(intent);
-					// final Handler handler2 = new Handler();
-					// Runnable runnable2 = new Runnable() {
-					// @Override
-					// public void run() {
-					/*
-					 * eval.updateUserLessonProgress(lesson.getName(),
-					 * activityLevel.toString(), userID); LevelType LTActLevel =
-					 * null; switch(activityLevel){ case "EASY": LTActLevel =
-					 * LevelType.EASY; break; case "MEDIUM": LTActLevel =
-					 * LevelType.MEDIUM; break; case "HARD": LTActLevel =
-					 * LevelType.HARD; break; } reportCard = new
-					 * ReportCard(context, lesson,LTActLevel, eval,
-					 * eval.getEndofActivityFeedback(eval.getScore(),
-					 * lessonNumber)); reportCard.setHeight(100);
-					 * reportCard.setWidth(100); reportCard.setFocusable(true);
-					 * reportCard.reveal();
-					 */
-					// }
-					//
-					//
-					// };
-					// handler2.post(runnable2);
 				}
 			}
 		}
@@ -209,12 +181,6 @@ public abstract class AbstractGameScreen extends Screen {
 	}
 
 	public void updateReady(List<TouchEvent> touchEvents) {
-
-		// This example starts with a "Ready" screen.
-		// When the user touches the screen, the game begins.
-		// state now becomes GameState.Running.
-		// Now the updateRunning() method will be called!
-
 		if (touchEvents.size() > 0)
 			state = GameState.Running;
 	}
@@ -228,9 +194,6 @@ public abstract class AbstractGameScreen extends Screen {
 
 	@Override
 	public void paint(float deltaTime) {
-		Graphics g = game.getGraphics();
-		// showTransition();
-
 		switch (activityLevel) {
 		case "HARD":
 			painterHard();
@@ -253,12 +216,6 @@ public abstract class AbstractGameScreen extends Screen {
 
 	}
 
-	/*
-	 * protected void drawReadyUI() { Graphics g = game.getGraphics();
-	 * 
-	 * g.drawARGB(155, 0, 0, 0); //g.drawString("Tap to Start.", 400, 240,
-	 * paint); //showTransition(); }
-	 */
 	protected abstract void drawCustomUI();
 
 	protected void drawRunningUI() {
@@ -266,31 +223,13 @@ public abstract class AbstractGameScreen extends Screen {
 		Graphics g = game.getGraphics();
 		g.drawImage(g.newImage("charbox/utilitybar.png", ImageFormat.RGB565), 355, 0);
 		g.drawString("Question No:" + (rounds) + "/" + totalItems + " " + "Tries Left:" + eval.getMistakesRemaining() + "/" + eval.getAllowableMistakes(), 670, 25, paint5);
-		
-		// g.drawString(sQuestion, 430, 50, paint2);
 	}
 
 	protected void drawPausedUI() {
-		Graphics g = game.getGraphics();
-		// Darken the entire screen so you can display the Paused screen.
-		// g.drawARGB(155, 0, 0, 0);
-
 	}
 
 	protected void drawGameOverUI() {
-		Graphics g = game.getGraphics();
-		String endFeedback = "";
-		// Image bg = g.newImage("house/Medium/roof.png", ImageFormat.RGB565);
-		// g.drawImage(bg, 0, 0);
-
 	}
-
-	/*
-	 * protected void transitionTouchEvent(TouchEvent touchEvents){
-	 * if(transition){ if (inBounds(touchEvents, 0, 0,
-	 * game.getGraphics().getWidth(), game.getGraphics().getHeight())){
-	 * Log.d("Transition Debug", "Falseing"); transition = false; } } }
-	 */
 
 	abstract protected void loadAssets();
 
