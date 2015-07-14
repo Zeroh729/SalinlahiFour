@@ -6,6 +6,11 @@ import android.view.View;
 
 import com.ube.salinlahifour.enumTypes.LevelType;
 
+/**
+ * An Item is an object that contains all the needed information in the game. An Item contains the Filipino word along with
+ * it's English translation. In addition, it contains the question and its answer and all the needed resources in one object.
+ *
+ */
 public class Item implements Cloneable {
 	private int ID;
 	private int q_num;
@@ -35,7 +40,7 @@ public class Item implements Cloneable {
 		try {
 			Item item = (Item) super.clone();
 			return item;
-		} catch (Exception e) {
+		} catch(Exception e) {
 			return null;
 		}
 	}
@@ -107,7 +112,7 @@ public class Item implements Cloneable {
 	public void setVoiceFilPath(Context context, String path) {
 		voiceFilPath = path;
 		voiceFilID = SalinlahiFour.getContext().getResources().getIdentifier(path, "raw", SalinlahiFour.getContext().getPackageName());
-		if (voiceFilID == 0 && !path.equals("")) {
+		if(voiceFilID == 0 && !path.equals("")) {
 			SalinlahiFour.errorPopup(context, "File not found:", "Add " + path + " sound file in raw resource folder.");
 		}
 	}
@@ -119,7 +124,7 @@ public class Item implements Cloneable {
 	public void setVoiceEngPath(Context context, String path) {
 		voiceEngPath = path;
 		voiceEngID = SalinlahiFour.getContext().getResources().getIdentifier(path, "raw", SalinlahiFour.getContext().getPackageName());
-		if (voiceEngID == 0 && !path.equals("")) {
+		if(voiceEngID == 0 && !path.equals("")) {
 			SalinlahiFour.errorPopup(context, "File not found:", "Add " + path + " sound file in raw resource folder.");
 		}
 	}
@@ -132,7 +137,7 @@ public class Item implements Cloneable {
 		imagePath = path;
 		int resID = SalinlahiFour.getContext().getResources().getIdentifier(imagePath, "drawable", SalinlahiFour.getContext().getPackageName());
 
-		if (resID == 0 && !path.equals("")) {
+		if(resID == 0 && !path.equals("")) {
 			SalinlahiFour.errorPopup(context, "Parse error: ", "Add image '" + path + "' to the drawable resource folder.");
 		} else {
 			imageID = resID;
@@ -201,7 +206,7 @@ public class Item implements Cloneable {
 	}
 
 	public void playFilipinoSound() {
-		if (voiceFilID != 0) {
+		if(voiceFilID != 0) {
 			MediaPlayer mPlayer = MediaPlayer.create(SalinlahiFour.getContext(), voiceFilID);
 			mPlayer.setVolume(1, 1);
 			mPlayer.start();
@@ -209,7 +214,7 @@ public class Item implements Cloneable {
 	}
 
 	public void playEnglishSound() {
-		if (voiceEngID != 0) {
+		if(voiceEngID != 0) {
 			MediaPlayer mPlayer = MediaPlayer.create(SalinlahiFour.getContext(), voiceEngID);
 			mPlayer.setVolume(1, 1);
 			mPlayer.start();
