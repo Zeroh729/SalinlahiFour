@@ -32,10 +32,18 @@ public class Item implements Cloneable {
 	private int imageID;
 	private View view;
 
+	/**
+	 * Creates a blank instance of an Item
+	 */
 	public Item() {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#clone()
+	 */
 	public Item clone() {
 		try {
 			Item item = (Item) super.clone();
@@ -45,6 +53,24 @@ public class Item implements Cloneable {
 		}
 	}
 
+	/**
+	 * @param q_num
+	 *            The question number
+	 * @param word
+	 *            The filipino word
+	 * @param english
+	 *            the English word
+	 * @param description
+	 *            the description of the word
+	 * @param imageID
+	 *            the image ID associated with the item
+	 * @param voiceFilID
+	 *            the ID of the audio file of the Filipino voice
+	 * @param voiceEngID
+	 *            the ID of the audio file of the English voice
+	 * @param level
+	 *            the difficulty of the level
+	 */
 	public Item(int q_num, String word, String english, String description, int imageID, int voiceFilID, int voiceEngID, LevelType level) {
 		this.q_num = q_num;
 		this.word = word;
@@ -270,6 +296,7 @@ public class Item implements Cloneable {
 
 	/**
 	 * Gets the lesson number of the item
+	 * 
 	 * @return the lesson number
 	 */
 	public int getLessonNum() {
@@ -278,7 +305,9 @@ public class Item implements Cloneable {
 
 	/**
 	 * Sets the lesson number of the item
-	 * @param id the lesson number
+	 * 
+	 * @param id
+	 *            the lesson number
 	 */
 	public void setLessonNum(int id) {
 		lessonNum = id;
@@ -286,6 +315,7 @@ public class Item implements Cloneable {
 
 	/**
 	 * Gets the image ID of the item
+	 * 
 	 * @return the Image ID
 	 */
 	public int getImageID() {
@@ -294,6 +324,7 @@ public class Item implements Cloneable {
 
 	/**
 	 * Gets the Filipino word
+	 * 
 	 * @return the word/label
 	 */
 	public String getWord() {
@@ -303,7 +334,8 @@ public class Item implements Cloneable {
 	/**
 	 * Sets the Filipino word
 	 * 
-	 * @param word The word to be assiciated
+	 * @param word
+	 *            The word to be assiciated
 	 */
 	public void setWord(String word) {
 		this.word = word;
@@ -321,7 +353,8 @@ public class Item implements Cloneable {
 	/**
 	 * Sets the English translation of the word.
 	 * 
-	 * @param english the English translation
+	 * @param english
+	 *            the English translation
 	 */
 	public void setEnglish(String english) {
 		this.english = english;
@@ -357,7 +390,8 @@ public class Item implements Cloneable {
 	/**
 	 * Sets the label of the item.
 	 * 
-	 * @param description the label.
+	 * @param description
+	 *            the label.
 	 */
 	public void setLabel(String description) {
 		this.label = description;
@@ -375,7 +409,8 @@ public class Item implements Cloneable {
 	/**
 	 * Sets the level type/Difficulty of the item
 	 * 
-	 * @param level The difficulty of the item
+	 * @param level
+	 *            The difficulty of the item
 	 */
 	public void setLevel(LevelType level) {
 		this.level = level;
