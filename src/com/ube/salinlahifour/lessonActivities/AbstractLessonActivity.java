@@ -74,7 +74,7 @@ public abstract class AbstractLessonActivity extends Activity {
 	 * Initializes the object before starting the Activity
 	 * 
 	 * @param savedInstanceState
-	 *            mapped values that were passed on to this activity
+	 *            contains the parameters of the last run of this activity.
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
