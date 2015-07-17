@@ -71,9 +71,7 @@
 	<image_path>garage</image_path>
 	<eng_sound>house_garage</eng_sound>
 	<fil_sound>house_garahe</fil_sound>
-
 	<difficulty>MEDIUM</difficulty>
-
 </Word_Entry>
 <Word_Entry>
     <q_num>6</q_num>

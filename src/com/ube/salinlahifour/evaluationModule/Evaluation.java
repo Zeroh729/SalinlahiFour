@@ -199,7 +199,7 @@ public class Evaluation {
 		if(evaluation) {
 			score++;
 			status = "Correct";
-			resetMistakesRemaining();
+			//resetMistakesRemaining();
 		} else {
 			flag = false;
 			mistakesRemaining--;
