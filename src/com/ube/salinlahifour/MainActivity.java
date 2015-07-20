@@ -133,6 +133,7 @@ public class MainActivity extends Activity {
 			File lessonlibrary = new File("/sdcard/lessonlibrary.xml");
 			File lexicon = new File("/sdcard/lexicon.xml");
 			File templatecatalogue = new File("/sdcard/templatecatalogue.xml");
+			//File customFeedback = new File("/sdcard/list_customfeedbacktemplate.xml");
 			try {
 				Log.d("SD Card", "Create Files");
 				properties.createNewFile();
@@ -141,6 +142,7 @@ public class MainActivity extends Activity {
 				lessonlibrary.createNewFile();
 				lexicon.createNewFile();
 				templatecatalogue.createNewFile();
+			//	customFeedback.createNewFile();
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -320,7 +322,16 @@ public class MainActivity extends Activity {
 		Log.d("Jim Parse On", "Lesson Ends");
 		SalinlahiFour.setLessonsList(lessons);
 	}
+	private void parseCustomFeedback() {
+		ArrayList<Lesson> lessons = new ArrayList();
+		Log.d("Jim Parse On", "Custom Feedback Starts");
 
+		//lessons = (ArrayList<Lesson>) XMLContentParser.parseLesson(this, this.getResources().openRawResource(R.raw.lessonlibrary));
+
+		
+		Log.d("Jim Parse On", "Custom Feedback Ends");
+		//SalinlahiFour.setLessonsList(lessons);
+	}
 	private void parseCharacters() {
 		ArrayList<Character> characters = new ArrayList();
 

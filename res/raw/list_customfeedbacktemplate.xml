@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type>
+    <NextDifficulty>
+        <template>Sample: Current Lesson:[CurrentLesson] Next Difficulty: [Difficulty]</template>
+    </NextDifficulty>
+    <NextLesson>
+        <template>Sample: Next Lesson[NextLesson]</template>
+    </NextLesson>
+</type>

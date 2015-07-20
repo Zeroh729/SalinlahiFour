@@ -51,7 +51,7 @@ public class Evaluation {
 		String easyStar;
 		String mediumStar;
 		String hardStar;
-
+		Log.d("Debug End Report", "SCORE stars: " + score);
 		if(score == totscore && flag) {
 			star = StarType.GOLD;
 		} else if(score >= ((totscore) * 3 / 4)) {
@@ -110,6 +110,7 @@ public class Evaluation {
 	}
 
 	public void setPassingGrade(int grade) {
+		Log.d("Debug End Report", "Passing Grade: " +grade);
 		NLG.SetPassingGrade(grade);
 	}
 
@@ -179,14 +180,26 @@ public class Evaluation {
 		return Feedback;
 	}
 
-	public String getEndofActivityFeedback(int score, int lessonNumber) {
+	public String getEndofActivityFeedback(int score, int lessonNumber, StarType star ) {
 		String Feedback = null;
 		int ans = 0;
 		try {
-			if(score > 0) {
+		/*	if(score > 0) {
 				ans = (score * lex_size) / totscore;
 			}
+			Feedback = NLG.GenerateDelayedFeedback(ans, lessonNumber);*/
+			switch(star){
+			case GOLD: ans = (int) (totscore * 1); break;
+			case SILVER:ans = (int) (totscore * 0.80); break;
+			case BRONZE:ans = (int) (totscore * 0.5); break;
+			case NONE:ans = 0; break;
+			}
+			Log.d("Debug End Report", "Send to iFeedback!");
+			Log.d("Debug End Report", "User Score: " + ans);
+			Log.d("Debug End Report", "Total Score: " + totscore);
+			Log.d("Debug End Report", "STAR: " + star);
 			Feedback = NLG.GenerateDelayedFeedback(ans, lessonNumber);
+			Log.d("Debug End Report", "Sent!");
 		} catch(JDOMException | IOException e) {
 			e.printStackTrace();
 		}

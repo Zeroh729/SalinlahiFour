@@ -171,7 +171,7 @@ public abstract class AbstractGameScreen extends Screen {
 					extras.putBoolean("flag", eval.getFlag());
 
 					Log.d("LessonNum", lessonNumber + "");
-					extras.putString("EOAFeedback", eval.getEndofActivityFeedback(eval.getScore(), lessonNumber));
+					extras.putString("EOAFeedback", eval.getEndofActivityFeedback(eval.getScore(), lessonNumber, eval.getStar()));
 					extras.putParcelable("lesson", lesson);
 
 					intent.putExtras(extras);
