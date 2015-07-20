@@ -186,7 +186,7 @@ public class Evaluation {
 			if(score > 0) {
 				ans = (score * lex_size) / totscore;
 			}
-			Feedback = NLG.GenerateDelayedFeedback(ans, lessonNumber);
+			Feedback = NLG.GenerateDelayedFeedback(score, lessonNumber);
 		} catch(JDOMException | IOException e) {
 			e.printStackTrace();
 		}
