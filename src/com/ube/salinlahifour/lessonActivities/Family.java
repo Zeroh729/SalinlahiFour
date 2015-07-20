@@ -85,7 +85,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		// TV DIALOG INIT END
 		// Text View Feedback
 		tv_feedback = (TextView) findViewById(R.id.tv_feedback);
-		tv_feedback.setTypeface(SalinlahiFour.getFontAndy());
+		tv_feedback.setTypeface(SalinlahiFour.getFontPlaytime());
 		tv_feedback.setText(" ");
 		tv_feedback.setOnClickListener(this);
 		// tv_questionno = (TextView)findViewById(R.id.tv_questionno);
@@ -161,7 +161,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		Log.d("Debug Family", "Aldrin: Initiate Views...Done");
 
 		itemLabel = (TextView) findViewById(R.id.tv_itemlabel);
-		itemLabel.setTypeface(SalinlahiFour.getFontAndy());
+		itemLabel.setTypeface(SalinlahiFour.getFontPlaytime());
 		img_itemLabel = (ImageView) findViewById(R.id.img_itemLabel);
 		if (SalinlahiFour.getLoggedInUser().getGender().equals("female"))
 			img_itemLabel.setBackgroundResource(R.drawable.animals_pepaitalking);

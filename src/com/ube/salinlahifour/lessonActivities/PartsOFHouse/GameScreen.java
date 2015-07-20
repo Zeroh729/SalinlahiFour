@@ -656,7 +656,7 @@ public class GameScreen extends AbstractGameScreen {
 			String lineOne = "", lineTwo = "", lineTri = "";
 			cuttedWord = sentenceCutter(sFeedback);
 			for(int s = 0; s < cuttedWord.length; s++) {
-				if(s > 11) {
+				if(s > 13) {
 					lineTri += cuttedWord[s] + " ";
 				} else if(s > 6) {
 					lineTwo += cuttedWord[s] + " ";
@@ -745,8 +745,8 @@ public class GameScreen extends AbstractGameScreen {
 		} else {
 			g.drawImage(feedboxGirl, this.pDialog.getX(), pDialog.getY());
 		}
-		g.drawString("Tap the pieces asked and place it", 322, 63, paint4);
-		g.drawString("on its proper position", 322, 78, paint4);
+		g.drawString("Tap the pieces asked and place it", 322, 75, paint4);
+		g.drawString("on its proper position", 322, 95, paint4);
 		g.drawImage(nextBtn, p_nextBtn.getX(), p_nextBtn.getY());
 	}
 

@@ -146,7 +146,7 @@ public abstract class AbstractLessonActivity extends Activity {
 		p.setMargins(10, 5, 10, 10);
 		life_tv.setId(1);
 		life_tv.setTextSize(25);
-		life_tv.setTypeface(SalinlahiFour.getFontAndy());
+		life_tv.setTypeface(SalinlahiFour.getFontPlaytime());
 		life_tv.setTextColor(Color.WHITE);
 		// life_tv.setTextColor(Color.WHITE);
 		// life_tv.setShadowLayer(5f, -1, 1, Color.BLACK);
@@ -155,7 +155,7 @@ public abstract class AbstractLessonActivity extends Activity {
 		// q.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
 		q.setMargins(20, 5, 10, 10);
 		questionNo_tv.setTextSize(25);
-		questionNo_tv.setTypeface(SalinlahiFour.getFontAndy());
+		questionNo_tv.setTypeface(SalinlahiFour.getFontPlaytime());
 		questionNo_tv.setTextColor(Color.WHITE);
 
 		life_tv.setLayoutParams(p);
@@ -378,11 +378,11 @@ public abstract class AbstractLessonActivity extends Activity {
 		Log.d("End Of Feedback", "Total score: " + questions.size());
 		if(questions.size() % 2 > 0) {
 			Log.d("End Of Feedback", "Total score is Odd");
-			passingScore = (int) (questions.size() * 0.5) + 1;
+			passingScore = (int) (questions.size() * 0.75) + 1;
 			Log.d("End Of Feedback", "Passing score: " + passingScore);
 		} else {
 			Log.d("End Of Feedback", "Total score is Even");
-			passingScore = (int) (questions.size() * 0.5);
+			passingScore = (int) (questions.size() * 0.75);
 			Log.d("End Of Feedback", "Passing score: " + passingScore);
 		}
 		evaluation.setPassingGrade(passingScore);

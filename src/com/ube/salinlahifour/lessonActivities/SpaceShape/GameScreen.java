@@ -732,13 +732,13 @@ public class GameScreen extends AbstractGameScreen {
 		Graphics g = game.getGraphics();
 		g.drawARGB(200, 0, 0, 0);
 		g.drawImage(feedbox, this.pDialog.getX(), pDialog.getY());
-		g.drawString("Tap 'BOOST' to face the next alien", 322, 63, paint4);
-		g.drawString("Tap the correct button to deafeat it", 322, 78, paint4);
+		g.drawString("Tap 'BOOST' to face the next alien", 350, 70, paint4);
+		g.drawString("Tap the correct button to defeat it!", 350, 90, paint4);
 		g.drawImage(nextBtn, p_nextBtn.getX(), p_nextBtn.getY());
 		g.drawImage(lives, pLives.getX(), pLives.getY());
 		g.drawImage(tooltip, pTooltip.getX(), pTooltip.getY());
-		g.drawString("Aliens will hit us if we miss", 336, 318, paint4);
-		g.drawString("Don't let the lights fade out", 336, 338, paint4);
+		g.drawString("Aliens will hit us if we miss", 340, 325, paint4);
+		g.drawString("Don't let the lights fade out", 340, 355, paint4);
 	}
 
 	@Override
