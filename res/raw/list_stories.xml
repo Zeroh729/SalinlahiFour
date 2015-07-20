@@ -418,4 +418,48 @@
         </Scene>
 
     </Lesson>
+     <Lesson
+        name="Solarsystem">
+        <Scene>
+            <Character
+                name="main"
+                animate="entranceFromLeft"
+              	say="Wow! It's so dark here!"
+              	soundfile="narration_feelings_1"/>
+    	    <Background src="shapes_tutt"/>
+            <Character
+                name="crew"
+                animate="entranceFromLeft"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="crew"
+                animate="rumble"
+              	say="I know "
+              	soundfile = "narration_feelings_2"/>
+        </Scene>
+
+    </Lesson>
+     <Lesson
+        name="Construction">
+        <Scene>
+            <Character
+                name="main"
+                animate="entranceFromLeft"
+              	say="Wow! It's so dark here!"
+              	soundfile="narration_feelings_1"/>
+    	    <Background src="shapes_tutt"/>
+            <Character
+                name="crew"
+                animate="entranceFromLeft"/>
+        </Scene>
+        <Scene>
+            <Character
+                name="crew"
+                animate="rumble"
+              	say="I know "
+              	soundfile = "narration_feelings_2"/>
+        </Scene>
+
+    </Lesson>
 </resources>

@@ -45,4 +45,14 @@
         <Screenshot src="howtoplay_feelings_1"/>
         <Screenshot src="howtoplay_feelings_2"/>
     </Lesson>
+    <Lesson
+        name="Solarsystem">
+        <Screenshot src="howtoplay_feelings_1"/>
+        <Screenshot src="howtoplay_feelings_2"/>
+    </Lesson>
+    <Lesson
+        name="Construction">
+        <Screenshot src="howtoplay_feelings_1"/>
+        <Screenshot src="howtoplay_feelings_2"/>
+    </Lesson>
 </resources>
