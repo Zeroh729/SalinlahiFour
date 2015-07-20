@@ -65,7 +65,8 @@
     <template>You need more practice. Try again next time.</template>
    </NextLesson_F>
    <NextLesson_P>
-    <template>Congratulations! You passed this lesson!</template>
+    <template>You're doing great!</template>
+    <template>Hey, you're doing a good job. Keep it up!</template>
    </NextLesson_P>
 </type>
 
