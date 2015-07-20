@@ -143,9 +143,9 @@ public abstract class AbstractLessonActivity extends Activity {
 		utilBar = new RelativeLayout(this);
 		RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 		p.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
-		p.setMargins(10, 5, 10, 10);
+		p.setMargins(7, 4, 10, 10);
 		life_tv.setId(1);
-		life_tv.setTextSize(25);
+		life_tv.setTextSize(23);
 		life_tv.setTypeface(SalinlahiFour.getFontPlaytime());
 		life_tv.setTextColor(Color.WHITE);
 		// life_tv.setTextColor(Color.WHITE);
@@ -153,8 +153,8 @@ public abstract class AbstractLessonActivity extends Activity {
 		RelativeLayout.LayoutParams q = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 		q.addRule(RelativeLayout.LEFT_OF, life_tv.getId());
 		// q.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
-		q.setMargins(20, 5, 10, 10);
-		questionNo_tv.setTextSize(25);
+		q.setMargins(20, 4, 8, 10);
+		questionNo_tv.setTextSize(23);
 		questionNo_tv.setTypeface(SalinlahiFour.getFontPlaytime());
 		questionNo_tv.setTextColor(Color.WHITE);
 
