@@ -65,12 +65,13 @@ public class Construction extends AbstractLessonActivity implements OnClickListe
 		answerBtnArray[0] = (Button) findViewById(R.id.answer_1);
 		answerBtnArray[1] = (Button) findViewById(R.id.answer_2);
 		answerBtnArray[2] = (Button) findViewById(R.id.answer_3);
+		splittedWords = new ArrayList<String>();
 		//testAddButtonProgramatically();
 		
 	}
 	//TEST FUNCTION DO NOT USE
 	private void testAddButtonProgramatically(){
-		splittedWords = new ArrayList<String>();
+		
 		lin = (LinearLayout) findViewById(R.id.layout_answer);
 		RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 		p.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
@@ -82,6 +83,7 @@ public class Construction extends AbstractLessonActivity implements OnClickListe
 		testButton.setTextColor(Color.WHITE);
 		testButton.setText("TEST");
 		testButton.setLayoutParams(p);
+		testButton.setOnClickListener(this);
 		lin.addView(testButton);
 	}
 	@Override
@@ -139,7 +141,11 @@ public class Construction extends AbstractLessonActivity implements OnClickListe
 		int btnIndex = -1;
 		int ansIndex = -1;
 		Log.d("Kaartehan", "View ID: "+ v.getId());
+		if(testButton.getId()== v.getId()){
+			Log.d("Kaartehan", "If's worked!");
+		}
 		switch (v.getId()) {
+			case 1: Log.d("Kaartehan", "It worked!");break;
 			case R.id.choice_1:
 				btnIndex = 0;
 				break;
