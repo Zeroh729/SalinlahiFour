@@ -16,6 +16,7 @@ import com.kilobolt.framework.Input.TouchEvent;
 import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.Lesson;
 import com.ube.salinlahifour.MapActivity;
+import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.evaluationModule.*;
 import com.ube.salinlahifour.lessonActivities.AbstractGameScreen;
 import com.ube.salinlahifour.lessonActivities.SpaceShape.Parts;
@@ -29,7 +30,7 @@ public class GameScreen extends AbstractGameScreen {
 
 	// String activityLevel;
 	private Image backbtn, nobtn, yesbtn, bgBack;
-	private Image bg, feedboxBoy, feedboxGirl, nextBtn, tooltip;
+	private Image bg, feedbox, nextBtn, tooltip;
 	private Parts pDialog, p_nextBtn, pTooltip;
 	// Edit lives left to the question size
 	private Image spaceship, enemy, projectile, wrong;
@@ -77,8 +78,12 @@ public class GameScreen extends AbstractGameScreen {
 		nextBtn = Assets.nextBtn;
 		p_nextBtn = new Parts(250, 180);
 		pDialog = new Parts(85, 30);
-		feedboxBoy = Assets.feedboxBoy;
-		feedboxGirl = Assets.feedboxGirl;
+		if(SalinlahiFour.getLoggedInUser().getGender().equals("male")) {
+			feedbox = Assets.feedboxBoy;
+		} else {
+			feedbox = Assets.feedboxGirl;
+		}
+		
 		tooltip = Assets.tooltip;
 		enemies = new EnemyList(activityLevel);
 		enemies.loadEnemy();
@@ -660,7 +665,7 @@ public class GameScreen extends AbstractGameScreen {
 		g.drawImage(enemy, pEnemy.getX(), pEnemy.getY());
 		g.drawImage(projectile, ammo.getCurX(), ammo.getCurY());
 		g.drawImage(wrong, pWrong.getX(), pWrong.getY());
-		g.drawImage(feedboxBoy, this.pDialog.getX(), pDialog.getY());
+		g.drawImage(feedbox, this.pDialog.getX(), pDialog.getY());
 		g.drawImage(lives, pLives.getX(), pLives.getY());
 
 	}
@@ -695,7 +700,7 @@ public class GameScreen extends AbstractGameScreen {
 			Log.d("Transition Debug", "Enters: Knock Knock");
 
 			g.drawARGB(155, 0, 0, 0);
-			g.drawImage(feedboxBoy, this.pDialog.getX(), pDialog.getY());
+			g.drawImage(feedbox, this.pDialog.getX(), pDialog.getY());
 			g.drawImage(nextBtn, p_nextBtn.getX(), p_nextBtn.getY());
 			String lineOne = "", lineTwo = "", lineTri = "";
 			cuttedWord = sentenceCutter(sFeedback);
@@ -716,7 +721,7 @@ public class GameScreen extends AbstractGameScreen {
 
 	private String[] sentenceCutter(String sentence) {
 		String[] words;
-		words = sentence.split(" ");
+		words = sentence.split("\\s");
 
 		return words;
 	}
@@ -726,14 +731,14 @@ public class GameScreen extends AbstractGameScreen {
 		// TODO Auto-generated method stub
 		Graphics g = game.getGraphics();
 		g.drawARGB(200, 0, 0, 0);
-		g.drawImage(feedboxBoy, this.pDialog.getX(), pDialog.getY());
-		g.drawString("Tap 'BOOST' to face the next alien", 322, 63, paint4);
-		g.drawString("Tap the correct button to deafeat it", 322, 78, paint4);
+		g.drawImage(feedbox, this.pDialog.getX(), pDialog.getY());
+		g.drawString("Tap 'BOOST' to face the next alien", 350, 70, paint4);
+		g.drawString("Tap the correct button to defeat it!", 350, 90, paint4);
 		g.drawImage(nextBtn, p_nextBtn.getX(), p_nextBtn.getY());
 		g.drawImage(lives, pLives.getX(), pLives.getY());
 		g.drawImage(tooltip, pTooltip.getX(), pTooltip.getY());
-		g.drawString("Aliens will hit us if we miss", 336, 318, paint4);
-		g.drawString("Don't let the lights fade out", 336, 338, paint4);
+		g.drawString("Aliens will hit us if we miss", 340, 325, paint4);
+		g.drawString("Don't let the lights fade out", 340, 355, paint4);
 	}
 
 	@Override

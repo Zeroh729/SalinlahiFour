@@ -194,6 +194,24 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+         <activity
+            android:name="com.ube.salinlahifour.lessonActivities.Solarsystem"
+            android:label="@string/title_activity_feelings" 
+            android:screenOrientation="landscape" >
+            <intent-filter>
+                <action android:name="com.ube.salinlahifour.lessonActivities.Solarsystem" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+         <activity
+            android:name="com.ube.salinlahifour.lessonActivities.Construction"
+            android:label="@string/title_activity_feelings" 
+            android:screenOrientation="landscape" >
+            <intent-filter>
+                <action android:name="com.ube.salinlahifour.lessonActivities.Construction" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

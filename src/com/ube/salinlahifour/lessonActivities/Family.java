@@ -1,26 +1,18 @@
 package com.ube.salinlahifour.lessonActivities;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-import android.content.Intent;
-import android.content.res.Resources.NotFoundException;
-import android.graphics.Color;
 import android.graphics.LightingColorFilter;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
-import android.os.CountDownTimer;
 import android.text.Html;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -38,14 +30,9 @@ import com.ube.salinlahifour.uibuilders.Button.BtnNextArrowStatesBuilder;
 import com.ube.salinlahifour.uibuilders.Button.BtnStatesDirector;
 
 public class Family extends AbstractLessonActivity implements OnClickListener, OnTouchListener {
-	private TextView tv_dialog;
 	private TextView tv_feedback;
 	private ImageButton[] choices;
-	private ImageView iv_swipe;
 	private ImageView scrollView;
-	private AnimatedButtonListener buttonAnimation;
-	private SoundPool sfx_correct;
-	private SoundPool sfx_wrong;
 	private TextView itemLabel;
 	// private TextView tv_questionno;
 	private ImageView img_itemLabel;
@@ -98,20 +85,14 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		// TV DIALOG INIT END
 		// Text View Feedback
 		tv_feedback = (TextView) findViewById(R.id.tv_feedback);
-		tv_feedback.setTypeface(SalinlahiFour.getFontAndy());
+		tv_feedback.setTypeface(SalinlahiFour.getFontPlaytime());
 		tv_feedback.setText(" ");
 		tv_feedback.setOnClickListener(this);
 		// tv_questionno = (TextView)findViewById(R.id.tv_questionno);
 		// tv_questionno.setTypeface(SalinlahiFour.getFontPlaytime());
 		// ((TextView)findViewById(R.id.tv_score)).setTypeface(SalinlahiFour.getFontPlaytime());
 
-		// RelativeLayout.LayoutParams feedback_params = new
-		// RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
-		// feedback_params.leftMargin=100; //X
-		// feedback_params.bottomMargin = 60; //Y
-		// tv_feedback.setLayoutParams(feedback_params);
-		// TV FEEDBACK END
-		buttonAnimation = new AnimatedButtonListener();
+		new AnimatedButtonListener();
 		choices = new ImageButton[totalItems];
 		if (activityLevel.equals(LevelType.EASY)) {
 			choices[0] = (ImageButton) findViewById(R.id.img_choicea);
@@ -180,7 +161,7 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 		Log.d("Debug Family", "Aldrin: Initiate Views...Done");
 
 		itemLabel = (TextView) findViewById(R.id.tv_itemlabel);
-		itemLabel.setTypeface(SalinlahiFour.getFontAndy());
+		itemLabel.setTypeface(SalinlahiFour.getFontPlaytime());
 		img_itemLabel = (ImageView) findViewById(R.id.img_itemLabel);
 		if (SalinlahiFour.getLoggedInUser().getGender().equals("female"))
 			img_itemLabel.setBackgroundResource(R.drawable.animals_pepaitalking);
@@ -318,7 +299,6 @@ public class Family extends AbstractLessonActivity implements OnClickListener, O
 
 	@Override
 	public void onClick(View v) {
-		int choice = 0;
 		if (img_itemLabel.getVisibility() == View.INVISIBLE) {
 			switch (v.getId()) {
 			case R.id.img_choicea:

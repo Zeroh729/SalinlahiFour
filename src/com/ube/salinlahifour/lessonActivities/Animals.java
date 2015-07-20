@@ -109,7 +109,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener {
 
 		// tv_questionno.setTypeface(SalinlahiFour.getFontPlaytime());
 		// ((TextView)findViewById(R.id.tv_score)).setTypeface(SalinlahiFour.getFontPlaytime());
-		tv_feedback.setTypeface(SalinlahiFour.getFontAndy());
+		tv_feedback.setTypeface(SalinlahiFour.getFontPlaytime());
 
 		touchListener = new AnimatedButtonListener();
 

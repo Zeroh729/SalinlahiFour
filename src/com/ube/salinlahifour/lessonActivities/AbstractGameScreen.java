@@ -85,7 +85,7 @@ public abstract class AbstractGameScreen extends Screen {
 			break;
 		}
 
-		Typeface tf = Typeface.createFromAsset(context.getAssets(), "fonts/ANDYB.TTF");
+		Typeface tf = Typeface.createFromAsset(context.getAssets(), "fonts/PLAYTIME.TTF");
 
 		// Defining a paint object
 		Log.d("Abstract GamesScreen", "Initializing Paint Methods");
@@ -264,7 +264,7 @@ public abstract class AbstractGameScreen extends Screen {
 		drawCustomUI();
 		Graphics g = game.getGraphics();
 		g.drawImage(g.newImage("charbox/utilitybar.png", ImageFormat.RGB565), 355, 0);
-		g.drawString("Question No:" + (rounds) + "/" + totalItems + " " + "Tries Left:" + eval.getMistakesRemaining() + "/" + eval.getAllowableMistakes(), 670, 25, paint5);
+		g.drawString("Question No:" + (rounds) + "/" + totalItems + " " + "Tries Left:" + eval.getMistakesRemaining() + "/" + eval.getAllowableMistakes(), 680, 25, paint5);
 		
 		// g.drawString(sQuestion, 430, 50, paint2);
 	}

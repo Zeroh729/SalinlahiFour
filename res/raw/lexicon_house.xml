@@ -71,9 +71,7 @@
 	<image_path>garage</image_path>
 	<eng_sound>house_garage</eng_sound>
 	<fil_sound>house_garahe</fil_sound>
-
 	<difficulty>MEDIUM</difficulty>
-
 </Word_Entry>
 <Word_Entry>
     <q_num>6</q_num>
@@ -81,7 +79,7 @@
 	<question>Place bakod on its proper position.</question>
 	<eng_word>Fence</eng_word>
     <w_type>definition</w_type>
-    <notes>Did you know, Santa uses this to give us presents.</notes>
+    <notes>It looks like arrows pointing up.</notes>
     <hint>This protects our house from strangers.</hint>
 	<lesson>2</lesson>
 	<image_path>fence</image_path>
@@ -95,7 +93,7 @@
 	<question>Place tsimenea on its proper position.</question>
 	<eng_word>Chimney</eng_word>
     <w_type>definition</w_type>
-    <notes>It looks like arrows pointing up.</notes>
+    <notes>Did you know, Santa uses this to give us presents.</notes>
     <hint>Smoke comes out of here when tita cooks.</hint>
 	<lesson>2</lesson>
 	<image_path>chimney</image_path>

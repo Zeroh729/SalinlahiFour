@@ -188,11 +188,11 @@ public abstract class AbstractLAFramework extends AndroidGame {
 		Log.d("Feedback", "Total score: " + questions.size());
 		if(questions.size() % 2 > 0){
 			Log.d("Feedback", "Total score is Odd");
-			passingScore = (int) (questions.size()*0.5)+1;
+			passingScore = (int) (questions.size()*0.75)+1;
 			Log.d("Feedback", "Passing score: " +  passingScore);
 		}else{
 			Log.d("Feedback", "Total score is Even");
-			passingScore = (int) (questions.size()*0.5);
+			passingScore = (int) (questions.size()*0.75);
 			Log.d("Feedback", "Passing score: " +  passingScore);
 		}
 		evaluation.setPassingGrade(passingScore);

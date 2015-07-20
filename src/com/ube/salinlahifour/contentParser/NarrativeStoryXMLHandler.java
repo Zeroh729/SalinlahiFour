@@ -118,7 +118,7 @@ public class NarrativeStoryXMLHandler extends DefaultHandler{
             					 isExisting = true;
             				 }
         				 }
-        			}
+        			} 
 
    				 if(isExisting){
    					 Log.d("TEST0", "Setting sound file: " + soundFile);
