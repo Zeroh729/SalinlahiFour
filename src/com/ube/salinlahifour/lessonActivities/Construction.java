@@ -92,10 +92,14 @@ public class Construction extends AbstractLessonActivity implements OnClickListe
 		checkAnswerButton.setVisibility(View.VISIBLE);
 		answerBtnArray[2].setVisibility(View.GONE);
 		clearAnswers();
-
+		for(int x = 0; x < choiceBtnArray.length; x++){
+			choiceBtnArray[x].setVisibility(View.GONE);
+		}
 		if(getQuestionItem().getWord().split(" ").length >= 3)
 			answerBtnArray[2].setVisibility(View.VISIBLE);
-
+		for(int x = 0; x<getQuestionItem().getWord().split(" ").length;x++){
+			choiceBtnArray[x].setVisibility(View.VISIBLE);
+		}
 		loadChoiceButtons();
 
 		givenSentence = getQuestionItem().getEnglish();
@@ -140,10 +144,10 @@ public class Construction extends AbstractLessonActivity implements OnClickListe
 	public void onClick(View v) {
 		int btnIndex = -1;
 		int ansIndex = -1;
-		Log.d("Kaartehan", "View ID: "+ v.getId());
-		if(testButton.getId()== v.getId()){
-			Log.d("Kaartehan", "If's worked!");
-		}
+		//Log.d("Kaartehan", "View ID: "+ v.getId());
+		//if(testButton.getId()== v.getId()){
+		//	Log.d("Kaartehan", "If's worked!");
+		//}
 		switch (v.getId()) {
 			case 1: Log.d("Kaartehan", "It worked!");break;
 			case R.id.choice_1:

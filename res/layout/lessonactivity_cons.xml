@@ -57,6 +57,7 @@
 			android:layout_height="wrap_content"
 			android:onClick="onClick"
 			android:text=""
+			android:visibility="gone"
 			/>
 		<Button
 			android:id="@+id/choice_2"
@@ -64,6 +65,7 @@
 			android:layout_height="wrap_content"
 			android:onClick="onClick"
 			android:text=""
+			android:visibility="gone"
 			/>
 		<Button
 			android:id="@+id/choice_3"
@@ -71,6 +73,7 @@
 			android:layout_height="wrap_content"
 			android:onClick="onClick"
 			android:text=""
+			android:visibility="gone"
 			/>
 		<Button
 			android:id="@+id/choice_4"
@@ -78,7 +81,9 @@
 			android:layout_height="wrap_content"
 			android:onClick="onClick"
 			android:text=""
+			android:visibility="gone"
 			/>
+		
 	</LinearLayout>
 
 	<Button
