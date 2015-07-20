@@ -3,10 +3,10 @@
 	    <q_num>1</q_num>
 		<word>Ako_ay masaya</word>
 		<question></question>
-		<eng_word>I am gay</eng_word>
+		<eng_word>I am happy</eng_word>
 	    <w_type>definition</w_type>
-	    <notes>"Ako ay" means "I am", and "masaya" means "gay"!</notes>
-	    <hint>"Ako ay malungkot" means "I am sad"</hint>
+	    <notes>"Ako ay" means "I am", and "masaya" means "happy"!</notes>
+	    <hint>"Masaya" means "Happy"</hint>
 		<lesson>9</lesson>
 		<image_path>solar_akoaymasaya</image_path>
 		<eng_sound></eng_sound>
@@ -17,10 +17,10 @@
 	    <q_num>2</q_num>
 		<word>Ako_ay hindi gutom</word>
 		<question></question>
-		<eng_word>I am happy</eng_word>
+		<eng_word>I am not hungry</eng_word>
 	    <w_type>definition</w_type>
-	    <notes>"Hindi" means not, and "maganda" means "beautiful"!</notes>
-	    <hint>"Ako ay pogi" means "I am handsome".</hint>
+	    <notes>"Hindi" means not, and "gutom" means "hungry"!</notes>
+	    <hint>"Gutom" means "Hungry".</hint>
 		<lesson>9</lesson>
 		<image_path>solar_akoayhindigutom</image_path>
 		<eng_sound></eng_sound>
@@ -34,7 +34,7 @@
 		<eng_word>He is wet</eng_word>
 	    <w_type>definition</w_type>
 	    <notes>"Siya ay" means "He is" or "She is", and "basa" means "wet".</notes>
-	    <hint>"Ako ay pogi" means "I am handsome".</hint>
+	    <hint>"basa" means "wet".</hint>
 		<lesson>9</lesson>
 		<image_path>solar_siyaaybasa</image_path>
 		<eng_sound></eng_sound>

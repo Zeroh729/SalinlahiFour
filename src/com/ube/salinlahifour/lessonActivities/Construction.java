@@ -2,14 +2,19 @@ package com.ube.salinlahifour.lessonActivities;
 
 import java.util.ArrayList;
 
+import android.graphics.Color;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.R;
+import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.enumTypes.LevelType;
 
 public class Construction extends AbstractLessonActivity implements OnClickListener {
@@ -23,7 +28,8 @@ public class Construction extends AbstractLessonActivity implements OnClickListe
 	private Button checkAnswerButton;
 	private ArrayList<Item> shuffledChoices;
 	private String givenSentence;
-
+	private Button testButton;
+	private LinearLayout lin;
 	public Construction() {
 		layoutID = R.layout.lessonactivity_cons;
 	}
@@ -59,19 +65,34 @@ public class Construction extends AbstractLessonActivity implements OnClickListe
 		answerBtnArray[0] = (Button) findViewById(R.id.answer_1);
 		answerBtnArray[1] = (Button) findViewById(R.id.answer_2);
 		answerBtnArray[2] = (Button) findViewById(R.id.answer_3);
-
-		splittedWords = new ArrayList<String>();
+		//testAddButtonProgramatically();
+		
 	}
-
+	//TEST FUNCTION DO NOT USE
+	private void testAddButtonProgramatically(){
+		splittedWords = new ArrayList<String>();
+		lin = (LinearLayout) findViewById(R.id.layout_answer);
+		RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+		p.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
+		p.setMargins(10, 5, 10, 10);
+		testButton = new Button(this);
+		testButton.setId(1);
+		testButton.setTextSize(25);
+		testButton.setTypeface(SalinlahiFour.getFontAndy());
+		testButton.setTextColor(Color.WHITE);
+		testButton.setText("TEST");
+		testButton.setLayoutParams(p);
+		lin.addView(testButton);
+	}
 	@Override
 	protected void update() {
 		nextButton.setVisibility(View.INVISIBLE);
 		checkAnswerButton.setVisibility(View.VISIBLE);
-		answerBtnArray[3].setVisibility(View.GONE);
+		answerBtnArray[2].setVisibility(View.GONE);
 		clearAnswers();
 
 		if(getQuestionItem().getWord().split(" ").length >= 3)
-			answerBtnArray[3].setVisibility(View.VISIBLE);
+			answerBtnArray[2].setVisibility(View.VISIBLE);
 
 		loadChoiceButtons();
 
@@ -117,7 +138,7 @@ public class Construction extends AbstractLessonActivity implements OnClickListe
 	public void onClick(View v) {
 		int btnIndex = -1;
 		int ansIndex = -1;
-		
+		Log.d("Kaartehan", "View ID: "+ v.getId());
 		switch (v.getId()) {
 			case R.id.choice_1:
 				btnIndex = 0;

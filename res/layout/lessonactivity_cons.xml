@@ -25,20 +25,20 @@
 		>
 		<Button
 			android:id="@+id/answer_1"
-			android:layout_width="50dp"
-			android:layout_height="30dp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
 			android:onClick="onClick"
 			/>
 		<Button
 			android:id="@+id/answer_2"
-			android:layout_width="50dp"
-			android:layout_height="30dp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
 			android:onClick="onClick"
 			/>
 		<Button
 			android:id="@+id/answer_3"
-			android:layout_width="50dp"
-			android:layout_height="30dp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
 			android:visibility="gone"
 			android:onClick="onClick"
 			/>
@@ -53,29 +53,29 @@
 		>
 		<Button
 			android:id="@+id/choice_1"
-			android:layout_width="50dp"
-			android:layout_height="30dp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
 			android:onClick="onClick"
 			android:text=""
 			/>
 		<Button
 			android:id="@+id/choice_2"
-			android:layout_width="50dp"
-			android:layout_height="30dp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
 			android:onClick="onClick"
 			android:text=""
 			/>
 		<Button
 			android:id="@+id/choice_3"
-			android:layout_width="50dp"
-			android:layout_height="30dp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
 			android:onClick="onClick"
 			android:text=""
 			/>
 		<Button
 			android:id="@+id/choice_4"
-			android:layout_width="50dp"
-			android:layout_height="30dp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
 			android:onClick="onClick"
 			android:text=""
 			/>
