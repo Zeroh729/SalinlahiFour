@@ -19,6 +19,7 @@ import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.ube.salinlahifour.animation.AnimatedButtonListener;
 import com.ube.salinlahifour.enumTypes.LevelType;
+import com.ube.salinlahifour.enumTypes.StarType;
 import com.ube.salinlahifour.evaluationModule.Evaluation;
 import com.ube.salinlahifour.tutorials.Tutorial;
 
@@ -93,10 +94,12 @@ public class ReportCard extends PopupWindow implements OnClickListener {
 		Log.d("UGH", "LessonNum:" + lesson.getLessonNumber());
 		Log.d("UGH", "ItmSize:" + evaluation.getTotalScore());
 		tv_evaluation.setText("Hello");
+
 		Log.d("EndFeedback Debug", "Feedback: " + evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber(), evaluation.getStar()));
 		tv_evaluation.setText(evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber(),evaluation.getStar()));
 		Log.d("Debug End Report", "Userscore: "+ evaluation.getScore());
 		Log.d("Debug End Report", "Total Score: "+ evaluation.getTotalScore());
+
 		switch (evaluation.getStar()) {
 			case GOLD:
 				img_star.setImageResource(R.drawable.report_card_gold);
@@ -133,6 +136,13 @@ public class ReportCard extends PopupWindow implements OnClickListener {
 			btn_next.setVisibility(View.INVISIBLE);
 		} else {
 			Log.d("Debug ReportCard", "playNext Missing");
+		}
+		
+		if((evaluation.getStar().equals(StarType.GOLD) || evaluation.getStar().equals(StarType.SILVER))
+				&& level.equals(LevelType.HARD)) {
+			tv_evaluation.setText(evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber(),evaluation.getStar()) + "Congratulations! You can now proceed to the next lesson!");
+		} else {
+			tv_evaluation.setText(evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber(),evaluation.getStar()));
 		}
 	}
 

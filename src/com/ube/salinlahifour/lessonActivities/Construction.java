@@ -214,6 +214,7 @@ public class Construction extends AbstractLessonActivity implements OnClickListe
 			if(answerBtnArray[i].getVisibility() == View.VISIBLE){
 				if(answerBtnArray[i].getText().equals("")){
 					answerBtnArray[i].setText(answer);
+					break;
 				}
 			}
 		}
