@@ -41,4 +41,18 @@
 		<fil_sound></fil_sound>
 		<difficulty>EASY</difficulty>
 	</Word_Entry>
+	<Word_Entry>
+	    <q_num>4</q_num>
+		<word>Siya_ay hindi galit</word>
+		<question></question>
+		<eng_word>He is not angry</eng_word>
+	    <w_type>definition</w_type>
+	    <notes>"Hindi" means not, and "gutom" means "hungry"!</notes>
+	    <hint>"galit" means "angry".</hint>
+		<lesson>9</lesson>
+		<image_path>solar_siyaayhindigalit</image_path>
+		<eng_sound></eng_sound>
+		<fil_sound></fil_sound>
+		<difficulty>EASY</difficulty>
+	</Word_Entry>
 </type>
