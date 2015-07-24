@@ -1,6 +1,7 @@
 package com.ube.salinlahifour.lessonActivities;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import android.graphics.Color;
 import android.util.Log;
@@ -107,22 +108,22 @@ public class Construction extends AbstractLessonActivity implements OnClickListe
 	}
 
 	private void loadChoiceButtons(){
-		ArrayList<Item> items = new ArrayList();
-		items.add(getQuestionItem());
-		items.add(loadShuffledChoices(getCntQuestions()).get(1));
 		splittedWords.clear();
-		for(Item item : items){
-			String[] words = item.getWord().split(" ");
-			for(int i = 0; i < words.length; i++){
-				if(splittedWords.size() < choiceBtnArray.length){
-					String temp = words[i].replace("_", " ");
-					splittedWords.add(temp);
-				}else{
-					break;
+		
+		String[] words = getQuestionItem().getWord().split(" ");
+		
+		for(int i = 0; i < words.length; i++) {
+			if(splittedWords.size() < choiceBtnArray.length) {
+				String temp = words[i].replace("_", " ");
+				splittedWords.add(temp);
+			} else {
+				break;
 			}
 		}
-		}
-		for(int i = 0; i < choiceBtnArray.length; i++){
+		
+		Collections.shuffle(splittedWords);
+
+		for(int i = 0; i < splittedWords.size(); i++) {
 			choiceBtnArray[i].setText(splittedWords.get(i));
 		}
 	}
