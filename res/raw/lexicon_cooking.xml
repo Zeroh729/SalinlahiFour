@@ -8,7 +8,7 @@
 		<eng_word>Blue</eng_word>
 		<w_type>definition</w_type>
 		<notes>It's also the color of the sea.</notes>
-		<hint>Asul - It is like the color of the sky.</hint>
+		<hint>This color is blue. It is the color of the sky.</hint>
 		<lesson>3</lesson>
 		<image_path>blue</image_path>
 		<eng_sound>color_blue</eng_sound>
@@ -21,8 +21,8 @@
 		<question>Berde</question>
 		<eng_word>Green</eng_word>
 		<w_type>definition</w_type>
-		<notes>It's also the color of crocodiles and alligators.</notes>
-		<hint>Berde - It is like the color of the grass and leaves.</hint>
+		<notes>It's also the color of leaves.</notes>
+		<hint>This color is green. It is the color of grass.</hint>
 		<lesson>3</lesson>
 		<image_path>green</image_path>
 		<eng_sound>color_green</eng_sound>
@@ -35,8 +35,8 @@
 		<question>Pula</question>
 		<eng_word>Red</eng_word>
 		<w_type>definition</w_type>
-		<notes>It is also the color of a firetruck.</notes>
-		<hint>Pula - It is like the color of apples.</hint>
+		<notes>It is also the color of firetrucks.</notes>
+		<hint>This color is red. It is the color of an apple.</hint>
 		<lesson>3</lesson>
 		<image_path>red</image_path>
 		<eng_sound>color_red</eng_sound>
@@ -50,7 +50,7 @@
 		<eng_word>Yellow</eng_word>
 		<w_type>definition</w_type>
 		<notes>It is also the color of a rubber ducky.</notes>
-		<hint>Dilaw - It is like the color of the sun.</hint>
+		<hint>This color is yellow. It is the color of the sun.</hint>
 		<lesson>3</lesson>
 		<image_path>yellow</image_path>
 		<eng_sound>color_yellow</eng_sound>
@@ -63,8 +63,8 @@
 		<question>Kayumanggi</question>
 		<eng_word>Brown</eng_word>
 		<w_type>definition</w_type>
-		<notes>It is also the color of the skin.</notes>
-		<hint>Kayumanggi - It is like the color of the trunk of a tree.</hint>
+		<notes>It is also the color of soil.</notes>
+		<hint>This color is brown. It is the color of the trunk of a tree.</hint>
 		<lesson>3</lesson>
 		<image_path>brown</image_path>
 		<eng_sound>color_brown</eng_sound>
@@ -78,7 +78,7 @@
 		<eng_word>Violet</eng_word>
 		<w_type>definition</w_type>
 		<notes>It is also the color of grapes.</notes>
-		<hint>Lila - It is like the color of eggplants.</hint>
+		<hint>This color is violet. It is the color of eggplants.</hint>
 		<lesson>3</lesson>
 		<image_path>violet</image_path>
 		<eng_sound>color_violet</eng_sound>
@@ -92,7 +92,7 @@
 		<eng_word>Black</eng_word>
 		<w_type>definition</w_type>
 		<notes>It is also the color of car tires.</notes>
-		<hint>Itim - It is like the color of the night sky.</hint>
+		<hint>This color is black. It is the color of the night sky.</hint>
 		<lesson>3</lesson>
 		<image_path>black</image_path>
 		<eng_sound>color_black</eng_sound>
@@ -106,7 +106,7 @@
 		<eng_word>White</eng_word>
 		<w_type>definition</w_type>
 		<notes>It is also the color of doves.</notes>
-		<hint>Puti - It is like the color of the clouds.</hint>
+		<hint>This color is white. It is the color of the clouds.</hint>
 		<lesson>3</lesson>
 		<image_path>white</image_path>
 		<eng_sound>color_white</eng_sound>

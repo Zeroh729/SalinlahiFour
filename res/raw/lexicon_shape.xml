@@ -8,8 +8,8 @@
 		<question>We need Bilog to hit red enemies.</question>
 		<eng_word>Circle</eng_word>
 		<w_type>definition</w_type>
-		<notes>It looks like the shape of a ball right?</notes>
-		<hint>It is round and has no edges. It also puts a shield around us. Cool!</hint>
+		<notes>It's the shape of a ball right?</notes>
+		<hint>This is a circle. It hits red enemies.</hint>
 		<lesson>4</lesson>
 		<image_path>circle</image_path>
 		<eng_sound>shape_circle</eng_sound>
@@ -22,8 +22,8 @@
 		<question>We just need a Parisukat to shoot one bullet at him.</question>
 		<eng_word>Square</eng_word>
 		<w_type>definition</w_type>
-		<notes>It looks like a door too.</notes>
-		<hint>It looks like a long box. It releases a sword. Why does this ship have a sword?</hint>
+		<notes>It's the shape of the dice.</notes>
+		<hint>This is a square. Use this to defeat the aliens.</hint>
 		<lesson>4</lesson>
 		<image_path>square</image_path>
 		<eng_sound>shape_square</eng_sound>
@@ -36,8 +36,8 @@
 		<question>We need Bituin to hit a lot of enemies.</question>
 		<eng_word>Star</eng_word>
 		<w_type>definition</w_type>
-		<notes>I wonder if a star really looks like this.</notes>
-		<hint>Teachers gives us these when we do well. It fires fire. Hahaha!</hint>
+		<notes>Used to hit a lot of enemies.</notes>
+		<hint>This is a star. It hits a lot of enemies.</hint>
 		<lesson>4</lesson>
 		<image_path>star</image_path>
 		<eng_sound>shape_star</eng_sound>
@@ -50,8 +50,8 @@
 		<question>We need Tatsulok that hits 3 enemies.</question>
 		<eng_word>Triangle</eng_word>
 		<w_type>definition</w_type>
-		<notes>MMM, I'd like a slice of pizza right about now.</notes>
-		<hint>It has 3 sides. Oh and it shoots lasers.</hint>
+		<notes>It's the shape of a pizza slice right?</notes>
+		<hint>This is a triangle. It hits 3 enemies.</hint>
 		<lesson>4</lesson>
 		<image_path>triangle</image_path>
 		<eng_sound>shape_triangle</eng_sound>
@@ -64,8 +64,8 @@
 		<question>We need Krus to shoot in a wide area.</question>
 		<eng_word>Cross</eng_word>
 		<w_type>definition</w_type>
-		<notes>You see these around hospitals.</notes>
-		<hint>It looks like the letter t!</hint>
+		<notes>It looks like the letter t.</notes>
+		<hint>This is a cross. It shoots in a wide area.</hint>
 		<lesson>4</lesson>
 		<image_path>cross</image_path>
 		<eng_sound>shape_cross</eng_sound>
@@ -78,8 +78,8 @@
 		<question>We need the Diamante button to shield ourselves.</question>
 		<eng_word>Diamond</eng_word>
 		<w_type>definition</w_type>
-		<notes>I wonder if diamonds really looks like these.</notes>
-		<hint>It's like a square standing on its edge.</hint>
+		<notes>You can find these in jewelries.</notes>
+		<hint>This is a diamond. Use this to put a shield around us.</hint>
 		<lesson>4</lesson>
 		<image_path>diamond</image_path>
 		<eng_sound>shape_diamond</eng_sound>
@@ -92,8 +92,8 @@
 		<question>We need Parihaba that shoots from the side.</question>
 		<eng_word>Rectangle</eng_word>
 		<w_type>definition</w_type>
-		<notes>It’s like a door too.</notes>
-		<hint>It looks like a long box.</hint>
+		<notes>It's the shape of a door right?</notes>
+		<hint>This is a rectangle. It shoots from the sides</hint>
 		<lesson>4</lesson>
 		<image_path>rectangle</image_path>
 		<eng_sound>shape_rectangle</eng_sound>
@@ -103,11 +103,11 @@
 	<Word_Entry>
 		<q_num>8</q_num>
 		<word>Tunod</word>
-		<question>We need Tunod to that can shoot 3 at the same time.</question>
+		<question>We need Tunod to shoot 3 at the same time.</question>
 		<eng_word>Arrow</eng_word>
 		<w_type>definition</w_type>
-		<notes>It’s like a triangle and a rectangle put together.</notes>
-		<hint>An arrow. It looks like it's pointing to something.</hint>
+		<notes>This can be used to point to something.</notes>
+		<hint>This is an arrow. It shoots 3 enemies at a time</hint>
 		<lesson>4</lesson>
 		<image_path>arrow</image_path>
 		<eng_sound>shape_arrow</eng_sound>
@@ -120,8 +120,8 @@
 		<question>The Gasuklay button can reach that.</question>
 		<eng_word>Cresent</eng_word>
 		<w_type>definition</w_type>
-		<notes>It looks like the moon sometimes too.</notes>
-		<hint>Looks like a banana or a fingernail.</hint>
+		<notes>It's the shape of a banana right?</notes>
+		<hint>This shape is a crescent. It shoots faraway enemies.</hint>
 		<lesson>4</lesson>
 		<image_path>cresent</image_path>
 		<eng_sound>shape_crescent</eng_sound>
@@ -135,7 +135,7 @@
 		<eng_word>Heart</eng_word>
 		<w_type>definition</w_type>
 		<notes>A common shape during Valentines Day.</notes>
-		<hint>It's such a LOVELY shape./</hint>
+		<hint>This shape is a heart. It can heal us.</hint>
 		<lesson>4</lesson>
 		<image_path>heart</image_path>
 		<eng_sound>shape_heart</eng_sound>
