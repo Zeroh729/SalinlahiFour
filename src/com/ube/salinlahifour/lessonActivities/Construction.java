@@ -20,7 +20,7 @@ import com.ube.salinlahifour.enumTypes.LevelType;
 
 public class Construction extends AbstractLessonActivity implements OnClickListener {
 
-	private static final int EASY = 3;
+	private static final int EASY = 4;
 	private TextView tv_dialog;
 	private Button[] choiceBtnArray;
 	private Button[] answerBtnArray;
