@@ -588,7 +588,7 @@ public class GameScreen extends AbstractGameScreen {
 
 		g.drawImage(bg, 0, 0);
 		g.drawImage(wrong, cake.getX(), cake.getY());
-		g.drawImage(ready, cake.getX(), cake.getY()-20);
+		g.drawImage(ready, cake.getX(), cake.getY()-15);
 		g.drawImage(recipe, pRecipe.getX(), pRecipe.getY());
 
 		if(cake.isBread()) {
@@ -615,7 +615,7 @@ public class GameScreen extends AbstractGameScreen {
 		// TODO Auto-generated method stub
 		Graphics g = game.getGraphics();
 		g.drawImage(bg, 0, 0);
-		g.drawImage(ready, cake.getX(), cake.getY()-20);
+		g.drawImage(ready, cake.getX(), cake.getY()-15);
 		g.drawImage(wrong, cake.getX(), cake.getY());
 		g.drawImage(recipe, pRecipe.getX(), pRecipe.getY());
 		if(cake.isBread()) {
@@ -801,7 +801,7 @@ public class GameScreen extends AbstractGameScreen {
 				isMistake = true;
 				wrong = Assets.wrong;
 
-				cake.resetFlags();
+				//cake.resetFlags();
 			}
 
 			transition = true;
