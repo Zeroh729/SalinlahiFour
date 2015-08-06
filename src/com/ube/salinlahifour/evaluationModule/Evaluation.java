@@ -190,7 +190,7 @@ public class Evaluation {
 			Feedback = NLG.GenerateDelayedFeedback(ans, lessonNumber);*/
 			switch(star){
 			case GOLD: ans = (int) (totscore * 1); break;
-			case SILVER:ans = (int) (totscore * 0.90); break;
+			case SILVER:ans = (int) (totscore * 1); break;
 			case BRONZE:ans = (int) (totscore * 0.5); break;
 			case NONE:ans = 0; break;
 			}

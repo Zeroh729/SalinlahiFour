@@ -131,7 +131,7 @@ public class GameScreen extends AbstractGameScreen {
 		sprinklerButtons.loadQuestions();
 
 		Log.d("Aldrin ExtendedFramework", "Positioning Easy Assets...Done");
-		eval.setTotScore(nItemsRemaining * 3);
+		eval.setTotScore(nItemsRemaining*3);
 	}
 
 	@Override
@@ -164,7 +164,7 @@ public class GameScreen extends AbstractGameScreen {
 		sprinklerButtons.loadQuestions();
 
 		Log.d("GameScreen", "Positioning Medium...Done");
-		eval.setTotScore(nItemsRemaining * 3);
+		eval.setTotScore(nItemsRemaining*3);
 	}
 
 	@Override
@@ -194,7 +194,7 @@ public class GameScreen extends AbstractGameScreen {
 		breaderButtons.loadQuestions();
 		creamerButtons.loadQuestions();
 		sprinklerButtons.loadQuestions();
-		eval.setTotScore(nItemsRemaining * 3);
+		eval.setTotScore(nItemsRemaining*3);
 	}
 
 	@Override

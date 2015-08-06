@@ -148,7 +148,8 @@ public class Construction extends AbstractLessonActivity implements OnClickListe
 		//Log.d("Kaartehan", "View ID: "+ v.getId());
 		//if(testButton.getId()== v.getId()){
 		//	Log.d("Kaartehan", "If's worked!");
-		//}
+		//}]
+		
 		switch (v.getId()) {
 			case 1: Log.d("Kaartehan", "It worked!");break;
 			case R.id.choice_1:

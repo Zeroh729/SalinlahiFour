@@ -8,8 +8,8 @@
 	<question>Place bubong on its proper position.</question>
 	<eng_word>Roof</eng_word>
     <w_type>definition</w_type>
-    <notes>It also protects us from rain.</notes>
-    <hint>It covers the top part of the house.</hint>
+    <hint>It also protects us from rain.</hint>
+    <notes>It covers the top part of the house.</notes>
 	<lesson>2</lesson>
 	<image_path>roof</image_path>
 	<eng_sound>house_roof</eng_sound>
@@ -22,8 +22,8 @@
 	<question>Place dingding on its proper position.</question>
 	<eng_word>Wall</eng_word>
     <w_type>definition</w_type>
-    <notes>Tita hangs picture frames around here.</notes>
-    <hint>It covers the front, side and back parts of the house.</hint>
+    <hint>Tita hangs picture frames around here.</hint>
+    <notes>It covers the front, side and back parts of the house.</notes>
 	<lesson>2</lesson>
 	<image_path>body</image_path>
 	<eng_sound>house_body</eng_sound>
@@ -36,8 +36,8 @@
 	<question>Place pinto on its proper position.</question>
 	<eng_word>Door</eng_word>
     <w_type>definition</w_type>
-    <notes>We use this to get to different parts of the house too.</notes>
-    <hint>We open this one to get inside the house.</hint>
+    <hint>We use this to get to different parts of the house too.</hint>
+    <notes>We open this one to get inside the house.</notes>
 	<lesson>2</lesson>
 	<image_path>door</image_path>
 	<eng_sound>house_door</eng_sound>
@@ -50,8 +50,8 @@
 	<question>Place bintana on its proper position.</question>
 	<eng_word>Window</eng_word>
     <w_type>definition</w_type>
-    <notes>Sometimes you see birds just outside here.</notes>
-    <hint>They are made of glass so that you can look from the inside.</hint>
+    <hint>Sometimes you see birds just outside here.</hint>
+    <notes>They are made of glass so that you can look from the inside.</notes>
 	<lesson>2</lesson>
 	<image_path>window</image_path>
 	<eng_sound>house_windows</eng_sound>
@@ -65,8 +65,8 @@
 	<question>Place garahe on its proper position.</question>
 	<eng_word>Garage</eng_word>
     <w_type>definition</w_type>
-    <notes>Tito keeps his tools here as well.</notes>
-    <hint>This is where Tito parks his car.</hint>
+    <hint>This is the garage.</hint>
+    <notes>This is where Tito parks his car.</notes>
 	<lesson>2</lesson>
 	<image_path>garage</image_path>
 	<eng_sound>house_garage</eng_sound>
@@ -79,8 +79,8 @@
 	<question>Place bakod on its proper position.</question>
 	<eng_word>Fence</eng_word>
     <w_type>definition</w_type>
-    <notes>It looks like arrows pointing up.</notes>
-    <hint>This protects our house from strangers.</hint>
+    <hint>It looks like arrows pointing up.</hint>
+    <notes>This protects our house from strangers.</notes>
 	<lesson>2</lesson>
 	<image_path>fence</image_path>
 	<eng_sound>house_fence</eng_sound>
@@ -93,8 +93,8 @@
 	<question>Place tsimenea on its proper position.</question>
 	<eng_word>Chimney</eng_word>
     <w_type>definition</w_type>
-    <notes>Did you know, Santa uses this to give us presents.</notes>
-    <hint>Smoke comes out of here when tita cooks.</hint>
+    <hint>Did you know, Santa uses this to give us presents.</hint>
+    <notes>Smoke comes out of here when tita cooks.</notes>
 	<lesson>2</lesson>
 	<image_path>chimney</image_path>
 	<eng_sound>house_chimney</eng_sound>
@@ -107,8 +107,8 @@
 	<question>Place hagdan on its proper position.</question>
 	<eng_word>Stairs</eng_word>
     <w_type>definition</w_type>
-    <notes>We used this earlier to get inside the house.</notes>
-    <hint>Makes us go up.</hint>
+    <hint>We used this earlier to get inside the house.</hint>
+    <notes>Makes us go up.</notes>
 	<lesson>2</lesson>
 	<image_path>stairs</image_path>
 	<eng_sound>house_stairs</eng_sound>

@@ -7,8 +7,8 @@
 	<question>Can you find Nanay?</question>
 	<eng_word>Mother</eng_word>
     <w_type>definition</w_type>
-    <notes>She makes delicious adobo. Very tasty!</notes>
-    <hint>She is my mother. She usually cooks for the family.</hint>
+    <hint>She makes delicious adobo. Very tasty!</hint>
+    <notes>She is my mother. She usually cooks for the family.</notes>
 	<lesson>1</lesson>
 	<image_path>family_nanay</image_path>
 	<eng_sound>family_mother</eng_sound>
@@ -22,8 +22,8 @@
 	<question>Can you find Tatay?</question>
 	<eng_word>Father</eng_word>
     <w_type>definition</w_type>
-    <notes>He was the one that made our treehouse in the backyard.</notes>
-    <hint>He is my father. He works for the family.</hint>
+    <hint>He was the one that made our treehouse in the backyard.</hint>
+    <notes>He is my father. He works for the family.</notes>
 	<lesson>1</lesson>
 	<image_path>family_tatay</image_path>
 	<eng_sound>family_father</eng_sound>
@@ -37,8 +37,8 @@
 	<question>Can you find Kuya?</question>
 	<eng_word>Brother</eng_word>
     <w_type>definition</w_type>
-    <notes>He also teases me a lot.</notes>
-    <hint>He is my older brother. He likes to play basketball.</hint>
+    <hint>He also teases me a lot.</hint>
+    <notes>He is my older brother. He likes to play basketball.</notes>
 	<lesson>1</lesson>
 	<image_path>family_kuya</image_path>
 	<eng_sound>family_olderbrother</eng_sound>
@@ -51,8 +51,8 @@
     <question>Can you find Ate?</question>
     <eng_word>Sister</eng_word>
     <w_type>definition</w_type>
-    <notes>She told me she really likes this boy once. I forgot his name.</notes>
-    <hint>She is my older sister. She spends a lot of her time talking with her friends.</hint>
+    <hint>She told me she really likes this boy once. I forgot his name.</hint>
+    <notes>She is my older sister. She spends a lot of her time talking with her friends.</notes>
     <lesson>1</lesson>
     <image_path>family_ate</image_path>
 	<eng_sound>family_oldersister</eng_sound>
@@ -66,8 +66,8 @@
     <question>Can you find Lolo?</question>
     <eng_word>Grandfather</eng_word>
     <w_type>definition</w_type>
-    <notes>We play board games a lot.</notes>
-    <hint>He is Tatay's father. He uses glasses to read the newspaper.</hint>
+    <hint>We play board games a lot.</hint>
+    <notes>He is Tatay's father. He uses glasses to read the newspaper.</notes>
 	<lesson>1</lesson>
 	<image_path>family_lolo</image_path>
 	<eng_sound>family_grandfather</eng_sound>
@@ -80,8 +80,8 @@
 	<question>Can you find Lola?</question>
 	<eng_word>Grandmother</eng_word>
     <w_type>definition</w_type>
-    <notes>She also likes to tell us stories from her time.</notes>
-    <hint>She is Tatay's mother. She walks around with a cane.</hint>
+    <hint>She also likes to tell us stories from her time.</hint>
+    <notes>She is Tatay's mother. She walks around with a cane.</notes>
 	<lesson>1</lesson>
 	<image_path>family_lola</image_path>
 	<eng_sound>family_grandmother</eng_sound>
@@ -95,8 +95,8 @@
     <question>Can you find Bunso?</question>
     <eng_word>Youngest</eng_word>
     <w_type>definition</w_type>
-    <notes>He is also very cute. </notes>
-    <hint>My younger sibling. He likes to play with toys.</hint>
+    <hint>He is also very cute. </hint>
+    <notes>My younger sibling. He likes to play with toys.</notes>
     <lesson>1</lesson>
     <image_path>family_bunso</image_path>
 	<eng_sound>family_youngestsibling</eng_sound>
@@ -109,8 +109,8 @@
     <question>Can you find Tito?</question>
     <eng_word>Uncle</eng_word>
     <w_type>definition</w_type>
-    <notes>He tells horrible jokes. </notes>
-    <hint>He is Tatay’s brother. He likes to drink a lot.</hint>
+    <hint>He tells horrible jokes. </hint>
+    <notes>He is Tatay’s brother. He likes to drink a lot.</notes>
     <lesson>1</lesson>
     <image_path>family_tito</image_path>
 	<eng_sound>family_uncle</eng_sound>
@@ -123,8 +123,8 @@
     <question>Can you find Tita?</question>
     <eng_word>Auntie</eng_word>
     <w_type>definition</w_type>
-    <notes>She likes to hang out with my mother.</notes>
-    <hint>She is Nanay's sister. She is a great cook too.</hint>
+    <hint>She likes to hang out with my mother.</hint>
+    <notes>She is Nanay's sister. She is a great cook too.</notes>
     <lesson>1</lesson>
     <image_path>family_tita</image_path>
 	<eng_sound>family_aunt</eng_sound>
