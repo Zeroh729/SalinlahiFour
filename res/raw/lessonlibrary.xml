@@ -120,6 +120,8 @@
     <icon_image>lesson5_icon</icon_image>
     <tutorial_background>animals_tutt</tutorial_background>
 </Lesson_Num>
+
+<!--
 <Lesson_Num>
     <entry>6</entry>
     <Lesson_Name>Greetings</Lesson_Name>
@@ -156,7 +158,6 @@
     <activity_name>Feelings</activity_name>
     <icon_image>lesson1_icon</icon_image>
 </Lesson_Num>
-
 <Lesson_Num>
     <entry>8</entry>
     <Lesson_Name>Solar System</Lesson_Name>
@@ -172,7 +173,6 @@
     <narrative_name>Solarsystem</narrative_name>
     <icon_image>lesson1_icon</icon_image>
 </Lesson_Num>
-
 <Lesson_Num>
     <entry>9</entry>
     <Lesson_Name>Sentence Construction</Lesson_Name>
@@ -188,6 +188,8 @@
     <narrative_name>Construction</narrative_name>
     <icon_image>lesson1_icon</icon_image>
 </Lesson_Num>
+-->
+
 </type>
 
 <!--

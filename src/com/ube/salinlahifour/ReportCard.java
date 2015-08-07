@@ -142,9 +142,12 @@ public class ReportCard extends PopupWindow implements OnClickListener {
 				&& level.equals(LevelType.HARD)) {
 			String temp = "";
 			if(lesson.getLessonNumber() != SalinlahiFour.getLessonsList().size()){
-				temp =  " which is " + SalinlahiFour.getLesson((lesson.getLessonNumber()+1)).getName();
+				temp =  " which is " + SalinlahiFour.getLesson((lesson.getLessonNumber()+1)).getName() + ".";
+				tv_evaluation.setText(evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber(),evaluation.getStar()) + "Congratulations! You can now proceed to the next lesson" + temp);
 			}
-			tv_evaluation.setText(evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber(),evaluation.getStar()) + "Congratulations! You can now proceed to the next lesson" + temp);
+			else{
+				tv_evaluation.setText(evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber(),evaluation.getStar()) + "Congratulations! You have finished all of the lessons!");
+			}
 		} else {
 			tv_evaluation.setText(evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber(),evaluation.getStar()));
 		}
