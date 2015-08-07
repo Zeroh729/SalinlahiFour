@@ -359,12 +359,12 @@ public class MapActivity extends Activity implements OnClickListener {
 		scene = makeNewScene();
 
 		for(int i = 0; i < SalinlahiFour.getLessonsList().size(); i++) {
+			if(scene.getLessons().size() > 5) {
+				scene = makeNewScene();
+			}
 			Lesson lesson = SalinlahiFour.getLessonsList().get(i);
 			lesson.setLocked(true);
 			scene.addLesson(lesson);
-			if(scene.getLessons().size() >= 5) {
-				scene = makeNewScene();
-			}
 		}
 
 	}
