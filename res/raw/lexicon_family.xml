@@ -66,8 +66,8 @@
     <question>Can you find Lolo?</question>
     <eng_word>Grandfather</eng_word>
     <w_type>definition</w_type>
-    <hint>We play board games a lot.</hint>
-    <notes>He is Tatay's father. He uses glasses to read the newspaper.</notes>
+    <hint>They are very old and have white hair.</hint>
+    <notes>This is my grandfather. They are the fathers of your parents</notes>
 	<lesson>1</lesson>
 	<image_path>family_lolo</image_path>
 	<eng_sound>family_grandfather</eng_sound>
@@ -80,8 +80,8 @@
 	<question>Can you find Lola?</question>
 	<eng_word>Grandmother</eng_word>
     <w_type>definition</w_type>
-    <hint>She also likes to tell us stories from her time.</hint>
-    <notes>She is Tatay's mother. She walks around with a cane.</notes>
+    <hint>They really like to tell us stories from the past.</hint>
+    <notes>This is my grandmother. They are the mothers of your parents.</notes>
 	<lesson>1</lesson>
 	<image_path>family_lola</image_path>
 	<eng_sound>family_grandmother</eng_sound>
