@@ -176,28 +176,6 @@ public abstract class AbstractGameScreen extends Screen {
 
 					intent.putExtras(extras);
 					context.startActivity(intent);
-					// final Handler handler2 = new Handler();
-					// Runnable runnable2 = new Runnable() {
-					// @Override
-					// public void run() {
-					/*
-					 * eval.updateUserLessonProgress(lesson.getName(),
-					 * activityLevel.toString(), userID); LevelType LTActLevel =
-					 * null; switch(activityLevel){ case "EASY": LTActLevel =
-					 * LevelType.EASY; break; case "MEDIUM": LTActLevel =
-					 * LevelType.MEDIUM; break; case "HARD": LTActLevel =
-					 * LevelType.HARD; break; } reportCard = new
-					 * ReportCard(context, lesson,LTActLevel, eval,
-					 * eval.getEndofActivityFeedback(eval.getScore(),
-					 * lessonNumber)); reportCard.setHeight(100);
-					 * reportCard.setWidth(100); reportCard.setFocusable(true);
-					 * reportCard.reveal();
-					 */
-					// }
-					//
-					//
-					// };
-					// handler2.post(runnable2);
 				}
 			}
 		}
