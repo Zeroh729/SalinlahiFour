@@ -118,19 +118,9 @@ public class MapActivity extends Activity implements OnClickListener {
 		} else {
 			Toast toast = Toast.makeText(getApplicationContext(), "Welcome " + ((SalinlahiFour) getApplication()).getLoggedInUser().getName() + "!!!", Toast.LENGTH_SHORT);
 			toast.show();
-
-			// try {
-			// Log.d("parseXML()", "TESTTESTTESTEST");
+			
 			parseXML();
-			// Log.d("settingLevelStatuses", "TESTTESTTESTEST");
 			setLevelStatuses();
-			//
-			//
-			// } catch (XmlPullParserException e) {
-			// e.printStackTrace();
-			// } catch (IOException e) {
-			// e.printStackTrace();
-			// }
 
 			sceneIndex = 0;
 			scene = scenes.get(sceneIndex);
@@ -221,58 +211,26 @@ public class MapActivity extends Activity implements OnClickListener {
 		parentView.addView(tv_friendTalk);
 	}
 
-	private int getLessonCount() {
-		int total = 0;
-		for(int i = 0; i < scenes.size(); i++) {
-			for(int j = 0; j < scenes.get(i).getLessons().size(); j++) {
-				total++;
-			}
-		}
-		return total;
-	}
-
 	private void setLevelStatuses() {
 		UserLessonProgressOperations userdb = new UserLessonProgressOperations(this);
 		userdb.open();
 		Log.d("scene count: " + scenes.size(), "FINAL CHECKING");
-		for(int k = 0; k < scenes.size(); k++) {
-			for(int i = 0; i < scenes.get(k).getLessons().size(); i++) {
-				UserLessonProgress progress = userdb.getUserLessonProgress(UserID, scenes.get(k).getLessons().get(i).getName());
+		ArrayList<Lesson> lessonList = SalinlahiFour.getLessonsList();
+
+		for(Lesson lesson : lessonList) {
+			int preReqIndex = lesson.getPreReq();
+			if(preReqIndex != 0) {
+				Lesson preReq = lessonList.get(preReqIndex - 1);
+				UserLessonProgress progress = userdb.getUserLessonProgress(UserID, preReq.getName());
+
 				if(progress != null) {
-					scenes.get(k).getLessons().get(i).setLocked(false);
-					Log.d("THERE", "FINAL CHECK");
-					if(progress.getHardStar() != null) {
-						Log.d("THEREEEE", "FINAL CHECK");
-						if(!progress.getHardStar().equals(StarType.BRONZE.toString())) {
-							Log.d("ALMOST THEREEEE", "FINAL CHECK");
-							if((i + 1) < scenes.get(k).getLessons().size()) {
-								scenes.get(k).getLessons().get(i + 1).setLocked(false);
-								Log.d("UNLOCKING: " + scenes.get(k).getLessons().get(i + 1).getName(), "FINAL CHECK");
-							}
-						}
-					}
-
-					// if(!scene.getLessons().get(i).getLocked()){
-					// scene.getLessons().get(i).setLocked(true);
-					// // scene.getLessons().get(i).setLocked(false);
-					// }
-				}
-
-				Log.d("Lesson no. : " + i + " ->" + scenes.get(k).getLessons().get(i).getLocked(), "FINAL CHECKING");
-
-				scenes.get(k).getLessons().get(i).setLocked(false);
-
-				if(k > 0 && i == 0) {
-					UserLessonProgress prevCheck = userdb.getUserLessonProgress(UserID, scenes.get(k - 1).getLessons().get(4).getName());
-					try {
-						if(!prevCheck.getHardStar().equals(StarType.BRONZE.toString())) {
-							scenes.get(k).getLessons().get(i).setLocked(false);
-						}
-					} catch(NullPointerException e) {
+					if(StarType.getStar(progress.getHardStar()).getValue() > StarType.BRONZE.getValue()) {
+						lesson.setLocked(false);
 					}
 				}
+			} else {
+				lesson.setLocked(false);
 			}
-
 		}
 
 		try {
@@ -334,7 +292,7 @@ public class MapActivity extends Activity implements OnClickListener {
 
 	}
 
-	public void instantiateNotifView(boolean isLesson) {
+	public void instantiateNotifView() {
 		LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
 		notifView = layoutInflater.inflate(R.layout.popup_notification, null);
 
@@ -347,19 +305,15 @@ public class MapActivity extends Activity implements OnClickListener {
 		notif_tv_desc = (TextView) notifView.findViewById(R.id.tv_description);
 		notif_tv_desc.setTypeface(SalinlahiFour.getFontBpreplay());
 		notif_tv_title = (MagicTextView) notifView.findViewById(R.id.tv_title);
+		
 		for(int i = 0; i < 30; i++)
 			notif_tv_title.addOuterShadow(5, 0, 0, 0xFF164366);
 		notif_tv_title.setTypeface(SalinlahiFour.getFontKgsecondchances());
 
 		notif_btn_popupclose.setImageDrawable(BtnStatesDirector.getImageDrawable(new PopupcloseBtnStatesBuilder()));
 
-		if(isLesson) {
-			notif_tv_desc.setText("Get at least 2 stars from the previous lesson in hard mode to unlock this lesson.");
-			notif_tv_title.setText("Lesson Locked");
-		} else {
-			notif_tv_desc.setText("New lesson unlocked.");
-			notif_tv_title.setText("Congratulations!");
-		}
+		notif_tv_desc.setText("Get at least 2 stars from the previous lesson in hard mode to unlock this lesson.");
+		notif_tv_title.setText("Lesson Locked");
 	}
 
 	public void instantiateLogoutView() {
@@ -443,8 +397,6 @@ public class MapActivity extends Activity implements OnClickListener {
 		}
 
 		parentView = (RelativeLayout) findViewById(R.id.parent_view);
-		float scale = getResources().getDisplayMetrics().density;
-		int paddingDp = (int) (7 * scale + 0.5f);
 
 		Log.d("Scene:" + scenes.indexOf(scene) + " Lesson size:" + scene.getLessons().size(), "TEST");
 
@@ -571,7 +523,7 @@ public class MapActivity extends Activity implements OnClickListener {
 			final int fIndex = index;
 
 			if(index != -1) { // If lesson is pressed, continue
-				final Lesson lessonDetails = scene.getLessons().get(Integer.parseInt(((ImageButton) view).getTag().toString()));
+				final Lesson lessonDetails = scene.getLessons().get(index);
 
 				if(!lessonDetails.getLocked()) {
 					instantiatePopupView();
@@ -658,8 +610,8 @@ public class MapActivity extends Activity implements OnClickListener {
 					userdb.close();
 					popupWindow.showAsDropDown(popupView);
 				} else {
-					instantiateNotifView(true);
-					notifWindow.showAsDropDown(popupView);
+					instantiateNotifView();
+					notifWindow.showAsDropDown(notifView);
 				}
 			}
 		}

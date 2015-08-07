@@ -35,7 +35,7 @@
 <Lesson_Num>
     <entry>2</entry>
     <Lesson_Name>Parts of The House</Lesson_Name>
-    <Lesson_PreReq>0</Lesson_PreReq>
+    <Lesson_PreReq>1</Lesson_PreReq>
      <Q_List>
      <qentry>1</qentry>
      <qentry>2</qentry>
@@ -55,7 +55,7 @@
 <Lesson_Num>
     <entry>3</entry>
     <Lesson_Name>Bake a Cake</Lesson_Name>
-    <Lesson_PreReq>0</Lesson_PreReq>
+    <Lesson_PreReq>2</Lesson_PreReq>
      <Q_List>
      <qentry>1</qentry>
      <qentry>2</qentry>
@@ -77,7 +77,7 @@
 <Lesson_Num>
     <entry>4</entry>
     <Lesson_Name>Space Shape</Lesson_Name>
-    <Lesson_PreReq>0</Lesson_PreReq>
+    <Lesson_PreReq>3</Lesson_PreReq>
      <Q_List>
      <qentry>1</qentry>
      <qentry>2</qentry>
@@ -101,7 +101,7 @@
 <Lesson_Num>
     <entry>5</entry>
     <Lesson_Name>Zoo Cards</Lesson_Name>
-    <Lesson_PreReq>0</Lesson_PreReq>
+    <Lesson_PreReq>4</Lesson_PreReq>
      <Q_List>
      <qentry>1</qentry>
      <qentry>2</qentry>
