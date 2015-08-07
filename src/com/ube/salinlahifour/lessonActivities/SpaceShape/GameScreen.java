@@ -139,7 +139,7 @@ public class GameScreen extends AbstractGameScreen {
 		eval.setTotScore(nItemsRemaining);
 		pWrong = new Parts(0, 0);
 		ammo.loadAmmos(pSpaceship.getX(), pSpaceship.getY());
-		pLives = new Parts(130 - 30, 480 - 30);
+		pLives = new Parts(130 - 40, 480 - 30);
 
 		pYes = new Parts(220, 300);
 		pNo = new Parts(400, 300);

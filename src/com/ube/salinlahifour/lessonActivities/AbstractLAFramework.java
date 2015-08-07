@@ -223,7 +223,7 @@ public abstract class AbstractLAFramework extends AndroidGame {
 		case "MEDIUM": LTActLevel = LevelType.MEDIUM; break;
 		case "HARD": LTActLevel = LevelType.HARD; break;
 		}
-		reportCard = new ReportCard(context, lesson, LTActLevel, eval, evaluation.getEndofActivityFeedback(score, lessonnumber),activityName);
+		reportCard = new ReportCard(context, lesson, LTActLevel, eval, evaluation.getEndofActivityFeedback(score, lessonnumber, eval.getStar()),activityName);
 		reportCard.reveal();
 	}
 

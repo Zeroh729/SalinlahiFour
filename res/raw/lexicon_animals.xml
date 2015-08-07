@@ -6,8 +6,8 @@
 		<question>NULL</question>
 		<eng_word>Cat</eng_word>
 		<w_type>definition</w_type>
-		<notes>People believe that the black ones are unlucky.</notes>
-		<hint>They are said to have 9 lives and always land on their feet.</hint>
+		<hint>People believe that the black ones are unlucky.</hint>
+		<notes>They are said to have 9 lives and always land on their feet.</notes>
 		<lesson>5</lesson>
 		<image_path>animals_cat</image_path>
 		<eng_sound>animals_cat</eng_sound>
@@ -20,8 +20,8 @@
 		<question>NULL</question>
 		<eng_word>Dog</eng_word>
 		<w_type>definition</w_type>
-		<notes>They usually fight with cats.</notes>
-		<hint>They are usually made as pets. They bark at everything.</hint>
+		<hint>They usually fight with cats.</hint>
+		<notes>They are usually made as pets. They bark at everything.</notes>
 		<lesson>5</lesson>
 		<image_path>animals_dog</image_path>
 		<eng_sound>animals_dog</eng_sound>
@@ -34,8 +34,8 @@
 		<question>NULL</question>
 		<eng_word>Chicken</eng_word>
 		<w_type>definition</w_type>
-		<notes>They also make for a pretty tasty meal.</notes>
-		<hint>This animal can't fly even though it's a bird. It also lays eggs.</hint>
+		<hint>They also make for a pretty tasty meal.</hint>
+		<notes>This animal can't fly even though it's a bird. It also lays eggs.</notes>
 		<lesson>5</lesson>
 		<image_path>animals_chicken</image_path>
 		<eng_sound>animals_chicken</eng_sound>
@@ -48,8 +48,8 @@
 		<question>NULL</question>
 		<eng_word>Carabao</eng_word>
 		<w_type>definition</w_type>
-		<notes>Farmers also use them to go around faster.</notes>
-		<hint>Farmers use these guys to help them with farming. They also have horns like a bull.</hint>
+		<hint>Farmers also use them to go around faster.</hint>
+		<notes>Farmers use these guys to help them with farming. They also have horns like a bull.</notes>
 		<lesson>5</lesson>
 		<image_path>animals_carabao</image_path>
 		<eng_sound>animals_carabao</eng_sound>
@@ -62,8 +62,8 @@
 		<question>NULL</question>
 		<eng_word>Frog</eng_word>
 		<w_type>definition</w_type>
-		<notes>Small creatures that jumps around your pond.</notes>
-		<hint>They eat insects like mosquito or fly for food.</hint>
+		<hint>Small creatures that jumps around your pond.</hint>
+		<notes>They eat insects like mosquito or fly for food.</notes>
 		<lesson>5</lesson>
 		<image_path>animals_frog</image_path>
 		<eng_sound>animals_frog</eng_sound>
@@ -76,8 +76,8 @@
 		<question></question>
 		<eng_word></eng_word>
 		<w_type>definition</w_type>
-		<notes>They hang around on trees.</notes>
-		<hint>They like to eat bananas.</hint>
+		<hint>They hang around on trees.</hint>
+		<notes>They like to eat bananas.</notes>
 		<lesson>5</lesson>
 		<image_path>animals_monkey</image_path>
 		<eng_sound>animals_monkey</eng_sound>
@@ -90,8 +90,8 @@
 		<question>NULL</question>
 		<eng_word>Bird</eng_word>
 		<w_type>definition</w_type>
-		<notes>You might see them in windows and trees as well.</notes>
-		<hint>These animals fly around in the sky.</hint>
+		<hint>You might see them in windows and trees as well.</hint>
+		<notes>These animals fly around in the sky.</notes>
 		<lesson>5</lesson>
 		<image_path>animals_birl</image_path>
 		<eng_sound>animals_bird</eng_sound>
@@ -104,8 +104,8 @@
 		<question>NULL</question>
 		<eng_word>Mouse</eng_word>
 		<w_type>definition</w_type>
-		<notes>They are chased by cats.</notes>
-		<hint>Little animals that like to eat cheese and run around the house.</hint>
+		<hint>They are chased by cats.</hint>
+		<notes>Little animals that like to eat cheese and run around the house.</notes>
 		<lesson>5</lesson>
 		<image_path>animals_mouse</image_path>
 		<eng_sound>animals_mouse</eng_sound>
@@ -118,8 +118,8 @@
 		<question>NULL</question>
 		<eng_word>Elephant</eng_word>
 		<w_type>definition</w_type>
-		<notes>They are the largest land animal.</notes>
-		<hint>These are big animals with long trunks.</hint>
+		<hint>They are the largest land animal.</hint>
+		<notes>These are big animals with long trunks.</notes>
 		<lesson>5</lesson>
 		<image_path>animals_elephant</image_path>
 		<eng_sound>animals_elephant</eng_sound>
@@ -132,8 +132,8 @@
 		<question>NULL</question>
 		<eng_word>Bear</eng_word>
 		<w_type>definition</w_type>
-		<notes>Teddy bear dolls are made to look like them too.</notes>
-		<hint>They live in caves and have long claws.</hint>
+		<hint>Teddy bear dolls are made to look like them too.</hint>
+		<notes>They live in caves and have long claws.</notes>
 		<lesson>5</lesson>
 		<image_path>animals_bear</image_path>
 		<eng_sound>animals_bear</eng_sound>

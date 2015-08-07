@@ -1,6 +1,7 @@
 package com.ube.salinlahifour.lessonActivities;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import android.graphics.Color;
 import android.util.Log;
@@ -19,7 +20,7 @@ import com.ube.salinlahifour.enumTypes.LevelType;
 
 public class Construction extends AbstractLessonActivity implements OnClickListener {
 
-	private static final int EASY = 3;
+	private static final int EASY = 4;
 	private TextView tv_dialog;
 	private Button[] choiceBtnArray;
 	private Button[] answerBtnArray;
@@ -107,22 +108,22 @@ public class Construction extends AbstractLessonActivity implements OnClickListe
 	}
 
 	private void loadChoiceButtons(){
-		ArrayList<Item> items = new ArrayList();
-		items.add(getQuestionItem());
-		items.add(loadShuffledChoices(getCntQuestions()).get(1));
 		splittedWords.clear();
-		for(Item item : items){
-			String[] words = item.getWord().split(" ");
-			for(int i = 0; i < words.length; i++){
-				if(splittedWords.size() < choiceBtnArray.length){
-					String temp = words[i].replace("_", " ");
-					splittedWords.add(temp);
-				}else{
-					break;
+		
+		String[] words = getQuestionItem().getWord().split(" ");
+		
+		for(int i = 0; i < words.length; i++) {
+			if(splittedWords.size() < choiceBtnArray.length) {
+				String temp = words[i].replace("_", " ");
+				splittedWords.add(temp);
+			} else {
+				break;
 			}
 		}
-		}
-		for(int i = 0; i < choiceBtnArray.length; i++){
+		
+		Collections.shuffle(splittedWords);
+
+		for(int i = 0; i < splittedWords.size(); i++) {
 			choiceBtnArray[i].setText(splittedWords.get(i));
 		}
 	}
@@ -147,7 +148,8 @@ public class Construction extends AbstractLessonActivity implements OnClickListe
 		//Log.d("Kaartehan", "View ID: "+ v.getId());
 		//if(testButton.getId()== v.getId()){
 		//	Log.d("Kaartehan", "If's worked!");
-		//}
+		//}]
+		
 		switch (v.getId()) {
 			case 1: Log.d("Kaartehan", "It worked!");break;
 			case R.id.choice_1:

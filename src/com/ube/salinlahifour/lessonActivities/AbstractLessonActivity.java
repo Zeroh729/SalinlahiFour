@@ -145,7 +145,7 @@ public abstract class AbstractLessonActivity extends Activity {
 		p.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
 		p.setMargins(7, 4, 10, 10);
 		life_tv.setId(1);
-		life_tv.setTextSize(23);
+		life_tv.setTextSize(26);
 		life_tv.setTypeface(SalinlahiFour.getFontPlaytime());
 		life_tv.setTextColor(Color.WHITE);
 		// life_tv.setTextColor(Color.WHITE);
@@ -154,7 +154,7 @@ public abstract class AbstractLessonActivity extends Activity {
 		q.addRule(RelativeLayout.LEFT_OF, life_tv.getId());
 		// q.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
 		q.setMargins(20, 4, 8, 10);
-		questionNo_tv.setTextSize(23);
+		questionNo_tv.setTextSize(26);
 		questionNo_tv.setTypeface(SalinlahiFour.getFontPlaytime());
 		questionNo_tv.setTextColor(Color.WHITE);
 
@@ -424,7 +424,7 @@ public abstract class AbstractLessonActivity extends Activity {
 	 * 
 	 */
 	protected void showReportCard(Context context) {
-		reportCard = new ReportCard(context, lesson, activityLevel, evaluation, evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber()), activityName);
+		reportCard = new ReportCard(context, lesson, activityLevel, evaluation, evaluation.getEndofActivityFeedback(evaluation.getScore(), lesson.getLessonNumber(),evaluation.getStar()), activityName);
 		reportCard.reveal();
 	}
 

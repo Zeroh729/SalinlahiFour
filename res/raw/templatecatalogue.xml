@@ -20,7 +20,6 @@
     <Encouragement>
         <template>Keep on trying!</template> 
 		<template>You can do it!</template> 
-		<template>Malapit ka na.</template> 
 		<template>Try again next time!</template> 
 		<template>Kaya mo yan!</template>
     </Encouragement>
@@ -61,8 +60,8 @@
 	</Answer>
    <NextLesson_F>
     <template>Sorry you need more practice. Try again next time.</template>
-    <template>Seems you need to study again.</template>
-    <template>You need more practice. Try again next time.</template>
+    <template>Oh no! Better luck next time.</template>
+    <template>You've almost got it. Try again.</template>
    </NextLesson_F>
    <NextLesson_P>
     <template>You're doing great!</template>

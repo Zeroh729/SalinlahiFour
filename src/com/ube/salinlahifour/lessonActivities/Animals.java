@@ -126,7 +126,7 @@ public class Animals extends AbstractLessonActivity implements OnClickListener {
 		btn_function.setOnClickListener(this);
 
 		// ((RelativeLayout)findViewById(R.id.parent_view)).addView(getPauseButton());
-		if(SalinlahiFour.getLoggedInUser().getGender() == "female") {
+		if(SalinlahiFour.getLoggedInUser().equals("female")) {
 			((ImageView) findViewById(R.id.img_dialog)).setImageResource(R.drawable.animals_pepaitalking);
 		} else {
 			((ImageView) findViewById(R.id.img_dialog)).setImageResource(R.drawable.animals_popoitalking);

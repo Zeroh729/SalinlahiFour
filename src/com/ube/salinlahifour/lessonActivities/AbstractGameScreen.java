@@ -120,7 +120,7 @@ public abstract class AbstractGameScreen extends Screen {
 		paint5 = new Paint();
 
 		paint5.setTypeface(tf);
-		paint5.setTextSize(25);
+		paint5.setTextSize(18);
 		paint5.setTextAlign(Paint.Align.RIGHT);
 		paint5.setAntiAlias(true);
 		paint5.setColor(Color.WHITE);
@@ -171,7 +171,7 @@ public abstract class AbstractGameScreen extends Screen {
 					extras.putBoolean("flag", eval.getFlag());
 
 					Log.d("LessonNum", lessonNumber + "");
-					extras.putString("EOAFeedback", eval.getEndofActivityFeedback(eval.getScore(), lessonNumber));
+					extras.putString("EOAFeedback", eval.getEndofActivityFeedback(eval.getScore(), lessonNumber, eval.getStar()));
 					extras.putParcelable("lesson", lesson);
 
 					intent.putExtras(extras);
@@ -263,7 +263,8 @@ public abstract class AbstractGameScreen extends Screen {
 	protected void drawRunningUI() {
 		drawCustomUI();
 		Graphics g = game.getGraphics();
-		g.drawImage(g.newImage("charbox/utilitybar.png", ImageFormat.RGB565), 355, 0);
+		//g.drawImage(g.newImage("charbox/utilitybar.png", ImageFormat.RGB565), 355, 0);
+		g.drawImage(g.newImage("charbox/utilitybar.png", ImageFormat.RGB565), 430, 0);
 		g.drawString("Question No:" + (rounds) + "/" + totalItems + " " + "Tries Left:" + eval.getMistakesRemaining() + "/" + eval.getAllowableMistakes(), 680, 25, paint5);
 		
 		// g.drawString(sQuestion, 430, 50, paint2);
