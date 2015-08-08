@@ -1,187 +1,222 @@
 package com.ube.salinlahifour.lessonActivities.CookingColors;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Random;
+
 import com.ube.salinlahifour.Lesson;
-import android.util.Log;
 
 public class ButtonSet {
 
-	private int margin = 5;
 	private int size;
-	private int[] X, Y;
-	private int[] chosenColors;
+	private int[] creamColors, creamX, creamY;
+	private int[] breadColors, breadX, breadY;
+	private int[] sprinkleColors, sprinkleX, sprinkleY;
+	private int[] qColor;
 	private ArrayList<String> fColors;
-	private int qColor;
 	private ArrayList<String> fQuestions;
 	private Random rand;
 	private int sizeHard;
 	private int sizeMed;
 	private int sizeEasy;
+	private int pseudoSeed1, pseudoSeed2, pseudoSeed3, pseudoSeed4;
 	private Lesson lesson;
 
-	public ButtonSet(int size, int initX, int initY, Lesson lesson) {
-		Log.d("ButtonSet", "Initializing ButtonSet");
-		Log.d("ButtonSet", "Size: " + size + " initX: " + initX + " initY: " + initY);
+	public ButtonSet(int size, Lesson lesson) {
+		pseudoSeed1 = pseudoSeed2 = pseudoSeed3 = pseudoSeed4 = 3;
 		this.size = size;
-		X = new int[size];
-		Y = new int[size];
-		X[0] = initX;
-		Y[0] = initY;
+		creamX = new int[size];
+		creamY = new int[size];
+
+		breadX = new int[size];
+		breadY = new int[size];
+
+		sprinkleX = new int[size];
+		sprinkleY = new int[size];
+
+		qColor = new int[3];
+
 		this.lesson = lesson;
-		Log.d("ButtonSet", "Initializing ButtonSet...Done");
+
 		rand = new Random();
-		for (int i = 0; i < lesson.getItems().size(); i++) {
+		for(int i = 0; i < lesson.getItems().size(); i++) {
 			switch (lesson.getItems().get(i).getDifficulty()) {
-			case "HARD":
-				sizeHard++;
-				break;
-			case "MEDIUM":
-				sizeMed++;
-				break;
-			case "EASY":
-				sizeEasy++;
-				break;
+				case "HARD":
+					sizeHard++;
+					break;
+				case "MEDIUM":
+					sizeMed++;
+					break;
+				case "EASY":
+					sizeEasy++;
+					break;
 			}
 		}
 	}
 
-	public void calculateButtonPosition(int buttonWidth, int buttonHeight, int column, int margin) {
+	public void initializeCoords(int breadX, int breadY, int creamX, int creamY, int sprinkleX, int sprinkleY) {
+		this.creamX[0] = creamX;
+		this.creamY[0] = creamY;
+
+		this.breadX[0] = breadX;
+		this.breadY[0] = breadY;
+
+		this.sprinkleX[0] = sprinkleX;
+		this.sprinkleY[0] = sprinkleY;
+
+	}
+
+	public void calculateButtonPosition(int buttonType, int buttonWidth, int buttonHeight, int column, int margin) {
+		int[] X, Y;
+
+		switch (buttonType) {
+			case 0:
+				X = breadX;
+				Y = breadY;
+				break;
+			case 1:
+				X = creamX;
+				Y = creamY;
+				break;
+			case 2:
+				X = sprinkleX;
+				Y = sprinkleY;
+				break;
+			default:
+				X = Y = null;
+		}
 		int x = X[0], y = Y[0], index = 0;
-		Log.d("ButtonSet", "Calculating Button Position");
-		Log.d("ButtonSet", "Size: " + size);
-		Log.d("ButtonSet", "Width: " + buttonWidth + " Height: " + buttonHeight + " Column: " + column);
-		for (int i = 0; i < size / column; i++) {
-			// Log.d("ButtonSet", "i: " + i);
-			for (int c = 0; c < column; c++) {
-				Log.d("ButtonSet", "i: " + i + " c: " + c);
-				Log.d("ButtonSet", "Loading Index:  " + index);
-				if (index == 0) {
-					Log.d("ButtonSet", "its zero");
-					Log.d("ButtonSet", "Placing index: " + index + " (X,Y) " + X[index] + "," + Y[index]);
+
+		for(int i = 0; i < size / column; i++) {
+			for(int c = 0; c < column; c++) {
+				if(index == 0) {
 					x += buttonWidth + margin;
-					Log.d("ButtonSet", "its zero: " + x);
 				} else {
-					Log.d("ButtonSet", "Not Zero");
 					X[index] = x;
 					Y[index] = y;
-					Log.d("ButtonSet", "Placing index: " + index + " (X,Y) " + X[index] + "," + Y[index]);
+
 					x += buttonWidth;
-					Log.d("ButtonSet", "Index: " + index + " X[]: " + X[index]);
-					Log.d("ButtonSet", "Index: " + index + " Y[]: " + Y[index]);
-					Log.d("ButtonSet", "Temp x: " + x);
 				}
-				if (c == column - 1) {
-					Log.d("ButtonSet", "Dulo na ng column");
+				if(c == column - 1) {
 					x = X[0]; // initial location
 					y += buttonHeight + margin;
-					Log.d("ButtonSet", "x: " + x + " y: " + y);
 				}
 				index++;
 			}
 		}
-		Log.d("ButtonSet", "Calculating Button Position...Done");
 	}
 
-	public int getX(int quadrant) {
-		return X[quadrant];
+	public int getBreadX(int quadrant) {
+		return breadX[quadrant];
 	}
 
-	public int getY(int quadrant) {
-		return Y[quadrant];
+	public int getBreadY(int quadrant) {
+		return breadY[quadrant];
 	}
 
-	public int getInitX() {
-		return X[0];
+	public int getCreamX(int quadrant) {
+		return creamX[quadrant];
 	}
 
-	public int getInitY() {
-		return Y[0];
+	public int getCreamY(int quadrant) {
+		return creamY[quadrant];
+	}
+
+	public int getSprinkleX(int quadrant) {
+		return sprinkleX[quadrant];
+	}
+
+	public int getSprinkleY(int quadrant) {
+		return sprinkleY[quadrant];
+	}
+
+	public int getInitBreadX() {
+		return breadX[0];
+	}
+
+	public int getInitBreadY() {
+		return breadY[0];
+	}
+
+	public int getInitCreamX() {
+		return creamX[0];
+	}
+
+	public int getInitCreamY() {
+		return creamY[0];
+	}
+
+	public int getInitSprinkleX() {
+		return sprinkleX[0];
+	}
+
+	public int getInitSprinkleY() {
+		return sprinkleY[0];
+	}
+
+	private void loadColors(int[] array, ArrayList<Integer> colorList, ArrayList<Integer> diffColors) {
+		ArrayList<Integer> tempColors = (ArrayList<Integer>) colorList.clone();
+		ArrayList<Integer> tempDColors = (ArrayList<Integer>) diffColors.clone();
+
+		for(int i = 0; i < 4; i++) {
+			if(rand.nextInt(2) == 1 && !tempDColors.isEmpty()) {
+				array[i] = tempDColors.remove(rand.nextInt(tempDColors.size()));
+			} else {
+				array[i] = tempColors.remove(rand.nextInt(tempColors.size()));
+			}
+		}
 	}
 
 	public void loadRandomColors(int nColors) {
+		ArrayList<Integer> colorList = new ArrayList<Integer>();
 
-		chosenColors = new int[nColors];
-		ArrayList<Integer> tempColors = new ArrayList<Integer>();
-		for (int i = 0; i < nColors; i++) {
-			// chosenColors[i] = i;
-			tempColors.add(i);
+		creamColors = new int[4];
+		breadColors = new int[4];
+		sprinkleColors = new int[4];
+
+		ArrayList<Integer> diffColors = new ArrayList<Integer>();
+		for(int i = 0; i < nColors; i++) {
+			if(i >= nColors - 2) {
+				diffColors.add(i);
+			} else {
+				colorList.add(i);
+			}
 		}
 
-		Collections.shuffle(tempColors);
-		Log.d("Randomizer", tempColors.toString());
-
-		for (int i = 0; i < nColors; i++) {
-			chosenColors[i] = tempColors.get(i);
-		}
-		// chosenColors = tempColors.toArray();
-		Log.d("Randomizer", Arrays.toString(chosenColors));
-		/*
-		 * int temp = 0; int i = 0; while(i<nColors){
-		 * 
-		 * temp = rand.nextInt(nColors-1); Log.d("Cake: Random", "Temp int: " +
-		 * temp);
-		 * 
-		 * if(checkRandomDuplicate(temp) == true){ chosenColors[i] = temp;
-		 * Log.d("Cake: Random", "Random int: " + chosenColors[i]); i++; } }
-		 */
+		loadColors(breadColors, colorList, diffColors);
+		loadColors(creamColors, colorList, diffColors);
+		loadColors(sprinkleColors, colorList, diffColors);
 	}
 
-	public int getChosenColors(int index) {
-		return chosenColors[index];
+	public int getBreadColor(int i) {
+		return breadColors[i];
+	}
+
+	public int getCreamColor(int i) {
+		return creamColors[i];
+	}
+
+	public int getSprinkleColor(int i) {
+		return sprinkleColors[i];
 	}
 
 	public void loadAnswer(String ActivityLevel) {
 		fColors = new ArrayList<String>();
 		switch (ActivityLevel) {
-		case "HARD":
-			for (int i = 0; i < sizeHard+sizeMed+sizeEasy; i++) {
-				fColors.add(lesson.getItems().get(i).getQuestion());
-				Log.d("Loading Medium Answers", "color: " + fColors.get(i));
-
-			}break;
-		case "MEDIUM":
-			for (int i = 0; i < sizeMed+sizeEasy; i++) {
-				fColors.add(lesson.getItems().get(i).getQuestion());
-				Log.d("Loading Medium Answers", "color: " + fColors.get(i));
-
-			}break;
-		case "EASY":
-			for (int i = 0; i < sizeEasy; i++) {
-				fColors.add(lesson.getItems().get(i).getQuestion());
-				Log.d("Loading Easy Answers", "color: " + fColors.get(i));
-			}break;
-		}
-	}
-
-	private void easyAns() {
-		for (int i = 0; i < sizeEasy; i++) {
-			fColors.add(lesson.getItems().get(i).getQuestion());
-			Log.d("Loading Easy Answers", "color: " + fColors.get(i));
-		}
-		// fColors.add("Asul");
-		// fColors.add("Berde");
-		// fColors.add("Pula");
-		// fColors.add("Dilaw");
-	}
-
-	private void medAns() {
-		for (int i = 0; i < sizeMed; i++) {
-			fColors.add(lesson.getItems().get(i).getQuestion());
-			Log.d("Loading Medium Answers", "color: " + fColors.get(i));
-
-		}
-		// fColors.add("Kayumanggi");
-		// fColors.add("Lila");
-	}
-
-	private void hardAns() {
-		for (int i = 0; i < sizeHard; i++) {
-			fColors.add(lesson.getItems().get(i).getQuestion());
-			Log.d("Loading Hard Answers", "color: " + fColors.get(i));
-
+			case "HARD":
+				for(int i = 0; i < sizeHard + sizeMed + sizeEasy; i++) {
+					fColors.add(lesson.getItems().get(i).getQuestion());
+				}
+				break;
+			case "MEDIUM":
+				for(int i = 0; i < sizeMed + sizeEasy; i++) {
+					fColors.add(lesson.getItems().get(i).getQuestion());
+				}
+				break;
+			case "EASY":
+				for(int i = 0; i < sizeEasy; i++) {
+					fColors.add(lesson.getItems().get(i).getQuestion());
+				}
+				break;
 		}
 	}
 
@@ -196,32 +231,62 @@ public class ButtonSet {
 		fQuestions.add("Sprinkles");
 	}
 
+	private int getChosenColor(int[] colorList, int index) {
+		if(pseudoSeed1 > index) {
+			pseudoSeed1--;
+			pseudoSeed2++;
+			pseudoSeed3++;
+			pseudoSeed4++;
+			return colorList[0];
+		} else if(pseudoSeed1 + pseudoSeed2 > index) {
+			pseudoSeed1++;
+			pseudoSeed2--;
+			pseudoSeed3++;
+			pseudoSeed4++;
+			return colorList[1];
+		} else if(pseudoSeed1 + pseudoSeed2 + pseudoSeed3 > index) {
+			pseudoSeed1++;
+			pseudoSeed2++;
+			pseudoSeed3--;
+			pseudoSeed4++;
+			return colorList[2];
+		} else {
+			pseudoSeed1++;
+			pseudoSeed2++;
+			pseudoSeed3++;
+			pseudoSeed4--;
+			return colorList[3];
+		}
+	}
+
 	public String createQuestions(String actlevel, int nQuestion) {
 		int randColor;
+
 		switch (actlevel) {
-		case "EASY":
-			randColor = rand.nextInt(fColors.size());
-			qColor = randColor;
-			break;
-		case "MEDIUM":
-		case "HARD":
-			randColor = rand.nextInt(3);
-			qColor = this.getChosenColors(randColor);
-			Log.d("Random Question Debug", "qColor: " + qColor + " randColor: " + randColor);
-			break;
-
+			case "EASY":
+				randColor = rand.nextInt(fColors.size());
+				qColor[nQuestion] = randColor;
+				break;
+			case "MEDIUM":
+			case "HARD":
+				randColor = rand.nextInt(pseudoSeed1 + pseudoSeed2 + pseudoSeed3 + pseudoSeed4);
+				if(nQuestion == 0) {
+					qColor[nQuestion] = getChosenColor(breadColors, randColor);
+				} else if(nQuestion == 1) {
+					qColor[nQuestion] = getChosenColor(creamColors, randColor);
+				} else {
+					qColor[nQuestion] = getChosenColor(sprinkleColors, randColor);
+				}
+				break;
 		}
-		Log.d("Random Question Debug", "Question: " + fColors.get(qColor) + " na ");
-		Log.d("Random Question Debug", "Question: " + fQuestions.get(nQuestion));
-		return fColors.get(qColor) + " na " + fQuestions.get(nQuestion);
+		return fColors.get(qColor[nQuestion]) + " na " + fQuestions.get(nQuestion);
 	}
 
-	public String getQuestionColor() {
-		return fColors.get(qColor);
+	public String getQuestionColor(int index) {
+		return fColors.get(qColor[index]);
 	}
 
-	public int getNumberColor() {
-		return qColor;
+	public int getNumberColor(int index) {
+		return qColor[index];
 	}
-
 }

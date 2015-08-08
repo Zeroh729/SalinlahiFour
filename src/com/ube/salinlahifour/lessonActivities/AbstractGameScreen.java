@@ -55,7 +55,6 @@ public abstract class AbstractGameScreen extends Screen {
 
 		super(game);
 		eval = evaluation;
-		Log.d("Aldrin ExtendedFramework", "Abstract game Screen loading");
 		this.context = context;
 		// TODO Auto-generated constructor stub
 		this.userID = userID;
