@@ -688,7 +688,7 @@ public class GameScreen extends AbstractGameScreen {
 	}
 
 	@Override
-	protected void painterEasy()
+	protected void painterEasy() {
 		Graphics g = game.getGraphics();
 
 		g.drawImage(bg, 0, 0);
