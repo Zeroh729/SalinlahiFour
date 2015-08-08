@@ -27,7 +27,12 @@ public class GameScreen extends AbstractGameScreen {
 	// Variable Setup
 	// You would create game objects here.
 	static String activityName = "Shape";
-
+	private final int EASY = 4;
+	private final int MEDIUM = 7;
+	private final int HARD = 10;
+	
+	private final int PSEUDO_WEIGHT = 3;
+	private final int PSEUDO_OFFSET = 1;
 	// String activityLevel;
 	private Image backbtn, nobtn, yesbtn, bgBack;
 	private Image bg, feedbox, nextBtn, tooltip;
@@ -52,6 +57,7 @@ public class GameScreen extends AbstractGameScreen {
 	private EnemyList enemies;
 	private Projectile ammo;
 	private boolean isEnemyExist = false;
+	private int[] pseudoChance;
 	int index = 0;
 
 	public GameScreen(Game game, String activityLevel, int userID, Context context, Lesson lesson, ArrayList<Item> items, Evaluation evals) {
@@ -83,7 +89,7 @@ public class GameScreen extends AbstractGameScreen {
 		} else {
 			feedbox = Assets.feedboxGirl;
 		}
-		
+
 		tooltip = Assets.tooltip;
 		enemies = new EnemyList(activityLevel);
 		enemies.loadEnemy();
@@ -122,11 +128,21 @@ public class GameScreen extends AbstractGameScreen {
 		Log.d("Aldrin ExtendedFramework", "Loading Assets...Done");
 	}
 
+	private void setPsuedoChance(int size) {
+		if(pseudoChance == null) {
+			pseudoChance = new int[size];
+
+			for(int i = 0; i < size; i++) {
+				pseudoChance[i] = PSEUDO_WEIGHT;
+			}
+		}
+	}
+
 	@Override
 	protected void assetPositionEasy() {
 		// TODO Auto-generated method stub
 		Log.d("Aldrin ExtendedFramework", "Positioning Easy Assets");
-
+		setPsuedoChance(EASY);
 		pTooltip = new Parts(230 - 30, 320 - 30);
 		pCircle = new Parts(120, 415);
 		pSquare = new Parts(495, 415);
@@ -151,6 +167,8 @@ public class GameScreen extends AbstractGameScreen {
 	protected void assetPositionMedium() {
 		// TODO Auto-generated method stub
 		Log.d("GameScreen", "Positioning Medium");
+		setPsuedoChance(MEDIUM);
+
 		assetPositionEasy();
 
 		pCross = new Parts(75 - 30, 340 - 30);
@@ -166,6 +184,8 @@ public class GameScreen extends AbstractGameScreen {
 	@Override
 	protected void assetPositionHard() {
 		// TODO Auto-generated method stub
+		setPsuedoChance(HARD);
+
 		assetPositionMedium();
 
 		pArrow = new Parts(570 - 30, 340 - 30);
@@ -179,7 +199,31 @@ public class GameScreen extends AbstractGameScreen {
 	private void spawnEnemy(int size) {
 		Random rand = new Random();
 		isEnemyExist = true;
-		index = rand.nextInt(size);
+		int sum = 0;
+
+		for(int i : pseudoChance) {
+			sum += i;
+		}
+
+		int randNum = rand.nextInt(sum);
+		sum = 0;
+		for(int i = 0; i < pseudoChance.length; i++) {
+			sum += pseudoChance[i];
+
+			if(sum > randNum) {
+				index = i;
+				break;
+			}
+		}
+
+		for(int i = 0; i < pseudoChance.length; i++) {
+			if(i == index) {
+				pseudoChance[i] -= PSEUDO_OFFSET;
+			} else {
+				pseudoChance[i] += PSEUDO_OFFSET;
+			}
+		}
+
 		if(index < size) {
 			this.resetButtonStates();
 			// enemyInfo = enemies.getEnemy(index);
@@ -199,7 +243,7 @@ public class GameScreen extends AbstractGameScreen {
 		// TODO Auto-generated method stub
 		int len = touchEvents.size();
 		if(isEnemyExist == false) {
-			spawnEnemy(4);
+			spawnEnemy(EASY);
 			ammo.setIsHit(false);
 			ammo.lockTarget(pEnemy.getX(), pEnemy.getY(), enemy.getWidth(), enemy.getHeight());
 		}
@@ -387,12 +431,12 @@ public class GameScreen extends AbstractGameScreen {
 
 	@Override
 	protected void updateRunningMedium(List<TouchEvent> touchEvents, float deltaTime) {
-		// TODO Auto-generated method stub
+		if(isEnemyExist == false) {
+			spawnEnemy(MEDIUM);
+		}
 		updateRunningEasy(touchEvents, deltaTime);
 		int len = touchEvents.size();
-		if(isEnemyExist == false) {
-			spawnEnemy(7);
-		}
+
 		for(int i = 0; i < len; i++) {
 			TouchEvent event = touchEvents.get(i);
 
@@ -499,18 +543,17 @@ public class GameScreen extends AbstractGameScreen {
 				userRecordOperator.close();
 				userLessonProgressOperator.close();
 			}
-
 		}
 	}
 
 	@Override
 	protected void updateRunningHard(List<TouchEvent> touchEvents, float deltaTime) {
-		// TODO Auto-generated method stub
+		if(isEnemyExist == false) {
+			spawnEnemy(HARD);
+		}
 		updateRunningMedium(touchEvents, deltaTime);
 		int len = touchEvents.size();
-		if(isEnemyExist == false) {
-			spawnEnemy(10);
-		}
+
 		for(int i = 0; i < len; i++) {
 			TouchEvent event = touchEvents.get(i);
 			// ///////////////////////////////////////////
@@ -610,7 +653,6 @@ public class GameScreen extends AbstractGameScreen {
 				userRecordOperator.close();
 				userLessonProgressOperator.close();
 			}
-
 		}
 	}
 
@@ -629,19 +671,14 @@ public class GameScreen extends AbstractGameScreen {
 
 	@Override
 	protected void updatePaused(List<TouchEvent> touchEvents) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	protected void updateGameOver(List<TouchEvent> touchEvents) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	protected void nullify() {
-		// TODO Auto-generated method stub
 		paint = null;
 		paint2 = null;
 		bg = null;
@@ -651,8 +688,7 @@ public class GameScreen extends AbstractGameScreen {
 	}
 
 	@Override
-	protected void painterEasy() {
-		// TODO Auto-generated method stub
+	protected void painterEasy()
 		Graphics g = game.getGraphics();
 
 		g.drawImage(bg, 0, 0);
@@ -671,7 +707,6 @@ public class GameScreen extends AbstractGameScreen {
 	}
 
 	protected void painterMedium() {
-		// TODO Auto-generated method stub
 		Graphics g = game.getGraphics();
 		painterEasy();
 		g.drawImage(cross, pCross.getX(), pCross.getY());
@@ -681,7 +716,6 @@ public class GameScreen extends AbstractGameScreen {
 	}
 
 	protected void painterHard() {
-		// TODO Auto-generated method stub
 		Graphics g = game.getGraphics();
 		painterEasy();
 		painterMedium();
@@ -694,7 +728,6 @@ public class GameScreen extends AbstractGameScreen {
 
 	@Override
 	protected void showTransition() {
-		// TODO Auto-generated method stub
 		Graphics g = game.getGraphics();
 		if(super.transition) {
 			Log.d("Transition Debug", "Enters: Knock Knock");
@@ -728,7 +761,6 @@ public class GameScreen extends AbstractGameScreen {
 
 	@Override
 	protected void drawReadyUI() {
-		// TODO Auto-generated method stub
 		Graphics g = game.getGraphics();
 		g.drawARGB(200, 0, 0, 0);
 		g.drawImage(feedbox, this.pDialog.getX(), pDialog.getY());
@@ -743,7 +775,6 @@ public class GameScreen extends AbstractGameScreen {
 
 	@Override
 	protected void showExit() {
-		// TODO Auto-generated method stub
 		Graphics g = game.getGraphics();
 		if(exit) {
 			g.drawARGB(200, 0, 0, 0);
@@ -756,27 +787,20 @@ public class GameScreen extends AbstractGameScreen {
 
 	@Override
 	protected void drawCustomUI() {
-		// TODO Auto-generated method stub
 		Graphics g = game.getGraphics();
 		g.drawImage(backbtn, 1, 1);
-		// g.drawString("sFeedback", 300, 400, paint2);//sFeedback 
-		// g.drawString(sFeedback, 545, 40, paint3);//sQuestion
-		//g.drawString(sQuestion, 350, 78, paint4);//sQuestion
 		cuttedWord = sentenceCutter(sQuestion);
-		 String lineOne = "", lineTwo ="", lineTri = "";
-		  for(int s = 0; s<cuttedWord.length;s++){
-			 if(s>6){
-					lineTwo += cuttedWord[s] + " ";
-				}else{
-					lineOne += cuttedWord[s]+ " ";
-				}
+		String lineOne = "", lineTwo = "", lineTri = "";
+		for(int s = 0; s < cuttedWord.length; s++) {
+			if(s > 6) {
+				lineTwo += cuttedWord[s] + " ";
+			} else {
+				lineOne += cuttedWord[s] + " ";
 			}
-		  g.drawString(lineOne, 350,63, paint4);
-		  g.drawString(lineTwo, 350,83, paint4);
-		 // g.drawString(lineTri, 350,103, paint4);
+		}
+		g.drawString(lineOne, 350, 63, paint4);
+		g.drawString(lineTwo, 350, 83, paint4);
 		showTransition();
 		showExit();
-
 	}
-
 }
