@@ -6,7 +6,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.text.Html;
-import android.util.Log;
+import com.ube.salinlahifour.debugclasses.Log;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;

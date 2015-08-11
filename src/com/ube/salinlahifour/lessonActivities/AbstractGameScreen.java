@@ -9,7 +9,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
+import com.ube.salinlahifour.debugclasses.Log;
 
 import com.kilobolt.framework.Game;
 import com.kilobolt.framework.Graphics;

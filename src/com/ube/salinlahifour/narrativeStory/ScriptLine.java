@@ -3,7 +3,7 @@ package com.ube.salinlahifour.narrativeStory;
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.util.Log;
+import com.ube.salinlahifour.debugclasses.Log;
 
 import com.ube.salinlahifour.SalinlahiFour;
 

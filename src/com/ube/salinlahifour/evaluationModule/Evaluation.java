@@ -4,7 +4,7 @@ import java.io.IOException;
 import org.jdom.JDOMException;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
+import com.ube.salinlahifour.debugclasses.Log;
 import com.ube.salinlahifour.Lesson;
 import com.ube.salinlahifour.SalinlahiFour;
 import com.ube.salinlahifour.database.*;

@@ -1,6 +1,6 @@
 package com.ube.salinlahifour.lessonActivities.SpaceShape;
 
-import android.util.Log;
+import com.ube.salinlahifour.debugclasses.Log;
 
 public class Projectile {
 	private int initX, initY;

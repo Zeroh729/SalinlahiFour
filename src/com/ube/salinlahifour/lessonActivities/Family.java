@@ -7,7 +7,7 @@ import android.graphics.LightingColorFilter;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.text.Html;
-import android.util.Log;
+import com.ube.salinlahifour.debugclasses.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;

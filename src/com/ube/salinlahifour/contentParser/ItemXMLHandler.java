@@ -9,7 +9,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import android.content.Context;
 
-import android.util.Log;
+import com.ube.salinlahifour.debugclasses.Log;
 
 import com.ube.salinlahifour.Item;
 import com.ube.salinlahifour.Lesson;

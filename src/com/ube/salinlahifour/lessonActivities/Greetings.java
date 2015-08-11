@@ -7,7 +7,7 @@ import com.ube.salinlahifour.R;
 import com.ube.salinlahifour.SalinlahiFour;
 
 import android.text.Html;
-import android.util.Log;
+import com.ube.salinlahifour.debugclasses.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;

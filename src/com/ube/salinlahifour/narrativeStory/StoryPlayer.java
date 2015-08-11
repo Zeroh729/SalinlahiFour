@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
+import com.ube.salinlahifour.debugclasses.Log;
 import android.widget.RelativeLayout;
 
 import com.ube.salinlahifour.R;

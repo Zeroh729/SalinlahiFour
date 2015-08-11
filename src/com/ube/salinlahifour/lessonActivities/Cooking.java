@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import com.ube.salinlahifour.debugclasses.Log;
 
 
 

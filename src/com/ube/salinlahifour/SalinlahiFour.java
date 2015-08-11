@@ -10,8 +10,8 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
-import android.util.Log;
 
+import com.ube.salinlahifour.debugclasses.Log;
 import com.ube.salinlahifour.howtoplay.HowToPlaySet;
 import com.ube.salinlahifour.model.UserDetail;
 import com.ube.salinlahifour.narrativeDialog.Character;

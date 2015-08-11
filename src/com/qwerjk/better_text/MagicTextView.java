@@ -24,7 +24,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.text.TextPaint;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.TextView;

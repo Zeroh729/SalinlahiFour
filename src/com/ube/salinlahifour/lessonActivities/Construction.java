@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import android.graphics.Color;
-import android.util.Log;
+import com.ube.salinlahifour.debugclasses.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;

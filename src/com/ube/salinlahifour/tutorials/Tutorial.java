@@ -8,7 +8,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.media.SoundPool;
 import android.os.Bundle;
-import android.util.Log;
+import com.ube.salinlahifour.debugclasses.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;

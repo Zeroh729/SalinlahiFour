@@ -6,7 +6,7 @@ import java.util.Random;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
+import com.ube.salinlahifour.debugclasses.Log;
 
 import com.kilobolt.framework.Game;
 import com.kilobolt.framework.Graphics;

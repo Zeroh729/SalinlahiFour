@@ -2,7 +2,7 @@ package com.ube.salinlahifour.lessonActivities;
 
 
 import android.content.Intent;
-import android.util.Log;
+import com.ube.salinlahifour.debugclasses.Log;
 
 
 

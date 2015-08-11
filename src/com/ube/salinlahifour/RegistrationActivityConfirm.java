@@ -16,7 +16,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Bundle;
-import android.util.Log;
+import com.ube.salinlahifour.debugclasses.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;

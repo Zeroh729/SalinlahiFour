@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import android.media.MediaPlayer;
-import android.util.Log;
+import com.ube.salinlahifour.debugclasses.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;

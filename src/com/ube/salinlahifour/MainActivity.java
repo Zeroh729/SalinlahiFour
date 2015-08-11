@@ -11,7 +11,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
+import com.ube.salinlahifour.debugclasses.Log;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import com.ube.salinlahifour.contentParser.XMLContentParser;

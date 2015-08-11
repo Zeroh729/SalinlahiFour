@@ -3,7 +3,7 @@ package com.ube.salinlahifour.lessonActivities.PartsOFHouse;
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.util.Log;
+import com.ube.salinlahifour.debugclasses.Log;
 
 import com.kilobolt.framework.Game;
 import com.kilobolt.framework.Graphics;

@@ -5,7 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import android.util.Log;
+import com.ube.salinlahifour.debugclasses.Log;
 
 public class DateTimeConverter {
 	

@@ -17,7 +17,7 @@ import org.xml.sax.helpers.DefaultHandler;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.content.Context;
-import android.util.Log;
+import com.ube.salinlahifour.debugclasses.Log;
 import android.view.View;
 import android.view.ViewGroup;
 

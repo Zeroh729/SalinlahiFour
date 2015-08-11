@@ -2,7 +2,7 @@ package com.ube.salinlahifour.lessonActivities.CookingColors;
 
 import java.util.Random;
 
-import android.util.Log;
+import com.ube.salinlahifour.debugclasses.Log;
 
 public class Cake {
 	private boolean isBread, isSprinkled, isCream;

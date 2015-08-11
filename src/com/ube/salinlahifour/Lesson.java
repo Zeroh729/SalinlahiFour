@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
+import com.ube.salinlahifour.debugclasses.Log;
 
 public class Lesson implements Parcelable{
 	private String name;
