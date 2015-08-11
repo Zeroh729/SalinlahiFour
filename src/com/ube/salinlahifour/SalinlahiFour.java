@@ -18,6 +18,7 @@ import com.ube.salinlahifour.narrativeDialog.Character;
 import com.ube.salinlahifour.narrativeStory.NarrativeStory;
 
 public class SalinlahiFour extends Application{
+	public static final boolean DEBUGMODE = false;
 	private static SalinlahiFour salinlahifour;
 	private static Context context;
 	private static UserDetail loggedInUser;

@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
@@ -24,6 +25,7 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.qwerjk.better_text.MagicTextView;
 import com.ube.salinlahifour.database.UserLessonProgressOperations;
 import com.ube.salinlahifour.debugclasses.DebugUserModuleActivity;
@@ -136,6 +138,16 @@ public class MapActivity extends Activity implements OnClickListener {
 		btn_nxtscene = new ImageButton(this);
 		btn_prevscene = new ImageButton(this);
 		tv_friendTalk = new TextView(this);
+		
+		if(!SalinlahiFour.DEBUGMODE) {
+			Button register = (Button) findViewById(R.id.btn_register);
+			Button debugProgress = (Button) findViewById(R.id.btn_usermodule);
+			
+			register.setVisibility(Button.GONE);
+			register.setEnabled(false);
+			debugProgress.setVisibility(Button.GONE);
+			debugProgress.setEnabled(false);
+		}
 
 		LayoutParams p_account = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
